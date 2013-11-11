@@ -119,7 +119,6 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('server', [
-    'clean',
     'newer:assemble',
     'css',
     'connect:livereload',
