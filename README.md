@@ -1,19 +1,26 @@
-# Prototype generator [![Build Status](https://travis-ci.org/assemble/generator-assemble.png)](https://travis-ci.org/assemble/generator-assemble)
+# Prototype generator
 
-> [Yeoman][yeoman] generator for [Assemble][assemble].
+> [Yeoman][yeoman] generator for Prototype.
 
 ## Getting started
-- Install the generator:
-    `npm install -g generator-assemble`
+- Install Yeoman:
+    `npm install -g yo`
 
+- Copy the repository via clone to your directory (it depends on the system, just find your directory with yo installed):
+    `git clone https://github.com/sebastian-fitzner/generator-prototype.git ~/AppData/Roaming/npm/node_modules`
 
+### Hints
+Sometimes you need to clone the package with an absolute path. On windows the clone command can look like this:
+`git clone https://github.com/sebastian-fitzner/generator-prototype.git E:\Users\Username\AppData\Roaming\npm\node_modules`
+- Replace 'Username' with your username
+ 
 ## Usage
 
-### Assemble app scaffolds.
+### Prototype app scaffolds.
 
 ```bash
 mkdir project && cd project
-yo assemble [--skip-install]
+yo prototype [--skip-install]
 ```
 
 #### Options
@@ -26,25 +33,19 @@ yo assemble [--skip-install]
 
   Skips app welcome message.
 
-### Generate Plugin
+## Plugins
+You can apply multiple addons to your project. Just choose specific ones.
 
-```bash
-yo assemble:plugin
-```
-
-If needed, you can specify a name and location too:
-
-```bash
-yo assemble:plugin <name> <path>
-```
+You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
+After choosing a system you will get HTML-snippets and a few new SCSS files, which you can use.
 
 ## Alternative
 
  * [grunt-init-assemble](https://github.com/assemble/grunt-init-assemble)
+ * [generator-assemble](https://github.com/assemble/generator-assemble)
 
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
 [yeoman]: http://yeoman.io/
-[assemble]: http://assemble.io
