@@ -63,7 +63,7 @@ PrototypeGenerator.prototype.askFor = function askFor() {
         '\n  ^^^^^^^^^^ ' +
             '\n | ___  ___ |     _____________________' +
             '\n |  ' + 'U ' + '   U' + '  |' + '    /' + '                     \\  ' +
-            '\n <' + '    VV' + '    >  _/   Apertos Prototype!  \\ ' +
+            '\n <' + '    VV' + '    >  _/    Prototype Deluxe!   \\ ' +
             '\n |   ____   |   \\  Make your life easy  / ' +
             '\n \\__________/    \\_____________________/ ' +
             '\n   |      |' +
