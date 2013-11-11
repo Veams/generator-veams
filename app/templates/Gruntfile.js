@@ -28,22 +28,36 @@ module.exports = function(grunt) {
 
     config: {
       src: 'resources',
-      dist: '_demo'
+      dist: '_output'
     },
-
-    compass: {
+	
+	// if you need grunt-contrib-compass just uncommand the following lines, but I think it is not necessary with bgShell
+    /* compass: {
           dist: {
               options: {
                   config: 'config.rb',  // css_dir = 'dev/css'
                   cssDir: '<%%= config.dist %>/css'
               }
           }
-    },
+    }, */
+	bgShell: {
+        _defaults: {
+             bg: true
+        },
 
+        watchCompass: {
+            cmd: 'compass watch'
+        }, 
+		
+		prodCompass: {
+			cmd: 'compass compile -e production --force'
+		}
+    },
+	
     watch: {
       assemble: {
-        files: ['<%%= config.src %>/{content,data,templates}/{,*/}*.{md,hbs,yml}'],
-        tasks: ['newer:assemble']
+        files: ['<%%= config.src %>/{content,data,templates}/**/{,*/}*.{md,hbs,yml}'],
+        tasks: ['assemble']
       },
       livereload: {
         options: {
@@ -55,7 +69,10 @@ module.exports = function(grunt) {
           '<%%= config.dist %>/js/{,*/}*.js',
           '<%%= config.dist %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%%= config.dist %>/media/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
+        ],
+		scss: {
+			files: ['<%= config.src %>/scss/{,*/}*.scss']
+		}
       }
     },
 
@@ -109,25 +126,34 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-bg-shell');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
+
+  grunt.registerTask('compassDev', [
+    'bgShell:watchCompass'
+  ]);
+  
+  grunt.registerTask('compassProd', [
+    'bgShell:prodCompass'
+  ]);
 
   grunt.registerTask('css', [
     'compass:dist'
   ]);
 
   grunt.registerTask('server', [
-    'clean',
-    'newer:assemble',
-    'css',
+    'assemble',
+    'compassDev',
     'connect:livereload',
     'watch'
   ]);
 
   grunt.registerTask('build', [
     'clean',
+    'compassProd',
     'assemble'
   ]);
 
