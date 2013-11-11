@@ -1,0 +1,32 @@
+{
+  "name": "generator-prototype",
+  "version": "0.4.2",
+  "description": "The scaffolding project for Aperto AG",
+  "keywords": [
+    "yeoman-generator",
+    "assemble",
+    "grunt"
+  ],
+  "author": {
+    "name": "Sebastian Fitzner",
+    "email": "sebastian.fitzner@aperto.de"
+  },
+  "main": "app/index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.13.4"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.4"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "readmeFilename": "README.md"
+}

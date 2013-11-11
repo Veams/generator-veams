@@ -1,0 +1,13 @@
+---
+title: Sitemap
+tags:
+- sitemap
+---
+<h1>Autogenerierte Sitemap</h1>
+<ul>
+     {{#each page.related}}
+         <li>
+             <a href="{{relative ../page.dest this.dest}}">{{this.data.title}}</a>
+         </li>
+     {{/each}}
+</ul>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE7"/>
+    <title>{{title}} | {{site.title}}</title>
+
+    <link rel="stylesheet" href="{{assets}}/css/styles-svg.css">
+    <!-- [if lte IE 8]>
+     <link rel="stylesheet" href="{{assets}}                   ">
+    <![endif]-->
+
+
+    <!-- Please remove this file: it is just for demo purpose - START -->
+    <link rel="stylesheet" href="{{assets}}/css/demo.css">
+    <!-- Please remove this file: it is just for demo purpose - END -->
+
+</head>
+<body class="{{bodyclass}}">
+
+<!-- Navbar
+================================================== -->
+{{> nav }}
+
+<!-- Subhead
+================================================== -->
+<header class="masthead subhead">
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-12">
+                <h1> {{ title }} </h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page content
+================================================== -->
+<div class="container">
+     {{> body }}
+</div>
+
+</body>
+</html>
