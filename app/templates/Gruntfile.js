@@ -20,7 +20,7 @@ var timer = require("grunt-timer");
 
 module.exports = function(grunt) {
 
-  // Timer
+  // init timer
   timer.init(grunt);
 
   // Project configuration.
@@ -53,6 +53,7 @@ module.exports = function(grunt) {
           '<%%= config.dist %>/{,*/}*.html',
           '<%%= config.dist %>/css/{,*/}*.css',
           '<%%= config.dist %>/js/{,*/}*.js',
+          '<%%= config.dist %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%%= config.dist %>/media/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }

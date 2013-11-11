@@ -33,14 +33,14 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
     this.pkgFiles = ['_package.json'];
 
     this.config.defaults({
-        projectName: "",
+        projectName   : "",
         githubUser: "Prototype",
-        installPlugin: true,
+        installPlugin : true,
         installCMS: true,
         author: {
-            name: this.user.git.username || process.env.user || process.env.username,
+            name        : this.user.git.username || process.env.user || process.env.username,
             login: "Prototype",
-            email: this.user.git.email
+            email       : this.user.git.email
         }
     });
 
@@ -63,7 +63,7 @@ PrototypeGenerator.prototype.askFor = function askFor() {
         '\n  ^^^^^^^^^^ ' +
             '\n | ___  ___ |     _____________________' +
             '\n |  ' + 'U ' + '   U' + '  |' + '    /' + '                     \\  ' +
-            '\n <' + '    VV' + '    >  _/    Prototype Deluxe!   \\ ' +
+            '\n <' + '    VV' + '    >  _/    Prototype Deluxe!  \\ ' +
             '\n |   ____   |   \\  Make your life easy  / ' +
             '\n \\__________/    \\_____________________/ ' +
             '\n   |      |' +
@@ -82,31 +82,38 @@ PrototypeGenerator.prototype.askFor = function askFor() {
     var questions = [];
 
     (!this.config.get("projectName") || force) && questions.push({
-        type: "input",
-        name: "projectName",
-        message: "Your project name",
-        default: this.appname
+        type    : "input",
+        name    : "projectName",
+        message : "Your project name",
+        default : this.appname
+    });
+
+    (!this.config.get("githubUser") || force) && questions.push({
+        type    : "input",
+        name    : "githubUser",
+        message : "Would you mind telling me your username on Github?",
+        default : this.config.get("githubUser")
     });
 
     (!this.config.get("installPlugin") || force) && questions.push({
-        type: "confirm",
-        name: "installPlugin",
+        type    : "confirm",
+        name    : "installPlugin",
         message: "Would you want to install an assemble plugin?",
-        default: this.config.get("installPlugin")
+        default : this.config.get("installPlugin")
     });
 
     questions.push({
-        name: "plugin",
-        type: "checkbox",
+        name    : "plugin",
+        type    : "checkbox",
         message: "Which Assemble Plugin do you want to use?",
-        choices: [
+        choices : [
             { name: "permalinks"},
             { name: "assemble-contrib-contextual" },
             { name: "assemble-contrib-sitemap", checked: true },
             { name: "assemble-markdown-data" },
-            { name: "assemble-related-pages",  checked: true }
+            { name: "assemble-related-pages", checked: true }
         ],
-        when: function (answers) {
+        when: function( answers ) {
             return answers.installPlugin;
         }
     });
@@ -136,6 +143,7 @@ PrototypeGenerator.prototype.askFor = function askFor() {
     this.prompt(questions, function (answers) {
 
         this.projectName = answers.projectName || this.config.get("projectName");
+        this.authorLogin = answers.githubUser || this.config.get("githubUser");
         this.plugin = answers.plugin;
         this.CMS = answers.CMS;
         this.authorName = this.config.get("author").name;
@@ -149,7 +157,8 @@ PrototypeGenerator.prototype.askFor = function askFor() {
 };
 
 /**
- * Now copy all checked files and create directories
+ * TODO: Separate file generated with their own function. See test-creation.js
+ * Copy boilerplate main code
  */
 
 PrototypeGenerator.prototype.app = function app() {
@@ -194,9 +203,9 @@ PrototypeGenerator.prototype.app = function app() {
     }
 
     /* files.forEach(function (file) {
-        if (this.dotFiles.indexOf(file) !== -1) {
+        if(this.dotFiles.indexOf(file) !== -1) {
             this.copy(file, '.' + file);
-        } else if (this.pkgFiles.indexOf(file) !== -1) {
+        } else if(this.pkgFiles.indexOf(file) !== -1) {
             this.template(file, file.substring(1));
         } else {
             if (path.basename(file, '.js') === 'Gruntfile') {
@@ -206,10 +215,9 @@ PrototypeGenerator.prototype.app = function app() {
             }
         }
     }, this);
-    */
 };
-
-
+*/
+}
 /**
  * Stringify an object and normalize whitespace with project preferences.
  */
