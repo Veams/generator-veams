@@ -191,8 +191,9 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('resources/templates/partials/nav.hbs');
 
     // add specific resources to make it possible to split up some directories
-    this.mkdir('resources/js');
-    this.mkdir('resources/img');
+    this.mkdir('_output/js');
+    this.mkdir('_output/img');
+	
     this.mkdir('resources/scss');
     this.directory('resources/scss/global', 'resources/scss/global');
     this.directory('resources/scss/icons', 'resources/scss/icons');
