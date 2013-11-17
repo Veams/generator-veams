@@ -1,6 +1,7 @@
 'use strict';
 var util = require('util');
 var path = require('path');
+var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 
 /**
@@ -68,16 +69,21 @@ PrototypeGenerator.prototype.askFor = function askFor() {
             '\n \\__________/    \\_____________________/ ' +
             '\n   |      |' +
             '\n  ';
-
-
+	// dependency message
+	var depMessage = 
+	'\n ' +
+	'Be sure you have the following components installed: \n' + 
+	'compass: http://compass-style.org/install/ \n' + 
+	'nodejs: http://nodejs.org/ \n' + 
+	'bower: http://bower.io/ \n';
 
     var force = false;
     if (!this.config.existed) {
         force = true;
     }
     if (!this.options['skip-welcome-message']) {
-        console.log(this.yeoman);
-        console.log(welcome);
+        console.log(chalk.bold.red(depMessage));
+        console.log(chalk.bold.yellow(welcome));
     }
     var questions = [];
 

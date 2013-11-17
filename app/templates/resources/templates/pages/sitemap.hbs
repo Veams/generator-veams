@@ -5,9 +5,9 @@ tags:
 ---
 <h1>Autogenerierte Sitemap</h1>
 <ul>
-     {{#each page.related}}
+     {{#each pages}}
          <li>
-             <a href="{{relative ../page.dest this.dest}}">{{this.data.title}}</a>
+             <a href="{{relative ../page.dest this.dest}}">{{data.title}}</a>
          </li>
      {{/each}}
 </ul>
