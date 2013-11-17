@@ -2,6 +2,31 @@
 	Standard Styles In Drupal
 	====================================  */
 
+/* General
+========================================= */
+/**
+ * Markup free clearing.
+ *
+ * @see http://perishablepress.com/press/2009/12/06/new-clearfix-hack
+ */
+ 
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* IE6 */
+* html .clearfix {
+  height: 1%;
+}
+
+/* IE7 */
+*:first-child + html .clearfix {
+  min-height: 1%;
+}
 	
 	
 /* Page elements
@@ -13,7 +38,7 @@
 // Lists of links, including Primary and Secondary links in the page header, and also node links and taxonomy terms (see below).
 .links {}
 
-// The role of this class is to hide elements from all users (both visually and screen-readers). This class should be used for elements which should not be immediately displayed to any user. An example would be a collapsible fieldset that will be expanded with a click from a user. The effect of this class can be toggled with the jQuery show() and hide() functions.
+// The role of this class is to hide elements from all users (both visually and screen-readers). This class should be used for elements which should not be immediately displayed to any user.
 .element-hidden, .hidden {}
 
 // The role of this class is to hide elements visually, but keep them available for screen-readers. This class should be used for information required for screen-reader users to understand and use the site, where visual display is undesirable. Information provided in this manner should be kept concise, to avoid unnecessary burden on the user. An example would be the title of a menu.
@@ -104,6 +129,3 @@
 
 	// Who's online
 	#block-user-online {}
-
-
-
