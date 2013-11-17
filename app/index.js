@@ -61,29 +61,29 @@ PrototypeGenerator.prototype.askFor = function askFor() {
 
     // welcome message
     var welcome =
-        '\n  ^^^^^^^^^^ ' +
-            '\n | ___  ___ |     _____________________' +
-            '\n |  ' + 'U ' + '   U' + '  |' + '    /' + '                     \\  ' +
-            '\n <' + '    VV' + '    >  _/    Prototype Deluxe!  \\ ' +
-            '\n |   ____   |   \\  Make your life easy  / ' +
-            '\n \\__________/    \\_____________________/ ' +
-            '\n   |      |' +
+        chalk.bold.green('\n  ^^^^^^^^^^ ') +
+            chalk.bold.yellow('\n | ___  ___ |') + chalk.cyan('     _____________________') +
+            chalk.bold.yellow('\n |  ' + 'U ' + '   U' + '  |') + chalk.cyan('    /                     \\  ') +
+            chalk.bold.yellow('\n <' + '    VV' + '    >  ') + chalk.cyan('_/    Prototype Deluxe!  \\ ') +
+            chalk.bold.yellow('\n |   ____   |   ') + chalk.cyan('\\  Make your life easy  / ') +
+            chalk.bold.yellow('\n \\__________/    ') + chalk.cyan('\\_____________________/ ') +
+            chalk.bold.yellow('\n   |      |') +
             '\n  ';
 	// dependency message
 	var depMessage = 
 	'\n ' +
-	'Be sure you have the following components installed: \n' + 
-	'compass: http://compass-style.org/install/ \n' + 
-	'nodejs: http://nodejs.org/ \n' + 
-	'bower: http://bower.io/ \n';
+	chalk.bold.red('Be sure you have the following components installed: \n') + 
+	chalk.cyan('compass: http://compass-style.org/install/ \n') + 
+	chalk.cyan('nodejs: http://nodejs.org/ \n') + 
+	chalk.cyan('bower: http://bower.io/ \n') ;
 
     var force = false;
     if (!this.config.existed) {
         force = true;
     }
     if (!this.options['skip-welcome-message']) {
-        console.log(chalk.bold.red(depMessage));
-        console.log(chalk.bold.yellow(welcome));
+        console.log(depMessage);
+        console.log(welcome);
     }
     var questions = [];
 
