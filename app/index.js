@@ -98,14 +98,14 @@ PrototypeGenerator.prototype.askFor = function askFor() {
     (!this.config.get("installPlugin") || force) && questions.push({
         type    : "confirm",
         name    : "installPlugin",
-        message: "Would you want to install an assemble plugin?",
+        message: "Would you want to install a plugin?",
         default : this.config.get("installPlugin")
     });
 
     questions.push({
         name    : "plugin",
         type    : "checkbox",
-        message: "Which Assemble Plugin do you want to use?",
+        message: "Which plugin do you want to use?",
         choices : [
             { name: "permalinks"},
             { name: "assemble-contrib-contextual" },
@@ -171,7 +171,7 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('gitignore', '.gitignore');
     this.copy('README.md', 'README.md');
 
-    this.directory('_demo', '_demo');
+    this.directory('_output', '_output');
 
     // add resources
     this.mkdir('resources');

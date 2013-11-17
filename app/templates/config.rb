@@ -12,10 +12,10 @@ end
 
 # basic configuration
 http_path = "/"
-css_dir = "_demo/css"
+css_dir = "_output/css"
 sass_dir = "resources/scss"
-images_dir = "resources/img"
-javascripts_dir = "resources/js"
+images_dir = "_output/img"
+javascripts_dir = "_output/js"
 
 # set the style of the css
 if environment == :production

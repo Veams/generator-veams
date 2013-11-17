@@ -19,6 +19,7 @@
         "grunt-newer": "~0.5.4",
         "grunt-contrib-clean": "~0.5.0",
         "grunt-contrib-compass": "~0.3.0",
+		"grunt-bg-shell": "~2.3.0",
         "grunt-contrib-connect": "~0.5.0",
         "grunt-contrib-watch": "~0.5.3",
         "load-grunt-tasks": "~0.1.3",
