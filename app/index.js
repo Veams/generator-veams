@@ -61,28 +61,68 @@ PrototypeGenerator.prototype.askFor = function askFor() {
 
     // welcome message
     var welcome =
-        chalk.bold.green('\n  ^^^^^^^^^^ ') +
-            chalk.bold.yellow('\n | ___  ___ |') + chalk.cyan('     _____________________') +
-            chalk.bold.yellow('\n |  ' + 'U ' + '   U' + '  |') + chalk.cyan('    /                     \\  ') +
-            chalk.bold.yellow('\n <' + '    VV' + '    >  ') + chalk.cyan('_/    Prototype Deluxe!  \\ ') +
-            chalk.bold.yellow('\n |   ____   |   ') + chalk.cyan('\\  Make your life easy  / ') +
-            chalk.bold.yellow('\n \\__________/    ') + chalk.cyan('\\_____________________/ ') +
-            chalk.bold.yellow('\n   |      |') +
-            '\n  ';
-	// dependency message
-	var depMessage = 
-	'\n ' +
-	chalk.bold.red('Be sure you have the following components installed: \n') + 
-	chalk.cyan('compass: http://compass-style.org/install/ \n') + 
-	chalk.cyan('nodejs: http://nodejs.org/ \n') + 
-	chalk.cyan('bower: http://bower.io/ \n') ;
-
+chalk.green('\n	            777                 ')+
+chalk.green('\n               ~,,,,,,,?              ')+
+chalk.green('\n             ,,:::,,7:77,             ')+
+chalk.green('\n           7,,:::,,, :77I,7           ')+
+chalk.green('\n          7,,:::,,,,7?::I,,           ')+
+chalk.green('\n         7,,,:,,,,,,,:,:.,,7          ')+
+chalk.green('\n         ,,,,,,,:,,,,:,,,,,,.7        ')+
+chalk.green('\n        ,,,,,,,,,,...~~=.....,        ')+
+chalk.green('\n       7,,,,,,~~~~===~==+=..7         ')+
+chalk.green('\n       ,,,,,,??II?=.+~=,:~7           ')+
+chalk.green('\n       ,,?,.,???II..=I?????7          ')+
+chalk.green('\n       ??==I.,??III~??IIII??+    ')+ chalk.yellow('   Welcome ladies and gentlemen!')+
+chalk.green('\n       ???+=I,,IIIII+?III??+=   ')+ chalk.yellow('    Want to make your life easy???')+
+chalk.green('\n       7I??I?+??.,...++?+++=?   ')+ chalk.cyan('     _____         _       _            ')+   
+chalk.green('\n         +II?=??..,...~~~==.    ')+ chalk.cyan('    |  _  |___ ___| |_ ___| |_ _ _ ___ __')+
+chalk.green('\n            ..+??=.........7    ')+ chalk.cyan('    |   __|  _| . |  _| . |  _| | | . | -_|')+
+chalk.green('\n           7,.:+++++??+=+       ')+ chalk.cyan('    |__|  |_| |___|_| |___|_| |_  |  _|___|')+
+chalk.green('\n           7...==++++==+        ')+ chalk.cyan('     ____      _                |_|_|')+
+chalk.green('\n               7+~====7         ')+ chalk.cyan('    |    \\ ___| |_ _ _ _ ___              ')+
+chalk.green('\n           7+,,,,,:,,,.7        ')+ chalk.cyan('    |  |  | -_| | | |_`_| -_| ')+
+chalk.green('\n         +,,,,,,,:,,,,,,,,:     ')+ chalk.cyan('    |____/|___|_|___|_,_|___|   ')+
+chalk.green('\n       ,,,,,,,,::,?+,,,,,,+,,   ')+ chalk.cyan('      ')+
+chalk.green('\n    7,,,,,,,,,,::=++:,,,,,:+,,,7')+ chalk.red('    Be sure you have installed the following')+
+chalk.green('\n   7,:::,,,,,,,,,::::::,,,,,.,,,,7')+ chalk.red('  components: ')+
+chalk.green('\n   ,,,,,,,,,.,,,:::::::,,,,,,,,,,7')+ chalk.red('   * compass:  http://compass-style.org/')+
+chalk.green('\n   7,,,,,,,, ,,,::::::::,,,,,,,,,7 ')+ chalk.red('  * sass:     http://sass-lang.com/ ')+
+chalk.green('\n    7,,,,,,,,,,,::::::::,,,,,,,,, ')+ chalk.red('   * ruby:     http://rubyinstaller.org/ ')+
+chalk.green('\n      ,,,,,,,,I,,,,:::::,,,,,,,+I7 ')+ chalk.red('  * grunt:    http://gruntjs.com ')+
+chalk.green('\n       I77777??.,:::,:::,,,,,,,?7 ')+ chalk.red('   * bower:    http://bower.io/')+
+chalk.green('\n        I++?77I~,::::::,,,,,,,,+I7')+    
+chalk.green('\n      7?I  77II.,,::,,,,,,,,,,,+I+  "WAAAAAAAAAAAHHHH!"')+
+chalk.green('\n    777I+7 77II,::::,,,,,,,,,,++II    ')+
+chalk.green('\n     7 7  77II?,::::,,,,,,,,,==+?+    ')+
+chalk.green('\n     7II I?III.:::::,,,,,.,.,         ')+
+chalk.green('\n   7 7++?I77?,:::::,,,,...,,,         ')+
+chalk.green('\n           7,,:::::,,,..,,,,:         ')+
+chalk.green('\n           ,,::::,,,,...,,,,          ')+
+chalk.green('\n          7,::::,,,,,...,,,,          ')+
+chalk.green('\n         7,:::::,,,,...,,,,7          ')+
+chalk.green('\n         ,,::::,,,,....,,,,           ')+
+chalk.green('\n        ,,:::::,,,,....,,,,           ')+
+chalk.green('\n       7,:::::,,,,....,,,,,           ')+
+chalk.green('\n       ,::::::,,,7..,,,,,,,           ')+
+chalk.green('\n      ,::::::,,,,7.,,,,,,,,,          ')+
+chalk.green('\n     ,:::::::,,,7..,,,,,::::::,7      ')+
+chalk.green('\n    ,,:::,::,,,, ...,,,:,====~::~     ')+
+chalk.green('\n    7,,,,,,,,,,, ,,,,,~=+++==~::~7    ')+
+chalk.green('\n   ,:~~~~~:::,,: ...,,::~~~~~:::~7    ')+
+chalk.green('\n  ,~======~~:::? 7,,...,,:::,,,:7     ')+
+chalk.green('\n  :~===++==~:::=         I:~::~       ')+
+chalk.green('\n  :~~~~~=~~:::~?                      ')+
+chalk.green('\n  ::::~~~~::::~7                      ')+
+chalk.green('\n   ,::::::::,:,                       ')+
+chalk.green('\n    7::::::::7                        ')+ 
+('\n ');
+	
+	
     var force = false;
     if (!this.config.existed) {
         force = true;
     }
     if (!this.options['skip-welcome-message']) {
-        console.log(depMessage);
         console.log(welcome);
     }
     var questions = [];
