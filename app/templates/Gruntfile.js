@@ -53,6 +53,46 @@ module.exports = function(grunt) {
 			cmd: 'compass compile -e production --force'
 		}
     },
+	<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
+				if(name == 'grunticon-sass') { %>
+	'grunticon-sass': {
+			icons: {
+				options: {
+					src: '<%%= config.src %>/img/svg/icons',
+					dest: '<%%= config.src %>/scss/icons',
+
+					datasvgcss: "_icons.data.svg.scss",
+					datapngcss: "_icons.data.png.scss",
+					urlpngcss: "_icons.png.scss",
+
+					previewhtml: false,
+					loadersnippet: false,
+
+					pngcrush: false,
+					pngfolder: "../../../img/png_icons/",
+					pngPath: '<%%= config.dist %>/img/png_icons/',
+
+					pseudoselectors: true,
+					oneimport: false
+				}
+			}
+		}, <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
+	"svg-sprites": {
+		options: {
+		  paths: {
+					spriteElements: "<%%= config.src %>/img/svg",
+					sprites: "<%%= config.dist %>/img/sprites",
+					css: "<%%= config.src %>/scss/icons"
+				},
+		  sizes: {
+			xlarge: 36,
+			large: 24,
+			small: 16
+		  },
+		  refSize: "large",
+		  unit: 8,
+		},
+	},<% } %><%}); %><%} %><%} %>
 	
     watch: {
       assemble: {
@@ -131,7 +171,18 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
-
+  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
+  grunt.loadNpmTasks('<%= name %>')<% if(i < (plugin.length - 1)) { %>;<% } %><%}); %><%} %><%} %>
+  
+ <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
+	if(name == 'grunticon-sass') { %>
+ grunt.registerTask('icons', [
+    'grunticon-sass'
+  ]);<% } %><% if(name == 'dr-grunt-svg-sprites') { %>
+  grunt.registerTask('sprites', [
+    'svg-sprites'
+  ]);<% } %><%}); %><%} %><%} %>
+	
   grunt.registerTask('compassDev', [
     'bgShell:watchCompass'
   ]);

@@ -151,7 +151,7 @@ chalk.green('\n    7::::::::7                        ')+
     questions.push({
         name    : "plugin",
         type    : "checkbox",
-        message: "Which plugin do you want to use?",
+        message: "Which assemble plugin do you want to use?",
         choices : [
             { name: "permalinks"},
             { name: "assemble-contrib-contextual" },
@@ -161,6 +161,27 @@ chalk.green('\n    7::::::::7                        ')+
         ],
         when: function( answers ) {
             return answers.installPlugin;
+        }
+    });
+	
+	(!this.config.get("installModules") || force) && questions.push({
+        type    : "confirm",
+        name    : "installModules",
+        message: "Would you want to install grunt modules?",
+        default : this.config.get("installModules")
+    });
+    questions.push({
+        name    : "modules",
+        type    : "checkbox",
+        message: "Which grunt modules do you want to use?",
+        choices : [
+            { name: "grunticon-sass", checked: true },
+            { name: "dr-grunt-svg-sprites" },
+            { name: "grunt-contrib-compass" },
+            { name: "grunt-photobox"}
+        ],
+        when: function( answers ) {
+            return answers.installModules;
         }
     });
 
@@ -191,6 +212,7 @@ chalk.green('\n    7::::::::7                        ')+
         this.projectName = answers.projectName || this.config.get("projectName");
         this.authorLogin = answers.githubUser || this.config.get("githubUser");
         this.plugin = answers.plugin;
+        this.modules = answers.modules;
         this.CMS = answers.CMS;
         this.authorName = this.config.get("author").name;
         this.authorEmail = this.config.get("author").email;
@@ -235,6 +257,9 @@ PrototypeGenerator.prototype.app = function app() {
     this.mkdir('_output/img');
 	
     this.mkdir('resources/scss');
+    this.mkdir('resources/img');
+    this.mkdir('resources/img/svg');
+    this.mkdir('resources/img/svg/icons');
     this.directory('resources/scss/global', 'resources/scss/global');
     this.directory('resources/scss/icons', 'resources/scss/icons');
     this.directory('resources/scss/modules', 'resources/scss/modules');
