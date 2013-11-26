@@ -36,8 +36,8 @@ yo prototype [--skip-install]
 
   Skips app welcome message.
 
-## Plugins
-You can apply multiple addons to your project. Just choose specific ones.
+## Plugins and Modules
+You can apply multiple addons and grunt modules to your project. Just choose specific ones.
 
 You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
 After choosing a system you will get HTML-snippets and a few new SCSS files, which you can use.
