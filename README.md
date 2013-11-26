@@ -6,7 +6,10 @@
 - Install Yeoman:
     `npm install -g yo`
 
-- Copy the repository via clone to your directory (it depends on the system, just find your directory with yo installed):
+- Install the package via:
+    `npm install -g generator-prototype`
+
+- Or copy the repository via clone to your directory (it depends on the system, just find your directory with yo installed):
     `git clone https://github.com/sebastian-fitzner/generator-prototype.git ~/AppData/Roaming/npm/node_modules`
 
 ### Hints
