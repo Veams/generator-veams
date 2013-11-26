@@ -7,20 +7,23 @@
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE7"/>
+	<meta name="viewport" content="width=device-width">
     <title>{{title}} | {{site.title}}</title>
-
+	
     <link rel="stylesheet" href="{{assets}}/css/styles-svg.css">
-    <!-- [if lte IE 8]>
-     <link rel="stylesheet" href="{{assets}}                   ">
+    
+	<!-- [if lte IE 8]>
+     <link rel="stylesheet" href="{{assets}}/css/styles-png.css">
     <![endif]-->
-
-
     <!-- Please remove this file: it is just for demo purpose - START -->
     <link rel="stylesheet" href="{{assets}}/css/demo.css">
     <!-- Please remove this file: it is just for demo purpose - END -->
-
 </head>
+
 <body class="{{bodyclass}}">
+	<!--[if lt IE 7]>
+		<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+	<![endif]-->
 
 <!-- Navbar
 ================================================== -->

@@ -178,6 +178,7 @@ chalk.green('\n    7::::::::7                        ')+
             { name: "grunticon-sass", checked: true },
             { name: "dr-grunt-svg-sprites" },
             { name: "grunt-contrib-compass" },
+            { name: "grunt-packager", checked: true },
             { name: "grunt-photobox"}
         ],
         when: function( answers ) {

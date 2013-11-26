@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 				}
 			}
 		}, <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
-	"svg-sprites": {
+	'svg-sprites': {
 		options: {
 		  paths: {
 					spriteElements: "<%%= config.src %>/img/svg",
@@ -92,8 +92,16 @@ module.exports = function(grunt) {
 		  refSize: "large",
 		  unit: 8,
 		},
-	},<% } %><%}); %><%} %><%} %>
-	
+	}, <% } %><% if(name == 'grunt-packager') { %>
+	packager: {
+		default: {
+			options: {
+				config: '<%%= config.dist %>/js/project.jspackcfg',
+				cwd: '<%%= config.dist %>/js/'
+			}
+		}
+	},
+	<% } %><%}); %><%} %><%} %>
     watch: {
       assemble: {
         files: ['<%%= config.src %>/{content,data,templates}/**/{,*/}*.{md,hbs,yml}'],
@@ -181,13 +189,16 @@ module.exports = function(grunt) {
   ]);<% } %><% if(name == 'dr-grunt-svg-sprites') { %>
   grunt.registerTask('sprites', [
     'svg-sprites'
-  ]);<% } %><%}); %><%} %><%} %>
-	
-  grunt.registerTask('compassDev', [
+  ]);<% } %><% if(name == 'grunt-packager') { %>
+  grunt.registerTask('js', [
+    'packager'
+  ]);
+  <% } %><%}); %><%} %><%} %>
+  grunt.registerTask('cssDev', [
     'bgShell:watchCompass'
   ]);
   
-  grunt.registerTask('compassProd', [
+  grunt.registerTask('cssProd', [
     'bgShell:prodCompass'
   ]);
 
@@ -205,6 +216,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean',
     'compassProd',
+	'js',
     'assemble'
   ]);
 
