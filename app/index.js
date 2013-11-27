@@ -179,6 +179,7 @@ chalk.green('\n    7::::::::7                        ')+
             { name: "dr-grunt-svg-sprites" },
             { name: "grunt-contrib-compass" },
             { name: "grunt-packager", checked: true },
+            { name: "grunt-browser-sync" },
             { name: "grunt-photobox"}
         ],
         when: function( answers ) {

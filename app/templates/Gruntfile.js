@@ -31,15 +31,6 @@ module.exports = function(grunt) {
       dist: '_output'
     },
 	
-	// if you need grunt-contrib-compass just uncommand the following lines, but I think it is not necessary with bgShell
-    /* compass: {
-          dist: {
-              options: {
-                  config: 'config.rb',  // css_dir = 'dev/css'
-                  cssDir: '<%%= config.dist %>/css'
-              }
-          }
-    }, */
 	bgShell: {
         _defaults: {
              bg: true
@@ -100,7 +91,24 @@ module.exports = function(grunt) {
 				cwd: '<%%= config.dist %>/js/'
 			}
 		}
-	},
+	}, <% } %><% if(name == 'grunt-browser-sync') { %>
+	browser_sync: {
+          files: {
+              src : '<%%= config.dist %>/css/*.css'
+          },
+          options: {
+			  host: '127.0.0.1',
+              watchTask: true
+          }
+      }, <% } %><% if(name == 'grunt-contrib-compass') { %>
+	  compass: {
+          dist: {
+              options: {
+                  config: 'config.rb',  // css_dir = 'dev/css'
+                  cssDir: '<%%= config.dist %>/css'
+              }
+          }
+      },
 	<% } %><%}); %><%} %><%} %>
     watch: {
       assemble: {
@@ -113,7 +121,7 @@ module.exports = function(grunt) {
         },
         files: [
           '<%%= config.dist %>/{,*/}*.html',
-          '<%%= config.dist %>/css/{,*/}*.css',
+          '<%%= config.dist %>/css/{,*/}*.css', // if you want to use browser-sync for css just comment out this line
           '<%%= config.dist %>/js/{,*/}*.js',
           '<%%= config.dist %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%%= config.dist %>/media/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
@@ -176,22 +184,24 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-bg-shell');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
   <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
-  grunt.loadNpmTasks('<%= name %>')<% if(i < (plugin.length - 1)) { %>;<% } %><%}); %><%} %><%} %>
+  grunt.loadNpmTasks('<%= name %>'); <%}); %><%} %><%} %>
   
  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
 	if(name == 'grunticon-sass') { %>
  grunt.registerTask('icons', [
     'grunticon-sass'
-  ]);<% } %><% if(name == 'dr-grunt-svg-sprites') { %>
+  ]); <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
   grunt.registerTask('sprites', [
     'svg-sprites'
-  ]);<% } %><% if(name == 'grunt-packager') { %>
+  ]); <% } %><% if(name == 'grunt-packager') { %>
   grunt.registerTask('js', [
     'packager'
+  ]); <% } %><% if(name == 'grunt-contrib-compass') { %>
+  grunt.registerTask('css', [
+    'compass'
   ]);
   <% } %><%}); %><%} %><%} %>
   grunt.registerTask('cssDev', [
@@ -208,8 +218,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('server', [
     'assemble',
-    'compassDev',
+    'cssDev',
     'connect:livereload',
+	<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
+	'browser_sync', <% } %><%}); %><%} %><%} %>
     'watch'
   ]);
 
