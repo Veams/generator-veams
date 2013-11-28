@@ -117,8 +117,18 @@ module.exports = function(grunt) {
 			  },
               src: ['<%%= config.dist %>/*.html']
           }
-      },
-	<% } %><%}); %><%} %><%} %>
+      }, <% } %><% if(name == 'grunt-prettysass') { %>
+		  
+      prettysass: {
+            options: {
+                alphabetize: true,
+                indent: "t"
+            },
+            scss: {
+                src: ['<%%= config.src %>/scss/**/*.scss']
+            }
+        },
+	  <% } %><%}); %><%} %><%} %>
     watch: {
       assemble: {
         files: ['<%%= config.src %>/{content,data,templates}/**/{,*/}*.{md,hbs,yml}'],
@@ -190,6 +200,7 @@ module.exports = function(grunt) {
 
   });
 
+  // Load Tasks
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-bg-shell');
@@ -199,6 +210,7 @@ module.exports = function(grunt) {
   <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
   grunt.loadNpmTasks('<%= name %>'); <%}); %><%} %><%} %>
   
+ // Simple Tasks
  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
 	if(name == 'grunticon-sass') { %>
  grunt.registerTask('icons', [
@@ -215,15 +227,18 @@ module.exports = function(grunt) {
   ]);<% } %><% if(name == 'grunt-htmlhint') { %>
 grunt.registerTask('html', [
     'htmlhint'
+  ]);<% } %><% if(name == 'grunt-prettysass') { %>
+grunt.registerTask('prettyscss', [
+    'prettysass'
   ]);<% } %><%}); %><%} %><%} %>
   grunt.registerTask('cssDev', [
     'bgShell:watchCompass'
   ]);
-  
   grunt.registerTask('cssProd', [
     'bgShell:prodCompass'
   ]);
 
+// Advanced Tasks
   grunt.registerTask('server', [
     'assemble',
     'cssDev',
@@ -235,6 +250,7 @@ grunt.registerTask('html', [
   grunt.registerTask('build', [
     'clean',
     'cssProd',
+	'prettyscss'
 	'js',
     'assemble'
   ]);

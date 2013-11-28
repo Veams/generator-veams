@@ -181,6 +181,7 @@ chalk.green('\n    7::::::::7                        ')+
             { name: "grunt-packager", checked: true },
             { name: "grunt-browser-sync" },
             { name: "grunt-htmlhint", checked: true },
+            { name: "grunt-prettysass", checked: true },
             { name: "grunt-photobox"}
         ],
         when: function( answers ) {
