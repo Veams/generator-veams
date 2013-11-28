@@ -1,0 +1,260 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\000035}}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000322}}
+html {
+  line-height: 1;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000324}}
+ol, ul {
+  list-style: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000326}}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000328}}
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000330}}
+q, blockquote {
+  quotes: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003103}}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000332}}
+a img {
+  border: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003116}}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* ==========================================================================
+   Be sure how to use extends in @media:
+   https://github.com/nex3/sass/issues/915
+   ========================================================================== */
+/* ---------------------------------------------------
+Demo Styles - just delete them
+--------------------------------------------------- */
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\000034}}
+body {
+  background: #f4f4f4;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000312}}
+.navbar {
+  background: #222;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000319}}
+.navbar ul {
+  margin-left: 1em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000322}}
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000325}}
+.navbar a:hover {
+  color: yellowgreen;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000328}}
+.navbar a.navbar-brand {
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  text-align: right;
+  margin: 1em;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000338}}
+h2 {
+  color: yellowgreen;
+  font-weight: bold;
+  margin: 1em 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000344}}
+#main {
+  width: 60%;
+  margin-left: 25%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000347}}
+#main h1 {
+  font-size: 150%;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000352}}
+#main img {
+  max-width: 100%;
+  height: auto;
+  margin: 1em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000357}}
+#main ul {
+  margin-left: 1em;
+  margin-top: 1em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000360}}
+#main ul li {
+  font-size: 120%;
+  line-height: 145%;
+  list-style: circle;
+  margin-left: 1em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000365}}
+#main ul li a {
+  color: #666;
+  text-decoration: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000372}}
+article {
+  clear: both;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000378}}
+.teaser {
+  width: 30%;
+  margin: 0 3% 1em 0;
+  float: left;
+  padding: 0.5em;
+  background: #d4d4d4;
+  box-sizing: border-box;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000385}}
+.teaser:nth-child(3n + 1) {
+  margin-right: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000388}}
+.teaser h2 {
+  color: black;
+  margin: 0.35em;
+}
+
+@media print {
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\000032}}
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\000039}}
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000314}}
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000318}}
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+  	* Don't show links for images, or javascript/internal links
+  	*/
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000326}}
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000332}}
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000338}}
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000342}}
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000347}}
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000355}}
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000362}}
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+/*@ sourceMappingURL=styles-svg.css.map */

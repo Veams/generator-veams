@@ -248,18 +248,19 @@ PrototypeGenerator.prototype.app = function app() {
     this.directory('resources/data', 'resources/data');
     this.directory('resources/content', 'resources/content');
 
+	this.mkdir('resources/helpers');
+    this.copy('resources/helpers/helper-for.js');
+
     this.mkdir('resources/templates');
     this.directory('resources/templates/layouts', 'resources/templates/layouts');
     this.directory('resources/templates/pages', 'resources/templates/pages');
     this.mkdir('resources/templates/partials');
     this.copy('resources/templates/partials/nav.hbs');
-	this.mkdir('resources/templates/helpers');
-    this.copy('resources/templates/helpers/helper-for.hbs');
 
     // add specific resources to make it possible to split up some directories
     this.mkdir('_output/js');
     this.mkdir('_output/img');
-	
+		
     this.mkdir('resources/scss');
     this.mkdir('resources/img');
     this.mkdir('resources/img/svg');
@@ -271,7 +272,7 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('resources/scss/_all.scss', 'resources/scss/_all.scss');
     this.copy('resources/scss/styles-svg.scss', 'resources/scss/styles-svg.scss');
     this.copy('resources/scss/styles-png.scss', 'resources/scss/styles-png.scss');
-
+	
     // now some special stuff
     if(this.CMS == 'Drupal') {
         this.directory('resources/scss/drupal', 'resources/scss/drupal');
