@@ -234,7 +234,7 @@ grunt.registerTask('html', [
 
   grunt.registerTask('build', [
     'clean',
-    'compassProd',
+    'cssProd',
 	'js',
     'assemble'
   ]);
