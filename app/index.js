@@ -40,7 +40,7 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
         installCMS: true,
         author: {
             name        : this.user.git.username || process.env.user || process.env.username,
-            login: "Prototype",
+            login		: "Prototype",
             email       : this.user.git.email
         }
     });
@@ -253,6 +253,8 @@ PrototypeGenerator.prototype.app = function app() {
     this.directory('resources/templates/pages', 'resources/templates/pages');
     this.mkdir('resources/templates/partials');
     this.copy('resources/templates/partials/nav.hbs');
+	this.mkdir('resources/templates/helpers');
+    this.copy('resources/templates/helpers/helper-for.hbs');
 
     // add specific resources to make it possible to split up some directories
     this.mkdir('_output/js');

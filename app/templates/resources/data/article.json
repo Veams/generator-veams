@@ -1,0 +1,12 @@
+{
+    "titles": {
+        "title01": "My first title",
+        "title02": "My second title",
+        "title03": "My third title"
+    },
+    "contents": {
+        "content01": "This is just a demo content to show you how to integrate external datafigf",
+        "content02": "This is just a 2 demo content to show you how to integrate external data",
+        "content03": "This is just a 3 demo content to show you how to integrate external data"
+    }
+}

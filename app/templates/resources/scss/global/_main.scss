@@ -1,0 +1,92 @@
+/* ---------------------------------------------------
+Demo Styles - just delete them
+--------------------------------------------------- */
+body {
+	background: #f4f4f4;
+	color: #333;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	line-height: 140%;
+}
+
+.navbar {
+	background: #222;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 20%;
+	ul {
+		margin-left: 1em;
+	}
+	a {
+		color: #fff;
+		text-decoration: none;
+		&:hover {
+			color: yellowgreen;
+		}
+		&.navbar-brand {
+			text-transform: uppercase;
+			font-weight: bold;
+			display: block;
+			text-align: right;
+			margin: 1em;
+		}
+	}
+}
+
+h2 {
+	color: yellowgreen;
+	font-weight: bold;
+	margin: 1em 0;
+}
+
+#main {
+	width: 60%;
+	margin-left: 25%;
+	h1 {
+		font-size: 150%;
+		font-weight: bold;
+		margin-bottom: 0.5em;
+	}
+	img {
+		max-width: 100%;
+		height: auto;
+		margin: 1em;
+	}
+	ul {
+		margin-left: 1em;
+		margin-top: 1em;
+		li {
+			font-size: 120%;
+			line-height: 145%;
+			list-style: circle;
+			margin-left: 1em;
+			a {
+				color: #666;
+				text-decoration: none;
+			}
+		}
+	}
+}
+article {
+	clear: both;
+	margin-bottom: 1em;
+	position: relative;
+}
+
+.teaser {
+	width: 30%;
+	margin: 0 3% 1em 0;
+	float: left;
+	padding: 0.5em;
+	background: #d4d4d4;
+	box-sizing: border-box;
+	&:nth-child(3n + 1) {
+		margin-right: 0;
+	}
+	h2 {
+		color: black;
+		margin: 0.35em
+	}
+}

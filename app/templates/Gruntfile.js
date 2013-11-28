@@ -97,7 +97,7 @@ module.exports = function(grunt) {
               src : '<%%= config.dist %>/css/*.css'
           },
           options: {
-			  host: '127.0.0.1',
+			  host: "127.0.0.1",
               watchTask: true
           }
       }, <% } %><% if(name == 'grunt-contrib-compass') { %>
@@ -156,6 +156,7 @@ module.exports = function(grunt) {
           assets: '<%%= config.dist %>',
           layout: '<%%= config.src %>/templates/layouts/default.hbs',
           data: '<%%= config.src %>/data/*.{json,yml}',
+          helpers: '<%%= config.src %>/helpers/*.js',
           partials: '<%%= config.src %>/templates/partials/**/*.hbs'<% if(plugin && plugin.length > 0){ %>,
           plugins: [<% if(typeof plugin === 'object'){ _.each(plugin, function(name, i) { %>'<%= name %>'<% if(i < (plugin.length - 1)) { %>,<% } }); } else { %>'<%= name %>'<%} %>],<%}
           _.each(plugin, function(name, i) { if(name == 'permalinks') { %>
@@ -201,7 +202,7 @@ module.exports = function(grunt) {
     'packager'
   ]); <% } %><% if(name == 'grunt-contrib-compass') { %>
   grunt.registerTask('css', [
-    'compass'
+    'compass:dist'
   ]);
   <% } %><%}); %><%} %><%} %>
   grunt.registerTask('cssDev', [
@@ -212,15 +213,10 @@ module.exports = function(grunt) {
     'bgShell:prodCompass'
   ]);
 
-  grunt.registerTask('css', [
-    'compass:dist'
-  ]);
-
   grunt.registerTask('server', [
     'assemble',
     'cssDev',
-    'connect:livereload',
-	<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
+    'connect:livereload', <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
 	'browser_sync', <% } %><%}); %><%} %><%} %>
     'watch'
   ]);
