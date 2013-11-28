@@ -249,8 +249,8 @@ grunt.registerTask('prettyscss', [
 
   grunt.registerTask('build', [
     'clean',
-    'cssProd',
-	'prettyscss'
+    'cssProd',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>
+	'prettyscss', <% } %><%}); %><%} %><%} %>
 	'js',
     'assemble'
   ]);
