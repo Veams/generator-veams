@@ -17,20 +17,30 @@ body {
 	top: 0;
 	width: 20%;
 	ul {
-		margin-left: 1em;
 	}
 	a {
 		color: #fff;
 		text-decoration: none;
+		padding: 0.5em 1em;
+		display: block;
+		margin-bottom: 1px;
+		background: #444;
+		text-align: right;
+		font-weight: normal;
+
 		&:hover {
-			color: yellowgreen;
+			background: yellowgreen;
+			color: #333;
 		}
 		&.navbar-brand {
 			text-transform: uppercase;
 			font-weight: bold;
 			display: block;
 			text-align: right;
-			margin: 1em;
+			background: none;
+			&:hover {
+				color: yellowgreen;
+			}
 		}
 	}
 }

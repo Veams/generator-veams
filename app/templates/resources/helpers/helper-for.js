@@ -4,13 +4,25 @@
         /*
          * Loop helper.
          *
-         * @return an easy for loop
+         * @return easy for-loop
          */
         Handlebars.registerHelper('times', function (n, block) {
-            var accum = '';
+            var content = '';
             for (var i = 0; i < n; ++i)
-                accum += block.fn(i);
-            return accum;
+                content += block.fn(i);
+            return content;
+        });
+
+        /*
+         * Loop helper.
+         *
+         * @return advanced for-loop
+         */
+        Handlebars.registerHelper('for', function(from, to, incr, block) {
+            var content = '';
+            for(var i = from; i < to; i += incr)
+                content += block.fn(i);
+            return content;
         });
 
     };

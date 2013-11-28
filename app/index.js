@@ -180,6 +180,7 @@ chalk.green('\n    7::::::::7                        ')+
             { name: "grunt-contrib-compass" },
             { name: "grunt-packager", checked: true },
             { name: "grunt-browser-sync" },
+            { name: "grunt-htmlhint", checked: true },
             { name: "grunt-photobox"}
         ],
         when: function( answers ) {
@@ -228,7 +229,7 @@ chalk.green('\n    7::::::::7                        ')+
 
 /**
  * TODO: Separate file generated with their own function. See test-creation.js
- * Copy boilerplate main code
+ * 
  */
 
 PrototypeGenerator.prototype.app = function app() {
@@ -240,6 +241,7 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('gitignore', '.gitignore');
     this.copy('README.md', 'README.md');
+	this.copy('htmlhintrc', '.htmlhintrc');
 
     this.directory('_output', '_output');
 
@@ -273,7 +275,8 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('resources/scss/styles-svg.scss', 'resources/scss/styles-svg.scss');
     this.copy('resources/scss/styles-png.scss', 'resources/scss/styles-png.scss');
 	
-    // now some special stuff
+    // now some special stuff	
+	//Drupal
     if(this.CMS == 'Drupal') {
         this.directory('resources/scss/drupal', 'resources/scss/drupal');
         this.directory('resources/templates/partials/drupal', 'resources/templates/partials/drupal');

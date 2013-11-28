@@ -88,78 +88,85 @@ body {
   top: 0;
   width: 20%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000319}}
-.navbar ul {
-  margin-left: 1em;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000321}}
 .navbar a {
   color: #fff;
   text-decoration: none;
+  padding: 0.5em 1em;
+  display: block;
+  margin-bottom: 1px;
+  background: #444;
+  text-align: right;
+  font-weight: normal;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000325}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000331}}
 .navbar a:hover {
-  color: yellowgreen;
+  background: yellowgreen;
+  color: #333;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000335}}
 .navbar a.navbar-brand {
   text-transform: uppercase;
   font-weight: bold;
   display: block;
   text-align: right;
-  margin: 1em;
+  background: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000341}}
+.navbar a.navbar-brand:hover {
+  color: yellowgreen;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000348}}
 h2 {
   color: yellowgreen;
   font-weight: bold;
   margin: 1em 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000354}}
 #main {
   width: 60%;
   margin-left: 25%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000357}}
 #main h1 {
   font-size: 150%;
   font-weight: bold;
   margin-bottom: 0.5em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000362}}
 #main img {
   max-width: 100%;
   height: auto;
   margin: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000367}}
 #main ul {
   margin-left: 1em;
   margin-top: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000370}}
 #main ul li {
   font-size: 120%;
   line-height: 145%;
   list-style: circle;
   margin-left: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000375}}
 #main ul li a {
   color: #666;
   text-decoration: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000382}}
 article {
   clear: both;
   margin-bottom: 1em;
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000378}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000388}}
 .teaser {
   width: 30%;
   margin: 0 3% 1em 0;
@@ -168,11 +175,11 @@ article {
   background: #d4d4d4;
   box-sizing: border-box;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000395}}
 .teaser:nth-child(3n + 1) {
   margin-right: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000398}}
 .teaser h2 {
   color: black;
   margin: 0.35em;

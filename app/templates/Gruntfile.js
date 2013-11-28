@@ -108,6 +108,15 @@ module.exports = function(grunt) {
                   cssDir: '<%%= config.dist %>/css'
               }
           }
+      }, <% } %><% if(name == 'grunt-htmlhint') { %>
+		  
+      htmlhint: {
+          all: {
+              options: { // Want to know what configurations are available? http://htmlhint.com/
+				htmlhintrc: '.htmlhintrc'
+			  },
+              src: ['<%%= config.dist %>/*.html']
+          }
       },
 	<% } %><%}); %><%} %><%} %>
     watch: {
@@ -203,8 +212,10 @@ module.exports = function(grunt) {
   ]); <% } %><% if(name == 'grunt-contrib-compass') { %>
   grunt.registerTask('css', [
     'compass:dist'
-  ]);
-  <% } %><%}); %><%} %><%} %>
+  ]);<% } %><% if(name == 'grunt-htmlhint') { %>
+grunt.registerTask('html', [
+    'htmlhint'
+  ]);<% } %><%}); %><%} %><%} %>
   grunt.registerTask('cssDev', [
     'bgShell:watchCompass'
   ]);
