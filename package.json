@@ -1,10 +1,11 @@
 {
   "name": "generator-prototype",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "The scaffolding project for better prototypes",
   "keywords": [
     "yeoman-generator",
     "assemble",
+    "prototype",
     "grunt"
   ],
   "author": {
@@ -12,6 +13,10 @@
     "email": "sebastian@jci-werbeagentur.com"
   },
   "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Sebastian-Fitzner/generator-prototype"
+  },
   "scripts": {
     "test": "mocha --reporter spec"
   },
