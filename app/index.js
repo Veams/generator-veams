@@ -35,13 +35,13 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 
     this.config.defaults({
         projectName   : "",
-        githubUser: "Prototype",
+        projectAuthor: "",
         installPlugin : true,
         installCMS: true,
         author: {
-            name        : this.user.git.username || process.env.user || process.env.username,
-            login		: "Prototype",
-            email       : this.user.git.email
+            name        : "",
+            login		: "",
+            email       : ""
         }
     });
 
@@ -134,17 +134,31 @@ chalk.green('\n    7::::::::7                        ')+
         default : this.appname
     });
 
-    (!this.config.get("githubUser") || force) && questions.push({
+    (!this.config.get("projectAuthor") || force) && questions.push({
         type    : "input",
-        name    : "githubUser",
-        message : "Would you mind telling me your username on Github?",
-        default : this.config.get("githubUser")
+        name    : "projectAuthor",
+        message : "Would you mind telling me your name?",
+        default : this.config.get("projectAuthor")
     });
 
-    (!this.config.get("installPlugin") || force) && questions.push({
+    (!this.config.get("batchFiles") || force) && questions.push({
+        type    : "confirm",
+        name    : "batchFiles",
+        message : "Do you need batch files to start grunt?",
+        default : this.config.get("batchFiles")
+    });
+
+    (!this.config.get("installAssemble") || force) && questions.push({
+        type    : "confirm",
+        name    : "installAssemble",
+        message: "Would you want to install assemble?",
+        default : this.config.get("installAssemble")
+    });
+
+		(!this.config.get("installPlugin") || force) && questions.push({
         type    : "confirm",
         name    : "installPlugin",
-        message: "Would you want to install a plugin?",
+        message: "Do you want to install assemble plugins?",
         default : this.config.get("installPlugin")
     });
 
@@ -162,7 +176,7 @@ chalk.green('\n    7::::::::7                        ')+
         when: function( answers ) {
             return answers.installPlugin;
         }
-    });
+    });    
 	
 	(!this.config.get("installModules") || force) && questions.push({
         type    : "confirm",
@@ -175,6 +189,7 @@ chalk.green('\n    7::::::::7                        ')+
         type    : "checkbox",
         message: "Which grunt modules do you want to use?",
         choices : [
+            { name: "grunt-devtools", checked: true },
             { name: "grunticon-sass", checked: true },
             { name: "dr-grunt-svg-sprites" },
             { name: "grunt-contrib-compass" },
@@ -198,11 +213,11 @@ chalk.green('\n    7::::::::7                        ')+
 
     questions.push({
         name: "CMS",
-        type: "checkbox",
+        type: "list",
         message: "Which CMS snippets do you want to use?",
         choices: [
             { name: "TYPO3"},
-            { name: "Drupal", checked: true },
+            { name: "Drupal"},
             { name: "Magnolia"},
             { name: "CoreMedia"}
         ],
@@ -214,7 +229,9 @@ chalk.green('\n    7::::::::7                        ')+
     this.prompt(questions, function (answers) {
 
         this.projectName = answers.projectName || this.config.get("projectName");
-        this.authorLogin = answers.githubUser || this.config.get("githubUser");
+        this.authorLogin = answers.projectAuthor || this.config.get("projectAuthor");
+        this.batchFiles = answers.batchFiles || this.config.get("batchFiles");
+        this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
         this.plugin = answers.plugin;
         this.modules = answers.modules;
         this.CMS = answers.CMS;
@@ -234,6 +251,7 @@ chalk.green('\n    7::::::::7                        ')+
  */
 
 PrototypeGenerator.prototype.app = function app() {
+
     var files = this.files;
 
     // Copy standard files
@@ -245,9 +263,17 @@ PrototypeGenerator.prototype.app = function app() {
 	this.copy('htmlhintrc', '.htmlhintrc');
 
     this.directory('_output', '_output');
+	
+	// add batch files
+	if(this.config.get("installAssemble") == true) {
+		this.directory('batch_files', 'batch_files');
+	}
 
     // add resources
     this.mkdir('resources');
+	
+	// add assemble files 
+	if(this.config.get("installAssemble") == true) {
     this.directory('resources/data', 'resources/data');
     this.directory('resources/content', 'resources/content');
 
@@ -259,7 +285,7 @@ PrototypeGenerator.prototype.app = function app() {
     this.directory('resources/templates/pages', 'resources/templates/pages');
     this.mkdir('resources/templates/partials');
     this.copy('resources/templates/partials/nav.hbs');
-
+	}
     // add specific resources to make it possible to split up some directories
     this.mkdir('_output/js');
     this.mkdir('_output/img');
@@ -276,11 +302,26 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('resources/scss/styles-svg.scss', 'resources/scss/styles-svg.scss');
     this.copy('resources/scss/styles-png.scss', 'resources/scss/styles-png.scss');
 	
-    // now some special stuff	
+	// CMS snippets and SCSS files
 	//Drupal
     if(this.CMS == 'Drupal') {
         this.directory('resources/scss/drupal', 'resources/scss/drupal');
         this.directory('resources/templates/partials/drupal', 'resources/templates/partials/drupal');
+    }
+	//TYPO3
+    if(this.CMS == 'TYPO3') {
+        this.directory('resources/scss/typo3', 'resources/scss/typo3');
+        this.directory('resources/templates/partials/typo3', 'resources/templates/partials/typo3');
+    }
+	//Magnolia
+    if(this.CMS == 'Magnolia') {
+        this.directory('resources/scss/magnolia', 'resources/scss/magnolia');
+        this.directory('resources/templates/partials/magnolia', 'resources/templates/partials/magnolia');
+    }
+	//CoreMedia
+    if(this.CMS == 'CoreMedia') {
+        this.directory('resources/scss/coremedia', 'resources/scss/coremedia');
+        this.directory('resources/templates/partials/coremedia', 'resources/templates/partials/coremedia');
     }
 
     /* files.forEach(function (file) {

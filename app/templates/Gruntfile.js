@@ -40,7 +40,13 @@ module.exports = function(grunt) {
             cmd: 'compass watch'
         }, 
 		
+        devCompass: {
+			bg: false,
+            cmd: 'compass watch'
+        }, 
+		
 		prodCompass: {
+			bg: false,
 			cmd: 'compass compile -e production --force'
 		}
     },
@@ -76,12 +82,12 @@ module.exports = function(grunt) {
 					css: "<%%= config.src %>/scss/icons"
 				},
 		  sizes: {
-			xlarge: 36,
-			large: 24,
-			small: 16
+			large: 125,
+			medium: 100,
+			small: 50
 		  },
-		  refSize: "large",
-		  unit: 8,
+		  refSize: "medium",
+		  unit: 5,
 		},
 	}, <% } %><% if(name == 'grunt-packager') { %>
 	packager: {
@@ -129,11 +135,11 @@ module.exports = function(grunt) {
             }
         },
 	  <% } %><%}); %><%} %><%} %>
-    watch: {
+    watch: {<% if(installAssemble === true){ %>
       assemble: {
         files: ['<%%= config.src %>/{content,data,templates}/**/{,*/}*.{md,hbs,yml}'],
         tasks: ['assemble']
-      },
+      },<% } %>
       livereload: {
         options: {
           livereload: '<%%= connect.options.livereload %>'
@@ -167,7 +173,7 @@ module.exports = function(grunt) {
         }
       }
     },
-
+	<% if(installAssemble === true){ %>
     assemble: {
       pages: {
         options: {
@@ -197,11 +203,12 @@ module.exports = function(grunt) {
     // Before generating any new files,
     // remove any previously-created files.
     clean: ['<%%= config.dist %>/**/*.{html,xml}']
-
+	<% } %>
   });
 
   // Load Tasks
-  grunt.loadNpmTasks('assemble');
+  <% if(installAssemble === true){ %>
+  grunt.loadNpmTasks('assemble'); <% } %>
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-bg-shell');
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -231,28 +238,32 @@ grunt.registerTask('html', [
 grunt.registerTask('prettyscss', [
     'prettysass'
   ]);<% } %><%}); %><%} %><%} %>
-  grunt.registerTask('cssDev', [
-    'bgShell:watchCompass'
-  ]);
-  grunt.registerTask('cssProd', [
-    'bgShell:prodCompass'
-  ]);
+  
+	grunt.registerTask('cssDev', [
+        'bgShell:devCompass'
+    ]);
+    grunt.registerTask('watchCSS', [
+        'bgShell:watchCompass'
+    ]);
+    grunt.registerTask('cssProd', [
+        'bgShell:prodCompass'
+    ]);
 
 // Advanced Tasks
   grunt.registerTask('server', [
-    'assemble',
-    'cssDev',
+ <% if(installAssemble === true){ %>'assemble',<% } %>
+    'watchCSS',
     'connect:livereload', <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
 	'browser_sync', <% } %><%}); %><%} %><%} %>
     'watch'
   ]);
 
-  grunt.registerTask('build', [
+  grunt.registerTask('build', [<% if(installAssemble === true){ %>
     'clean',
+	'assemble',<% } %>
     'cssProd',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>
-	'prettyscss', <% } %><%}); %><%} %><%} %>
-	'js',
-    'assemble'
+	'prettyscss'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>,
+	'js'<% } %><%}); %><%} %><%} %>
   ]);
 
   grunt.registerTask('default', [
