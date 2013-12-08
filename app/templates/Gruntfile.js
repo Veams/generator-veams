@@ -142,7 +142,7 @@ module.exports = function(grunt) {
 	  <% } %><%}); %><%} %><%} %>
     watch: {<% if(installAssemble === true){ %>
       assemble: {
-        files: ['<%%= config.src %>/{content,data,templates}/**/{,*/}*.{md,hbs,yml}'],
+        files: ['<%%= config.src %>/{content,data,templates}/**/{,*/}*.{md,hbs,yml,json}'],
         tasks: ['assemble']
       },<% } %>
       livereload: {
