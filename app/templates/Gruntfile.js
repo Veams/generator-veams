@@ -104,7 +104,12 @@ module.exports = function(grunt) {
           },
           options: {
 			  host: "127.0.0.1",
-              watchTask: true
+              watchTask: true,
+			  ghostMode: {
+                scroll: true,
+                links: true,
+                forms: true
+            }
           }
       }, <% } %><% if(name == 'grunt-contrib-compass') { %>
 	  compass: {
