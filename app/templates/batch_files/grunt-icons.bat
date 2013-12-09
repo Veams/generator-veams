@@ -1,1 +1,1 @@
-cd ../ && grunt sprites
+cd ../ && grunt icons

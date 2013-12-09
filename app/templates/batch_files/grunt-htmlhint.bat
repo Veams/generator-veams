@@ -1,1 +1,1 @@
-cd ../ && grunt prettyscss
+cd ../ && grunt html && PAUSE

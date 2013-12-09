@@ -1,1 +1,1 @@
-cd ../ && grunt html
+cd ../ && grunt build
