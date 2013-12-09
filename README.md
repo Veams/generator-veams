@@ -81,4 +81,3 @@ After choosing a system you will get HTML-snippets and a few new SCSS files, whi
 
 ## TODO:
  * CMS Snippets
- * grunt-photobox
