@@ -57,7 +57,7 @@ You can apply multiple addons and grunt modules to your project. Just choose spe
  * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync)
  * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint)
  * [grunt-prettysass](https://github.com/brandonminch/grunt-prettysass)
- * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) (work in progress)
+ * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox)
 
 ## CMS snippets (work in progress)
 You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
