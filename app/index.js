@@ -141,6 +141,13 @@ chalk.green('\n    7::::::::7                        ')+
         default : this.config.get("projectAuthor")
     });
 
+    (!this.config.get("projectURL") || force) && questions.push({
+        type    : "input",
+        name    : "projectURL",
+        message : "Can you tell me a production environment URL?",
+        default : this.config.get("projectURL")
+    });
+
     (!this.config.get("batchFiles") || force) && questions.push({
         type    : "confirm",
         name    : "batchFiles",
@@ -152,16 +159,16 @@ chalk.green('\n    7::::::::7                        ')+
         type    : "confirm",
         name    : "installAssemble",
         message: "Would you want to install assemble?",
-        default : this.config.get("installAssemble")
+        default : this.config.get("installAssemble"),
     });
-
+		
 		(!this.config.get("installPlugin") || force) && questions.push({
-        type    : "confirm",
-        name    : "installPlugin",
-        message: "Do you want to install assemble plugins?",
-        default : this.config.get("installPlugin")
-    });
-
+			type    : "confirm",
+			name    : "installPlugin",
+			message: "Do you want to install assemble plugins?",
+			default : this.config.get("installPlugin")
+		});
+	
     questions.push({
         name    : "plugin",
         type    : "checkbox",
@@ -170,7 +177,7 @@ chalk.green('\n    7::::::::7                        ')+
             { name: "permalinks"},
             { name: "assemble-contrib-contextual" },
             { name: "assemble-contrib-sitemap", checked: true },
-            { name: "assemble-markdown-data" },
+            // { name: "assemble-markdown-data" },
             { name: "assemble-related-pages", checked: true }
         ],
         when: function( answers ) {
@@ -230,6 +237,7 @@ chalk.green('\n    7::::::::7                        ')+
 
         this.projectName = answers.projectName || this.config.get("projectName");
         this.authorLogin = answers.projectAuthor || this.config.get("projectAuthor");
+        this.projectURL = answers.projectURL || this.config.get("projectURL");
         this.batchFiles = answers.batchFiles || this.config.get("batchFiles");
         this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
         this.plugin = answers.plugin;

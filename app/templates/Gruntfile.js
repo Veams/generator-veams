@@ -119,8 +119,7 @@ module.exports = function(grunt) {
                   cssDir: '<%%= config.dist %>/css'
               }
           }
-      }, <% } %><% if(name == 'grunt-htmlhint') { %>
-		  
+      }, <% } %><% if(name == 'grunt-htmlhint') { %> 
       htmlhint: {
           all: {
               options: { // Want to know what configurations are available? http://htmlhint.com/
@@ -128,8 +127,27 @@ module.exports = function(grunt) {
 			  },
               src: ['<%%= config.dist %>/*.html']
           }
-      }, <% } %><% if(name == 'grunt-prettysass') { %>
-		  
+      }, <% } %><% if(name == 'grunt-photobox') { %>
+        photobox: {
+            dev: {
+                options: {
+                    screenSizes: [ '600x900', '1000x900', '1200x900' ],
+                    urls: [
+                        'http://localhost:9000/index.html',
+                        'http://localhost:9000/subpage.html',
+                        'http://localhost:9000/sitemap.html'
+                    ]
+                }
+            },
+            prod: {
+                options: {
+                    screenSizes: [ '600x900', '1000x900', '1200x900' ],
+                    urls: [
+                        '<%= projectURL %>'
+                    ]
+                }
+            }
+        }, <% } %><% if(name == 'grunt-prettysass') { %>  
       prettysass: {
             options: {
                 alphabetize: true,
@@ -142,7 +160,7 @@ module.exports = function(grunt) {
 	  <% } %><%}); %><%} %><%} %>
     watch: {<% if(installAssemble === true){ %>
       assemble: {
-        files: ['<%%= config.src %>/{content,data,templates}/**/{,*/}*.{md,hbs,yml,json}'],
+        files: ['<%%= config.src %>/{data,templates}/**/{,*/}*.{md,hbs,yml,json}'],
         tasks: ['assemble']
       },<% } %>
       livereload: {
@@ -253,6 +271,12 @@ grunt.registerTask('prettyscss', [
     grunt.registerTask('cssProd', [
         'bgShell:prodCompass'
     ]);
+	grunt.registerTask('photoDev', [
+        'photobox:dev'
+    ]);
+	grunt.registerTask('photoProd', [
+        'photobox:prod'
+    ]);
 
 // Advanced Tasks
   grunt.registerTask('server', [
@@ -266,8 +290,9 @@ grunt.registerTask('prettyscss', [
   grunt.registerTask('build', [<% if(installAssemble === true){ %>
     'clean',
 	'assemble',<% } %>
-    'cssProd',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>
-	'prettyscss'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>,
+    'cssProd'<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>,
+	'prettyscss'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>,
+	'photoProd'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>,
 	'js'<% } %><%}); %><%} %><%} %>
   ]);
 

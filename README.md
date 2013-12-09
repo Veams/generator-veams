@@ -15,7 +15,7 @@
 ### Hints
 Sometimes you need to clone the package with an absolute path. On windows the clone command can look like this:
 `git clone https://github.com/sebastian-fitzner/generator-prototype.git 
-E:\Users\Username\AppData\Roaming\npm\node_modules`
+D:\Users\Username\AppData\Roaming\npm\node_modules`
 - Replace 'Username' with your username
  
 ## Usage
@@ -45,20 +45,19 @@ You can apply multiple addons and grunt modules to your project. Just choose spe
  * permalinks
  * assemble-contrib-contextual
  * assemble-contrib-sitemap
- * assemble-markdown-data
  * assemble-related-pages
  
 ### Grunt modules
  
- * grunt-devtools
- * grunticon-sass
- * dr-grunt-svg-sprites
- * grunt-packager (only executable when your project.jspackcfg is configured)
- * grunt-contrib-compass
- * grunt-browser-sync
- * grunt-htmlhint
- * grunt-prettysass
- * grunt-photobox (work in progress)
+ * [grunt-devtools](https://github.com/vladikoff/grunt-devtools)
+ * [grunticon-sass](https://github.com/zigotica/grunticon)
+ * [dr-grunt-svg-sprites](https://github.com/drdk/dr-grunt-svg-sprites)
+ * [grunt-packager](https://github.com/bobbor/grunt-packager) (only executable when your project.jspackcfg is configured)
+ * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass)
+ * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync)
+ * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint)
+ * [grunt-prettysass](https://github.com/brandonminch/grunt-prettysass)
+ * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) (work in progress)
 
 ## CMS snippets (work in progress)
 You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 

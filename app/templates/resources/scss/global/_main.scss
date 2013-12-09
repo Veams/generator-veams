@@ -12,34 +12,39 @@ body {
 .navbar {
 	background: #222;
 	height: 100%;
-	position: fixed;
 	left: 0;
+	position: fixed;
 	top: 0;
 	width: 20%;
-	ul {
-	}
 	a {
-		color: #fff;
-		text-decoration: none;
-		padding: 0.5em 1em;
-		display: block;
-		margin-bottom: 1px;
 		background: #444;
-		text-align: right;
+		color: #fff;
+		display: block;
 		font-weight: normal;
-
+		margin-bottom: 1px;
+		padding: 0.5em 1em;
+		text-align: right;
+		text-decoration: none;
 		&:hover {
 			background: yellowgreen;
 			color: #333;
 		}
 		&.navbar-brand {
-			text-transform: uppercase;
-			font-weight: bold;
-			display: block;
-			text-align: right;
 			background: none;
+			display: block;
+			font-weight: bold;
+			text-align: right;
+			text-transform: uppercase;
 			&:hover {
 				color: yellowgreen;
+			}
+		}
+	}
+	li {
+		&.active {
+			a, a:hover {
+				background: yellowgreen;
+				color: #333;
 			}
 		}
 	}
@@ -52,17 +57,17 @@ h2 {
 }
 
 #main {
-	width: 60%;
 	margin-left: 25%;
+	width: 60%;
 	h1 {
 		font-size: 150%;
 		font-weight: bold;
 		margin-bottom: 0.5em;
 	}
 	img {
-		max-width: 100%;
 		height: auto;
 		margin: 1em;
+		max-width: 100%;
 	}
 	ul {
 		margin-left: 1em;
@@ -79,6 +84,7 @@ h2 {
 		}
 	}
 }
+
 article {
 	clear: both;
 	margin-bottom: 1em;
@@ -86,17 +92,24 @@ article {
 }
 
 .teaser {
-	width: 30%;
-	margin: 0 3% 1em 0;
-	float: left;
-	padding: 0.5em;
 	background: #d4d4d4;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
 	box-sizing: border-box;
+	float: left;
+	margin: 0 3% 1em 0;
+	padding: 0.5em;
+	width: 30%;
 	&:nth-child(3n + 1) {
 		margin-right: 0;
+		clear: right;
+	}
+	&:nth-child(3n + 2) {
+		clear: left;
 	}
 	h2 {
 		color: black;
-		margin: 0.35em
+		margin: 0.35em;
 	}
 }

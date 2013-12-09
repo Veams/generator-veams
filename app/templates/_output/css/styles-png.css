@@ -1,4 +1,4 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\000035}}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000322}}
 html {
   line-height: 1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000324}}
 ol, ul {
   list-style: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000326}}
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000328}}
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000330}}
 q, blockquote {
   quotes: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003103}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003103}}
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000332}}
 a img {
   border: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003116}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003116}}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -70,7 +70,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* ---------------------------------------------------
 Demo Styles - just delete them
 --------------------------------------------------- */
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\000034}}
 body {
   background: #f4f4f4;
   color: #333;
@@ -79,168 +79,184 @@ body {
   line-height: 140%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000312}}
 .navbar {
   background: #222;
   height: 100%;
-  position: fixed;
   left: 0;
+  position: fixed;
   top: 0;
   width: 20%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000319}}
 .navbar a {
-  color: #fff;
-  text-decoration: none;
-  padding: 0.5em 1em;
-  display: block;
-  margin-bottom: 1px;
   background: #444;
-  text-align: right;
+  color: #fff;
+  display: block;
   font-weight: normal;
+  margin-bottom: 1px;
+  padding: 0.5em 1em;
+  text-align: right;
+  text-decoration: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000328}}
 .navbar a:hover {
   background: yellowgreen;
   color: #333;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000335}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000332}}
 .navbar a.navbar-brand {
-  text-transform: uppercase;
-  font-weight: bold;
-  display: block;
-  text-align: right;
   background: none;
+  display: block;
+  font-weight: bold;
+  text-align: right;
+  text-transform: uppercase;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000338}}
 .navbar a.navbar-brand:hover {
   color: yellowgreen;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000345}}
+.navbar li.active a, .navbar li.active a:hover {
+  background: yellowgreen;
+  color: #333;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000348}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000353}}
 h2 {
   color: yellowgreen;
   font-weight: bold;
   margin: 1em 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000359}}
 #main {
-  width: 60%;
   margin-left: 25%;
+  width: 60%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000362}}
 #main h1 {
   font-size: 150%;
   font-weight: bold;
   margin-bottom: 0.5em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000367}}
 #main img {
-  max-width: 100%;
   height: auto;
   margin: 1em;
+  max-width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000372}}
 #main ul {
   margin-left: 1em;
   margin-top: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000370}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000375}}
 #main ul li {
   font-size: 120%;
   line-height: 145%;
   list-style: circle;
   margin-left: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000380}}
 #main ul li a {
   color: #666;
   text-decoration: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000382}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000388}}
 article {
   clear: both;
   margin-bottom: 1em;
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000394}}
 .teaser {
-  width: 30%;
-  margin: 0 3% 1em 0;
-  float: left;
-  padding: 0.5em;
   background: #d4d4d4;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
   box-sizing: border-box;
+  float: left;
+  margin: 0 3% 1em 0;
+  padding: 0.5em;
+  width: 30%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\00003104}}
 .teaser:nth-child(3n + 1) {
   margin-right: 0;
+  clear: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000398}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\00003108}}
+.teaser:nth-child(3n + 2) {
+  clear: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\00003111}}
 .teaser h2 {
   color: black;
   margin: 0.35em;
 }
 
 @media print {
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\000032}}
+  /*
+  	* Don't show links for images, or javascript/internal links
+  	*/
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\000035}}
+  .ir a:after,
+  a,
+  a[href^="javascript:"]:after,
+  h2,
+  h2,
+  p,
+  pre,
+  tr,
   * {
-    background: transparent !important;
-    color: #000 !important;
     /* Black prints faster: h5bp.com/s */
     box-shadow: none !important;
+    background: transparent !important;
+    color: #000 !important;
     text-shadow: none !important;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\000039}}
-  a,
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000323}}
   a:visited {
     text-decoration: underline;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000326}}
   a[href]:after {
     content: " (" attr(href) ")";
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000329}}
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
 
-  /*
-  	* Don't show links for images, or javascript/internal links
-  	*/
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000326}}
-  .ir a:after,
-  a[href^="javascript:"]:after,
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000332}}
   a[href^="#"]:after {
     content: "";
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000332}}
-  pre,
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000335}}
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000339}}
   thead {
     display: table-header-group;
     /* h5bp.com/t */
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000342}}
-  tr,
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000343}}
   img {
     page-break-inside: avoid;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000346}}
   img {
     max-width: 100% !important;
   }
@@ -249,19 +265,168 @@ article {
     margin: 0.5cm;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000355}}
-  p,
-  h2,
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000352}}
   h3 {
     orphans: 3;
     widows: 3;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/xampp\/htdocs\/uebungen\/prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000362}}
-  h2,
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000356}}
   h3 {
     page-break-after: avoid;
   }
 }
+/* Using an external URL reference because this image would have a data URI of 46880 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 49104 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 56520 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40168 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 46760 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 46968 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 48276 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 48308 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 48208 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 47232 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 46768 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 48516 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 36512 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 43632 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35868 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40168 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40652 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 39396 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35900 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 39480 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 38400 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 38360 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 44568 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 50328 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 39124 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 41356 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35628 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40692 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 47396 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 41860 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 33560 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 34384 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 41468 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 39824 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 47628 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 55184 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 38632 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 44136 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 32928 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 50728 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 34080 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 48612 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 65732 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 64276 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 76732 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 59616 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 58728 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 42612 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40040 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40348 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 51124 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 49120 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40812 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 34136 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 42436 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 34224 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 36168 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 44612 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 43468 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 39100 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 37544 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 41012 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 52624 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 36688 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 33296 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 49456 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35556 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 36692 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 44684 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35484 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 57396 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 37508 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 57040 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40620 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 33120 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 42152 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 43160 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 43684 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 41824 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 52088 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 42832 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 41284 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40044 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35364 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 34440 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 47036 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35580 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 33984 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 33676 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 36856 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 45600 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 45912 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 41996 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 36136 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35556 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 41700 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 37216 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 38804 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 52940 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 49596 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 36540 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 44136 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 67332 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 44028 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 47104 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40056 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 56332 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 53516 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 37216 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 63284 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 42792 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 37544 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 51684 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35428 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 47836 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 53544 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 37136 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 41324 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 39952 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 57228 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 43364 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 33928 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35452 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 44344 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 37360 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 42420 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 44572 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 41604 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 38740 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 39488 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 53048 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35384 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 47668 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 51612 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 33020 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 44336 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 33868 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 48772 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40448 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 36584 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 36504 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 38488 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 56472 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40448 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 52408 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 35648 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 75932 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 63940 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 40048 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 36488 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 37788 characters, which is greater than the maximum of 32768 allowed by IE8. */
+/* Using an external URL reference because this image would have a data URI of 37620 characters, which is greater than the maximum of 32768 allowed by IE8. */
 
 /*@ sourceMappingURL=styles-png.css.map */
