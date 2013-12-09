@@ -1,18 +1,19 @@
 ---
 component: navbar
 ---
-<!-- Navbar component
-================================================== -->
+
 <div class="navbar navbar-fixed-left">
   <div class="navbar-inner">
     <div class="container">
       <a class="navbar-brand" href="{{relative page.dest "index.html"}}">Frontpage</a>
       <div class="nav-collapse collapse bs-navbar-collapse">
         <ul class="nav navbar-nav pull-right">
-          <li{{#is title "Article"}} class="active"{{/is}}>
+          <li {{#is title "Article"}}class="active"{{/is}}>
             <a href="{{relative page.dest "/subpage.html"}}">Article</a>
           </li>
-          <li> <a href="{{relative page.dest "/sitemap.html"}}">Autogenerate your sitemap</a> </li>
+          <li {{#is title "Sitemap"}}class="active"{{/is}}>
+              <a href="{{relative page.dest "/sitemap.html"}}">Autogenerate your sitemap</a>
+          </li>
         </ul>
       </div>
     </div>

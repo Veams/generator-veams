@@ -293,6 +293,9 @@ PrototypeGenerator.prototype.app = function app() {
     this.directory('resources/templates/pages', 'resources/templates/pages');
     this.mkdir('resources/templates/partials');
     this.copy('resources/templates/partials/nav.hbs');
+	this.mkdir('resources/templates/partials/_global');
+    this.copy('resources/templates/partials/_global/head.hbs');
+    this.copy('resources/templates/partials/_global/footer_scripts.hbs');
 	}
     // add specific resources to make it possible to split up some directories
     this.mkdir('_output/js');
