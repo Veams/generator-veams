@@ -39,30 +39,49 @@ yo prototype [--skip-install]
 
 ## Plugins and Modules
 You can apply multiple addons and grunt modules to your project. Just choose specific ones:
- * Assemble
- ** permalinks
- ** assemble-contrib-contextual
- ** assemble-contrib-sitemap
- ** assemble-markdown-data
- ** assemble-related-pages
  
- * Grunt modules
- ** grunt-devtools
- ** grunticon-sass
- ** dr-grunt-svg-sprites
- ** grunt-packager (only executable when your project.jspackcfg is configured)
- ** grunt-contrib-compass
- ** grunt-browser-sync
- ** grunt-htmlhint
- ** grunt-prettysass
- ** grunt-photobox (work in progress)
+### Assemble
+
+ * permalinks
+ 
+ * assemble-contrib-contextual
+ 
+ * assemble-contrib-sitemap
+ 
+ * assemble-markdown-data
+ 
+ * assemble-related-pages
+ 
+### Grunt modules
+ 
+ * grunt-devtools
+ 
+ * grunticon-sass
+ 
+ * dr-grunt-svg-sprites
+ 
+ * grunt-packager (only executable when your project.jspackcfg is configured)
+ 
+ * grunt-contrib-compass
+ 
+ * grunt-browser-sync
+ 
+ * grunt-htmlhint
+ 
+ * grunt-prettysass
+ 
+ * grunt-photobox (work in progress)
 
 ## CMS snippets (work in progress)
 You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
 After choosing a system you will get HTML-snippets and a few new SCSS files, which you can use:
+ 
  * Drupal 7
+ 
  * TYPO3 6.2
+ 
  * Magnolia
+ 
  * CoreMedia
 
 ## Alternative
