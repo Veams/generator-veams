@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 		}
     },
 	<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
-				if(name == 'grunticon-sass') { %>
+				if(name == 'grunt-grunticon-sass') { %>
 	'grunticon-sass': {
 			icons: {
 				options: {
@@ -103,7 +103,7 @@ module.exports = function(grunt) {
               src : '<%%= config.dist %>/css/*.css'
           },
           options: {
-			  host: "127.0.0.1",
+			  host: "localhost",
               watchTask: true,
 			  ghostMode: {
                 scroll: true,
@@ -129,7 +129,7 @@ module.exports = function(grunt) {
           }
       }, <% } %><% if(name == 'grunt-photobox') { %>
         photobox: {
-            dev: {
+            local: {
                 options: {
                     screenSizes: [ '600x900', '1000x900', '1200x900' ],
                     urls: [
@@ -139,11 +139,18 @@ module.exports = function(grunt) {
                     ]
                 }
             },
-            prod: {
+			dev: {
                 options: {
                     screenSizes: [ '600x900', '1000x900', '1200x900' ],
                     urls: [
                         '<%= projectURL %>'
+                    ]
+                }
+            },
+            prod: {
+                options: {
+                    screenSizes: [ '600x900', '1000x900', '1200x900' ],
+                    urls: [
                     ]
                 }
             }
@@ -202,7 +209,7 @@ module.exports = function(grunt) {
         options: {
           flatten: true,
           assets: '<%%= config.dist %>',
-          layout: '<%%= config.src %>/templates/layouts/default.hbs',
+          layout: '<%%= config.src %>/templates/layouts/*.hbs',
           data: '<%%= config.src %>/data/*.{json,yml}',
           helpers: '<%%= config.src %>/helpers/*.js',
           partials: '<%%= config.src %>/templates/partials/**/*.hbs'<% if(plugin && plugin.length > 0){ %>,
@@ -242,25 +249,34 @@ module.exports = function(grunt) {
   
  // Simple Tasks
  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
-	if(name == 'grunticon-sass') { %>
- grunt.registerTask('icons', [
-    'grunticon-sass'
-  ]); <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
-  grunt.registerTask('sprites', [
-    'svg-sprites'
-  ]); <% } %><% if(name == 'grunt-packager') { %>
-  grunt.registerTask('js', [
-    'packager'
-  ]); <% } %><% if(name == 'grunt-contrib-compass') { %>
-  grunt.registerTask('css', [
-    'compass:dist'
-  ]);<% } %><% if(name == 'grunt-htmlhint') { %>
-grunt.registerTask('html', [
-    'htmlhint'
-  ]);<% } %><% if(name == 'grunt-prettysass') { %>
-grunt.registerTask('prettyscss', [
-    'prettysass'
-  ]);<% } %><%}); %><%} %><%} %>
+	if(name == 'grunt-grunticon-sass') { %>
+	grunt.registerTask('icons', [
+		'grunticon-sass'
+	]); <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
+	grunt.registerTask('sprites', [
+		'svg-sprites'
+	]); <% } %><% if(name == 'grunt-packager') { %>
+	grunt.registerTask('js', [
+		'packager'
+	]); <% } %><% if(name == 'grunt-contrib-compass') { %>
+	grunt.registerTask('css', [
+		'compass:dist'
+	]);<% } %><% if(name == 'grunt-htmlhint') { %>
+	grunt.registerTask('html', [
+		'htmlhint'
+	]);<% } %><% if(name == 'grunt-photobox') { %>
+	grunt.registerTask('photoLocal', [
+        'photobox:local'
+    ]);	
+	grunt.registerTask('photoDev', [
+        'photobox:dev'
+    ]);
+	grunt.registerTask('photoProd', [
+        'photobox:prod'
+    ]);<% } %><% if(name == 'grunt-prettysass') { %>
+	grunt.registerTask('prettyscss', [
+		'prettysass'
+	]);<% } %><%}); %><%} %><%} %>
   
 	grunt.registerTask('cssDev', [
         'bgShell:devCompass'
@@ -270,12 +286,6 @@ grunt.registerTask('prettyscss', [
     ]);
     grunt.registerTask('cssProd', [
         'bgShell:prodCompass'
-    ]);
-	grunt.registerTask('photoDev', [
-        'photobox:dev'
-    ]);
-	grunt.registerTask('photoProd', [
-        'photobox:prod'
     ]);
 
 // Advanced Tasks

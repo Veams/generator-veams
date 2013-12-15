@@ -197,7 +197,7 @@ chalk.green('\n    7::::::::7                        ')+
         message: "Which grunt modules do you want to use?",
         choices : [
             { name: "grunt-devtools", checked: true },
-            { name: "grunticon-sass", checked: true },
+            { name: "grunt-grunticon-sass", checked: true },
             { name: "dr-grunt-svg-sprites" },
             { name: "grunt-contrib-compass" },
             { name: "grunt-packager", checked: true },
@@ -236,7 +236,7 @@ chalk.green('\n    7::::::::7                        ')+
     this.prompt(questions, function (answers) {
 
         this.projectName = answers.projectName || this.config.get("projectName");
-        this.authorLogin = answers.projectAuthor || this.config.get("projectAuthor");
+        this.projectAuthor = answers.projectAuthor || this.config.get("projectAuthor");
         this.projectURL = answers.projectURL || this.config.get("projectURL");
         this.batchFiles = answers.batchFiles || this.config.get("batchFiles");
         this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
