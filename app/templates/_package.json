@@ -3,7 +3,7 @@
     "description": "Prototype",
     "version": "0.1.0",
     "author": {
-        "name": "<%= _.slugify(projectAuthor) %>",
+        "name": "<%= authorLogin %>",
         "email": "<%= authorEmail %>",
         "url": "http://github.com/<%= authorLogin %>/"
     },

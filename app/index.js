@@ -236,7 +236,7 @@ chalk.green('\n    7::::::::7                        ')+
     this.prompt(questions, function (answers) {
 
         this.projectName = answers.projectName || this.config.get("projectName");
-        this.projectAuthor = answers.projectAuthor || this.config.get("projectAuthor");
+        this.authorLogin = answers.projectAuthor || this.config.get("projectAuthor");
         this.projectURL = answers.projectURL || this.config.get("projectURL");
         this.batchFiles = answers.batchFiles || this.config.get("batchFiles");
         this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
