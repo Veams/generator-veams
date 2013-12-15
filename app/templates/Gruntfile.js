@@ -209,7 +209,7 @@ module.exports = function(grunt) {
         options: {
           flatten: true,
           assets: '<%%= config.dist %>',
-          layout: '<%%= config.src %>/templates/layouts/*.hbs',
+          layout: '<%%= config.src %>/templates/layouts/default.hbs',
           data: '<%%= config.src %>/data/*.{json,yml}',
           helpers: '<%%= config.src %>/helpers/*.js',
           partials: '<%%= config.src %>/templates/partials/**/*.hbs'<% if(plugin && plugin.length > 0){ %>,
