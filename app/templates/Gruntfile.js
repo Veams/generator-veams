@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 		}
     },
 	<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
-				if(name == 'grunt-grunticon-sass') { %>
+				if(name == 'grunticon-sass') { %>
 	'grunticon-sass': {
 			icons: {
 				options: {
@@ -249,7 +249,7 @@ module.exports = function(grunt) {
   
  // Simple Tasks
  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
-	if(name == 'grunt-grunticon-sass') { %>
+	if(name == 'grunticon-sass') { %>
 	grunt.registerTask('icons', [
 		'grunticon-sass'
 	]); <% } %><% if(name == 'dr-grunt-svg-sprites') { %>

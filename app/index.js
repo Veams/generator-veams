@@ -197,7 +197,7 @@ chalk.green('\n    7::::::::7                        ')+
         message: "Which grunt modules do you want to use?",
         choices : [
             { name: "grunt-devtools", checked: true },
-            { name: "grunt-grunticon-sass", checked: true },
+            { name: "grunticon-sass", checked: true },
             { name: "dr-grunt-svg-sprites" },
             { name: "grunt-contrib-compass" },
             { name: "grunt-packager", checked: true },
