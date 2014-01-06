@@ -311,6 +311,7 @@ module.exports = function(grunt) {
 // Advanced Tasks
   grunt.registerTask('server', [
  <% if(installAssemble === true){ %>'assemble',<% } %>
+	'watchJS',
     'watchCSS',
     'connect:livereload', <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
 	'browser_sync', <% } %><%}); %><%} %><%} %>
@@ -319,6 +320,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [<% if(installAssemble === true){ %>
     'clean',
+	'watchJS',
 	'assemble',<% } %>
     'cssProd'<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>,
 	'prettyscss'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>,
