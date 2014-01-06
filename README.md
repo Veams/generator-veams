@@ -10,11 +10,11 @@
     `npm install -g generator-prototype`
 
 - Or copy the repository via clone to your directory (it depends on the system, just find your directory with yo installed):
-    `git clone https://github.com/sebastian-fitzner/generator-prototype.git ~/AppData/Roaming/npm/node_modules`
+    `git clone https://github.com/Prototype-Group/generator-prototype.git ~/AppData/Roaming/npm/node_modules`
 
 ### Hints
 Sometimes you need to clone the package with an absolute path. On windows the clone command can look like this:
-`git clone https://github.com/sebastian-fitzner/generator-prototype.git 
+`git clone https://github.com/Prototype-Group/generator-prototype.git 
 D:\Users\Username\AppData\Roaming\npm\node_modules`
 - Replace 'Username' with your username
  
@@ -50,7 +50,7 @@ You can apply multiple addons and grunt modules to your project. Just choose spe
 ### Grunt modules
  
  * [grunt-devtools](https://github.com/vladikoff/grunt-devtools)
- * [grunticon-sass](https://github.com/zigotica/grunticon)
+ * [grunticon-sass](https://github.com/Prototype-Group/grunticon)
  * [dr-grunt-svg-sprites](https://github.com/drdk/dr-grunt-svg-sprites)
  * [grunt-packager](https://github.com/bobbor/grunt-packager) (only executable when your project.jspackcfg is configured)
  * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass)

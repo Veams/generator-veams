@@ -310,8 +310,8 @@ module.exports = function(grunt) {
 
 // Advanced Tasks
   grunt.registerTask('server', [
- <% if(installAssemble === true){ %>'assemble',<% } %>
 	'watchJS',
+ <% if(installAssemble === true){ %>'assemble',<% } %>
     'watchCSS',
     'connect:livereload', <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
 	'browser_sync', <% } %><%}); %><%} %><%} %>

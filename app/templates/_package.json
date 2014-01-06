@@ -16,7 +16,25 @@
     "devDependencies": {
 	"grunt": "~0.4.1", <% if(installAssemble === true){ %>
         "assemble": "~0.4.12", <% } %>
-        "grunt-newer": "~0.5.4",
+        "grunt-newer": "~0.5.4","grunt": "~0.4.2", <% if(modules && modules.length > 0){ %>
+		<% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
+		if(name == 'grunticon-sass') { %>
+		"grunticon-sass": "https://github.com/Prototype-Group/grunticon/tarball/00275213ebb4fa275a6513cd2afbb9be963f2509",
+		<% } %><% if(name == 'dr-grunt-svg-sprites') { %>
+		"dr-grunt-svg-sprites": "0.5.2",
+		<% } %><% if(name == 'grunt-devtools') { %>
+		"grunt-devtools": "~0.2.1",
+		<% } %><% if(name == 'grunt-packager') { %>
+		"grunt-packager": "~0.1.0",
+		<% } %><% if(name == 'grunt-browser-sync') { %>
+		"grunt-browser-sync": "~0.3.0",
+		<% } %><% if(name == 'grunt-htmlhint') { %>
+		"grunt-htmlhint": "~0.4.0",
+		<% } %><% if(name == 'grunt-prettysass') { %>
+		"grunt-prettysass": "~0.2.3",
+		<% } %><% if(name == 'grunt-photobox') { %>
+		"grunt-photobox": "~0.5.0",
+		<% } %><%}); %><%} %><%} %>
 		"grunt-sync": "0.0.5",
         "grunt-contrib-clean": "~0.5.0",
 		"grunt-bg-shell": "*",
@@ -28,11 +46,6 @@
     "<%= name %>": "*"<% if(i < (plugin.length - 1)) { %>,<% } %>
 <% }); } else { %>
     "<%= plugin %>": "*"
-    <%} } %><% if(modules && modules.length > 0){ %>,
-<% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
-    "<%= name %>": "*"<% if(i < (modules.length - 1)) { %>,<% } %>
-<% }); } else { %>
-    "<%= modules %>": "*"
     <%} } %>
 },
 "licenses": [
