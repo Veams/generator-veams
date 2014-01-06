@@ -301,6 +301,7 @@ PrototypeGenerator.prototype.app = function app() {
     this.mkdir('_output/js');
     this.mkdir('_output/img');
 		
+    this.mkdir('resources/js');
     this.mkdir('resources/scss');
     this.mkdir('resources/img');
     this.mkdir('resources/img/svg');

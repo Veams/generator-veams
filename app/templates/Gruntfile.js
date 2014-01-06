@@ -165,11 +165,27 @@ module.exports = function(grunt) {
             }
         },
 	  <% } %><%}); %><%} %><%} %>
+	sync: {
+		js: {
+			files: [
+				  // includes files within path and its sub-directories
+				  {
+					cwd: 'resources/js',
+					src: '**', 
+					dest: '_output/js'
+				  }
+			]
+		}
+	},
     watch: {<% if(installAssemble === true){ %>
       assemble: {
         files: ['<%%= config.src %>/{data,templates}/**/{,*/}*.{md,hbs,yml,json}'],
         tasks: ['assemble']
       },<% } %>
+	  js: {
+			files: '<%= config.src %>/js/{,*/}*.js',
+			tasks: 'sync:js'
+	  },
       livereload: {
         options: {
           livereload: '<%%= connect.options.livereload %>'
@@ -241,6 +257,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('assemble'); <% } %>
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-bg-shell');
+  grunt.loadNpmTasks('grunt-sync');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -287,6 +304,9 @@ module.exports = function(grunt) {
     grunt.registerTask('cssProd', [
         'bgShell:prodCompass'
     ]);
+	grunt.registerTask('watchJS', [
+		'sync:js'
+	]);
 
 // Advanced Tasks
   grunt.registerTask('server', [
