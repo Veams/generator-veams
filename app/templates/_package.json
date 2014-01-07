@@ -21,7 +21,7 @@
 		if(name == 'grunticon-sass') { %>
 		"grunticon-sass": "https://github.com/Prototype-Group/grunticon/tarball/00275213ebb4fa275a6513cd2afbb9be963f2509",
 		<% } %><% if(name == 'dr-grunt-svg-sprites') { %>
-		"dr-grunt-svg-sprites": "0.5.2",
+		"dr-grunt-svg-sprites": "~0.2.6",
 		<% } %><% if(name == 'grunt-devtools') { %>
 		"grunt-devtools": "~0.2.1",
 		<% } %><% if(name == 'grunt-packager') { %>

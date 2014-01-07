@@ -88,6 +88,8 @@ module.exports = function(grunt) {
 		  },
 		  refSize: "medium",
 		  unit: 5,
+		  cssSuffix: "scss",
+		  prefix: "_icon"
 		},
 	}, <% } %><% if(name == 'grunt-packager') { %>
 	packager: {
