@@ -1,4 +1,4 @@
-# Prototype generator
+# Prototype Generator
 
 > [Yeoman][yeoman] generator for Prototype.
 
@@ -10,7 +10,8 @@
     `npm install -g generator-prototype`
 
 - Or copy the repository via clone to your directory (it depends on the system, just find your directory with yo installed):
-    `git clone https://github.com/Prototype-Group/generator-prototype.git ~/AppData/Roaming/npm/node_modules`
+    `git clone https://github.com/Prototype-Group/generator-prototype.git 
+	~/AppData/Roaming/npm/node_modules`
 
 ### Hints
 Sometimes you need to clone the package with an absolute path. On windows the clone command can look like this:
@@ -73,7 +74,6 @@ After choosing a system you will get HTML-snippets and a few new SCSS files, whi
  * [grunt-init-assemble](https://github.com/assemble/grunt-init-assemble)
  * [generator-assemble](https://github.com/assemble/generator-assemble)
 
-
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
@@ -81,3 +81,4 @@ After choosing a system you will get HTML-snippets and a few new SCSS files, whi
 
 ## TODO:
  * CMS Snippets
+ * AJAX content with separat template in assemble
