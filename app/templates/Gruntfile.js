@@ -161,7 +161,13 @@ module.exports = function(grunt) {
                 indent: "t"
             },
             scss: {
-                src: ['<%%= config.src %>/scss/**/*.scss']
+                src: [
+				'<%%= config.src %>/scss/drupal/**/*.scss',
+				'<%%= config.src %>/scss/global/**/*.scss',
+				'<%%= config.src %>/scss/icons/**/*.scss',
+				'<%%= config.src %>/scss/modules/**/*.scss',
+				'<%%= config.src %>/scss/utils/**/*.scss',
+				]
             }
         },
 	  <% } %><%}); %><%} %><%} %>
