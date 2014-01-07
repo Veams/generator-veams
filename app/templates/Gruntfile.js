@@ -191,7 +191,7 @@ module.exports = function(grunt) {
         tasks: ['assemble']
       },<% } %>
 	  js: {
-			files: '<%= config.src %>/js/{,*/}*.js',
+			files: '<%%= config.src %>/js/{,*/}*.js',
 			tasks: 'sync:js'
 	  },
       livereload: {
