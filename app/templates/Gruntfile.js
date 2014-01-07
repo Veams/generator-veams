@@ -131,7 +131,7 @@ module.exports = function(grunt) {
         photobox: {
             local: {
                 options: {
-                    screenSizes: [ '600x900', '1000x900', '1200x900' ],
+                    screenSizes: [ '600', '1000', '1200' ],
                     urls: [
                         'http://localhost:9000/index.html',
                         'http://localhost:9000/subpage.html',
@@ -141,7 +141,7 @@ module.exports = function(grunt) {
             },
 			dev: {
                 options: {
-                    screenSizes: [ '600x900', '1000x900', '1200x900' ],
+                    screenSizes: [ '600', '1000', '1200' ],
                     urls: [
                         '<%= projectURL %>'
                     ]
@@ -149,7 +149,7 @@ module.exports = function(grunt) {
             },
             prod: {
                 options: {
-                    screenSizes: [ '600x900', '1000x900', '1200x900' ],
+                    screenSizes: [ '600', '1000', '1200' ],
                     urls: [
                     ]
                 }
@@ -177,6 +177,14 @@ module.exports = function(grunt) {
 			]
 		}
 	},
+	concurrent: {
+        rendering: {
+            tasks: ['assemble', 'sync:js'],
+            options: {
+                logConcurrentOutput: true
+            }
+        }
+    },
     watch: {<% if(installAssemble === true){ %>
       assemble: {
         files: ['<%%= config.src %>/{data,templates}/**/{,*/}*.{md,hbs,yml,json}'],
@@ -260,6 +268,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sync');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-watch');
   <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
   grunt.loadNpmTasks('<%= name %>'); <%}); %><%} %><%} %>
@@ -310,8 +319,7 @@ module.exports = function(grunt) {
 
 // Advanced Tasks
   grunt.registerTask('server', [
-	'watchJS',
- <% if(installAssemble === true){ %>'assemble',<% } %>
+ <% if(installAssemble === true){ %>'concurrent:rendering',<% } else {'watchJS'} %>
     'watchCSS',
     'connect:livereload', <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
 	'browser_sync', <% } %><%}); %><%} %><%} %>

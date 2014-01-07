@@ -35,7 +35,8 @@
 		<% } %><% if(name == 'grunt-photobox') { %>
 		"grunt-photobox": "~0.5.0",
 		<% } %><%}); %><%} %><%} %>
-		"grunt-sync": "0.0.5",
+		"grunt-sync": "~0.0.5",
+		"grunt-concurrent": "~0.4.2",
         "grunt-contrib-clean": "~0.5.0",
 		"grunt-bg-shell": "*",
         "grunt-contrib-connect": "~0.5.0",
