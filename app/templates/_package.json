@@ -5,7 +5,7 @@
     "author": {
         "name": "<%= authorLogin %>",
         "email": "<%= authorEmail %>",
-        "url": "http://github.com/<%= authorLogin %>/"
+        "url": "http://github.com/<%= _.slugify(authorLogin) %>/"
     },
     "engines": {
         "node": ">=0.8"
@@ -52,7 +52,7 @@
 "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/<%= authorLogin %>/<%= _.slugify(projectName) %>/blob/master/LICENSE-MIT"
+      "url": "https://github.com/<%= _.slugify(authorLogin) %>/<%= _.slugify(projectName) %>/blob/master/LICENSE-MIT"
     }
   ]
 }

@@ -95,8 +95,8 @@ module.exports = function(grunt) {
 	packager: {
 		default: {
 			options: {
-				config: '<%%= config.dist %>/js/project.jspackcfg',
-				cwd: '<%%= config.dist %>/js/'
+				config: '<%%= config.src %>/js/project.jspackcfg',
+				cwd: '<%%= config.src %>/js/'
 			}
 		}
 	}, <% } %><% if(name == 'grunt-browser-sync') { %>
