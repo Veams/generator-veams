@@ -345,13 +345,14 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [<% if(installAssemble === true){ %>
-    'clean',
+    'clean',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
+	'js',<% } %><%}); %><%} %><%} %>
+	'watchJS',
+	<% if(installAssemble === true){ %>
 	'assemble',<% } %>
     'cssProd'<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>,
 	'prettyscss'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>,
-	'photoProd'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>,
-	'js'<% } %><%}); %><%} %><%} %>,
-	'watchJS'
+	'photoProd'<% } %><%}); %><%} %><%} %>
   ]);
 
   grunt.registerTask('default', [
