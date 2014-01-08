@@ -179,7 +179,7 @@ module.exports = function(grunt) {
 				  // includes files within path and its sub-directories
 				  {
 					cwd: 'resources/js',
-					src: '**', 
+					src: '**/*.js', 
 					dest: '_output/js'
 				  }
 			]
