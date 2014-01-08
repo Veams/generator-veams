@@ -237,29 +237,39 @@ module.exports = function(grunt) {
     },
 	<% if(installAssemble === true){ %>
     assemble: {
-      pages: {
-        options: {
-          flatten: true,
-          assets: '<%%= config.dist %>',
-          layout: '<%%= config.src %>/templates/layouts/default.hbs',
-          data: '<%%= config.src %>/data/*.{json,yml}',
-          helpers: '<%%= config.src %>/helpers/*.js',
-          partials: '<%%= config.src %>/templates/partials/**/*.hbs'<% if(plugin && plugin.length > 0){ %>,
-          plugins: [<% if(typeof plugin === 'object'){ _.each(plugin, function(name, i) { %>'<%= name %>'<% if(i < (plugin.length - 1)) { %>,<% } }); } else { %>'<%= name %>'<%} %>],<%}
-          _.each(plugin, function(name, i) { if(name == 'permalinks') { %>
-          permalinks: {
-            preset: 'pretty'
-          },<% }
-          if(name == 'assemble-contrib-contextual') { %>
-          contextual: {
-            dest: 'tmp/'
-          },<% }
-          }); %>
+		options: {
+            flatten: true,
+            assets: '<%%= config.dist %>',
+            data: '<%%= config.src %>/data/*.{json,yml}',
+            helpers: '<%%= config.src %>/helpers/*.js',
+            partials: '<%%= config.src %>/templates/partials/**/*.hbs'
         },
-        files: {
-          '<%%= config.dist %>/': ['<%%= config.src %>/templates/pages/*.hbs']
+		pages: {
+			options: {
+				layout: '<%%= config.src %>/templates/layouts/tpl_default.hbs'<% if(plugin && plugin.length > 0){ %>,
+				plugins: [<% if(typeof plugin === 'object'){ _.each(plugin, function(name, i) { %>'<%= name %>'<% if(i < (plugin.length - 1)) { %>,<% } }); } else { %>'<%= name %>'<%} %>],<%}
+				_.each(plugin, function(name, i) { if(name == 'permalinks') { %>
+				permalinks: {
+					preset: 'pretty'
+				},<% }
+				if(name == 'assemble-contrib-contextual') { %>
+				contextual: {
+					dest: 'tmp/'
+				},<% }
+				}); %>
+			},
+			files: {
+				'<%%= config.dist %>/': ['<%%= config.src %>/templates/pages/*.hbs']
+			}
+		},
+		ajax: {
+            options: {
+                layout: '<%%= config.src %>/templates/layouts/tpl_ajax.hbs'
+            },
+            files: {
+				'<%%= config.dist %>/ajax-content/': ['<%%= config.src %>/templates/pages/ajax/*.hbs']
+            }
         }
-      }
     },
 
     // Before generating any new files,

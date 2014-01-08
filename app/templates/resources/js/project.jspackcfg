@@ -1,0 +1,24 @@
+{
+	"nolint": [
+		"jquery",
+		"polyfiller"
+	],
+	"nopack": [],
+	"includeSmallLoader": [
+		"__base-modules",
+		"__enhanced-modules",
+		"__jme-modules"
+	],
+	"packageList": {
+		"__basic-behaviour": [
+		],
+		"__base-modules": [
+		],
+		"__enhanced-modules": [
+		],
+		"__jme-modules": [
+		]
+	},
+	"name": "Prototype",
+	"obfuscate": true
+}
