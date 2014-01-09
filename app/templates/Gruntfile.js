@@ -187,37 +187,41 @@ module.exports = function(grunt) {
 	},
 	concurrent: {
         rendering: {
-            tasks: ['assemble', 'sync:js'],
+            tasks: ['newer:assemble', 'sync:js'],
             options: {
                 logConcurrentOutput: true
             }
         }
     },
     watch: {<% if(installAssemble === true){ %>
-      assemble: {
-        files: ['<%%= config.src %>/{data,templates}/**/{,*/}*.{md,hbs,yml,json}'],
-        tasks: ['assemble']
-      },<% } %>
-	  js: {
+		assemble: {
+			files: ['<%%= config.src %>/{data,templates/layouts,templates/partials}/**/{,*/}*.{js,md,hbs,yml,json}'],
+			tasks: ['assemble']
+		},
+		pages: {
+			files: ['<%%= config.src %>/templates/pages/**/{,*/}*.{js,md,hbs,yml,json}'],
+			tasks: ['newer:assemble']
+		},<% } %>
+		js: {
 			files: '<%%= config.src %>/js/{,*/}*.js',
 			tasks: 'sync:js'
-	  },
-      livereload: {
-        options: {
-          livereload: '<%%= connect.options.livereload %>'
-        },
-        files: [
-          '<%%= config.dist %>/{,*/}*.html',
-          '<%%= config.dist %>/css/{,*/}*.css', // if you want to use browser-sync for css just comment out this line
-          '<%%= config.dist %>/js/{,*/}*.js',
-          '<%%= config.dist %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%%= config.dist %>/media/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ],
-		scss: {
-			files: ['<%= config.src %>/scss/{,*/}*.scss']
+		},
+		livereload: {
+			options: {
+			livereload: '<%%= connect.options.livereload %>'
+			},
+			files: [
+			  '<%%= config.dist %>/{,*/}*.html',
+			  '<%%= config.dist %>/css/{,*/}*.css', // if you want to use browser-sync for css just comment out this line
+			  '<%%= config.dist %>/js/{,*/}*.js',
+			  '<%%= config.dist %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+			  '<%%= config.dist %>/media/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+			],
+			scss: {
+				files: ['<%= config.src %>/scss/{,*/}*.scss']
+			}
 		}
-      }
-    },
+	},
 
     connect: {
       options: {
