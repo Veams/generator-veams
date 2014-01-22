@@ -461,7 +461,8 @@ module.exports = function(grunt) {
 	'watchJS',
 	<% if(installAssemble === true){ %>
 	'assemble',<% } %><% if(installDocs === true){ %>
-	'styleguide',<% } %>
+	'styleguide',
+	'copy',<% } %>
     'cssProd'<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>,
 	'prettyscss'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>,
 	'photoProd'<% } %><%}); %><%} %><%} %>

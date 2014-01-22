@@ -330,6 +330,7 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('resources/scss/_all.scss', 'resources/scss/_all.scss');
     this.copy('resources/scss/styles-svg.scss', 'resources/scss/styles-svg.scss');
     this.copy('resources/scss/styles-png.scss', 'resources/scss/styles-png.scss');
+    this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
 	
 	// CMS snippets and SCSS files
 	//Drupal
