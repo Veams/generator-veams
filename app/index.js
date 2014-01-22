@@ -198,7 +198,7 @@ chalk.green('\n    7::::::::7                        ')+
         message: "Which grunt modules do you want to use?",
         choices : [
             { name: "grunt-devtools", checked: true },
-            { name: "grunticon-sass", checked: true },
+            { name: "grunt-grunticon", checked: true },
             { name: "dr-grunt-svg-sprites" },
             { name: "grunt-contrib-compass" },
             { name: "grunt-packager", checked: true },
@@ -290,7 +290,7 @@ PrototypeGenerator.prototype.app = function app() {
 	
 	// add styleguide files
 	if(this.config.get("installDocs") == true) {
-		this.directory('helper_files/styleguide', 'helper_files/styleguide');
+		this.directory('helper_files/styleguide-template', 'helper_files/styleguide-template');
 	}
 
     // add resources

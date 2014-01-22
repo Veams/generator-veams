@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 		}
     },
 	<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
-				if(name == 'grunticon') { %>
+				if(name == 'grunt-grunticon') { %>
 	grunticon: {
 		icons: {
 			files: [{
