@@ -28,6 +28,7 @@ module.exports = function(grunt) {
 
     config: {
       src: 'resources',
+      helper: 'helper_files',
       dist: '_output'
     },
 	
@@ -59,7 +60,7 @@ module.exports = function(grunt) {
 				cwd: '<%%= config.src %>/assets/img/svg/icons',
 				src: ['*.svg', '*.png'],
 				dest: "<%%= config.src %>/scss/icons"
-				}],
+			}],
 			options: {
                 // optional grunticon config properties
 				// SVGO compression, false is the default, true will make it so
@@ -123,7 +124,7 @@ module.exports = function(grunt) {
 				// css file path prefix - this defaults to "/" and will be placed before the "dest" path when stylesheets are loaded.
 				// This allows root-relative referencing of the CSS. If you don't want a prefix path, set to to ""
 				cssbasepath: "/",
-                template: "<%%= config.src %>/templates/_extern/grunticon-png.hbs"
+                template: "<%%= config.helper %>/templates/grunticon-png.hbs"
 			}
         }
     }, <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
@@ -178,7 +179,7 @@ module.exports = function(grunt) {
       htmlhint: {
           all: {
               options: { // Want to know what configurations are available? http://htmlhint.com/
-				htmlhintrc: '.htmlhintrc'
+				htmlhintrc: '<%%= config.helper %>/.htmlhintrc'
 			  },
               src: ['<%%= config.dist %>/*.html']
           }
@@ -242,12 +243,43 @@ module.exports = function(grunt) {
 				  // includes files within path and its sub-directories
 				  {
 					cwd: '<%%= config.src %>/assets',
-                    src: '**/{,*/}*.{png,jpg,jpeg,gif,json,svg}',
+                    src: '**/{,*/}*',
                     dest: '<%%= config.dist %>'
 				  }
 			]
 		},
 	},
+	<% if(installDocs === true){ %>
+	// Copy files for styleguide
+    copy: {
+		styleguide: {
+            dest: '<%= config.dist %>/styleguide/css/',
+            expand: true,
+            filter: 'isFile',
+            flatten: true,
+            src: ['<%= config.dist %>/css/**/*.css']
+        }
+    },
+	// Configuration for the styleguide output
+    styleguide: {
+        options: {
+            template: {
+                src: '<%%= config.helper %>/styleguide-template/'
+            },
+            name: 'Style Guide',
+            framework: {
+                name: 'kss'
+            }
+        },
+        all: {
+            files: [
+                {
+                    '<%%= config.dist %>/styleguide': '<%%= config.src %>/scss/**/*.scss'
+                }
+            ]
+        }
+    },
+	<% } %>
 	concurrent: {
         rendering: {
             tasks: [<% if(installAssemble === true){ %>
@@ -260,6 +292,7 @@ module.exports = function(grunt) {
             }
         }
     },
+	
     watch: {<% if(installAssemble === true){ %>
 		assemble: {
 			files: ['<%%= config.src %>/{data,templates/layouts,templates/partials}/**/{,*/}*.{js,md,hbs,yml,json}'],
@@ -285,12 +318,8 @@ module.exports = function(grunt) {
 			  '<%%= config.dist %>/{,*/}*.html',
 			  '<%%= config.dist %>/css/{,*/}*.css', // if you want to use browser-sync for css just comment out this line
 			  '<%%= config.dist %>/js/{,*/}*.js',
-			  '<%%= config.dist %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-			  '<%%= config.dist %>/media/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-			],
-			scss: {
-				files: ['<%%= config.src %>/scss/{,*/}*.scss']
-			}
+			  '<%%= config.dist %>/assets/**/*'
+			]
 		}
 	},
 
@@ -350,7 +379,8 @@ module.exports = function(grunt) {
 	// Before generating any new files,
     // remove any previously-created files.
     clean: [<% if(installAssemble === true){ %>
-		'<%%= config.dist %>/**/*.{html,xml,txt}',<% } %>
+		'<%%= config.dist %>/**/*.{html,xml,txt}',<% } %><% if(installDocs === true){ %>
+		'<%%= config.dist %>/styleguide/**/*',<% } %>
 		'<%%= config.dist %>/css/**/*',
 		'<%%= config.dist %>/js/**/*',
 		'<%%= config.dist %>/img/**/*'
@@ -359,7 +389,9 @@ module.exports = function(grunt) {
 
   // Load Tasks
   <% if(installAssemble === true){ %>
-  grunt.loadNpmTasks('assemble'); <% } %>
+  grunt.loadNpmTasks('assemble'); <% } %><% if(installDocs === true){ %>
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-styleguide');<% } %>
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-bg-shell');
   grunt.loadNpmTasks('grunt-sync');
@@ -428,7 +460,8 @@ module.exports = function(grunt) {
 	'js',<% } %><%}); %><%} %><%} %>
 	'watchJS',
 	<% if(installAssemble === true){ %>
-	'assemble',<% } %>
+	'assemble',<% } %><% if(installDocs === true){ %>
+	'styleguide',<% } %>
     'cssProd'<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>,
 	'prettyscss'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>,
 	'photoProd'<% } %><%}); %><%} %><%} %>

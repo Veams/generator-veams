@@ -162,12 +162,12 @@ chalk.green('\n    7::::::::7                        ')+
         default : this.config.get("installAssemble"),
     });
 		
-		(!this.config.get("installPlugin") || force) && questions.push({
-			type    : "confirm",
-			name    : "installPlugin",
-			message: "Do you want to install assemble plugins?",
-			default : this.config.get("installPlugin")
-		});
+	(!this.config.get("installPlugin") || force) && questions.push({
+		type    : "confirm",
+		name    : "installPlugin",
+		message: "Do you want to install assemble plugins?",
+		default : this.config.get("installPlugin")
+	});
 	
     questions.push({
         name    : "plugin",
@@ -191,6 +191,7 @@ chalk.green('\n    7::::::::7                        ')+
         message: "Would you want to install grunt modules?",
         default : this.config.get("installModules")
     });
+	
     questions.push({
         name    : "modules",
         type    : "checkbox",
@@ -209,6 +210,13 @@ chalk.green('\n    7::::::::7                        ')+
         when: function( answers ) {
             return answers.installModules;
         }
+    });
+	
+	(!this.config.get("installDocs") || force) && questions.push({
+        type    : "confirm",
+        name    : "installDocs",
+        message: "Would you want to install styleguide documentations?",
+        default : this.config.get("installDocs")
     });
 
     (!this.config.get("installCMS") || force) && questions.push({
@@ -240,6 +248,7 @@ chalk.green('\n    7::::::::7                        ')+
         this.projectURL = answers.projectURL || this.config.get("projectURL");
         this.batchFiles = answers.batchFiles || this.config.get("batchFiles");
         this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
+        this.installDocs = answers.installDocs || this.config.get("installDocs");
         this.plugin = answers.plugin;
         this.modules = answers.modules;
         this.CMS = answers.CMS;
@@ -263,18 +272,25 @@ PrototypeGenerator.prototype.app = function app() {
     var files = this.files;
 
     // Copy standard files
+	this.mkdir('helper_files');
     this.copy('_package.json', 'package.json');
     this.copy('config.rb', 'config.rb');
     this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('gitignore', '.gitignore');
     this.copy('README.md', 'README.md');
-	this.copy('htmlhintrc', '.htmlhintrc');
+	this.copy('helper_files/htmlhintrc', 'helper_files/.htmlhintrc');
 
     this.directory('_output', '_output');
 	
 	// add batch files
 	if(this.config.get("batchFiles") == true) {
-		this.directory('batch_files', 'batch_files');
+		this.directory('helper_files/batch_files', 'helper_files/batch_files');
+		this.directory('helper_files/batch_files', 'helper_files/batch_files');
+	}
+	
+	// add styleguide files
+	if(this.config.get("installDocs") == true) {
+		this.directory('helper_files/styleguide', 'helper_files/styleguide');
 	}
 
     // add resources
