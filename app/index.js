@@ -273,7 +273,7 @@ PrototypeGenerator.prototype.app = function app() {
     this.directory('_output', '_output');
 	
 	// add batch files
-	if(this.config.get("installAssemble") == true) {
+	if(this.config.get("batchFiles") == true) {
 		this.directory('batch_files', 'batch_files');
 	}
 
@@ -298,15 +298,15 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('resources/templates/partials/_global/footer_scripts.hbs');
 	}
     // add specific resources to make it possible to split up some directories
-    this.mkdir('_output/js');
-    this.mkdir('_output/img');
-		
+    this.mkdir('_output/js');		
     this.mkdir('resources/js');
     this.copy('resources/js/project.jspackcfg');
     this.mkdir('resources/scss');
-    this.mkdir('resources/img');
-    this.mkdir('resources/img/svg');
-    this.mkdir('resources/img/svg/icons');
+    this.mkdir('resources/assets');
+    this.mkdir('resources/assets/img');
+    this.mkdir('resources/assets/img/temp');
+    this.mkdir('resources/assets/img/svg');
+    this.mkdir('resources/assets/img/svg/icons');
     this.directory('resources/scss/global', 'resources/scss/global');
     this.directory('resources/scss/icons', 'resources/scss/icons');
     this.directory('resources/scss/modules', 'resources/scss/modules');

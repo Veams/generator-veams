@@ -51,34 +51,87 @@ module.exports = function(grunt) {
 		}
     },
 	<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
-				if(name == 'grunticon-sass') { %>
-	'grunticon-sass': {
-			icons: {
-				options: {
-					src: '<%%= config.src %>/img/svg/icons',
-					dest: '<%%= config.src %>/scss/icons',
+				if(name == 'grunticon') { %>
+	grunticon: {
+		icons: {
+			files: [{
+                expand: true,
+				cwd: '<%%= config.src %>/assets/img/svg/icons',
+				src: ['*.svg', '*.png'],
+				dest: "<%%= config.src %>/scss/icons"
+				}],
+			options: {
+                // optional grunticon config properties
+				// SVGO compression, false is the default, true will make it so
+				svgo: true,
+				
+				// PNG compression, false is the default, true will make it so
+				pngcrush: false,
+				
+				// CSS filenames
+				datasvgcss: "_icons.data.svg.scss",
+				datapngcss: "_icons.data.png.scss",
+				urlpngcss: "_icons.fallback.scss",
 
-					datasvgcss: "_icons.data.svg.scss",
-					datapngcss: "_icons.data.png.scss",
-					urlpngcss: "_icons.png.scss",
-
-					previewhtml: false,
-					loadersnippet: false,
-
-					pngcrush: false,
-					pngfolder: "../../../img/png_icons/",
-					pngPath: '<%%= config.dist %>/img/png_icons/',
-
-					pseudoselectors: true,
-					oneimport: false
-				}
+				// grunticon loader code snippet filename
+				// loadersnippet: "grunticon.loader.js
+				
+				// folder name (within dest) for png output
+				pngfolder: "../../assets/img/png_icons/",
+				
+				// prefix for CSS classnames
+				cssprefix: "%icon-",
+				
+				// css file path prefix - this defaults to "/" and will be placed before the "dest" path when stylesheets are loaded.
+				// This allows root-relative referencing of the CSS. If you don't want a prefix path, set to to ""
+				cssbasepath: "/"
 			}
-		}, <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
+        },
+        png: {
+			files: [{
+                expand: true,
+				cwd: '<%%= config.src %>/assets/img/svg/icons',
+                src: ['*.svg', '*.png'],
+				dest: "<%%= config.src %>/scss/icons"
+				}],
+			options: {
+                // optional grunticon config properties
+				// SVGO compression, false is the default, true will make it so
+				svgo: false,
+
+				// PNG compression, false is the default, true will make it so
+				pngcrush: false,
+
+				// CSS filenames
+                datasvgcss: "_icons.data.svg.ie8.scss",
+                datapngcss: "_icons.data.png.ie8.scss",
+				urlpngcss: "_icons.fallback.scss",
+
+                // preview HTML filename
+                previewhtml: "preview.html",
+
+                // grunticon loader code snippet filename
+                loadersnippet: "grunticon.loader.js",
+
+
+                // folder name (within dest) for png output
+				pngfolder: "../../assets/img/png_icons/",
+
+				// prefix for CSS classnames
+				cssprefix: "%icon-",
+
+				// css file path prefix - this defaults to "/" and will be placed before the "dest" path when stylesheets are loaded.
+				// This allows root-relative referencing of the CSS. If you don't want a prefix path, set to to ""
+				cssbasepath: "/",
+                template: "<%%= config.src %>/templates/_extern/grunticon-png.hbs"
+			}
+        }
+    }, <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
 	'svg-sprites': {
 		options: {
 		  paths: {
-					spriteElements: "<%%= config.src %>/img/svg",
-					sprites: "<%%= config.dist %>/img/sprites",
+					spriteElements: "<%%= config.src %>/assets/img/svg",
+					sprites: "<%%= config.src %>/assets/img/sprites",
 					css: "<%%= config.src %>/scss/icons"
 				},
 		  sizes: {
@@ -178,16 +231,30 @@ module.exports = function(grunt) {
 			files: [
 				  // includes files within path and its sub-directories
 				  {
-					cwd: 'resources/js',
+					cwd: '<%%= config.src %>/js',
 					src: '**/*.js', 
-					dest: '_output/js'
+					dest: '<%%= config.dist %>/js'
 				  }
 			]
-		}
+		},
+		assets: {
+			files: [
+				  // includes files within path and its sub-directories
+				  {
+					cwd: '<%%= config.src %>/assets',
+                    src: '**/{,*/}*.{png,jpg,jpeg,gif,json,svg}',
+                    dest: '<%%= config.dist %>'
+				  }
+			]
+		},
 	},
 	concurrent: {
         rendering: {
-            tasks: ['newer:assemble', 'sync:js'],
+            tasks: [<% if(installAssemble === true){ %>
+				'newer:assemble',<% } %>
+				'sync:js', 
+				'sync:assets'
+			],
             options: {
                 logConcurrentOutput: true
             }
@@ -206,6 +273,10 @@ module.exports = function(grunt) {
 			files: '<%%= config.src %>/js/{,*/}*.js',
 			tasks: 'sync:js'
 		},
+		assets: {
+			files: '<%%= config.src %>/assets/**/*',
+			tasks: 'sync:assets'
+		},
 		livereload: {
 			options: {
 			livereload: '<%%= connect.options.livereload %>'
@@ -218,7 +289,7 @@ module.exports = function(grunt) {
 			  '<%%= config.dist %>/media/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
 			],
 			scss: {
-				files: ['<%= config.src %>/scss/{,*/}*.scss']
+				files: ['<%%= config.src %>/scss/{,*/}*.scss']
 			}
 		}
 	},
@@ -275,11 +346,15 @@ module.exports = function(grunt) {
             }
         }
     },
-
-    // Before generating any new files,
-    // remove any previously-created files.
-    clean: ['<%%= config.dist %>/**/*.{html,xml,js}']
 	<% } %>
+	// Before generating any new files,
+    // remove any previously-created files.
+    clean: [<% if(installAssemble === true){ %>
+		'<%%= config.dist %>/**/*.{html,xml,txt}',<% } %>
+		'<%%= config.dist %>/css/**/*',
+		'<%%= config.dist %>/js/**/*',
+		'<%%= config.dist %>/img/**/*'
+	]
   });
 
   // Load Tasks
@@ -299,7 +374,7 @@ module.exports = function(grunt) {
  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
 	if(name == 'grunticon-sass') { %>
 	grunt.registerTask('icons', [
-		'grunticon-sass'
+		'grunticon'
 	]); <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
 	grunt.registerTask('sprites', [
 		'svg-sprites'
@@ -341,15 +416,15 @@ module.exports = function(grunt) {
 
 // Advanced Tasks
   grunt.registerTask('server', [
- <% if(installAssemble === true){ %>'concurrent:rendering',<% } else {'watchJS'} %>
+	'concurrent:rendering',
     'watchCSS',
     'connect:livereload', <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
 	'browser_sync', <% } %><%}); %><%} %><%} %>
     'watch'
   ]);
 
-  grunt.registerTask('build', [<% if(installAssemble === true){ %>
-    'clean',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
+  grunt.registerTask('build', [
+    'clean',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
 	'js',<% } %><%}); %><%} %><%} %>
 	'watchJS',
 	<% if(installAssemble === true){ %>
