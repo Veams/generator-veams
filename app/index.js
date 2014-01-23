@@ -37,7 +37,8 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
         projectName   : "",
         projectAuthor: "",
         installPlugin : true,
-        installCMS: true,
+        installDocs : true,
+        installCMS: false,
         author: {
             name        : "",
             login		: "",
@@ -211,13 +212,6 @@ chalk.green('\n    7::::::::7                        ')+
             return answers.installModules;
         }
     });
-	
-	(!this.config.get("installDocs") || force) && questions.push({
-        type    : "confirm",
-        name    : "installDocs",
-        message: "Would you want to install styleguide documentations?",
-        default : this.config.get("installDocs")
-    });
 
     (!this.config.get("installCMS") || force) && questions.push({
         type: "confirm",
@@ -279,6 +273,7 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('gitignore', '.gitignore');
     this.copy('README.md', 'README.md');
 	this.copy('helper_files/htmlhintrc', 'helper_files/.htmlhintrc');
+	this.directory('helper_files/templates', 'helper_files/templates');
 
     this.directory('_output', '_output');
 	
@@ -299,20 +294,20 @@ PrototypeGenerator.prototype.app = function app() {
 	
 	// add assemble files 
 	if(this.config.get("installAssemble") == true) {
-    this.directory('resources/data', 'resources/data');
-    this.directory('resources/content', 'resources/content');
+		this.directory('resources/data', 'resources/data');
+		this.directory('resources/content', 'resources/content');
 
-	this.mkdir('resources/helpers');
-    this.copy('resources/helpers/helper-for.js');
+		this.mkdir('resources/helpers');
+		this.copy('resources/helpers/helper-for.js');
 
-    this.mkdir('resources/templates');
-    this.directory('resources/templates/layouts', 'resources/templates/layouts');
-    this.directory('resources/templates/pages', 'resources/templates/pages');
-    this.mkdir('resources/templates/partials');
-    this.copy('resources/templates/partials/nav.hbs');
-	this.mkdir('resources/templates/partials/_global');
-    this.copy('resources/templates/partials/_global/head.hbs');
-    this.copy('resources/templates/partials/_global/footer_scripts.hbs');
+		this.mkdir('resources/templates');
+		this.directory('resources/templates/layouts', 'resources/templates/layouts');
+		this.directory('resources/templates/pages', 'resources/templates/pages');
+		this.mkdir('resources/templates/partials');
+		this.copy('resources/templates/partials/nav.hbs');
+		this.mkdir('resources/templates/partials/_global');
+		this.copy('resources/templates/partials/_global/head.hbs');
+		this.copy('resources/templates/partials/_global/footer_scripts.hbs');
 	}
     // add specific resources to make it possible to split up some directories
     this.mkdir('_output/js');		

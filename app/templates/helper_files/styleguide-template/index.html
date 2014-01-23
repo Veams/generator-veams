@@ -1,128 +1,105 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-	<meta charset="utf-8" />
-	<title>KSS: Living Styleguide</title>
-	
-	<meta name="description" content="CSS-Styleguide" />
-	<meta name="generator" content="kss-node" />
-	
-	<meta name="viewport" content="width=device-width" />
-	
-	<link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css' />
-	
-	<!--<link rel="stylesheet" href="public/kss.css" />-->
-	  <link rel="stylesheet" href="public/kss.css">
-	<link rel="stylesheet" href="css/styles-svg.css" />
-</head>
-
-<body>
-	<div id="kss-wrapper">
-		<div id="kss-nav">
-			<header id="kss-header">
-				<h1>kss-node Styleguide</h1>
-			</header>
-			
-			<aside>
-				<nav>
-					<ul class="styleguide-navigation">
-						{{#eachRoot}}
-						<li>
-							<a href="section-{{reference}}.html">
-								{{reference}}.0: {{header}}
-							</a>
-						</li>
-						{{/eachRoot}}
-					</ul>
-				</nav>
-			</aside>
-		</div>
-		
-		<div role="main" id="kss-main">
-			<article id="kss-content">
-				{{#if overview}}
-					{{html overview}}
-				{{else}}
-					{{!
-						Find each section, in order.
-						If there's no markup or modifiers supplied, use a Markdown-only
-						layout instead.
-
-						The "root" element comes first in this loop, and can be detected using
-						the "#whenDepth 1" block as seen below.
-					}}
-					{{#eachSection rootNumber}}
-						{{#whenDepth 1}}
-							<h1 class="kss-title"><span class="kss-ref">{{ reference }}.0</span> - {{ header }}</h1>
-						{{else}}
-						 <section class="kss-depth-{{ refDepth }}">
-							<h1 class="kss-title"><span class="kss-ref">{{ reference }}</span> - {{ header }}</h1>
-						{{/whenDepth}}
-							{{#ifAny markup modifiers}}
-									<div class="kss-box">{{html description}}</div>
-									<table class="kss-mod-list">
-										<tr class="kss-mod-desc-group">
-											<td class="kss-mod-desc"><p>Default styling</p></td>
-											<td class="kss-mod-name"></td>
-										</tr>
-										<tr class="kss-mod-example">
-											<td colspan="2">{{modifierMarkup}}</td>
-										</tr>
-									{{#eachModifier}}
-										<tr class="kss-mod-desc-group">
-											<td class="kss-mod-desc">{{html description}}</td>
-											<td class="kss-mod-name"><p>{{name}}</p></td>
-										</tr>
-										<tr class="kss-mod-example">
-											<td colspan="2">{{modifierMarkup}}</td>
-										</tr>
-									{{/eachModifier}}
-									</table>
-									<div class="kss-markup">
-										<pre class="prettyprint lang-html">{{markup}}</pre>
-									</div>
-							{{else}}
-									{{#if description}}
-										{{html description}}
-									{{/if}}
-							{{/ifAny}}
-						{{#whenDepth 1}} {{else}}
-							</section>
-						{{/whenDepth}}
-					{{/eachSection}}
-				{{/if}}
-			</article>
-		</div>
-		
-		<!-- SCRIPTS -->
-		<script src="public/kss.js"></script>
-		<script src="public/prettify.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				var sidebarAdjust = function() {
-					// Match footer/body height
-					var height = Math.max($(window).height(), $('#kss-main').height());
-					
-					if ($(window).width() <= 768) {
-						$('#kss-main, #kss-nav').height('auto');
-					} else {
-						$('#kss-main, #kss-nav').height(height);
-					}
-				};
-				
-				$(window).resize(sidebarAdjust);
-				$(window).scroll(sidebarAdjust);
-				sidebarAdjust();
-				
-				// Ensure code blocks are highlighted properly...
-				$('pre>code').addClass('prettyprint');
-				prettyPrint();
-			});
-		</script>
-	</div>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>kss-node Styleguide</title>
+    <meta name="description" content="" />
+    <meta name="generator" content="kss-node" />
+    <link rel="stylesheet" href="public/kss.css" />
+    <link rel="stylesheet" href="css/styles-svg.css" />
+    <!--[if lt IE 9]>
+    <script src="public/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body id="kss-node">
+    <div class="kss-wrapper">
+      <div class="kss-sidebar">
+        <div class="kss-sidebar-inner">
+          <header class="kss-header">
+            <h1 class="kss-doc-title"><a href="./">kss-node Styleguide</a></h1>
+          </header>
+          <nav class="kss-nav">
+            <ul class="kss-menu" data-kss-ref="{{rootNumber}}">
+              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+              {{#eachRoot}}
+              <li class="kss-menu-item"><a href="section-{{reference}}.html"><span class="kss-ref">{{reference}}</span><span class="kss-name">{{header}}</span></a></li>
+              {{/eachRoot}}
+            </ul>
+            {{#if overview}}
+            {{else}}
+            <ul class="kss-menu-child">
+              {{#eachSection rootNumber}}
+              {{#whenDepth 1}}
+              {{else}}
+              <li class="kss-menu-item"><a href="#section-{{reference}}"><span class="kss-ref">{{reference}}</span><span class="kss-name">{{header}}</span></a></li>
+              {{/whenDepth}}
+              {{/eachSection}}
+            </ul>
+            {{/if}}
+          </nav>
+        </div>
+      </div>
+      <div class="kss-content">
+        <article class="kss-article">
+          {{#if overview}}
+          <section id="section-0" class="kss-section kss-overview">
+            {{html overview}}
+          </section>
+          {{else}}
+          {{#eachSection rootNumber}}
+          <section id="section-{{reference}}" class="kss-section kss-depth-{{refDepth}}">
+            <h1 class="kss-title"><span class="kss-ref">{{reference}}</span> {{header}}</h1>
+            {{#ifAny markup modifiers}}
+            {{#if description}}
+            <div class="kss-description">
+              {{html description}}
+            </div>
+            {{/if}}
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  {{modifierMarkup}}
+                </div>
+              </div>
+              {{#eachModifier}}
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">{{name}}</div>
+                  <div class="kss-modifier-description">
+                    {{html description}}
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  {{modifierMarkup}}
+                </div>
+              </div>
+              {{/eachModifier}}
+              <div class="kss-markup">
+                <pre><code data-language="html">{{markup}}</code></pre>
+              </div>
+            </div>
+            {{else}}
+            {{#if description}}
+            <div class="kss-description">
+              {{html description}}
+            </div>
+            {{/if}}
+            {{/ifAny}}
+          </section>
+          {{/eachSection}}
+          {{/if}}
+        </article>
+        <footer class="kss-footer">
+          <div>Created using <a href="https://github.com/hughsk/kss-node">kss-node</a> and <a href="https://github.com/htanjo/kss-node-template">kss-node-template</a>.</div>
+        </footer>
+      </div>
+    </div>
+    <script src="public/kss.js"></script>
+    <script src="public/jquery-1.9.1.min.js"></script>
+    <!--[if gt IE 8]><!-->
+    <script src="public/rainbow.min.js"></script>
+    <!--<![endif]-->
+    <script src="public/main.js"></script>
+  </body>
 </html>

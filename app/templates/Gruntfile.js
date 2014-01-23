@@ -253,11 +253,11 @@ module.exports = function(grunt) {
 	// Copy files for styleguide
     copy: {
 		styleguide: {
-            dest: '<%= config.dist %>/styleguide/css/',
+            dest: '<%%= config.dist %>/styleguide/css/',
             expand: true,
             filter: 'isFile',
             flatten: true,
-            src: ['<%= config.dist %>/css/**/*.css']
+            src: ['<%%= config.dist %>/css/**/*.css']
         }
     },
 	// Configuration for the styleguide output
@@ -459,11 +459,11 @@ module.exports = function(grunt) {
     'clean',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
 	'js',<% } %><%}); %><%} %><%} %>
 	'watchJS',
+    'cssProd',
 	<% if(installAssemble === true){ %>
 	'assemble',<% } %><% if(installDocs === true){ %>
 	'styleguide',
-	'copy',<% } %>
-    'cssProd'<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>,
+	'copy'<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>,
 	'prettyscss'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>,
 	'photoProd'<% } %><%}); %><%} %><%} %>
   ]);
