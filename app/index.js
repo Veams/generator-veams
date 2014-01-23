@@ -37,7 +37,6 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
         projectName   : "",
         projectAuthor: "",
         installPlugin : true,
-        installDocs : true,
         installCMS: false,
         author: {
             name        : "",
