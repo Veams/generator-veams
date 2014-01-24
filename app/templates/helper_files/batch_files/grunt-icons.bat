@@ -1,1 +1,1 @@
-cd ../ && grunt icons
+cd ../../ && grunt icons

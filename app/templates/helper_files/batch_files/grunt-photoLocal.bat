@@ -1,1 +1,1 @@
-cd ../ && grunt photoLocal
+cd ../../ && grunt photoLocal

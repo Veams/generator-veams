@@ -1,1 +1,1 @@
-cd ../ && grunt server
+cd ../../ && grunt server

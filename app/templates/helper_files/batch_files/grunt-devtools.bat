@@ -1,1 +1,1 @@
-cd ../ && grunt devtools
+cd ../../ && grunt devtools
