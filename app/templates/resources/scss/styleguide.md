@@ -22,7 +22,7 @@ But kss-node can depend on only comment in source code because it has `Markup:` 
 
 Here is a basic format for kss-node documentation.
 
-```css, scss
+```css
 /*
 Buttons
 
@@ -50,6 +50,7 @@ Styleguide 1.1
 .button.primary {
   ...
 }
+```
 
 As you see in the above samples, kss-node comment has some blocks.
 From the top,
