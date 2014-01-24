@@ -213,7 +213,7 @@ module.exports = function(grunt) {
         }, <% } %><% if(name == 'grunt-prettysass') { %>  
       prettysass: {
             options: {
-                alphabetize: true,
+                alphabetize: false,
                 indent: "t"
             },
             scss: {
@@ -233,7 +233,7 @@ module.exports = function(grunt) {
 				  // includes files within path and its sub-directories
 				  {
 					cwd: '<%%= config.src %>/js',
-					src: '**/*.js', 
+					src: '**/*', 
 					dest: '<%%= config.dist %>/js'
 				  }
 			]
@@ -283,7 +283,8 @@ module.exports = function(grunt) {
 	concurrent: {
         rendering: {
             tasks: [<% if(installAssemble === true){ %>
-				'newer:assemble',<% } %>
+				'newer:assemble',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
+				'packager',<% } %><%}); %><%} %><%} %>
 				'sync:js', 
 				'sync:assets'
 			],

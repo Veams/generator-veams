@@ -155,6 +155,13 @@ chalk.green('\n    7::::::::7                        ')+
         default : this.config.get("batchFiles")
     });
 
+    (!this.config.get("installDocs") || force) && questions.push({
+        type    : "confirm",
+        name    : "installDocs",
+        message : "Do you want to use a styleguide documentation?",
+        default : this.config.get("installDocs")
+    });
+
     (!this.config.get("installAssemble") || force) && questions.push({
         type    : "confirm",
         name    : "installAssemble",
@@ -278,7 +285,6 @@ PrototypeGenerator.prototype.app = function app() {
 	
 	// add batch files
 	if(this.config.get("batchFiles") == true) {
-		this.directory('helper_files/batch_files', 'helper_files/batch_files');
 		this.directory('helper_files/batch_files', 'helper_files/batch_files');
 	}
 	
