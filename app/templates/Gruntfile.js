@@ -143,7 +143,7 @@ module.exports = function(grunt) {
 		  refSize: "medium",
 		  unit: 5,
 		  cssSuffix: "scss",
-		  prefix: "_icon"
+		  prefix: "sprite"
 		},
 	}, <% } %><% if(name == 'grunt-packager') { %>
 	packager: {
@@ -413,7 +413,7 @@ module.exports = function(grunt) {
   
  // Simple Tasks
  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
-	if(name == 'grunticon-sass') { %>
+	if(name == 'grunt-grunticon') { %>
 	grunt.registerTask('icons', [
 		'grunticon'
 	]); <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
