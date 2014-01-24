@@ -1,1 +1,1 @@
-cd ../ && grunt html && PAUSE
+cd ../../ && grunt html && PAUSE
