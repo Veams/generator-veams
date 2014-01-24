@@ -247,7 +247,7 @@ module.exports = function(grunt) {
                     dest: '<%%= config.dist %>'
 				  }
 			]
-		},
+		}
 	},
 	<% if(installDocs === true){ %>
 	// Copy files for styleguide
@@ -284,14 +284,22 @@ module.exports = function(grunt) {
         rendering: {
             tasks: [<% if(installAssemble === true){ %>
 				'newer:assemble',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
-				'packager',<% } %><%}); %><%} %><%} %>
+				'packager'<% } %><%}); %><%} %><%} %>
+				
+			],
+            options: {
+                logConcurrentOutput: true
+            }
+        },
+		syncing: {
+			tasks: [
 				'sync:js', 
 				'sync:assets'
 			],
             options: {
                 logConcurrentOutput: true
             }
-        }
+		}
     },
 	
     watch: {<% if(installAssemble === true){ %>
@@ -450,6 +458,7 @@ module.exports = function(grunt) {
 // Advanced Tasks
   grunt.registerTask('server', [
 	'concurrent:rendering',
+	'concurrent:syncing',
     'watchCSS',
     'connect:livereload', <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
 	'browser_sync', <% } %><%}); %><%} %><%} %>
