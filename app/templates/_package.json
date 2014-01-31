@@ -14,6 +14,7 @@
         "test": "grunt test"
     },
     "devDependencies": {
+		"load-grunt-tasks": "~0.3.0",
 		"grunt": "~0.4.2", <% if(installAssemble === true){ %>
         "assemble": "~0.4.34", <% } %><% if(installDocs === true){ %>
         "grunt-styleguide": "~0.2.14", 
@@ -36,6 +37,11 @@
 		"grunt-htmlhint": "~0.4.0",
 		<% } %><% if(name == 'grunt-prettysass') { %>
 		"grunt-prettysass": "~0.2.3",
+		<% } %><% if(name == 'grunt-combine-media-queries') { %>
+		"grunt-combine-media-queries": "~1.0.9",
+		"grunt-contrib-cssmin": "~0.7.0",
+		<% } %><% if(name == 'grunt-bless') { %>
+		"grunt-bless": "~0.1.1",
 		<% } %><% if(name == 'grunt-photobox') { %>
 		"grunt-photobox": "~0.5.0",
 		<% } %><%}); %><%} %><%} %>

@@ -183,8 +183,8 @@ chalk.green('\n    7::::::::7                        ')+
         choices : [
             { name: "permalinks"},
             { name: "assemble-contrib-contextual" },
-            { name: "assemble-contrib-sitemap", checked: true },
-            // { name: "assemble-markdown-data" },
+            { name: "assemble-contrib-sitemap"},
+            { name: "assemble-markdown-data" },
             { name: "assemble-related-pages", checked: true }
         ],
         when: function( answers ) {
@@ -207,11 +207,13 @@ chalk.green('\n    7::::::::7                        ')+
             { name: "grunt-devtools", checked: true },
             { name: "grunt-grunticon", checked: true },
             { name: "dr-grunt-svg-sprites" },
-            { name: "grunt-contrib-compass" },
             { name: "grunt-packager", checked: true },
-            { name: "grunt-browser-sync" },
             { name: "grunt-htmlhint", checked: true },
             { name: "grunt-prettysass", checked: true },
+            { name: "grunt-combine-media-queries", checked: true },
+            { name: "grunt-bless", checked: true },
+            { name: "grunt-contrib-compass" },
+            { name: "grunt-browser-sync" },
             { name: "grunt-photobox"}
         ],
         when: function( answers ) {

@@ -183,7 +183,36 @@
 				  },
 	              src: ['<%%= config.dist %>/*.html']
 	          }
-	      }, <% } %><% if(name == 'grunt-photobox') { %>
+	      }, <% } %><% if(name == 'grunt-combine-media-queries') { %>
+		cmq: {
+			options: {
+				log: true
+			},
+			your_target: {
+				files: {
+					'<%%= config.dist %>/css/': ['<%%= config.dist %>/css/{,*/}*.css']
+				}
+			}
+		}, 
+		cssmin: {
+			options: {
+				processImport: false
+			},
+			minify: {
+				expand: true,
+				cwd: '<%%= config.dist %>/css/',
+				src: ['*.css'],
+				dest: '<%%= config.dist %>/css/'
+			}
+		}, <% } %><% if(name == 'grunt-bless') { %>
+		bless: {
+			css: {
+				options: {},
+				files: {
+					'<%%= config.dist %>/css/styles-svg.css': ['<%%= config.dist %>/css/styles-svg.css']
+				}
+			}
+		}, <% } %><% if(name == 'grunt-photobox') { %>
 	        photobox: {
 	            local: {
 	                options: {
@@ -409,7 +438,10 @@
 	  grunt.loadNpmTasks('grunt-concurrent');
 	  grunt.loadNpmTasks('grunt-contrib-watch');
 	  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
-	  grunt.loadNpmTasks('<%= name %>'); <%}); %><%} %><%} %>
+		  <% if(name == 'grunt-combine-media-queries') { %>
+	grunt.loadNpmTasks('grunt-combine-media-queries'); 
+	grunt.loadNpmTasks('grunt-contrib-cssmin'); <% } else { %>
+	grunt.loadNpmTasks('<%= name %>'); <%} }); %><%} %><%} %>	  
 	  
 	 // Simple Tasks
 	 <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
@@ -469,8 +501,10 @@
 	    'clean',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
 		'js',<% } %><%}); %><%} %><%} %>
 		'watchJS',
-	    'cssProd',
-		<% if(installAssemble === true){ %>
+	    'cssProd',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
+		'cmq',
+		'cssmin', <% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-bless') { %>
+		'bless', <% } %><%}); %><%} %><%} %><% if(installAssemble === true){ %>
 		'assemble',<% } %><% if(installDocs === true){ %>
 		'styleguide',
 		'copy'<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>,
