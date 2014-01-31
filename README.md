@@ -47,18 +47,21 @@ You can apply multiple addons and grunt modules to your project. Just choose spe
  * assemble-contrib-contextual
  * assemble-contrib-sitemap
  * assemble-related-pages
+ * assemble-markdown
  
 ### Grunt modules
  
- * [grunt-devtools](https://github.com/vladikoff/grunt-devtools)
- * [grunticon-sass](https://github.com/Prototype-Group/grunticon)
- * [dr-grunt-svg-sprites](https://github.com/drdk/dr-grunt-svg-sprites)
- * [grunt-packager](https://github.com/bobbor/grunt-packager) (only executable when your project.jspackcfg is configured)
+ * [grunt-devtools](https://github.com/vladikoff/grunt-devtools) - An user interface in chrome to execute grunt tasks in your project
+ * [grunticon-sass](https://github.com/Prototype-Group/grunticon) - Generate SVG-URI-SASS files with png fallbacks
+ * [dr-grunt-svg-sprites](https://github.com/drdk/dr-grunt-svg-sprites) - Generate SVG Sprites with css files
+ * [grunt-packager](https://github.com/bobbor/grunt-packager) (only executable when your project.jspackcfg is configured) - package your js
  * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass)
- * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync)
- * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint)
- * [grunt-prettysass](https://github.com/brandonminch/grunt-prettysass)
- * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox)
+ * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and aut-reload your local server over multiple devices
+ * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint) - Check your html for errors
+ * [grunt-prettysass](https://github.com/brandonminch/grunt-prettysass) - Format your SASS-files
+ * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) - Take snapshots from homepage
+ * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
+ * [grunt-combine-media-queries](https://github.com/stefanjudis/grunt-combine-media-queries) - When you use mixins in your SASS files, you can combine your media queries with this module
 
 ## CMS snippets (work in progress)
 You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
