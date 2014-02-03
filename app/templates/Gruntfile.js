@@ -328,6 +328,18 @@
 	            options: {
 	                logConcurrentOutput: true
 	            }
+			},
+			build: {
+				tasks: [<% if(installAssemble === true){ %>
+					'assemble',
+					'copy',<% } %><% if(installDocs === true){ %>
+					'styleguide',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>
+					'prettyscss',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>
+					'photoProd'<% } %><%}); %><%} %><%} %>	
+				],
+	            options: {
+	                logConcurrentOutput: true
+	            }
 			}
 	    },
 		
@@ -504,12 +516,8 @@
 	    'cssProd',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
 		'cmq',
 		'cssmin', <% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-bless') { %>
-		'bless', <% } %><%}); %><%} %><%} %><% if(installAssemble === true){ %>
-		'assemble',<% } %><% if(installDocs === true){ %>
-		'styleguide',
-		'copy'<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>,
-		'prettyscss'<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>,
-		'photoProd'<% } %><%}); %><%} %><%} %>
+		'bless', <% } %><%}); %><%} %><%} %>
+		'concurrent:build'
 	  ]);
 
 	  grunt.registerTask('default', [

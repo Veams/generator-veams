@@ -16,6 +16,12 @@
 	}
 }
 
+%pseudo {
+	content: '';
+	display: block;
+	position: absolute;
+}
+
 %hidden {
 	display: none !important;
 	visibility: hidden;
