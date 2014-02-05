@@ -331,8 +331,8 @@
 			},
 			build: {
 				tasks: [<% if(installAssemble === true){ %>
-					'assemble',
-					'copy',<% } %><% if(installDocs === true){ %>
+					'assemble',<% } %><% if(installDocs === true){ %>
+					'copy',
 					'styleguide',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>
 					'prettyscss',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>
 					'photoProd'<% } %><%}); %><%} %><%} %>	
@@ -512,7 +512,7 @@
 	  grunt.registerTask('build', [
 	    'clean',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
 		'js',<% } %><%}); %><%} %><%} %>
-		'watchJS',
+		'concurrent:syncing',
 	    'cssProd',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
 		'cmq',
 		'cssmin', <% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-bless') { %>
