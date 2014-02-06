@@ -33,10 +33,6 @@
 		"grunt-packager": "~0.1.0",
 		<% } %><% if(name == 'grunt-browser-sync') { %>
 		"grunt-browser-sync": "~0.3.0",
-		<% } %><% if(name == 'grunt-htmlhint') { %>
-		"grunt-htmlhint": "~0.4.0",
-		<% } %><% if(name == 'grunt-prettysass') { %>
-		"grunt-prettysass": "~0.2.3",
 		<% } %><% if(name == 'grunt-combine-media-queries') { %>
 		"grunt-combine-media-queries": "~1.0.9",
 		"grunt-contrib-cssmin": "~0.7.0",
@@ -46,6 +42,8 @@
 		"grunt-photobox": "~0.5.0",
 		<% } %><%}); %><%} %><%} %>
 		"grunt-sync": "~0.0.5",
+		"grunt-htmlhint": "~0.4.0",
+		"grunt-prettysass": "~0.2.3",
 		"grunt-concurrent": "~0.4.2",
         "grunt-contrib-clean": "~0.5.0",
 		"grunt-bg-shell": "*",

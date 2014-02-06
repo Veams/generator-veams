@@ -175,15 +175,7 @@
 	                  cssDir: '<%%= config.dist %>/css'
 	              }
 	          }
-	      }, <% } %><% if(name == 'grunt-htmlhint') { %> 
-	      htmlhint: {
-	          all: {
-	              options: { // Want to know what configurations are available? http://htmlhint.com/
-					htmlhintrc: '<%%= config.helper %>/.htmlhintrc'
-				  },
-	              src: ['<%%= config.dist %>/*.html']
-	          }
-	      }, <% } %><% if(name == 'grunt-combine-media-queries') { %>
+	      },<% } %><% if(name == 'grunt-combine-media-queries') { %>
 		cmq: {
 			options: {
 				log: true
@@ -239,8 +231,8 @@
 	                    ]
 	                }
 	            }
-	        }, <% } %><% if(name == 'grunt-prettysass') { %>  
-	      prettysass: {
+	        }, <% } %><%}); %><%} %><%} %>
+		  prettysass: {
 	            options: {
 	                alphabetize: false,
 	                indent: "t"
@@ -255,7 +247,14 @@
 					]
 	            }
 	        },
-		  <% } %><%}); %><%} %><%} %>
+		  htmlhint: {
+	          all: {
+	              options: { // Want to know what configurations are available? http://htmlhint.com/
+					htmlhintrc: '<%%= config.helper %>/.htmlhintrc'
+				  },
+	              src: ['<%%= config.dist %>/*.html']
+	          }
+	      },
 		sync: {
 			js: {
 				files: [
@@ -333,9 +332,9 @@
 				tasks: [<% if(installAssemble === true){ %>
 					'assemble',<% } %><% if(installDocs === true){ %>
 					'copy',
-					'styleguide',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-prettysass') { %>
-					'prettyscss',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>
-					'photoProd'<% } %><%}); %><%} %><%} %>	
+					'styleguide',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>
+					'photoProd',<% } %><%}); %><%} %><%} %>	
+					'prettyscss'
 				],
 	            options: {
 	                logConcurrentOutput: true
@@ -443,6 +442,8 @@
 	  grunt.loadNpmTasks('grunt-contrib-copy');
 	  grunt.loadNpmTasks('grunt-styleguide');<% } %>
 	  grunt.loadNpmTasks('grunt-newer');
+	  grunt.loadNpmTasks('grunt-htmlhint');
+	  grunt.loadNpmTasks('grunt-prettysass');
 	  grunt.loadNpmTasks('grunt-bg-shell');
 	  grunt.loadNpmTasks('grunt-sync');
 	  grunt.loadNpmTasks('grunt-contrib-clean');
@@ -469,9 +470,6 @@
 		]); <% } %><% if(name == 'grunt-contrib-compass') { %>
 		grunt.registerTask('css', [
 			'compass:dist'
-		]);<% } %><% if(name == 'grunt-htmlhint') { %>
-		grunt.registerTask('html', [
-			'htmlhint'
 		]);<% } %><% if(name == 'grunt-photobox') { %>
 		grunt.registerTask('photoLocal', [
 	        'photobox:local'
@@ -481,10 +479,7 @@
 	    ]);
 		grunt.registerTask('photoProd', [
 	        'photobox:prod'
-	    ]);<% } %><% if(name == 'grunt-prettysass') { %>
-		grunt.registerTask('prettyscss', [
-			'prettysass'
-		]);<% } %><%}); %><%} %><%} %>
+	    ]);<% } %><%}); %><%} %><%} %>
 	  
 		grunt.registerTask('cssDev', [
 	        'bgShell:devCompass'
@@ -497,6 +492,12 @@
 	    ]);
 		grunt.registerTask('watchJS', [
 			'sync:js'
+		]);
+		grunt.registerTask('check-html', [
+			'htmlhint'
+		]);
+		grunt.registerTask('prettyscss', [
+			'prettysass'
 		]);
 
 	// Advanced Tasks

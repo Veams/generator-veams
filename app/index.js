@@ -36,6 +36,9 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
     this.config.defaults({
         projectName   : "",
         projectAuthor: "",
+		batchFiles: false,
+		installDocs: true,
+		installAssemble: true,
         installPlugin : true,
         installCMS: false,
         author: {
@@ -208,8 +211,6 @@ chalk.green('\n    7::::::::7                        ')+
             { name: "grunt-grunticon", checked: true },
             { name: "dr-grunt-svg-sprites" },
             { name: "grunt-packager", checked: true },
-            { name: "grunt-htmlhint", checked: true },
-            { name: "grunt-prettysass", checked: true },
             { name: "grunt-combine-media-queries", checked: true },
             { name: "grunt-bless", checked: true },
             { name: "grunt-contrib-compass" },
