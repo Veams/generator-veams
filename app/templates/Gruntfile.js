@@ -337,7 +337,8 @@
 					'prettyscss'
 				],
 	            options: {
-	                logConcurrentOutput: true
+	                logConcurrentOutput: true,
+					limit: 5
 	            }
 			}
 	    },
