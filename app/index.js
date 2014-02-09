@@ -290,12 +290,6 @@ PrototypeGenerator.prototype.app = function app() {
 	if(this.config.get("batchFiles") == true) {
 		this.directory('helper_files/batch_files', 'helper_files/batch_files');
 	}
-	
-	// add styleguide files
-	if(this.config.get("installDocs") == true) {
-		this.directory('helper_files/styleguide-template', 'helper_files/styleguide-template');
-		this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
-	}
 
     // add resources
     this.mkdir('resources');
@@ -334,6 +328,12 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('resources/scss/_all.scss', 'resources/scss/_all.scss');
     this.copy('resources/scss/styles-svg.scss', 'resources/scss/styles-svg.scss');
     this.copy('resources/scss/styles-png.scss', 'resources/scss/styles-png.scss');
+	
+	// add styleguide files
+	if(this.config.get("installDocs") == true) {
+		this.directory('helper_files/styleguide-template', 'helper_files/styleguide-template');
+		this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
+	}
 	
 	// CMS snippets and SCSS files
 	//Drupal

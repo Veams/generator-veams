@@ -14,7 +14,6 @@
         "test": "grunt test"
     },
     "devDependencies": {
-		"load-grunt-tasks": "~0.3.0",
 		"grunt": "~0.4.2", <% if(installAssemble === true){ %>
         "assemble": "~0.4.34", <% } %><% if(installDocs === true){ %>
         "grunt-styleguide": "~0.2.14", 
