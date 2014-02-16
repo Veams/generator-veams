@@ -37,8 +37,6 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
         projectName   : "",
         projectAuthor: "",
 		batchFiles: false,
-		installDocs: true,
-		installAssemble: true,
         installPlugin : true,
         installCMS: false,
         author: {
@@ -276,13 +274,22 @@ PrototypeGenerator.prototype.app = function app() {
 
     // Copy standard files
 	this.mkdir('helper_files');
+	this.copy('helper_files/htmlhintrc', 'helper_files/.htmlhintrc');
+	
+	this.mkdir('helper_files/grunt');
+	this.copy('helper_files/grunt/bgShell.js', 'helper_files/grunt/bgShell.js');
+	this.copy('helper_files/grunt/clean.js', 'helper_files/grunt/clean.js');
+	this.copy('helper_files/grunt/concurrent.js', 'helper_files/grunt/concurrent.js');
+	this.copy('helper_files/grunt/connect.js', 'helper_files/grunt/connect.js');
+	this.copy('helper_files/grunt/htmlhint.js', 'helper_files/grunt/htmlhint.js');
+	this.copy('helper_files/grunt/prettysass.js', 'helper_files/grunt/prettysass.js');
+	this.copy('helper_files/grunt/sync.js', 'helper_files/grunt/sync.js');
+	this.copy('helper_files/grunt/watch.js', 'helper_files/grunt/watch.js');
+	
     this.copy('_package.json', 'package.json');
     this.copy('config.rb', 'config.rb');
     this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('gitignore', '.gitignore');
-    this.copy('README.md', 'README.md');
-	this.copy('helper_files/htmlhintrc', 'helper_files/.htmlhintrc');
-	this.directory('helper_files/templates', 'helper_files/templates');
 
     this.directory('_output', '_output');
 	
@@ -310,29 +317,33 @@ PrototypeGenerator.prototype.app = function app() {
 		this.mkdir('resources/templates/partials/_global');
 		this.copy('resources/templates/partials/_global/head.hbs');
 		this.copy('resources/templates/partials/_global/footer_scripts.hbs');
+		
+		this.copy('helper_files/grunt/assemble.js', 'helper_files/grunt/assemble.js');
 	}
     // add specific resources to make it possible to split up some directories
     this.mkdir('_output/js');		
     this.mkdir('resources/js');
-    this.copy('resources/js/project.jspackcfg');
     this.mkdir('resources/scss');
     this.mkdir('resources/assets');
     this.mkdir('resources/assets/img');
     this.mkdir('resources/assets/img/temp');
     this.mkdir('resources/assets/img/svg');
     this.mkdir('resources/assets/img/svg/icons');
+    this.mkdir('resources/assets/fonts');
+    this.mkdir('resources/assets/media');
     this.directory('resources/scss/global', 'resources/scss/global');
-    this.directory('resources/scss/icons', 'resources/scss/icons');
     this.directory('resources/scss/modules', 'resources/scss/modules');
     this.directory('resources/scss/utils', 'resources/scss/utils');
     this.copy('resources/scss/_all.scss', 'resources/scss/_all.scss');
-    this.copy('resources/scss/styles-svg.scss', 'resources/scss/styles-svg.scss');
+    this.copy('resources/scss/styles.scss', 'resources/scss/styles.scss');
     this.copy('resources/scss/styles-png.scss', 'resources/scss/styles-png.scss');
 	
 	// add styleguide files
 	if(this.config.get("installDocs") == true) {
 		this.directory('helper_files/styleguide-template', 'helper_files/styleguide-template');
 		this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
+		this.copy('helper_files/grunt/styleguide.js', 'helper_files/grunt/styleguide.js');
+		this.copy('helper_files/grunt/copy.js', 'helper_files/grunt/copy.js');
 	}
 	
 	// CMS snippets and SCSS files
@@ -356,22 +367,46 @@ PrototypeGenerator.prototype.app = function app() {
         this.directory('resources/scss/coremedia', 'resources/scss/coremedia');
         this.directory('resources/templates/partials/coremedia', 'resources/templates/partials/coremedia');
     }
-
-    /* files.forEach(function (file) {
-        if(this.dotFiles.indexOf(file) !== -1) {
-            this.copy(file, '.' + file);
-        } else if(this.pkgFiles.indexOf(file) !== -1) {
-            this.template(file, file.substring(1));
-        } else {
-            if (path.basename(file, '.js') === 'Gruntfile') {
-                this.template('Gruntfile.js');
-            } else {
-                this.copy(file, file);
-            }
-        }
-    }, this);
-};
-*/
+	// Grunt modules are splitted up in separate files and modules
+	if(this.modules && this.modules.length > 0){
+		if(this.modules.indexOf('grunt-grunticon') != -1) { 
+			console.log(chalk.yellow('******************* grunticon *******************'));
+			this.directory('resources/scss/icons', 'resources/scss/icons');
+			this.directory('helper_files/templates', 'helper_files/templates');
+			this.copy('helper_files/grunt/grunticon.js', 'helper_files/grunt/grunticon.js');
+		}
+		if(this.modules.indexOf('dr-grunt-svg-sprites') != -1) { 
+			console.log(chalk.green('******************* dr-grunt-svg-sprites *******************'));
+			this.mkdir('resources/scss/icons');
+			this.copy('helper_files/grunt/svg-sprites.js', 'helper_files/grunt/svg-sprites.js');
+		}
+		if(this.modules.indexOf('grunt-packager') != -1) { 
+			console.log(chalk.yellow('******************* grunt-packager *******************'));
+			this.copy('resources/js/project.jspackcfg');
+			this.copy('helper_files/grunt/packager.js', 'helper_files/grunt/packager.js');
+		}
+		if(this.modules.indexOf('grunt-combine-media-queries') != -1) { 
+			console.log(chalk.green('******************* grunt-combine-media-queries *******************'));
+			this.copy('helper_files/grunt/cmq.js', 'helper_files/grunt/cmq.js');
+			this.copy('helper_files/grunt/cssmin.js', 'helper_files/grunt/cssmin.js');
+		}
+		if(this.modules.indexOf('grunt-bless') != -1) { 
+			console.log(chalk.yellow('******************* grunt-bless *******************'));
+			this.copy('helper_files/grunt/bless.js', 'helper_files/grunt/bless.js');
+		}
+		if(this.modules.indexOf('grunt-contrib-compass') != -1) { 
+			console.log(chalk.green('******************* grunt-contrib-compass *******************'));
+			this.copy('helper_files/grunt/compass.js', 'helper_files/grunt/compass.js');
+		}
+		if(this.modules.indexOf('grunt-browser-sync') != -1) { 
+			console.log(chalk.yellow('******************* grunt-browser-sync *******************'));
+			this.copy('helper_files/grunt/browser_sync.js', 'helper_files/grunt/browser_sync.js');
+		}
+		if(this.modules.indexOf('grunt-photobox') != -1) { 
+			console.log(chalk.green('******************* grunt-photobox *******************'));
+			this.copy('helper_files/grunt/photobox.js', 'helper_files/grunt/photobox.js');
+		}
+	}
 }
 /**
  * Stringify an object and normalize whitespace with project preferences.
