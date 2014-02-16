@@ -64,8 +64,8 @@ You can apply multiple addons and grunt modules to your project. Just choose spe
  * [grunt-combine-media-queries](https://github.com/stefanjudis/grunt-combine-media-queries) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module
 
 ## Gruntfile
-We use for our Gruntfile the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split this file up in multiple files. 
-These files you can find in this directory:
+For our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split the file up in multiple files. 
+These files/tasks you can find in this directory:
 
  * helper_files/grunt
 
