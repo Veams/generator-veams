@@ -316,7 +316,6 @@ PrototypeGenerator.prototype.app = function app() {
 		this.copy('resources/templates/partials/nav.hbs');
 		this.mkdir('resources/templates/partials/_global');
 		this.copy('resources/templates/partials/_global/head.hbs');
-		this.copy('resources/templates/partials/_global/footer_scripts.hbs');
 		
 		this.copy('helper_files/grunt/assemble.js', 'helper_files/grunt/assemble.js');
 	}
@@ -401,6 +400,7 @@ PrototypeGenerator.prototype.app = function app() {
 		if(this.modules.indexOf('grunt-browser-sync') != -1) { 
 			console.log(chalk.yellow('******************* grunt-browser-sync *******************'));
 			this.copy('helper_files/grunt/browser_sync.js', 'helper_files/grunt/browser_sync.js');
+			this.copy('resources/templates/partials/_global/footer_scripts.hbs');
 		}
 		if(this.modules.indexOf('grunt-photobox') != -1) { 
 			console.log(chalk.green('******************* grunt-photobox *******************'));
