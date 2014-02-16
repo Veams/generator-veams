@@ -50,7 +50,7 @@ You can apply multiple addons and grunt modules to your project. Just choose spe
  * assemble-markdown
  
 ### Grunt modules
- 
+
  * [grunt-devtools](https://github.com/vladikoff/grunt-devtools) - An user interface in chrome to execute grunt tasks in your project
  * [grunticon-sass](https://github.com/Prototype-Group/grunticon) - Generate SVG-URI-SASS files with png fallbacks
  * [dr-grunt-svg-sprites](https://github.com/drdk/dr-grunt-svg-sprites) - Generate SVG Sprites with css files
@@ -61,7 +61,13 @@ You can apply multiple addons and grunt modules to your project. Just choose spe
  * [grunt-prettysass](https://github.com/brandonminch/grunt-prettysass) - Format your SASS-files
  * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) - Take snapshots from homepage
  * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
- * [grunt-combine-media-queries](https://github.com/stefanjudis/grunt-combine-media-queries) - When you use mixins in your SASS files, you can combine your media queries with this module
+ * [grunt-combine-media-queries](https://github.com/stefanjudis/grunt-combine-media-queries) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module
+
+## Gruntfile
+We use for our Gruntfile the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split this file up in multiple files. 
+These files you can find in this directory:
+
+ * helper_files/grunt
 
 ## CMS snippets (work in progress)
 You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
