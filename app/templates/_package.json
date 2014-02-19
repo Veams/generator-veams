@@ -15,7 +15,8 @@
     },
     "devDependencies": {
 		"grunt": "~0.4.2", <% if(installAssemble === true){ %>
-        "assemble": "~0.4.34", <% } %><% if(installDocs === true){ %>
+        "assemble": "~0.4.34", <% } %><% if(mobileFirst === true){ %>
+        "grunt-comment-media-queries": "~0.1.0", <% } %><% if(installDocs === true){ %>
         "grunt-styleguide": "~0.2.14", 
         "grunt-contrib-copy": "~0.5.0", <% } %>
         "grunt-newer": "~0.5.4",<% if(modules && modules.length > 0){ %>
@@ -38,6 +39,8 @@
 		"grunt-bless": "~0.1.1",
 		<% } %><% if(name == 'grunt-autoprefixer') { %>
 		"grunt-autoprefixer": "~0.6.5",
+		<% } %><% if(name == 'grunt-accessibility') { %>
+		"grunt-accessibility": "~0.1.2",
 		<% } %><% if(name == 'grunt-photobox') { %>
 		"grunt-photobox": "~0.5.0",
 		<% } %><%}); %><%} %><%} %>

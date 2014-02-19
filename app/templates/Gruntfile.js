@@ -49,8 +49,8 @@
 	  <% if(installAssemble){ %>
 	  grunt.loadNpmTasks('assemble'); <% } %><% if(installDocs){ %>
 	  grunt.loadNpmTasks('grunt-contrib-copy');
-	  grunt.loadNpmTasks('grunt-styleguide'); <% } %><% } %><% if(mobileFirst){ %>
-	  grunt.loadNpmTasks('grunt-comment-media-queries'); <% } %>
+	  grunt.loadNpmTasks('grunt-styleguide');<% } %><% if(mobileFirst){ %>
+      grunt.loadNpmTasks('grunt-comment-media-queries'); <% } %>
 	  grunt.loadNpmTasks('grunt-newer');
 	  grunt.loadNpmTasks('grunt-htmlhint');
 	  grunt.loadNpmTasks('grunt-prettysass');
@@ -60,8 +60,9 @@
 	  grunt.loadNpmTasks('grunt-contrib-connect');
 	  grunt.loadNpmTasks('grunt-concurrent');
 	  grunt.loadNpmTasks('grunt-contrib-cssmin');
-	  grunt.loadNpmTasks('grunt-contrib-watch'); <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
-	  grunt.loadNpmTasks('<%= name %>'); <%} }); %><%} %><%} %>	  
+	  grunt.loadNpmTasks('grunt-contrib-watch'); 
+	  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
+	  grunt.loadNpmTasks('<%= name %>'); <%}); %><%} %><%} %>
 	  
 	 // Simple Tasks
 	 <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-grunticon') { %>
