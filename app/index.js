@@ -205,20 +205,29 @@ chalk.green('\n    7::::::::7                        ')+
         type    : "checkbox",
         message: "Which grunt modules do you want to use?",
         choices : [
-            { name: "grunt-devtools", checked: true },
             { name: "grunt-grunticon", checked: true },
             { name: "dr-grunt-svg-sprites" },
             { name: "grunt-packager", checked: true },
             { name: "grunt-combine-media-queries", checked: true },
             { name: "grunt-bless", checked: true },
+            { name: "grunt-autoprefixer"},
             { name: "grunt-contrib-compass" },
             { name: "grunt-browser-sync" },
             { name: "grunt-photobox"}
+            { name: "grunt-devtools", checked: true },
         ],
         when: function( answers ) {
             return answers.installModules;
         }
     });
+	
+		
+	(!this.config.get("mobileFirst") || force) && questions.push({
+		type    : "confirm",
+		name    : "mobileFirst",
+		message: "Do you start developing mobile first and need to support IE8?",
+		default : this.config.get("mobileFirst")
+	});
 
     (!this.config.get("installCMS") || force) && questions.push({
         type: "confirm",
@@ -252,6 +261,7 @@ chalk.green('\n    7::::::::7                        ')+
         this.installDocs = answers.installDocs || this.config.get("installDocs");
         this.plugin = answers.plugin;
         this.modules = answers.modules;
+        this.mobileFirst = answers.mobileFirst || this.config.get("mobileFirst");
         this.CMS = answers.CMS;
         this.authorName = this.config.get("author").name;
         this.authorEmail = this.config.get("author").email;
@@ -273,18 +283,19 @@ PrototypeGenerator.prototype.app = function app() {
     var files = this.files;
 
     // Copy standard files
-	this.mkdir('helper_files');
-	this.copy('helper_files/htmlhintrc', 'helper_files/.htmlhintrc');
+	this.mkdir('helpers');
+	this.copy('helpers/htmlhintrc', 'helpers/.htmlhintrc');
 	
-	this.mkdir('helper_files/grunt');
-	this.copy('helper_files/grunt/bgShell.js', 'helper_files/grunt/bgShell.js');
-	this.copy('helper_files/grunt/clean.js', 'helper_files/grunt/clean.js');
-	this.copy('helper_files/grunt/concurrent.js', 'helper_files/grunt/concurrent.js');
-	this.copy('helper_files/grunt/connect.js', 'helper_files/grunt/connect.js');
-	this.copy('helper_files/grunt/htmlhint.js', 'helper_files/grunt/htmlhint.js');
-	this.copy('helper_files/grunt/prettysass.js', 'helper_files/grunt/prettysass.js');
-	this.copy('helper_files/grunt/sync.js', 'helper_files/grunt/sync.js');
-	this.copy('helper_files/grunt/watch.js', 'helper_files/grunt/watch.js');
+	this.mkdir('helpers/_grunt');
+	this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
+	this.copy('helpers/_grunt/clean.js', 'helpers/_grunt/clean.js');
+	this.copy('helpers/_grunt/concurrent.js', 'helpers/_grunt/concurrent.js');
+	this.copy('helpers/_grunt/connect.js', 'helpers/_grunt/connect.js');
+	this.copy('helpers/_grunt/cssmin.js', 'helpers/_grunt/cssmin.js');
+	this.copy('helpers/_grunt/htmlhint.js', 'helpers/_grunt/htmlhint.js');
+	this.copy('helpers/_grunt/prettysass.js', 'helpers/_grunt/prettysass.js');
+	this.copy('helpers/_grunt/sync.js', 'helpers/_grunt/sync.js');
+	this.copy('helpers/_grunt/watch.js', 'helpers/_grunt/watch.js');
 	
     this.copy('_package.json', 'package.json');
     this.copy('config.rb', 'config.rb');
@@ -295,7 +306,7 @@ PrototypeGenerator.prototype.app = function app() {
 	
 	// add batch files
 	if(this.config.get("batchFiles") == true) {
-		this.directory('helper_files/batch_files', 'helper_files/batch_files');
+		this.directory('helpers/batch_files', 'helpers/batch_files');
 	}
 
     // add resources
@@ -317,7 +328,7 @@ PrototypeGenerator.prototype.app = function app() {
 		this.mkdir('resources/templates/partials/_global');
 		this.copy('resources/templates/partials/_global/head.hbs');
 		
-		this.copy('helper_files/grunt/assemble.js', 'helper_files/grunt/assemble.js');
+		this.copy('helpers/_grunt/assemble.js', 'helpers/_grunt/assemble.js');
 	}
     // add specific resources to make it possible to split up some directories
     this.mkdir('_output/js');		
@@ -335,14 +346,18 @@ PrototypeGenerator.prototype.app = function app() {
     this.directory('resources/scss/utils', 'resources/scss/utils');
     this.copy('resources/scss/_all.scss', 'resources/scss/_all.scss');
     this.copy('resources/scss/styles.scss', 'resources/scss/styles.scss');
-    this.copy('resources/scss/styles-png.scss', 'resources/scss/styles-png.scss');
+    this.copy('resources/scss/ie8.scss', 'resources/scss/ie8.scss');
 	
 	// add styleguide files
 	if(this.config.get("installDocs") == true) {
-		this.directory('helper_files/styleguide-template', 'helper_files/styleguide-template');
+		this.directory('helpers/styleguide-template', 'helpers/styleguide-template');
 		this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
-		this.copy('helper_files/grunt/styleguide.js', 'helper_files/grunt/styleguide.js');
-		this.copy('helper_files/grunt/copy.js', 'helper_files/grunt/copy.js');
+		this.copy('helpers/_grunt/styleguide.js', 'helpers/_grunt/styleguide.js');
+		this.copy('helpers/_grunt/copy.js', 'helpers/_grunt/copy.js');
+	}
+	// add mobile first grunt task
+	if(this.config.get("mobileFirst") == true) {
+		this.copy('helpers/_grunt/comment-media-queries.js', 'helpers/_grunt/comment-media-queries.js');
 	}
 	
 	// CMS snippets and SCSS files
@@ -371,40 +386,42 @@ PrototypeGenerator.prototype.app = function app() {
 		if(this.modules.indexOf('grunt-grunticon') != -1) { 
 			console.log(chalk.yellow('******************* grunticon *******************'));
 			this.directory('resources/scss/icons', 'resources/scss/icons');
-			this.directory('helper_files/templates', 'helper_files/templates');
-			this.copy('helper_files/grunt/grunticon.js', 'helper_files/grunt/grunticon.js');
+			this.directory('helpers/templates', 'helpers/templates');
+			this.copy('helpers/_grunt/grunticon.js', 'helpers/_grunt/grunticon.js');
 		}
 		if(this.modules.indexOf('dr-grunt-svg-sprites') != -1) { 
 			console.log(chalk.green('******************* dr-grunt-svg-sprites *******************'));
 			this.mkdir('resources/scss/icons');
-			this.copy('helper_files/grunt/svg-sprites.js', 'helper_files/grunt/svg-sprites.js');
+			this.copy('helpers/_grunt/svg-sprites.js', 'helpers/_grunt/svg-sprites.js');
 		}
 		if(this.modules.indexOf('grunt-packager') != -1) { 
 			console.log(chalk.yellow('******************* grunt-packager *******************'));
 			this.copy('resources/js/project.jspackcfg');
-			this.copy('helper_files/grunt/packager.js', 'helper_files/grunt/packager.js');
+			this.copy('helpers/_grunt/packager.js', 'helpers/_grunt/packager.js');
 		}
 		if(this.modules.indexOf('grunt-combine-media-queries') != -1) { 
 			console.log(chalk.green('******************* grunt-combine-media-queries *******************'));
-			this.copy('helper_files/grunt/cmq.js', 'helper_files/grunt/cmq.js');
-			this.copy('helper_files/grunt/cssmin.js', 'helper_files/grunt/cssmin.js');
+			this.copy('helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');
 		}
 		if(this.modules.indexOf('grunt-bless') != -1) { 
 			console.log(chalk.yellow('******************* grunt-bless *******************'));
-			this.copy('helper_files/grunt/bless.js', 'helper_files/grunt/bless.js');
+			this.copy('helpers/_grunt/bless.js', 'helpers/_grunt/bless.js');
 		}
 		if(this.modules.indexOf('grunt-contrib-compass') != -1) { 
 			console.log(chalk.green('******************* grunt-contrib-compass *******************'));
-			this.copy('helper_files/grunt/compass.js', 'helper_files/grunt/compass.js');
+			this.copy('helpers/_grunt/compass.js', 'helpers/_grunt/compass.js');
 		}
 		if(this.modules.indexOf('grunt-browser-sync') != -1) { 
 			console.log(chalk.yellow('******************* grunt-browser-sync *******************'));
-			this.copy('helper_files/grunt/browser_sync.js', 'helper_files/grunt/browser_sync.js');
-			this.copy('resources/templates/partials/_global/footer_scripts.hbs');
+			this.copy('helpers/_grunt/browser_sync.js', 'helpers/_grunt/browser_sync.js');
 		}
 		if(this.modules.indexOf('grunt-photobox') != -1) { 
 			console.log(chalk.green('******************* grunt-photobox *******************'));
-			this.copy('helper_files/grunt/photobox.js', 'helper_files/grunt/photobox.js');
+			this.copy('helpers/_grunt/photobox.js', 'helpers/_grunt/photobox.js');
+		}
+		if(this.modules.indexOf('grunt-autoprefixer') != -1) { 
+			console.log(chalk.yellow('******************* grunt-autoprefixer *******************'));
+			this.copy('helpers/_grunt/autoprefixer.js', 'helpers/_grunt/autoprefixer.js');
 		}
 	}
 }

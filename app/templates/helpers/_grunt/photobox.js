@@ -1,7 +1,8 @@
 module.exports = {
     local: {
         options: {
-            screenSizes: [ '600', '1000', '1200' ],
+            indexPath: '<%= paths.helper %>/results/photobox/',
+            screenSizes: [ '320', '580', '768', '1024', '1280' ],
             urls: [
                 'http://localhost:9000/index.html',
                 'http://localhost:9000/subpage.html',
@@ -11,7 +12,8 @@ module.exports = {
     },
     dev: {
         options: {
-            screenSizes: [ '600', '1000', '1200' ],
+            indexPath: '<%= paths.helper %>/results/photobox/',
+            screenSizes: [ '320', '580', '768', '1024', '1280' ],
             urls: [
                 ''
             ]
@@ -19,7 +21,8 @@ module.exports = {
     },
     prod: {
         options: {
-            screenSizes: [ '600', '1000', '1200' ],
+            indexPath: '<%= paths.helper %>/results/photobox/',
+            screenSizes: [ '320', '580', '768', '1024', '1280' ],
             urls: [
             ]
         }

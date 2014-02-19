@@ -3,8 +3,5 @@
 
 <% if(modules && modules.length > 0){if(modules.indexOf('grunt-grunticon') != -1) { %>
 // Icons
-@import "icons/icons.data.svg";
+@import "icons/icons.data.png";
 <% }} %>
-
-// Print
-@import "global/print";

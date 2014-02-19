@@ -23,12 +23,13 @@
 	  var options = {
             // Project settings
             config : {
-                src: "helper_files/grunt/*.js"
+				// in this directory you can find your grunt config tasks
+                src: "helpers/_grunt/*.js"
             },
             paths: {
                 // Configurable paths
                 src: 'resources',
-                helper: 'helper_files',
+                helper: 'helpers',
                 dist: '_output'
             },
             ports : {
@@ -48,7 +49,8 @@
 	  <% if(installAssemble){ %>
 	  grunt.loadNpmTasks('assemble'); <% } %><% if(installDocs){ %>
 	  grunt.loadNpmTasks('grunt-contrib-copy');
-	  grunt.loadNpmTasks('grunt-styleguide');<% } %>
+	  grunt.loadNpmTasks('grunt-styleguide');<% } %><% } %><% if(mobileFirst){ %>
+	  grunt.loadNpmTasks('grunt-comment-media-queries');<% } %>
 	  grunt.loadNpmTasks('grunt-newer');
 	  grunt.loadNpmTasks('grunt-htmlhint');
 	  grunt.loadNpmTasks('grunt-prettysass');
@@ -57,16 +59,12 @@
 	  grunt.loadNpmTasks('grunt-contrib-clean');
 	  grunt.loadNpmTasks('grunt-contrib-connect');
 	  grunt.loadNpmTasks('grunt-concurrent');
-	  grunt.loadNpmTasks('grunt-contrib-watch');
-	  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
-		  <% if(name == 'grunt-combine-media-queries') { %>
-	grunt.loadNpmTasks('grunt-combine-media-queries'); 
-	grunt.loadNpmTasks('grunt-contrib-cssmin'); <% } else { %>
-	grunt.loadNpmTasks('<%= name %>'); <%} }); %><%} %><%} %>	  
+	  grunt.loadNpmTasks('grunt-contrib-cssmin');
+	  grunt.loadNpmTasks('grunt-contrib-watch');<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
+	  grunt.loadNpmTasks('<%= name %>'); <%} }); %><%} %><%} %>	  
 	  
 	 // Simple Tasks
-	 <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
-		if(name == 'grunt-grunticon') { %>
+	 <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-grunticon') { %>
 		grunt.registerTask('icons', [
 			'grunticon'
 		]); <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
@@ -123,14 +121,16 @@
 		'js',<% } %><%}); %><%} %><%} %>
 		'concurrent:syncing',
 	    'cssProd',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
-		'cmq',
-		'cssmin', <% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-bless') { %>
+		'cmq',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-comment-media-queries') { %>
+		'comment-media-queries:dist',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-autoprefixer') { %>
+		'autoprefixer',<% } %><%}); %><%} %><%} %>
+		'cssmin',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-bless') { %>
 		'bless', <% } %><%}); %><%} %><%} %>
 		'concurrent:build'
 	  ]);
 
 	  grunt.registerTask('default', [
-	    'build'
+	    'server'
 	  ]);
 
 	};
