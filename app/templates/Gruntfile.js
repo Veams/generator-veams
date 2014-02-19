@@ -122,8 +122,8 @@
 		'js',<% } %><%}); %><%} %><%} %>
 		'concurrent:syncing',
 	    'cssProd',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
-		'cmq',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-comment-media-queries') { %>
-		'comment-media-queries:dist',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-autoprefixer') { %>
+		'cmq',<% } %><%}); %><%} %><%} %><% if(mobileFirst){ %>
+		'comment-media-queries:dist',<%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-autoprefixer') { %>
 		'autoprefixer',<% } %><%}); %><%} %><%} %>
 		'cssmin',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-bless') { %>
 		'bless', <% } %><%}); %><%} %><%} %>
