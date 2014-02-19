@@ -213,8 +213,8 @@ chalk.green('\n    7::::::::7                        ')+
             { name: "grunt-autoprefixer"},
             { name: "grunt-contrib-compass" },
             { name: "grunt-browser-sync" },
-            { name: "grunt-photobox"}
-            { name: "grunt-devtools", checked: true },
+            { name: "grunt-photobox"},
+            { name: "grunt-devtools", checked: true }
         ],
         when: function( answers ) {
             return answers.installModules;
