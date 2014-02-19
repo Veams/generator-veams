@@ -203,10 +203,11 @@ chalk.green('\n    7::::::::7                        ')+
             { name: "grunt-packager", checked: true },
             { name: "grunt-combine-media-queries", checked: true },
             { name: "grunt-bless", checked: true },
+            { name: "grunt-browser-sync" },
             { name: "grunt-autoprefixer"},
             { name: "grunt-contrib-compass" },
-            { name: "grunt-browser-sync" },
             { name: "grunt-photobox"},
+            { name: "grunt-accessibility"},
             { name: "grunt-devtools", checked: true }
         ],
         when: function( answers ) {
@@ -414,6 +415,10 @@ PrototypeGenerator.prototype.app = function app() {
 		if(this.modules.indexOf('grunt-autoprefixer') != -1) { 
 			console.log(chalk.yellow('******************* grunt-autoprefixer *******************'));
 			this.copy('helpers/_grunt/autoprefixer.js', 'helpers/_grunt/autoprefixer.js');
+		}
+		if(this.modules.indexOf('grunt-accessibility') != -1) { 
+			console.log(chalk.yellow('******************* grunt-autoprefixer *******************'));
+			this.copy('helpers/_grunt/accessibility.js', 'helpers/_grunt/accessibility.js');
 		}
 	}
 }
