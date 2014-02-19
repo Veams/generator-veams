@@ -11,24 +11,23 @@ module.exports = {
         },
         syncing: {
             tasks: [
-            'sync:js',
-            'sync:assets'
+                'sync:js',
+                'sync:assets'
             ],
             options: {
-            logConcurrentOutput: true
+                logConcurrentOutput: true
             }
         },
         build: {
             tasks: [<% if(installAssemble){ %>
-            'assemble',<% } %><% if(installDocs){ %>
+                'assemble',<% } %><% if(installDocs){ %>
                 'copy',
-                'styleguide',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-photobox') { %>
-                'photoProd',<% } %><%}); %><%} %><%} %>
-            'prettyscss'
-				],
-	            options: {
-	                logConcurrentOutput: true,
-					limit: 5
-	            }
-			}
+                'styleguide',
+                'prettyscss'
+            ],
+            options: {
+                logConcurrentOutput: true,
+                limit: 5
+            }
+		}
 };

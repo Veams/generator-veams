@@ -142,13 +142,6 @@ chalk.green('\n    7::::::::7                        ')+
         default : this.config.get("projectAuthor")
     });
 
-    (!this.config.get("projectURL") || force) && questions.push({
-        type    : "input",
-        name    : "projectURL",
-        message : "Can you tell me a production environment URL?",
-        default : this.config.get("projectURL")
-    });
-
     (!this.config.get("batchFiles") || force) && questions.push({
         type    : "confirm",
         name    : "batchFiles",
@@ -255,7 +248,6 @@ chalk.green('\n    7::::::::7                        ')+
 
         this.projectName = answers.projectName || this.config.get("projectName");
         this.authorLogin = answers.projectAuthor || this.config.get("projectAuthor");
-        this.projectURL = answers.projectURL || this.config.get("projectURL");
         this.batchFiles = answers.batchFiles || this.config.get("batchFiles");
         this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
         this.installDocs = answers.installDocs || this.config.get("installDocs");
