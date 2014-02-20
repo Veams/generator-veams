@@ -276,9 +276,7 @@ PrototypeGenerator.prototype.app = function app() {
     var files = this.files;
 
     // Copy standard files
-	this.mkdir('helpers');
-	this.copy('helpers/htmlhintrc', 'helpers/.htmlhintrc');
-	
+	this.mkdir('helpers');	
 	this.mkdir('helpers/_grunt');
 	this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
 	this.copy('helpers/_grunt/clean.js', 'helpers/_grunt/clean.js');
@@ -286,6 +284,8 @@ PrototypeGenerator.prototype.app = function app() {
 	this.copy('helpers/_grunt/connect.js', 'helpers/_grunt/connect.js');
 	this.copy('helpers/_grunt/cssmin.js', 'helpers/_grunt/cssmin.js');
 	this.copy('helpers/_grunt/htmlhint.js', 'helpers/_grunt/htmlhint.js');
+	this.copy('helpers/_grunt/jshint.js', 'helpers/_grunt/jshint.js');
+	this.copy('helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
 	this.copy('helpers/_grunt/prettysass.js', 'helpers/_grunt/prettysass.js');
 	this.copy('helpers/_grunt/sync.js', 'helpers/_grunt/sync.js');
 	this.copy('helpers/_grunt/watch.js', 'helpers/_grunt/watch.js');

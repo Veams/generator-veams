@@ -51,15 +51,17 @@
 	  grunt.loadNpmTasks('grunt-contrib-copy');
 	  grunt.loadNpmTasks('grunt-styleguide');<% } %><% if(mobileFirst){ %>
       grunt.loadNpmTasks('grunt-comment-media-queries'); <% } %>
-	  grunt.loadNpmTasks('grunt-newer');
-	  grunt.loadNpmTasks('grunt-htmlhint');
-	  grunt.loadNpmTasks('grunt-prettysass');
 	  grunt.loadNpmTasks('grunt-bg-shell');
+	  grunt.loadNpmTasks('grunt-concurrent');
+	  grunt.loadNpmTasks('grunt-htmlhint');
+	  grunt.loadNpmTasks('grunt-jsbeautifier');
+	  grunt.loadNpmTasks('grunt-newer');
+	  grunt.loadNpmTasks('grunt-prettysass');
 	  grunt.loadNpmTasks('grunt-sync');
 	  grunt.loadNpmTasks('grunt-contrib-clean');
 	  grunt.loadNpmTasks('grunt-contrib-connect');
-	  grunt.loadNpmTasks('grunt-concurrent');
 	  grunt.loadNpmTasks('grunt-contrib-cssmin');
+	  grunt.loadNpmTasks('grunt-contrib-jshint'); 
 	  grunt.loadNpmTasks('grunt-contrib-watch'); 
 	  <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { %>
 	  grunt.loadNpmTasks('<%= name %>'); <%}); %><%} %><%} %>
@@ -87,7 +89,6 @@
 		grunt.registerTask('photoProd', [
 	        'photobox:prod'
 	    ]);<% } %><%}); %><%} %><%} %>
-	  
 		grunt.registerTask('cssDev', [
 	        'bgShell:devCompass'
 	    ]);
@@ -103,7 +104,13 @@
 		grunt.registerTask('check-html', [
 			'htmlhint'
 		]);
-		grunt.registerTask('prettyscss', [
+		grunt.registerTask('check-js', [
+			'jshint'
+		]);
+		grunt.registerTask('beauty-files', [
+			'jsbeautifier'
+		]);
+		grunt.registerTask('beauty-scss', [
 			'prettysass'
 		]);
 
@@ -120,14 +127,18 @@
 	  grunt.registerTask('build', [
 	    'clean',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
 		'js',<% } %><%}); %><%} %><%} %>
+		'jsbeautifier:js',
 		'concurrent:syncing',
 	    'cssProd',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
 		'cmq',<% } %><%}); %><%} %><%} %><% if(mobileFirst){ %>
 		'comment-media-queries:dist',<%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-autoprefixer') { %>
 		'autoprefixer',<% } %><%}); %><%} %><%} %>
 		'cssmin',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-bless') { %>
-		'bless', <% } %><%}); %><%} %><%} %>
-		'concurrent:build'
+		'bless', <% } %><%}); %><%} %><%} %>		
+		'concurrent:build',
+		'jsbeautifier:html',
+		'check-html',
+		'check-js'
 	  ]);
 
 	  grunt.registerTask('default', [

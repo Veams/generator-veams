@@ -23,7 +23,7 @@ module.exports = {
                 'assemble',<% } %><% if(installDocs){ %>
                 'copy',
                 'styleguide',<% } %>
-                'prettyscss'
+                'beauty-scss'
             ],
             options: {
                 logConcurrentOutput: true,

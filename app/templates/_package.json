@@ -44,16 +44,18 @@
 		<% } %><% if(name == 'grunt-photobox') { %>
 		"grunt-photobox": "~0.5.0",
 		<% } %><%}); %><%} %><%} %>
-		"grunt-contrib-cssmin": "~0.7.0",
+		"load-grunt-configs": "~0.3.1",
+		"grunt-bg-shell": "*",
 		"grunt-sync": "~0.0.5",
 		"grunt-htmlhint": "~0.4.0",
 		"grunt-prettysass": "~0.2.3",
 		"grunt-concurrent": "~0.4.2",
+		"grunt-jsbeautifier": "~0.2.6",
+		"grunt-contrib-cssmin": "~0.7.0",
         "grunt-contrib-clean": "~0.5.0",
-		"grunt-bg-shell": "*",
         "grunt-contrib-connect": "~0.5.0",
         "grunt-contrib-watch": "~0.5.3",
-		"load-grunt-configs": "~0.3.1",
+		"grunt-contrib-jshint": "~0.8.0",
         "time-grunt": "*"<% if(plugin && plugin.length > 0){ %>,
 <% if(typeof plugin === 'object'){ _.each(plugin, function(name, i) { %>
     "<%= name %>": "*"<% if(i < (plugin.length - 1)) { %>,<% } %>
