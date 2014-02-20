@@ -5,9 +5,9 @@ module.exports = {
     test : {
         files: [{
             expand  : true,
-            cwd     : '<% paths.dist %>/',
+            cwd     : '<%= paths.dist %>/',
             src     : ['*.html'],
-            dest    : '<% paths.helper %>/reports/accessibility',
+            dest    : '<%= paths.helper %>/reports/accessibility',
             ext     : '-report.txt'
         }]
     }
