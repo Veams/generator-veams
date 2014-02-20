@@ -28,8 +28,12 @@ end
 relative_assets = true
 disable_warnings = true
 line_comments = false
-sourcemaps = true
+
+# sourcemap in compass
+sourcemap = true
+# fallback for gem package
 enable_sourcemaps = true
+
 Sass::Script::Number.precision = 8
 
 # options for sprite generation

@@ -22,7 +22,7 @@ module.exports = {
             tasks: [<% if(installAssemble){ %>
                 'assemble',<% } %><% if(installDocs){ %>
                 'copy',
-                'styleguide',
+                'styleguide',<% } %>
                 'prettyscss'
             ],
             options: {
