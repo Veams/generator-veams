@@ -1,0 +1,126 @@
+<article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
+<a name="prototype-generator" class="anchor" href="#prototype-generator"><span class="octicon octicon-link"></span></a>Prototype Generator</h1>
+
+<blockquote>
+<p><a href="http://yeoman.io/">Yeoman</a> generator for Prototype.</p>
+</blockquote>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<ul>
+<li><p>Install Yeoman:
+<code>npm install -g yo</code></p></li>
+<li><p>Install the package via:
+<code>npm install -g generator-prototype</code></p></li>
+<li><p>Or copy the repository via clone to your directory (it depends on the system, just find your directory with yo installed):
+<code>git clone https://github.com/Prototype-Group/generator-prototype.git 
+~/AppData/Roaming/npm/node_modules</code></p></li>
+</ul><h3>
+<a name="hints" class="anchor" href="#hints"><span class="octicon octicon-link"></span></a>Hints</h3>
+
+<p>Sometimes you need to clone the package with an absolute path. On windows the clone command can look like this:
+<code>git clone https://github.com/Prototype-Group/generator-prototype.git 
+D:\Users\Username\AppData\Roaming\npm\node_modules</code></p>
+
+<ul>
+<li>Replace 'Username' with your username</li>
+</ul><h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a name="prototype-app-scaffolds" class="anchor" href="#prototype-app-scaffolds"><span class="octicon octicon-link"></span></a>Prototype app scaffolds.</h3>
+
+<div class="highlight highlight-bash"><pre>mkdir project <span class="o">&amp;&amp;</span> <span class="nb">cd </span>project
+yo prototype <span class="o">[</span>--skip-install<span class="o">]</span>
+</pre></div>
+
+<h4>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h4>
+
+<ul>
+<li>
+<p><code>-s</code> alias <code>--skip-install</code></p>
+
+<p>Skips the automatic execution of <code>bower</code> and <code>npm</code> after scaffolding has finished.</p>
+</li>
+<li>
+<p><code>-w</code> alias <code>--skip-welcome-message</code></p>
+
+<p>Skips app welcome message.</p>
+</li>
+</ul><h2>
+<a name="plugins-and-modules" class="anchor" href="#plugins-and-modules"><span class="octicon octicon-link"></span></a>Plugins and Modules</h2>
+
+<p>You can apply multiple addons and grunt modules to your project. Just choose specific ones:</p>
+
+<h3>
+<a name="assemble" class="anchor" href="#assemble"><span class="octicon octicon-link"></span></a>Assemble</h3>
+
+<ul>
+<li>permalinks</li>
+<li>assemble-contrib-contextual</li>
+<li>assemble-contrib-sitemap</li>
+<li>assemble-related-pages</li>
+<li>assemble-markdown</li>
+</ul><h3>
+<a name="grunt-modules" class="anchor" href="#grunt-modules"><span class="octicon octicon-link"></span></a>Grunt modules</h3>
+
+<ul>
+<li>
+<a href="https://github.com/vladikoff/grunt-devtools">grunt-devtools</a> - An user interface in chrome to execute grunt tasks in your project</li>
+<li>
+<a href="https://github.com/Prototype-Group/grunticon">grunticon-sass</a> - Generate SVG-URI-SASS files with png fallbacks</li>
+<li>
+<a href="https://github.com/drdk/dr-grunt-svg-sprites">dr-grunt-svg-sprites</a> - Generate SVG Sprites with css files</li>
+<li>
+<a href="https://github.com/bobbor/grunt-packager">grunt-packager</a> (only executable when your project.jspackcfg is configured) - package your js</li>
+<li><a href="https://github.com/gruntjs/grunt-contrib-compass">grunt-contrib-compass</a></li>
+<li>
+<a href="https://npmjs.org/package/grunt-browser-sync">grunt-browser-sync</a> - Sync and aut-reload your local server over multiple devices</li>
+<li>
+<a href="https://github.com/yaniswang/grunt-htmlhint">grunt-htmlhint</a> - Check your html for errors</li>
+<li>
+<a href="https://github.com/brandonminch/grunt-prettysass">grunt-prettysass</a> - Format your SASS-files</li>
+<li>
+<a href="https://github.com/stefanjudis/grunt-photobox">grunt-photobox</a> - Take snapshots from homepage</li>
+<li>
+<a href="https://github.com/stefanjudis/grunt-bless">grunt-bless</a> - Split your css after you reach size limit for ie9</li>
+<li>
+<a href="https://github.com/stefanjudis/grunt-combine-media-queries">grunt-combine-media-queries</a> - When you use mixins for media queries in your SASS files, you can combine your media queries with this module</li>
+</ul><h2>
+<a name="gruntfile" class="anchor" href="#gruntfile"><span class="octicon octicon-link"></span></a>Gruntfile</h2>
+
+<p>For our Gruntfile we use the grunt module <a href="https://github.com/creynders/load-grunt-configs/">load-grunt-configs</a> to split the file up in multiple files. 
+These files/tasks you can find in this directory:</p>
+
+<ul>
+<li>helper_files/grunt</li>
+</ul><h2>
+<a name="cms-snippets-work-in-progress" class="anchor" href="#cms-snippets-work-in-progress"><span class="octicon octicon-link"></span></a>CMS snippets (work in progress)</h2>
+
+<p>You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
+After choosing a system you will get HTML-snippets and a few new SCSS files, which you can use:</p>
+
+<ul>
+<li>Drupal 7</li>
+<li>TYPO3 6.2</li>
+<li>Magnolia</li>
+<li>CoreMedia</li>
+</ul><h2>
+<a name="alternative" class="anchor" href="#alternative"><span class="octicon octicon-link"></span></a>Alternative</h2>
+
+<ul>
+<li><a href="https://github.com/assemble/grunt-init-assemble">grunt-init-assemble</a></li>
+<li><a href="https://github.com/assemble/generator-assemble">generator-assemble</a></li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="http://en.wikipedia.org/wiki/MIT_License">MIT License</a></p>
+
+<h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO:</h2>
+
+<ul>
+<li>CMS Snippets</li>
+</ul></article>
