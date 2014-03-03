@@ -1,6 +1,7 @@
 /* ---------------------------------------------------
 Demo Styles - just delete them
 --------------------------------------------------- */
+
 body {
 	background: #f4f4f4;
 	color: #333;
@@ -9,6 +10,14 @@ body {
 	line-height: 140%;
 }
 
+p {
+	margin-top: 0;
+}
+.masthead {
+	.container {
+		float: left;
+	}
+}
 .navbar {
 	background: #222;
 	height: 100%;
@@ -40,7 +49,12 @@ body {
 			}
 		}
 	}
+	ul {
+		margin: 1em 0;
+		padding: 0;
+	}
 	li {
+		list-style: none;
 		&.active {
 			a, a:hover {
 				background: yellowgreen;
@@ -54,6 +68,8 @@ h2 {
 	color: yellowgreen;
 	font-weight: bold;
 	margin: 1em 0;
+	font-size: 1em;
+	line-height: 1.4em;
 }
 
 #main {
@@ -62,6 +78,7 @@ h2 {
 	h1 {
 		font-size: 150%;
 		font-weight: bold;
+		margin-top: 1em;
 		margin-bottom: 0.5em;
 		@include breakpoint(568px){
 			font-size: 100%;

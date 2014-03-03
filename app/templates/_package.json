@@ -15,7 +15,8 @@
     },
     "devDependencies": {
 		"grunt": "~0.4.2", <% if(installAssemble === true){ %>
-        "assemble": "~0.4.34", <% } %><% if(mobileFirst === true){ %>
+        "assemble": "~0.4.34", <% } %><% if(sassInsteadOfCompass == true){ %>
+        "grunt-sass": "^0.11.0", <% } %><% if(mobileFirst === true){ %>
         "grunt-comment-media-queries": "~0.1.0", <% } %><% if(installDocs === true){ %>
         "grunt-styleguide": "~0.2.14", 
         "grunt-contrib-copy": "~0.5.0", <% } %>
@@ -23,6 +24,7 @@
 		<% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
 		if(name == 'grunt-grunticon') { %>
 		"grunt-grunticon": "~1.0.0-beta.0",
+		"grunt-text-replace": "~0.3.11",
 		<% } %><% if(name == 'dr-grunt-svg-sprites') { %>
 		"dr-grunt-svg-sprites": "~0.2.6",
         <% } %><% if(name == 'grunt-contrib-compass') { %>

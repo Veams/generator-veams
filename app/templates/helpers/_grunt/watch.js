@@ -2,11 +2,15 @@ module.exports = { <% if(installAssemble){ %>
     assemble: {
         files: ['<%%= paths.src %>/{data,templates/layouts,templates/partials}/**/{,*/}*.{js,md,hbs,yml,json}'],
         tasks: ['assemble']
-    }, <% } %>
+    },
     pages: {
         files: ['<%%= paths.src %>/templates/pages/**/{,*/}*.{js,md,hbs,yml,json}'],
         tasks: ['newer:assemble']
-    },
+    }, <% } %><% if(sassInsteadOfCompass == true){ %>
+    scss: {
+        files: '<%%= paths.src %>/scss/**/*',
+        tasks: 'sass:dist'
+    }, <% } %>
     js: {
         files: '<%%= paths.src %>/js/{,*/}*.js',
         tasks: 'sync:js'

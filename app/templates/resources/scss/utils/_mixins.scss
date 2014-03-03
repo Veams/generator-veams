@@ -6,10 +6,25 @@
 		@media only screen and (min-width: $min) and (max-width: $max) {
 			@content;
 		}
-	}
-	@else {
+	} @else {
 		@media only screen and (max-width: $max) {
 			@content;
 		}
+	}
+}
+
+/******************************************
+	Grunticon mixin
+******************************************/
+//
+// usage: @include grunticon(%icon-my-svg);
+
+@mixin grunticon($name) {
+	@extend %icon-data-svg-#{$name};
+//   @at-root .ie8 & {
+// 	     @extend %icon-data-png-#{$name};
+//   }
+	@at-root .lt-ie9 & {
+		@extend %icon-png-#{$name};
 	}
 }
