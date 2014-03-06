@@ -33,11 +33,26 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 
     this.pkgFiles = ['_package.json'];
 
+    // Define packages for users
     this.config.defaults({
         projectName: "",
         projectAuthor: "",
         batchFiles: false,
-        installPlugin: true,
+        installDocs: false,
+        installAssemble: true,
+        installPlugin: false,
+        plugin: false,
+        installModules: true,
+        modules: [
+            "grunt-grunticon",
+            "grunt-packager",
+            "grunt-combine-media-queries",
+            "grunt-bless",
+            "grunt-browser-sync",
+            "grunt-autoprefixer"
+        ],
+        sassInsteadOfCompass: false,
+        mobileFirst: false,
         installCMS: false,
         author: {
             name: "",
@@ -197,6 +212,7 @@ PrototypeGenerator.prototype.askFor = function askFor() {
             { name: "grunt-accessibility"},
             { name: "grunt-devtools"}
         ],
+        default: this.config.get("modules"),
         when: function (answers) {
             return answers.installModules;
         }
