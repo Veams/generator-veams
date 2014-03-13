@@ -68,7 +68,7 @@ These files/tasks you can find in this directory:
 
  * helpers/_grunt
 
-## JS Libraries and CMS Frameworks
+## JS Libraries and CSS Frameworks
 You can choose JS Libraries like:
 
 * jQuery
