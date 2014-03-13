@@ -68,6 +68,22 @@ These files/tasks you can find in this directory:
 
  * helpers/_grunt
 
+## JS Libraries and CMS Frameworks
+You can choose JS Libraries like:
+
+* jQuery
+* BackboneJS
+* RequireJS
+* AngularJS
+
+And you can also choose CSS Frameworks like:
+
+* Foundation
+* Bourbon Neat
+* SASS Bootstrap
+
+All files will be included and configured. Have fun!
+
 ## CMS snippets (work in progress)
 You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
 After choosing a system you will get HTML-snippets and a few new SCSS files, which you can use:
