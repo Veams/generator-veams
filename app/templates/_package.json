@@ -15,11 +15,11 @@
     },
     "devDependencies": {
 		"grunt": "~0.4.2", <% if(installAssemble === true){ %>
-        "assemble": "~0.4.34", <% } %><% if(sassInsteadOfCompass == true){ %>
-        "grunt-sass": "^0.11.0", <% } %><% if(mobileFirst === true){ %>
-        "grunt-comment-media-queries": "~0.1.0", <% } %><% if(installDocs === true){ %>
+        "assemble": "~0.4.34", <% } %><% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
+        "grunt-sass": "^0.11.0", <% }} %><% if (features && features.length > 0) { if (features.indexOf('mobileFirst') != -1) { %>
+        "grunt-comment-media-queries": "~0.1.0", <% }} %><% if (features && features.length > 0) { if (features.indexOf('installDocs') != -1) { %>
         "grunt-styleguide": "~0.2.14", 
-        "grunt-contrib-copy": "~0.5.0", <% } %>
+        "grunt-contrib-copy": "~0.5.0", <% }} %>
         "grunt-newer": "~0.5.4",<% if(modules && modules.length > 0){ %>
 		<% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
 		if(name == 'grunt-grunticon') { %>

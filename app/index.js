@@ -138,12 +138,6 @@ PrototypeGenerator.prototype.askFor = function askFor() {
         default: this.config.get("projectAuthor")
     });
 
-    (!this.config.get("installDocs") || force) && questions.push({
-        type: "confirm",
-        name: "installDocs",
-        message: "Do you want to use a styleguide documentation?",
-        default: this.config.get("installDocs")
-    });
 
     (!this.config.get("installAssemble") || force) && questions.push({
         type: "confirm",
@@ -174,13 +168,7 @@ PrototypeGenerator.prototype.askFor = function askFor() {
         }
     });
 
-    (!this.config.get("installModules") || force) && questions.push({
-        type: "confirm",
-        name: "installModules",
-        message: "Would you want to install grunt modules?",
-        default: this.config.get("installModules")
-    });
-    questions.push({
+    (!this.config.get("modules") || force) && questions.push({
         name: "modules",
         type: "checkbox",
         message: "Which grunt modules do you want to use?",
@@ -197,22 +185,84 @@ PrototypeGenerator.prototype.askFor = function askFor() {
             { name: "grunt-accessibility"},
             { name: "grunt-devtools"}
         ],
-        when: function (answers) {
-            return answers.installModules;
-        }
+        default: this.config.get("modules")
     });
 
-    (!this.config.get("sassInsteadOfCompass") || force) && questions.push({
-        type: "confirm",
-        name: "sassInsteadOfCompass",
-        message: "Do you want to use Libsass instead of Compass? It is much faster but does not support gem packages.",
-        default: this.config.get("sassInsteadOfCompass")
+    (!this.config.get("features") || force) && questions.push({
+        name: "features",
+        type: "checkbox",
+        message: "Do you need anything special?",
+        choices: [
+            {
+                name: 'Styleguide Documentation',
+                value: 'installDocs',
+                checked: false
+            },
+            {
+                name: 'Use Libsass instead of Compass',
+                value: 'sassInsteadOfCompass',
+                checked: true
+            },
+            {
+                name: 'Start developing mobile first and need to support desktop styles in IE8',
+                value: 'mobileFirst',
+                checked: false
+            }
+        ],
+        default: this.config.get("features")
     });
-    (!this.config.get("mobileFirst") || force) && questions.push({
-        type: "confirm",
-        name: "mobileFirst",
-        message: "Do you start developing mobile first and need to support desktop styles in IE8?",
-        default: this.config.get("mobileFirst")
+
+    (!this.config.get("jsLibs") || force) && questions.push({
+        name: "jsLibs",
+        type: "checkbox",
+        message: "Do you want to use any JS Libraries?",
+        choices: [
+            {
+                name: 'jQuery (latest Version)',
+                value: 'jquery',
+                checked: false
+            },
+            {
+                name: 'RequireJS',
+                value: 'requirejs',
+                checked: false
+            },
+            {
+                name: 'BackboneJS',
+                value: 'backbone',
+                checked: false
+            },
+            {
+                name: 'AngularJS',
+                value: 'angular',
+                checked: false
+            }
+        ],
+        default: this.config.get("jsLibs")
+    });
+
+    (!this.config.get("cssLibs") || force) && questions.push({
+        name: "cssLibs",
+        type: "checkbox",
+        message: "Do you want to use any CSS Frameworks?",
+        choices: [
+            {
+                name: 'Foundation',
+                value: 'foundation',
+                checked: false
+            },
+            {
+                name: 'Bourbon Neat',
+                value: 'neat',
+                checked: false
+            },
+            {
+                name: 'SASS Bootstrap',
+                value: 'sass-bootstrap',
+                checked: false
+            }
+        ],
+        default: this.config.get("cssLibs")
     });
 
     (!this.config.get("installCMS") || force) && questions.push({
@@ -240,13 +290,12 @@ PrototypeGenerator.prototype.askFor = function askFor() {
 
         this.projectName = answers.projectName || this.config.get("projectName");
         this.authorLogin = answers.projectAuthor || this.config.get("projectAuthor");
-        this.batchFiles = answers.batchFiles || this.config.get("batchFiles");
         this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
-        this.installDocs = answers.installDocs || this.config.get("installDocs");
         this.plugin = answers.plugin;
         this.modules = answers.modules;
-        this.sassInsteadOfCompass = answers.sassInsteadOfCompass || this.config.get("sassInsteadOfCompass");
-        this.mobileFirst = answers.mobileFirst || this.config.get("mobileFirst");
+        this.features = answers.features;
+        this.jsLibs = answers.jsLibs;
+        this.cssLibs = answers.cssLibs;
         this.CMS = answers.CMS;
         this.authorName = this.config.get("author").name;
         this.authorEmail = this.config.get("author").email;
@@ -278,22 +327,17 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('helpers/_grunt/jshint.js', 'helpers/_grunt/jshint.js');
     this.copy('helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
     this.copy('helpers/_grunt/prettysass.js', 'helpers/_grunt/prettysass.js');
-    this.copy('helpers/_grunt/sync.js', 'helpers/_grunt/sync.js');
+    this.copy('helpers/_grunt/_sync.js', 'helpers/_grunt/sync.js');
     this.copy('helpers/_grunt/watch.js', 'helpers/_grunt/watch.js');
 
     this.copy('_package.json', 'package.json');
     this.copy('Gruntfile.js', 'Gruntfile.js');
+    this.copy('_bower.json', 'bower.json');
+    this.copy('bowerrc', '.bowerrc');
     this.copy('gitignore', '.gitignore');
 
     this.directory('_output', '_output');
 
-    // add libsass grunt tasks files
-    if (this.config.get("sassInsteadOfCompass") == true) {
-        this.copy('helpers/_grunt/sass.js', 'helpers/_grunt/sass.js');
-    } else {
-        this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
-        this.copy('config.rb', 'config.rb');
-    }
     // add batch files
     if (this.config.get("batchFiles") == true) {
         this.directory('helpers/batch_files', 'helpers/batch_files');
@@ -338,16 +382,39 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('resources/scss/styles.scss', 'resources/scss/styles.scss');
     this.copy('resources/scss/ie8.scss', 'resources/scss/ie8.scss');
 
-    // add styleguide files
-    if (this.config.get("installDocs") == true) {
-        this.directory('helpers/styleguide-template', 'helpers/styleguide-template');
-        this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
-        this.copy('helpers/_grunt/styleguide.js', 'helpers/_grunt/styleguide.js');
-        this.copy('helpers/_grunt/copy.js', 'helpers/_grunt/copy.js');
+    // Feature section
+    if (this.features && this.features.length > 0) {
+        if (this.features.indexOf('installDocs') != -1) {
+            // add styleguide files
+            this.directory('helpers/styleguide-template', 'helpers/styleguide-template');
+            this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
+            this.copy('helpers/_grunt/styleguide.js', 'helpers/_grunt/styleguide.js');
+            this.copy('helpers/_grunt/copy.js', 'helpers/_grunt/copy.js');
+        }
+
+        // add mobile first grunt task
+        if (this.features.indexOf('mobileFirst') != -1) {
+            this.copy('helpers/_grunt/comment-media-queries.js', 'helpers/_grunt/comment-media-queries.js');
+        }
     }
-    // add mobile first grunt task
-    if (this.config.get("mobileFirst") == true) {
-        this.copy('helpers/_grunt/comment-media-queries.js', 'helpers/_grunt/comment-media-queries.js');
+
+    // Add Libsass or Compass
+    if (this.features.indexOf('sassInsteadOfCompass') != -1) {
+        this.copy('helpers/_grunt/sass.js', 'helpers/_grunt/sass.js');
+    } else {
+        this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
+        this.copy('config.rb', 'config.rb');
+    }
+
+    // Add JS files for libraries
+    if (this.jsLibs && this.jsLibs.length > 0) {
+		if (this.jsLibs.indexOf('requirejs') != -1) {
+        this.copy('resources/js/_main.js', 'resources/js/main.js');
+        this.copy('resources/js/app.js', 'resources/js/app.js');
+		}
+        if (this.config.get("installAssemble") == true) {
+            this.copy('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/scripts.hbs');
+        }
     }
 
     // CMS snippets and SCSS files
@@ -371,14 +438,14 @@ PrototypeGenerator.prototype.app = function app() {
         this.directory('resources/scss/coremedia', 'resources/scss/coremedia');
         this.directory('resources/templates/partials/coremedia', 'resources/templates/partials/coremedia');
     }
-
-    // Grunt modules are splitted up in separate files and modules
+//
+//    // Grunt modules are splitted up in separate files and modules
     if (this.modules && this.modules.length > 0) {
         if (this.modules.indexOf('grunt-grunticon') != -1) {
             this.directory('resources/scss/icons', 'resources/scss/icons');
             this.directory('helpers/templates', 'helpers/templates');
             this.copy('helpers/_grunt/grunticon.js', 'helpers/_grunt/grunticon.js');
-            if (this.config.get("sassInsteadOfCompass") == true) {
+            if (this.features.indexOf('sassInsteadOfCompass') != -1) {
                 this.copy('helpers/_grunt/replaceSass.js', 'helpers/_grunt/replace.js');
             } else {
                 this.copy('helpers/_grunt/replace.js', 'helpers/_grunt/replace.js');

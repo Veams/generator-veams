@@ -14,10 +14,11 @@
 }
 
 /******************************************
+
 	Grunticon mixin
+	usage: @include grunticon(icon-my-svg);
+
 ******************************************/
-//
-// usage: @include grunticon(%icon-my-svg);
 
 @mixin grunticon($name) {
 	@extend %icon-data-svg-#{$name};

@@ -6,11 +6,11 @@ module.exports = { <% if(installAssemble){ %>
     pages: {
         files: ['<%%= paths.src %>/templates/pages/**/{,*/}*.{js,md,hbs,yml,json}'],
         tasks: ['newer:assemble']
-    }, <% } %><% if(sassInsteadOfCompass == true){ %>
+    }, <% } %><% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
     scss: {
         files: '<%%= paths.src %>/scss/**/*',
         tasks: 'sass:dist'
-    }, <% } %>
+    }, <% }} %>
     js: {
         files: '<%%= paths.src %>/js/{,*/}*.js',
         tasks: 'sync:js'

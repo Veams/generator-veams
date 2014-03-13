@@ -36,5 +36,10 @@
      {{> body }}
 </div>
 
+<% if (jsLibs && jsLibs.length > 0) { %>
+<!-- Scripts
+================================================== -->
+{{> scripts }}
+<% } %>
 </body>
 </html>

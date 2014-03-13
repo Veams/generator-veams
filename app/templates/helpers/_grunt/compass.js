@@ -1,8 +1,8 @@
 module.exports = {
     dist: {
         options: {
-            config: 'config.rb',  // css_dir = 'dev/css'
-            cssDir: '<%= paths.dist %>/css'
+            config: 'config.rb',  
+            cssDir: '<%= paths.dist %>/css' // css_dir = '_output/css'
         }
     }
 };
