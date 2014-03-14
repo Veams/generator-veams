@@ -396,15 +396,15 @@ PrototypeGenerator.prototype.app = function app() {
         if (this.features.indexOf('mobileFirst') != -1) {
             this.copy('helpers/_grunt/comment-media-queries.js', 'helpers/_grunt/comment-media-queries.js');
         }
-    }
 
-    // Add Libsass or Compass
-    if (this.features.indexOf('sassInsteadOfCompass') != -1) {
-        this.copy('helpers/_grunt/sass.js', 'helpers/_grunt/sass.js');
-    } else {
-        this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
-        this.copy('config.rb', 'config.rb');
-    }
+        // Add Libsass or Compass
+        if (this.features.indexOf('sassInsteadOfCompass') != -1) {
+            this.copy('helpers/_grunt/sass.js', 'helpers/_grunt/sass.js');
+        } else {
+            this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
+            this.copy('config.rb', 'config.rb');
+        }
+    }   
 
     // Add JS files for libraries
     if (this.jsLibs && this.jsLibs.length > 0) {
