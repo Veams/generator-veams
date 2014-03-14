@@ -8,17 +8,18 @@ var fs 		= require('fs');
 var defaultPrompts = {
   'projectName': true,
   'projectAuthor': 'Test Author',
-  'installDocs': true,
+  'installAssemble': true,
   'installPlugin': true,
   'plugin': ['assemble-related-pages'],
-  'installModules': true,
   'modules': [	'grunt-grunticon', 
   				'grunt-packager',
   				'grunt-browser-sync',
   				'grunt-autoprefixer'
   ],
-  'sassInsteadOfCompass': false,
+  'features': [],
   'mobileFirst': false,
+  'jsLibs': false,
+  'cssLibs': false,
   'installCMS': false
 }
 
@@ -34,29 +35,6 @@ describe('prototype-generator', function () {
       ]);
       done();
     }.bind(this));
-  });
-
-  after(function(done) {
-  	// before each deletes test folder in prototype-generator 0.16.0
-  	// as long as it does not work deleteFolderRecursive to the rescue
- //  	var deleteFolderRecursive = function(path) {
-	//     var files = [];
-	//     if( fs.existsSync(path) ) {
-	//         files = fs.readdirSync(path);
-	//         files.forEach(function(file,index){
-	//             var curPath = path + "/" + file;
-	//             if(fs.lstatSync(curPath).isDirectory()) { // recurse
-	//                 deleteFolderRecursive(curPath);
-	//             } else { // delete file
-	//                 fs.unlinkSync(curPath);
-	//             }
-	//         });
-	//         fs.rmdirSync(path);
-	//     }
-	// };
-
-	// deleteFolderRecursive(path.join(__dirname, 'temp'));
-	done();
   });
 
   it('creates expected files', function (done) {
