@@ -132,7 +132,13 @@
 		'browser_sync', <% } %><%}); %><%} %><%} %>
 		'watch'
 	  ]);
-
+	  <% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>
+		grunt.registerTask('devProxy', [
+			'configureProxies:proxy', 
+			'connect:proxy',
+			'watch:proxies'
+		]);
+	  <% } %>
 	  grunt.registerTask('build', [
 		'clean',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
 		'js',<% } %><%}); %><%} %><%} %>

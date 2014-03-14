@@ -29,5 +29,8 @@ module.exports = { <% if(installAssemble){ %>
             '<%%= paths.dist %>/js/{,*/}*.js',
             '<%%= paths.dist %>/assets/**/*'
         ]
-    }
+    }<% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>,
+    proxies: {
+        files: ['Gruntfile.js']
+    }<% } %>
 };

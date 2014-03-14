@@ -39,6 +39,9 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
         batchFiles: false,
         installPlugin: true,
         installCMS: false,
+        installProxy: false,
+        proxyHost: '0.0.0.0',
+        proxyPort: 80,
         author: {
             name: "",
             login: "",
@@ -183,9 +186,49 @@ PrototypeGenerator.prototype.askFor = function askFor() {
             { name: "grunt-contrib-compass" },
             { name: "grunt-photobox"},
             { name: "grunt-accessibility"},
-            { name: "grunt-devtools"}
+            { name: "grunt-devtools"},
+            { name: "grunt-connect-proxy (served with CORS, Basic Auth and http methods listening to 0.0.0.0:8000)", value: "grunt-connect-proxy"}
         ],
         default: this.config.get("modules")
+    });
+
+    questions.push({
+        when: function(answers) {
+            return     answers.modules 
+                    && answers.modules.length > 0 
+                    && answers.modules.indexOf('grunt-connect-proxy') !== -1;
+        },
+        type: 'input',
+        name: 'proxyHost',
+        validate: function(answer) {
+            if(typeof answer !== 'string' || answer.length < 5 || answer.indexOf('.') === -1) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+        message: 'Which host do you want me to proxy (e.g. domain.com)?',
+        default: this.config.get("proxyHost")
+    });
+
+    questions.push({
+        when: function(answers) {
+            return     answers.modules 
+                    && answers.modules.length > 0 
+                    && answers.modules.indexOf('grunt-connect-proxy') !== -1
+                    && answers.proxyHost;
+        },
+        type: 'input',
+        name: 'proxyPort',
+        validate: function(answer) {
+            if(isNaN(Number(answer))) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+        message: 'Which port should be used for the proxy?',
+        default: this.config.get("proxyPort")
     });
 
     (!this.config.get("features") || force) && questions.push({
@@ -299,6 +342,8 @@ PrototypeGenerator.prototype.askFor = function askFor() {
         this.CMS = answers.CMS;
         this.authorName = this.config.get("author").name;
         this.authorEmail = this.config.get("author").email;
+        this.proxyHost = answers.proxyHost;
+        this.proxyPort = answers.proxyPort;     
 
         //save config to .yo-rc.json
         this.config.set(answers);
@@ -321,14 +366,14 @@ PrototypeGenerator.prototype.app = function app() {
     this.mkdir('helpers/_grunt');
     this.copy('helpers/_grunt/clean.js', 'helpers/_grunt/clean.js');
     this.copy('helpers/_grunt/concurrent.js', 'helpers/_grunt/concurrent.js');
-    this.copy('helpers/_grunt/connect.js', 'helpers/_grunt/connect.js');
+    this.template('helpers/_grunt/connect.js', 'helpers/_grunt/connect.js');
     this.copy('helpers/_grunt/cssmin.js', 'helpers/_grunt/cssmin.js');
     this.copy('helpers/_grunt/htmlhint.js', 'helpers/_grunt/htmlhint.js');
     this.copy('helpers/_grunt/jshint.js', 'helpers/_grunt/jshint.js');
     this.copy('helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
     this.copy('helpers/_grunt/prettysass.js', 'helpers/_grunt/prettysass.js');
     this.copy('helpers/_grunt/_sync.js', 'helpers/_grunt/sync.js');
-    this.copy('helpers/_grunt/watch.js', 'helpers/_grunt/watch.js');
+    this.template('helpers/_grunt/watch.js', 'helpers/_grunt/watch.js');
 
     this.copy('_package.json', 'package.json');
     this.copy('Gruntfile.js', 'Gruntfile.js');

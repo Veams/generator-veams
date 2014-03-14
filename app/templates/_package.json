@@ -43,6 +43,8 @@
 		"grunt-autoprefixer": "~0.6.5",
 		<% } %><% if(name == 'grunt-accessibility') { %>
 		"grunt-accessibility": "~0.1.2",
+        <% } %><% if(name == 'grunt-connect-proxy') { %>
+        "grunt-connect-proxy": "~0.1.8",
 		<% } %><% if(name == 'grunt-photobox') { %>
 		"grunt-photobox": "~0.5.0",
 		<% } %><%}); %><%} %><%} %>

@@ -4,24 +4,7 @@
 var path    = require('path');
 var helpers = require('yeoman-generator').test;
 var fs 		= require('fs');
-
-var defaultPrompts = {
-  'projectName': true,
-  'projectAuthor': 'Test Author',
-  'installAssemble': true,
-  'installPlugin': true,
-  'plugin': ['assemble-related-pages'],
-  'modules': [	'grunt-grunticon', 
-  				'grunt-packager',
-  				'grunt-browser-sync',
-  				'grunt-autoprefixer'
-  ],
-  'features': [],
-  'mobileFirst': false,
-  'jsLibs': false,
-  'cssLibs': false,
-  'installCMS': false
-}
+var defaultPrompts = require('../test_helpers/prompt-answer-factory')();
 
 describe('prototype-generator', function () {
   beforeEach(function (done) {
@@ -40,7 +23,6 @@ describe('prototype-generator', function () {
   it('creates expected files', function (done) {
     var expected = [
       // add files you expect to exist here.
-      'config.rb',
       'Gruntfile.js',
       '.gitignore',
       'package.json'
