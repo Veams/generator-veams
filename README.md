@@ -1,5 +1,9 @@
 # Prototype Generator
 
+[![NPM](https://nodei.co/npm/generator-prototype.png?downloads=true&stars=true)](https://nodei.co/npm/generator-prototype/)
+
+
+
 > [Yeoman][yeoman] generator for Prototype.
 
 ## Getting started
