@@ -65,6 +65,7 @@ You can apply multiple addons and grunt modules to your project. Just choose spe
  * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
  * [grunt-combine-media-queries](https://github.com/stefanjudis/grunt-combine-media-queries) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module
  * [grunt-comment-media-queries](https://github.com/cruncher/grunt-comment-media-queries) - You begin your project with mobile first but need to support desktop styles in IE8? That's your module!
+ * [grunt-connect-proxy] a proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods
 
 ## Gruntfile
 For our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split the file up in multiple files. 
