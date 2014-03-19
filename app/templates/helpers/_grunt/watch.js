@@ -6,11 +6,11 @@ module.exports = { <% if(installAssemble){ %>
     pages: {
         files: ['<%%= paths.src %>/templates/pages/**/{,*/}*.{js,md,hbs,yml,json}'],
         tasks: ['newer:assemble']
-    }, <% } %><% if(sassInsteadOfCompass == true){ %>
+    }, <% } %><% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
     scss: {
         files: '<%%= paths.src %>/scss/**/*',
         tasks: 'sass:dist'
-    }, <% } %>
+    }, <% }} %>
     js: {
         files: '<%%= paths.src %>/js/{,*/}*.js',
         tasks: 'sync:js'
@@ -29,5 +29,8 @@ module.exports = { <% if(installAssemble){ %>
             '<%%= paths.dist %>/js/{,*/}*.js',
             '<%%= paths.dist %>/assets/**/*'
         ]
-    }
+    }<% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>,
+    proxies: {
+        files: ['Gruntfile.js']
+    }<% } %>
 };

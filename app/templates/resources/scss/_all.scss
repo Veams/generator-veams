@@ -1,6 +1,15 @@
-// Compass imports
+// Reset imports
 @import "global/reset";
 
+// Frameworks
+<% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
+@import "../bower_components/foundation/scss/foundation"; // You can choose your specific components
+<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('neat') != -1) { %>
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "../bower_components/neat/app/assets/stylesheets/neat";
+<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
+@import "../bower_components/sass-bootstrap/lib/bootstrap"; // You can choose your specific components
+<% }} %>
 // Utilities
 @import "utils/extends";
 @import "utils/mixins";

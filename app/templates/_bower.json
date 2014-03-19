@@ -1,0 +1,25 @@
+{
+  "name": "<%= _.slugify(projectName) %>",
+  "version": "0.1.0",
+  "dependencies": { 
+  <% if(jsLibs && jsLibs.length > 0){ %>
+<% if(typeof jsLibs === 'object'){ _.each(jsLibs, function(name, i) { %>
+    "<%= name %>": "*"<% if(i < (jsLibs.length - 1) || (cssLibs && cssLibs.length > 0)) { %>,<% } %>
+<% }); } else { %>
+    "<%= name %>": "*"
+    <% }} %>
+	<% if(cssLibs && cssLibs.length > 0){ %>
+<% if(typeof cssLibs === 'object'){ _.each(cssLibs, function(name, i) { %>
+	<% if(name == 'foundation') { %> 
+	"foundation": "~5.2.0"<% if(i < (cssLibs.length - 1)) { %>,<% } %>
+	<% } %>
+	<% if(name == 'sass-bootstrap') { %> 
+	"sass-bootstrap": "*"<% if(i < (cssLibs.length - 1)) { %>,<% } %>
+	<% } %>
+	<% if(name == 'neat') { %> 
+	"bourbon": "~3.1.8",
+	"neat": "~1.5.0"<% if(i < (cssLibs.length - 1)) { %>,<% } %>
+	<% } %><% }); }  %><% } %>
+  },
+  "devDependencies": {}
+}
