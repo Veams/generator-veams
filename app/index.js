@@ -135,7 +135,7 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
     if (!this.options['skip-welcome-message']) {
         console.log(welcome);
     }
-    
+
     var force = false;
     if (!this.config.existed) {
         force = true;

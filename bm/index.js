@@ -16,7 +16,7 @@ BMGenerator.prototype.askFor = function askFor() {
 	var cb = this.async();
 
 	console.log(
-        chalk.red(' \n Generate your Backbone Model \n')
+        ('\n') + chalk.bgMagenta('Generate your Backbone Model') +('\n')
     );
 
 	var prompts = [{

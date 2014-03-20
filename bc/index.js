@@ -16,7 +16,7 @@ BCGenerator.prototype.askFor = function askFor() {
 	var cb = this.async();
 
 	console.log(
-        chalk.red(' \n Generate your Backbone Collection \n')
+        ('\n') + chalk.bgCyan('Generate your Backbone Collection') +('\n')
     );
 
 	var prompts = [{

@@ -16,7 +16,7 @@ BVGenerator.prototype.askFor = function askFor() {
 	var cb = this.async();
 
     console.log(
-        chalk.yellow(' \n Generate your Backbone View \n')
+        ('\n') + chalk.bgGreen('Generate your Backbone View') +('\n')
     );
 
 	var prompts = [{
