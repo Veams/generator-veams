@@ -18,7 +18,7 @@ module.exports = {
                 dest: '<%%= paths.dist %>'
             }
         ]
-    }<% if(jsLibs && jsLibs.length > 0){ %>,<% } %><% if (jsLibs.indexOf('requirejs') != -1) { %>
+    }<% if(jsLibs && jsLibs.length > 0){ %>,<% if (jsLibs.indexOf('requirejs') != -1) { %>
     requirejs: {
         files: [
             // includes files within path and its sub-directories
@@ -68,5 +68,5 @@ module.exports = {
                 dest: '<%%= paths.dist %>/bower_components/jquery/dist'
             }
         ]
-    }<% } %>
+    }<% } %><% } %>
 };

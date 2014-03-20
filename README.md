@@ -32,6 +32,11 @@ yo prototype [--skip-install]
 
   Skips app welcome message.
 
+## Default Installation
+You can scaffold your project in an instance. The first question is: 
+"Choose your installation route:"
+If you choose "Standard installation" you skip the rest of the questions and get the default values. 
+
 ## Plugins and Modules
 You can apply multiple addons and grunt modules to your project. Just choose specific ones:
  
@@ -84,6 +89,15 @@ And you can also choose CSS Frameworks like:
 
 All files will be included and configured. Have fun!
 
+## Sub Generators
+To help you in your workflow, we integrated some sub generators for you: 
+ 
+ * Create a Backbone Model: yo prototype:bm
+ * Create a Backbone View: yo prototype:bv
+ * Create a Backbone Collection: yo prototype:bc
+
+Others will follow.
+ 
 ## CMS snippets (work in progress)
 You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
 After choosing a system you will get HTML-snippets and a few new SCSS files, which you can use:

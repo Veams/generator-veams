@@ -52,8 +52,9 @@
         grunt.loadNpmTasks('grunt-styleguide'); <% }} %><% if(features && features.length > 0){ if(features.indexOf('mobileFirst') != -1) { %>
         grunt.loadNpmTasks('grunt-comment-media-queries'); <% }} %> <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
         grunt.loadNpmTasks('grunt-sass'); <% } else { %>
-        grunt.loadNpmTasks('grunt-bg-shell'); <% }} %>
-        grunt.loadNpmTasks('grunt-concurrent');
+        grunt.loadNpmTasks('grunt-bg-shell'); <% }} else { %>
+		grunt.loadNpmTasks('grunt-bg-shell'); <% } %>
+		grunt.loadNpmTasks('grunt-concurrent');
         grunt.loadNpmTasks('grunt-htmlhint');
         grunt.loadNpmTasks('grunt-jsbeautifier');
         grunt.loadNpmTasks('grunt-newer');
@@ -97,7 +98,8 @@
          <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
          grunt.registerTask('watchCSS', [
              'sass:dist'
-         ]); <% } else { %>
+         ]); <% }} %>
+		<% if(!features){%>
 		grunt.registerTask('cssDev', [
 			'bgShell:devCompass'
 			]);
@@ -106,7 +108,7 @@
 		]);
 		grunt.registerTask('cssProd', [
 			'bgShell:prodCompass'
-		]); <% }} %>
+		]); <% } %>
 		grunt.registerTask('watchJS', [
 			'sync:js'
 		]);
@@ -145,7 +147,8 @@
 		'jsbeautifier:js',
 		'concurrent:syncing', <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
 		'watchCSS',<% } else { %>
-		'cssProd',<% }} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
+		'cssProd',<% }} else { %>
+		'cssProd',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
 		'cmq',<% } %><%}); %><%} %><%} %><% if(features && features.length > 0){ if(features.indexOf('mobileFirst') != -1) { %>
 		'comment-media-queries:dist',<% }} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-autoprefixer') { %>
 		'autoprefixer',<% } %><%}); %><%} %><%} %>

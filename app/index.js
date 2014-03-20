@@ -28,6 +28,7 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
         'gitignore',
         'gitattributes',
         'editorconfig',
+        'bowerrc',
         'jshintrc'
     ];
 
@@ -37,8 +38,20 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
         projectName: "",
         projectAuthor: "",
         batchFiles: false,
-        installPlugin: true,
+        installAssemble: true,
+        installPlugin: false,
         installCMS: false,
+        modules: [
+            "grunt-grunticon",
+            "grunt-packager",
+            "grunt-combine-media-queries",
+            "grunt-bless",
+            "grunt-browser-sync",
+            "grunt-autoprefixer"
+        ],
+        features: false,
+        jsLibs: false,
+        cssLibs: false,
         installProxy: false,
         proxyHost: '0.0.0.0',
         proxyPort: 80,
@@ -57,8 +70,9 @@ util.inherits(PrototypeGenerator, yeoman.generators.Base);
  * Extend defaults and options based on user answers
  */
 
-PrototypeGenerator.prototype.askFor = function askFor() {
-    var done = this.async();
+
+PrototypeGenerator.prototype.askDefault = function askDefault() {
+    var cb = this.async();
 
     // welcome message
     var welcome =
@@ -118,14 +132,77 @@ PrototypeGenerator.prototype.askFor = function askFor() {
             chalk.green('\n    7::::::::7                        ') +
             ('\n ');
 
+    if (!this.options['skip-welcome-message']) {
+        console.log(welcome);
+    }
+    
     var force = false;
     if (!this.config.existed) {
         force = true;
     }
-    if (!this.options['skip-welcome-message']) {
-        console.log(welcome);
+
+    var prompts = [];
+
+
+    (!this.config.get("defaultInstall") || force) && prompts.push({
+        name: "defaultInstall",
+        type: "list",
+        message: "Choose your installation route:",
+        choices: [
+            {
+                name: 'Standard Installation',
+                value: 'stdInstall'
+            },
+            {
+                name: 'Custom Installation',
+                value: 'customInstall'
+            }
+        ],
+        default: this.config.get("defaultInstall")
+    });
+
+    this.prompt(prompts, function (answers) {
+
+        this.defaultInstall = answers.defaultInstall || this.config.get("defaultInstall");
+
+        //save config to .yo-rc.json
+        if (this.defaultInstall == 'stdInstall') {
+
+            console.log('Standard installation routine selected.');
+            this.projectName = this.config.get("projectName");
+            this.authorLogin = this.config.get("projectAuthor");
+            this.installAssemble = this.config.get("installAssemble");
+            this.plugin = this.config.get("plugin");
+            this.modules = this.config.get("modules");
+            this.features = this.config.get("features");
+            this.jsLibs = this.config.get("jsLibs");
+            this.cssLibs = this.config.get("cssLibs");
+            this.CMS = this.config.get("CMS");
+            this.authorName = this.config.get("author").name;
+            this.authorEmail = this.config.get("author").email;
+            this.proxyHost = this.config.get("proxyHost");
+            this.proxyPort = this.config.get("proxyPort");
+
+            //save config to .yo-rc.json
+
+            this.config.set(answers);
+            cb();
+        } else {
+            this._askFor();
+        }
+    }.bind(this));
+}
+
+PrototypeGenerator.prototype._askFor = function _askFor() {
+    var done = this.async();
+
+    var force = false;
+    if (!this.config.existed) {
+        force = true;
     }
+
     var questions = [];
+
 
     (!this.config.get("projectName") || force) && questions.push({
         type: "input",
@@ -140,7 +217,6 @@ PrototypeGenerator.prototype.askFor = function askFor() {
         message: "Would you mind telling me your name?",
         default: this.config.get("projectAuthor")
     });
-
 
     (!this.config.get("installAssemble") || force) && questions.push({
         type: "confirm",
@@ -171,6 +247,7 @@ PrototypeGenerator.prototype.askFor = function askFor() {
         }
     });
 
+
     (!this.config.get("modules") || force) && questions.push({
         name: "modules",
         type: "checkbox",
@@ -193,15 +270,15 @@ PrototypeGenerator.prototype.askFor = function askFor() {
     });
 
     questions.push({
-        when: function(answers) {
-            return     answers.modules 
-                    && answers.modules.length > 0 
-                    && answers.modules.indexOf('grunt-connect-proxy') !== -1;
+        when: function (answers) {
+            return     answers.modules
+                && answers.modules.length > 0
+                && answers.modules.indexOf('grunt-connect-proxy') !== -1;
         },
         type: 'input',
         name: 'proxyHost',
-        validate: function(answer) {
-            if(typeof answer !== 'string' || answer.length < 5 || answer.indexOf('.') === -1) {
+        validate: function (answer) {
+            if (typeof answer !== 'string' || answer.length < 5 || answer.indexOf('.') === -1) {
                 return false;
             } else {
                 return true;
@@ -212,16 +289,16 @@ PrototypeGenerator.prototype.askFor = function askFor() {
     });
 
     questions.push({
-        when: function(answers) {
-            return     answers.modules 
-                    && answers.modules.length > 0 
-                    && answers.modules.indexOf('grunt-connect-proxy') !== -1
-                    && answers.proxyHost;
+        when: function (answers) {
+            return     answers.modules
+                && answers.modules.length > 0
+                && answers.modules.indexOf('grunt-connect-proxy') !== -1
+                && answers.proxyHost;
         },
         type: 'input',
         name: 'proxyPort',
-        validate: function(answer) {
-            if(isNaN(Number(answer))) {
+        validate: function (answer) {
+            if (isNaN(Number(answer))) {
                 return false;
             } else {
                 return true;
@@ -343,7 +420,7 @@ PrototypeGenerator.prototype.askFor = function askFor() {
         this.authorName = this.config.get("author").name;
         this.authorEmail = this.config.get("author").email;
         this.proxyHost = answers.proxyHost;
-        this.proxyPort = answers.proxyPort;     
+        this.proxyPort = answers.proxyPort;
 
         //save config to .yo-rc.json
         this.config.set(answers);
@@ -364,17 +441,16 @@ PrototypeGenerator.prototype.app = function app() {
     // Copy standard files
     this.mkdir('helpers');
     this.mkdir('helpers/_grunt');
-    this.copy('helpers/_grunt/clean.js', 'helpers/_grunt/clean.js');
-    this.copy('helpers/_grunt/concurrent.js', 'helpers/_grunt/concurrent.js');
+    this.template('helpers/_grunt/clean.js', 'helpers/_grunt/clean.js');
+    this.template('helpers/_grunt/concurrent.js', 'helpers/_grunt/concurrent.js');
     this.template('helpers/_grunt/connect.js', 'helpers/_grunt/connect.js');
     this.copy('helpers/_grunt/cssmin.js', 'helpers/_grunt/cssmin.js');
     this.copy('helpers/_grunt/htmlhint.js', 'helpers/_grunt/htmlhint.js');
     this.copy('helpers/_grunt/jshint.js', 'helpers/_grunt/jshint.js');
     this.copy('helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
     this.copy('helpers/_grunt/prettysass.js', 'helpers/_grunt/prettysass.js');
-    this.copy('helpers/_grunt/_sync.js', 'helpers/_grunt/sync.js');
+    this.template('helpers/_grunt/_sync.js', 'helpers/_grunt/sync.js');
     this.template('helpers/_grunt/watch.js', 'helpers/_grunt/watch.js');
-
     this.copy('_package.json', 'package.json');
     this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('_bower.json', 'bower.json');
@@ -442,21 +518,24 @@ PrototypeGenerator.prototype.app = function app() {
             this.copy('helpers/_grunt/comment-media-queries.js', 'helpers/_grunt/comment-media-queries.js');
         }
 
-        // Add Libsass or Compass
+        // Add Libsass
         if (this.features.indexOf('sassInsteadOfCompass') != -1) {
             this.copy('helpers/_grunt/sass.js', 'helpers/_grunt/sass.js');
         } else {
             this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
             this.copy('config.rb', 'config.rb');
         }
-    }   
+    } else {
+        this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
+        this.copy('config.rb', 'config.rb');
+    }
 
     // Add JS files for libraries
     if (this.jsLibs && this.jsLibs.length > 0) {
-		if (this.jsLibs.indexOf('requirejs') != -1) {
-        this.copy('resources/js/_main.js', 'resources/js/main.js');
-        this.copy('resources/js/app.js', 'resources/js/app.js');
-		}
+        if (this.jsLibs.indexOf('requirejs') != -1) {
+            this.copy('resources/js/_main.js', 'resources/js/main.js');
+            this.copy('resources/js/app.js', 'resources/js/app.js');
+        }
         if (this.config.get("installAssemble") == true) {
             this.copy('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/scripts.hbs');
         }
@@ -490,10 +569,12 @@ PrototypeGenerator.prototype.app = function app() {
             this.directory('resources/scss/icons', 'resources/scss/icons');
             this.directory('helpers/templates', 'helpers/templates');
             this.copy('helpers/_grunt/grunticon.js', 'helpers/_grunt/grunticon.js');
-            if (this.features.indexOf('sassInsteadOfCompass') != -1) {
-                this.copy('helpers/_grunt/replaceSass.js', 'helpers/_grunt/replace.js');
-            } else {
-                this.copy('helpers/_grunt/replace.js', 'helpers/_grunt/replace.js');
+            if(this.features && this.features.length > 0){
+                if (this.features.indexOf('sassInsteadOfCompass') != -1) {
+                    this.copy('helpers/_grunt/replaceSass.js', 'helpers/_grunt/replace.js');
+                } else {
+                    this.copy('helpers/_grunt/replace.js', 'helpers/_grunt/replace.js');
+                }
             }
         }
         if (this.modules.indexOf('dr-grunt-svg-sprites') != -1) {
@@ -526,7 +607,7 @@ PrototypeGenerator.prototype.app = function app() {
             this.copy('helpers/_grunt/accessibility.js', 'helpers/_grunt/accessibility.js');
         }
     }
-}
+};
 /**
  * Stringify an object and normalize whitespace with project preferences.
  */

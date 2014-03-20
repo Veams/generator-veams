@@ -1,6 +1,6 @@
 {
   "name": "generator-prototype",
-  "version": "0.4.24",
+  "version": "0.4.25",
   "description": "The scaffolding project for better prototypes",
   "keywords": [
     "yeoman-generator",
