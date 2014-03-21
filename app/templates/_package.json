@@ -48,6 +48,7 @@
 		<% } %><% if(name == 'grunt-photobox') { %>
 		"grunt-photobox": "~0.5.0",
 		<% } %><%}); %><%} %><%} %>
+		"jit-grunt": "^0.3.2",
 		"load-grunt-configs": "~0.3.1",
 		"grunt-bg-shell": "*",
 		"grunt-sync": "~0.0.5",

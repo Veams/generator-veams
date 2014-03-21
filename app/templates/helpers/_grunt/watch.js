@@ -1,4 +1,4 @@
-module.exports = { <% if(installAssemble){ %>
+module.exports = { <% if(installAssemble != false){ %>
     assemble: {
         files: ['<%%= paths.src %>/{data,templates/layouts,templates/partials}/**/{,*/}*.{js,md,hbs,yml,json}'],
         tasks: ['assemble']

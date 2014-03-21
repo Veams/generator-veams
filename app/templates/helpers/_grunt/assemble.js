@@ -3,12 +3,13 @@ module.exports = {
         flatten: true,
         assets: '<%%= paths.dist %>',
         data: '<%%= paths.src %>/data/*.{json,yml}',
-        helpers: '<%%= paths.src %>/helpers/*.js',
+        helpers: '<%%= paths.src %>/templates/helpers/*.js',
+        layoutdir: '<%%= paths.src %>/templates/layouts/',
         partials: '<%%= paths.src %>/templates/partials/**/*.hbs'
     },
     pages: {
         options: {
-            layout: '<%%= paths.src %>/templates/layouts/tpl_default.hbs'<% if(plugin && plugin.length > 0){ %>,
+            layout: 'tpl_default.hbs'<% if(plugin && plugin.length > 0){ %>,
     plugins: [<% if(typeof plugin === 'object'){ _.each(plugin, function(name, i) { %>'<%= name %>'<% if(i < (plugin.length - 1)) { %>,<% } }); } else { %>'<%= name %>'<%} %>],<%}
     _.each(plugin, function(name, i) { if(name == 'permalinks') { %>
         permalinks: {
@@ -26,7 +27,7 @@ module.exports = {
             },
             ajax: {
                 options: {
-                    layout: '<%%= paths.src %>/templates/layouts/tpl_ajax.hbs'
+                    layout: 'tpl_ajax.hbs'
                 },
             files: {
                     '<%%= paths.dist %>/ajax-content/': ['<%%= paths.src %>/templates/pages/ajax/*.hbs']

@@ -16,7 +16,8 @@
 	// '<%%= config.src %>/templates/pages/**/*.hbs'
 
 	module.exports = function(grunt) {
-
+		
+		require('jit-grunt')(grunt);
         // measures the time each task takes
         require('time-grunt')(grunt);
 
@@ -44,32 +45,7 @@
 
         // Define the configuration for all the tasks
         grunt.initConfig(configs);
-
-        // Load Tasks
-	  <% if(installAssemble != false){ %>
-	    grunt.loadNpmTasks('assemble'); <% } %> <% if(features && features.length > 0){ if(features.indexOf('installDocs') != -1) { %>
-        grunt.loadNpmTasks('grunt-contrib-copy');
-        grunt.loadNpmTasks('grunt-styleguide'); <% }} %><% if(features && features.length > 0){ if(features.indexOf('mobileFirst') != -1) { %>
-        grunt.loadNpmTasks('grunt-comment-media-queries'); <% }} %> <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
-        grunt.loadNpmTasks('grunt-sass'); <% } else { %>
-        grunt.loadNpmTasks('grunt-bg-shell'); <% }} else { %>
-		grunt.loadNpmTasks('grunt-bg-shell'); <% } %>
-		grunt.loadNpmTasks('grunt-concurrent');
-        grunt.loadNpmTasks('grunt-htmlhint');
-        grunt.loadNpmTasks('grunt-jsbeautifier');
-        grunt.loadNpmTasks('grunt-newer');
-        grunt.loadNpmTasks('grunt-prettysass');
-        grunt.loadNpmTasks('grunt-sync');
-        grunt.loadNpmTasks('grunt-contrib-clean');
-        grunt.loadNpmTasks('grunt-contrib-connect');
-        grunt.loadNpmTasks('grunt-contrib-cssmin');
-        grunt.loadNpmTasks('grunt-contrib-jshint');
-        grunt.loadNpmTasks('grunt-contrib-watch');
-        <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-grunticon') { %>
-        grunt.loadNpmTasks('grunt-grunticon');
-        grunt.loadNpmTasks('grunt-text-replace'); <% } else { %>
-        grunt.loadNpmTasks('<%= name %>'); <%}}); %><%} %><%} %>
-
+		
 	 // Simple Tasks
 	 <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-grunticon') { %>
 		grunt.registerTask('icons', [
@@ -156,8 +132,7 @@
 		'bless', <% } %><%}); %><%} %><%} %>		
 		'concurrent:build',
 		'jsbeautifier:html',
-		'check-html',
-		'check-js'
+		'check-html'
 	  ]);
 
 	  grunt.registerTask('default', [

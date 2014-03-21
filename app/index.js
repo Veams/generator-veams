@@ -147,7 +147,7 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
     (!this.config.get("defaultInstall") || force) && prompts.push({
         name: "defaultInstall",
         type: "list",
-        message: "Choose your installation route:",
+        message: "Choose your installation routine:",
         choices: [
             {
                 name: 'Standard Installation',
@@ -430,11 +430,10 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 };
 
 /**
- * TODO: Separate file generated with their own function. See test-creation.js
+ * Default file generation
  *
  */
-
-PrototypeGenerator.prototype.app = function app() {
+PrototypeGenerator.prototype.appDefault = function appDefault() {
 
     var files = this.files;
 
@@ -453,7 +452,6 @@ PrototypeGenerator.prototype.app = function app() {
     this.template('helpers/_grunt/watch.js', 'helpers/_grunt/watch.js');
     this.copy('_package.json', 'package.json');
     this.copy('Gruntfile.js', 'Gruntfile.js');
-    this.copy('_bower.json', 'bower.json');
     this.copy('bowerrc', '.bowerrc');
     this.copy('gitignore', '.gitignore');
 
@@ -464,29 +462,9 @@ PrototypeGenerator.prototype.app = function app() {
         this.directory('helpers/batch_files', 'helpers/batch_files');
     }
 
-    // add resources
-    this.mkdir('resources');
-
-    // add assemble files
-    if (this.config.get("installAssemble") == true) {
-        this.directory('resources/data', 'resources/data');
-        this.directory('resources/content', 'resources/content');
-
-        this.mkdir('resources/helpers');
-        this.copy('resources/helpers/helper-for.js');
-
-        this.mkdir('resources/templates');
-        this.directory('resources/templates/layouts', 'resources/templates/layouts');
-        this.directory('resources/templates/pages', 'resources/templates/pages');
-        this.mkdir('resources/templates/partials');
-        this.copy('resources/templates/partials/nav.hbs');
-        this.mkdir('resources/templates/partials/_global');
-        this.copy('resources/templates/partials/_global/head.hbs');
-
-        this.copy('helpers/_grunt/assemble.js', 'helpers/_grunt/assemble.js');
-    }
     // add specific resources to make it possible to split up some directories
     this.mkdir('_output/js');
+    this.mkdir('resources');
     this.mkdir('resources/js');
     this.mkdir('resources/scss');
     this.mkdir('resources/assets');
@@ -502,68 +480,38 @@ PrototypeGenerator.prototype.app = function app() {
     this.copy('resources/scss/_all.scss', 'resources/scss/_all.scss');
     this.copy('resources/scss/styles.scss', 'resources/scss/styles.scss');
     this.copy('resources/scss/ie8.scss', 'resources/scss/ie8.scss');
+};
 
-    // Feature section
-    if (this.features && this.features.length > 0) {
-        if (this.features.indexOf('installDocs') != -1) {
-            // add styleguide files
-            this.directory('helpers/styleguide-template', 'helpers/styleguide-template');
-            this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
-            this.copy('helpers/_grunt/styleguide.js', 'helpers/_grunt/styleguide.js');
-            this.copy('helpers/_grunt/copy.js', 'helpers/_grunt/copy.js');
-        }
 
-        // add mobile first grunt task
-        if (this.features.indexOf('mobileFirst') != -1) {
-            this.copy('helpers/_grunt/comment-media-queries.js', 'helpers/_grunt/comment-media-queries.js');
-        }
+/**
+ * Assemble file generation
+ *
+ */
+PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // add resources
 
-        // Add Libsass
-        if (this.features.indexOf('sassInsteadOfCompass') != -1) {
-            this.copy('helpers/_grunt/sass.js', 'helpers/_grunt/sass.js');
-        } else {
-            this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
-            this.copy('config.rb', 'config.rb');
-        }
-    } else {
-        this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
-        this.copy('config.rb', 'config.rb');
-    }
+    // add assemble files
+    if (this.config.get("installAssemble") == true) {
+        this.directory('resources/data', 'resources/data');
+        this.mkdir('resources/templates');
+        this.directory('resources/templates/helpers', 'resources/templates/helpers');
+        this.directory('resources/templates/layouts', 'resources/templates/layouts');
+        this.directory('resources/templates/pages', 'resources/templates/pages');
+        this.mkdir('resources/templates/partials');
+        this.copy('resources/templates/partials/nav.hbs');
+        this.mkdir('resources/templates/partials/_global');
+        this.copy('resources/templates/partials/_global/head.hbs');
 
-    // Add JS files for libraries
-    if (this.jsLibs && this.jsLibs.length > 0) {
-        if (this.jsLibs.indexOf('requirejs') != -1) {
-            this.copy('resources/js/_main.js', 'resources/js/main.js');
-            this.copy('resources/js/app.js', 'resources/js/app.js');
-        }
-        if (this.config.get("installAssemble") == true) {
-            this.copy('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/scripts.hbs');
-        }
+        this.copy('helpers/_grunt/assemble.js', 'helpers/_grunt/assemble.js');
     }
+};
 
-    // CMS snippets and SCSS files
-    //Drupal
-    if (this.CMS == 'Drupal') {
-        this.directory('resources/scss/drupal', 'resources/scss/drupal');
-        this.directory('resources/templates/partials/drupal', 'resources/templates/partials/drupal');
-    }
-    //TYPO3
-    if (this.CMS == 'TYPO3') {
-        this.directory('resources/scss/typo3', 'resources/scss/typo3');
-        this.directory('resources/templates/partials/typo3', 'resources/templates/partials/typo3');
-    }
-    //Magnolia
-    if (this.CMS == 'Magnolia') {
-        this.directory('resources/scss/magnolia', 'resources/scss/magnolia');
-        this.directory('resources/templates/partials/magnolia', 'resources/templates/partials/magnolia');
-    }
-    //CoreMedia
-    if (this.CMS == 'CoreMedia') {
-        this.directory('resources/scss/coremedia', 'resources/scss/coremedia');
-        this.directory('resources/templates/partials/coremedia', 'resources/templates/partials/coremedia');
-    }
-//
-//    // Grunt modules are splitted up in separate files and modules
+
+/**
+ * Grunt modules file generation
+ *
+ */
+PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
+// Grunt modules are splitted up in separate files and modules
     if (this.modules && this.modules.length > 0) {
         if (this.modules.indexOf('grunt-grunticon') != -1) {
             this.directory('resources/scss/icons', 'resources/scss/icons');
@@ -608,6 +556,96 @@ PrototypeGenerator.prototype.app = function app() {
         }
     }
 };
+
+/**
+ * TODO: CMS STK file generation
+ *
+ */
+PrototypeGenerator.prototype.appCMS = function appCMS() {
+// CMS snippets and SCSS files
+    //Drupal
+    if (this.CMS == 'Drupal') {
+        this.directory('resources/scss/drupal', 'resources/scss/drupal');
+        this.directory('resources/templates/partials/drupal', 'resources/templates/partials/drupal');
+    }
+    //TYPO3
+    if (this.CMS == 'TYPO3') {
+        this.directory('resources/scss/typo3', 'resources/scss/typo3');
+        this.directory('resources/templates/partials/typo3', 'resources/templates/partials/typo3');
+    }
+    //Magnolia
+    if (this.CMS == 'Magnolia') {
+        this.directory('resources/scss/magnolia', 'resources/scss/magnolia');
+        this.directory('resources/templates/partials/magnolia', 'resources/templates/partials/magnolia');
+    }
+    //CoreMedia
+    if (this.CMS == 'CoreMedia') {
+        this.directory('resources/scss/coremedia', 'resources/scss/coremedia');
+        this.directory('resources/templates/partials/coremedia', 'resources/templates/partials/coremedia');
+    }
+};
+
+
+/**
+ * Features file generation
+ *
+ */
+PrototypeGenerator.prototype.appFeatures = function appFeatures() {
+// Feature section
+    if (this.features && this.features.length > 0) {
+        if (this.features.indexOf('installDocs') != -1) {
+            // add styleguide files
+            this.directory('helpers/styleguide-template', 'helpers/styleguide-template');
+            this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
+            this.copy('helpers/_grunt/styleguide.js', 'helpers/_grunt/styleguide.js');
+            this.copy('helpers/_grunt/copy.js', 'helpers/_grunt/copy.js');
+        }
+
+        // add mobile first grunt task
+        if (this.features.indexOf('mobileFirst') != -1) {
+            this.copy('helpers/_grunt/comment-media-queries.js', 'helpers/_grunt/comment-media-queries.js');
+        }
+
+        // Add Libsass
+        if (this.features.indexOf('sassInsteadOfCompass') != -1) {
+            this.copy('helpers/_grunt/sass.js', 'helpers/_grunt/sass.js');
+        } else {
+            this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
+            this.copy('config.rb', 'config.rb');
+        }
+    } else {
+        this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
+        this.copy('config.rb', 'config.rb');
+    }
+};
+
+
+/**
+ * JS Libraries file generation
+ *
+ */
+PrototypeGenerator.prototype.appJSLibs = function appJSLibs() {
+// Add JS files for libraries
+    if (this.jsLibs && this.jsLibs.length > 0) {
+        if (this.jsLibs.indexOf('requirejs') != -1) {
+            this.copy('resources/js/_main.js', 'resources/js/main.js');
+            this.copy('resources/js/app.js', 'resources/js/app.js');
+        }
+        if (this.config.get("installAssemble") == true) {
+            this.copy('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/scripts.hbs');
+        }
+    }
+};
+
+
+/**
+ * Bower file generation
+ *
+ */
+PrototypeGenerator.prototype.appBower = function appBower() {
+    this.copy('_bower.json', 'bower.json');
+};
+
 /**
  * Stringify an object and normalize whitespace with project preferences.
  */

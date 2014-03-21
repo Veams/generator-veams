@@ -36,9 +36,11 @@ yo prototype [--skip-install]
 
   Skips app welcome message.
 
-## Default Installation
-You can scaffold your project in an instance. The first question is: 
-"Choose your installation route:"
+## Quick Start
+You can scaffold your project in an instance. The first question is:
+
+"Choose your installation routine"
+
 If you choose "Standard installation" you skip the rest of the questions and get the default values. 
 
 ## Plugins and Modules
@@ -64,8 +66,8 @@ You can apply multiple addons and grunt modules to your project. Just choose spe
  * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices
  * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint) - Check your html for errors
  * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint) - Check your js for errors
- * [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier) - Format your js files.
- * [grunt-prettysass](https://github.com/brandonminch/grunt-prettysass) - Format your SASS-files
+ * [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier) - Format your js and html files.
+ * [grunt-prettysass](https://github.com/brandonminch/grunt-prettysass) - Format your SASS/SCSS-files
  * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) - Take snapshots from homepage
  * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
  * [grunt-combine-media-queries](https://github.com/stefanjudis/grunt-combine-media-queries) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module
