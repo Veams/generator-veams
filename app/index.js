@@ -38,7 +38,7 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
         projectName: "",
         projectAuthor: "",
         batchFiles: false,
-        installAssemble: true,
+        installAssemble: "",
         installPlugin: false,
         installCMS: false,
         modules: [
@@ -166,12 +166,12 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
         this.defaultInstall = answers.defaultInstall || this.config.get("defaultInstall");
 
         //save config to .yo-rc.json
-        if (this.defaultInstall == 'stdInstall') {
+        if (this.defaultInstall === 'stdInstall') {
 
             console.log('Standard installation routine selected.');
             this.projectName = this.config.get("projectName");
             this.authorLogin = this.config.get("projectAuthor");
-            this.installAssemble = this.config.get("installAssemble");
+            this.installAssemble = this.config.set("installAssemble", true);
             this.plugin = this.config.get("plugin");
             this.modules = this.config.get("modules");
             this.features = this.config.get("features");

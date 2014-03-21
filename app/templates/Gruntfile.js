@@ -46,7 +46,7 @@
         grunt.initConfig(configs);
 
         // Load Tasks
-	  <% if(installAssemble){ %>
+	  <% if(installAssemble != false){ %>
 	    grunt.loadNpmTasks('assemble'); <% } %> <% if(features && features.length > 0){ if(features.indexOf('installDocs') != -1) { %>
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.loadNpmTasks('grunt-styleguide'); <% }} %><% if(features && features.length > 0){ if(features.indexOf('mobileFirst') != -1) { %>
@@ -99,7 +99,7 @@
          grunt.registerTask('watchCSS', [
              'sass:dist'
          ]); <% }} %>
-		<% if(!features){%>
+		<% if(!features || (features && features.length > 0 && features.indexOf('sassInsteadOfCompass') == -1)) {%>
 		grunt.registerTask('cssDev', [
 			'bgShell:devCompass'
 			]);
