@@ -14,7 +14,7 @@
         "test": "grunt test"
     },
     "devDependencies": {
-		"grunt": "~0.4.2", <% if(installAssemble === true){ %>
+		"grunt": "~0.4.2", <% if(installAssemble != false){ %>
         "assemble": "~0.4.34", <% } %><% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
         "grunt-sass": "^0.11.0", <% }} %><% if (features && features.length > 0) { if (features.indexOf('mobileFirst') != -1) { %>
         "grunt-comment-media-queries": "~0.1.0", <% }} %><% if (features && features.length > 0) { if (features.indexOf('installDocs') != -1) { %>
@@ -34,7 +34,7 @@
 		<% } %><% if(name == 'grunt-packager') { %>
 		"grunt-packager": "~0.1.0",
 		<% } %><% if(name == 'grunt-browser-sync') { %>
-		"grunt-browser-sync": "~0.3.0",
+		"grunt-browser-sync": "~0.6.0",
 		<% } %><% if(name == 'grunt-combine-media-queries') { %>
 		"grunt-combine-media-queries": "~1.0.9",
 		<% } %><% if(name == 'grunt-bless') { %>

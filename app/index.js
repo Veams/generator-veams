@@ -46,7 +46,6 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
             "grunt-packager",
             "grunt-combine-media-queries",
             "grunt-bless",
-            "grunt-browser-sync",
             "grunt-autoprefixer"
         ],
         features: false,
@@ -477,7 +476,7 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
     this.directory('resources/scss/global', 'resources/scss/global');
     this.directory('resources/scss/modules', 'resources/scss/modules');
     this.directory('resources/scss/utils', 'resources/scss/utils');
-    this.copy('resources/scss/_all.scss', 'resources/scss/_all.scss');
+    this.template('resources/scss/_all.scss', 'resources/scss/_all.scss');
     this.copy('resources/scss/styles.scss', 'resources/scss/styles.scss');
     this.copy('resources/scss/ie8.scss', 'resources/scss/ie8.scss');
 };
@@ -628,11 +627,11 @@ PrototypeGenerator.prototype.appJSLibs = function appJSLibs() {
 // Add JS files for libraries
     if (this.jsLibs && this.jsLibs.length > 0) {
         if (this.jsLibs.indexOf('requirejs') != -1) {
-            this.copy('resources/js/_main.js', 'resources/js/main.js');
+            this.template('resources/js/_main.js', 'resources/js/main.js');
             this.copy('resources/js/app.js', 'resources/js/app.js');
         }
         if (this.config.get("installAssemble") == true) {
-            this.copy('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/scripts.hbs');
+            this.template('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/scripts.hbs');
         }
     }
 };
