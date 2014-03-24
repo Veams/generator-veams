@@ -72,10 +72,18 @@
 			'photobox:prod'
 		]);<% } %><%}); %><%} %><%} %>
          <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
-         grunt.registerTask('watchCSS', [
+        grunt.registerTask('watchCSS', [
              'sass:dist'
-         ]); <% }} %>
-		<% if(!features || (features && features.length > 0 && features.indexOf('sassInsteadOfCompass') == -1)) {%>
+        ]); <% } else { %>
+		grunt.registerTask('cssDev', [
+			'bgShell:devCompass'
+		]);
+		grunt.registerTask('watchCSS', [
+			'bgShell:watchCompass'
+		]);
+		grunt.registerTask('cssProd', [
+			'bgShell:prodCompass'
+		]); <% }} else { %>
 		grunt.registerTask('cssDev', [
 			'bgShell:devCompass'
 			]);

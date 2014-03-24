@@ -449,8 +449,6 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
     this.copy('helpers/_grunt/prettysass.js', 'helpers/_grunt/prettysass.js');
     this.template('helpers/_grunt/_sync.js', 'helpers/_grunt/sync.js');
     this.template('helpers/_grunt/watch.js', 'helpers/_grunt/watch.js');
-    this.copy('_package.json', 'package.json');
-    this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('bowerrc', '.bowerrc');
     this.copy('gitignore', '.gitignore');
 
@@ -643,6 +641,15 @@ PrototypeGenerator.prototype.appJSLibs = function appJSLibs() {
  */
 PrototypeGenerator.prototype.appBower = function appBower() {
     this.copy('_bower.json', 'bower.json');
+};
+
+/**
+ * Gruntfile and package.json file generation
+ *
+ */
+PrototypeGenerator.prototype.appSettingFiles = function appSettingFiles() {
+    this.template('_package.json', 'package.json');
+    this.template('Gruntfile.js', 'Gruntfile.js');
 };
 
 /**
