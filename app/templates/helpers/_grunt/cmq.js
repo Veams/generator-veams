@@ -4,7 +4,7 @@ module.exports = {
     },
     cmqDist: {
         files: {
-            '<%= paths.dist %>/css/': ['<%= paths.dist %>/css/{,*/}*.css']
+            '<%= paths.dist %>/css/styles.css': ['<%= paths.dist %>/css/styles.css']
         }
     }
 };

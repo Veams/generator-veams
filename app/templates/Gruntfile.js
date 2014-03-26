@@ -17,7 +17,9 @@
 
 	module.exports = function(grunt) {
 		
-		require('jit-grunt')(grunt);
+		require('jit-grunt')(grunt, { <% if (modules.indexOf('grunt-combine-media-queries') != -1) { %>
+			cmq: 'grunt-combine-media-queries' <% } %>
+		});
         // measures the time each task takes
         require('time-grunt')(grunt);
 
@@ -113,7 +115,7 @@
 	  grunt.registerTask('server', [
 		'concurrent:rendering',
 		'concurrent:syncing',
-		'watchCSS',<% if(modules && modules.length > 0){if(modules.indexOf('grunt-browser-sync') == -1) { %>
+		'watchCSS',<% if(modules && modules.length >= 0){if(modules.indexOf('grunt-browser-sync') == -1) { %>
 		'connect:livereload', <% }} if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
 		'browser_sync', <% } %><%}); %><%} %><%} %>
 		'watch'

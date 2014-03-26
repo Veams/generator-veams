@@ -48,11 +48,11 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
             "grunt-bless",
             "grunt-autoprefixer"
         ],
-        features: false,
-        jsLibs: false,
-        cssLibs: false,
+        features: [],
+        jsLibs: [],
+        cssLibs: [],
         installProxy: false,
-        proxyHost: '0.0.0.0',
+        proxyHost: '0.0.0.0 ',
         proxyPort: 80,
         author: {
             name: "",
@@ -166,8 +166,9 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
 
         //save config to .yo-rc.json
         if (this.defaultInstall === 'stdInstall') {
-
-            console.log('Standard installation routine selected.');
+            console.log(
+                ('\n') + chalk.bgCyan('Standard installation routine selected.') +('\n')
+            );
             this.projectName = this.config.get("projectName");
             this.authorLogin = this.config.get("projectAuthor");
             this.installAssemble = this.config.set("installAssemble", true);
@@ -183,10 +184,12 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
             this.proxyPort = this.config.get("proxyPort");
 
             //save config to .yo-rc.json
-
             this.config.set(answers);
             cb();
         } else {
+            console.log(
+                ('\n') + chalk.bgGreen('Custom installation routine selected.') +('\n')
+            );
             this._askFor();
         }
     }.bind(this));
@@ -263,7 +266,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
             { name: "grunt-photobox"},
             { name: "grunt-accessibility"},
             { name: "grunt-devtools"},
-            { name: "grunt-connect-proxy (served with CORS, Basic Auth and http methods listening to 0.0.0.0:8000)", value: "grunt-connect-proxy"}
+            { name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"}
         ],
         default: this.config.get("modules")
     });
@@ -437,7 +440,7 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
     var files = this.files;
 
     // Copy standard files
-    this.mkdir('helpers');
+    // this.mkdir('helpers');
     this.mkdir('helpers/_grunt');
     this.template('helpers/_grunt/clean.js', 'helpers/_grunt/clean.js');
     this.template('helpers/_grunt/concurrent.js', 'helpers/_grunt/concurrent.js');
@@ -512,7 +515,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
     if (this.modules && this.modules.length > 0) {
         if (this.modules.indexOf('grunt-grunticon') != -1) {
             this.directory('resources/scss/icons', 'resources/scss/icons');
-            this.directory('helpers/templates', 'helpers/templates');
+            this.directory('helpers/templates/grunticon', 'helpers/templates/grunticon');
             this.copy('helpers/_grunt/grunticon.js', 'helpers/_grunt/grunticon.js');
             if(this.features && this.features.length > 0){
                 if (this.features.indexOf('sassInsteadOfCompass') != -1) {
@@ -581,7 +584,6 @@ PrototypeGenerator.prototype.appCMS = function appCMS() {
         this.directory('resources/templates/partials/coremedia', 'resources/templates/partials/coremedia');
     }
 };
-
 
 /**
  * Features file generation
