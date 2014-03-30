@@ -167,7 +167,7 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
         //save config to .yo-rc.json
         if (this.defaultInstall === 'stdInstall') {
             console.log(
-                ('\n') + chalk.bgCyan('Standard installation routine selected.') +('\n')
+                ('\n') + chalk.bgCyan('Standard installation routine selected.') + ('\n')
             );
             this.projectName = this.config.get("projectName");
             this.authorLogin = this.config.get("projectAuthor");
@@ -188,7 +188,7 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
             cb();
         } else {
             console.log(
-                ('\n') + chalk.bgGreen('Custom installation routine selected.') +('\n')
+                ('\n') + chalk.bgGreen('Custom installation routine selected.') + ('\n')
             );
             this._askFor();
         }
@@ -517,12 +517,14 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
             this.directory('resources/scss/icons', 'resources/scss/icons');
             this.directory('helpers/templates/grunticon', 'helpers/templates/grunticon');
             this.copy('helpers/_grunt/grunticon.js', 'helpers/_grunt/grunticon.js');
-            if(this.features && this.features.length > 0){
+            if (this.features && this.features.length > 0) {
                 if (this.features.indexOf('sassInsteadOfCompass') != -1) {
                     this.copy('helpers/_grunt/replaceSass.js', 'helpers/_grunt/replace.js');
                 } else {
                     this.copy('helpers/_grunt/replace.js', 'helpers/_grunt/replace.js');
                 }
+            } else {
+                this.copy('helpers/_grunt/replace.js', 'helpers/_grunt/replace.js');
             }
         }
         if (this.modules.indexOf('dr-grunt-svg-sprites') != -1) {

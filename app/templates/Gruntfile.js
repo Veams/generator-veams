@@ -17,8 +17,10 @@
 
 	module.exports = function(grunt) {
 		
+		// load only used tasks
 		require('jit-grunt')(grunt, { <% if (modules.indexOf('grunt-combine-media-queries') != -1) { %>
-			cmq: 'grunt-combine-media-queries' <% } %>
+			cmq: 'grunt-combine-media-queries'<% } %><% if (modules.indexOf('grunt-grunticon') != -1) { %>,
+			replace: 'grunt-text-replace' <% } %>
 		});
         // measures the time each task takes
         require('time-grunt')(grunt);
@@ -29,12 +31,16 @@
                 // in this directory you can find your grunt config tasks
                 src: "helpers/_grunt/*.js"
             },
+			// define your path structure
             paths: {
-                // Configurable paths
+                // resources folder with working files
                 src: 'resources',
+				// helpers folder with grunt tasks and styleguide templates, tests and photobox
                 helper: 'helpers',
+				// destination/distribution folder 
                 dist: '_output'
             },
+			// define your ports for grunt-contrib-connect
             ports: {
                 app: '9000',
                 test: '9001',
@@ -50,20 +56,24 @@
 		
 	 // Simple Tasks
 	 <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-grunticon') { %>
+		// Grunticon: Build your icons
 		grunt.registerTask('icons', [
 			'grunticon',
 			'clean:grunticon',
 			'replace'
 		]); <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
+		// Build your sprites
 		grunt.registerTask('sprites', [
 			'svg-sprites'
 		]); <% } %><% if(name == 'grunt-packager') { %>
+		// Pack your JS
 		grunt.registerTask('js', [
 			'packager'
 		]); <% } %><% if(name == 'grunt-contrib-compass') { %>
 		grunt.registerTask('css', [
 			'compass:dist'
 		]);<% } %><% if(name == 'grunt-photobox') { %>
+		// Take screenshots from your local environment (be sure grunt server is running)
 		grunt.registerTask('photoLocal', [
 			'photobox:local'
 		]);
@@ -98,15 +108,19 @@
 		grunt.registerTask('watchJS', [
 			'sync:js'
 		]);
+		// Check your HTML 
 		grunt.registerTask('check-html', [
 			'htmlhint'
 		]);
+		// Check you JS
 		grunt.registerTask('check-js', [
 			'jshint'
 		]);
+		// Beautify your JS and HTML
 		grunt.registerTask('beauty-files', [
 			'jsbeautifier'
 		]);
+		// Beautify your SASS files
 		grunt.registerTask('beauty-scss', [
 			'prettysass'
 		]);

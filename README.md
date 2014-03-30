@@ -7,6 +7,16 @@
 > [Yeoman][yeoman] generator for Prototype.
 
 ## Getting started
+
+### Requirements
+
+* Node.js & Node Package Manager
+* Grunt Command Line Interface – npm install -g grunt-cli
+* SASS 3.4 (because of @-root used in grunticon-mixin) – gem install sass
+* Compass 1 (because of Source Maps) – gem install compass --pre 
+
+### Installation 
+
 - Install Yeoman:
     `npm install -g yo`
 
@@ -44,7 +54,21 @@ You can scaffold your project in an instance. The first question is:
 If you choose "Standard installation" you skip the rest of the questions and get the default values. 
 
 ## Plugins and Modules
-You can apply multiple addons and grunt modules to your project. Just choose specific ones:
+
+There are standard grunt modules I use. These are:
+
+ * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) - Clean your directories.
+ * [grunt-concurrent](https://github.com/sindresorhus/grunt-concurrent) - Run grunt tasks concurrently .
+ * [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin) - Minify your CSS.
+ * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint) - Check your html for errors.
+ * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint) - Check your js for errors.
+ * [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier) - Format your js and html files.
+ * [grunt-prettysass](https://github.com/brandonminch/grunt-prettysass) - Format your SASS/SCSS-files.
+ * [grunt-combine-media-queries](https://github.com/stefanjudis/grunt-combine-media-queries) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module
+ * [jit-grunt](https://github.com/shootaroo/jit-grunt) - A JIT(Just In Time) plugin loader for Grunt.
+ * [time-grunt](https://github.com/sindresorhus/time-grunt) - Displays the execution time of grunt tasks.
+
+***But you can also apply additional addons and grunt modules to your project. Just choose specific ones:***
  
 ### Assemble
 
@@ -64,13 +88,8 @@ You can apply multiple addons and grunt modules to your project. Just choose spe
  * [grunt-packager](https://github.com/bobbor/grunt-packager) (only executable when your project.jspackcfg is configured) - package your js
  * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass)
  * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices
- * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint) - Check your html for errors
- * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint) - Check your js for errors
- * [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier) - Format your js and html files.
- * [grunt-prettysass](https://github.com/brandonminch/grunt-prettysass) - Format your SASS/SCSS-files
  * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) - Take snapshots from homepage
  * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
- * [grunt-combine-media-queries](https://github.com/stefanjudis/grunt-combine-media-queries) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module
  * [grunt-comment-media-queries](https://github.com/cruncher/grunt-comment-media-queries) - You begin your project with mobile first but need to support desktop styles in IE8? That's your module!
  * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods
 
@@ -88,7 +107,7 @@ You can choose JS Libraries like:
 * RequireJS
 * AngularJS
 
-And you can also choose CSS Frameworks like:
+And you can also choose SCSS Frameworks like:
 
 * Foundation
 * Bourbon Neat
@@ -98,21 +117,18 @@ All files will be included and configured. Have fun!
 
 ## Sub Generators
 To help you in your workflow, we integrated some sub generators for you: 
+
+### BackboneJS: 
  
  * Create a Backbone Model: yo prototype:bm
  * Create a Backbone View: yo prototype:bv
  * Create a Backbone Collection: yo prototype:bc
 
+### Grunt Modules:
+
+* Insall your grunt modules: yo prototype:gm
+
 Others will follow.
- 
-## CMS snippets (work in progress)
-You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
-After choosing a system you will get HTML-snippets and a few new SCSS files, which you can use:
- 
- * Drupal 7
- * TYPO3 6.2
- * Magnolia
- * CoreMedia
 
 ## Alternative
 
