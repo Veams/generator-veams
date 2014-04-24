@@ -501,6 +501,8 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
         this.mkdir('resources/templates/partials/_global');
         this.copy('resources/templates/partials/_global/head.hbs');
 
+        this.directory('resources/templates/partials/blocks', 'resources/templates/partials/blocks');
+
         this.copy('helpers/_grunt/assemble.js', 'helpers/_grunt/assemble.js');
     }
 };
