@@ -1,14 +1,4 @@
 module.exports = {
-    rendering: {
-        tasks: [<% if(installAssemble != false){ %>
-            'newer:assemble',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
-            'packager'<% } %><%}); %><%} %><%} %>
-
-        ],
-        options: {
-            logConcurrentOutput: true
-            }
-        },
         syncing: {
             tasks: [
                 'sync'

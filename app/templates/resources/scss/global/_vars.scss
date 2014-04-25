@@ -11,6 +11,5 @@ $max-width: em(980);
 $tablet: new-breakpoint(max-width 768px 8);
 $mobile: new-breakpoint(max-width 480px 4);
 <% }} %>
-
 // Colors
 $color-validate-error: red;

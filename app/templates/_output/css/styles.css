@@ -1,280 +1,370 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\000035}}
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
   font-size: 100%;
-  vertical-align: baseline;
-}
+  font: inherit;
+  vertical-align: baseline; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000322}}
-html {
-  line-height: 1;
-}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000324}}
+body {
+  line-height: 1; }
+
 ol, ul {
-  list-style: none;
-}
+  list-style: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000326}}
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
 table {
   border-collapse: collapse;
-  border-spacing: 0;
-}
+  border-spacing: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000328}}
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000330}}
-q, blockquote {
-  quotes: none;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003103}}
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000332}}
-a img {
-  border: none;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-sourcemaps-0\.12\.2\.sourcemaps\.57a186c\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003116}}
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-  display: block;
-}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
 
 /* ==========================================================================
    Be sure how to use extends in @media:
    https://github.com/nex3/sass/issues/915
    ========================================================================== */
+
+
+
+
+
+
+
+
+
+/******************************************
+	Breakpoints
+******************************************/
+/******************************************
+
+	Grunticon mixin
+	usage: @include grunticon(icon-my-svg);
+
+******************************************/
 /* ---------------------------------------------------
 Demo Styles - just delete them
 --------------------------------------------------- */
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\000034}}
 body {
   background: #f4f4f4;
   color: #333;
   font-family: Arial, sans-serif;
   font-size: 16px;
-  line-height: 140%;
-}
+  line-height: 140%; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000312}}
+p {
+  margin-top: 0; }
+
+.masthead .container {
+  float: left; }
+
 .navbar {
   background: #222;
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
-  width: 20%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000319}}
-.navbar a {
-  background: #444;
-  color: #fff;
-  display: block;
-  font-weight: normal;
-  margin-bottom: 1px;
-  padding: 0.5em 1em;
-  text-align: right;
-  text-decoration: none;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000328}}
-.navbar a:hover {
-  background: yellowgreen;
-  color: #333;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000332}}
-.navbar a.navbar-brand {
-  background: none;
-  display: block;
-  font-weight: bold;
-  text-align: right;
-  text-transform: uppercase;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000338}}
-.navbar a.navbar-brand:hover {
-  color: yellowgreen;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000345}}
-.navbar li.active a, .navbar li.active a:hover {
-  background: yellowgreen;
-  color: #333;
-}
+  width: 20%; }
+  .navbar a {
+    background: #444;
+    color: #fff;
+    display: block;
+    font-weight: normal;
+    margin-bottom: 1px;
+    padding: 0.5em 1em;
+    text-align: right;
+    text-decoration: none; }
+    .navbar a:hover {
+      background: yellowgreen;
+      color: #333; }
+    .navbar a.navbar-brand {
+      background: none;
+      display: block;
+      font-weight: bold;
+      text-align: right;
+      text-transform: uppercase; }
+      .navbar a.navbar-brand:hover {
+        color: yellowgreen; }
+  .navbar ul {
+    margin: 1em 0;
+    padding: 0; }
+  .navbar li {
+    list-style: none; }
+    .navbar li.active a, .navbar li.active a:hover {
+      background: yellowgreen;
+      color: #333; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000353}}
 h2 {
   color: yellowgreen;
   font-weight: bold;
   margin: 1em 0;
-}
+  font-size: 1em;
+  line-height: 1.4em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000359}}
 #main {
   margin-left: 25%;
-  width: 60%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000362}}
-#main h1 {
-  font-size: 150%;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000367}}
-#main img {
-  height: auto;
-  margin: 1em;
-  max-width: 100%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000372}}
-#main ul {
-  margin-left: 1em;
-  margin-top: 1em;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000375}}
-#main ul li {
-  font-size: 120%;
-  line-height: 145%;
-  list-style: circle;
-  margin-left: 1em;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000380}}
-#main ul li a {
-  color: #666;
-  text-decoration: none;
-}
+  width: 60%; }
+  #main h1 {
+    font-size: 150%;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em; }
+    @media only screen and (max-width: 568px) {
+      #main h1 {
+        font-size: 100%; } }
+  #main img {
+    height: auto;
+    margin: 1em;
+    max-width: 100%; }
+  #main .teaser-img {
+    text-align: center; }
+    #main .teaser-img img {
+      display: block;
+      margin: 0.5em auto; }
+  #main ul {
+    margin-left: 1em;
+    margin-top: 1em; }
+    #main ul li {
+      font-size: 100%;
+      line-height: 135%;
+      list-style: circle;
+      margin-left: 1em; }
+      @media only screen and (max-width: 568px) {
+        #main ul li {
+          font-size: 100%; } }
+      #main ul li a {
+        color: #666;
+        text-decoration: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000388}}
 article {
   clear: both;
   margin-bottom: 1em;
-  position: relative;
-}
+  position: relative; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\0000394}}
+/* Teaser
+
+Primary teaser styles
+
+Markup:
+<div class="teaser">
+    <h2>this is my title</h2>
+    <p>
+        This is just a demo content to show you how to integrate external data
+    </p>
+</div>
+
+.teaser - Standard class for teaser elements
+h2 - Displays h2 in teasers
+
+Styleguide 1
+*/
 .teaser {
   background: #d4d4d4;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -o-box-sizing: border-box;
   box-sizing: border-box;
   float: left;
   margin: 0 3% 1em 0;
   padding: 0.5em;
-  width: 30%;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\00003104}}
-.teaser:nth-child(3n + 1) {
-  margin-right: 0;
-  clear: right;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\00003108}}
-.teaser:nth-child(3n + 2) {
-  clear: left;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_main\.scss}line{font-family:\00003111}}
-.teaser h2 {
-  color: black;
-  margin: 0.35em;
-}
+  width: 30%; }
+  .teaser:nth-child(3n+1) {
+    margin-right: 0;
+    clear: right; }
+  .teaser:nth-child(3n+2) {
+    clear: left; }
+  .teaser h2 {
+    color: black;
+    margin: 0.35em; }
+
+.form-wrapper .form-row {
+  display: block;
+  float: left;
+  width: 100%; }
+.form-wrapper .form-col {
+  float: left;
+  margin-bottom: 1em;
+  position: relative;
+  min-height: 30px; }
+  .form-wrapper .form-col:last-child.w50, .form-wrapper .form-col:last-child.w70, .form-wrapper .form-col:last-child.w30 {
+    margin-right: 0; }
+  .form-wrapper .form-col .form-col {
+    margin-bottom: 0; }
+.form-wrapper legend, .form-wrapper .as-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 1em; }
+.form-wrapper legend {
+  float: left;
+  width: 100%; }
+.form-wrapper input, .form-wrapper select {
+  padding: 0.5em; }
+.form-wrapper input[type='text'], .form-wrapper input[type="email"], .form-wrapper input[type="url"] {
+  padding: 1em/3;
+  width: 100%;
+  margin-top: 5px; }
+.form-wrapper textarea {
+  width: 100%;
+  margin-top: 5px; }
+.form-wrapper select {
+  width: 100%; }
+.form-wrapper .form-last {
+  margin-right: 0; }
+  .form-wrapper .form-last.w50 {
+    width: 50%; }
+  .form-wrapper .form-last.w70 {
+    width: 70%; }
+  .form-wrapper .form-last.w30 {
+    width: 30%; }
+  .form-wrapper .form-last.w20 {
+    width: 20%; }
+
+.w100 {
+  width: 100%;
+  float: left; }
+
+.w70 {
+  float: left;
+  width: 68%;
+  margin-right: 2%;
+  box-sizing: border-box; }
+
+.w50 {
+  width: 48%;
+  float: left;
+  margin-right: 2%;
+  box-sizing: border-box; }
+  .w50:nth-child(2n) {
+    margin-right: 0;
+    width: 50%; }
+
+.w30 {
+  float: left;
+  width: 28%;
+  margin-right: 2%; }
+
+.w20 {
+  float: left;
+  width: 18%;
+  margin-right: 2%; }
+
+.separator {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1em; }
+
+input[type="text"].user-success, input[type="text"].user-error, input[type="email"].user-success, input[type="email"].user-error, input[type="url"].user-success, input[type="url"].user-error {
+  background-position: right 10px center; }
+
+label {
+  font-size: 1em;
+  line-height: 20px; }
+  .checkbox label, .radio-group label {
+    cursor: pointer;
+    display: block;
+    padding-left: 40px; }
+  .checkbox.w100 label {
+    line-height: 30px; }
+  .checkbox.multilines label {
+    line-height: 20px; }
+  .radio-group label:before {
+    border-radius: 50%; }
+
+.radio-group li {
+  position: relative;
+  display: inline;
+  float: left;
+  margin: 0 1em 0 0;
+  font-size: 50%; }
+.radio-group input[type="radio"] {
+  display: inline;
+  float: left; }
+
+.error-message {
+  color: red;
+  display: none; }
+  .error-message p {
+    margin-bottom: 0; }
+  .form-col .error-message {
+    display: block;
+    width: 100%;
+    float: left;
+    margin-top: 1em; }
+    .form-col .error-message[hidden] {
+      display: none; }
+  .error-message .value-missing {
+    display: none; }
+    .error-message .value-missing.active {
+      display: block; }
+
+fieldset, .static-validation {
+  display: block; }
+
+.static-validation {
+  border: 1px solid red;
+  text-align: center; }
+  .static-validation h3, .static-validation li a {
+    color: red; }
+  .static-validation h3 {
+    margin-bottom: 1em/4; }
+  .static-validation li a {
+    font-weight: normal; }
+
+.invalid input[type='text'], .invalid input[type="email"], .invalid input[type="url"] {
+  color: red;
+  border-color: red; }
 
 @media print {
   /*
-  	* Don't show links for images, or javascript/internal links
-  	*/
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\000035}}
-  .ir a:after,
-  a,
-  a[href^="javascript:"]:after,
-  h2,
-  h2,
-  p,
-  pre,
-  tr,
+	* Don't show links for images, or javascript/internal links
+	*/
+  @page {
+    margin: 0.5cm; }
+
   * {
-    /* Black prints faster: h5bp.com/s */
-    box-shadow: none !important;
     background: transparent !important;
     color: #000 !important;
-    text-shadow: none !important;
-  }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000323}}
-  a:visited {
-    text-decoration: underline;
-  }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000326}}
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important; }
+  a, a:visited {
+    text-decoration: underline; }
   a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000329}}
+    content: " (" attr(href) ")"; }
   abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000332}}
-  a[href^="#"]:after {
-    content: "";
-  }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000335}}
-  blockquote {
+    content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: ""; }
+  pre, blockquote {
     border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000339}}
+    page-break-inside: avoid; }
   thead {
     display: table-header-group;
-    /* h5bp.com/t */
-  }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000343}}
+    /* h5bp.com/t */ }
+  tr, img {
+    page-break-inside: avoid; }
   img {
-    page-break-inside: avoid;
-  }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000346}}
-  img {
-    max-width: 100% !important;
-  }
-
-  @page {
-    margin: 0.5cm;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000352}}
-  h3 {
+    max-width: 100% !important; }
+  p, h2, h3 {
     orphans: 3;
-    widows: 3;
-  }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/xampp\/htdocs\/uebungen\/prototype\/html-prototype\/resources\/scss\/global\/_print\.scss}line{font-family:\0000356}}
-  h3 {
-    page-break-after: avoid;
-  }
-}
-
-/*@ sourceMappingURL=styles-svg.css.map */
+    widows: 3; }
+  h2, h3 {
+    page-break-after: avoid; } }

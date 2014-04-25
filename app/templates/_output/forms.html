@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE7" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Forms | My new project</title>
+
+    <link rel="stylesheet" href="./css/styles.css" />
+
+    <!-- [if lt IE 8]>
+     <link rel="stylesheet" href="./css/ie8.css" />
+    <![endif]-->
+	
+	<!-- Scripts
+	================================================== -->
+	
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+
+
+	
+</head>
+
+<body class="">
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+     your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
+     improve your experience.</p>
+<![endif]-->
+
+<!-- Navbar
+================================================== -->
+
+
+<div class="navbar navbar-fixed-left">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Frontpage</a>
+      <div class="nav-collapse collapse bs-navbar-collapse">
+        <ul class="nav navbar-nav pull-right">
+		        
+			        <li>
+				        <a href="forms.html">Forms</a>
+			        </li>
+		        
+			        <li>
+				        <a href="index.html">Prototype Deluxe</a>
+			        </li>
+		        
+			        <li>
+				        <a href="subpage.html">Article</a>
+			        </li>
+		        
+	        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Subhead
+================================================== -->
+<header class="masthead subhead">
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-12">
+                <h1> Forms </h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Page content
+================================================== -->
+<div class="container" id="main">
+    <h1> Forms </h1>
+    <h2 class="lead">  </h2>
+    
+
+<form id="custom-form" class="validate-ui form-wrapper" action="" method="get">
+
+	
+	
+
+	
+		
+
+
+<fieldset class="collapsable">
+	<legend >Legend 1</legend>
+	<div class="form-row ">
+
+		
+			<div class="form-col w100">
+
+				
+					<label for="input1">
+						Simple input field (* required) <abbr title="Pflichtfeld">*</abbr>
+					</label>
+					<input id="input1" type="text" placeholder="Simple input field" data-minlength="2"
+						data-maxlength="60"
+						data-errormessage="Please fill out"
+						required="required" />
+
+				
+			</div>
+		
+			<div class="form-col w100">
+
+				
+					<label for="input2">
+						Simple input field (not required) 
+					</label>
+					<input id="input2" type="text" placeholder="Simple input field" data-minlength="2"
+						data-maxlength="60"
+						data-errormessage="Please fill out"
+						 />
+
+				
+			</div>
+		
+			<div class="form-col w50">
+
+				
+					<label for="input3">
+						Simple input field  50% <abbr title="Pflichtfeld">*</abbr>
+					</label>
+					<input id="input3" type="text" placeholder="Simple input field" data-minlength="2"
+						data-maxlength="60"
+						data-errormessage="Please fill out"
+						required="required" />
+
+				
+			</div>
+		
+			<div class="form-col w50">
+
+				
+					<label for="mail">
+						E-Mail <abbr title="Pflichtfeld">*</abbr>
+					</label>
+					<input id="mail" type="email" placeholder="e-mail address" data-minlength="3"
+						data-maxlength="60"
+						data-errormessage="Please fill in a valid adress"
+						required="required" />
+
+				
+			</div>
+		
+			<div class="form-col w100">
+
+				
+
+					<label for="area1">
+						Textarea <abbr title="Pflichtfeld">*</abbr>
+					</label>
+					<textarea id="area1" rows="5" data-minlength="5"
+						data-maxlength="1000"
+						data-errormessage="Please fill in some text"
+						required="required"
+						placeholder="Textarea"></textarea>
+
+				
+			</div>
+		
+	</div>
+</fieldset>
+	
+
+	
+		
+
+
+<fieldset class="collapsable">
+	<legend >Legend 2</legend>
+	<div class="form-row separator">
+
+		
+			<div class="form-col w50">
+
+				
+
+					<div class="select-wrapper ">
+						<label for="select1">
+							Select list <abbr title="Pflichtfeld">*</abbr>
+						</label>
+						<select id="select1" class="" name="select1" data-errormessage="Please choose"
+							required
+							 data-trigger="change">
+							
+							
+								<option value="" >Please choose</option>
+							
+								<option value="1" >Option 1</option>
+							
+								<option value="2" >Option 2</option>
+							
+
+						</select>
+					</div>
+
+				
+			</div>
+		
+			<div class="form-col w50">
+
+				
+
+					<div class="select-wrapper custom-select">
+						<label for="company-name">
+							Select list Multi-Choice <abbr title="Pflichtfeld">*</abbr>
+						</label>
+						<select id="company-name" class="no-combo" name="company-name" 
+							required
+							multiple="multiple" data-trigger="change">
+							
+								<option value=""></option>
+							
+							
+								<option value="1" >Option 1</option>
+							
+								<option value="2" >Option 2</option>
+							
+
+						</select>
+					</div>
+
+				
+			</div>
+		
+			<div class="form-col ">
+
+				
+
+					<div class="form-text ">
+						<h2>Info</h2>
+						<p><strong>Info field</strong> - Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+					</div>
+
+				
+			</div>
+		
+	</div>
+</fieldset>
+	
+
+	
+		
+
+
+<fieldset class="collapsable">
+	<legend >Legend 3</legend>
+	<div class="form-row ">
+
+		
+			<div class="form-col w50">
+
+				
+
+					<strong>Radio buttons:<abbr title="Pflichtfeld">*</abbr></strong>
+					<ul class="radio-group radio1">
+						
+							<li>
+								<input id="form-item-1-1" name="radio1" type="radio" required="required"/>
+								<label for="form-item-1-1">Radio 1</label>
+							</li>
+						
+							<li>
+								<input id="form-item-1-2" name="radio1" type="radio" required="required"/>
+								<label for="form-item-1-2">Radio 2</label>
+							</li>
+						
+					</ul>
+					
+						<div class="error-message">
+							<p class="value-missing">Choose one option</p>
+						</div>
+					
+
+				
+			</div>
+		
+			<div class="form-col w50">
+
+				
+
+					<strong>Checkboxes</strong>
+
+					<div class="checkboxes-group check1">
+						
+							<div class="checkboxes-std">
+								<input type="checkbox" id="check-a" value="Checkbox 1" required="required"/>
+								<label for="check-a">Checkbox 1 
+									<abbr title="Pflichtfeld">*</abbr></label>
+							</div>
+						
+							<div class="checkboxes-std">
+								<input type="checkbox" id="check-b" value="Checkbox 1" />
+								<label for="check-b">Checkbox 1 </label>
+							</div>
+						
+							<div class="checkboxes-std">
+								<input type="checkbox" id="check-c" value="Checkbox 1" />
+								<label for="check-c">Checkbox 1 </label>
+							</div>
+						
+					</div>
+
+				
+			</div>
+		
+	</div>
+</fieldset>
+	
+
+	<fieldset>
+		<div class="form-row">
+			<button class="cta-button">Send</button>
+		</div>
+	</fieldset>
+
+</form>
+
+</div>
+
+</body>
+</html>

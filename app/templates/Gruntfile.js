@@ -126,11 +126,13 @@
 		]);
 
 	// Advanced Tasks
-	  grunt.registerTask('server', [
-		'concurrent:rendering',
-		'concurrent:syncing',
+	  grunt.registerTask('server', [<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
+		'js',<% } %><%}); %><%} %><%} %><% if(installAssemble != false){ %>
+        'newer:assemble',<% } %>
+        'concurrent:syncing',
 		'watchCSS',<% if(modules && modules.length >= 0){if(modules.indexOf('grunt-browser-sync') == -1) { %>
 		'connect:livereload', <% }} if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
+		// 'connect:livereload',
 		'browser_sync', <% } %><%}); %><%} %><%} %>
 		'watch'
 	  ]);
