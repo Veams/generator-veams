@@ -25,7 +25,7 @@
 //   @at-root .ie8 & {
 // 	     @extend %icon-data-png-#{$name};
 //   }
-	@at-root .lt-ie9 & {
+	.lt-ie9 & {
 		@extend %icon-png-#{$name};
 	}
 }

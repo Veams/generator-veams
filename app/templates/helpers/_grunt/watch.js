@@ -1,6 +1,7 @@
 module.exports = {
 	options: {
-		livereload: '<%%= connect.options.livereload %>'
+		livereload: '<%%= connect.options.livereload %>',
+		spawn: false
 	},
     js: {
         files: '<%%= paths.src %>/js/{,*/}*.js',
@@ -25,7 +26,7 @@ module.exports = {
     ajax: {
         files: ['<%%= paths.src %>/templates/ajax/**/{,*/}*.hbs'],
         tasks: ['assemble:ajax']
-    }, <% } %>
+    } <% } %>
     <% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>,
     proxies: {
         files: ['Gruntfile.js']
