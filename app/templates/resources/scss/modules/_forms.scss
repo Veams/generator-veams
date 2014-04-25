@@ -1,0 +1,204 @@
+.form-wrapper {
+	.form-row {
+		display: block;
+		float: left;
+		width: 100%;
+	}
+	.form-col {
+		float: left;
+		margin-bottom: 1em;
+		position: relative;
+		min-height: 30px;
+		&:last-child {
+			&.w50, &.w70, &.w30 {
+				margin-right: 0;
+			}
+		}
+		.form-col {
+			margin-bottom: 0;
+		}
+	}
+	legend, .as-label {
+		display: block;
+		font-weight: bold;
+		margin-bottom: 1em;
+	}
+	legend {
+		float: left;
+		width: 100%;
+	}
+	input, select {
+		padding: 0.5em;
+	}
+	input {
+		&[type='text'], &[type="email"], &[type="url"] {
+			padding: 1em / 3;
+			width: 100%;
+			margin-top: 5px;
+		}
+	}
+	textarea {
+		width: 100%;
+		margin-top: 5px;
+	}
+	select {
+		width: 100%;
+	}
+	// Layout
+	.form-last {
+		margin-right: 0;
+		&.w50 {
+			width: 50%;
+		}
+		&.w70 {
+			width: 70%;
+		}
+		&.w30 {
+			width: 30%;
+		}
+		&.w20 {
+			width: 20%;
+		}
+	}
+}
+
+/* -------------------------------------------
+	General form elements
+---------------------------------------------- */
+input {
+	&[type="text"], &[type="email"], &[type="url"] {
+		&.user-success, &.user-error {
+			background-position: right 10px center;
+		}
+	}
+}
+
+label {
+	font-size: 1em;
+	line-height: 20px;
+	.checkbox &, .radio-group & {
+		cursor: pointer;
+		display: block;
+		padding-left: 40px;
+	}
+	.checkbox.w100 & {
+		line-height: 30px;
+	}
+	.checkbox.multilines & {
+		line-height: 20px;
+	}
+	.radio-group & {
+		&:before {
+			border-radius: 50%;
+		}
+	}
+}
+
+.radio-group {
+	li {
+		position: relative;
+		display: inline;
+		float: left;
+		margin: 0 1em 0 0;
+		font-size: 50%;
+	}
+	input[type="radio"]{
+		display: inline;
+		float: left;
+	}
+}
+
+/* -------------------------------------------
+	Validation and error messages
+---------------------------------------------- */
+.error-message {
+	color: $color-validate-error;
+	display: none;
+	p {
+		margin-bottom: 0;
+	}
+	.form-col & {
+		display: block;
+		width: 100%;
+		float: left;
+		margin-top: 1em;
+		&[hidden] {
+			display: none;
+		}
+	}
+	.value-missing {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+}
+
+.static-validation {
+	border: 1px solid $color-validate-error;
+	text-align: center;
+	h3, li a {
+		color: $color-validate-error;
+	}
+	h3 {
+		margin-bottom: 1em / 4;
+	}
+	li a {
+		font-weight: normal;
+	}
+}
+
+.invalid {
+	input[type='text'], input[type="email"], input[type="url"] {
+		color: $color-validate-error;
+		border-color: $color-validate-error;
+	}
+}
+
+/* -------------------------------------------
+	Layout
+---------------------------------------------- */
+fieldset, .static-validation {
+	display: block;
+}
+
+.w100 {
+	width: 100%;
+	float: left;
+}
+
+.w70 {
+	float: left;
+	width: 68%;
+	margin-right: 2%;
+	box-sizing: border-box;
+}
+
+.w50 {
+	width: 48%;
+	float: left;
+	margin-right: 2%;
+	box-sizing: border-box;
+
+	&:nth-child(2n) {
+		margin-right: 0;
+		width: 50%;
+	}
+}
+
+.w30 {
+	float: left;
+	width: 28%;
+	margin-right: 2%;
+}
+
+.w20 {
+	float: left;
+	width: 18%;
+	margin-right: 2%;
+}
+
+.separator {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 1em;
+}

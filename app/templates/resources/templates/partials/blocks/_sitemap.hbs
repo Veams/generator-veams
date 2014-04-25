@@ -1,0 +1,11 @@
+---
+component: sitemap
+---
+
+<ul>
+	{{#each pages}}
+		<li>
+			<a href="{{relative ../page.dest this.dest}}">{{data.title}}</a>
+		</li>
+	{{/each}}
+</ul>

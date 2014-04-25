@@ -1,0 +1,19 @@
+---
+component: article--form-general
+---
+<form id="custom-form" class="validate-ui form-wrapper" action="" method="get">
+
+	{{! data/forms/form--example.json }}
+	{{#each form--example.template.fieldsets }}
+
+	{{! partials/modules/ }}
+		{{> _form-tpl }}
+	{{/each}}
+
+	<fieldset>
+		<div class="form-row">
+			<button class="cta-button">Send</button>
+		</div>
+	</fieldset>
+
+</form>

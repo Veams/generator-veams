@@ -1,0 +1,202 @@
+{
+	"template": {
+		"fieldsets": {
+			"fieldset1": {
+				"legend": "Legend 1",
+				"legend-hide": true,
+				"row-classes": false,
+				"item": {
+					"1": {
+						"col-classes": "w100",
+						"typeOf": "input",
+						"label": "Simple input field (* required)",
+						"id": "input1",
+						"name": "input1",
+						"type": "text",
+						"required": "required",
+						"placeholder": "Simple input field",
+						"data-errormessage": "Please fill out",
+						"data-minlength": "2",
+						"data-maxlength": "60"
+					},
+					"2": {
+						"col-classes": "w100",
+						"typeOf": "input",
+						"label": "Simple input field (not required)",
+						"id": "input2",
+						"name": "input2",
+						"type": "text",
+						"required": false,
+						"placeholder": "Simple input field",
+						"data-errormessage": "Please fill out",
+						"data-minlength": "2",
+						"data-maxlength": "60"
+					},
+					"3": {
+						"col-classes": "w50",
+						"typeOf": "input",
+						"label": "Simple input field  50%",
+						"id": "input3",
+						"name": "input3",
+						"type": "text",
+						"required": "required",
+						"placeholder": "Simple input field",
+						"data-errormessage": "Please fill out",
+						"data-minlength": "2",
+						"data-maxlength": "60"
+					},
+					"4": {
+						"col-classes": "w50",
+						"typeOf": "input",
+						"label": "E-Mail",
+						"id": "mail",
+						"name": "mail",
+						"type": "email",
+						"required": "required",
+						"placeholder": "e-mail address",
+						"data-errormessage": "Please fill in a valid adress",
+						"data-minlength": "3",
+						"data-maxlength": "60"
+					},
+
+					"5": {
+						"col-classes": "w100",
+						"typeOf": "textarea",
+						"label": "Textarea",
+						"id": "area1",
+						"name": "area1",
+						"type": "textarea",
+						"required": "required",
+						"placeholder": "Textarea",
+						"data-minlength": "5",
+						"data-maxlength": "1000",
+						"data-errormessage": "Please fill in some text"
+					}
+				}
+			},
+			"fieldset2": {
+				"legend": "Legend 2",
+				"legend-hide": true,
+				"row-classes": "separator",
+				"item": {
+					"1": {
+						"col-classes": "w50",
+						"typeOf": "select",
+						"label": "Select list",
+						"id": "select1",
+						"class": false,
+						"name": "select1",
+						"type": "select",
+						"data-errormessage": "Please choose",
+						"required": "required",
+						"option": [
+							{
+								"name": "Please choose",
+								"selected": true,
+								"val": "",
+								"disabled": false
+							},
+							{
+								"name": "Option 1",
+								"selected": false,
+								"val": "1",
+								"disabled": false
+							},
+							{
+								"name": "Option 2",
+								"selected": false,
+								"val": "2",
+								"disabled": false
+							}
+						]
+					},
+					"2": {
+						"col-classes": "w50",
+						"typeOf": "select",
+						"label": "Select list Multi-Choice",
+						"id": "company-name",
+						"class": "no-combo",
+						"name": "company-name",
+						"type": "select",
+						"multiple": true,
+						"required": "required",
+						"option": [
+							{
+								"name": "Option 1",
+								"selected": false,
+								"val": "1",
+								"disabled": false
+							},
+							{
+								"name": "Option 2",
+								"selected": false,
+								"val": "2",
+								"disabled": false
+							}
+						]
+					},
+					"info": {
+						"typeOf": "info",
+						"title": "Info",
+						"text": "<p><strong>Info field</strong> - Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>"
+					}
+				}
+			},
+			"fieldset3": {
+				"legend": "Legend 3",
+				"row-classes": false,
+				"item": {
+					"radio": {
+						"col-classes": "w50",
+						"typeOf": "radio",
+						"label": "Radio buttons:",
+						"id": "radio1",
+						"name": "radio1",
+						"type": "radio",
+						"required": "required",
+						"radio": [
+							{
+								"class": "any-class",
+								"id": "form-item-1-1",
+								"label": "Radio 1"
+							},
+							{
+								"class": "any-class",
+								"id": "form-item-1-2",
+								"label": "Radio 2"
+							}
+						],
+						"data-errormessage": "Choose one option"
+					},
+					"checkboxes": {
+						"col-classes": "w50",
+						"typeOf": "checkbox",
+						"label": "Checkboxes",
+						"id": "check1",
+						"name": "check1",
+						"type": "checkbox",
+						"checkboxes": [
+							{
+								"class": "checkboxes-std",
+								"id": "check-a",
+								"label": "Checkbox 1",
+								"required": "required"
+							},
+							{
+								"class": "checkboxes-std",
+								"id": "check-b",
+								"label": "Checkbox 1"
+							},
+							{
+								"class": "checkboxes-std",
+								"id": "check-c",
+								"label": "Checkbox 1"
+							}
+						]
+					}
+				}
+			}
+		}
+	}
+
+}

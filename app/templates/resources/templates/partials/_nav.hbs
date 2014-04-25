@@ -8,13 +8,12 @@ component: navbar
       <a class="navbar-brand" href="{{relative page.dest "index.html"}}">Frontpage</a>
       <div class="nav-collapse collapse bs-navbar-collapse">
         <ul class="nav navbar-nav pull-right">
-          <li {{#is title "Article"}}class="active"{{/is}}>
-            <a href="{{relative page.dest "/subpage.html"}}">Article</a>
-          </li>
-          <li {{#is title "Sitemap"}}class="active"{{/is}}>
-              <a href="{{relative page.dest "/sitemap.html"}}">Autogenerate your sitemap</a>
-          </li>
-        </ul>
+		        {{#each pages}}
+			        <li>
+				        <a href="{{relative ../page.dest this.dest}}">{{data.title}}</a>
+			        </li>
+		        {{/each}}
+	        </ul>
       </div>
     </div>
   </div>
