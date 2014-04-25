@@ -1,8 +1,8 @@
 module.exports = {
     options: {
         assets: '<%%= paths.dist %>',
-        data: '<%%= paths.src %>/data/*.{json,yml}',
-        helpers: '<%%= paths.src %>/templates/helpers/*.js',
+        data: '<%%= paths.src %>/data/**/*.{json,yml}',
+        helpers: '<%%= paths.src %>/templates/helpers/**/*.js',
         layoutdir: '<%%= paths.src %>/templates/layouts/',
         partials: '<%%= paths.src %>/templates/partials/**/*.hbs'
     },
