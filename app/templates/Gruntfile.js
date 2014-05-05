@@ -19,7 +19,8 @@
 		
 		// load only used tasks
 		require('jit-grunt')(grunt, { <% if (modules.indexOf('grunt-combine-media-queries') != -1) { %>
-			cmq: 'grunt-combine-media-queries'<% } %><% if (modules.indexOf('grunt-grunticon') != -1) { %>,
+			cmq: 'grunt-combine-media-queries'<% } %><% if (modules.indexOf('dr-grunt-svg-sprites') != -1) { %>,
+			'svg-sprites': 'dr-grunt-svg-sprites'<% } %><% if (modules.indexOf('grunt-grunticon') != -1) { %>,
 			replace: 'grunt-text-replace' <% } %>
 		});
         // measures the time each task takes
