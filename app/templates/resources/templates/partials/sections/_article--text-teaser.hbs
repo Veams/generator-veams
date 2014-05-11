@@ -1,0 +1,19 @@
+---
+component: article--text-teaser
+---
+
+{{! USED IN:
+	* pages/subpage.hbs
+}}
+
+<article>
+	<h2>{{articleTeaserTitle}}</h2>
+
+	{{> _text-teaser }}
+
+	{{! custom handlebars helper to support multiple json files with right context }}
+	{{#parseJSON '{"classes": "teaser green"}'}}
+		{{partial '_text-teaser' }}
+	{{/parseJSON}}
+
+</article>

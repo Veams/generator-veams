@@ -1,9 +1,34 @@
 ---
 component: teaser-text
 ---
+
+{{!
+ ------------------------------------------------
+
+ Explanation
+
+ This partial use two JSONs.
+ In this partial we use an each loop to go through all elements in text-teaser.json.
+
+ The partial is wrapped in a handlebars-helper "parseJSON" and deliver an extra class (see regions/article--text-teaser.hbs).
+ Therefore we need an extra partial-helper to know the right context (see https://github.com/helpers/handlebars-helper-partial).
+ The class we can use by doing the following:
+ - go out of the second json context (text-teaser.json) and get the outer json context (parseJSON) just by doing ../../classes.
+
+
+Further Information
+I added an if statement to determine that there is or is not a class.
+
+ ------------------------------------------------
+}}
+
+{{! USED IN:
+	* partials/_article--text-teaser.hbs
+}}
+
 {{#with text-teaser}}
 	{{#each teasers}}
-		<div class="teaser">
+		<div class="{{#if ../../classes }}{{../../../classes}}{{else}}teaser{{/if}}">
 			<h2>{{title}}</h2>
 
 			<p>{{text}}</p>

@@ -505,7 +505,7 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 		this.copy('resources/templates/partials/_global/_head.hbs');
 		this.directory('resources/templates/partials/blocks', 'resources/templates/partials/blocks');
 		this.directory('resources/templates/partials/modules', 'resources/templates/partials/modules');
-		this.directory('resources/templates/partials/regions', 'resources/templates/partials/regions');
+		this.directory('resources/templates/partials/sections', 'resources/templates/partials/sections');
 
 		// Add Gruntfile-helper file
 		this.copy('helpers/_grunt/assemble.js', 'helpers/_grunt/assemble.js');
@@ -617,6 +617,7 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 		// Add Libsass
 		if (this.features.indexOf('sassInsteadOfCompass') != -1) {
 			this.copy('helpers/_grunt/sass.js', 'helpers/_grunt/sass.js');
+			this.template('helpers/_grunt/fileindex.js', 'helpers/_grunt/fileindex.js');
 		} else {
 			this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
 			this.copy('config.rb', 'config.rb');

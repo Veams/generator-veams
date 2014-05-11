@@ -69,9 +69,10 @@ p {
 h2 {
 	color: yellowgreen;
 	font-weight: bold;
-	margin: 1em 0;
+	margin: 1.5em 0 1em;
 	font-size: 1em;
 	line-height: 1.4em;
+	clear: both;
 }
 
 #main {
@@ -150,15 +151,19 @@ Styleguide 1
 	margin: 0 3% 1em 0;
 	padding: 0.5em;
 	width: 30%;
-	&:nth-child(3n + 1) {
-		margin-right: 0;
-		clear: right;
-	}
-	&:nth-child(3n + 2) {
-		clear: left;
-	}
 	h2 {
 		color: black;
 		margin: 0.35em;
+	}
+	&.green {
+		background: yellowgreen;
+		color: #ffffff;
+	}
+	&.black {
+		background: #000;
+		color: #fff;
+		h2 {
+			color: #fff;
+		}
 	}
 }

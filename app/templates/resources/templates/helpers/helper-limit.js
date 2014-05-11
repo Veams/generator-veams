@@ -9,7 +9,7 @@
 		 *
 		 * @return n elements
 		 */
-		Handlebars.registerHelper('listItem', function (from, to, context, options) {
+		Handlebars.registerHelper('limit', function (from, to, context, options) {
 			var item = "";
 			for (var i = from, j = to; i < j; i++) {
 				item = item + options.fn(context[i]);
