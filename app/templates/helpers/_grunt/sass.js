@@ -2,7 +2,7 @@ module.exports = {
     dist: {
         options: {
             outputStyle: 'nested',
-            sourcemap: true
+            sourceMap: true
         },
         files: {
             '<%= paths.dist %>/css/styles.css': '<%= paths.src %>/scss/styles.scss',
