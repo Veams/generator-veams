@@ -33,7 +33,7 @@
 
 ```bash
 mkdir project && cd project
-yo prototype [--skip-install]
+yo prototype
 ```
 
 #### Options
