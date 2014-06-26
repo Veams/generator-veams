@@ -1,21 +1,24 @@
 ---
 component: article--form-general
 ---
-
-{{! USED IN:
-	* pages/forms.hbs
-}}
+{{#if docs}}
+	{{#markdown}}
+## USED IN:
+- pages/forms.hbs
+	{{/markdown}}
+{{/if}}
 
 <h2>Want to use just one template for mulitple forms or form elements?</h2>
-<p>Just generate it with JSON and the provided form template <strong>(see partial/modules/form-tpl.hbs)</strong>.</p><br/>
+<p>Just generate it with JSON and the provided form template <strong>(see partial/modules/form-tpl.hbs)</strong>.</p>
+<br/>
 
 <form id="custom-form" class="validate-ui form-wrapper" action="" method="get">
 
-	{{! data/forms/form--example.json }}
 	{{#each form--example.template.fieldsets }}
+	{{! data/forms/form--example.json }}
 
-	{{! partials/modules/ }}
 		{{> _form-tpl }}
+	{{! partials/modules/ }}
 	{{/each}}
 
 	<fieldset>

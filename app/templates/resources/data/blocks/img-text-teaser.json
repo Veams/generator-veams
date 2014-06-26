@@ -2,46 +2,52 @@
 	"teasers": {
 		"teaser": [
 			{
-				"classes": false,
 				"title": "this is my title",
-				"teaser-text": "This is just a demo content to show you how to integrate external data"
-			},
-			{
-				"classes": "green",
-				"title": "this is another title",
-				"teaser-text": "And another demo content to show you how to integrate external data"
-			},
-			{
-				"title": "this is my title",
+				"img": {
+					"img-src": "http://i.imgur.com/7VwkxBM.gif",
+					"img-alt": "Image"
+				},
 				"teaser-text": "This is just a demo content to show you how to integrate external data"
 			},
 			{
 				"title": "this is another title",
+				"img": {
+					"img-src": "http://i.imgur.com/7VwkxBM.gif",
+					"img-alt": "Image"
+				},
 				"teaser-text": "And another demo content to show you how to integrate external data"
 			},
 			{
 				"title": "this is my title",
+				"img": {
+					"img-src": "http://i.imgur.com/7VwkxBM.gif",
+					"img-alt": "Image"
+				},
 				"teaser-text": "This is just a demo content to show you how to integrate external data"
 			},
 			{
 				"title": "this is another title",
-				"teaser-text": "And another demo content to show you how to integrate external data"
+				"img": {
+					"img-src": "http://i.imgur.com/7VwkxBM.gif",
+					"img-alt": "Image"
+				},
+				"teaser-text": "This is just a demo content to show you how to integrate external data"
 			},
 			{
 				"title": "this is my title",
-				"teaser-text": "This is just a demo content to show you how to integrate external data"
-			},
-			{
-				"title": "this is another title",
+				"img": {
+					"img-src": "http://i.imgur.com/7VwkxBM.gif",
+					"img-alt": "Image"
+				},
 				"teaser-text": "And another demo content to show you how to integrate external data"
 			},
 			{
-				"title": "this is my title",
-				"teaser-text": "This is just a demo content to show you how to integrate external data"
-			},
-			{
 				"title": "this is another title",
-				"teaser-text": "And another demo content to show you how to integrate external data"
+				"img": {
+					"img-src": "http://i.imgur.com/7VwkxBM.gif",
+					"img-alt": "Image"
+				},
+				"teaser-text": "This is just a demo content to show you how to integrate external data"
 			}
 		]
 	}

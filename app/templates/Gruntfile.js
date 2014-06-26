@@ -86,7 +86,8 @@
 		]);<% } %><%}); %><%} %><%} %>
          <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
         grunt.registerTask('watchCSS', [
-             'sass:dist'
+			'fileindex',
+			'sass:dist'
         ]); <% } else { %>
 		grunt.registerTask('cssDev', [
 			'bgShell:devCompass'
@@ -134,7 +135,7 @@
 		'watchCSS',<% if(modules && modules.length >= 0){if(modules.indexOf('grunt-browser-sync') == -1) { %>
 		'connect:livereload', <% }} if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
 		// 'connect:livereload',
-		'browser_sync', <% } %><%}); %><%} %><%} %>
+		'browserSync', <% } %><%}); %><%} %><%} %>
 		'watch'
 	  ]);
 	  <% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>
@@ -156,7 +157,7 @@
 		'comment-media-queries:dist',<% }} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-autoprefixer') { %>
 		'autoprefixer',<% } %><%}); %><%} %><%} %>
 		'cssmin',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-bless') { %>
-		'bless', <% } %><%}); %><%} %><%} %>		
+		'bless', <% } %><%}); %><%} %><%} %>
 		'concurrent:build',
 		'jsbeautifier:html',
 		'check-html'

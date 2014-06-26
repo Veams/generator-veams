@@ -36,5 +36,19 @@ module.exports = {
         files: {
             '<%%= paths.dist %>/ajax-content/': ['<%%= paths.src %>/templates/ajax/*.hbs']
         }
-    }
+    }<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>,
+	docs: {
+		options: {
+			layout: 'tpl_default.hbs'
+		},
+		files: [
+		{
+			cwd: '<%%= paths.src %>/templates/docs/',
+			dest: '<%%= paths.dist %>/docs',
+			expand: true,
+			flatten: true,
+			src: ['**/*.hbs']
+			}
+		]
+	}<% } %>
 };

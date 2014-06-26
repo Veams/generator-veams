@@ -18,7 +18,17 @@ module.exports = {
                 dest: '<%%= paths.dist %>'
             }
         ]
-    }<% if(jsLibs && jsLibs.length > 0){ %>,<% if (jsLibs.indexOf('requirejs') != -1) { %>
+    }<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>,
+	highlightjs: {
+		files: [
+			// includes files within path and its sub-directories
+			{
+			cwd: '<%%= paths.src %>/bower_components/highlightjs',
+			src: 'highlight.pack.js',
+			dest: '<%%= paths.dist %>/bower_components'
+			}
+		]
+	}<% } %><% if(jsLibs && jsLibs.length > 0){ %>,<% if (jsLibs.indexOf('requirejs') != -1) { %>
     requirejs: {
         files: [
             // includes files within path and its sub-directories

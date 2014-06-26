@@ -2,6 +2,7 @@
 # require 'compass-normalize'
 # require 'rgbapng'
 # require "zurb-foundation"
+# require "sass-globbing"
 
 # set the environment explicitly
 if environment != :production

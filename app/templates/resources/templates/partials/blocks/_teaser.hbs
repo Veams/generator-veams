@@ -1,0 +1,64 @@
+---
+component: teaser-text
+docs: false
+---
+<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>
+{{#if docs}}
+{{#markdown}}
+------------------------------------------------
+## Component: Teaser Boxes
+
+### Author:  Sebastian Fitzner
+### Date:    25.06.2014
+
+This template is a generic one to speed up the workflow.
+You have different teaser types as described below:
+
+## Text Teaser:
+This teaser displays the following:
+- h2: Headline
+- p: Teaser Text
+
+## Image Teaser
+This teaser displays the following:
+- h2: Headline
+- img: Teaser Image
+
+## Mixed Teaser
+This teaser displays the following:
+- h2: Headline
+- img: Teaser Image
+- p: Teaser Text
+
+## Classes
+You can add custom classes to your teaser box. The following classes are already available:
+- green
+
+## USAGE FOR DEVS:
+- Every standard teaser box is solved with this markup
+- Integrate this partial in your page and wrap it with an json file
+
+## You can pass multiple values to have more flexiblity. These values are:
+- classes: define a specific class for the slider (string)
+
+## USED IN:
+* partials/_article--text-teaser.hbs
+* partials/_article--img-teaser.hbs
+
+## PATH TO PARTIAL
+* partials/blocks/_teaser.hbs
+
+## Example
+------------------------------------------------
+{{/markdown}}
+{{/if}}
+<% } %>
+<div class="{{classes}} teaser">
+	<h2>{{title}}</h2>
+	{{#if img}}
+		<img src="{{img.img-src}}" alt="{{img.img-alt}}"/>
+	{{/if}}
+	{{#if teaser-text}}
+		<p>{{teaser-text}}</p>
+	{{/if}}
+</div>

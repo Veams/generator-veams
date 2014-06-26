@@ -1,8 +1,28 @@
 ---
 component: generic-form-template
+docs: false
 ---
-{{!
- ------------------------------------------------
+<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>
+{{#if docs}}
+	{{#markdown}}
+------------------------------------------------
+
+### Author:  Sebastian Fitzner
+### Date:    02.04.2014
+
+This template is a generic one to speed up the workflow.
+
+## USAGE:
+- Every generic form type should be integrated here with an #is-statement
+- Integrate this partial in your page and wrap it with an #each-loop
+- The #each-loop should refer to a json file with your specific form elements
+- DONE!
+
+------------------------------------------------
+	{{/markdown}}
+{{/if}}
+<% } else { %>
+{{!  ------------------------------------------------
 
  Author:  Sebastian Fitzner
  Date:    02.04.2014
@@ -17,7 +37,7 @@ component: generic-form-template
 
  ------------------------------------------------
 }}
-
+<% } %>
 <fieldset class="collapsable">
 	<legend {{#if legend-classes}}class="{{ legend-classes }}"{{/if}}>{{ legend }}</legend>
 	<div class="form-row {{ row-classes }}">
@@ -96,8 +116,7 @@ component: generic-form-template
 						{{#each checkboxes}}
 							<div class="{{ class }}">
 								<input type="{{ ../type }}" id="{{ id }}" value="{{ label }}" {{#is required "required"}}required="required"{{/is}}/>
-								<label for="{{ id }}">{{ label }} {{#is required "required"}}
-									<abbr title="Pflichtfeld">*</abbr>{{/is}}</label>
+								<label for="{{ id }}">{{ label }} {{#is required "required"}}<abbr title="Pflichtfeld">*</abbr>{{/is}}</label>
 							</div>
 						{{/each}}
 					</div>

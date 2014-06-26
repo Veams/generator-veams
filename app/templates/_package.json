@@ -36,7 +36,7 @@
 		<% } %><% if(name == 'grunt-packager') { %>
 		"grunt-packager": "~0.1.0",
 		<% } %><% if(name == 'grunt-browser-sync') { %>
-		"grunt-browser-sync": "~0.6.0",
+		"grunt-browser-sync": "~0.7.0",
 		<% } %><% if(name == 'grunt-combine-media-queries') { %>
 		"grunt-combine-media-queries": "~1.0.9",
 		<% } %><% if(name == 'grunt-bless') { %>

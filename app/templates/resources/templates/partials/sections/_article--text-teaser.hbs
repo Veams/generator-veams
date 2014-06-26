@@ -9,11 +9,20 @@ component: article--text-teaser
 <article>
 	<h2>{{articleTeaserTitle}}</h2>
 
-	{{> _text-teaser }}
+	{{#each text-teaser.teasers.teaser}}
+	{{! data/blocks/text-teaser.json }}
+
+		{{> _teaser}}
+	{{! partials/blocks/ }}
+	{{/each}}
 
 	{{! custom handlebars helper to support multiple json files with right context }}
-	{{#parseJSON '{"classes": "teaser green"}'}}
-		{{partial '_text-teaser' }}
-	{{/parseJSON}}
+	{{#parseJSON '{"classes": "green"}'}}
+		{{#limit 0 1 ../text-teaser.teasers.teaser}}
+		{{! data/blocks/text-teaser.json }}
 
+			{{partial '_teaser' ../this }}
+		{{! partials/blocks/ }}
+		{{/limit}}
+	{{/parseJSON}}
 </article>
