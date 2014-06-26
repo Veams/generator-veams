@@ -316,12 +316,12 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		message: "Do you need anything special?",
 		choices: [
 			{
-				name: 'Styleguide Documentation',
+				name: 'Create Developer Documentation',
 				value: 'installDocs',
 				checked: false
 			},
 			{
-				name: 'Use Libsass instead of Compass',
+				name: 'Libsass instead of Compass',
 				value: 'sassInsteadOfCompass',
 				checked: true
 			},
@@ -451,9 +451,10 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.copy('helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
 	this.copy('helpers/_grunt/prettysass.js', 'helpers/_grunt/prettysass.js');
 	this.template('helpers/_grunt/_sync.js', 'helpers/_grunt/sync.js');
-	this.template('helpers/_grunt/watch.js', 'helpers/_grunt/watch.js');
+	this.template('helpers/_grunt/_watch.js', 'helpers/_grunt/watch.js');
 	this.copy('bowerrc', '.bowerrc');
 	this.copy('gitignore', '.gitignore');
+	this.template('README.md', 'README.md');
 
 	this.directory('_output', '_output');
 
@@ -508,7 +509,7 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 		this.directory('resources/templates/partials/sections', 'resources/templates/partials/sections');
 
 		// Add Gruntfile-helper file
-		this.copy('helpers/_grunt/assemble.js', 'helpers/_grunt/assemble.js');
+		this.copy('helpers/_grunt/_assemble.js', 'helpers/_grunt/assemble.js');
 	}
 };
 
@@ -552,7 +553,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy('helpers/_grunt/compass.js', 'helpers/_grunt/compass.js');
 		}
 		if (this.modules.indexOf('grunt-browser-sync') != -1) {
-			this.copy('helpers/_grunt/browser_sync.js', 'helpers/_grunt/browser_sync.js');
+			this.template('helpers/_grunt/_browserSync.js', 'helpers/_grunt/browserSync.js');
 		}
 		if (this.modules.indexOf('grunt-photobox') != -1) {
 			this.copy('helpers/_grunt/photobox.js', 'helpers/_grunt/photobox.js');
@@ -604,6 +605,13 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 		if (this.features.indexOf('installDocs') != -1) {
 			// add styleguide files
 			this.directory('helpers/styleguide-template', 'helpers/styleguide-template');
+
+			if (this.config.get("installAssemble") == true) {
+				this.directory('resources/templates/docs', 'resources/templates/docs');
+			}
+
+			this.directory('resources/scss/docs', 'resources/scss/docs');
+			this.copy('resources/scss/docs.scss', 'resources/scss/docs.scss');
 			this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
 			this.copy('helpers/_grunt/styleguide.js', 'helpers/_grunt/styleguide.js');
 			this.copy('helpers/_grunt/copy.js', 'helpers/_grunt/copy.js');
@@ -616,7 +624,7 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 
 		// Add Libsass
 		if (this.features.indexOf('sassInsteadOfCompass') != -1) {
-			this.copy('helpers/_grunt/sass.js', 'helpers/_grunt/sass.js');
+			this.template('helpers/_grunt/_sass.js', 'helpers/_grunt/sass.js');
 			this.template('helpers/_grunt/fileindex.js', 'helpers/_grunt/fileindex.js');
 		} else {
 			this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
