@@ -27,14 +27,10 @@ module.exports = {
         files: '<%%= paths.src %>/assets/**/*',
         tasks: 'sync:assets'
     }<% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>,
-	scss: {
-		files: '<%%= paths.src %>/scss/**/*',
-		tasks: 'sass:dist'
-	},
 	globbing: {
 		options: {
-			event: ['added', 'deleted']
-			},
+		event: ['added', 'deleted']
+		},
 		files: [
 			'<%%= paths.helper %>/_grunt/fileindex.js',
 			'<%%= paths.src %>/scss/**/*.scss',
@@ -47,7 +43,25 @@ module.exports = {
 			'<%%= paths.helper %>/_grunt/fileindex.js'
 		],
 		tasks: 'fileindex:libsassGlobbing'
-	}<% }} %><% if(installAssemble != false){ %>,
+	},
+	scss: {
+		files: '<%%= paths.src %>/scss/**/*',
+		tasks: 'sass:dist',
+		options: {
+			spawn: false
+		}
+	},
+	scssIE: {
+		files: '<%%= paths.src %>/scss/ie8.scss',
+		tasks: 'sass:ie'
+	}<% }} %><% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>,
+	scssDocs: {
+		files: '<%%= paths.src %>/scss/docs/*',
+		tasks: 'sass:docs',
+		options: {
+			spawn: false
+		}
+	}<% } %><% if(installAssemble != false){ %>,
 	templates: {
 		files: ['<%%= paths.src %>/{data,templates/layouts,templates/partials}/**/{,*/}*.{js,md,hbs,yml,json}'],
 	    tasks: ['assemble'],

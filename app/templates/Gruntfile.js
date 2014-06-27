@@ -132,8 +132,9 @@
 		'js',<% } %><%}); %><%} %><%} %><% if(installAssemble != false){ %>
         'newer:assemble',<% } %>
         'concurrent:syncing',
-		'watchCSS',<% if(modules && modules.length >= 0){if(modules.indexOf('grunt-browser-sync') == -1) { %>
-		'connect:livereload', <% }} if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>
+		'watchCSS'<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>,
+		'sass:docs'<% } %><% if(modules && modules.length >= 0){if(modules.indexOf('grunt-browser-sync') == -1) { %>,
+		'connect:livereload',<% }} if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>,
 		// 'connect:livereload',
 		'browserSync', <% } %><%}); %><%} %><%} %>
 		'watch'

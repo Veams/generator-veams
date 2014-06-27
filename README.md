@@ -126,9 +126,18 @@ To help you in your workflow, we integrated some sub generators for you:
 
 ### Grunt Modules:
 
-* Insall your grunt modules: yo prototype:gm
+* Install your grunt modules: yo prototype:gm
 
 Others will follow.
+
+## Developer Documentation
+Generator-Prototype provides a way to document your assemble modules via markdown and a separate docs folder. 
+Just use the custom installation route and check: 
+* _Create Developer Documentation_
+
+For further informations and instructions see: 
+* [assemble-documentation-example](https://github.com/Sebastian-Fitzner/assemble-documentation-example)
+
 
 ## Alternative
 

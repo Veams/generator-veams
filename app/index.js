@@ -318,7 +318,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{
 				name: 'Create Developer Documentation',
 				value: 'installDocs',
-				checked: false
+				checked: true
 			},
 			{
 				name: 'Libsass instead of Compass',
