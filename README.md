@@ -12,7 +12,9 @@
 
 * Node.js & Node Package Manager
 * Grunt Command Line Interface – npm install -g grunt-cli
-* SASS 3.4 (because of @-root used in grunticon-mixin) – gem install sass
+
+#### Optional
+* SASS 3.4 (only when you do not want to use node-sass) – gem install sass
 * Compass 1 (because of Source Maps) – gem install compass --pre 
 
 ### Installation 
@@ -29,7 +31,7 @@
  
 ## Usage
 
-### Prototype app scaffolds.
+### Scaffold your new prototype project.
 
 ```bash
 mkdir project && cd project
@@ -49,9 +51,11 @@ yo prototype
 ## Quick Start
 You can scaffold your project in an instance. The first question is:
 
+```
 "Choose your installation routine"
+```
 
-If you choose "Standard installation" you skip the rest of the questions and get the default values. 
+If you choose "Standard installation" you skip the rest of the questions and get the default values.
 
 ## Plugins and Modules
 
@@ -71,6 +75,11 @@ There are standard grunt modules I use. These are:
 ***But you can also apply additional addons and grunt modules to your project. Just choose specific ones:***
  
 ### Assemble
+
+We use Assemble as template engine. It is a static site generator in which you can use partials/includes/components/modules and bases on Handlebars.js.
+You want to know more? Here you go: [assemble.io](http://assemble.io)
+
+In your installation routine you can choose specific modules for Assemble:
 
  * permalinks
  * assemble-contrib-contextual
@@ -98,6 +107,14 @@ For our Gruntfile we use the grunt module [load-grunt-configs](https://github.co
 These files/tasks you can find in this directory:
 
  * helpers/_grunt
+
+## Features
+The Generator-Prototype supports different features. Just check/uncheck them in the __custom installation routine__:
+
+* You want to add a separate distribution folder? - Check!
+* You want to add a CSS Styleguide and Assemble Development Documenation? - Check! (See "Developer Documentation")
+* You want to use Libsass instead of Ruby to compile SASS files? - Check!
+* You begin your project with mobile first but need to support desktop styles in IE8? - Check!
 
 ## JS Libraries and CSS Frameworks
 You can choose JS Libraries like:

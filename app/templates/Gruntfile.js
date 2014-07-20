@@ -34,12 +34,14 @@
             },
 			// define your path structure
             paths: {
-                // resources folder with working files
-                src: 'resources',
 				// helpers folder with grunt tasks and styleguide templates, tests and photobox
-                helper: 'helpers',
-				// destination/distribution folder 
-                dist: '_output'
+				helper: 'helpers',
+				// resources folder with working files
+				src: 'resources',<% if (features && features.length > 0 && features.indexOf('createDevFolder') != -1) { %>
+				// dist folder
+				dist: '_dist', <% } %>
+				// dev/working folder
+                dev: '_output'
             },
 			// define your ports for grunt-contrib-connect
             ports: {
@@ -132,7 +134,7 @@
 		'js',<% } %><%}); %><%} %><%} %><% if(installAssemble != false){ %>
         'newer:assemble',<% } %>
         'concurrent:syncing',
-		'watchCSS'<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>,
+		'watchCSS'<% if (features && features.length > 0 && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>,
 		'sass:docs'<% } %><% if(modules && modules.length >= 0){if(modules.indexOf('grunt-browser-sync') == -1) { %>,
 		'connect:livereload',<% }} if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>,
 		// 'connect:livereload',
@@ -151,9 +153,11 @@
 		'js',<% } %><%}); %><%} %><%} %>
 		'jsbeautifier:js',
 		'concurrent:syncing', <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
-		'watchCSS',<% } else { %>
+		'watchCSS',
+		'sass:ie',<% } else { %>
 		'cssProd',<% }} else { %>
-		'cssProd',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
+		'cssProd',<% } %><% if (features && features.length > 0 && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>
+		'sass:docs',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
 		'cmq',<% } %><%}); %><%} %><%} %><% if(features && features.length > 0){ if(features.indexOf('mobileFirst') != -1) { %>
 		'comment-media-queries:dist',<% }} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-autoprefixer') { %>
 		'autoprefixer',<% } %><%}); %><%} %><%} %>
@@ -167,5 +171,9 @@
 	  grunt.registerTask('default', [
 		'server'
 	  ]);
-
+	  <% if (features && features.length > 0 && features.indexOf('createDevFolder') != -1) { %>
+		grunt.registerTask('dist', [
+			'build',
+			'copy:dist'
+		]); <% } %>
 	};

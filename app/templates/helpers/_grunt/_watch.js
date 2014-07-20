@@ -13,10 +13,10 @@ module.exports = {
 			livereload: '<%%= connect.options.livereload %>'
 		},
 		files: [
-			'<%%= paths.dist %>/{,*/}*.html',
-			'<%%= paths.dist %>/css/{,*/}*.css', // if you want to use browser-sync for css just comment out this line
-			'<%%= paths.dist %>/js/{,*/}*.js',
-			'<%%= paths.dist %>/assets/**/*'
+			'<%%= paths.dev %>/{,*/}*.html',
+			'<%%= paths.dev %>/css/{,*/}*.css', // if you want to use browser-sync for css just comment out this line
+			'<%%= paths.dev %>/js/{,*/}*.js',
+			'<%%= paths.dev %>/assets/**/*'
 		]
 	},
     js: {
@@ -63,8 +63,8 @@ module.exports = {
 		}
 	}<% } %><% if(installAssemble != false){ %>,
 	templates: {
-		files: ['<%%= paths.src %>/{data,templates/layouts,templates/partials}/**/{,*/}*.{js,md,hbs,yml,json}'],
-	    tasks: ['assemble'],
+		files: ['<%%= paths.src %>/{data,templates/layouts,templates/partials}/**/{,*/}*.{md,hbs,yml,json}'],
+	    tasks: ['newer:assemble'],
 	    options: {
 			spawn: false
 		}
@@ -72,6 +72,13 @@ module.exports = {
     pages: {
         files: ['<%%= paths.src %>/templates/pages/**/{,*/}*.hbs'],
         tasks: ['assemble:pages'],
+	    options: {
+			spawn: false
+		}
+    },
+    docs: {
+        files: ['<%%= paths.src %>/templates/docs/**/{,*/}*.hbs'],
+        tasks: ['assemble:docs'],
 	    options: {
 			spawn: false
 		}

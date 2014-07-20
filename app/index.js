@@ -205,7 +205,6 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 
 	var questions = [];
 
-
 	(!this.config.get("projectName") || force) && questions.push({
 		type: "input",
 		name: "projectName",
@@ -316,6 +315,11 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		message: "Do you need anything special?",
 		choices: [
 			{
+				name: 'Create Development Folder to get two outputs (Dev-Output, Dist-Output)',
+				value: 'createDevFolder',
+				checked: true
+			},
+			{
 				name: 'Create Developer Documentation',
 				value: 'installDocs',
 				checked: true
@@ -387,7 +391,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		default: this.config.get("cssLibs")
 	});
 
-	(!this.config.get("installCMS") || force) && questions.push({
+	/*(!this.config.get("installCMS") || force) && questions.push({
 		type: "confirm",
 		name: "installCMS",
 		message: "Would you want to install CMS snippets for your project?",
@@ -406,7 +410,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		when: function (answers) {
 			return answers.installCMS;
 		}
-	});
+	});*/
 
 	this.prompt(questions, function (answers) {
 
@@ -418,7 +422,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		this.features = answers.features;
 		this.jsLibs = answers.jsLibs;
 		this.cssLibs = answers.cssLibs;
-		this.CMS = answers.CMS;
+		// this.CMS = answers.CMS;
 		this.authorName = this.config.get("author").name;
 		this.authorEmail = this.config.get("author").email;
 		this.proxyHost = answers.proxyHost;
@@ -614,7 +618,6 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 			this.copy('resources/scss/docs.scss', 'resources/scss/docs.scss');
 			this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
 			this.copy('helpers/_grunt/styleguide.js', 'helpers/_grunt/styleguide.js');
-			this.copy('helpers/_grunt/copy.js', 'helpers/_grunt/copy.js');
 		}
 
 		// add mobile first grunt task
@@ -630,6 +633,17 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 			this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
 			this.copy('config.rb', 'config.rb');
 		}
+
+		// Add Dev Folder
+		if (this.features.indexOf('createDevFolder') != -1) {
+			this.mkdir('_dist');
+		}
+
+		// Add copy task
+		if (this.features.indexOf('createDevFolder') != -1 || this.features.indexOf('installDocs') != -1) {
+			this.copy('helpers/_grunt/_copy.js', 'helpers/_grunt/copy.js');
+		}
+
 	} else {
 		this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
 		this.copy('config.rb', 'config.rb');

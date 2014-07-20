@@ -1,8 +1,8 @@
 module.exports = {
-    css: {
-        options: {},
-        files: {
-            '<%= paths.dist %>/css/styles-svg.css': ['<%= paths.dist %>/css/styles-svg.css']
-        }
-    }
+	css: {
+		options: {},
+		files: {
+			'<%= paths.dev %>/css/styles.css': ['<%= paths.dev %>/css/styles.css']
+		}
+	}
 };

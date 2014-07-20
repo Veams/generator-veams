@@ -1,23 +1,23 @@
 module.exports = {
-    js: {
-        files: [
-            // includes files within path and its sub-directories
-            {
-                cwd: '<%%= paths.src %>/js',
-                src: '**/*',
-                dest: '<%%= paths.dist %>/js'
-            }
-        ]
-    },
-    assets: {
-        files: [
-            // includes files within path and its sub-directories
-            {
-                cwd: '<%%= paths.src %>/assets',
-                src: '**/{,*/}*',
-                dest: '<%%= paths.dist %>'
-            }
-        ]
+	js: {
+		files: [
+			// includes files within path and its sub-directories
+			{
+				cwd: '<%%= paths.src %>/js',
+				src: '**/*',
+				dest: '<%%= paths.dev %>/js'
+			}
+		]
+	},
+	assets: {
+		files: [
+			// includes files within path and its sub-directories
+			{
+				cwd: '<%%= paths.src %>/assets',
+				src: '**/{,*/}*',
+				dest: '<%%= paths.dev %>'
+			}
+		]
     }<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>,
 	highlightjs: {
 		files: [
@@ -25,7 +25,7 @@ module.exports = {
 			{
 			cwd: '<%%= paths.src %>/bower_components/highlightjs',
 			src: 'highlight.pack.js',
-			dest: '<%%= paths.dist %>/bower_components'
+			dest: '<%%= paths.dev %>/bower_components'
 			}
 		]
 	}<% } %><% if(jsLibs && jsLibs.length > 0){ %>,<% if (jsLibs.indexOf('requirejs') != -1) { %>
@@ -35,9 +35,9 @@ module.exports = {
             {
                 cwd: '<%%= paths.src %>/bower_components/requirejs',
                 src: 'require.js',
-                dest: '<%%= paths.dist %>/bower_components/requirejs'
+                dest: '<%%= paths.dev %>/bower_components/requirejs'
             }
-        ]
+	]
 			},<% } %><% if (jsLibs.indexOf('backbone') != -1) { %>
     backbone: {
         files: [
@@ -45,7 +45,7 @@ module.exports = {
             {
                 cwd: '<%%= paths.src %>/bower_components/backbone',
                 src: 'backbone.js',
-                dest: '<%%= paths.dist %>/bower_components/backbone'
+                dest: '<%%= paths.dev %>/bower_components/backbone'
             }
         ]
     },
@@ -55,7 +55,7 @@ module.exports = {
             {
                 cwd: '<%%= paths.src %>/bower_components/underscore',
                 src: 'underscore.js',
-                dest: '<%%= paths.dist %>/bower_components/underscore'
+                dest: '<%%= paths.dev %>/bower_components/underscore'
             }
         ]
     },<% } %><% if (jsLibs.indexOf('angular') != -1) { %>
@@ -65,7 +65,7 @@ module.exports = {
             {
                 cwd: '<%%= paths.src %>/bower_components/angular',
                 src: 'angular.js',
-                dest: '<%%= paths.dist %>/bower_components/angular'
+                dest: '<%%= paths.dev %>/bower_components/angular'
             }
         ]
     },<% } %><% if (jsLibs.indexOf('jquery') != -1) { %>
@@ -75,7 +75,7 @@ module.exports = {
             {
                 cwd: '<%%= paths.src %>/bower_components/jquery/dist',
                 src: 'jquery.js',
-                dest: '<%%= paths.dist %>/bower_components/jquery/dist'
+                dest: '<%%= paths.dev %>/bower_components/jquery/dist'
             }
         ]
     }<% } %><% } %>

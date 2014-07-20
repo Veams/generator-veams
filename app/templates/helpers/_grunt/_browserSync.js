@@ -1,18 +1,18 @@
 module.exports = {
 	bsFiles: {
 		src: [
-			'<%%= paths.dist %>/css/styles.css', <% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>
-			'<%%= paths.dist %>/css/docs.css', <% } %>
-			'<%%= paths.dist %>/img/**/*.{jpg,png,gif}',
-			'<%%= paths.dist %>/media/**/*.{jpg,png,gif}',
-			'<%%= paths.dist %>/js/**/*.js',
-			'<%%= paths.dist %>/**/*.html'
+			'<%%= paths.dev %>/css/styles.css', <% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>
+			'<%%= paths.dev %>/css/docs.css', <% } %>
+			'<%%= paths.dev %>/img/**/*.{jpg,png,gif}',
+			'<%%= paths.dev %>/media/**/*.{jpg,png,gif}',
+			'<%%= paths.dev %>/js/**/*.js',
+			'<%%= paths.dev %>/**/*.html'
 		]
 	},
 	options: {
 		host: "localhost",
 		server: {
-			baseDir: '<%%= paths.dist %>',
+			baseDir: '<%%= paths.dev %>',
 			index: "index.html"
 		},
 		watchTask: true,

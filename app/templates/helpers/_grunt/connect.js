@@ -9,7 +9,7 @@ module.exports = {
         options: {
             open: true,
             base: [
-                '<%%= paths.dist %>'
+                '<%%= paths.dev %>'
             ]
         }
     }<% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>,
