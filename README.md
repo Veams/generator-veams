@@ -76,7 +76,7 @@ There are standard grunt modules I use. These are:
  
 ### Assemble
 
-We use Assemble as template engine. It is a static site generator in which you can use partials/includes/components/modules and bases on Handlebars.js.
+We use Assemble as template engine. It is a static site generator in which you can use partials/includes/components/modules.
 You want to know more? Here you go: [assemble.io](http://assemble.io)
 
 In your installation routine you can choose specific modules for Assemble:
