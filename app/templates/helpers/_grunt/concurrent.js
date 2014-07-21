@@ -10,7 +10,7 @@ module.exports = {
     build: {
         tasks: [<% if(installAssemble != false){ %>
             'assemble',<% } %><% if (features && features.length > 0) { if (features.indexOf('installDocs') != -1) { %>
-            'copy',
+            'copy:styleguide',
             'styleguide',<% }} %>
             'beauty-scss'
         ],

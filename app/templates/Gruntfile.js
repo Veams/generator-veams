@@ -149,7 +149,7 @@
 		]);
 	  <% } %>
 	  grunt.registerTask('build', [
-		'clean',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
+		'clean:dev',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
 		'js',<% } %><%}); %><%} %><%} %>
 		'jsbeautifier:js',
 		'concurrent:syncing', <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
@@ -157,7 +157,8 @@
 		'sass:ie',<% } else { %>
 		'cssProd',<% }} else { %>
 		'cssProd',<% } %><% if (features && features.length > 0 && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>
-		'sass:docs',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
+		'sass:docs',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-data-separator') { %>
+		'dataSeparator',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
 		'cmq',<% } %><%}); %><%} %><%} %><% if(features && features.length > 0){ if(features.indexOf('mobileFirst') != -1) { %>
 		'comment-media-queries:dist',<% }} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-autoprefixer') { %>
 		'autoprefixer',<% } %><%}); %><%} %><%} %>
@@ -173,6 +174,7 @@
 	  ]);
 	  <% if (features && features.length > 0 && features.indexOf('createDevFolder') != -1) { %>
 		grunt.registerTask('dist', [
+			'clean',
 			'build',
 			'copy:dist'
 		]); <% } %>

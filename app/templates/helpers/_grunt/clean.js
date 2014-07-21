@@ -1,5 +1,8 @@
 module.exports = {
-    dist: [<% if(installAssemble){ %>
+	dist: [
+		'<%%= paths.dist %>/**'
+	],
+    dev: [<% if(installAssemble){ %>
         '<%%= paths.dev %>/**/*.{html,xml,txt}',<% } %><% if (features && features.length > 0) { if (features.indexOf('installDocs') != -1) { %>
 		'<%%= paths.dev %>/styleguide/**/*',<% }} %>
         '<%%= paths.dev %>/css/**/*',

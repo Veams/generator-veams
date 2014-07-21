@@ -43,6 +43,7 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 		installCMS: false,
 		modules: [
 			"grunt-grunticon",
+			"grunt-data-separator",
 			"grunt-packager",
 			"grunt-combine-media-queries",
 			"grunt-bless",
@@ -255,6 +256,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		message: "Which grunt modules do you want to use?",
 		choices: [
 			{ name: "grunt-grunticon", checked: true },
+			{ name: "grunt-data-separator", checked: true },
 			{ name: "dr-grunt-svg-sprites" },
 			{ name: "grunt-packager", checked: true },
 			{ name: "grunt-combine-media-queries", checked: true },
@@ -392,25 +394,25 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 	});
 
 	/*(!this.config.get("installCMS") || force) && questions.push({
-		type: "confirm",
-		name: "installCMS",
-		message: "Would you want to install CMS snippets for your project?",
-		default: this.config.get("installCMS")
-	});
-	questions.push({
-		name: "CMS",
-		type: "list",
-		message: "Which CMS snippets do you want to use?",
-		choices: [
-			{ name: "TYPO3"},
-			{ name: "Drupal"},
-			{ name: "Magnolia"},
-			{ name: "CoreMedia"}
-		],
-		when: function (answers) {
-			return answers.installCMS;
-		}
-	});*/
+	 type: "confirm",
+	 name: "installCMS",
+	 message: "Would you want to install CMS snippets for your project?",
+	 default: this.config.get("installCMS")
+	 });
+	 questions.push({
+	 name: "CMS",
+	 type: "list",
+	 message: "Which CMS snippets do you want to use?",
+	 choices: [
+	 { name: "TYPO3"},
+	 { name: "Drupal"},
+	 { name: "Magnolia"},
+	 { name: "CoreMedia"}
+	 ],
+	 when: function (answers) {
+	 return answers.installCMS;
+	 }
+	 });*/
 
 	this.prompt(questions, function (answers) {
 
@@ -538,6 +540,9 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 			} else {
 				this.copy('helpers/_grunt/replace.js', 'helpers/_grunt/replace.js');
 			}
+		}
+		if (this.modules.indexOf('grunt-data-separator') != -1) {
+			this.copy('helpers/_grunt/dataSeparator.js', 'helpers/_grunt/dataSeparator.js');
 		}
 		if (this.modules.indexOf('dr-grunt-svg-sprites') != -1) {
 			this.mkdir('resources/scss/icons');
