@@ -31,6 +31,7 @@ GMGenerator.prototype.askFor = function askFor() {
 		message: "Which grunt modules do you want to use?",
 		choices: [
 			{ name: "grunt-grunticon"},
+			{ name: "grunt-data-separator"},
 			{ name: "dr-grunt-svg-sprites" },
 			{ name: "grunt-packager"},
 			{ name: "grunt-combine-media-queries"},
@@ -116,6 +117,9 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 			} else {
 				this.copy('../../app/templates/helpers/_grunt/replace.js', 'helpers/_grunt/replace.js');
 			}
+		}
+		if (this.modules.indexOf('grunt-data-separator') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/dataSeparator.js', 'helpers/_grunt/dataSeparator.js');
 		}
 		if (this.modules.indexOf('dr-grunt-svg-sprites') != -1) {
 			this.mkdir('resources/scss/icons');
