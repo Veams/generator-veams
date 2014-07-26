@@ -529,7 +529,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 	if (this.modules && this.modules.length > 0) {
 		if (this.modules.indexOf('grunt-grunticon') != -1) {
 			this.directory('resources/scss/icons', 'resources/scss/icons');
-			this.directory('helpers/templates/grunticon', 'helpers/templates/grunticon');
+			this.directory('helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
 			this.copy('helpers/_grunt/grunticon.js', 'helpers/_grunt/grunticon.js');
 			if (this.features && this.features.length > 0) {
 				if (this.features.indexOf('sassInsteadOfCompass') != -1) {
@@ -613,7 +613,7 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 	if (this.features && this.features.length > 0) {
 		if (this.features.indexOf('installDocs') != -1) {
 			// add styleguide files
-			this.directory('helpers/styleguide-template', 'helpers/styleguide-template');
+			this.directory('helpers/templates/styleguide-template', 'helpers/templates/styleguide-template');
 
 			if (this.config.get("installAssemble") == true) {
 				this.directory('resources/templates/docs', 'resources/templates/docs');
