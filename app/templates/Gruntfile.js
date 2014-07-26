@@ -126,7 +126,7 @@
 		]);
 		// Beautify your SASS files
 		grunt.registerTask('beauty-scss', [
-			'prettysass'
+			'csscomb'
 		]);
 
 	// Advanced Tasks
@@ -149,7 +149,8 @@
 		]);
 	  <% } %>
 	  grunt.registerTask('build', [
-		'clean:dev',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
+		'clean:dev',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-modernizr') { %>
+		'modernizr',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
 		'js',<% } %><%}); %><%} %><%} %>
 		'jsbeautifier:js',
 		'concurrent:syncing', <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>

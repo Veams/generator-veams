@@ -257,8 +257,10 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		choices: [
 			{ name: "grunt-grunticon", checked: true },
 			{ name: "grunt-data-separator", checked: true },
-			{ name: "dr-grunt-svg-sprites" },
-			{ name: "grunt-packager", checked: true },
+			{ name: "dr-grunt-svg-sprites"},
+			{ name: "grunt-modernizr"},
+			{ name: "grunt-packager"},
+			{ name: "grunt-csscomb", checked: true },
 			{ name: "grunt-combine-media-queries", checked: true },
 			{ name: "grunt-bless", checked: true },
 			{ name: "grunt-browser-sync", checked: true },
@@ -548,9 +550,15 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.mkdir('resources/scss/icons');
 			this.copy('helpers/_grunt/svg-sprites.js', 'helpers/_grunt/svg-sprites.js');
 		}
+		if (this.modules.indexOf('grunt-modernizr') != -1) {
+			this.copy('helpers/_grunt/modernizr.js', 'helpers/_grunt/modernizr.js');
+		}
 		if (this.modules.indexOf('grunt-packager') != -1) {
 			this.copy('resources/js/project.jspackcfg');
 			this.copy('helpers/_grunt/packager.js', 'helpers/_grunt/packager.js');
+		}
+		if (this.modules.indexOf('grunt-csscomb') != -1) {
+			this.copy('helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
 		}
 		if (this.modules.indexOf('grunt-combine-media-queries') != -1) {
 			this.copy('helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');

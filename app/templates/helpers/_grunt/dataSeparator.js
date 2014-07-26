@@ -2,7 +2,8 @@ module.exports = {
 	icons: {
 		options: {
 			pattern: {
-				match: /data/, // The RegExp to match values with
+				matchValue: /data/, // The RegExp to match values with
+				matchRule: false, // The RegExp to match rules with
 				matchParent: true // Rules (eg. in @media blocks) include their parent node.
 			},
 			output: '<%= paths.dev %>/css/styles.icons.css'
