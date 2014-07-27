@@ -558,6 +558,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy('helpers/_grunt/packager.js', 'helpers/_grunt/packager.js');
 		}
 		if (this.modules.indexOf('grunt-csscomb') != -1) {
+			this.directory('helpers/csscomb', 'helpers/csscomb');
 			this.copy('helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
 		}
 		if (this.modules.indexOf('grunt-combine-media-queries') != -1) {

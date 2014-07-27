@@ -33,7 +33,9 @@ GMGenerator.prototype.askFor = function askFor() {
 			{ name: "grunt-grunticon"},
 			{ name: "grunt-data-separator"},
 			{ name: "dr-grunt-svg-sprites" },
+			{ name: "grunt-modernizr"},
 			{ name: "grunt-packager"},
+			{ name: "grunt-csscomb"},
 			{ name: "grunt-combine-media-queries"},
 			{ name: "grunt-bless"},
 			{ name: "grunt-browser-sync"},
@@ -125,9 +127,16 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.mkdir('resources/scss/icons');
 			this.copy('../../app/templates/helpers/_grunt/svg-sprites.js', 'helpers/_grunt/svg-sprites.js');
 		}
+		if (this.modules.indexOf('grunt-modernizr') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/modernizr.js', 'helpers/_grunt/modernizr.js');
+		}
 		if (this.modules.indexOf('grunt-packager') != -1) {
 			this.copy('../../app/templates/resources/js/project.jspackcfg', 'resources/js/project.jspackcfg');
 			this.copy('../../app/templates/helpers/_grunt/packager.js', 'helpers/_grunt/packager.js');
+		}
+		if (this.modules.indexOf('grunt-csscomb') != -1) {
+			this.directory('../../app/templates/helpers/csscomb', 'helpers/csscomb');
+			this.copy('../../app/templates/helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
 		}
 		if (this.modules.indexOf('grunt-combine-media-queries') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');
