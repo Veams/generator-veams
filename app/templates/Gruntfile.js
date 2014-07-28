@@ -124,10 +124,11 @@
 		grunt.registerTask('beauty-files', [
 			'jsbeautifier'
 		]);
+		<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-csscomb') { %>
 		// Beautify your SASS files
 		grunt.registerTask('beauty-scss', [
 			'csscomb'
-		]);
+		]);<% } %><%}); %><%} %><%} %>
 
 	// Advanced Tasks
 	  grunt.registerTask('server', [<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
