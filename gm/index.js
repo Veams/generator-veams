@@ -38,13 +38,11 @@ GMGenerator.prototype.askFor = function askFor() {
 			{ name: "grunt-csscomb"},
 			{ name: "grunt-combine-media-queries"},
 			{ name: "grunt-bless"},
-			{ name: "grunt-browser-sync"},
 			{ name: "grunt-autoprefixer"},
 			{ name: "grunt-contrib-compass" },
 			{ name: "grunt-photobox"},
 			{ name: "grunt-accessibility"},
-			{ name: "grunt-devtools"},
-			{ name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"}
+			{ name: "grunt-devtools"}
 		],
 		default: this.config.get("modules")
 	});
@@ -146,9 +144,6 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 		if (this.modules.indexOf('grunt-contrib-compass') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/compass.js', 'helpers/_grunt/compass.js');
-		}
-		if (this.modules.indexOf('grunt-browser-sync') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/browser_sync.js', 'helpers/_grunt/browser_sync.js');
 		}
 		if (this.modules.indexOf('grunt-photobox') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/photobox.js', 'helpers/_grunt/photobox.js');

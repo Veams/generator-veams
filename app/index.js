@@ -44,12 +44,15 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 		modules: [
 			"grunt-grunticon",
 			"grunt-data-separator",
-			"grunt-packager",
+			"grunt-csscomb",
 			"grunt-combine-media-queries",
-			"grunt-bless",
-			"grunt-autoprefixer"
+			"grunt-autoprefixer",
+			"grunt-browser-sync"
 		],
-		features: [],
+		features: [
+			"installDocs",
+			"sassInsteadOfCompass"
+		],
 		jsLibs: [],
 		cssLibs: [],
 		installProxy: false,
@@ -262,7 +265,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{ name: "grunt-packager"},
 			{ name: "grunt-csscomb", checked: true },
 			{ name: "grunt-combine-media-queries", checked: true },
-			{ name: "grunt-bless", checked: true },
+			{ name: "grunt-bless"},
 			{ name: "grunt-browser-sync", checked: true },
 			{ name: "grunt-autoprefixer", checked: true },
 			{ name: "grunt-contrib-compass" },
