@@ -154,7 +154,8 @@
 		'modernizr',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
 		'js',<% } %><%}); %><%} %><%} %>
 		'jsbeautifier:js',
-		'concurrent:syncing', <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
+		'concurrent:syncing', <% if (modules && modules.length > 0) { if (modules.indexOf('grunt-csscomb') != -1) { %>
+        'beauty-scss',<% }} %> <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
 		'watchCSS',
 		'sass:ie',<% } else { %>
 		'cssProd',<% }} else { %>

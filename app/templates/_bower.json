@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "dependencies": { 
 	<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>
-	"highlightjs": "~8.0.0"<% } %><% if((jsLibs && jsLibs.length > 0)||(cssLibs && cssLibs.length > 0) && features && features.length > 0 && features.indexOf('installDocs') != -1){ %>,<% } %>
+	"highlightjs": "~8.0.0"<% } %><% if((jsLibs && jsLibs.length > 0 || cssLibs && cssLibs.length > 0) && features && features.length > 0 && features.indexOf('installDocs') != -1){ %>,<% } %>
 	<% if(jsLibs && jsLibs.length > 0){ %><% if(typeof jsLibs === 'object'){ _.each(jsLibs, function(name, i) { %>
     "<%= name %>": "*"<% if(i < (jsLibs.length - 1) || (cssLibs && cssLibs.length > 0)) { %>,<% } %>
 	<% }); } else { %>
