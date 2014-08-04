@@ -241,11 +241,9 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		type: "checkbox",
 		message: "Which assemble plugin do you want to use?",
 		choices: [
-			{ name: "permalinks"},
-			{ name: "assemble-contrib-contextual" },
+			{ name: "assemble-contrib-permalinks"},
 			{ name: "assemble-contrib-sitemap"},
-			{ name: "assemble-markdown-data" },
-			{ name: "assemble-related-pages", checked: true }
+			{ name: "assemble-related-pages"}
 		],
 		when: function (answers) {
 			return answers.installPlugin;

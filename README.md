@@ -48,7 +48,7 @@ You can scaffold your project in an instance. The first question is:
 ```
 
 If you choose "Standard installation" you skip the rest of the questions and get the default values with:
- * Compass
+ * Libsass (grunt-sass)
  * Grunt Modules: grunt-grunticon, grunt-data-separator, grunt-packager, grunt-combine-media-queries, grunt-bless, grunt-autoprefixer
  * Assemble as Template Engine
 
@@ -92,11 +92,9 @@ You want to know more? Here you go: [assemble.io](http://assemble.io)
 
 In your installation routine you can choose specific modules for Assemble:
 
- * permalinks
- * assemble-contrib-contextual
+ * assemble-contrib-permalinks
  * assemble-contrib-sitemap
  * assemble-related-pages
- * assemble-markdown
 
 ## Gruntfile
 For our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split the file up in multiple files. 
@@ -138,6 +136,7 @@ To help you in your workflow, we integrated some sub generators for you:
  * Create a Backbone Collection: yo prototype:bc
 
 ### Grunt Modules:
+You forgot a grunt module? y
 * Install your grunt modules: yo prototype:gm
 
 Others will follow.
