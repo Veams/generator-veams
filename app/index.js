@@ -160,7 +160,7 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
 			cb();
 		} else {
 			console.log(
-				('\n') + chalk.bggray('Custom installation routine selected.') + ('\n')
+				('\n') + chalk.green('Custom installation routine selected.') + ('\n')
 			);
 			this._askFor();
 		}
@@ -478,9 +478,9 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 
 		// Add partials
 		this.mkdir('resources/templates/partials');
-		this.copy('resources/templates/partials/_nav.hbs');
 		this.mkdir('resources/templates/partials/_global');
 		this.copy('resources/templates/partials/_global/_head.hbs');
+		this.copy('resources/templates/partials/_global/_nav.hbs');
 		this.directory('resources/templates/partials/blocks', 'resources/templates/partials/blocks');
 		this.directory('resources/templates/partials/modules', 'resources/templates/partials/modules');
 		this.directory('resources/templates/partials/sections', 'resources/templates/partials/sections');
