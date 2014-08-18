@@ -1,6 +1,6 @@
 <img src="logo-pg.png" height="94">
 
-[Visit the PG website to learn how to use PG](http://prototype-generator.com)
+[Visit the PG-website to learn how to use PG!](http://prototype-generator.com)
 
 [![NPM](https://nodei.co/npm/generator-prototype.png?downloads=true&stars=true)](https://nodei.co/npm/generator-prototype/)
 
@@ -24,6 +24,10 @@
 
 - Install the Generator-Prototype via:
     `npm install -g generator-prototype`
+
+### Update
+- Update the Generator-Prototype via:
+    `npm update -g generator-prototype`
 
 ## Usage
 
