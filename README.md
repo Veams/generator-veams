@@ -1,6 +1,6 @@
 # Prototype Generator [PG]
 
-![alt text](https://github.com/Prototype-Group/generator-prototype/logo-pg.png "Logo PG")
+<img src="logo-pg.png" align="right" height="100">
 
 [![NPM](https://nodei.co/npm/generator-prototype.png?downloads=true&stars=true)](https://nodei.co/npm/generator-prototype/)
 
