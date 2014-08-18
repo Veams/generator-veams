@@ -1,11 +1,8 @@
-# Prototype Generator [PG]
-
-<img src="logo-pg.png" align="center" height="94">
-
-
-[![NPM](https://nodei.co/npm/generator-prototype.png?downloads=true&stars=true)](https://nodei.co/npm/generator-prototype/)
+<img src="logo-pg.png" align="left" height="94">
 
 [Visit the PG website to learn how to use PG](http://prototype-generator.com)
+
+[![NPM](https://nodei.co/npm/generator-prototype.png?downloads=true&stars=true)](https://nodei.co/npm/generator-prototype/)
 
 > [Yeoman][yeoman] generator for Prototype.
 
