@@ -3,18 +3,18 @@ component: navbar
 ---
 
 <div class="navbar navbar-fixed-left">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="navbar-brand" href="{{relative page.dest "index.html"}}">Frontpage</a>
-      <div class="nav-collapse collapse bs-navbar-collapse">
-        <ul class="nav navbar-nav pull-right">
-		        {{#each pages}}
-			        <li>
-				        <a href="{{relative ../page.dest this.dest}}">{{data.title}}</a>
-			        </li>
-		        {{/each}}
-	        </ul>
-      </div>
-    </div>
-  </div>
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="navbar-brand" href="{{relative page.dest "index.html"}}">Frontpage</a>
+			<div class="nav-collapse collapse bs-navbar-collapse">
+				<ul class="nav navbar-nav pull-right">
+					{{#withSort pages 'data.title'}}
+						<li>
+							<a href="{{relative ../page.dest this.dest}}"{{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.title}}</a>
+						</li>
+					{{/withSort}}
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>

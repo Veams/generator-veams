@@ -169,6 +169,7 @@
 		'bless', <% } %><%}); %><%} %><%} %>
 		'concurrent:build',
 		'jsbeautifier:html',
+		'check-js',
 		'check-html'
 	  ]);
 
