@@ -1,6 +1,7 @@
 # Prototype Generator [PG]
 
-<img src="logo-pg.png" align="right" height="100">
+<img src="logo-pg.png" align="center" height="94">
+
 
 [![NPM](https://nodei.co/npm/generator-prototype.png?downloads=true&stars=true)](https://nodei.co/npm/generator-prototype/)
 
