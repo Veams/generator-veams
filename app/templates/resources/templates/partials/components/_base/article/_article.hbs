@@ -1,0 +1,27 @@
+---
+component: Generic Article
+---
+
+<article class="article {{article-class}}">
+
+	{{#if article-header}}
+		{{partial "_article__header"}}
+	{{/if}}
+
+	{{#if article-figure }}
+		{{partial "_figure" }}
+	{{/if}}
+
+	<div class="article__content">
+		{{#if article-summary}}
+			{{{truncate article-content article-summary "..." }}}
+		{{else}}
+			{{{ article-content }}}
+		{{/if}}
+	</div>
+
+	{{#if article-morelink}}
+		{{partial "_article__read-more" }}
+	{{/if}}
+
+</article>

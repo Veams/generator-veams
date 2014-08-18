@@ -79,61 +79,29 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
 
 	// welcome message
 	var welcome =
-		chalk.green('\n	            777                 ') +
-			chalk.green('\n               ~,,,,,,,?              ') +
-			chalk.green('\n             ,,:::,,7:77,             ') +
-			chalk.green('\n           7,,:::,,, :77I,7           ') +
-			chalk.green('\n          7,,:::,,,,7?::I,,           ') +
-			chalk.green('\n         7,,,:,,,,,,,:,:.,,7          ') +
-			chalk.green('\n         ,,,,,,,:,,,,:,,,,,,.7        ') +
-			chalk.green('\n        ,,,,,,,,,,...~~=.....,        ') +
-			chalk.green('\n       7,,,,,,~~~~===~==+=..7         ') +
-			chalk.green('\n       ,,,,,,??II?=.+~=,:~7           ') +
-			chalk.green('\n       ,,?,.,???II..=I?????7          ') +
-			chalk.green('\n       ??==I.,??III~??IIII??+    ') + chalk.yellow('   Welcome ladies and gentlemen!') +
-			chalk.green('\n       ???+=I,,IIIII+?III??+=   ') + chalk.yellow('    Want to make your life easy???') +
-			chalk.green('\n       7I??I?+??.,...++?+++=?   ') + chalk.cyan('     _____         _       _            ') +
-			chalk.green('\n         +II?=??..,...~~~==.    ') + chalk.cyan('    |  _  |___ ___| |_ ___| |_ _ _ ___ __') +
-			chalk.green('\n            ..+??=.........7    ') + chalk.cyan('    |   __|  _| . |  _| . |  _| | | . | -_|') +
-			chalk.green('\n           7,.:+++++??+=+       ') + chalk.cyan('    |__|  |_| |___|_| |___|_| |_  |  _|___|') +
-			chalk.green('\n           7...==++++==+        ') + chalk.cyan('     ____      _                |_|_|') +
-			chalk.green('\n               7+~====7         ') + chalk.cyan('    |    \\ ___| |_ _ _ _ ___              ') +
-			chalk.green('\n           7+,,,,,:,,,.7        ') + chalk.cyan('    |  |  | -_| | | |_`_| -_| ') +
-			chalk.green('\n         +,,,,,,,:,,,,,,,,:     ') + chalk.cyan('    |____/|___|_|___|_,_|___|   ') +
-			chalk.green('\n       ,,,,,,,,::,?+,,,,,,+,,   ') + chalk.cyan('      ') +
-			chalk.green('\n    7,,,,,,,,,,::=++:,,,,,:+,,,7') + chalk.red('    Be sure you have installed the following') +
-			chalk.green('\n   7,:::,,,,,,,,,::::::,,,,,.,,,,7') + chalk.red('  components: ') +
-			chalk.green('\n   ,,,,,,,,,.,,,:::::::,,,,,,,,,,7') + chalk.red('   * compass:  http://compass-style.org/') +
-			chalk.green('\n   7,,,,,,,, ,,,::::::::,,,,,,,,,7 ') + chalk.red('  * sass:     http://sass-lang.com/ ') +
-			chalk.green('\n    7,,,,,,,,,,,::::::::,,,,,,,,, ') + chalk.red('   * ruby:     http://rubyinstaller.org/ ') +
-			chalk.green('\n      ,,,,,,,,I,,,,:::::,,,,,,,+I7 ') + chalk.red('  * grunt:    http://gruntjs.com ') +
-			chalk.green('\n       I77777??.,:::,:::,,,,,,,?7 ') + chalk.red('   * bower:    http://bower.io/') +
-			chalk.green('\n        I++?77I~,::::::,,,,,,,,+I7') +
-			chalk.green('\n      7?I  77II.,,::,,,,,,,,,,,+I+  "WAAAAAAAAAAAHHHH!"') +
-			chalk.green('\n    777I+7 77II,::::,,,,,,,,,,++II    ') +
-			chalk.green('\n     7 7  77II?,::::,,,,,,,,,==+?+    ') +
-			chalk.green('\n     7II I?III.:::::,,,,,.,.,         ') +
-			chalk.green('\n   7 7++?I77?,:::::,,,,...,,,         ') +
-			chalk.green('\n           7,,:::::,,,..,,,,:         ') +
-			chalk.green('\n           ,,::::,,,,...,,,,          ') +
-			chalk.green('\n          7,::::,,,,,...,,,,          ') +
-			chalk.green('\n         7,:::::,,,,...,,,,7          ') +
-			chalk.green('\n         ,,::::,,,,....,,,,           ') +
-			chalk.green('\n        ,,:::::,,,,....,,,,           ') +
-			chalk.green('\n       7,:::::,,,,....,,,,,           ') +
-			chalk.green('\n       ,::::::,,,7..,,,,,,,           ') +
-			chalk.green('\n      ,::::::,,,,7.,,,,,,,,,          ') +
-			chalk.green('\n     ,:::::::,,,7..,,,,,::::::,7      ') +
-			chalk.green('\n    ,,:::,::,,,, ...,,,:,====~::~     ') +
-			chalk.green('\n    7,,,,,,,,,,, ,,,,,~=+++==~::~7    ') +
-			chalk.green('\n   ,:~~~~~:::,,: ...,,::~~~~~:::~7    ') +
-			chalk.green('\n  ,~======~~:::? 7,,...,,:::,,,:7     ') +
-			chalk.green('\n  :~===++==~:::=         I:~::~       ') +
-			chalk.green('\n  :~~~~~=~~:::~?                      ') +
-			chalk.green('\n  ::::~~~~::::~7                      ') +
-			chalk.green('\n   ,::::::::,:,                       ') +
-			chalk.green('\n    7::::::::7                        ') +
+		chalk.cyan('\n               \'coxOOOOkdl;.             ') +
+			chalk.cyan('\n           ,lkKXXXXXXXXXXXXXOd;.         ') +
+			chalk.cyan('\n        \'dKXXXXXXX0OOOO0KXXXXXXXk:       ') +
+			chalk.cyan('\n      ;OXXXXKkl,.        .\'cd0XXXX0l.    ') +
+			chalk.cyan('\n    .kXXXX0c.                 ,kXXXX0;   ') +
+			chalk.cyan('\n   ,KXXX0:                      \'kXXXXo  ') + chalk.cyan('   http://generator-prototype.com') +
+			chalk.cyan('\n  \'KXXXO.                         oXXXXo ') +
+			chalk.cyan('\n  OXXX0.                           dXXXX,') +
+			chalk.cyan('\n :XXXX:                            .KXXXx') + chalk.yellow('   Welcome ladies and gentlemen!') +
+			chalk.cyan('\n dXXXK.  .::::::::::::::::::.       dXXXK') + chalk.yellow('   Want to make your life easy???') +
+			chalk.cyan('\n dXXXK   ,XXXXXXXXXXXXXXXXXX\'       oXXXX') +
+			chalk.cyan('\n dXXXK   ,XXXXXKKKKKKKKKKKKX\'       OXXXO') + chalk.red('   Be sure you have installed') +
+			chalk.cyan('\n dXXXK   ,XXXXd                    ;XXXXl') + chalk.red('    * bower:  http://bower.io/') +
+			chalk.cyan('\n dXXXK   ,XXXXd                   \'KXXXO ') + chalk.red('    * grunt:  http://gruntjs.com ') +
+			chalk.cyan('\n dXXXK   ,XXXXd                  cKXXXO. ') +
+			chalk.cyan('\n dXXXK   ,XXXXd                :OXXXXx.  ') +
+			chalk.cyan('\n dXXXK   ,XXXXx            .;dKXXXXO;    ') +
+			chalk.cyan('\n dXXXK   ,XXXXX0xoc:;;:clxOXXXXXXO:      ') +
+			chalk.cyan('\n dXXXK    ;dOXXXXXXXXXXXXXXXXKxc.        ') +
+			chalk.cyan('\n dXXXK       .,:ldkOOOOkxoc;.            ') +
+			chalk.cyan('\n lOOOx                                   ') +
 			('\n ');
+
 
 	if (!this.options['skip-welcome-message']) {
 		console.log(welcome);
@@ -192,7 +160,7 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
 			cb();
 		} else {
 			console.log(
-				('\n') + chalk.bgGreen('Custom installation routine selected.') + ('\n')
+				('\n') + chalk.bggray('Custom installation routine selected.') + ('\n')
 			);
 			this._askFor();
 		}

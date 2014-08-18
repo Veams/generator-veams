@@ -6,9 +6,9 @@ component: sitemap
 	* pages/index.hbs
 }}
 <ul>
-	{{#each pages}}
+	{{#withSort pages "data.title"}}
 		<li>
 			<a href="{{relative ../page.dest this.dest}}">{{data.title}}</a>
 		</li>
-	{{/each}}
+	{{/withSort}}
 </ul>

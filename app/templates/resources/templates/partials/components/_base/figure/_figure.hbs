@@ -1,0 +1,15 @@
+<figure class="figure {{figure-class}}">
+
+	{{#if figure-picture}}
+		{{partial "_picture"}}
+	{{else}}{{#if figure-video}}
+		{{partial "_video"}}
+	{{/if}}{{/if}}
+
+	{{#if figure-caption}}
+		<figcaption class="figure__caption">
+			{{ figure-caption }}
+		</figcaption>
+	{{/if}}
+
+</figure>
