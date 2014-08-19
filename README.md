@@ -1,4 +1,4 @@
-<img src="logo-pg.png" height="94">
+<p style="text-align: center"><img src="http://prototype-generator.com/img/logo-pg.png" height="94"></p>
 
 [Visit the PG-website to learn how to use PG!](http://prototype-generator.com)
 
