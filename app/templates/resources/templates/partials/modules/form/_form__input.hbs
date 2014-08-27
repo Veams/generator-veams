@@ -1,0 +1,7 @@
+<label for="{{ id }}">
+	{{ label }} {{#is required "required"}}<abbr title="Required">*</abbr>{{/is}}
+</label>
+<input id="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}" {{#if data-minlength}}data-minlength="{{data-minlength}}"{{/if}}
+	{{#if data-maxlength}}data-maxlength="{{data-maxlength}}"{{/if}}
+	{{#if data-errormessage}}data-errormessage="{{data-errormessage}}"{{/if}}
+	{{#is required "required"}}required="required"{{/is}} />

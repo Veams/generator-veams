@@ -1,0 +1,35 @@
+.stage {
+	display: block;
+
+	padding: 6rem 0;
+
+	background: lighten($color-logo, 5);
+}
+
+.stage__head {
+	font-family: $font-family;
+	font-size: 4rem;
+	font-weight: 300;
+	line-height: 5rem;
+
+	display: block;
+
+	padding-bottom: 2rem;
+
+	color: #bbb;
+	border-bottom: 1px solid #666;
+}
+
+.stage__lead {
+	font-family: $font-family;
+	font-size: 2.5rem;
+	font-weight: 700;
+	line-height: 3.5rem;
+
+	display: block;
+
+	max-width: 550px;
+	margin-top: 2rem;
+
+	color: darken(#eee, 5);
+}

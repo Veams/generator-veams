@@ -153,7 +153,7 @@
 		'clean:dev',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-modernizr') { %>
 		'modernizr',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
 		'js',<% } %><%}); %><%} %><%} %>
-		'jsbeautifier:js',
+		'jsbeautifier',
 		'concurrent:syncing', <% if (modules && modules.length > 0) { if (modules.indexOf('grunt-csscomb') != -1) { %>
         'beauty-scss',<% }} %> <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
 		'watchCSS',
@@ -168,14 +168,19 @@
 		'cssmin',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-bless') { %>
 		'bless', <% } %><%}); %><%} %><%} %>
 		'concurrent:build',
-		'jsbeautifier:html',
 		'check-js',
-		'check-html'
+		'check-html'<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-contrib-htmlmin') { %>, 
+		'htmlmin'<% } %><%}); %><%} %><%} %>
 	  ]);
 
 	  grunt.registerTask('default', [
 		'server'
 	  ]);
+
+	  grunt.registerTask('serve', [
+		'server'
+	  ]);
+
 	  <% if (features && features.length > 0 && features.indexOf('createDevFolder') != -1) { %>
 		grunt.registerTask('dist', [
 			'clean',

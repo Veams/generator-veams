@@ -3,9 +3,13 @@ module.exports = {
 		assets: '<%%= paths.dev %>',
 		data: '<%%= paths.src %>/data/**/*.{json,yml}',
 		helpers: '<%%= paths.src %>/templates/helpers/**/*.js',
-		layoutdir: '<%%= paths.src %>/templates/layouts/',
-		layout: 'tpl_default.hbs',
-		partials: '<%%= paths.src %>/templates/partials/**/*.hbs'
+		layoutdir: '<%%= paths.src %>/templates/layouts/',<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+		layout: false, <% } else { %>
+		layout: 'tpl_default.hbs', <% } %>
+		partials: [
+		'<%%= paths.src %>/templates/partials/**/*.hbs'<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>,
+		'<%%= paths.src %>/templates/layouts/tpl_default.hbs'<% } %>
+		]
 	},
 	pages: {
 		options: {<% if(plugin && plugin.length > 0){ %>

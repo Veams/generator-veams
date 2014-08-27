@@ -1,0 +1,173 @@
+
+/*
+* Demo Navigation
+*/
+
+$nav-width: 300px;
+$nav-mobile-width: 270px;
+
+
+%icon-data-svg-menu {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20standalone%3D%22no%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20id%3D%22Untitled-Seite%25201%22%20viewBox%3D%220%200%2036%2031%22%20style%3D%22background-color%3A%23ffffff00%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xml%3Aspace%3D%22preserve%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2236px%22%20height%3D%2231px%22%3E%20%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%2236%22%20height%3D%227%22%20fill%3D%22%23272727%22%2F%3E%20%3Crect%20x%3D%220%22%20y%3D%2212%22%20width%3D%2236%22%20height%3D%227%22%20fill%3D%22%23272727%22%2F%3E%20%3Crect%20x%3D%220%22%20y%3D%2224%22%20width%3D%2236%22%20height%3D%227%22%20fill%3D%22%23272727%22%2F%3E%3C%2Fsvg%3E');
+	background-repeat: no-repeat;
+}
+
+#site-wrapper {
+	position: relative;
+
+	overflow: hidden;
+
+	width: 100%;
+	height: 100%;
+}
+
+#site-canvas {
+	position: relative;
+
+	width: 100%;
+	height: 100%;
+
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-transition: 300ms ease all;
+	-moz-transition: 300ms ease all;
+	-ms-transition: 300ms ease all;
+	-o-transition: 300ms ease all;
+	transition: 300ms ease all;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.show-nav #site-canvas {
+	-webkit-transform: translateX($nav-width);
+	-moz-transform: translateX($nav-width);
+	-ms-transform: translateX($nav-width);
+	-o-transform: translateX($nav-width);
+	transform: translateX($nav-width);
+	-webkit-transform: translate3d($nav-width, 0, 0);
+	-moz-transform: translate3d($nav-width, 0, 0);
+	-ms-transform: translate3d($nav-width, 0, 0);
+	-o-transform: translate3d($nav-width, 0, 0);
+	transform: translate3d($nav-width, 0, 0);
+
+	@include breakpoint($mobile) {
+		-webkit-transform: translateX($nav-mobile-width);
+		-moz-transform: translateX($nav-mobile-width);
+		-ms-transform: translateX($nav-mobile-width);
+		-o-transform: translateX($nav-mobile-width);
+		transform: translateX($nav-mobile-width);
+		-webkit-transform: translate3d($nav-mobile-width, 0, 0);
+		-moz-transform: translate3d($nav-mobile-width, 0, 0);
+		-ms-transform: translate3d($nav-mobile-width, 0, 0);
+		-o-transform: translate3d($nav-mobile-width, 0, 0);
+		transform: translate3d($nav-mobile-width, 0, 0);
+	}
+}
+
+#site-menu {
+	position: absolute;
+	top: 0;
+	left: -$nav-width;
+
+	width: $nav-width;
+	height: 100%;
+
+	background: lighten($color-logo, 5);
+
+	@include breakpoint($mobile) {
+		left: -$nav-mobile-width;
+
+		width: $nav-mobile-width;
+	}
+}
+
+.toggle {
+
+	position: absolute;
+	top: 50%;
+	left: 3rem;
+
+	margin-top: -18px;
+
+	@extend %hide-text;
+
+	&:after {
+		width: 31px;
+		height: 36px;
+
+		@extend %pseudo;
+		@extend %icon-data-svg-menu;
+
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+		-webkit-transition: 300ms ease all;
+		-moz-transition: 300ms ease all;
+		-ms-transition: 300ms ease all;
+		-o-transition: 300ms ease all;
+		transition: 300ms ease all;
+	}
+}
+
+.toggle--close {
+	&.toggle:after {
+		-webkit-transform: rotate(-90deg);
+		-moz-transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+		-o-transform: rotate(-90deg);
+		transform: rotate(-90deg);
+	}
+}
+
+.navbar {
+	h2 {
+		font-size: 1.8rem;
+
+		margin: 3rem 0 0.5rem;
+		padding: 0.5rem 0.75rem;
+
+		text-transform: uppercase;
+
+		color: lighten($color-logo, 50);
+	}
+}
+
+.navbar__nav {
+	li {
+		margin: 0 0 1px 1rem;
+	}
+	a {
+		font-family: $font-family;
+		font-size: 1.6rem;
+		font-weight: normal;
+
+		display: block;
+
+		padding: 1rem;
+
+		text-decoration: none;
+		letter-spacing: 1px;
+
+		color: #fff;
+		&.active {
+			color: #fff;
+			background: $color-logo;
+		}
+		&:hover {
+			color: #fff;
+			background: lighten($color-logo, 10);
+		}
+	}
+}

@@ -1,0 +1,11 @@
+<strong>{{ label }}</strong>
+
+<div class="checkboxes-group {{ id }}">
+	{{#each checkboxes}}
+		<div class="{{ class }}">
+			<input type="{{ ../type }}" id="{{ id }}" value="{{ label }}" {{#is required "required"}}required="required"{{/is}}/>
+			<label for="{{ id }}">{{ label }} {{#is required "required"}}<abbr title="Required">*</abbr>{{/is}}
+			</label>
+		</div>
+	{{/each}}
+</div>

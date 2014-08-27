@@ -1,0 +1,37 @@
+/******************************************
+
+	Percent calculation mixin
+
+******************************************/
+@mixin cp($property, $px_values, $context) {
+	// clear up all units to prevent sass errors
+	// cycle trough box model values
+	$unitless_values: ();
+	@each $value in $px_values {
+		// If the value is zero, return 0
+		@if $value == 0 {
+			$unitless_values: append($unitless_values, $value);
+		} @else {
+			$unitless_values: append($unitless_values, clear-units($value));
+		}
+	}
+	// just one value possible here
+	$unitless_context: clear-units($context);
+	// If there is only one (numeric) value, return the property/value line for it.
+	@if type-of($unitless_values) == "number" {
+		#{$property}: $unitless_values / $unitless_context * 100%;
+	} @else {
+		// Create an empty list that we can dump values into
+		$percent_values: ();
+		@each $value in $unitless_values {
+			// If the value is zero, return 0
+			@if $value == 0 {
+				$percent_values: append($percent_values, $value);
+			} @else {
+				$percent_values: append($percent_values, $value / $unitless_context * 100%);
+			}
+		}
+		// Return the property and its list of converted values
+		#{$property}: $percent_values;
+	}
+}

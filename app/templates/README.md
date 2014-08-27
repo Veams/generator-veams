@@ -5,7 +5,9 @@
 * Grunt
 
 This project builds on following setup (please read requirements and getting started):
-[Generator-Prototype](https://github.com/Prototype-Group/generator-prototype)
+
+* PG Website: http://prototype-generator.com/
+* PG Github: https://github.com/Prototype-Group/generator-prototype
 
 - We use [Grunt](http://gruntjs.com/) as our task runner and [Assemble](http://assemble.io/) as our static site generator.
 - We use [Git](#).

@@ -51,6 +51,7 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 		],
 		features: [
 			"installDocs",
+			"installDemoContent",
 			"sassInsteadOfCompass"
 		],
 		jsLibs: [],
@@ -84,15 +85,15 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
 			chalk.cyan('\n        \'dKXXXXXXX0OOOO0KXXXXXXXk:       ') +
 			chalk.cyan('\n      ;OXXXXKkl,.        .\'cd0XXXX0l.    ') +
 			chalk.cyan('\n    .kXXXX0c.                 ,kXXXX0;   ') +
-			chalk.cyan('\n   ,KXXX0:                      \'kXXXXo  ') + chalk.cyan('   http://generator-prototype.com') +
+			chalk.cyan('\n   ,KXXX0:                      \'kXXXXo  ') + chalk.cyan('*  http://prototype-generator.com *') +
 			chalk.cyan('\n  \'KXXXO.                         oXXXXo ') +
 			chalk.cyan('\n  OXXX0.                           dXXXX,') +
-			chalk.cyan('\n :XXXX:                            .KXXXx') + chalk.yellow('   Welcome ladies and gentlemen!') +
-			chalk.cyan('\n dXXXK.  .::::::::::::::::::.       dXXXK') + chalk.yellow('   Want to make your life easy???') +
+			chalk.cyan('\n :XXXX:                            .KXXXx') + chalk.yellow('    Welcome ladies and gentlemen!') +
+			chalk.cyan('\n dXXXK.  .::::::::::::::::::.       dXXXK') + chalk.yellow('    Want to make your life easy???') +
 			chalk.cyan('\n dXXXK   ,XXXXXXXXXXXXXXXXXX\'       oXXXX') +
-			chalk.cyan('\n dXXXK   ,XXXXXKKKKKKKKKKKKX\'       OXXXO') + chalk.red('   Be sure you have installed') +
-			chalk.cyan('\n dXXXK   ,XXXXd                    ;XXXXl') + chalk.red('    * bower:  http://bower.io/') +
-			chalk.cyan('\n dXXXK   ,XXXXd                   \'KXXXO ') + chalk.red('    * grunt:  http://gruntjs.com ') +
+			chalk.cyan('\n dXXXK   ,XXXXXKKKKKKKKKKKKX\'       OXXXO') + chalk.red('    Be sure you have installed') +
+			chalk.cyan('\n dXXXK   ,XXXXd                    ;XXXXl') + chalk.red('     * bower:  http://bower.io/') +
+			chalk.cyan('\n dXXXK   ,XXXXd                   \'KXXXO ') + chalk.red('     * grunt:  http://gruntjs.com ') +
 			chalk.cyan('\n dXXXK   ,XXXXd                  cKXXXO. ') +
 			chalk.cyan('\n dXXXK   ,XXXXd                :OXXXXx.  ') +
 			chalk.cyan('\n dXXXK   ,XXXXx            .;dKXXXXO;    ') +
@@ -224,21 +225,23 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		type: "checkbox",
 		message: "Which grunt modules do you want to use?",
 		choices: [
-			{ name: "grunt-grunticon", checked: true },
-			{ name: "grunt-data-separator", checked: true },
-			{ name: "dr-grunt-svg-sprites"},
-			{ name: "grunt-modernizr"},
-			{ name: "grunt-packager"},
-			{ name: "grunt-csscomb", checked: true },
-			{ name: "grunt-combine-media-queries", checked: true },
+			{ name: "grunt-accessibility"},
+			{ name: "grunt-autoprefixer", checked: true },
 			{ name: "grunt-bless"},
 			{ name: "grunt-browser-sync", checked: true },
-			{ name: "grunt-autoprefixer", checked: true },
+			{ name: "grunt-combine-media-queries", checked: true },
+			{ name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"},
 			{ name: "grunt-contrib-compass" },
-			{ name: "grunt-photobox"},
-			{ name: "grunt-accessibility"},
+			{ name: "grunt-contrib-htmlmin"},
+			// { name: "grunt-contrib-uglify"},
+			{ name: "grunt-csscomb", checked: true },
+			{ name: "grunt-data-separator", checked: true },
 			{ name: "grunt-devtools"},
-			{ name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"}
+			{ name: "dr-grunt-svg-sprites"},
+			{ name: "grunt-grunticon", checked: true },
+			{ name: "grunt-modernizr"},
+			{ name: "grunt-packager"},
+			{ name: "grunt-photobox"}
 		],
 		default: this.config.get("modules")
 	});
@@ -288,6 +291,21 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		message: "Do you need anything special?",
 		choices: [
 			{
+				name: 'Libsass instead of Compass',
+				value: 'sassInsteadOfCompass',
+				checked: true
+			},
+			{
+				name: 'Extended Layout',
+				value: 'installExtendedLayout',
+				checked: true
+			},
+			{
+				name: 'Scaffold demo content? Otherwise you get only the base components ...',
+				value: 'installDemoContent',
+				checked: false
+			},
+			{
 				name: 'Create Development Folder to get two outputs (Dev-Output, Dist-Output)',
 				value: 'createDevFolder',
 				checked: true
@@ -298,9 +316,9 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 				checked: true
 			},
 			{
-				name: 'Libsass instead of Compass',
-				value: 'sassInsteadOfCompass',
-				checked: true
+				name: 'Support IE8',
+				value: 'supportIE8',
+				checked: false
 			},
 			{
 				name: 'Start developing mobile first and need to support desktop styles in IE8',
@@ -426,6 +444,7 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.copy('helpers/_grunt/htmlhint.js', 'helpers/_grunt/htmlhint.js');
 	this.copy('helpers/_grunt/jshint.js', 'helpers/_grunt/jshint.js');
 	this.copy('helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
+	this.copy('helpers/configs/.jsbeautifierrc', 'helpers/configs/.jsbeautifierrc');
 	this.copy('helpers/_grunt/prettysass.js', 'helpers/_grunt/prettysass.js');
 	this.template('helpers/_grunt/_sync.js', 'helpers/_grunt/sync.js');
 	this.template('helpers/_grunt/_watch.js', 'helpers/_grunt/watch.js');
@@ -452,7 +471,12 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.mkdir('resources/assets/img/svg/icons');
 	this.mkdir('resources/assets/fonts');
 	this.mkdir('resources/assets/media');
-	this.directory('resources/scss/global', 'resources/scss/global');
+	this.mkdir('resources/scss/blocks');
+	this.mkdir('resources/scss/components');
+	this.copy('resources/scss/global/_main.scss', 'resources/scss/global/_main.scss');
+	this.copy('resources/scss/global/_vars.scss', 'resources/scss/global/_vars.scss');
+	this.copy('resources/scss/global/_reset.scss', 'resources/scss/global/_reset.scss');
+	this.copy('resources/scss/global/_print.scss', 'resources/scss/global/_print.scss');
 	this.directory('resources/scss/modules', 'resources/scss/modules');
 	this.directory('resources/scss/utils', 'resources/scss/utils');
 	this.template('resources/scss/_all.scss', 'resources/scss/_all.scss');
@@ -467,26 +491,52 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
  */
 PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // add resources
 
-	// add assemble files
+	// add global assemble files
 	if (this.config.get("installAssemble") == true) {
-		this.directory('resources/data', 'resources/data');
+		this.copy('resources/data/site.json');
+		this.copy('resources/data/forms/form--example.json');
+		this.copy('resources/data/pages/homepage.json');
+		this.copy('resources/data/pages/homepage.md');
 		this.mkdir('resources/templates');
 		this.directory('resources/templates/ajax', 'resources/templates/ajax');
 		this.directory('resources/templates/helpers', 'resources/templates/helpers');
 		this.directory('resources/templates/layouts', 'resources/templates/layouts');
 		this.directory('resources/templates/pages', 'resources/templates/pages');
 
-		// Add partials
+		// Add global partials
 		this.mkdir('resources/templates/partials');
 		this.mkdir('resources/templates/partials/_global');
-		this.copy('resources/templates/partials/_global/_head.hbs');
-		this.copy('resources/templates/partials/_global/_nav.hbs');
-		this.directory('resources/templates/partials/blocks', 'resources/templates/partials/blocks');
+		this.directory('resources/templates/partials/_global/head', 'resources/templates/partials/_global/head');
+		this.template('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/_scripts.hbs');
+
+		this.copy('resources/templates/partials/blocks/_sitemap.hbs');
+		this.directory('resources/templates/partials/components', 'resources/templates/partials/components');
 		this.directory('resources/templates/partials/modules', 'resources/templates/partials/modules');
 		this.directory('resources/templates/partials/sections', 'resources/templates/partials/sections');
 
 		// Add Gruntfile-helper file
 		this.copy('helpers/_grunt/_assemble.js', 'helpers/_grunt/assemble.js');
+
+		// Add demo content
+		if (this.features && this.features.length > 0) {
+			if (this.features.indexOf('installDemoContent') != -1) {
+
+				// Data
+				this.mkdir('resources/data/blocks');
+				this.directory('resources/data', 'resources/data');
+
+				// Global content
+				this.copy('resources/templates/partials/_global/_footer.hbs');
+				this.copy('resources/templates/partials/_global/_logo.hbs');
+				this.copy('resources/templates/partials/_global/_nav.hbs');
+				this.copy('resources/templates/partials/blocks/_nav-toggler.hbs');
+
+				// Sections
+
+				// Blocks
+				this.copy('resources/templates/partials/blocks/_sidebar-right.hbs');
+			}
+		}
 	}
 };
 
@@ -527,8 +577,11 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy('helpers/_grunt/packager.js', 'helpers/_grunt/packager.js');
 		}
 		if (this.modules.indexOf('grunt-csscomb') != -1) {
-			this.directory('helpers/csscomb', 'helpers/csscomb');
 			this.copy('helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
+			this.copy('helpers/configs/csscomb.json', 'helpers/configs/csscomb.json');
+		}
+		if (this.modules.indexOf('grunt-contrib-htmlmin') != -1) {
+			this.copy('helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
 		}
 		if (this.modules.indexOf('grunt-combine-media-queries') != -1) {
 			this.copy('helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');
@@ -622,6 +675,17 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 			this.mkdir('_dist');
 		}
 
+		// Add Demo Content
+		if (this.features.indexOf('installDemoContent') != -1) {
+
+			this.directory('resources/scss/components');
+			this.directory('resources/scss/blocks');
+
+			this.copy('resources/scss/global/_nav--DEMO.scss', 'resources/scss/global/_nav--DEMO.scss');
+			this.copy('resources/js/demo.js', 'resources/js/demo.js');
+
+		}
+
 		// Add copy task
 		if (this.features.indexOf('createDevFolder') != -1 || this.features.indexOf('installDocs') != -1) {
 			this.copy('helpers/_grunt/_copy.js', 'helpers/_grunt/copy.js');
@@ -644,9 +708,6 @@ PrototypeGenerator.prototype.appJSLibs = function appJSLibs() {
 		if (this.jsLibs.indexOf('requirejs') != -1) {
 			this.template('resources/js/_main.js', 'resources/js/main.js');
 			this.copy('resources/js/app.js', 'resources/js/app.js');
-		}
-		if (this.config.get("installAssemble") == true) {
-			this.template('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/_scripts.hbs');
 		}
 	}
 };

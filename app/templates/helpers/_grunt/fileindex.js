@@ -35,8 +35,11 @@ module.exports = {
 					'../bower_components/neat/app/assets/stylesheets/_neat.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
 					'../bower_components/sass-bootstrap/lib/_bootstrap.scss',<% }} %>
 					'global/_vars.scss',
-					'utils/**/*.scss',
+					'utils/extends/**/*.scss',
+					'utils/mixins/**/*.scss',
 					'global/_main.scss',
+					'components/**/*.scss',
+					'blocks/**/*.scss',
 					'modules/**/*.scss',
 					'icons/**/*.scss'
 				]

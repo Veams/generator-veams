@@ -1,5 +1,5 @@
 ---
-component: Generic Article
+component: Generic Article Component
 ---
 
 <article class="article {{article-class}}">
@@ -16,7 +16,11 @@ component: Generic Article
 		{{#if article-summary}}
 			{{{truncate article-content article-summary "..." }}}
 		{{else}}
+		{{! Use md files (md article-md) or json content (article-content) or both}}
+
 			{{{ article-content }}}
+			{{md article-md}}
+
 		{{/if}}
 	</div>
 

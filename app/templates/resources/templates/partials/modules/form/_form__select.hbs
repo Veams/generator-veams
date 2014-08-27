@@ -1,0 +1,16 @@
+<div class="select-wrapper {{#if multiple}}custom-select{{/if}}">
+	<label for="{{ id }}">
+		{{ label }} {{#is required "required"}}<abbr title="Required">*</abbr>{{/is}}
+	</label>
+	<select id="{{ id }}" class="{{ class }}" name="{{ id }}" {{#if data-errormessage}}data-errormessage="{{data-errormessage}}"{{/if}}
+		{{#is required "required"}}required{{/is}}
+		{{#if multiple}}multiple="multiple"{{/if}} data-trigger="change">
+		{{#if multiple}}
+			<option value=""></option>
+		{{/if}}
+		{{#each option}}
+			<option value="{{val}}" {{#if disabled}}disabled{{/if}}>{{name}}</option>
+		{{/each}}
+
+	</select>
+</div>

@@ -5,39 +5,110 @@
 <!--[if gt IE 8]><!-->
 <html lang="en" class="no-js"> <!--<![endif]-->
 
-{{> _head }}
+<head>
+	<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+	{{#block "metadata"}}
+		{{> _metadata }}
+	{{/block}}
+	{{#block "styles"}}
+		{{> _styles }}
+	{{/block}}
+	<% } else { %>
+	{{> _metadata }}
+	{{> _styles }}
+	<% } %>
+</head>
 
 <body class="{{ bodyclass }}">
+	<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
 
-	<!-- Navbar
-	================================================== -->
-	{{> _nav }}
+	<div id="site-wrapper">
+		<div class="canvas" id="site-canvas">
 
-	<!-- Subhead
-	================================================== -->
-	<header class="masthead subhead">
-		<div class="container">
-			<div class="row">
-				<div class="col col-lg-12">
-					<h1> {{ title }} </h1>
+			<!-- Header
+			================================================== -->
+			<header class="header">
+				<div class="container header__container">
+					{{partial "_nav-toggler" }}
+					{{partial "_logo" }}
 				</div>
-			</div>
+			</header>
+
+			<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+			{{#block "nav"}}
+				<!-- Navbar
+				================================================== -->
+				{{> _nav }}
+			{{/block}}
+			<% } else { %>
+			{{> _nav }}
+			<% } %>
+
+			<!-- Stage
+			================================================== -->
+			<section class="stage">
+				<div class="container stage__container">
+					<h1 class="stage__head"> {{{ title }}} </h1>
+
+					<h2 class="stage__lead">{{{ lead }}}</h2>
+				</div>
+			</section>
+
+			<!-- Content
+			================================================== -->
+			<main class=" main" id="main">
+				<div class="container main__container">
+					<aside class="sidebar sidebar--right">
+						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+						{{#block "sidebar-right"}}
+							{{> _sidebar-right }}
+						{{/block}}
+						<% } else { %>
+						{{> _sidebar-right }}
+						<% } %>
+					</aside>
+					<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+					{{#block "body"}}
+						{{> body }}
+					{{/block}}
+					<% } else { %>
+					{{> body }}
+					<% } %>
+				</div>
+			</main>
+
+			<!-- Footer
+			================================================== -->
+			<footer class="footer">
+				<div class="container footer__container">
+					<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+					{{#block "footer"}}
+						{{> _footer }}
+					{{/block}}
+					<% } else { %>
+					{{> _footer }}
+					<% } %>
+				</div>
+			</footer>
+
 		</div>
-	</header>
-
-	<!-- Page content
-	================================================== -->
-	<div class="container" id="main">
-		<h1> {{{ title }}} </h1>
-
-		<h2 class="lead"> {{{ lead }}} </h2>
-		{{> body }}
 	</div>
-
-	<% if (jsLibs && jsLibs.length > 0) { %>
+	<% } else { %> <% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+	{{#block "body"}}
+		{{> body }}
+	{{/block}}
+	<% } else { %>
+	{{> body }}
+	<% } %> <% } %>
+	<% if (jsLibs && jsLibs.length > 0 || features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
 	<!-- Scripts
-		================================================== -->
+	================================================== -->
+	<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+	{{#block "scripts"}}
+		{{> _scripts }}
+	{{/block}}
+	<% } else { %>
 	{{> _scripts }}
-	<% } %>
+	<% } %><% } %>
 </body>
 </html>

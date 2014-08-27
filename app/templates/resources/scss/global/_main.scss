@@ -1,169 +1,165 @@
 /* ---------------------------------------------------
 Demo Styles - just delete them
+
+The styles are not separated. if you want to use them just separate them into own files...
 --------------------------------------------------- */
+html {
+	font-size: 62.5%;
+
+	height: 100%;
+}
 
 body {
-	background: #f4f4f4;
-	color: #333;
 	font-family: Arial, sans-serif;
 	font-size: 16px;
 	line-height: 140%;
+
+	color: #333;
+	background: #eee;
+}
+<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
+h1,
+h2,
+h3,
+h4 {
+	font-family: $font-family;
 }
 
-p {
-	margin-top: 0;
+p,
+ul,
+li {
+	font-family: $font-family;
+	font-weight: normal;
+	line-height: 2.2rem;
+
+	margin-bottom: 1rem;
+
+	@include rem("font-size", 17px);
 }
 
-.masthead {
-	.container {
-		float: left;
-	}
-}
-
-.navbar {
-	background: #222;
-	height: 100%;
-	left: 0;
-	position: fixed;
-	top: 0;
-	width: 20%;
-	a {
-		background: #444;
-		color: #fff;
-		display: block;
-		font-weight: normal;
-		margin-bottom: 1px;
-		padding: 0.5em 1em;
-		text-align: right;
-		text-decoration: none;
-		&:hover {
-			background: yellowgreen;
-			color: #333;
-		}
-		&.navbar-brand {
-			background: none;
-			display: block;
-			font-weight: bold;
-			text-align: right;
-			text-transform: uppercase;
-			&:hover {
-				color: yellowgreen;
-			}
-		}
-	}
-	ul {
-		margin: 1em 0;
-		padding: 0;
-	}
-	li {
-		list-style: none;
-		&.active {
-			a, a:hover {
-				background: yellowgreen;
-				color: #333;
-			}
-		}
-	}
-}
-
-h2 {
-	color: yellowgreen;
-	font-weight: bold;
-	margin: 1.5em 0 1em;
-	font-size: 1em;
-	line-height: 1.4em;
-	clear: both;
-}
-
-#main {
-	margin-left: 25%;
-	width: 60%;
-	h1 {
-		font-size: 150%;
-		font-weight: bold;
-		margin-top: 1em;
-		margin-bottom: 0.5em;
-		@include breakpoint(568px) {
-			font-size: 100%;
-		}
-	}
-	img {
-		height: auto;
-		margin: 1em;
-		max-width: 100%;
-	}
-	.teaser-img {
-		text-align: center;
-		img {
-			display: block;
-			margin: 0.5em auto;
-		}
-	}
-	ul {
-		margin-left: 1em;
-		margin-top: 1em;
-		li {
-			font-size: 100%;
-			line-height: 135%;
-			list-style: circle;
-			margin-left: 1em;
-			@include breakpoint(568px) {
-				font-size: 100%;
-			}
-
-			a {
-				color: #666;
-				text-decoration: none;
-			}
-		}
-	}
-}
-
-article {
-	clear: both;
-	margin-bottom: 1em;
+.header {
 	position: relative;
+
+	border-bottom: 1px solid #fff;
+	background: rgba(#999, 0.5);
 }
 
-/* Teaser
+.logo {
+	width: auto;
+	padding: 2rem;
 
-Primary teaser styles
+	text-align: center;
 
-Markup:
-<div class="teaser">
-    <h2>this is my title</h2>
-    <p>
-        This is just a demo content to show you how to integrate external data
-    </p>
-</div>
-
-.teaser - Standard class for teaser elements
-h2 - Displays h2 in teasers
-
-Styleguide 1
-*/
-.teaser {
-	background: #d4d4d4;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	float: left;
-	margin: 0 3% 1em 0;
-	padding: 0.5em;
-	width: 30%;
-	h2 {
-		color: black;
-		margin: 0.35em;
+	@include breakpoint($mobile) {
+		text-align: right;
 	}
-	&.green {
-		background: yellowgreen;
-		color: #ffffff;
-	}
-	&.black {
-		background: #000;
-		color: #fff;
-		h2 {
-			color: #fff;
+
+	.logo__symbol {
+		&:hover {
+		}
+		img {
+			width: 50px;
+			height: auto;
 		}
 	}
 }
+
+#site-wrapper {
+	height: 100%;
+}
+
+.container {
+	padding: 0 1em;
+	width: $max-width;
+	margin: 0 auto;
+
+}
+
+.canvas {
+	border-top: 1px solid #fff;
+}
+
+.main__container {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.article {
+	width: 78%;
+	margin-right: 2%;
+	@include breakpoint($mobile) {
+		width: 100%;
+	}
+	h1 {
+		font-size: 2.8rem;
+		font-weight: bold;
+		line-height: 3.9rem;
+
+		display: block;
+
+		margin-bottom: 2rem;
+
+		color: lighten($color-logo, 5);
+	}
+	h2 {
+		font-size: 2.3rem;
+		font-weight: bold;
+		line-height: 3rem;
+
+		margin: 2rem 0;
+
+		color: #333;
+	}
+	h3 {
+		font-size: 2rem;
+		font-weight: normal;
+		line-height: 3rem;
+
+		margin: 3.5rem 0;
+		padding-top: 2.75rem;
+
+		text-transform: uppercase;
+
+		color: #333;
+		border-top: 1px solid #fff;
+	}
+	a {
+		text-decoration: none;
+
+		color: $color-logo;
+		background: lighten($color-logo, 65);
+
+		&:hover {
+			color: #eee;
+			background: $color-logo;
+		}
+	}
+	strong,
+	b {
+		font-weight: bold;
+	}
+	em {
+		font-style: italic;
+	}
+	ul,
+	ol {
+		margin-left: 3rem;
+		li {
+			line-height: 2rem;
+
+			margin: 0.5rem 0;
+		}
+	}
+	ul {
+		list-style: square;
+	}
+	ol {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+
+		list-style: decimal;
+	}
+}
+
+@import "nav--DEMO";
+<% } %>

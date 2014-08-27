@@ -14,10 +14,10 @@ component: article--form-general
 
 <form id="custom-form" class="validate-ui form-wrapper" action="" method="get">
 
-	{{#each form--example.template.fieldsets }}
+	{{#each form--example.data }}
 	{{! data/forms/form--example.json }}
 
-		{{> _form-tpl }}
+		{{> _form }}
 	{{! partials/modules/ }}
 	{{/each}}
 
