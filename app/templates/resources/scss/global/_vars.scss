@@ -1,15 +1,29 @@
-<% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('neat') != -1) { %>
-@import "../../bower_components/neat/app/assets/stylesheets/neat-helpers"; 
+<% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('neat') != -1) { %>
+@import "../../bower_components/neat/app/assets/stylesheets/neat-helpers";
 
 // Change the grid settings
-$column: 90px;
-$gutter: 30px;
+$column: 73px;
+$gutter: 22px;
 $grid-columns: 12;
-$max-width: em(980);
+$max-width: 1138px;
 
 // Define your breakpoints
 $tablet: new-breakpoint(max-width 768px 8);
 $mobile: new-breakpoint(max-width 480px 4);
-<% }} %>
+<% } else { %>
+<% } %>
 // Colors
-$color-validate-error: red;
+$color-validate-error: #e70000;
+
+<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
+<% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('neat') != -1) { %><% } else { %>
+$max-width: 1138px;
+
+// Define your breakpoints
+$tablet: 768px;
+$mobile: 480px;
+<% } %>
+// Demo Vars
+$color-logo: #272727;
+$font-family: 'Helvetica', 'Arial', sans-serif;
+<% } %>

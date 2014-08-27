@@ -1,8 +1,24 @@
 ---
 bodyclass: front
-title: Prototype Deluxe
-lead: Welcome to your own prototype!
+title: Build Better Prototypes with PG
+sort-order: 01
+menu-link: Home
+lead: Scaffold prototypes in a quick way and use Grunt, Bower and Assemble for an optimized and effective workflow.
 ---
 
-{{! partials/blocks }}
-{{> _sitemap }}
+<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+{{#extend "tpl_default"}}
+	{{#content "body"}}
+
+	{{! partials/blocks }}
+		{{#homepage.data}}
+			{{partial "_article" }}
+		{{/homepage.data}}
+
+	{{/content}}
+{{/extend}}
+<% } else { %>
+{{#homepage.data}}
+	{{partial "_article" }}
+{{/homepage.data}}
+<% } %>

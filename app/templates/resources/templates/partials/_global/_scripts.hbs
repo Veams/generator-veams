@@ -3,11 +3,15 @@
 <script data-main="js/main" src="bower_components/requirejs/require.js"></script>
 <!-- endbuild -->
 <% } if ((jsLibs.indexOf('requirejs') == -1) && (jsLibs.indexOf('jquery') != -1)){ %>
-	<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
 <% } if ((jsLibs.indexOf('requirejs') == -1) && (jsLibs.indexOf('backbone') != -1)){ %>
-	<script src="bower_components/backbone/backbone.js"></script>
-	<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/backbone/backbone.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
 <% } if ((jsLibs.indexOf('requirejs') == -1) && (jsLibs.indexOf('angular') != -1)){ %>
-	<script src="bower_components/angular/angular.js"></script>
-	<% } %>
+<script src="bower_components/angular/angular.js"></script>
+<% } %>
+<% } %>
+
+<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
+<script src="js/demo.js"></script>
 <% } %>

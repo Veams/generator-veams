@@ -1,7 +1,7 @@
 module.exports = {
 	dist: {
 		options: {
-			config: '<%= paths.helper %>/csscomb/config.json'
+			config: '<%= paths.helper %>/configs/csscomb.json'
 		},
 		expand: true,
 		cwd: '<%= paths.src %>/scss/',

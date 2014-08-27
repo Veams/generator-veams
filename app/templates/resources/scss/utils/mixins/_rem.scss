@@ -1,39 +1,5 @@
 /******************************************
 
-	Breakpoints
-
-******************************************/
-@mixin breakpoint($max, $min: "") {
-	@if $min != "" {
-		@media only screen and (min-width: $min) and (max-width: $max) {
-			@content;
-		}
-	} @else {
-		@media only screen and (max-width: $max) {
-			@content;
-		}
-	}
-}
-
-/******************************************
-
-	Grunticon mixin
-	usage: @include grunticon(icon-my-svg);
-
-******************************************/
-@mixin grunticon($name) {
-	@extend %icon-data-svg-#{$name};
-//   @at-root .ie8 & {
-// 	     @extend %icon-data-png-#{$name};
-//   }
-	.lt-ie9 & {
-		@extend %icon-png-#{$name};
-	}
-}
-
-
-/******************************************
-
 	rem mixin
 
 ******************************************/
@@ -60,7 +26,7 @@
 // then the variable below would be 10px.
 //
 
-$baseline_px: 16px;
+$baseline_px: 10px;
 
 @mixin rem($property, $px_values) {
 	// Convert the baseline into rems
@@ -70,16 +36,14 @@ $baseline_px: 16px;
 	// If there is only one (numeric) value, return the property/value line for it.
 	@if type-of($px_values) == "number" {
 		#{$property}: $px_values / $baseline_rem;
-	}
-	@else {
+	} @else {
 		// Create an empty list that we can dump values into
 		$rem_values: ();
 		@each $value in $px_values {
 			// If the value is zero, return 0
 			@if $value == 0 {
 				$rem_values: append($rem_values, $value);
-			}
-			@else {
+			} @else {
 				$rem_values: append($rem_values, $value / $baseline_rem);
 			}
 		}
@@ -87,7 +51,6 @@ $baseline_px: 16px;
 		#{$property}: $rem_values;
 	}
 }
-
 
 /******************************************
 
@@ -115,56 +78,15 @@ $baseline_px: 16px;
 	@if type-of($value) == "number" {
 		@if unitless($value) {
 			@return $value;
-		}
-		@else if unit($value) == "em" {
+		} @else if unit($value) == "em" {
 			@return $value / 1em;
-		}
-		@else if unit($value) == "px" {
+		} @else if unit($value) == "px" {
 			@return $value / 1px;
-		}
-		@else if unit($value) == "pt" {
+		} @else if unit($value) == "pt" {
 			@return $value / 1pt;
 		}
-	}
-	@else {
+	} @else {
 		@warn "Not a number value: #{$value}";
 		@return $value;
-	}
-}
-
-// Percent calculation mixin
-@mixin cp($property, $px_values, $context) {
-	// clear up all units to prevent sass errors
-	// cycle trough box model values
-	$unitless_values: ();
-	@each $value in $px_values {
-		// If the value is zero, return 0
-		@if $value == 0 {
-			$unitless_values: append($unitless_values, $value);
-		}
-		@else {
-			$unitless_values: append($unitless_values, clear-units($value));
-		}
-	}
-	// just one value possible here
-	$unitless_context: clear-units($context);
-	// If there is only one (numeric) value, return the property/value line for it.
-	@if type-of($unitless_values) == "number" {
-		#{$property}: $unitless_values / $unitless_context * 100%;
-	}
-	@else {
-		// Create an empty list that we can dump values into
-		$percent_values: ();
-		@each $value in $unitless_values {
-			// If the value is zero, return 0
-			@if $value == 0 {
-				$percent_values: append($percent_values, $value);
-			}
-			@else {
-				$percent_values: append($percent_values, $value / $unitless_context * 100%);
-			}
-		}
-		// Return the property and its list of converted values
-		#{$property}: $percent_values;
 	}
 }
