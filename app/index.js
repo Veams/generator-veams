@@ -481,7 +481,6 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.directory('resources/scss/utils', 'resources/scss/utils');
 	this.template('resources/scss/_all.scss', 'resources/scss/_all.scss');
 	this.copy('resources/scss/styles.scss', 'resources/scss/styles.scss');
-	this.copy('resources/scss/ie8.scss', 'resources/scss/ie8.scss');
 };
 
 
@@ -689,6 +688,11 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 		// Add copy task
 		if (this.features.indexOf('createDevFolder') != -1 || this.features.indexOf('installDocs') != -1) {
 			this.copy('helpers/_grunt/_copy.js', 'helpers/_grunt/copy.js');
+		}
+
+		// Add IE Styles
+		if (this.features.indexOf('supportIE8') != -1) {
+			this.copy('resources/scss/ie8.scss', 'resources/scss/ie8.scss');
 		}
 
 	} else {

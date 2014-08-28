@@ -8,6 +8,21 @@ var GMGenerator = module.exports = function GMGenerator(args, options, config) {
 	// as `this.name`.
 	yeoman.generators.Base.apply(this, arguments);
 
+	this.config.defaults({
+		modules: [],
+		features: [],
+		jsLibs: [],
+		cssLibs: [],
+		installProxy: false,
+		proxyHost: '0.0.0.0 ',
+		proxyPort: 80,
+		author: {
+			name: "",
+			login: "",
+			email: ""
+		}
+	});
+
 };
 
 util.inherits(GMGenerator, yeoman.generators.NamedBase);
@@ -30,21 +45,26 @@ GMGenerator.prototype.askFor = function askFor() {
 		type: "checkbox",
 		message: "Which grunt modules do you want to use?",
 		choices: [
-			{ name: "grunt-grunticon"},
+			{ name: "grunt-accessibility"},
+			{ name: "grunt-autoprefixer"},
+			{ name: "grunt-bless"},
+			{ name: "grunt-browser-sync"},
+			{ name: "grunt-combine-media-queries"},
+			{ name: "grunt-contrib-compass" },
+			{ name: "grunt-contrib-htmlmin"},
+			{ name: "grunt-csscomb"},
 			{ name: "grunt-data-separator"},
+			{ name: "grunt-devtools"},
 			{ name: "dr-grunt-svg-sprites" },
+			{ name: "grunt-grunticon"},
+			{ name: "grunt-jsbeautifier"},
 			{ name: "grunt-modernizr"},
 			{ name: "grunt-packager"},
-			{ name: "grunt-csscomb"},
-			{ name: "grunt-contrib-htmlmin"},
-			{ name: "grunt-jsbeautifier"},
-			{ name: "grunt-combine-media-queries"},
-			{ name: "grunt-bless"},
-			{ name: "grunt-autoprefixer"},
-			{ name: "grunt-contrib-compass" },
 			{ name: "grunt-photobox"},
-			{ name: "grunt-accessibility"},
-			{ name: "grunt-devtools"}
+			{
+				name: "Libsass Globbing",
+				value: "sass-globbing"
+			}
 		],
 		default: this.config.get("modules")
 	});
@@ -91,6 +111,10 @@ GMGenerator.prototype.askFor = function askFor() {
 	this.prompt(questions, function (answers) {
 		this.modules = answers.modules;
 
+		this.features = this.config.get("features");
+		this.jsLibs = this.config.get("jsLibs");
+		this.cssLibs = this.config.get("cssLibs");
+
 		//save config to .yo-rc.json
 		this.config.set(answers);
 
@@ -106,6 +130,9 @@ GMGenerator.prototype.askFor = function askFor() {
 GMGenerator.prototype.appGruntModules = function appGruntModules() {
 // Grunt modules are splitted up in separate files and modules
 	if (this.modules && this.modules.length > 0) {
+		if (this.modules.indexOf('grunt-browser-sync') != -1) {
+			this.template('../../app/templates/helpers/_grunt/_browserSync.js', 'helpers/_grunt/browserSync.js');
+		}
 		if (this.modules.indexOf('grunt-grunticon') != -1) {
 			this.directory('../../app/templates/resources/scss/icons', 'resources/scss/icons');
 			this.directory('../../app/templates/helpers/templates/grunticon', 'helpers/templates/grunticon');
@@ -162,6 +189,29 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 		if (this.modules.indexOf('grunt-accessibility') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/accessibility.js', 'helpers/_grunt/accessibility.js');
+		}
+		if (this.modules.indexOf('sass-globbing') != -1) {
+			this.template('../../app/templates/helpers/_grunt/fileindex.js', 'helpers/_grunt/fileindex.js');
+
+			console.log( ('\n') + chalk.bgRed('Please add the following tasks to your watch.js file') + ('\n') + ('\n') +
+				chalk.yellow('\n globbing: {') +
+				chalk.yellow('\n     options: {') +
+				chalk.yellow('\n         event: ["added", "deleted"]') +
+				chalk.yellow('\n     },') +
+				chalk.yellow('\n     files: [') +
+				chalk.yellow('\n         "<%= paths.helper %>/_grunt/fileindex.js",') +
+				chalk.yellow('\n         "<%= paths.src %>/scss/**/*.scss",') +
+				chalk.yellow('\n         "!<%= paths.src %>/scss/_all.scss"') +
+				chalk.yellow('\n     ],') +
+				chalk.yellow('\n     tasks: "fileindex:libsassGlobbing"') +
+				chalk.yellow('\n },') +
+				chalk.yellow('\n fileindex: {') +
+				chalk.yellow('\n     files: [') +
+				chalk.yellow('\n         "<%= paths.helper %>/_grunt/fileindex.js"') +
+				chalk.yellow('\n     ],') +
+				chalk.yellow('\n     tasks: "fileindex:libsassGlobbing"') +
+				chalk.yellow('\n }' + ('\n') +  ('\n'))
+			);
 		}
 	}
 };

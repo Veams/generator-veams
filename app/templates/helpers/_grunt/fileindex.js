@@ -7,7 +7,7 @@ module.exports = {
 				// empty array which get be filled with our sass imports
 				var imports = [];
 
-				// loop to go through the list array and build our pattern
+				// loop to go through the items of array and build our pattern
 				for (i; i < list.length; i++) {
 					// single list element
 					var listEl = list[i];
@@ -25,9 +25,9 @@ module.exports = {
 			{
 				// define your destination file
 				dest: '<%%= paths.src %>/scss/_all.scss',
-				// define your current workind directory in which are the sass files located
+				// define your current working directory in which the sass files are located
 				cwd: '<%%= paths.src %>/scss/',
-				// here you can build your styles.scss like you would do in styles.scss with sass-globbing
+				// here you can build your _all.scss like you would do in _all.scss with sass-globbing
 				src: [
 					'global/_reset.scss',<% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
 					'../bower_components/foundation/scss/_foundation.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('neat') != -1) { %>

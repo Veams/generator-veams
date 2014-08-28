@@ -16,7 +16,7 @@ module.exports = {
 			'<%%= paths.dev %>/{,*/}*.html',
 			'<%%= paths.dev %>/css/{,*/}*.css', // if you want to use browser-sync for css just comment out this line
 			'<%%= paths.dev %>/js/{,*/}*.js',
-			'<%%= paths.dev %>/assets/**/*'
+			'<%%= paths.dev %>/img/**/*.{jpg,png}'
 		]
 	},
     js: {
@@ -50,18 +50,18 @@ module.exports = {
 		options: {
 			spawn: false
 		}
-	},
+	}<% if (features.indexOf('supportIE8') != -1) { %>,
 	scssIE: {
 		files: '<%%= paths.src %>/scss/ie8.scss',
 		tasks: 'sass:ie'
-	}<% }} %><% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>,
+	}<% } %><% if (features.indexOf('installDocs') != -1) { %>,
 	scssDocs: {
 		files: '<%%= paths.src %>/scss/docs/*',
 		tasks: 'sass:docs',
 		options: {
 			spawn: false
 		}
-	}<% } %><% if(installAssemble != false){ %>,
+	}<% } %><% }} %><% if(installAssemble != false){ %>,
 	templates: {
 		files: ['<%%= paths.src %>/{data,templates/layouts,templates/partials}/**/{,*/}*.{md,hbs,yml,json}'],
 	    tasks: ['newer:assemble'],
@@ -71,14 +71,14 @@ module.exports = {
 	},
     pages: {
         files: ['<%%= paths.src %>/templates/pages/**/{,*/}*.hbs'],
-        tasks: ['assemble:pages'],
+        tasks: ['newer:assemble:pages'],
 	    options: {
 			spawn: false
 		}
     },
     docs: {
         files: ['<%%= paths.src %>/templates/docs/**/{,*/}*.hbs'],
-        tasks: ['assemble:docs'],
+        tasks: ['newer:assemble:docs'],
 	    options: {
 			spawn: false
 		}
