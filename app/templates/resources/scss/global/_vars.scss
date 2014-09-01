@@ -1,5 +1,5 @@
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('neat') != -1) { %>
-@import "../../bower_components/neat/app/assets/stylesheets/neat-helpers";
+@import "../../bower-components/neat/app/assets/stylesheets/neat-helpers";
 
 // Change the grid settings
 $column: 73px;

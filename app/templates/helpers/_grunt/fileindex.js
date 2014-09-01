@@ -30,10 +30,10 @@ module.exports = {
 				// here you can build your _all.scss like you would do in _all.scss with sass-globbing
 				src: [
 					'global/_reset.scss',<% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
-					'../bower_components/foundation/scss/_foundation.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('neat') != -1) { %>
-					'../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss',
-					'../bower_components/neat/app/assets/stylesheets/_neat.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
-					'../bower_components/sass-bootstrap/lib/_bootstrap.scss',<% }} %>
+					'../bower-components/foundation/scss/foundation.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('neat') != -1) { %>
+					'../bower-components/bourbon/app/assets/stylesheets/_bourbon.scss',
+					'../bower-components/neat/app/assets/stylesheets/_neat.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
+					'../bower-components/sass-bootstrap/lib/bootstrap.scss',<% }} %>
 					'global/_vars.scss',
 					'utils/extends/**/*.scss',
 					'utils/mixins/**/*.scss',

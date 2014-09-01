@@ -23,9 +23,9 @@ module.exports = {
 		files: [
 			// includes files within path and its sub-directories
 			{
-			cwd: '<%%= paths.src %>/bower_components/highlightjs',
+			cwd: '<%%= paths.src %>/bower-components/highlightjs',
 			src: 'highlight.pack.js',
-			dest: '<%%= paths.dev %>/bower_components'
+			dest: '<%%= paths.dev %>/bower-components'
 			}
 		]
 	}<% } %><% if(jsLibs && jsLibs.length > 0){ %>,<% if (jsLibs.indexOf('requirejs') != -1) { %>
@@ -33,9 +33,9 @@ module.exports = {
         files: [
             // includes files within path and its sub-directories
             {
-                cwd: '<%%= paths.src %>/bower_components/requirejs',
+                cwd: '<%%= paths.src %>/bower-components/requirejs',
                 src: 'require.js',
-                dest: '<%%= paths.dev %>/bower_components/requirejs'
+                dest: '<%%= paths.dev %>/bower-components/requirejs'
             }
 	]
 			},<% } %><% if (jsLibs.indexOf('backbone') != -1) { %>
@@ -43,9 +43,9 @@ module.exports = {
         files: [
             // includes files within path and its sub-directories
             {
-                cwd: '<%%= paths.src %>/bower_components/backbone',
+                cwd: '<%%= paths.src %>/bower-components/backbone',
                 src: 'backbone.js',
-                dest: '<%%= paths.dev %>/bower_components/backbone'
+                dest: '<%%= paths.dev %>/bower-components/backbone'
             }
         ]
     },
@@ -53,9 +53,9 @@ module.exports = {
         files: [
             // includes files within path and its sub-directories
             {
-                cwd: '<%%= paths.src %>/bower_components/underscore',
+                cwd: '<%%= paths.src %>/bower-components/underscore',
                 src: 'underscore.js',
-                dest: '<%%= paths.dev %>/bower_components/underscore'
+                dest: '<%%= paths.dev %>/bower-components/underscore'
             }
         ]
     },<% } %><% if (jsLibs.indexOf('angular') != -1) { %>
@@ -63,9 +63,9 @@ module.exports = {
         files: [
             // includes files within path and its sub-directories
             {
-                cwd: '<%%= paths.src %>/bower_components/angular',
+                cwd: '<%%= paths.src %>/bower-components/angular',
                 src: 'angular.js',
-                dest: '<%%= paths.dev %>/bower_components/angular'
+                dest: '<%%= paths.dev %>/bower-components/angular'
             }
         ]
     },<% } %><% if (jsLibs.indexOf('jquery') != -1) { %>
@@ -73,9 +73,9 @@ module.exports = {
         files: [
             // includes files within path and its sub-directories
             {
-                cwd: '<%%= paths.src %>/bower_components/jquery/dist',
+                cwd: '<%%= paths.src %>/bower-components/jquery/dist',
                 src: 'jquery.js',
-                dest: '<%%= paths.dev %>/bower_components/jquery/dist'
+                dest: '<%%= paths.dev %>/bower-components/jquery/dist'
             }
         ]
     }<% } %><% } %>

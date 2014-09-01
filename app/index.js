@@ -644,15 +644,14 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 		if (this.features.indexOf('installDocs') != -1) {
 			// add styleguide files
 			this.directory('helpers/templates/styleguide-template', 'helpers/templates/styleguide-template');
-
-			if (this.config.get("installAssemble") == true) {
-				this.directory('resources/templates/docs', 'resources/templates/docs');
-			}
-
 			this.directory('resources/scss/docs', 'resources/scss/docs');
 			this.copy('resources/scss/docs.scss', 'resources/scss/docs.scss');
 			this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
 			this.copy('helpers/_grunt/styleguide.js', 'helpers/_grunt/styleguide.js');
+
+			if (this.config.get("installAssemble") == true) {
+				this.directory('resources/templates/docs', 'resources/templates/docs');
+			}
 		}
 
 		// add mobile first grunt task
