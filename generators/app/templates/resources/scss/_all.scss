@@ -1,5 +1,5 @@
 // Reset imports
-@import "global/reset";
+@import "global/_reset";
 
 // Frameworks
 <% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
@@ -15,10 +15,10 @@
 @import "utils/mixins";
 
 // Global
-@import "global/vars";
-@import "global/main";
+@import "global/_vars";
+@import "global/_main";
 
 // Modules
-@import "modules/forms";
-@import "modules/modal";
-@import "modules/player";
+@import "modules/_forms";
+@import "modules/_modal";
+@import "modules/_player";

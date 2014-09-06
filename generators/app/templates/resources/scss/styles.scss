@@ -3,9 +3,9 @@
 
 <% if(modules && modules.length > 0){ if(modules.indexOf('grunt-grunticon') != -1) { %>
 // Icons
-@import "icons/icons-data-svg";
-@import "icons/icons-fallback";
+@import "icons/_icons-data-svg";
+@import "icons/_icons-fallback";
 <% }} %>
 
 // Print
-@import "global/print";
+@import "global/_print";

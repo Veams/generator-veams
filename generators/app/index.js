@@ -22,7 +22,7 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 
 	this.files = this.expandFiles('**/*', { cwd: this.sourceRoot(), dot: true });
 
-	this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+	this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../../package.json')));
 
 	this.dotFiles = [
 		'gitignore',
