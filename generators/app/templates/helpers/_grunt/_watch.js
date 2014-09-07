@@ -24,7 +24,10 @@ module.exports = {
         tasks: 'sync:js'
     },
     assets: {
-        files: '<%%= paths.src %>/assets/**/*',
+        files: [
+			'<%%= paths.src %>/assets/**/*'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-svgmin') != -1) { %>,
+			'!<%%= paths.src %>/assets/img/svg/**/*'<% }} %>
+			],
         tasks: 'sync:assets'
     }<% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>,
 	globbing: {

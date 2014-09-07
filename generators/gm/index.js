@@ -32,7 +32,7 @@ GMGenerator.prototype.askFor = function askFor() {
 
 	console.log(
 		('\n') + chalk.bgMagenta('Install your grunt modules') + ('\n') +
-			('\n') + chalk.magenta('* Be sure you know what you do')  +
+			('\n') + chalk.magenta('* Be sure you know what you do') +
 			('\n') + chalk.magenta('Additional add your custom grunt task in your Gruntfile.js') + ('\n')
 	);
 
@@ -50,6 +50,7 @@ GMGenerator.prototype.askFor = function askFor() {
 			{ name: "grunt-combine-media-queries"},
 			{ name: "grunt-contrib-compass" },
 			{ name: "grunt-contrib-htmlmin"},
+			{ name: "grunt-contrib-uglify"},
 			{ name: "grunt-csscomb"},
 			{ name: "grunt-data-separator"},
 			{ name: "grunt-devtools"},
@@ -184,6 +185,10 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-contrib-htmlmin') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
 			this.npmInstall(['grunt-contrib-htmlmin'], { 'saveDev': true }, done);
+		}
+		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/uglify.js', 'helpers/_grunt/uglify.js');
+			this.npmInstall(['grunt-contrib-uglify'], { 'saveDev': true }, done);
 		}
 		if (this.modules.indexOf('grunt-jsbeautifier') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');

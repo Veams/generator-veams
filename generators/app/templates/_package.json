@@ -35,6 +35,8 @@
 		"grunt-devtools": "~0.2.1",
 		<% } %><% if(name == 'grunt-packager') { %>
 		"grunt-packager": "~0.1.0",
+		<% } %><% if(name == 'grunt-contrib-uglify') { %>
+		"grunt-contrib-uglify": "~0.5.1",
 		<% } %><% if(name == 'grunt-modernizr') { %>
 		"grunt-modernizr": "^0.5.2",
 		<% } %><% if(name == 'grunt-browser-sync') { %>
@@ -53,6 +55,10 @@
 		"grunt-accessibility": "~0.1.2",
         <% } %><% if(name == 'grunt-connect-proxy') { %>
         "grunt-connect-proxy": "~0.1.8",
+		<% } %><% if(name == 'grunt-svgmin') { %>
+        "grunt-svgmin": "^1.0.0",
+		<% } %><% if(name == 'grunt-phantomas') { %>
+        "grunt-phantomas": "^0.10.0",
 		<% } %><% if(name == 'grunt-photobox') { %>
 		"grunt-photobox": "~0.5.0",
 		<% } %><%}); %><%} %><%} %>

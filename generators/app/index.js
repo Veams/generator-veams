@@ -42,12 +42,13 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 		installPlugin: false,
 		installCMS: false,
 		modules: [
-			"grunt-grunticon",
-			"grunt-data-separator",
-			"grunt-csscomb",
-			"grunt-combine-media-queries",
 			"grunt-autoprefixer",
-			"grunt-browser-sync"
+			"grunt-browser-sync",
+			"grunt-combine-media-queries",
+			"grunt-csscomb",
+			"grunt-data-separator",
+			"grunt-grunticon",
+			"grunt-packager"
 		],
 		features: [
 			"installDocs",
@@ -233,7 +234,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{ name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"},
 			{ name: "grunt-contrib-compass" },
 			{ name: "grunt-contrib-htmlmin"},
-			// { name: "grunt-contrib-uglify"},
+			{ name: "grunt-contrib-uglify"},
 			{ name: "grunt-csscomb", checked: true },
 			{ name: "grunt-data-separator", checked: true },
 			{ name: "grunt-devtools"},
@@ -241,7 +242,9 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{ name: "grunt-grunticon", checked: true },
 			{ name: "grunt-modernizr"},
 			{ name: "grunt-packager"},
-			{ name: "grunt-photobox"}
+			{ name: "grunt-phantomas"},
+			{ name: "grunt-photobox"},
+			{ name: "grunt-svgmin"}
 		],
 		default: this.config.get("modules")
 	});
@@ -547,6 +550,12 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 // Grunt modules are splitted up in separate files and modules
 	if (this.modules && this.modules.length > 0) {
+		if (this.modules.indexOf('grunt-accessibility') != -1) {
+			this.copy('helpers/_grunt/accessibility.js', 'helpers/_grunt/accessibility.js');
+		}
+		if (this.modules.indexOf('grunt-autoprefixer') != -1) {
+			this.copy('helpers/_grunt/autoprefixer.js', 'helpers/_grunt/autoprefixer.js');
+		}
 		if (this.modules.indexOf('grunt-grunticon') != -1) {
 			this.directory('resources/scss/icons', 'resources/scss/icons');
 			this.directory('helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
@@ -582,6 +591,9 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-contrib-htmlmin') != -1) {
 			this.copy('helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
 		}
+		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
+			this.copy('helpers/_grunt/uglify.js', 'helpers/_grunt/uglify.js');
+		}
 		if (this.modules.indexOf('grunt-combine-media-queries') != -1) {
 			this.copy('helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');
 		}
@@ -594,14 +606,14 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-browser-sync') != -1) {
 			this.template('helpers/_grunt/_browserSync.js', 'helpers/_grunt/browserSync.js');
 		}
+		if (this.modules.indexOf('grunt-phantomas') != -1) {
+			this.copy('helpers/_grunt/phantomas.js', 'helpers/_grunt/phantomas.js');
+		}
 		if (this.modules.indexOf('grunt-photobox') != -1) {
 			this.copy('helpers/_grunt/photobox.js', 'helpers/_grunt/photobox.js');
 		}
-		if (this.modules.indexOf('grunt-autoprefixer') != -1) {
-			this.copy('helpers/_grunt/autoprefixer.js', 'helpers/_grunt/autoprefixer.js');
-		}
-		if (this.modules.indexOf('grunt-accessibility') != -1) {
-			this.copy('helpers/_grunt/accessibility.js', 'helpers/_grunt/accessibility.js');
+		if (this.modules.indexOf('grunt-svgmin') != -1) {
+			this.copy('helpers/_grunt/svgmin.js', 'helpers/_grunt/svgmin.js');
 		}
 	}
 };

@@ -1,5 +1,6 @@
 module.exports = {
 	files: [
+		"!<%= paths.src %>/js/vendor/**/*.js",
 		"<%= paths.src %>/js/**/*.js",
 		"<%= paths.dev %>/**/*.html"
 	],

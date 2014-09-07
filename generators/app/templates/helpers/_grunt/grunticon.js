@@ -3,9 +3,9 @@ module.exports = {
 		files: [
 			{
 				expand: true,
-				cwd: '<%= paths.src %>/assets/img/svg/icons',
+				cwd: <% if (modules && modules.length > 0) { if (modules.indexOf('grunt-svgmin') != -1) { %>'<%%= paths.src %>/assets/img/svgmin/icons'<% } else { %>'<%%= paths.src %>/assets/img/svg/icons'<% }} %>,
 				src: ['*.svg', '*.png'],
-				dest: "<%= paths.src %>/scss/icons"
+				dest: "<%%= paths.src %>/scss/icons"
 			}
 		],
 		options: {

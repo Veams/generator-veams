@@ -60,7 +60,8 @@
 	 // Simple Tasks
 	 <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-grunticon') { %>
 		// Grunticon: Build your icons
-		grunt.registerTask('icons', [
+		grunt.registerTask('icons', [<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-svgmin') != -1) { %>
+			'svgmin',<% }} %>
 			'grunticon',
 			'clean:grunticon',
 			'replace'
@@ -124,19 +125,19 @@
 		grunt.registerTask('beauty-files', [
 			'jsbeautifier'
 		]);
-		<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-csscomb') { %>
+		<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-csscomb') != -1) { %>
 		// Beautify your SASS files
 		grunt.registerTask('beauty-scss', [
 			'csscomb'
-		]);<% } %><%}); %><%} %><%} %>
+		]);<% }} %>
 
 	// Advanced Tasks
-	  grunt.registerTask('server', [<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
-		'js',<% } %><%}); %><%} %><%} %><% if(installAssemble != false){ %>
+	  grunt.registerTask('server', [<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-packager') != -1) { %>
+		'js',<% }} %><% if(installAssemble != false){ %>
         'newer:assemble',<% } %>
         'concurrent:syncing',
 		'watchCSS'<% if (features && features.length > 0 && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>,
-		'sass:docs'<% } %><% if(modules && modules.length >= 0){if(modules.indexOf('grunt-browser-sync') == -1) { %>,
+		'sass:docs'<% } %><% if(modules && modules.length >= 0){ if(modules.indexOf('grunt-browser-sync') == -1) { %>,
 		'connect:livereload',<% }} if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>,
 		// 'connect:livereload',
 		'browserSync', <% } %><%}); %><%} %><%} %>
@@ -150,27 +151,28 @@
 		]);
 	  <% } %>
 	  grunt.registerTask('build', [
-		'clean:dev',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-modernizr') { %>
-		'modernizr',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
-		'js',<% } %><%}); %><%} %><%} %>
-		'jsbeautifier',
+		'clean:dev',
+		'jsbeautifier',<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-modernizr') != -1) { %>
+		'modernizr',<% }} %><% if (modules && modules.length > 0) { if (modules.indexOf('grunt-packager') != -1) { %>
+		'js',<% }} %><% if (modules && modules.length > 0) { if (modules.indexOf('grunt-contrib-uglify') != -1) { %>
+		'uglify',<% }} %>
 		'concurrent:syncing', <% if (modules && modules.length > 0) { if (modules.indexOf('grunt-csscomb') != -1) { %>
         'beauty-scss',<% }} %> <% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
-		'watchCSS',
-		'sass:ie',<% } else { %>
+		'watchCSS',<% if (features && features.length > 0 && features.indexOf('supportIE8') != -1) { %>
+		'sass:ie',<% } %><% } else { %>
 		'cssProd',<% }} else { %>
 		'cssProd',<% } %><% if (features && features.length > 0 && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>
-		'sass:docs',<% } %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-combine-media-queries') { %>
-		'cmq',<% } %><%}); %><%} %><%} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-data-separator') { %>
-		'dataSeparator',<% } %><%}); %><%} %><%} %><% if(features && features.length > 0){ if(features.indexOf('mobileFirst') != -1) { %>
-		'comment-media-queries:dist',<% }} %><% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-autoprefixer') { %>
-		'autoprefixer',<% } %><%}); %><%} %><%} %>
-		'cssmin',<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-bless') { %>
-		'bless', <% } %><%}); %><%} %><%} %>
+		'sass:docs',<% } %><% if (modules && modules.length > 0) { if (modules.indexOf('grunt-combine-media-queries') != -1) { %>
+		'cmq',<% }} %><% if (modules && modules.length > 0) { if (modules.indexOf('grunt-data-separator') != -1) { %>
+		'dataSeparator',<% }} %><% if(features && features.length > 0){ if(features.indexOf('mobileFirst') != -1) { %>
+		'comment-media-queries:dist',<% }} %><% if (modules && modules.length > 0) { if (modules.indexOf('grunt-autoprefixer') != -1) { %>
+		'autoprefixer',<% }} %>
+		'cssmin',<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-bless') != -1) { %>
+		'bless',<% }} %>
 		'concurrent:build',
 		'check-js',
-		'check-html'<% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-contrib-htmlmin') { %>, 
-		'htmlmin'<% } %><%}); %><%} %><%} %>
+		'check-html'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-contrib.htmlmin') != -1) { %>, 
+		'htmlmin'<% }} %>
 	  ]);
 
 	  grunt.registerTask('default', [
