@@ -59,7 +59,9 @@ GMGenerator.prototype.askFor = function askFor() {
 			{ name: "grunt-jsbeautifier"},
 			{ name: "grunt-modernizr"},
 			{ name: "grunt-packager"},
+			{ name: "grunt-phantomas"},
 			{ name: "grunt-photobox"},
+			{ name: "grunt-svgmin"},
 			{
 				name: "Libsass Globbing",
 				value: "sass-globbing"
@@ -131,9 +133,51 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 
 // Grunt modules are splitted up in separate files and modules
 	if (this.modules && this.modules.length > 0) {
+		if (this.modules.indexOf('grunt-autoprefixer') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/autoprefixer.js', 'helpers/_grunt/autoprefixer.js');
+			this.npmInstall(['grunt-autoprefixer'], { 'saveDev': true }, done);
+		}
+		if (this.modules.indexOf('grunt-accessibility') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/accessibility.js', 'helpers/_grunt/accessibility.js');
+			this.npmInstall(['grunt-accessibility'], { 'saveDev': true }, done);
+		}
+		if (this.modules.indexOf('grunt-bless') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/bless.js', 'helpers/_grunt/bless.js');
+			this.npmInstall(['grunt-bless'], { 'saveDev': true }, done);
+		}
 		if (this.modules.indexOf('grunt-browser-sync') != -1) {
 			this.template('../../app/templates/helpers/_grunt/_browserSync.js', 'helpers/_grunt/browserSync.js');
 			this.npmInstall(['grunt-browser-sync'], { 'saveDev': true }, done);
+		}
+		if (this.modules.indexOf('grunt-combine-media-queries') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');
+			this.npmInstall(['grunt-combine-media-queries'], { 'saveDev': true }, done);
+		}
+		if (this.modules.indexOf('grunt-contrib-compass') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/compass.js', 'helpers/_grunt/compass.js');
+			this.npmInstall(['grunt-contrib-compass'], { 'saveDev': true }, done);
+		}
+		if (this.modules.indexOf('grunt-contrib-htmlmin') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
+			this.npmInstall(['grunt-contrib-htmlmin'], { 'saveDev': true }, done);
+		}
+		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/uglify.js', 'helpers/_grunt/uglify.js');
+			this.npmInstall(['grunt-contrib-uglify'], { 'saveDev': true }, done);
+		}
+		if (this.modules.indexOf('grunt-csscomb') != -1) {
+			this.directory('../../app/templates/helpers/csscomb', 'helpers/csscomb');
+			this.copy('../../app/templates/helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
+			this.npmInstall(['grunt-csscomb'], { 'saveDev': true }, done);
+		}
+		if (this.modules.indexOf('grunt-data-separator') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/dataSeparator.js', 'helpers/_grunt/dataSeparator.js');
+			this.npmInstall(['grunt-data-separator'], { 'saveDev': true }, done);
+		}
+		if (this.modules.indexOf('dr-grunt-svg-sprites') != -1) {
+			this.mkdir('resources/scss/icons');
+			this.copy('../../app/templates/helpers/_grunt/svg-sprites.js', 'helpers/_grunt/svg-sprites.js');
+			this.npmInstall(['dr-grunt-svg-sprites'], { 'saveDev': true }, done);
 		}
 		if (this.modules.indexOf('grunt-grunticon') != -1) {
 			this.directory('../../app/templates/resources/scss/icons', 'resources/scss/icons');
@@ -156,79 +200,35 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 				this.npmInstall(['grunt-replace'], { 'saveDev': true }, done);
 			}
 		}
-		if (this.modules.indexOf('grunt-data-separator') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/dataSeparator.js', 'helpers/_grunt/dataSeparator.js');
-			this.npmInstall(['grunt-data-separator'], { 'saveDev': true }, done);
-
-		}
-		if (this.modules.indexOf('dr-grunt-svg-sprites') != -1) {
-			this.mkdir('resources/scss/icons');
-			this.copy('../../app/templates/helpers/_grunt/svg-sprites.js', 'helpers/_grunt/svg-sprites.js');
-			this.npmInstall(['dr-grunt-svg-sprites'], { 'saveDev': true }, done);
-
+		if (this.modules.indexOf('grunt-jsbeautifier') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
+			this.copy('../../app/templates/helpers/configs/.jsbeautifierrc', 'helpers/configs/.jsbeautifierrc');
+			this.npmInstall(['grunt-jsbeautifier'], { 'saveDev': true }, done);
 		}
 		if (this.modules.indexOf('grunt-modernizr') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/modernizr.js', 'helpers/_grunt/modernizr.js');
 			this.npmInstall(['grunt-modernizr'], { 'saveDev': true }, done);
-
 		}
 		if (this.modules.indexOf('grunt-packager') != -1) {
 			this.copy('../../app/templates/resources/js/project.jspackcfg', 'resources/js/project.jspackcfg');
 			this.copy('../../app/templates/helpers/_grunt/packager.js', 'helpers/_grunt/packager.js');
 			this.npmInstall(['grunt-packager'], { 'saveDev': true }, done);
 		}
-		if (this.modules.indexOf('grunt-csscomb') != -1) {
-			this.directory('../../app/templates/helpers/csscomb', 'helpers/csscomb');
-			this.copy('../../app/templates/helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
-			this.npmInstall(['grunt-csscomb'], { 'saveDev': true }, done);
-		}
-		if (this.modules.indexOf('grunt-contrib-htmlmin') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
-			this.npmInstall(['grunt-contrib-htmlmin'], { 'saveDev': true }, done);
-		}
-		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/uglify.js', 'helpers/_grunt/uglify.js');
-			this.npmInstall(['grunt-contrib-uglify'], { 'saveDev': true }, done);
-		}
-		if (this.modules.indexOf('grunt-jsbeautifier') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
-			this.copy('../../app/templates/helpers/configs/.jsbeautifierrc', 'helpers/configs/.jsbeautifierrc');
-			this.npmInstall(['grunt-jsbeautifier'], { 'saveDev': true }, done);
-		}
-		if (this.modules.indexOf('grunt-combine-media-queries') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');
-			this.npmInstall(['grunt-combine-media-queries'], { 'saveDev': true }, done);
-
-		}
-		if (this.modules.indexOf('grunt-bless') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/bless.js', 'helpers/_grunt/bless.js');
-			this.npmInstall(['grunt-bless'], { 'saveDev': true }, done);
-
-		}
-		if (this.modules.indexOf('grunt-contrib-compass') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/compass.js', 'helpers/_grunt/compass.js');
-			this.npmInstall(['grunt-contrib-compass'], { 'saveDev': true }, done);
-
+		if (this.modules.indexOf('grunt-phantomas') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/phantomas.js', 'helpers/_grunt/phantomas.js');
+			this.npmInstall(['grunt-phantomas'], { 'saveDev': true }, done);
 		}
 		if (this.modules.indexOf('grunt-photobox') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/photobox.js', 'helpers/_grunt/photobox.js');
 			this.npmInstall(['grunt-photobox'], { 'saveDev': true }, done);
-
 		}
-		if (this.modules.indexOf('grunt-autoprefixer') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/autoprefixer.js', 'helpers/_grunt/autoprefixer.js');
-			this.npmInstall(['grunt-autoprefixer'], { 'saveDev': true }, done);
-
-		}
-		if (this.modules.indexOf('grunt-accessibility') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/accessibility.js', 'helpers/_grunt/accessibility.js');
-			this.npmInstall(['grunt-accessibility'], { 'saveDev': true }, done);
-
+		if (this.modules.indexOf('grunt-svgmin') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/svgmin.js', 'helpers/_grunt/svgmin.js');
+			this.npmInstall(['grunt-svgmin'], { 'saveDev': true }, done);
 		}
 		if (this.modules.indexOf('sass-globbing') != -1) {
 			this.template('../../app/templates/helpers/_grunt/fileindex.js', 'helpers/_grunt/fileindex.js');
 			this.npmInstall(['grunt-fileindex'], { 'saveDev': true }, done);
-
 
 			console.log(('\n') + chalk.bgRed('Please add the following tasks to your watch.js file') + ('\n') + ('\n') +
 				chalk.yellow('\n globbing: {') +
