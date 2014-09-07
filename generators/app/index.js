@@ -592,7 +592,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy('helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
 		}
 		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
-			this.copy('helpers/_grunt/uglify.js', 'helpers/_grunt/uglify.js');
+			this.template('helpers/_grunt/_uglify.js', 'helpers/_grunt/uglify.js');
 		}
 		if (this.modules.indexOf('grunt-combine-media-queries') != -1) {
 			this.copy('helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');
@@ -674,7 +674,7 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 		// Add Libsass
 		if (this.features.indexOf('sassInsteadOfCompass') != -1) {
 			this.template('helpers/_grunt/_sass.js', 'helpers/_grunt/sass.js');
-			this.template('helpers/_grunt/fileindex.js', 'helpers/_grunt/fileindex.js');
+			this.template('helpers/_grunt/_fileindex.js', 'helpers/_grunt/fileindex.js');
 		} else {
 			this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
 			this.copy('config.rb', 'config.rb');

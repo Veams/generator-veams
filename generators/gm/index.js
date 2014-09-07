@@ -162,7 +162,7 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.npmInstall(['grunt-contrib-htmlmin'], { 'saveDev': true }, done);
 		}
 		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/uglify.js', 'helpers/_grunt/uglify.js');
+			this.template('../../app/templates/helpers/_grunt/_uglify.js', 'helpers/_grunt/uglify.js');
 			this.npmInstall(['grunt-contrib-uglify'], { 'saveDev': true }, done);
 		}
 		if (this.modules.indexOf('grunt-csscomb') != -1) {
@@ -227,7 +227,7 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.npmInstall(['grunt-svgmin'], { 'saveDev': true }, done);
 		}
 		if (this.modules.indexOf('sass-globbing') != -1) {
-			this.template('../../app/templates/helpers/_grunt/fileindex.js', 'helpers/_grunt/fileindex.js');
+			this.template('../../app/templates/helpers/_grunt/_fileindex.js', 'helpers/_grunt/fileindex.js');
 			this.npmInstall(['grunt-fileindex'], { 'saveDev': true }, done);
 
 			console.log(('\n') + chalk.bgRed('Please add the following tasks to your watch.js file') + ('\n') + ('\n') +

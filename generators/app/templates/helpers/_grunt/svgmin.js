@@ -27,11 +27,11 @@ module.exports = {
 			{ removeTitle: true },
 			{ removeUnknownsAndDefaults: true },
 			{ removeUnusedNS: true },
-			{ removeUselessStrokeAndFill: false }, // Enabling this may cause small details to be removed
-			{ removeViewBox: false }, // Keep the viewBox because that's where illustrator hides the SVG dimensions
-			{ removeXMLProcInst: false }, // Enabling this breaks grunticon
+			{ removeUselessStrokeAndFill: false },
+			{ removeViewBox: false },
+			{ removeXMLProcInst: false },
 			{ sortAttrs: true },
-			{ transformsWithOnePath: false } // Enabling this breaks Illustrator SVGs with complex text
+			{ transformsWithOnePath: false }
 		]
 	},
 	icons: {
