@@ -61,6 +61,7 @@ GMGenerator.prototype.askFor = function askFor() {
 			{ name: "grunt-packager"},
 			{ name: "grunt-phantomas"},
 			{ name: "grunt-photobox"},
+			{ name: "grunt-responsive-images"},
 			{ name: "grunt-svgmin"},
 			{
 				name: "Libsass Globbing",
@@ -222,14 +223,21 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy('../../app/templates/helpers/_grunt/photobox.js', 'helpers/_grunt/photobox.js');
 			this.npmInstall(['grunt-photobox'], { 'saveDev': true }, done);
 		}
+		if (this.modules.indexOf('grunt-responsive-images') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/responsive_images.js', 'helpers/_grunt/responsive_images.js');
+			this.npmInstall(['grunt-responsive-images'], { 'saveDev': true }, done);
+		}
 		if (this.modules.indexOf('grunt-svgmin') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/svgmin.js', 'helpers/_grunt/svgmin.js');
 			this.npmInstall(['grunt-svgmin'], { 'saveDev': true }, done);
 		}
-		if (this.modules.indexOf('sass-globbing') != -1) {
+
+		if (this.modules.indexOf('sass-globbing') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
 			this.template('../../app/templates/helpers/_grunt/_fileindex.js', 'helpers/_grunt/fileindex.js');
 			this.npmInstall(['grunt-fileindex'], { 'saveDev': true }, done);
+		}
 
+		if (this.modules.indexOf('sass-globbing') != -1) {
 			console.log(('\n') + chalk.bgRed('Please add the following tasks to your watch.js file') + ('\n') + ('\n') +
 				chalk.yellow('\n globbing: {') +
 				chalk.yellow('\n     options: {') +
