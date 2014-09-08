@@ -11,8 +11,11 @@
 @import "../bower-components/sass-bootstrap/lib/bootstrap"; // You can choose your specific components
 <% }} %>
 // Utilities
-@import "utils/extends";
-@import "utils/mixins";
+@import "utils/extends/_extends";
+@import "utils/mixins/_breakpoint";
+@import "utils/mixins/_cp";
+@import "utils/mixins/_grunticon";
+@import "utils/mixins/_rem";
 
 // Global
 @import "global/_vars";

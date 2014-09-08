@@ -73,6 +73,11 @@
 		// Pack your JS
 		grunt.registerTask('js', [
 			'packager'
+		]); <% } %><% if(name == 'grunt-responsive-images') { %>
+		// Pack your JS
+		grunt.registerTask('pictures', [
+			'responsive_images',
+			'fileindex:pictures'
 		]); <% } %><% if(name == 'grunt-contrib-compass') { %>
 		grunt.registerTask('css', [
 			'compass:dist'

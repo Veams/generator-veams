@@ -244,6 +244,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{ name: "grunt-packager"},
 			{ name: "grunt-phantomas"},
 			{ name: "grunt-photobox"},
+			{ name: "grunt-responsive-images"},
 			{ name: "grunt-svgmin"}
 		],
 		default: this.config.get("modules")
@@ -615,6 +616,12 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-svgmin') != -1) {
 			this.copy('helpers/_grunt/svgmin.js', 'helpers/_grunt/svgmin.js');
 		}
+		if (this.modules.indexOf('grunt-responsive-images') != -1) {
+			this.copy('helpers/_grunt/responsive_images.js', 'helpers/_grunt/responsive_images.js');
+		}
+		if (this.features.indexOf('sassInsteadOfCompass') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
+			this.template('helpers/_grunt/_fileindex.js', 'helpers/_grunt/fileindex.js');
+		}
 	}
 };
 
@@ -674,7 +681,6 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 		// Add Libsass
 		if (this.features.indexOf('sassInsteadOfCompass') != -1) {
 			this.template('helpers/_grunt/_sass.js', 'helpers/_grunt/sass.js');
-			this.template('helpers/_grunt/_fileindex.js', 'helpers/_grunt/fileindex.js');
 		} else {
 			this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
 			this.copy('config.rb', 'config.rb');

@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = {<% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
 	libsassGlobbing: {
 		options: {
 			format: function (list, options, dest) {
@@ -45,5 +45,14 @@ module.exports = {
 				]
 			}
 		]
-	}
+	}<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-responsive-images') != -1) { %>,<% }} %><% }} %><% if (modules && modules.length > 0) { if (modules.indexOf('grunt-responsive-images') != -1) { %>
+	pictures: {
+		options: {
+			format: 'json_flat',
+			pretty: true
+		},
+		files: [
+			{dest: '<%%= paths.src %>/assets/img/temp/pictures/pictures.json', src: ['<%%= paths.src %>/assets/img/temp/pictures/**/*']}
+		]
+	}<% }} %>
 };
