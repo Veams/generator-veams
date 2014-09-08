@@ -182,12 +182,12 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-grunticon') != -1) {
 			this.directory('../../app/templates/resources/scss/icons', 'resources/scss/icons');
 			this.directory('../../app/templates/helpers/templates/grunticon', 'helpers/templates/grunticon');
-			this.copy('../../app/templates/helpers/_grunt/grunticon.js', 'helpers/_grunt/grunticon.js');
+			this.template('../../app/templates/helpers/_grunt/grunticon.js', 'helpers/_grunt/grunticon.js');
 			this.npmInstall(['grunt-grunticon'], { 'saveDev': true }, done);
 
 			if (this.features && this.features.length > 0) {
 				if (this.features.indexOf('sassInsteadOfCompass') != -1) {
-					this.copy('../../app/templates/templates/helpers/_grunt/replaceSass.js', 'helpers/_grunt/replace.js');
+					this.copy('../../app/templates/helpers/_grunt/replaceSass.js', 'helpers/_grunt/replace.js');
 					this.npmInstall(['grunt-replace'], { 'saveDev': true }, done);
 
 				} else {
