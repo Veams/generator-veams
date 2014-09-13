@@ -36,9 +36,9 @@ This project builds on following setup (please read requirements and getting sta
 - Desktop
 - Tablet
 - Phone
-
-### Responsive Images
 <% if (modules && modules.length > 0 && modules.indexOf('grunt-responsive-images') != -1) { %>
+### Responsive Images
+
 **Example**
 ``` js
 sizes: [

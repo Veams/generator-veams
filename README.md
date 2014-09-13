@@ -95,6 +95,7 @@ There are standard grunt modules I use. These are:
  * [grunt-responsive-images](https://github.com/andismith/grunt-responsive-images) - Produces images at different sizes (be sure you have installed GraphicsMagick)
  * [grunt-sass](https://github.com/sindresorhus/grunt-sass) - You want to use Libsass instead of Compass to render your stylesheets 10 times faster? Here you go! (see _Features_)
  * [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin) - Minify SVG using SVGO.
+ * [grunt-version](https://github.com/kswedberg/grunt-version) - Grunt task to handle versioning of a project.
 
 ### Assemble
 We use Assemble as template engine. Assemble is a component and static site generator that makes it dead simple to build modular sites, documentation and components from reusable templates and data.
