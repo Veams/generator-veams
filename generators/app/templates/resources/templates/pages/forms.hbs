@@ -6,5 +6,17 @@ menu-link: Forms
 lead: Scaffold forms with JSON files.
 ---
 
+
+<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+{{#extend "tpl_default"}}
+	{{#content "body"}}
+
+		{{! partials/sections }}
+		{{> _article--form-general }}
+
+	{{/content}}
+{{/extend}}
+<% } else { %>
 {{! partials/sections }}
 {{> _article--form-general }}
+<% } %>

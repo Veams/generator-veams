@@ -8,7 +8,7 @@ component: sitemap
 <ul>
 	{{#withSort pages 'data.sort-order'}}
 		<li>
-			<a href="{{relative ../../page.dest this.dest}}" {{#is ../../page.dest this.dest}} class="active"{{/is}}>{{data.menu-link}}</a>
+			<a href="{{relative ../page.dest this.dest}}" {{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.menu-link}}</a>
 		</li>
 	{{/withSort}}
 </ul>

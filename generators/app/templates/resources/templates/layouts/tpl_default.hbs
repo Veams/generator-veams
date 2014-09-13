@@ -3,6 +3,9 @@
 <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
+<% if (modules && modules.length > 0 && modules.indexOf('grunt-version') != -1) { %>
+{{> _version }}
+<% } %>
 <html lang="en" class="no-js"> <!--<![endif]-->
 
 <head>

@@ -3,7 +3,12 @@ title: Documentation
 docs: true
 ---
 
+<header>
+	<h1><%= _.slugify(projectName) %></h1>
+</header>
+
 <p>
-	The docs platform provides a complete development solution for your web application.
-	Here you define your code examples and describe your modules/partials/components of your website.
+	The docs platform provides a complete development solution for your web application. Here you define your code examples and describe your modules/partials/components of your website.
 </p>
+
+{{md "README.md"}}

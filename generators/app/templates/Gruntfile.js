@@ -190,7 +190,8 @@
 
 	  <% if (features && features.length > 0 && features.indexOf('createDevFolder') != -1) { %>
 		grunt.registerTask('dist', [
-			'clean',
+			'clean',<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-version') != -1) { %>
+			'version:prerelease',<% }} %>
 			'build',
 			'copy:dist'
 		]); <% } %>

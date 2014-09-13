@@ -245,7 +245,8 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{ name: "grunt-phantomas"},
 			{ name: "grunt-photobox"},
 			{ name: "grunt-responsive-images"},
-			{ name: "grunt-svgmin"}
+			{ name: "grunt-svgmin"},
+			{ name: "grunt-version", checked: true }
 		],
 		default: this.config.get("modules")
 	});
@@ -621,6 +622,10 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 		if (this.features.indexOf('sassInsteadOfCompass') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
 			this.template('helpers/_grunt/_fileindex.js', 'helpers/_grunt/fileindex.js');
+		}
+		if (this.modules.indexOf('grunt-version') != -1) {
+			this.copy('helpers/_grunt/version.js', 'helpers/_grunt/version.js');
+			this.copy('resources/templates/partials/_global/_version.hbs', 'resources/templates/partials/_global/_version.hbs');
 		}
 	}
 };

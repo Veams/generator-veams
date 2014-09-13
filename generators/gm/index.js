@@ -63,6 +63,7 @@ GMGenerator.prototype.askFor = function askFor() {
 			{ name: "grunt-photobox"},
 			{ name: "grunt-responsive-images"},
 			{ name: "grunt-svgmin"},
+			{ name: "grunt-version"},
 			{
 				name: "Libsass Globbing",
 				value: "sass-globbing"
@@ -230,6 +231,11 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-svgmin') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/svgmin.js', 'helpers/_grunt/svgmin.js');
 			this.npmInstall(['grunt-svgmin'], { 'saveDev': true }, done);
+		}
+
+		if (this.modules.indexOf('grunt-version') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/version.js', 'helpers/_grunt/version.js');
+			this.copy('../../app/templates/resources/templates/partials/_global/_version.hbs', 'resources/templates/partials/_global/_version.hbs');
 		}
 
 		if (this.modules.indexOf('sass-globbing') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
