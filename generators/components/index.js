@@ -57,11 +57,11 @@ ComponentsGenerator.prototype.askFor = function askFor() {
 ComponentsGenerator.prototype.appComponents = function appComponents() {
 	if (this.components && this.components.length > 0) {
 		if (this.components.indexOf('base-components') != -1) {
-			this.directory('../../app/templates/resources/templates/partials/components', 'resources/templates/partials/components');
+			this.directory('../../app/templates/resources/templates/partials/components/_base', 'resources/templates/partials/components/_base');
 		}
 		if (this.components.indexOf('form-component') != -1) {
-			this.directory('../../app/templates/resources/templates/partials/modules/form', 'resources/templates/partials/modules/form');
-			this.directory('../../app/templates/resources/data/forms/form--example.json', 'resources/data/forms/form--example.json');
+			this.directory('../../app/templates/resources/templates/partials/components/form', 'resources/templates/partials/components/form');
+			this.directory('../../app/templates/resources/data/pages/forms', 'resources/data/pages/forms');
 		}
 	}
 };

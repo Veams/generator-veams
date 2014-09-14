@@ -48,7 +48,8 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 			"grunt-csscomb",
 			"grunt-data-separator",
 			"grunt-grunticon",
-			"grunt-packager"
+			"grunt-packager",
+			"grunt-version"
 		],
 		features: [
 			"installDocs",
@@ -477,12 +478,11 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.mkdir('resources/assets/fonts');
 	this.mkdir('resources/assets/media');
 	this.mkdir('resources/scss/blocks');
-	this.mkdir('resources/scss/components');
 	this.copy('resources/scss/global/_main.scss', 'resources/scss/global/_main.scss');
 	this.copy('resources/scss/global/_vars.scss', 'resources/scss/global/_vars.scss');
 	this.copy('resources/scss/global/_reset.scss', 'resources/scss/global/_reset.scss');
 	this.copy('resources/scss/global/_print.scss', 'resources/scss/global/_print.scss');
-	this.directory('resources/scss/modules', 'resources/scss/modules');
+	this.directory('resources/scss/components', 'resources/scss/components');
 	this.directory('resources/scss/utils', 'resources/scss/utils');
 	this.template('resources/scss/_all.scss', 'resources/scss/_all.scss');
 	this.copy('resources/scss/styles.scss', 'resources/scss/styles.scss');
@@ -498,10 +498,10 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 	// add global assemble files
 	if (this.config.get("installAssemble") == true) {
 		this.copy('resources/data/site.json');
-		this.copy('resources/data/forms/form--example.json');
 		this.copy('resources/data/pages/homepage.json');
 		this.copy('resources/data/pages/homepage.md');
 		this.mkdir('resources/templates');
+		this.directory('resources/data/pages/forms', 'resources/data/pages/forms');
 		this.directory('resources/templates/ajax', 'resources/templates/ajax');
 		this.directory('resources/templates/helpers', 'resources/templates/helpers');
 		this.directory('resources/templates/layouts', 'resources/templates/layouts');
@@ -516,7 +516,6 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 		this.copy('resources/templates/partials/blocks/_sitemap.hbs');
 		this.directory('resources/templates/partials/components', 'resources/templates/partials/components');
 		this.directory('resources/templates/partials/modules', 'resources/templates/partials/modules');
-		this.directory('resources/templates/partials/sections', 'resources/templates/partials/sections');
 
 		// Add Gruntfile-helper file
 		this.copy('helpers/_grunt/_assemble.js', 'helpers/_grunt/assemble.js');

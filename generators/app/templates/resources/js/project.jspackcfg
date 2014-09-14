@@ -1,4 +1,13 @@
 {
-	"name": "Prototype",
+	"nolint": [
+	],
+	"nopack": [],
+	"includeSmallLoader": [
+		"__base-modules",
+		"__enhanced-modules"
+	],
+	"packageList": {
+	},
+	"name": "<%= _.slugify(projectName) %>",
 	"obfuscate": true
 }

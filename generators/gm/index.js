@@ -236,11 +236,7 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-version') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/version.js', 'helpers/_grunt/version.js');
 			this.copy('../../app/templates/resources/templates/partials/_global/_version.hbs', 'resources/templates/partials/_global/_version.hbs');
-		}
-
-		if (this.modules.indexOf('sass-globbing') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
-			this.template('../../app/templates/helpers/_grunt/_fileindex.js', 'helpers/_grunt/fileindex.js');
-			this.npmInstall(['grunt-fileindex'], { 'saveDev': true }, done);
+			this.npmInstall(['grunt-version'], { 'saveDev': true }, done);
 		}
 
 		if (this.modules.indexOf('sass-globbing') != -1) {
@@ -263,6 +259,11 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 				chalk.yellow('\n     tasks: "fileindex:libsassGlobbing"') +
 				chalk.yellow('\n }' + ('\n') + ('\n'))
 			);
+		}
+
+		if (this.modules.indexOf('sass-globbing') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
+			this.template('../../app/templates/helpers/_grunt/_fileindex.js', 'helpers/_grunt/fileindex.js');
+			this.npmInstall(['grunt-fileindex'], { 'saveDev': true }, done);
 		}
 	}
 };

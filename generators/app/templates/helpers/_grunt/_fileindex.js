@@ -40,7 +40,6 @@ module.exports = {<% if (features && features.length > 0) { if (features.indexOf
 					'global/_main.scss',
 					'components/**/*.scss',
 					'blocks/**/*.scss',
-					'modules/**/*.scss',
 					'icons/**/*.scss'
 				]
 			}
