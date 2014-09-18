@@ -57,6 +57,49 @@ If you choose "Standard installation" you skip the rest of the questions and get
  * Grunt Modules: grunt-grunticon, grunt-data-separator, grunt-packager, grunt-combine-media-queries, grunt-bless, grunt-autoprefixer
  * Assemble as Template Engine
 
+## Structure
+
+``` bash
+├───helpers
+│   ├───configs
+│   ├───templates
+│   │   ├───grunticon-template
+│   │   └───styleguide-template
+│   │       └───public
+│   └───_grunt
+├───resources
+│   ├───ajax
+│   ├───assets
+│   │   ├───fonts
+│   │   ├───img
+│   │   │   ├───svg
+│   │   │   │   └───icons
+│   │   └───media
+│   ├───bower-components
+│   ├───data
+│   │   ├───blocks
+│   │   └───global
+│   │   └───pages
+│   ├───js
+│   ├───scss
+│   │   ├───blocks
+│   │   ├───components
+│   │   ├───docs
+│   │   ├───global
+│   │   ├───icons
+│   │   └───utils
+│   │       ├───extends
+│   │       └───mixins
+│   └───templates
+│       ├───docs
+│       ├───helpers
+│       ├───layouts
+│       ├───pages
+│       └───partials
+├───_dist
+└───_output
+```
+
 ## Plugins and Modules
 
 There are standard grunt modules I use. These are:
