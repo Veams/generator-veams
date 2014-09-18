@@ -1,4 +1,4 @@
-## README: <%= _.slugify(projectName) %> - version="0.1.0"
+## README: <%= _.slugify(projectName) %> | version="0.1.0"
 
 ---------------------------------------------------
 ## Requirements for FE

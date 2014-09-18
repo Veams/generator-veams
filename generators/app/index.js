@@ -468,8 +468,7 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	// add specific resources to make it possible to split up some directories
 	this.mkdir('_output/js');
 	this.mkdir('resources');
-	this.mkdir('resources/js');
-	this.mkdir('resources/scss');
+	this.mkdir('resources/ajax');
 	this.mkdir('resources/assets');
 	this.mkdir('resources/assets/img');
 	this.mkdir('resources/assets/img/temp');
@@ -477,6 +476,8 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.mkdir('resources/assets/img/svg/icons');
 	this.mkdir('resources/assets/fonts');
 	this.mkdir('resources/assets/media');
+	this.mkdir('resources/js');
+	this.mkdir('resources/scss');
 	this.mkdir('resources/scss/blocks');
 	this.copy('resources/scss/global/_main.scss', 'resources/scss/global/_main.scss');
 	this.copy('resources/scss/global/_vars.scss', 'resources/scss/global/_vars.scss');

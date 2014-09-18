@@ -23,6 +23,10 @@ module.exports = {
         files: '<%%= paths.src %>/js/{,*/}*.js',
         tasks: 'sync:js'
     },
+    ajax: {
+        files: '<%%= paths.src %>/ajax/**/*.{json,html}',
+        tasks: 'sync:assets'
+    },
     assets: {
         files: [
 			'<%%= paths.src %>/assets/**/*'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-svgmin') != -1) { %>,
@@ -82,13 +86,6 @@ module.exports = {
     docs: {
         files: ['<%%= paths.src %>/templates/docs/**/{,*/}*.hbs'],
         tasks: ['newer:assemble:docs'],
-	    options: {
-			spawn: false
-		}
-    },
-    ajax: {
-        files: ['<%%= paths.src %>/templates/ajax/**/{,*/}*.hbs'],
-        tasks: ['assemble:ajax'],
 	    options: {
 			spawn: false
 		}
