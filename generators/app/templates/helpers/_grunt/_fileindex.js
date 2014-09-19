@@ -37,7 +37,7 @@ module.exports = {<% if (features && features.length > 0) { if (features.indexOf
 					'global/_vars.scss',
 					'utils/extends/**/*.scss',
 					'utils/mixins/**/*.scss',
-					'global/_main.scss',
+					'global/_base.scss',
 					'components/**/*.scss',
 					'blocks/**/*.scss',
 					'icons/**/*.scss'

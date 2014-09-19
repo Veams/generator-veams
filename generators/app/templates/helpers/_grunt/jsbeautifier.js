@@ -1,20 +1,10 @@
 module.exports = {
 	files: [
 		"!<%= paths.src %>/js/vendor/**/*.js",
-		"<%= paths.src %>/js/**/*.js",
-		"<%= paths.dev %>/**/*.html"
+		"!<%= paths.src %>/js/libs/**/*.js",
+		"<%= paths.src %>/js/**/*.js"
 	],
 	options: {
-		config: "<%= paths.helper %>/configs/.jsbeautifierrc",
-		html: {
-			braceStyle: "collapse",
-			indentChar: " ",
-			indentScripts: "keep",
-			indentSize: 4,
-			maxPreserveNewlines: 10,
-			preserveNewlines: true,
-			unformatted: ["a", "sub", "sup", "b", "i", "u", "pre", "code"],
-			wrapLineLength: 0
-		}
+		config: "<%= paths.helper %>/configs/.jsbeautifierrc"
 	}
 };

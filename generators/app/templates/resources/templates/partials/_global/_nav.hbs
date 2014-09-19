@@ -7,7 +7,7 @@ component: navbar
 	<ul class="nav navbar__nav">
 		{{#withSort pages 'data.sortOrder'}}
 				<li>
-					<a href="{{relative ../page.dest this.dest}}" {{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.menuLink}}</a>
+					<a href="{{autolink}}" {{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.menuLink}}</a>
 				</li>
 		{{/withSort}}
 	</ul>

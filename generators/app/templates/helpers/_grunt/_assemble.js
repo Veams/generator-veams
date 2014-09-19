@@ -5,10 +5,10 @@ module.exports = {
 		helpers: '<%%= paths.src %>/templates/helpers/**/*.js',
 		layoutdir: '<%%= paths.src %>/templates/layouts/',<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 		layout: false, <% } else { %>
-		layout: 'tpl_default.hbs', <% } %>
+		layout: 'tpl-default.hbs', <% } %>
 		partials: [
 		'<%%= paths.src %>/templates/partials/**/*.hbs'<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>,
-		'<%%= paths.src %>/templates/layouts/tpl_default.hbs'<% } %>
+		'<%%= paths.src %>/templates/layouts/tpl-default.hbs'<% } %>
 		]
 	},
 	pages: {
@@ -25,18 +25,6 @@ _.each(plugin, function(name, i) { if(name == 'permalinks') { %>
 		files: [{
 			cwd: '<%%= paths.src %>/templates/pages/',
 			dest: '<%%= paths.dev %>/',
-			expand: true,
-			flatten: true,
-			src: ['**/*.hbs']
-		}]
-	},
-	ajax: {
-		options: {
-			layout: 'tpl_ajax.hbs'
-		},
-		files: [{
-			cwd: '<%%= paths.src %>/templates/ajax/',
-			dest: '<%%= paths.dev %>/ajax-content',
 			expand: true,
 			flatten: true,
 			src: ['**/*.hbs']

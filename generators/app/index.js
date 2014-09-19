@@ -479,7 +479,7 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.mkdir('resources/js');
 	this.mkdir('resources/scss');
 	this.mkdir('resources/scss/blocks');
-	this.copy('resources/scss/global/_main.scss', 'resources/scss/global/_main.scss');
+	this.copy('resources/scss/global/_base.scss', 'resources/scss/global/_base.scss');
 	this.copy('resources/scss/global/_vars.scss', 'resources/scss/global/_vars.scss');
 	this.copy('resources/scss/global/_reset.scss', 'resources/scss/global/_reset.scss');
 	this.copy('resources/scss/global/_print.scss', 'resources/scss/global/_print.scss');
@@ -502,11 +502,10 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 		this.copy('resources/data/pages/homepage.json');
 		this.copy('resources/data/pages/homepage.md');
 		this.mkdir('resources/templates');
-		this.directory('resources/data/pages/forms', 'resources/data/pages/forms');
 		this.directory('resources/templates/ajax', 'resources/templates/ajax');
 		this.directory('resources/templates/helpers', 'resources/templates/helpers');
 		this.directory('resources/templates/layouts', 'resources/templates/layouts');
-		this.directory('resources/templates/pages', 'resources/templates/pages');
+		this.copy('resources/templates/pages/index.hbs');
 
 		// Add global partials
 		this.mkdir('resources/templates/partials');
@@ -515,7 +514,7 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 		this.template('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/_scripts.hbs');
 
 		this.copy('resources/templates/partials/blocks/_sitemap.hbs');
-		this.directory('resources/templates/partials/components', 'resources/templates/partials/components');
+		this.directory('resources/templates/partials/components/_base', 'resources/templates/partials/components');
 		this.directory('resources/templates/partials/modules', 'resources/templates/partials/modules');
 
 		// Add Gruntfile-helper file
@@ -535,7 +534,11 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 				this.copy('resources/templates/partials/_global/_nav.hbs');
 				this.copy('resources/templates/partials/blocks/_nav-toggler.hbs');
 
-				// Sections
+				// Components
+				this.directory('resources/templates/partials/components/form', 'resources/templates/partials/components/form');
+
+				// Pages
+				this.copy('resources/templates/pages/forms.hbs');
 
 				// Blocks
 				this.copy('resources/templates/partials/blocks/_sidebar-right.hbs');
