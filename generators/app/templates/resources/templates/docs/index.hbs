@@ -5,7 +5,7 @@ docs: true
 
 
 <% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-{{#extend "tpl_default"}}
+{{#extend "tpl-default"}}
 	{{#content "body"}}
 		<header>
 			<h1><%= _.slugify(projectName) %></h1>

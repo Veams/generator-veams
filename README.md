@@ -215,6 +215,3 @@ For further informations and instructions see:
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
 [yeoman]: http://yeoman.io/
-
-## TODO:
- * CMS Templates & Snippets

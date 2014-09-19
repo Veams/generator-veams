@@ -4,8 +4,8 @@
 			"legend": "Legend 1",
 			"legend-hide": true,
 			"row-classes": false,
-			"item": {
-				"1": {
+			"data": [
+				{
 					"col-classes": "w100",
 					"typeOf": "input",
 					"label": "Simple input field (* required)",
@@ -18,7 +18,7 @@
 					"data-minlength": "2",
 					"data-maxlength": "60"
 				},
-				"2": {
+				{
 					"col-classes": "w100",
 					"typeOf": "input",
 					"label": "Simple input field (not required)",
@@ -31,7 +31,7 @@
 					"data-minlength": "2",
 					"data-maxlength": "60"
 				},
-				"3": {
+				{
 					"col-classes": "w50",
 					"typeOf": "input",
 					"label": "Simple input field  50%",
@@ -44,7 +44,7 @@
 					"data-minlength": "2",
 					"data-maxlength": "60"
 				},
-				"4": {
+				{
 					"col-classes": "w50",
 					"typeOf": "input",
 					"label": "E-Mail",
@@ -57,8 +57,7 @@
 					"data-minlength": "3",
 					"data-maxlength": "60"
 				},
-
-				"5": {
+				{
 					"col-classes": "w100",
 					"typeOf": "textarea",
 					"label": "Textarea",
@@ -71,14 +70,14 @@
 					"data-maxlength": "1000",
 					"data-errormessage": "Please fill in some text"
 				}
-			}
+			]
 		},
 		{
 			"legend": "Legend 2",
 			"legend-hide": true,
 			"row-classes": "separator",
-			"item": {
-				"1": {
+			"data": [
+				{
 					"col-classes": "w50",
 					"typeOf": "select",
 					"label": "Select list",
@@ -109,7 +108,7 @@
 						}
 					]
 				},
-				"2": {
+				{
 					"col-classes": "w50",
 					"typeOf": "select",
 					"label": "Select list Multi-Choice",
@@ -134,18 +133,18 @@
 						}
 					]
 				},
-				"info": {
+				{
 					"typeOf": "info",
 					"title": "Info",
 					"text": "<p><strong>Info field</strong> - Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>"
 				}
-			}
+			]
 		},
 		{
 			"legend": "Legend 3",
 			"row-classes": false,
-			"item": {
-				"radio": {
+			"data": [
+				{
 					"col-classes": "w50",
 					"typeOf": "radio",
 					"label": "Radio buttons:",
@@ -167,7 +166,7 @@
 					],
 					"data-errormessage": "Choose one option"
 				},
-				"checkboxes": {
+				{
 					"col-classes": "w50",
 					"typeOf": "checkbox",
 					"label": "Checkboxes",
@@ -193,7 +192,7 @@
 						}
 					]
 				}
-			}
+			]
 		}
 	]
 

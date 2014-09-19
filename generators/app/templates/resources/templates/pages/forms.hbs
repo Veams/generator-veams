@@ -8,14 +8,14 @@ lead: Scaffold forms with JSON files.
 
 
 <% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-{{#extend "tpl_default"}}
+{{#extend "tpl-default"}}
 	{{#content "body"}}
 
 		{{#forms.data}}
 			{{partial "_article" }}
 		{{/forms.data}}
 
-		<form id="custom-form" class="validate-ui form-wrapper" action="" method="get">
+		<form id="custom-form" class="validate-ui form" action="" method="get">
 
 			{{#each form--elements.data }}
 				{{> _form }}
@@ -37,7 +37,7 @@ lead: Scaffold forms with JSON files.
 	{{partial "_article" }}
 {{/forms.data}}
 
-<form id="custom-form" class="validate-ui form-wrapper" action="" method="get">
+<form id="custom-form" class="validate-ui form" action="" method="get">
 
 	{{#each form--elements.data }}
 		{{> _form }}

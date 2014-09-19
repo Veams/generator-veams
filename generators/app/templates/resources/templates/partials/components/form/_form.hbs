@@ -2,48 +2,32 @@
 component: generic-form-template
 docs: false
 ---
-<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>
+
 {{#if docs}}
 	{{#markdown}}
-		------------------------------------------------
+------------------------------------------------
 
-		### Author:  Sebastian Fitzner
-		### Date:    02.04.2014
+### Author:  Sebastian Fitzner
+### Date:    02.04.2014
 
-		This template is a generic one to speed up the workflow.
+This template is a generic one to speed up the workflow.
 
-		## USAGE:
-		- Every generic form type should be integrated here with an #is-statement
-		- Integrate this partial in your page and wrap it with an #each-loop
-		- The #each-loop should refer to a json file with your specific form elements
-		- DONE!
+## USAGE:
+- Every generic form type should be integrated here with an #is-statement
+- Integrate this partial in your page and wrap it with an #each-loop
+- The #each-loop should refer to a json file with your specific form elements
+- DONE!
 
-		------------------------------------------------
+------------------------------------------------
 	{{/markdown}}
 {{/if}}
-<% } else { %>
-{{!  ------------------------------------------------
 
- Author:  Sebastian Fitzner
- Date:    02.04.2014
-
- This template is a generic one to speed up the workflow.
-
- USAGE:
- - Every generic form type should be integrated here with an #is-statement
- - Integrate this partial in your page and wrap it with an #each-loop
- - The #each-loop should refer to a json file with your specific form elements
- - DONE!
-
- ------------------------------------------------
-}}
-<% } %>
-<fieldset class="collapsable">
+<fieldset class="form__fieldset">
 	<legend {{#if legend-classes}}class="{{ legend-classes }}"{{/if}}>{{ legend }}</legend>
-	<div class="form-row {{ row-classes }}">
+	<div class="form__row {{ row-classes }}">
 
-		{{#each item}}
-			<div class="form-col {{ col-classes }}">
+		{{#each data}}
+			<div class="form__col {{ col-classes }}">
 
 				{{#is typeOf "input"}}
 

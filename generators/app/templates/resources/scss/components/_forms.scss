@@ -1,10 +1,11 @@
-.form-wrapper {
-	.form-row {
+<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
+.form {
+	.form__row {
 		display: block;
 		float: left;
 		width: 100%;
 	}
-	.form-col {
+	.form__col {
 		float: left;
 		margin-bottom: 1em;
 		position: relative;
@@ -14,7 +15,7 @@
 				margin-right: 0;
 			}
 		}
-		.form-col {
+		.form__col {
 			margin-bottom: 0;
 		}
 	}
@@ -117,7 +118,7 @@ label {
 	p {
 		margin-bottom: 0;
 	}
-	.form-col & {
+	.form__col & {
 		display: block;
 		width: 100%;
 		float: left;
@@ -202,3 +203,6 @@ fieldset, .static-validation {
 	border-bottom: 1px solid #ddd;
 	margin-bottom: 1em;
 }
+<% } else { %>
+
+<% } %>

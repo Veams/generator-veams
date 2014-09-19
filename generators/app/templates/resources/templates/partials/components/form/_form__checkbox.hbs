@@ -1,6 +1,6 @@
 <strong>{{ label }}</strong>
 
-<div class="checkboxes-group {{ id }}">
+<div class="form__checkboxes {{ id }}">
 	{{#each checkboxes}}
 		<div class="{{ class }}">
 			<input type="{{ ../type }}" id="{{ id }}" value="{{ label }}" {{#is required "required"}}required="required"{{/is}}/>

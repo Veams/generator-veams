@@ -1,7 +1,5 @@
 /* ---------------------------------------------------
-Demo Styles - just delete them
-
-The styles are not separated. if you want to use them just separate them into own files...
+Base styles
 --------------------------------------------------- */
 html {
 	font-size: 62.5%;
@@ -13,11 +11,16 @@ body {
 	font-family: Arial, sans-serif;
 	font-size: 16px;
 	line-height: 140%;
-
-	color: #333;
-	background: #eee;
 }
 <% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
+/* ---------------------------------------------------
+Demo Styles
+--------------------------------------------------- */
+ body {
+ 	color: #333;
+ 	background: #eee;
+ }
+
 h1,
 h2,
 h3,
