@@ -57,7 +57,7 @@ ComponentsGenerator.prototype.askFor = function askFor() {
 ComponentsGenerator.prototype.appComponents = function appComponents() {
 	if (this.components && this.components.length > 0) {
 		if (this.components.indexOf('base-components') != -1) {
-			this.directory('../../app/templates/resources/templates/partials/components/_base', 'resources/templates/partials/components/_base');
+			this.directory('../../app/templates/resources/templates/partials/components/_base', 'resources/templates/partials/components/');
 		}
 		if (this.components.indexOf('form-component') != -1) {
 			this.directory('../../app/templates/resources/templates/partials/components/form', 'resources/templates/partials/components/form');
