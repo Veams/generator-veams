@@ -68,7 +68,8 @@
 		]); <% } %><% if(name == 'grunt-dr-svg-sprites') { %>
 		// Build your sprites
 		grunt.registerTask('sprites', [
-			'svg-sprites'
+			'svg-sprites',
+			'replace:spriteUrl'
 		]); <% } %><% if(name == 'grunt-packager') { %>
 		// Pack your JS
 		grunt.registerTask('js', [

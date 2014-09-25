@@ -451,7 +451,6 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.copy('helpers/_grunt/jshint.js', 'helpers/_grunt/jshint.js');
 	this.copy('helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
 	this.copy('helpers/configs/.jsbeautifierrc', 'helpers/configs/.jsbeautifierrc');
-	this.copy('helpers/_grunt/prettysass.js', 'helpers/_grunt/prettysass.js');
 	this.template('helpers/_grunt/_sync.js', 'helpers/_grunt/sync.js');
 	this.template('helpers/_grunt/_watch.js', 'helpers/_grunt/watch.js');
 	this.copy('bowerrc', '.bowerrc');
