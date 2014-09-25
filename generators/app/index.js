@@ -239,7 +239,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{name: "grunt-csscomb", checked: true},
 			{name: "grunt-data-separator", checked: true},
 			{name: "grunt-devtools"},
-			{name: "dr-grunt-svg-sprites"},
+			{name: "grunt-dr-svg-sprites"},
 			{name: "grunt-grunticon", checked: true},
 			{name: "grunt-modernizr"},
 			{name: "grunt-packager"},
@@ -585,7 +585,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-data-separator') != -1) {
 			this.copy('helpers/_grunt/dataSeparator.js', 'helpers/_grunt/dataSeparator.js');
 		}
-		if (this.modules.indexOf('dr-grunt-svg-sprites') != -1) {
+		if (this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 			this.mkdir('resources/scss/icons');
 			this.copy('helpers/_grunt/svg-sprites.js', 'helpers/_grunt/svg-sprites.js');
 		}
