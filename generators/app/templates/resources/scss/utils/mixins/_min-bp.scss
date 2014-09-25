@@ -1,0 +1,16 @@
+/******************************************
+
+	Breakpoints
+
+******************************************/
+@mixin max-bp($min, $max: "") {
+	@if $max != "" {
+		@media only screen and (min-width: $min) and (max-width: $max) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: $min) {
+			@content;
+		}
+	}
+}

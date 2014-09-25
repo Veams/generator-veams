@@ -12,20 +12,22 @@
 <% }} %>
 // Utilities
 @import "utils/extends/extends";
-@import "utils/mixins/breakpoint";
+@import "utils/mixins/min-bp";
+@import "utils/mixins/max-bp";
 @import "utils/mixins/cp";
 @import "utils/mixins/grunticon";
 @import "utils/mixins/rem";
 
 // Global
 @import "global/vars";
-@import "global/main";
+@import "global/base";
 
 // Components
-@import "components/forms";
+@import "components/c-forms";
 
 <% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
 // Blocks
-@import "blocks/stage--DEMO";
-@import "blocks/sidebar--DEMO";
+@import "blocks/b-stage--DEMO";
+@import "blocks/b-sidebar--DEMO";
+@import "blocks/b-nav--DEMO";
 <% } %>

@@ -1,18 +1,21 @@
 module.exports = {
-	options: {
-		paths: {
-			spriteElements: "<%= paths.src %>/assets/img/svg",
-			sprites: "<%= paths.src %>/assets/img/sprites",
-			css: "<%= paths.src %>/scss/icons"
-		},
-		sizes: {
-			large: 125,
-			medium: 100,
-			small: 50
-		},
-		refSize: "medium",
-		unit: 5,
-		cssSuffix: "scss",
-		prefix: "sprite"
+	icons: {
+		options: {
+			placeholder: "%",
+			template: "<%= paths.helper %>/templates/sprites/stylesheet.hbs",
+			spriteElementPath: "<%= paths.src %>/assets/img/svg/icons",
+			spritePath: "<%= paths.src %>/assets/img/sprites",
+			cssPath: "<%= paths.src %>/scss/icons",
+			// cssSvgPrefix: "svg",
+			cssPngPrefix: "lt-ie",
+			cssPrefix: "_sprite",
+			prefix: "sprite",
+			sizes: {
+				medium: 100
+			},
+			refSize: "medium",
+			unit: 5,
+			cssSuffix: "scss"
+		}
 	}
 };

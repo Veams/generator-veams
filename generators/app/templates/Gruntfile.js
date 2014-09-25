@@ -20,8 +20,8 @@
 		// load only used tasks
 		require('jit-grunt')(grunt, { <% if (modules.indexOf('grunt-grunticon') != -1) { %>
 			replace: 'grunt-text-replace'<% } %><% if ((modules.indexOf('grunt-grunticon') != -1) && (modules.indexOf('grunt-combine-media-queries') != -1)) { %>,<% } %><% if (modules.indexOf('grunt-combine-media-queries') != -1) { %>
-			cmq: 'grunt-combine-media-queries'<% } %><% if (((modules.indexOf('dr-grunt-svg-sprites') != -1) && (modules.indexOf('grunt-combine-media-queries') != -1)) || ((modules.indexOf('dr-grunt-svg-sprites') != -1) && (modules.indexOf('grunt-grunticon') != -1))) { %>,<% } %><% if (modules.indexOf('dr-grunt-svg-sprites') != -1) { %>
-			'svg-sprites': 'dr-grunt-svg-sprites'<% } %>
+			cmq: 'grunt-combine-media-queries'<% } %><% if (((modules.indexOf('grunt-dr-svg-sprites') != -1) && (modules.indexOf('grunt-combine-media-queries') != -1)) || ((modules.indexOf('grunt-dr-svg-sprites') != -1) && (modules.indexOf('grunt-grunticon') != -1))) { %>,<% } %><% if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+			'svg-sprites': 'grunt-dr-svg-sprites'<% } %>
 		});
         // measures the time each task takes
         require('time-grunt')(grunt);
@@ -65,7 +65,7 @@
 			'grunticon',
 			'clean:grunticon',
 			'replace'
-		]); <% } %><% if(name == 'dr-grunt-svg-sprites') { %>
+		]); <% } %><% if(name == 'grunt-dr-svg-sprites') { %>
 		// Build your sprites
 		grunt.registerTask('sprites', [
 			'svg-sprites'

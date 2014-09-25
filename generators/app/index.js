@@ -20,7 +20,7 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 		});
 	});
 
-	this.files = this.expandFiles('**/*', { cwd: this.sourceRoot(), dot: true });
+	this.files = this.expandFiles('**/*', {cwd: this.sourceRoot(), dot: true});
 
 	this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../../package.json')));
 
@@ -83,27 +83,27 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
 	// welcome message
 	var welcome =
 		chalk.cyan('\n               \'coxOOOOkdl;.             ') +
-			chalk.cyan('\n           ,lkKXXXXXXXXXXXXXOd;.         ') +
-			chalk.cyan('\n        \'dKXXXXXXX0OOOO0KXXXXXXXk:       ') +
-			chalk.cyan('\n      ;OXXXXKkl,.        .\'cd0XXXX0l.    ') +
-			chalk.cyan('\n    .kXXXX0c.                 ,kXXXX0;   ') +
-			chalk.cyan('\n   ,KXXX0:                      \'kXXXXo  ') + chalk.cyan('*  http://prototype-generator.com *') +
-			chalk.cyan('\n  \'KXXXO.                         oXXXXo ') +
-			chalk.cyan('\n  OXXX0.                           dXXXX,') +
-			chalk.cyan('\n :XXXX:                            .KXXXx') + chalk.yellow('    Welcome ladies and gentlemen!') +
-			chalk.cyan('\n dXXXK.  .::::::::::::::::::.       dXXXK') + chalk.yellow('    Want to make your life easy???') +
-			chalk.cyan('\n dXXXK   ,XXXXXXXXXXXXXXXXXX\'       oXXXX') +
-			chalk.cyan('\n dXXXK   ,XXXXXKKKKKKKKKKKKX\'       OXXXO') + chalk.red('    Be sure you have installed') +
-			chalk.cyan('\n dXXXK   ,XXXXd                    ;XXXXl') + chalk.red('     * bower:  http://bower.io/') +
-			chalk.cyan('\n dXXXK   ,XXXXd                   \'KXXXO ') + chalk.red('     * grunt:  http://gruntjs.com ') +
-			chalk.cyan('\n dXXXK   ,XXXXd                  cKXXXO. ') +
-			chalk.cyan('\n dXXXK   ,XXXXd                :OXXXXx.  ') +
-			chalk.cyan('\n dXXXK   ,XXXXx            .;dKXXXXO;    ') +
-			chalk.cyan('\n dXXXK   ,XXXXX0xoc:;;:clxOXXXXXXO:      ') +
-			chalk.cyan('\n dXXXK    ;dOXXXXXXXXXXXXXXXXKxc.        ') +
-			chalk.cyan('\n dXXXK       .,:ldkOOOOkxoc;.            ') +
-			chalk.cyan('\n lOOOx                                   ') +
-			('\n ');
+		chalk.cyan('\n           ,lkKXXXXXXXXXXXXXOd;.         ') +
+		chalk.cyan('\n        \'dKXXXXXXX0OOOO0KXXXXXXXk:       ') +
+		chalk.cyan('\n      ;OXXXXKkl,.        .\'cd0XXXX0l.    ') +
+		chalk.cyan('\n    .kXXXX0c.                 ,kXXXX0;   ') +
+		chalk.cyan('\n   ,KXXX0:                      \'kXXXXo  ') + chalk.cyan('*  http://prototype-generator.com *') +
+		chalk.cyan('\n  \'KXXXO.                         oXXXXo ') +
+		chalk.cyan('\n  OXXX0.                           dXXXX,') +
+		chalk.cyan('\n :XXXX:                            .KXXXx') + chalk.yellow('    Welcome ladies and gentlemen!') +
+		chalk.cyan('\n dXXXK.  .::::::::::::::::::.       dXXXK') + chalk.yellow('    Want to make your life easy???') +
+		chalk.cyan('\n dXXXK   ,XXXXXXXXXXXXXXXXXX\'       oXXXX') +
+		chalk.cyan('\n dXXXK   ,XXXXXKKKKKKKKKKKKX\'       OXXXO') + chalk.red('    Be sure you have installed') +
+		chalk.cyan('\n dXXXK   ,XXXXd                    ;XXXXl') + chalk.red('     * bower:  http://bower.io/') +
+		chalk.cyan('\n dXXXK   ,XXXXd                   \'KXXXO ') + chalk.red('     * grunt:  http://gruntjs.com ') +
+		chalk.cyan('\n dXXXK   ,XXXXd                  cKXXXO. ') +
+		chalk.cyan('\n dXXXK   ,XXXXd                :OXXXXx.  ') +
+		chalk.cyan('\n dXXXK   ,XXXXx            .;dKXXXXO;    ') +
+		chalk.cyan('\n dXXXK   ,XXXXX0xoc:;;:clxOXXXXXXO:      ') +
+		chalk.cyan('\n dXXXK    ;dOXXXXXXXXXXXXXXXXKxc.        ') +
+		chalk.cyan('\n dXXXK       .,:ldkOOOOkxoc;.            ') +
+		chalk.cyan('\n lOOOx                                   ') +
+		('\n ');
 
 
 	if (!this.options['skip-welcome-message']) {
@@ -212,9 +212,9 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		type: "checkbox",
 		message: "Which assemble plugin do you want to use?",
 		choices: [
-			{ name: "assemble-contrib-permalinks"},
-			{ name: "assemble-contrib-sitemap"},
-			{ name: "assemble-related-pages"}
+			{name: "assemble-contrib-permalinks"},
+			{name: "assemble-contrib-sitemap"},
+			{name: "assemble-related-pages"}
 		],
 		when: function (answers) {
 			return answers.installPlugin;
@@ -227,36 +227,36 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 		type: "checkbox",
 		message: "Which grunt modules do you want to use?",
 		choices: [
-			{ name: "grunt-accessibility"},
-			{ name: "grunt-autoprefixer", checked: true },
-			{ name: "grunt-bless"},
-			{ name: "grunt-browser-sync", checked: true },
-			{ name: "grunt-combine-media-queries", checked: true },
-			{ name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"},
-			{ name: "grunt-contrib-compass" },
-			{ name: "grunt-contrib-htmlmin"},
-			{ name: "grunt-contrib-uglify"},
-			{ name: "grunt-csscomb", checked: true },
-			{ name: "grunt-data-separator", checked: true },
-			{ name: "grunt-devtools"},
-			{ name: "dr-grunt-svg-sprites"},
-			{ name: "grunt-grunticon", checked: true },
-			{ name: "grunt-modernizr"},
-			{ name: "grunt-packager"},
-			{ name: "grunt-phantomas"},
-			{ name: "grunt-photobox"},
-			{ name: "grunt-responsive-images"},
-			{ name: "grunt-svgmin"},
-			{ name: "grunt-version", checked: true }
+			{name: "grunt-accessibility"},
+			{name: "grunt-autoprefixer", checked: true},
+			{name: "grunt-bless"},
+			{name: "grunt-browser-sync", checked: true},
+			{name: "grunt-combine-media-queries", checked: true},
+			{name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"},
+			{name: "grunt-contrib-compass"},
+			{name: "grunt-contrib-htmlmin"},
+			{name: "grunt-contrib-uglify"},
+			{name: "grunt-csscomb", checked: true},
+			{name: "grunt-data-separator", checked: true},
+			{name: "grunt-devtools"},
+			{name: "dr-grunt-svg-sprites"},
+			{name: "grunt-grunticon", checked: true},
+			{name: "grunt-modernizr"},
+			{name: "grunt-packager"},
+			{name: "grunt-phantomas"},
+			{name: "grunt-photobox"},
+			{name: "grunt-responsive-images"},
+			{name: "grunt-svgmin"},
+			{name: "grunt-version", checked: true}
 		],
 		default: this.config.get("modules")
 	});
 
 	questions.push({
 		when: function (answers) {
-			return     answers.modules
-				&& answers.modules.length > 0
-				&& answers.modules.indexOf('grunt-connect-proxy') !== -1;
+			return answers.modules
+			&& answers.modules.length > 0
+			&& answers.modules.indexOf('grunt-connect-proxy') !== -1;
 		},
 		type: 'input',
 		name: 'proxyHost',
@@ -273,10 +273,10 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 
 	questions.push({
 		when: function (answers) {
-			return     answers.modules
-				&& answers.modules.length > 0
-				&& answers.modules.indexOf('grunt-connect-proxy') !== -1
-				&& answers.proxyHost;
+			return answers.modules
+			&& answers.modules.length > 0
+			&& answers.modules.indexOf('grunt-connect-proxy') !== -1
+			&& answers.proxyHost;
 		},
 		type: 'input',
 		name: 'proxyPort',
@@ -513,8 +513,14 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 		this.directory('resources/templates/partials/_global/head', 'resources/templates/partials/_global/head');
 		this.template('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/_scripts.hbs');
 
-		this.copy('resources/templates/partials/blocks/_sitemap.hbs');
+		// Blocks
+		this.copy('resources/templates/partials/blocks/b-sitemap.hbs');
+		this.copy('resources/templates/partials/blocks/README.md');
+
+		// Components
 		this.directory('resources/templates/partials/components/_base', 'resources/templates/partials/components');
+
+		// Modules
 		this.directory('resources/templates/partials/modules', 'resources/templates/partials/modules');
 
 		// Add Gruntfile-helper file
@@ -529,10 +535,6 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 				this.directory('resources/data', 'resources/data');
 
 				// Global content
-				this.copy('resources/templates/partials/_global/_footer.hbs');
-				this.copy('resources/templates/partials/_global/_logo.hbs');
-				this.copy('resources/templates/partials/_global/_nav.hbs');
-				this.copy('resources/templates/partials/blocks/_nav-toggler.hbs');
 
 				// Components
 				this.directory('resources/templates/partials/components/form', 'resources/templates/partials/components/form');
@@ -541,7 +543,11 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 				this.copy('resources/templates/pages/forms.hbs');
 
 				// Blocks
-				this.copy('resources/templates/partials/blocks/_sidebar-right.hbs');
+				this.copy('resources/templates/partials/blocks/b-sidebar-right.hbs');
+				this.copy('resources/templates/partials/blocks/b-footer.hbs');
+				this.copy('resources/templates/partials/blocks/b-logo.hbs');
+				this.copy('resources/templates/partials/blocks/b-nav.hbs');
+				this.copy('resources/templates/partials/blocks/b-nav-toggler.hbs');
 			}
 		}
 	}

@@ -28,8 +28,8 @@
 		if(name == 'grunt-grunticon') { %>
 		"grunt-grunticon": "~1.0.0-beta.0",
 		"grunt-text-replace": "~0.3.11",
-		<% } %><% if(name == 'dr-grunt-svg-sprites') { %>
-		"dr-grunt-svg-sprites": "~0.2.6",
+		<% } %><% if(name == 'grunt-dr-svg-sprites') { %>
+		"grunt-dr-svg-sprites": "~0.9.12",
         <% } %><% if(name == 'grunt-contrib-compass') { %>
         "grunt-contrib-compass": "*",
 		<% } %><% if(name == 'grunt-devtools') { %>
