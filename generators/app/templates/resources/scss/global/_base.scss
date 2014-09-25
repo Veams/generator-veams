@@ -53,7 +53,7 @@ li {
 
 	text-align: center;
 
-	@include breakpoint($mobile) {
+	@include max-bp($mobile) {
 		text-align: right;
 	}
 
@@ -90,7 +90,7 @@ li {
 .article {
 	width: 78%;
 	margin-right: 2%;
-	@include breakpoint($mobile) {
+	@include max-bp($mobile) {
 		width: 100%;
 	}
 	h1 {
@@ -164,5 +164,4 @@ li {
 	}
 }
 
-@import "nav--DEMO";
 <% } %>

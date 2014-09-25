@@ -630,7 +630,8 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 
 		if (this.modules.indexOf('grunt-grunticon') != -1 || this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
-			this.template('helpers/_grunt/_replace.js', 'helpers/_grunt/_replace.js');
+			console.log('test: ');
+			this.template('helpers/_grunt/_replace.js', 'helpers/_grunt/replace.js');
 		}
 	}
 };

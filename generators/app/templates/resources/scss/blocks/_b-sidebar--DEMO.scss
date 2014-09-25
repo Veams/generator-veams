@@ -1,6 +1,6 @@
 .sidebar {
 	width: 30%;
-	@include breakpoint($mobile) {
+	@include max-bp($mobile) {
 		margin: 2rem 0;
 
 		width: 100%;

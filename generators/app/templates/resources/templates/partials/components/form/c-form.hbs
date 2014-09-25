@@ -31,27 +31,27 @@ This template is a generic one to speed up the workflow.
 
 				{{#is typeOf "input"}}
 
-					{{partial "_form__input" }}
+					{{partial "c-form__input" }}
 
 				{{else}}{{#is typeOf "textarea"}}
 
-					{{partial "_form__textarea" }}
+					{{partial "c-form__textarea" }}
 
 				{{ else }}{{#is typeOf "select"}}
 
-					{{partial "_form__select" }}
+					{{partial "c-form__select" }}
 
 				{{ else }}{{#is typeOf "info"}}
 
-					{{partial "_form__info" }}
+					{{partial "c-form__info" }}
 
 				{{ else }}{{#is typeOf "radio"}}
 
-					{{partial "_form__radio" ../this }}
+					{{partial "c-form__radio" ../this }}
 
 				{{ else }}{{#is typeOf "checkbox"}}
 
-					{{partial "_form__checkbox" ../this }}
+					{{partial "c-form__checkbox" ../this }}
 
 				{{/is}}{{/is}}{{/is}}{{/is}}{{/is}}{{/is}}
 			</div>
