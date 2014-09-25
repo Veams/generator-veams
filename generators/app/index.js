@@ -571,15 +571,6 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.directory('resources/scss/icons', 'resources/scss/icons');
 			this.directory('helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
 			this.copy('helpers/_grunt/grunticon.js', 'helpers/_grunt/grunticon.js');
-			if (this.features && this.features.length > 0) {
-				if (this.features.indexOf('sassInsteadOfCompass') != -1) {
-					this.copy('helpers/_grunt/replaceSass.js', 'helpers/_grunt/replace.js');
-				} else {
-					this.copy('helpers/_grunt/replace.js', 'helpers/_grunt/replace.js');
-				}
-			} else {
-				this.copy('helpers/_grunt/replace.js', 'helpers/_grunt/replace.js');
-			}
 		}
 		if (this.modules.indexOf('grunt-data-separator') != -1) {
 			this.copy('helpers/_grunt/dataSeparator.js', 'helpers/_grunt/dataSeparator.js');
@@ -629,12 +620,17 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-responsive-images') != -1) {
 			this.copy('helpers/_grunt/responsive_images.js', 'helpers/_grunt/responsive_images.js');
 		}
-		if (this.features.indexOf('sassInsteadOfCompass') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
-			this.template('helpers/_grunt/_fileindex.js', 'helpers/_grunt/fileindex.js');
-		}
 		if (this.modules.indexOf('grunt-version') != -1) {
 			this.copy('helpers/_grunt/version.js', 'helpers/_grunt/version.js');
 			this.copy('resources/templates/partials/_global/_version.hbs', 'resources/templates/partials/_global/_version.hbs');
+		}
+
+		if (this.features.indexOf('sassInsteadOfCompass') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
+			this.template('helpers/_grunt/_fileindex.js', 'helpers/_grunt/fileindex.js');
+		}
+
+		if (this.modules.indexOf('grunt-grunticon') != -1 || this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
+			this.template('helpers/_grunt/_replace.js', 'helpers/_grunt/_replace.js');
 		}
 	}
 };
