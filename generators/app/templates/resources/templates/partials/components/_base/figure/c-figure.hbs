@@ -1,9 +1,13 @@
+---
+component: Figure
+---
+
 <figure class="figure {{figure-class}}">
 
 	{{#if figure-picture}}
-		{{partial "_picture"}}
+		{{partial "c-picture"}}
 	{{else}}{{#if figure-video}}
-		{{partial "_video"}}
+		{{partial "c-video"}}
 	{{/if}}{{/if}}
 
 	{{#if figure-caption}}

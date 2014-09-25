@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <% if (modules && modules.length > 0 && modules.indexOf('grunt-version') != -1) { %>
-{{> _version }}
+{{> b-version }}
 <% } %>
 <html lang="en" class="no-js"> <!--<![endif]-->
 
@@ -32,8 +32,8 @@
 			================================================== -->
 			<header class="header">
 				<div class="container header__container">
-					{{partial "_nav-toggler" }}
-					{{partial "_logo" }}
+					{{partial "b-nav-toggler" }}
+					{{partial "b-logo" }}
 				</div>
 			</header>
 
@@ -41,10 +41,10 @@
 			{{#block "nav"}}
 				<!-- Navbar
 				================================================== -->
-				{{> _nav }}
+				{{> b-nav }}
 			{{/block}}
 			<% } else { %>
-			{{> _nav }}
+			{{> b-nav }}
 			<% } %>
 
 			<!-- Stage
@@ -64,10 +64,10 @@
 					<aside class="sidebar sidebar--right">
 						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 						{{#block "sidebar-right"}}
-							{{> _sidebar-right }}
+							{{> b-sidebar-right }}
 						{{/block}}
 						<% } else { %>
-						{{> _sidebar-right }}
+						{{> b-sidebar-right }}
 						<% } %>
 					</aside>
 					<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
@@ -86,10 +86,10 @@
 				<div class="container footer__container">
 					<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 					{{#block "footer"}}
-						{{> _footer }}
+						{{> b-footer }}
 					{{/block}}
 					<% } else { %>
-					{{> _footer }}
+					{{> b-footer }}
 					<% } %>
 				</div>
 			</footer>

@@ -12,13 +12,13 @@ lead: Scaffold forms with JSON files.
 	{{#content "body"}}
 
 		{{#forms.data}}
-			{{partial "_article" }}
+			{{partial "c-article" }}
 		{{/forms.data}}
 
 		<form id="custom-form" class="validate-ui form" action="" method="get">
 
 			{{#each form--elements.data }}
-				{{> _form }}
+				{{> c-form }}
 			{{! partials/components/forms/ }}
 			{{/each}}
 
@@ -34,13 +34,13 @@ lead: Scaffold forms with JSON files.
 {{/extend}}
 <% } else { %>
 {{#forms.data}}
-	{{partial "_article" }}
+	{{partial "c-article" }}
 {{/forms.data}}
 
 <form id="custom-form" class="validate-ui form" action="" method="get">
 
 	{{#each form--elements.data }}
-		{{> _form }}
+		{{> c-form }}
 	{{! partials/components/forms/ }}
 	{{/each}}
 
