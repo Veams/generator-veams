@@ -39,6 +39,7 @@ module.exports = {<% if (features && features.length > 0) { if (features.indexOf
 					'utils/mixins/**/*.scss',
 					'global/_base.scss',
 					'components/**/*.scss',
+					'modules/**/*.scss',
 					'blocks/**/*.scss',
 					'icons/**/*.scss'
 				]

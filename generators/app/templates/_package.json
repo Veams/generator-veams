@@ -29,7 +29,7 @@
 		"grunt-grunticon": "~1.0.0-beta.0",
 		"grunt-text-replace": "~0.3.11",
 		<% } %><% if(name == 'grunt-dr-svg-sprites') { %>
-		"grunt-dr-svg-sprites": "~0.9.12",
+		"grunt-dr-svg-sprites": "Sebastian-Fitzner/grunt-dr-svg-sprites",
         <% } %><% if(name == 'grunt-contrib-compass') { %>
         "grunt-contrib-compass": "*",
 		<% } %><% if(name == 'grunt-devtools') { %>

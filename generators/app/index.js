@@ -479,11 +479,12 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.mkdir('resources/js');
 	this.mkdir('resources/scss');
 	this.mkdir('resources/scss/blocks');
+	this.mkdir('resources/scss/components');
+	this.mkdir('resources/scss/modules');
 	this.copy('resources/scss/global/_base.scss', 'resources/scss/global/_base.scss');
 	this.copy('resources/scss/global/_vars.scss', 'resources/scss/global/_vars.scss');
 	this.copy('resources/scss/global/_reset.scss', 'resources/scss/global/_reset.scss');
 	this.copy('resources/scss/global/_print.scss', 'resources/scss/global/_print.scss');
-	this.directory('resources/scss/components', 'resources/scss/components');
 	this.directory('resources/scss/utils', 'resources/scss/utils');
 	this.template('resources/scss/_all.scss', 'resources/scss/_all.scss');
 	this.copy('resources/scss/styles.scss', 'resources/scss/styles.scss');
@@ -711,7 +712,6 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 			this.directory('resources/scss/components');
 			this.directory('resources/scss/blocks');
 
-			this.copy('resources/scss/global/_nav--DEMO.scss', 'resources/scss/global/_nav--DEMO.scss');
 			this.copy('resources/js/demo.js', 'resources/js/demo.js');
 
 		}
