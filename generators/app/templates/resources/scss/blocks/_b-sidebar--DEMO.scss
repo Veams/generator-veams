@@ -1,14 +1,9 @@
-.sidebar {
+.b-sidebar {
 	width: 30%;
 	@include max-bp($mobile) {
 		margin: 2rem 0;
 
 		width: 100%;
-	}
-	&.sidebar--right {
-		float: right;
-
-		margin-right: 0;
 	}
 	h2,
 	h3 {
@@ -17,4 +12,10 @@
 
 		margin-bottom: 1rem;
 	}
+}
+
+&.b-sidebar--right {
+	float: right;
+
+	margin-right: 0;
 }

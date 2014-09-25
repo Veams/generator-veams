@@ -23,7 +23,7 @@ Every component `.hbs` file get following structure:
 
 ``` YAML
 ---
-component: Article
+component: My Component Name
 ---
 ```
 

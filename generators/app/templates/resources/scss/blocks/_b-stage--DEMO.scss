@@ -1,4 +1,4 @@
-.stage {
+.b-stage {
 	display: block;
 
 	padding: 6rem 0;
@@ -6,7 +6,7 @@
 	background: lighten($color-logo, 5);
 }
 
-.stage__head {
+.b-stage__head {
 	font-family: $font-family;
 	font-size: 4rem;
 	font-weight: 300;
@@ -20,7 +20,7 @@
 	border-bottom: 1px solid #666;
 }
 
-.stage__lead {
+.b-stage__lead {
 	font-family: $font-family;
 	font-size: 2.5rem;
 	font-weight: 700;

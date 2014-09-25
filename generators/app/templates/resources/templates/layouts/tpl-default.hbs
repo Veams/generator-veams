@@ -30,8 +30,8 @@
 
 			<!-- Header
 			================================================== -->
-			<header class="header">
-				<div class="container header__container">
+			<header class="b-header">
+				<div class="container b-header__container">
 					{{partial "b-nav-toggler" }}
 					{{partial "b-logo" }}
 				</div>
@@ -49,19 +49,19 @@
 
 			<!-- Stage
 			================================================== -->
-			<section class="stage">
-				<div class="container stage__container">
-					<h1 class="stage__head"> {{{ title }}} </h1>
+			<section class="b-stage">
+				<div class="container b-stage__container">
+					<h1 class="b-stage__head"> {{{ title }}} </h1>
 
-					<h2 class="stage__lead">{{{ lead }}}</h2>
+					<h2 class="b-stage__lead">{{{ lead }}}</h2>
 				</div>
 			</section>
 
 			<!-- Content
 			================================================== -->
-			<main class=" main" id="main">
-				<div class="container main__container">
-					<aside class="sidebar sidebar--right">
+			<main class="b-main" id="main">
+				<div class="container b-main__container">
+					<aside class="b-sidebar b-sidebar--right">
 						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 						{{#block "sidebar-right"}}
 							{{> b-sidebar-right }}
@@ -82,8 +82,8 @@
 
 			<!-- Footer
 			================================================== -->
-			<footer class="footer">
-				<div class="container footer__container">
+			<footer class="b-footer">
+				<div class="container b-footer__container">
 					<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 					{{#block "footer"}}
 						{{> b-footer }}

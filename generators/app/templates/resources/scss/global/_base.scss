@@ -40,14 +40,14 @@ li {
 	@include rem("font-size", 17px);
 }
 
-.header {
+.b-header {
 	position: relative;
 
 	border-bottom: 1px solid #fff;
 	background: rgba(#999, 0.5);
 }
 
-.logo {
+.b-logo {
 	width: auto;
 	padding: 2rem;
 
@@ -87,7 +87,7 @@ li {
 	padding-bottom: 2rem;
 }
 
-.article {
+.b-article {
 	width: 78%;
 	margin-right: 2%;
 	@include max-bp($mobile) {

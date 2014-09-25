@@ -180,9 +180,13 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.mkdir('resources/scss/icons');
 			this.copy('../../app/templates/helpers/_grunt/svg-sprites.js', 'helpers/_grunt/svg-sprites.js');
 			this.npmInstall(['Sebastian-Fitzner/grunt-dr-svg-sprites'], {'saveDev': true}, done);
-			console.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 21 (require())') + ('\n') + ('\n') +
-				chalk.yellow('\n "svg-sprites": "grunt-dr-svg-sprites"') +
-				chalk.yellow('\n }' + ('\n') + ('\n'))
+			console.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n')  +
+				chalk.yellow('\n "svg-sprites": "grunt-dr-svg-sprites"') + ('\n')  +
+				chalk.bgRed('\n Please add the following lines to your Gruntfile.js to your custom tasks:') + ('\n')  +
+				chalk.yellow('\n grunt.registerTask(\'sprites\', [') +
+				chalk.yellow('\n    \'svg-sprites\',') +
+				chalk.yellow('\n    \'replace:spriteUrl\'' +
+				chalk.yellow('\n ]);') + ('\n') + ('\n'))
 			);
 		}
 		if (this.modules.indexOf('grunt-grunticon') != -1) {

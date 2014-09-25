@@ -2,9 +2,9 @@
 component: navbar
 ---
 
-<nav class="navbar" id="site-menu">
+<nav class="b-navbar" id="site-menu">
 	<h2>Navigation</h2>
-	<ul class="nav navbar__nav">
+	<ul class="b-navbar__list">
 		{{#withSort pages 'data.sortOrder'}}
 				<li>
 					<a href="{{autolink}}" {{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.menuLink}}</a>

@@ -21,6 +21,6 @@ Every block `.hbs` file get following structure:
 
 ``` YAML
 ---
-block: Footer
+block: My Block Name
 ---
 ```

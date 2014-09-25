@@ -7,10 +7,10 @@
 		e.preventDefault();
 
 		if (wrapper.classList) {
-			wrapper.classList.toggle('show-nav');
+			wrapper.classList.toggle('js-show-nav');
 		} else {
 			var classes = wrapper.className.split(' ');
-			var existingIndex = classes.indexOf('show-nav');
+			var existingIndex = classes.indexOf('js-show-nav');
 
 			if (existingIndex >= 0)
 				classes.splice(existingIndex, 1);

@@ -2,7 +2,7 @@
 component: Article
 ---
 
-<article class="article {{article-class}}">
+<article class="c-article {{article-class}}">
 
 	{{#if article-header}}
 		{{partial "c-article__header"}}
@@ -12,7 +12,7 @@ component: Article
 		{{partial "c-figure" }}
 	{{/if}}
 
-	<div class="article__content">
+	<div class="c-article__content">
 		{{#if article-summary}}
 			{{{truncate article-content article-summary "..." }}}
 		{{else}}

@@ -4,7 +4,7 @@ This folder contains modules.
 
 1. Modules are interactive or functional elements.
 2. Modules contain blocks or components.
-3. Modules can NOT contain any content for itself.
+3. A Module can NOT contain any content for itself.
 
 ## Examples
 
@@ -21,6 +21,6 @@ Every module `.hbs` file get following structure:
 
 ``` YAML
 ---
-module: Teaser Switcher
+module: My Module Name
 ---
 ```

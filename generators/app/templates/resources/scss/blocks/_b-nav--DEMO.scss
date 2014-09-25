@@ -48,7 +48,7 @@ $nav-mobile-width: 270px;
 	backface-visibility: hidden;
 }
 
-.show-nav #site-canvas {
+.js-show-nav #site-canvas {
 	-webkit-transform: translateX($nav-width);
 	-moz-transform: translateX($nav-width);
 	-ms-transform: translateX($nav-width);
@@ -91,7 +91,7 @@ $nav-mobile-width: 270px;
 	}
 }
 
-.toggle {
+.b-toggle__link {
 
 	position: absolute;
 	top: 50%;
@@ -121,8 +121,8 @@ $nav-mobile-width: 270px;
 	}
 }
 
-.toggle--close {
-	&.toggle:after {
+.b-toggle__link--close {
+	&.b-toggle__link:after {
 		-webkit-transform: rotate(-90deg);
 		-moz-transform: rotate(-90deg);
 		-ms-transform: rotate(-90deg);
@@ -131,7 +131,7 @@ $nav-mobile-width: 270px;
 	}
 }
 
-.navbar {
+.b-navbar {
 	h2 {
 		font-size: 1.8rem;
 
@@ -144,7 +144,7 @@ $nav-mobile-width: 270px;
 	}
 }
 
-.navbar__nav {
+.b-navbar__nav {
 	li {
 		margin: 0 0 1px 1rem;
 	}

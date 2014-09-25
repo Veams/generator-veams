@@ -5,10 +5,12 @@ component: sitemap
 {{! USED IN:
 	* pages/index.hbs
 }}
-<ul>
-	{{#withSort pages 'data.sortOrder'}}
-		<li>
-			<a href="{{autolink}}" {{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.menuLink}}</a>
-		</li>
-	{{/withSort}}
-</ul>
+<div class="b-sitemap">
+	<ul class="b-sitemap__list">
+		{{#withSort pages 'data.sortOrder'}}
+			<li>
+				<a href="{{autolink}}" {{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.menuLink}}</a>
+			</li>
+		{{/withSort}}
+	</ul>
+</div>
