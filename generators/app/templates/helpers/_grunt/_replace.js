@@ -1,4 +1,4 @@
-module.exports = {<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+module.exports = {<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-grunticon') != -1) { %>
 	datasvg: {
 		src: ['<%%= paths.src %>/scss/icons/_icons-data-svg.scss'],             // source files array (supports minimatch)
 		dest: '<%%= paths.src %>/scss/icons/_icons-data-svg.scss',               // destination directory or file
