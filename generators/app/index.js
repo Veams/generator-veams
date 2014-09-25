@@ -622,7 +622,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 		if (this.modules.indexOf('grunt-version') != -1) {
 			this.copy('helpers/_grunt/version.js', 'helpers/_grunt/version.js');
-			this.copy('resources/templates/partials/_global/_version.hbs', 'resources/templates/partials/_global/_version.hbs');
+			this.copy('resources/templates/partials/blocks/b-version.hbs', 'resources/templates/partials/blocks/b-version.hbs');
 		}
 
 		if (this.features.indexOf('sassInsteadOfCompass') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
