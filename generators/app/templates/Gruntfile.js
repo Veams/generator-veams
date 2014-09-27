@@ -18,8 +18,8 @@
 	module.exports = function(grunt) {
 		
 		// load only used tasks
-		require('jit-grunt')(grunt, { <% if (modules.indexOf('grunt-grunticon') != -1) { %>
-			replace: 'grunt-text-replace'<% } %><% if ((modules.indexOf('grunt-grunticon') != -1) && (modules.indexOf('grunt-combine-media-queries') != -1)) { %>,<% } %><% if (modules.indexOf('grunt-combine-media-queries') != -1) { %>
+		require('jit-grunt')(grunt, { <% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+			replace: 'grunt-text-replace'<% } %><% if ((modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) && (modules.indexOf('grunt-combine-media-queries') != -1)) { %>,<% } %><% if (modules.indexOf('grunt-combine-media-queries') != -1) { %>
 			cmq: 'grunt-combine-media-queries'<% } %><% if (((modules.indexOf('grunt-dr-svg-sprites') != -1) && (modules.indexOf('grunt-combine-media-queries') != -1)) || ((modules.indexOf('grunt-dr-svg-sprites') != -1) && (modules.indexOf('grunt-grunticon') != -1))) { %>,<% } %><% if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
 			'svg-sprites': 'grunt-dr-svg-sprites'<% } %>
 		});

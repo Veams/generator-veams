@@ -215,3 +215,15 @@ For further informations and instructions see:
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
 [yeoman]: http://yeoman.io/
+
+## Changelog
+
+### v0.4.59
+- added fork of grunt-dr-svg-sprites and dr-svg-sprites to support placeholders in scss files
+- changed replace.js to change file path
+- added PG Frontend Methodology
+
+### v0.4.58
+- added fork of grunt-dr-svg-sprites and dr-svg-sprites to support placeholders in scss files
+- changed replace.js to change file path
+- added PG Frontend Methodology

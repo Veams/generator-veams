@@ -40,12 +40,12 @@ module.exports = {<% if (modules && modules.length > 0) { if (modules.indexOf('g
 		]
 	}<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,<% }} %><% }} %><% if (modules && modules.length > 0) { if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
 	spriteUrl: {
-		src: ['<%%= paths.src %>/scss/icons/_icons-sprite.scss'],             // source files array (supports minimatch)
-		dest: '<%%= paths.src %>/scss/icons/_icons-sprite.scss',               // destination directory or file
+		src: ['<%%= paths.src %>/scss/icons/_sprites-icons-sprite.scss'],             // source files array (supports minimatch)
+		dest: '<%%= paths.src %>/scss/icons/_sprites-icons-sprite.scss',               // destination directory or file
 		replacements: [
 			{
 				from: '../../assets/img/',                                      // string replacement
-				to: '../img/sprites/'
+				to: '../img/'
 			}
 		]
 	}<% }} %>
