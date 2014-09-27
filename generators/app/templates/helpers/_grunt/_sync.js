@@ -24,7 +24,11 @@ module.exports = {
 			// includes files within path and its sub-directories
 			{
 				cwd: '<%%= paths.src %>/assets',
-				src: '**/{,*/}*',
+				src: [
+					'**/{,*/}*'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-svgmin') != -1) { %>,
+					'!img/svg/**/{,*/}*'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
+					'!img/svgmin/**/{,*/}*'<% }} %><% }} %>
+				],
 				dest: '<%%= paths.dev %>'
 			}
 		]

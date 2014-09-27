@@ -22,7 +22,7 @@
 	<% } %>
 </head>
 
-<body class="{{ bodyclass }}">
+<body class="<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>{{ bodyclass }}<% } %>">
 	<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
 
 	<div id="site-wrapper">
@@ -31,7 +31,7 @@
 			<!-- Header
 			================================================== -->
 			<header class="b-header">
-				<div class="container b-header__container">
+				<div class="container header__container">
 					{{partial "b-nav-toggler" }}
 					{{partial "b-logo" }}
 				</div>
@@ -50,18 +50,18 @@
 			<!-- Stage
 			================================================== -->
 			<section class="b-stage">
-				<div class="container b-stage__container">
-					<h1 class="b-stage__head"> {{{ title }}} </h1>
+				<div class="container stage__container">
+					<h1 class="stage__head"> {{{ title }}} </h1>
 
-					<h2 class="b-stage__lead">{{{ lead }}}</h2>
+					<h2 class="stage__lead">{{{ lead }}}</h2>
 				</div>
 			</section>
 
 			<!-- Content
 			================================================== -->
 			<main class="b-main" id="main">
-				<div class="container b-main__container">
-					<aside class="b-sidebar b-sidebar--right">
+				<div class="container main__container">
+					<aside class="b-sidebar is-right">
 						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 						{{#block "sidebar-right"}}
 							{{> b-sidebar-right }}
@@ -83,7 +83,7 @@
 			<!-- Footer
 			================================================== -->
 			<footer class="b-footer">
-				<div class="container b-footer__container">
+				<div class="container footer__container">
 					<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 					{{#block "footer"}}
 						{{> b-footer }}

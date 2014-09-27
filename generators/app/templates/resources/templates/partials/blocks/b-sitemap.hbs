@@ -6,7 +6,7 @@ component: sitemap
 	* pages/index.hbs
 }}
 <div class="b-sitemap">
-	<ul class="b-sitemap__list">
+	<ul class="sitemap__list">
 		{{#withSort pages 'data.sortOrder'}}
 			<li>
 				<a href="{{autolink}}" {{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.menuLink}}</a>

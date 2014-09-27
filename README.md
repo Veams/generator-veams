@@ -52,9 +52,9 @@ You can scaffold your project in an instance. The first question is:
 "Choose your installation routine"
 ```
 
-If you choose "Standard installation" you skip the rest of the questions and get the default values with:
+If you choose "Minimal installation" you skip the rest of the questions and get the default values with:
  * Libsass (grunt-sass)
- * Grunt Modules: grunt-grunticon, grunt-data-separator, grunt-packager, grunt-combine-media-queries, grunt-bless, grunt-autoprefixer
+ * Grunt Modules: grunt-dr-svg-sprites, grunt-combine-media-queries
  * Assemble as Template Engine
 
 ## Structure
@@ -129,7 +129,7 @@ There are standard grunt modules I use. These are:
  * [grunt-csscomb](https://github.com/csscomb/grunt-csscomb) - The grunt plugin for sorting CSS properties in specific order.
  * [grunt-devtools](https://github.com/vladikoff/grunt-devtools) - An user interface in chrome to execute grunt tasks in your project
  * [grunt-data-separator](https://github.com/Sebastian-Fitzner/grunt-data-separator) - Split up your Data-URI into a separate CSS file.
- * [dr-grunt-svg-sprites](https://github.com/drdk/dr-grunt-svg-sprites) - Generate SVG Sprites with css files
+ * [grunt-dr-svg-sprites](https://github.com/drdk/grunt-dr-svg-sprites) - Generate SVG Sprites with scss files (we use an own fork to support placeholders in scss) 
  * [grunt-grunticon](https://github.com/filamentgroup/grunticon) - Generate SVG-URI-SASS files with png fallbacks
  * [grunt-modernizr](https://github.com/Modernizr/grunt-modernizr) - grunt-modernizr sifts through your project files, gathers up your references to Modernizr tests and outputs a lean, mean Modernizr machine.
  * [grunt-packager](https://github.com/bobbor/grunt-packager) (only executable when your project.jspackcfg is configured) - package your js.
@@ -219,9 +219,9 @@ For further informations and instructions see:
 ## Changelog
 
 ### v0.4.59
-- added fork of grunt-dr-svg-sprites and dr-svg-sprites to support placeholders in scss files
-- changed replace.js to change file path
-- added PG Frontend Methodology
+- changed Standard Installation to Minimal Installation
+- optimized svg-sprites and svgmin workflow
+- changed classes fo PG Frontend Methodology
 
 ### v0.4.58
 - added fork of grunt-dr-svg-sprites and dr-svg-sprites to support placeholders in scss files

@@ -91,7 +91,7 @@ $nav-mobile-width: 270px;
 	}
 }
 
-.b-toggle__link {
+.toggle__link {
 
 	position: absolute;
 	top: 50%;
@@ -121,8 +121,8 @@ $nav-mobile-width: 270px;
 	}
 }
 
-.b-toggle__link--close {
-	&.b-toggle__link:after {
+.toggle__link--close {
+	&:after {
 		-webkit-transform: rotate(-90deg);
 		-moz-transform: rotate(-90deg);
 		-ms-transform: rotate(-90deg);
@@ -144,7 +144,7 @@ $nav-mobile-width: 270px;
 	}
 }
 
-.b-navbar__list {
+.navbar__list {
 	li {
 		margin: 0 0 1px 1rem;
 	}

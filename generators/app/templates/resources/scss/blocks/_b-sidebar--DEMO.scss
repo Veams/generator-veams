@@ -5,6 +5,13 @@
 
 		width: 100%;
 	}
+
+	&.is-right {
+		float: right;
+
+		margin-right: 0;
+	}
+
 	h2,
 	h3 {
 		font-family: $font-family;
@@ -12,10 +19,4 @@
 
 		margin-bottom: 1rem;
 	}
-}
-
-&.b-sidebar--right {
-	float: right;
-
-	margin-right: 0;
 }

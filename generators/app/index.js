@@ -42,18 +42,10 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 		installPlugin: false,
 		installCMS: false,
 		modules: [
-			"grunt-autoprefixer",
-			"grunt-browser-sync",
 			"grunt-combine-media-queries",
-			"grunt-csscomb",
-			"grunt-data-separator",
-			"grunt-grunticon",
-			"grunt-packager",
-			"grunt-version"
+			"grunt-dr-svg-sprites"
 		],
 		features: [
-			"installDocs",
-			"installDemoContent",
 			"sassInsteadOfCompass"
 		],
 		jsLibs: [],
@@ -124,7 +116,7 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
 		message: "Choose your installation routine:",
 		choices: [
 			{
-				name: 'Standard Installation',
+				name: 'Minimal Installation',
 				value: 'stdInstall'
 			},
 			{
@@ -236,11 +228,11 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{name: "grunt-contrib-compass"},
 			{name: "grunt-contrib-htmlmin"},
 			{name: "grunt-contrib-uglify"},
-			{name: "grunt-csscomb", checked: true},
+			{name: "grunt-csscomb"},
 			{name: "grunt-data-separator", checked: true},
 			{name: "grunt-devtools"},
-			{name: "grunt-dr-svg-sprites"},
-			{name: "grunt-grunticon", checked: true},
+			{name: "grunt-dr-svg-sprites", checked: true},
+			{name: "grunt-grunticon"},
 			{name: "grunt-modernizr"},
 			{name: "grunt-packager"},
 			{name: "grunt-phantomas"},
@@ -307,18 +299,23 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 				checked: true
 			},
 			{
-				name: 'Scaffold demo content? Otherwise you get only the base components ...',
+				name: 'Scaffold demo content?',
 				value: 'installDemoContent',
 				checked: false
 			},
 			{
-				name: 'Create Development Folder to get two outputs (Dev-Output, Dist-Output)',
+				name: 'Dev-Output & Dist-Output?',
 				value: 'createDevFolder',
 				checked: true
 			},
 			{
 				name: 'Create Developer Documentation',
 				value: 'installDocs',
+				checked: true
+			},
+			{
+				name: 'Use PG Frontend Methodology?',
+				value: 'PGFM',
 				checked: true
 			},
 			{
@@ -457,7 +454,7 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.copy('gitignore', '.gitignore');
 	this.template('README.md', 'README.md');
 
-	this.directory('_output', '_output');
+	this.mkdir('_output');
 
 	// add batch files
 	if (this.config.get("batchFiles") == true) {
@@ -477,9 +474,6 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.mkdir('resources/assets/media');
 	this.mkdir('resources/js');
 	this.mkdir('resources/scss');
-	this.mkdir('resources/scss/blocks');
-	this.mkdir('resources/scss/components');
-	this.mkdir('resources/scss/modules');
 	this.copy('resources/scss/global/_base.scss', 'resources/scss/global/_base.scss');
 	this.copy('resources/scss/global/_vars.scss', 'resources/scss/global/_vars.scss');
 	this.copy('resources/scss/global/_reset.scss', 'resources/scss/global/_reset.scss');
@@ -499,8 +493,6 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 	// add global assemble files
 	if (this.config.get("installAssemble") == true) {
 		this.copy('resources/data/site.json');
-		this.copy('resources/data/pages/homepage.json');
-		this.copy('resources/data/pages/homepage.md');
 		this.mkdir('resources/templates');
 		this.directory('resources/templates/ajax', 'resources/templates/ajax');
 		this.directory('resources/templates/helpers', 'resources/templates/helpers');
@@ -513,21 +505,31 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 		this.directory('resources/templates/partials/_global/head', 'resources/templates/partials/_global/head');
 		this.template('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/_scripts.hbs');
 
-		// Blocks
-		this.copy('resources/templates/partials/blocks/b-sitemap.hbs');
-		this.copy('resources/templates/partials/blocks/README.md');
-
-		// Components
-		this.directory('resources/templates/partials/components/_base', 'resources/templates/partials/components');
-
-		// Modules
-		this.directory('resources/templates/partials/modules', 'resources/templates/partials/modules');
 
 		// Add Gruntfile-helper file
 		this.copy('helpers/_grunt/_assemble.js', 'helpers/_grunt/assemble.js');
 
 		// Add demo content
 		if (this.features && this.features.length > 0) {
+
+			if (this.features.indexOf('PGFM') != -1) {
+				console.log('test: ');
+
+				this.mkdir('resources/data/blocks');
+				this.mkdir('resources/data/pages');
+				this.mkdir('resources/data/_global');
+				this.copy('resources/templates/partials/blocks/b-sitemap.hbs');
+				this.copy('resources/templates/partials/blocks/README.md');
+
+				// Components
+				this.directory('resources/templates/partials/components/_base', 'resources/templates/partials/components');
+				// Components
+				this.directory('resources/templates/partials/components/_base', 'resources/templates/partials/components');
+
+				// Modules
+				this.directory('resources/templates/partials/modules', 'resources/templates/partials/modules');
+			}
+
 			if (this.features.indexOf('installDemoContent') != -1) {
 
 				// Data
@@ -570,14 +572,14 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-grunticon') != -1) {
 			this.directory('resources/scss/icons', 'resources/scss/icons');
 			this.directory('helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
-			this.copy('helpers/_grunt/grunticon.js', 'helpers/_grunt/grunticon.js');
+			this.template('helpers/_grunt/_grunticon.js', 'helpers/_grunt/grunticon.js');
 		}
 		if (this.modules.indexOf('grunt-data-separator') != -1) {
 			this.copy('helpers/_grunt/dataSeparator.js', 'helpers/_grunt/dataSeparator.js');
 		}
 		if (this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 			this.mkdir('resources/scss/icons');
-			this.copy('helpers/_grunt/svg-sprites.js', 'helpers/_grunt/svg-sprites.js');
+			this.template('helpers/_grunt/_svg-sprites.js', 'helpers/_grunt/svg-sprites.js');
 		}
 		if (this.modules.indexOf('grunt-modernizr') != -1) {
 			this.copy('helpers/_grunt/modernizr.js', 'helpers/_grunt/modernizr.js');
@@ -699,6 +701,12 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 		// Add Dev Folder
 		if (this.features.indexOf('createDevFolder') != -1) {
 			this.mkdir('_dist');
+		}
+		// Add PG Frontend Methodology
+		if (this.features.indexOf('PGFM') != -1) {
+			this.mkdir('resources/scss/blocks');
+			this.mkdir('resources/scss/components');
+			this.mkdir('resources/scss/modules');
 		}
 
 		// Add Demo Content

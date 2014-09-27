@@ -14,7 +14,7 @@ module.exports = {
 		},
 		files: [
 			'<%%= paths.dev %>/{,*/}*.html',
-			'<%%= paths.dev %>/css/{,*/}*.css', // if you want to use browser-sync for css just comment out this line
+			'<%%= paths.dev %>/css/{,*/}*.css',
 			'<%%= paths.dev %>/js/{,*/}*.js',
 			'<%%= paths.dev %>/img/**/*.{jpg,png}'
 		]
@@ -30,7 +30,8 @@ module.exports = {
     assets: {
         files: [
 			'<%%= paths.src %>/assets/**/*'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-svgmin') != -1) { %>,
-			'!<%%= paths.src %>/assets/img/svg/**/*'<% }} %>
+			'!<%%= paths.src %>/assets/img/svg/**/*'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
+			'!<%%= paths.src %>/assets/img/svgmin/**/*'<% }} %><% }} %>
 			],
         tasks: 'sync:assets'
     }<% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>,
@@ -53,10 +54,10 @@ module.exports = {
 	},
 	scss: {
 		files: '<%%= paths.src %>/scss/**/*',
-		tasks: 'sass:dist',
-		options: {
+		tasks: 'sass:dist'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-browser-sync') != -1) { %>,
+	    options: {
 			spawn: false
-		}
+		}<% }} %>
 	}<% if (features.indexOf('supportIE8') != -1) { %>,
 	scssIE: {
 		files: '<%%= paths.src %>/scss/ie8.scss',
@@ -64,32 +65,29 @@ module.exports = {
 	}<% } %><% if (features.indexOf('installDocs') != -1) { %>,
 	scssDocs: {
 		files: '<%%= paths.src %>/scss/docs/*',
-		tasks: 'sass:docs',
-		options: {
-			spawn: false
-		}
+		tasks: 'sass:docs'
 	}<% } %><% }} %><% if(installAssemble != false){ %>,
 	templates: {
 		files: ['<%%= paths.src %>/{data,templates/layouts,templates/partials}/**/{,*/}*.{md,hbs,yml,json}'],
-	    tasks: ['newer:assemble'],
+	    tasks: ['newer:assemble']<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-browser-sync') != -1) { %>,
 	    options: {
 			spawn: false
-		}
+		}<% }} %>
 	},
     pages: {
         files: ['<%%= paths.src %>/templates/pages/**/{,*/}*.hbs'],
-        tasks: ['newer:assemble:pages'],
+        tasks: ['newer:assemble:pages']<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-browser-sync') != -1) { %>,
 	    options: {
 			spawn: false
-		}
-    },
+		}<% }} %>
+    }<% if (features.indexOf('installDocs') != -1) { %>,
     docs: {
         files: ['<%%= paths.src %>/templates/docs/**/{,*/}*.hbs'],
-        tasks: ['newer:assemble:docs'],
+        tasks: ['newer:assemble:docs']<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-browser-sync') != -1) { %>,
 	    options: {
 			spawn: false
-		}
-    } <% } %><% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>,
+		}<% }} %>
+    }<% } %><% } %><% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>,
     proxies: {
         files: ['Gruntfile.js']
     }<% } %>
