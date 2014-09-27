@@ -218,12 +218,16 @@ For further informations and instructions see:
 
 ## Changelog
 
+### v0.4.60
+- Updated grunt-photobox to support grunt-browser-sync or grunt-contrib-connect
+- Changed output of photobox to Dev folder
+
 ### v0.4.59
-- changed Standard Installation to Minimal Installation
-- optimized svg-sprites and svgmin workflow
-- changed classes fo PG Frontend Methodology
+- Changed Standard Installation to Minimal Installation
+- Optimized svg-sprites and svgmin workflow
+- Changed classes fo PG Frontend Methodology
 
 ### v0.4.58
-- added fork of grunt-dr-svg-sprites and dr-svg-sprites to support placeholders in scss files
-- changed replace.js to change file path
-- added PG Frontend Methodology
+- Added fork of grunt-dr-svg-sprites and dr-svg-sprites to support placeholders in scss files
+- Changed replace.js to change file path
+- Added PG Frontend Methodology

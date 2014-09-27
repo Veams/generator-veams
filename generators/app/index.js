@@ -614,7 +614,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy('helpers/_grunt/phantomas.js', 'helpers/_grunt/phantomas.js');
 		}
 		if (this.modules.indexOf('grunt-photobox') != -1) {
-			this.copy('helpers/_grunt/photobox.js', 'helpers/_grunt/photobox.js');
+			this.template('helpers/_grunt/_photobox.js', 'helpers/_grunt/photobox.js');
 		}
 		if (this.modules.indexOf('grunt-svgmin') != -1) {
 			this.copy('helpers/_grunt/svgmin.js', 'helpers/_grunt/svgmin.js');

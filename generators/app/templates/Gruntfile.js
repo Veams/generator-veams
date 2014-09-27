@@ -45,8 +45,8 @@
             },
 			// define your ports for grunt-contrib-connect
             ports: {
-                app: '9000',
-                test: '9001',
+                app: 9000,
+                test: 9001,
                 livereload: 35729
             }
         };

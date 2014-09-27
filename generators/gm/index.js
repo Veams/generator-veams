@@ -214,7 +214,7 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.npmInstall(['grunt-phantomas'], {'saveDev': true}, done);
 		}
 		if (this.modules.indexOf('grunt-photobox') != -1) {
-			this.copy('../../app/templates/helpers/_grunt/photobox.js', 'helpers/_grunt/photobox.js');
+			this.template('../../app/templates/helpers/_grunt/_photobox.js', 'helpers/_grunt/photobox.js');
 			this.npmInstall(['grunt-photobox'], {'saveDev': true}, done);
 		}
 		if (this.modules.indexOf('grunt-responsive-images') != -1) {
