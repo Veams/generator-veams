@@ -48,5 +48,15 @@ module.exports = {<% if (modules && modules.length > 0) { if (modules.indexOf('g
 				to: '../img/'
 			}
 		]
+	},
+	spriteCleaner: {
+		src: ['<%%= paths.src %>/scss/icons/_sprites-icons-sprite.scss'],             // source files array (supports minimatch)
+		dest: '<%%= paths.src %>/scss/icons/_sprites-icons-sprite.scss',               // destination directory or file
+		replacements: [
+			{
+				from: '%lt-ie9%',                                      // string replacement
+				to: '%lt-ie9-'
+			}
+		]
 	}<% }} %>
 };

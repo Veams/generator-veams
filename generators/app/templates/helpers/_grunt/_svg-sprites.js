@@ -8,8 +8,8 @@ module.exports = {
 			cssPath: "<%%= paths.src %>/scss/icons",
 			// cssSvgPrefix: "svg",
 			cssPngPrefix: "lt-ie9",
-			cssPrefix: "_sprite",
-			prefix: "sprite",
+			cssPrefix: "_sprites",
+			prefix: "sprites",
 			sizes: {
 				medium: 100
 			},

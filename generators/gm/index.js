@@ -261,6 +261,7 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 
 		if (this.modules.indexOf('grunt-grunticon') != -1 || this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 			this.template('../../app/templates/helpers/_grunt/_replace.js', 'helpers/_grunt/replace.js');
+			this.npmInstall(['grunt-text-replace'], {'saveDev': true}, done);
 		}
 	}
 };

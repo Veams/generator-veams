@@ -216,7 +216,14 @@ For further informations and instructions see:
 
 [yeoman]: http://yeoman.io/
 
-## Changelog
+## Release History
+
+### v0.4.61
+- Minor change in svg-sprites task 
+- Bugfix with version.js
+- Mixin: spriteicon() added
+- Updated prototype:gm to support automated download of grunt-text-replace
+- Changed path for prototype:plugin
 
 ### v0.4.60
 - Updated grunt-photobox to support grunt-browser-sync or grunt-contrib-connect

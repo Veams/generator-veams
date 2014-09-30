@@ -70,7 +70,8 @@
 		grunt.registerTask('sprites', [<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-svgmin') != -1) { %>
 			'svgmin',<% }} %>
 			'svg-sprites',
-			'replace:spriteUrl'
+			'replace:spriteUrl',
+			'replace:spriteCleaner'
 		]); <% } %><% if(name == 'grunt-packager') { %>
 		// Pack your JS
 		grunt.registerTask('js', [
