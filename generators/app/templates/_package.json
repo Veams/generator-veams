@@ -21,8 +21,8 @@
         "grunt-sass": "^0.11.0",<% }} %><% if ((features && features.length > 0 && features.indexOf('sassInsteadOfCompass') != -1) || (modules && modules.length > 0 && modules.indexOf('grunt-responsive-images') != -1)) { %>
         "grunt-fileindex": "^0.1.0",<% } %><% if (features && features.length > 0) { if (features.indexOf('mobileFirst') != -1) { %>
         "grunt-comment-media-queries": "~0.1.0", <% }} %><% if (features && features.length > 0) { if (features.indexOf('installDocs') != -1) { %>
-        "grunt-styleguide": "~0.2.14", 
-        "grunt-contrib-copy": "~0.5.0", <% }} %>
+        "grunt-styleguide": "~0.2.14",<% }} %><% if (features && features.length > 0 && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
+        "grunt-contrib-copy": "~0.5.0",<% } %>
         "grunt-newer": "~0.5.4",<% if(modules && modules.length > 0){ %>
 		<% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
 		if(name == 'grunt-grunticon') { %>
