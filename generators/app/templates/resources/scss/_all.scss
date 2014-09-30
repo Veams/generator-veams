@@ -14,8 +14,9 @@
 @import "utils/extends/extends";
 @import "utils/mixins/min-bp";
 @import "utils/mixins/max-bp";
-@import "utils/mixins/cp";
-@import "utils/mixins/grunticon";
+@import "utils/mixins/cp"; <% if (modules && modules.length > 0 && modules.indexOf('grunt-grunticon') != -1) { %>
+@import "utils/mixins/grunticon"; <% } %><% if (modules && modules.length > 0 && modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+@import "utils/mixins/spriteicon"; <% } %>
 @import "utils/mixins/rem";
 
 // Global

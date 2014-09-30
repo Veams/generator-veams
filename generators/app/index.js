@@ -478,7 +478,13 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.copy('resources/scss/global/_vars.scss', 'resources/scss/global/_vars.scss');
 	this.copy('resources/scss/global/_reset.scss', 'resources/scss/global/_reset.scss');
 	this.copy('resources/scss/global/_print.scss', 'resources/scss/global/_print.scss');
-	this.directory('resources/scss/utils', 'resources/scss/utils');
+
+	this.directory('resources/scss/utils/extends', 'resources/scss/utils/extends');
+	this.copy('resources/scss/utils/mixins/_cp.scss');
+	this.copy('resources/scss/utils/mixins/_max-bp.scss');
+	this.copy('resources/scss/utils/mixins/_min-bp.scss');
+	this.copy('resources/scss/utils/mixins/_rem.scss');
+
 	this.template('resources/scss/_all.scss', 'resources/scss/_all.scss');
 	this.copy('resources/scss/styles.scss', 'resources/scss/styles.scss');
 };
@@ -573,6 +579,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.directory('resources/scss/icons', 'resources/scss/icons');
 			this.directory('helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
 			this.template('helpers/_grunt/_grunticon.js', 'helpers/_grunt/grunticon.js');
+			this.copy('resources/scss/utils/mixins/_grunticon.scss');
 		}
 		if (this.modules.indexOf('grunt-data-separator') != -1) {
 			this.copy('helpers/_grunt/dataSeparator.js', 'helpers/_grunt/dataSeparator.js');
@@ -580,6 +587,8 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 			this.mkdir('resources/scss/icons');
 			this.template('helpers/_grunt/_svg-sprites.js', 'helpers/_grunt/svg-sprites.js');
+
+			this.copy('resources/scss/utils/mixins/_spriteicon.scss');
 		}
 		if (this.modules.indexOf('grunt-modernizr') != -1) {
 			this.copy('helpers/_grunt/modernizr.js', 'helpers/_grunt/modernizr.js');
