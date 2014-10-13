@@ -1,0 +1,13 @@
+{
+	"fieldset-class": "is-border",
+	"legend": "Fields",
+	"legend-classes": false,
+	"row-classes": false,
+	"data": [
+		{
+			"col-classes": "is-w100",
+			"typeOf": "info",
+			"text": "<p>Please add some data.</p>"
+		}
+	]
+}

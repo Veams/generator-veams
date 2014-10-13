@@ -1,0 +1,14 @@
+<strong>{{ label }}{{#is required "required"}}<abbr title="Required">*</abbr>{{/is}}</strong>
+<ul class="form__radio {{ class }}">
+	{{#each radio}}
+		<li>
+			<input id="{{ id }}" name="{{ ../name }}" type="radio"
+	            {{#is ../required "required"}}required="required"{{/is}}
+				{{#each data-attribute}}
+					{{data-attribute}}="{{data-attribute-value}}"
+				{{/each}}
+			/>
+			<label for="{{ id }}">{{{ label }}}</label>
+		</li>
+	{{/each}}
+</ul>

@@ -111,17 +111,17 @@ ComponentsGenerator.prototype.appComponents = function appComponents() {
 	if (this.components && this.components.length > 0) {
 
 		if (this.components.indexOf('componentBase') != -1) {
-			this.directory('resources/templates/partials/components/article', 'resources/templates/partials/components/article');
-			this.directory('resources/templates/partials/components/figure', 'resources/templates/partials/components/figure');
-			this.directory('resources/templates/partials/components/picture', 'resources/templates/partials/components/picture');
-			this.directory('resources/templates/partials/components/video', 'resources/templates/partials/components/video');
+			this.directory('components/article', 'resources/templates/partials/components/article');
+			this.directory('components/figure', 'resources/templates/partials/components/figure');
+			this.directory('components/picture', 'resources/templates/partials/components/picture');
+			this.directory('components/video', 'resources/templates/partials/components/video');
 		}
 
 		if (this.components.indexOf('componentForm') != -1) {
-			this.directory('resources/templates/partials/components/form', 'resources/templates/partials/components/form');
-			this.directory('resources/templates/pages/forms', 'resources/templates/pages/forms');
-			this.directory('resources/data/pages/forms', 'resources/data/pages/forms');
-			this.copy('resources/scss/components/_c-form.scss', 'resources/scss/components/_c-form.scss');
+			this.directory('components/form', 'resources/templates/partials/components/form');
+			this.directory('pages/forms', 'resources/templates/pages/forms');
+			this.directory('data/pages/forms', 'resources/data/pages/forms');
+			this.copy('scss/components/_c-form.scss', 'resources/scss/components/_c-form.scss');
 		}
 	}
 };
@@ -135,17 +135,17 @@ ComponentsGenerator.prototype.appModules = function appModules() {
 	if (this.jsModules && this.jsModules.length > 0) {
 
 		if (this.jsModules.indexOf('moduleCarousel') != -1) {
-			this.directory('resources/templates/partials/modules/carousel', 'resources/templates/partials/modules/carousel');
-			this.directory('resources/data/carousels/', 'resources/data/carousels/');
-			this.copy('resources/scss/modules/_m-carousel.scss', 'resources/scss/modules/_m-carousel.scss');
+			this.directory('modules/carousel', 'resources/templates/partials/modules/carousel');
+			this.directory('data/carousels/', 'resources/data/carousels/');
+			this.copy('scss/modules/_m-carousel.scss', 'resources/scss/modules/_m-carousel.scss');
 
 			if (this.setJS.indexOf('jquery') != -1) {
-				this.copy('resources/templates/pages/jquery/carousel.hbs', 'resources/templates/pages/carousel.hbs');
-				this.copy('resources/js/jquery/modules/carousel/carousel.js', 'resources/js/modules/carousel.js');
-				this.copy('resources/js/jquery/modules/carousel/carouselPager.js', 'resources/js/modules/carouselPager.js');
+				this.copy('pages/jquery/carousel.hbs', 'resources/templates/pages/carousel.hbs');
+				this.copy('js/jquery/modules/carousel/carousel.js', 'resources/js/modules/carousel.js');
+				this.copy('js/jquery/modules/carousel/carouselPager.js', 'resources/js/modules/carouselPager.js');
 			} else {
-				this.copy('resources/templates/pages/backbone/carousel-bb.hbs', 'resources/templates/pages/carousel.hbs');
-				this.directory('resources/js/backbone/Carousel', 'resources/js/views/Carousel');
+				this.copy('pages/backbone/carousel-bb.hbs', 'resources/templates/pages/carousel.hbs');
+				this.directory('js/backbone/Carousel', 'resources/js/views/Carousel');
 			}
 		}
 	}

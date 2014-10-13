@@ -1,0 +1,13 @@
+{
+	"legend": "Submit-Button",
+	"legend-classes": "is-hidden",
+	"row-classes": false,
+	"data": [
+		{
+			"col-classes": "is-w100 is-centered",
+			"typeOf": "submit",
+			"class": "form__btn is-color-white is-bg-color-red is-arrow",
+			"text": "Submit"
+		}
+	]
+}
