@@ -1,0 +1,3 @@
+[submodule "generators/components/templates"]
+	path = generators/components/templates
+	url = https://github.com/Sebastian-Fitzner/frontend-modules
