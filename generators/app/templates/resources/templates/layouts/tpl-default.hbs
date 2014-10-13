@@ -63,9 +63,11 @@
 				<div class="container main__container">
 					<aside class="b-sidebar is-right">
 						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-						{{#block "sidebar-right"}}
-							{{> b-sidebar-right }}
-						{{/block}}
+						{{#ifBlock "sidebar-right"}}
+							{{#block "sidebar-right"}}
+								{{> b-sidebar-right }}
+							{{/block}}
+						{{/ifBlock}}
 						<% } else { %>
 						{{> b-sidebar-right }}
 						<% } %>
