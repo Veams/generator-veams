@@ -119,7 +119,9 @@ ComponentsGenerator.prototype.appComponents = function appComponents() {
 
 		if (this.components.indexOf('componentForm') != -1) {
 			this.directory('resources/templates/partials/components/form', 'resources/templates/partials/components/form');
+			this.directory('resources/templates/pages/forms', 'resources/templates/pages/forms');
 			this.directory('resources/data/pages/forms', 'resources/data/pages/forms');
+			this.copy('resources/scss/components/_c-form.scss', 'resources/scss/components/_c-form.scss');
 		}
 	}
 };
@@ -135,6 +137,7 @@ ComponentsGenerator.prototype.appModules = function appModules() {
 		if (this.jsModules.indexOf('moduleCarousel') != -1) {
 			this.directory('resources/templates/partials/modules/carousel', 'resources/templates/partials/modules/carousel');
 			this.directory('resources/data/carousels/', 'resources/data/carousels/');
+			this.copy('resources/scss/modules/_m-carousel.scss', 'resources/scss/modules/_m-carousel.scss');
 
 			if (this.setJS.indexOf('jquery') != -1) {
 				this.copy('resources/templates/pages/jquery/carousel.hbs', 'resources/templates/pages/carousel.hbs');
