@@ -519,7 +519,6 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 		if (this.features && this.features.length > 0) {
 
 			if (this.features.indexOf('PGFM') != -1) {
-				console.log('test: ');
 
 				this.mkdir('resources/data/blocks');
 				this.mkdir('resources/data/pages');

@@ -218,6 +218,11 @@ For further informations and instructions see:
 
 ## Release History
 
+### v0.4.62
+- Optimized package.json 
+- Integrated git submodule for components
+- Integrated {{#ifBlock}} helper
+
 ### v0.4.61
 - Minor change in svg-sprites task 
 - Bugfix with version.js
