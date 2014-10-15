@@ -10,6 +10,13 @@
 <% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
 @import "../bower-components/sass-bootstrap/lib/bootstrap"; // You can choose your specific components
 <% }} %>
+
+<% if(modules && modules.length > 0){ if(modules.indexOf('grunt-grunticon') != -1) { %>
+// Icons
+@import "icons/_icons-data-svg";
+@import "icons/_icons-fallback";
+<% }} %>
+
 // Utilities
 @import "utils/extends/extends";
 @import "utils/mixins/min-bp";
@@ -23,12 +30,19 @@
 @import "global/vars";
 @import "global/base";
 
-// Components
-@import "components/c-forms";
-
 <% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
-// Blocks
-@import "blocks/b-stage--DEMO";
-@import "blocks/b-sidebar--DEMO";
-@import "blocks/b-nav--DEMO";
+
+@import "regions/r-sidebar";
+@import "regions/r-header";
+@import "regions/r-stage";
+@import "regions/r-content";
+@import "regions/r-main";
+
+@import "components/c-form";
+@import "components/c-article";
+
+@import "blocks/b-logo";
+@import "blocks/b-toggle";
+@import "blocks/b-stage-content";
+@import "blocks/b-nav";
 <% } %>

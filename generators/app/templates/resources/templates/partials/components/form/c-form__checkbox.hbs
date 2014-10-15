@@ -1,11 +1,13 @@
 <strong>{{ label }}</strong>
 
-<div class="form__checkboxes {{ id }}">
-	{{#each checkboxes}}
-		<div class="{{ class }}">
-			<input type="{{ ../type }}" id="{{ id }}" value="{{ label }}" {{#is required "required"}}required="required"{{/is}}/>
-			<label for="{{ id }}">{{ label }} {{#is required "required"}}<abbr title="Required">*</abbr>{{/is}}
-			</label>
-		</div>
-	{{/each}}
-</div>
+{{#each checkboxes}}
+	<div class="{{ class }}">
+		<input type="{{ ../type }}" id="{{ id }}" value="{{ label }}"
+	        {{#is required "required"}}required="required"{{/is}}
+			{{#each data-attribute}}
+				{{data-attribute}}="{{data-attribute-value}}"
+			{{/each}}/>
+		<label for="{{ id }}">{{{ label }}} {{#is required "required"}}<abbr title="Required">*</abbr>{{/is}}
+		</label>
+	</div>
+{{/each}}

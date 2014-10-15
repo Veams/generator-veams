@@ -91,46 +91,6 @@ $nav-mobile-width: 270px;
 	}
 }
 
-.toggle__link {
-
-	position: absolute;
-	top: 50%;
-	left: 3rem;
-
-	margin-top: -18px;
-
-	@extend %hide-text;
-
-	&:after {
-		width: 31px;
-		height: 36px;
-
-		@extend %pseudo;
-		@extend %icon-data-svg-menu;
-
-		-webkit-transform: rotate(0deg);
-		-moz-transform: rotate(0deg);
-		-ms-transform: rotate(0deg);
-		-o-transform: rotate(0deg);
-		transform: rotate(0deg);
-		-webkit-transition: 300ms ease all;
-		-moz-transition: 300ms ease all;
-		-ms-transition: 300ms ease all;
-		-o-transition: 300ms ease all;
-		transition: 300ms ease all;
-	}
-}
-
-.toggle__link--close {
-	&:after {
-		-webkit-transform: rotate(-90deg);
-		-moz-transform: rotate(-90deg);
-		-ms-transform: rotate(-90deg);
-		-o-transform: rotate(-90deg);
-		transform: rotate(-90deg);
-	}
-}
-
 .b-navbar {
 	h2 {
 		font-size: 1.8rem;

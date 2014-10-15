@@ -1,8 +1,14 @@
-
 <label for="{{ id }}">
-	{{ label }} {{#is required "required"}}<abbr title="Required">*</abbr>{{/is}}
+	{{ label }} {{#or required validate-me}}<abbr title="Required">*</abbr>{{/or}}
 </label>
-<input id="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}" {{#if data-minlength}}data-minlength="{{data-minlength}}"{{/if}}
-	{{#if data-maxlength}}data-maxlength="{{data-maxlength}}"{{/if}}
-	{{#if data-errormessage}}data-errormessage="{{data-errormessage}}"{{/if}}
-	{{#is required "required"}}required="required"{{/is}} />
+<input id="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}"
+	{{#each data-attribute}}
+		{{data-attribute}}{{#if data-attribute-value}}="{{data-attribute-value}}"{{/if}}
+	{{/each}}
+	{{#is required "required"}}required="required"{{/is}}
+	{{#if pattern}}pattern="{{{ pattern }}}"{{/if}} />
+{{#if custom-errormessage}}
+	<div class="form__error" hidden="">
+		<p>{{custom-errormessage}}</p>
+	</div>
+{{/if}}

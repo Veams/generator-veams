@@ -37,10 +37,11 @@ module.exports = {<% if (features && features.length > 0) { if (features.indexOf
 					'global/_vars.scss',
 					'utils/extends/**/*.scss',
 					'utils/mixins/**/*.scss',
-					'global/_base.scss',
+					'global/_base.scss',<% if (features && features.length > 0) { if (features.indexOf('PGFM') != -1) { %>
+					'regions/**/*.scss',
 					'components/**/*.scss',
 					'modules/**/*.scss',
-					'blocks/**/*.scss',
+					'blocks/**/*.scss',<% }} %>
 					'icons/**/*.scss'
 				]
 			}

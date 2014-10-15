@@ -1,60 +1,41 @@
 ---
-component: generic-form-template
-docs: false
+component: forms
 ---
 
-{{#if docs}}
-	{{#markdown}}
-------------------------------------------------
+<fieldset class="form__fieldset{{#if fieldset-class}} {{fieldset-class}}{{/if}}">
+	<div class="outer-container">
+		<div class="form__wrapper">
+			<legend{{#if legend-classes}} class="{{ legend-classes }}"{{/if}}>{{ legend }}</legend>
+			<div class="form__row {{ row-classes }}">
 
-### Author:  Sebastian Fitzner
-### Date:    02.04.2014
+				{{#each data}}
+					<div class="form__col {{ col-classes }}">
 
-This template is a generic one to speed up the workflow.
+						{{#is typeOf "input"}}
+							{{partial "c-form__input" }}
 
-## USAGE:
-- Every generic form type should be integrated here with an #is-statement
-- Integrate this partial in your page and wrap it with an #each-loop
-- The #each-loop should refer to a json file with your specific form elements
-- DONE!
+						{{else}}{{#is typeOf "textarea"}}
+							{{partial "c-form__textarea" }}
 
-------------------------------------------------
-	{{/markdown}}
-{{/if}}
+						{{ else }}{{#is typeOf "select"}}
+							{{partial "c-form__select" }}
 
-<fieldset class="form__fieldset">
-	<legend {{#if legend-classes}}class="{{ legend-classes }}"{{/if}}>{{ legend }}</legend>
-	<div class="form__row {{ row-classes }}">
+						{{ else }}{{#is typeOf "info"}}
+							{{partial "c-form__info" }}
 
-		{{#each data}}
-			<div class="form__col {{ col-classes }}">
+						{{ else }}{{#is typeOf "radio"}}
+							{{partial "c-form__radio" ../this }}
 
-				{{#is typeOf "input"}}
+						{{ else }}{{#is typeOf "checkbox"}}
+							{{partial "c-form__checkbox" ../this }}
 
-					{{partial "c-form__input" }}
+						{{ else }}{{#is typeOf "submit"}}
+							{{partial "c-form__submit" }}
 
-				{{else}}{{#is typeOf "textarea"}}
-
-					{{partial "c-form__textarea" }}
-
-				{{ else }}{{#is typeOf "select"}}
-
-					{{partial "c-form__select" }}
-
-				{{ else }}{{#is typeOf "info"}}
-
-					{{partial "c-form__info" }}
-
-				{{ else }}{{#is typeOf "radio"}}
-
-					{{partial "c-form__radio" ../this }}
-
-				{{ else }}{{#is typeOf "checkbox"}}
-
-					{{partial "c-form__checkbox" ../this }}
-
-				{{/is}}{{/is}}{{/is}}{{/is}}{{/is}}{{/is}}
+						{{/is}}{{/is}}{{/is}}{{/is}}{{/is}}{{/is}}{{/is}}
+					</div>
+				{{/each}}
 			</div>
-		{{/each}}
+		</div>
 	</div>
 </fieldset>

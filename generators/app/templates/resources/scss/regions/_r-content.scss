@@ -1,0 +1,7 @@
+.r-content {
+	width: 78%;
+	margin-right: 2%;
+	@include max-bp($mobile) {
+		width: 100%;
+	}
+}

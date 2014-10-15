@@ -1,0 +1,51 @@
+---
+bodyclass: forms
+title: Build Forms
+sortOrder: 02
+menuLink: Forms
+lead: Scaffold forms with JSON files.
+---
+
+<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+{{#extend "tpl-default"}}
+	{{#content "body"}}
+
+		{{#form.data}}
+			{{partial "c-article" }}
+		{{/form.data}}
+
+		<form class="c-form validate-ui" action="#" method="get">
+			{{#form__address-header}}
+				{{partial "c-form"}}
+			{{/form__address-header}}
+
+			{{#form__address-bill}}
+				{{partial "c-form"}}
+			{{/form__address-bill}}
+
+			{{#form__address-submit}}
+				{{partial "c-form"}}
+			{{/form__address-submit}}
+		</form>
+
+	{{/content}}
+{{/extend}}
+<% } else { %>
+{{#form.data}}
+	{{partial "c-article" }}
+{{/form.data}}
+
+<form class="c-form validate-ui" action="#" method="get">
+	{{#form__address-header}}
+		{{partial "c-form"}}
+	{{/form__address-header}}
+
+	{{#form__address-bill}}
+		{{partial "c-form"}}
+	{{/form__address-bill}}
+
+	{{#form__address-submit}}
+		{{partial "c-form"}}
+	{{/form__address-submit}}
+</form>
+<% } %>

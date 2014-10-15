@@ -1,0 +1,377 @@
+<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
+.c-form {
+	float: left;
+
+	width: 100%;
+
+	color: #999;
+
+	@include rem("font-size", 18px);
+
+	.is-hidden {
+		@extend %hide-text;
+	}
+
+	/* ---------------------------------------------------
+	 Fieldsets
+	 --------------------------------------------------- */
+	.form__fieldset {
+		position: relative;
+
+		float: left;
+
+		width: 100%;
+		padding-bottom: 1em;
+		&:last-child {
+			padding: 0;
+		}
+		legend {
+			line-height: 120%;
+
+			float: left;
+
+			width: 100%;
+			margin: (1em / 2) 0 (1em * 1.5);
+
+			text-align: center;
+
+			@include rem("font-size", 42px);
+		}
+		&.is-border {
+			padding-top: 30px;
+
+			border-top: 1px solid #f4f4f4;
+		}
+		&.is-toggle-me {
+			display: none;
+			&.js-visible {
+				display: block;
+			}
+		}
+	}
+
+	.form__row {
+		float: left;
+
+		width: 100%;
+	}
+
+	/* ---------------------------------------------------
+	 Cols
+	 --------------------------------------------------- */
+	.form__col {
+		float: left;
+
+		margin-bottom: 1em;
+		&:last-child {
+			margin: 0;
+		}
+		&.is-w100 {
+			width: 100%;
+		}
+		&.is-w40 {
+			width: 40%;
+		}
+		&.is-w50 {
+			width: 50%;
+		}
+		&.is-w60 {
+			width: 60%;
+		}
+		&.is-w40,
+		&.is-w50,
+		&.is-w60 {
+			padding-right: 1em / 2;
+
+			&:nth-child(2n+1) {
+				clear: left;
+			}
+			&:nth-child(2n+2) {
+				padding-right: 0;
+			}
+		}
+		&.is-centered {
+			text-align: center;
+		}
+		&.is-check,
+		&.is-radio {
+			width: 100%;
+			margin-top: 1em;
+
+			@include rem("padding", 0 30px);
+
+			strong {
+				display: none;
+			}
+			&.is-narrow {
+				padding: 0 14%;
+			}
+			&.is-margin {
+				margin-top: 1em * 2;
+			}
+		}
+		.form__error {
+			float: left;
+
+			width: 100%;
+			margin-top: 1em / 2;
+
+			&[hidden] {
+				display: none;
+			}
+			p {
+				color: $color-validate-error;
+
+				@include rem("font-size", 15px);
+			}
+		}
+		/* ---------------------------------------------------
+		 Check E-Mails
+		 --------------------------------------------------- */
+		&.is-mail {
+			&:nth-child(2n+1) {
+				clear: none;
+
+				padding-right: 0;
+			}
+			&:nth-child(2n+2) {
+				padding-right: 1em / 2;
+			}
+		}
+	}
+
+	/* ---------------------------------------------------
+	 Label
+	 --------------------------------------------------- */
+	label {
+		line-height: 1em * 2;
+
+		display: block;
+		abbr {
+			color: #f4f4f4;
+		}
+		.form__check &,
+		.form__radio & {
+			line-height: 25px;
+
+			display: block;
+
+			padding-left: 1em * 2;
+
+			cursor: pointer;
+
+			@include rem("font-size", 16px);
+
+			&:before {
+				top: 1px;
+				left: 0;
+
+				width: 1em;
+				height: 1em;
+
+				border: 1px solid #ccc;
+				background: #fff;
+
+				@extend %pseudo;
+			}
+		}
+		.form__radio & {
+			&:before {
+				top: 6px;
+
+				border-radius: 50%;
+			}
+		}
+		.form__radio.is-payment li:last-child & {
+			&:before {
+				top: 15px;
+			}
+		}
+	}
+
+	/* ---------------------------------------------------
+	 Input
+	 --------------------------------------------------- */
+	input {
+		&[type="text"],
+		&[type="email"],
+		&[type="url"],
+		&[type="tel"],
+		&[type="password"],
+		&[type="select"] {
+			line-height: 35px;
+
+			float: left;
+
+			width: 100%;
+			margin: 0;
+			padding: 5px 1em;
+
+			border: 1px solid #ccc;
+			border-radius: 0;
+
+			@include rem("font-size", 18px);
+			-webkit-appearance: none;
+		}
+		&[type="checkbox"],
+		&[type="radio"] {
+			float: left;
+
+			margin-right: 10px;
+		}
+		.is-centered & {
+			float: none;
+
+			width: 85%;
+
+			text-align: center;
+		}
+		.form__check &,
+		.form__radio & {
+			display: none;
+			&:checked + label:before {
+				width: 1em;
+				height: 1em;
+			}
+		}
+		.form__check & {
+		}
+		.form__radio & {
+		}
+	}
+
+	/* ---------------------------------------------------
+	 Checkboxes, Radio-Buttons
+	 --------------------------------------------------- */
+	.form__check {
+		position: relative;
+
+		margin-bottom: 1em;
+		&:last-child,
+		.is-solo & {
+			margin: 0;
+		}
+	}
+
+	.form__radio {
+		.b-main & {
+			margin: 0;
+			padding: 0;
+
+			list-style: none;
+		}
+		li {
+			float: left;
+
+			width: 100%;
+		}
+		&.is-payment {
+			li {
+				position: relative;
+
+				margin: 1em 0;
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+		.form__radio-images {
+			figure {
+				float: left;
+
+				width: auto;
+				margin-right: 1em;
+			}
+		}
+	}
+
+	/* ---------------------------------------------------
+	 c-form__submit
+	 --------------------------------------------------- */
+	.form__btn {
+		font-weight: 700;
+
+		position: relative;
+
+		margin-top: 1em * 2;
+		padding: 15px 1em;
+
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+
+		border: 0;
+		border-radius: 10px;
+
+		@include rem("font-size", 16px);
+
+		span {
+			position: relative;
+
+			display: inline-block;
+		}
+		&.is-bg-color-red {
+			background-color: #999;
+			&:hover,
+			&:focus {
+				background-color: darken(#f4f4f4, 10%);
+			}
+		}
+		&.is-bg-color-grey {
+			background-color: #333;
+			&:hover,
+			&:focus {
+				background-color: darken(#333, 10%);
+			}
+		}
+		&.is-color-white {
+			color: #fff;
+		}
+		&.is-arrow {
+			padding-right: 1em * 2.5;
+			span {
+				&:after {
+					top: 50%;
+					right: -35px;
+
+					margin-top: -10px;
+
+					@extend %pseudo;
+				}
+			}
+		}
+		&.is-right {
+			float: right;
+		}
+		&.is-no-margin {
+			margin: 0;
+		}
+		&:hover,
+		&:focus {
+			span {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	/* ---------------------------------------------------
+	 c-form__info
+	 --------------------------------------------------- */
+	.form__info {
+		> * {
+			line-height: 140%;
+
+			text-align: center;
+		}
+		span {
+			display: block;
+
+			color: #777;
+			em {
+				color: #f4f4f4;
+			}
+		}
+	}
+}
+
+<% } %>

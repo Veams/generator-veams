@@ -30,68 +30,71 @@
 
 			<!-- Header
 			================================================== -->
-			<header class="b-header">
+			<header class="r-header">
 				<div class="container header__container">
-					{{partial "b-nav-toggler" }}
+					{{partial "b-toggle" }}
 					{{partial "b-logo" }}
 				</div>
 			</header>
 
 			<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-			{{#block "nav"}}
-				<!-- Navbar
-				================================================== -->
+			<section class="r-nav">
+				{{#block "nav"}}
+					<!-- Navbar
+					================================================== -->
+					{{> b-nav }}
+				{{/block}}
+				<% } else { %>
 				{{> b-nav }}
-			{{/block}}
-			<% } else { %>
-			{{> b-nav }}
+			</section>
 			<% } %>
 
 			<!-- Stage
 			================================================== -->
-			<section class="b-stage">
+			<section class="r-stage">
 				<div class="container stage__container">
-					<h1 class="stage__head"> {{{ title }}} </h1>
-
-					<h2 class="stage__lead">{{{ lead }}}</h2>
+					{{> b-stage-content }}
 				</div>
 			</section>
 
 			<!-- Content
 			================================================== -->
-			<main class="b-main" id="main">
+			<main class="r-main" id="main">
 				<div class="container main__container">
-					<aside class="b-sidebar is-right">
+					<aside class="r-sidebar is-right">
 						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 						{{#ifBlock "sidebar-right"}}
 							{{#block "sidebar-right"}}
-								{{> b-sidebar-right }}
+								{{> b-release }}
 							{{/block}}
 						{{/ifBlock}}
 						<% } else { %>
-						{{> b-sidebar-right }}
+						{{> b-release }}
 						<% } %>
 					</aside>
-					<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-					{{#block "body"}}
+					<div class="r-content">
+						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+						{{#block "body"}}
+							{{> body }}
+						{{/block}}
+						<% } else { %>
 						{{> body }}
-					{{/block}}
-					<% } else { %>
-					{{> body }}
-					<% } %>
+						<% } %>
+					</div>
+
 				</div>
 			</main>
 
 			<!-- Footer
 			================================================== -->
-			<footer class="b-footer">
+			<footer class="r-footer">
 				<div class="container footer__container">
 					<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 					{{#block "footer"}}
-						{{> b-footer }}
+						{{> b-footer-copy }}
 					{{/block}}
 					<% } else { %>
-					{{> b-footer }}
+					{{> b-footer-copy }}
 					<% } %>
 				</div>
 			</footer>
@@ -104,11 +107,8 @@
 	{{/block}}
 	<% } else { %>
 	{{> body }}
-	<% } %> <% } %>
-	<% if (jsLibs && jsLibs.length > 0 || features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
-	<!-- Scripts
-	================================================== -->
-	<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+	<% } %> <% } %> <% if (jsLibs && jsLibs.length > 0 || features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>	<!-- Scripts
+	================================================== -->	<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 	{{#block "scripts"}}
 		{{> _scripts }}
 	{{/block}}

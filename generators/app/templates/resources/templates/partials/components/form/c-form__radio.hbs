@@ -1,14 +1,14 @@
 <strong>{{ label }}{{#is required "required"}}<abbr title="Required">*</abbr>{{/is}}</strong>
-<ul class="radio-group {{ id }}">
+<ul class="form__radio {{ class }}">
 	{{#each radio}}
 		<li>
-			<input id="{{ id }}" name="{{ ../name }}" type="radio" {{#is ../required "required"}}required="required"{{/is}}/>
-			<label for="{{ id }}">{{ label }}</label>
+			<input id="{{ id }}" name="{{ ../name }}" type="radio"
+	            {{#is ../required "required"}}required="required"{{/is}}
+				{{#each data-attribute}}
+					{{data-attribute}}="{{data-attribute-value}}"
+				{{/each}}
+			/>
+			<label for="{{ id }}">{{{ label }}}</label>
 		</li>
 	{{/each}}
 </ul>
-{{#if data-errormessage}}
-	<div class="error-message">
-		<p class="value-missing">{{data-errormessage}}</p>
-	</div>
-{{/if}}

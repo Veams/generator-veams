@@ -1,16 +1,17 @@
-<div class="select-wrapper {{#if multiple}}custom-select{{/if}}">
+<div class="form__select">
 	<label for="{{ id }}">
-		{{ label }} {{#is required "required"}}<abbr title="Required">*</abbr>{{/is}}
+		{{ label }} {{#or required validate-me}}<abbr title="Required">*</abbr>{{/or}}
 	</label>
-	<select id="{{ id }}" class="{{ class }}" name="{{ id }}" {{#if data-errormessage}}data-errormessage="{{data-errormessage}}"{{/if}}
-		{{#is required "required"}}required{{/is}}
-		{{#if multiple}}multiple="multiple"{{/if}} data-trigger="change">
-		{{#if multiple}}
-			<option value=""></option>
-		{{/if}}
-		{{#each option}}
-			<option value="{{val}}" {{#if disabled}}disabled{{/if}}>{{name}}</option>
-		{{/each}}
+	<select id="{{ id }}" class="{{ class }}" name="{{ id }}"
+
+	{{#each data-attribute}}
+		{{data-attribute}}="{{data-attribute-value}}"
+	{{/each}}
+
+	{{#is required "required"}}required="required"{{/is}}>
+	{{#each option}}
+		<option value="{{val}}"{{#if disabled}} disabled{{/if}}>{{name}}</option>
+	{{/each}}
 
 	</select>
 </div>

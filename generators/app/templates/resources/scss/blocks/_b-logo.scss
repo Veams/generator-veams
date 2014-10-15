@@ -1,0 +1,19 @@
+.b-logo {
+	width: auto;
+	padding: 2rem;
+
+	text-align: center;
+
+	@include max-bp($mobile) {
+		text-align: right;
+	}
+
+	.logo__symbol {
+		&:hover {
+		}
+		img {
+			width: 50px;
+			height: auto;
+		}
+	}
+}
