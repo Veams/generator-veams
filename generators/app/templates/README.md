@@ -2,6 +2,7 @@
 
 ---------------------------------------------------
 ## Requirements for FE
+
 * NodeJS (<= 0.10.26)
 * Grunt
 <% if (modules && modules.length > 0 && modules.indexOf('grunt-responsive-images') != -1) { %>
@@ -9,6 +10,12 @@
 If you want to use an automated task to create responsive images you need to make sure that you have installed GraphicsMagick.
 
 To build responsive images just start the task `pictures`.
+<% } %>
+---------------------------------------------------
+## Frontend Methodology
+<% if(features.indexOf("PGFM") != -1) { %>
+We build <%= _.slugify(projectName) %> with the PG Frontend Methodology: 
+* http://www.prototype-generator.com/pg-methodology/pg-methodology-overview.html
 <% } %>
 ---------------------------------------------------
 ## Setup
@@ -27,12 +34,14 @@ This project builds on following setup (please read requirements and getting sta
 
 ---------------------------------------------------
 ## Browser-Support
+
 - all modern desktop browsers: Firefox, Chrome, IE and Safari/Mac latest version
 - also: IE 10, 9 and 8
 - all modern mobile browsers: iOS and Android latest two versions
 
 ---------------------------------------------------
 ## Responsive-Webdesign-Support
+
 - Desktop
 - Tablet
 - Phone
@@ -73,6 +82,7 @@ sizes: [
 
 ---------------------------------------------------
 ## Team
+
 - TPM/PM:
 - Frontend:
 - Backend:
