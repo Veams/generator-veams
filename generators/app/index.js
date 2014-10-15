@@ -160,7 +160,7 @@ PrototypeGenerator.prototype.askDefault = function askDefault() {
 			this._askFor();
 		}
 	}.bind(this));
-}
+};
 
 PrototypeGenerator.prototype._askFor = function _askFor() {
 	var done = this.async();
@@ -227,6 +227,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"},
 			{name: "grunt-contrib-compass"},
 			{name: "grunt-contrib-htmlmin"},
+			{name: "grunt-contrib-requirejs"},
 			{name: "grunt-contrib-uglify"},
 			{name: "grunt-csscomb"},
 			{name: "grunt-data-separator", checked: true},
@@ -451,15 +452,11 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.template('helpers/_grunt/_sync.js', 'helpers/_grunt/sync.js');
 	this.template('helpers/_grunt/_watch.js', 'helpers/_grunt/watch.js');
 	this.copy('bowerrc', '.bowerrc');
+	this.copy('_bower.json', 'bower.json');
 	this.copy('gitignore', '.gitignore');
 	this.template('README.md', 'README.md');
 
 	this.mkdir('_output');
-
-	// add batch files
-	if (this.config.get("batchFiles") == true) {
-		this.directory('helpers/batch_files', 'helpers/batch_files');
-	}
 
 	// add specific resources to make it possible to split up some directories
 	this.mkdir('_output/js');
@@ -520,16 +517,18 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 
 			if (this.features.indexOf('PGFM') != -1) {
 
+				// Data
 				this.mkdir('resources/data/blocks');
 				this.mkdir('resources/data/pages');
 				this.mkdir('resources/data/_global');
+
+				// Blocks
 				this.copy('resources/templates/partials/blocks/b-sitemap.hbs');
 				this.copy('resources/templates/partials/blocks/README.md');
 
 				// Components
 				this.directory('resources/templates/partials/components/_base', 'resources/templates/partials/components');
-				// Components
-				this.directory('resources/templates/partials/components/_base', 'resources/templates/partials/components');
+				this.directory('resources/templates/partials/components/form', 'resources/templates/partials/components/form');
 
 				// Modules
 				this.directory('resources/templates/partials/modules', 'resources/templates/partials/modules');
@@ -538,23 +537,18 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 			if (this.features.indexOf('installDemoContent') != -1) {
 
 				// Data
-				this.mkdir('resources/data/blocks');
 				this.directory('resources/data', 'resources/data');
 
-				// Global content
-
-				// Components
-				this.directory('resources/templates/partials/components/form', 'resources/templates/partials/components/form');
-
 				// Pages
-				this.copy('resources/templates/pages/forms.hbs');
+				this.copy('resources/templates/pages/forms/form.hbs');
 
 				// Blocks
-				this.copy('resources/templates/partials/blocks/b-sidebar-right.hbs');
-				this.copy('resources/templates/partials/blocks/b-footer.hbs');
+				this.copy('resources/templates/partials/blocks/b-footer-copy.hbs');
 				this.copy('resources/templates/partials/blocks/b-logo.hbs');
 				this.copy('resources/templates/partials/blocks/b-nav.hbs');
-				this.copy('resources/templates/partials/blocks/b-nav-toggler.hbs');
+				this.copy('resources/templates/partials/blocks/b-release.hbs');
+				this.copy('resources/templates/partials/blocks/b-stage-content.hbs');
+				this.copy('resources/templates/partials/blocks/b-toggle.hbs');
 			}
 		}
 	}
@@ -566,6 +560,7 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
  *
  */
 PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
+	// var done = this.async();
 // Grunt modules are splitted up in separate files and modules
 	if (this.modules && this.modules.length > 0) {
 		if (this.modules.indexOf('grunt-accessibility') != -1) {
@@ -602,6 +597,10 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 		if (this.modules.indexOf('grunt-contrib-htmlmin') != -1) {
 			this.copy('helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
+		}
+		if (this.modules.indexOf('grunt-contrib-requirejs') != -1 || (this.jsLibs && this.jsLibs.length > 0 && this.jsLibs.indexOf('requirejs') != -1)) {
+			this.copy('helpers/_grunt/requirejs.js', 'helpers/_grunt/requirejs.js');
+			this.bowerInstall(['almond'], { 'saveDev': true });
 		}
 		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
 			this.template('helpers/_grunt/_uglify.js', 'helpers/_grunt/uglify.js');
@@ -715,13 +714,15 @@ PrototypeGenerator.prototype.appFeatures = function appFeatures() {
 			this.mkdir('resources/scss/blocks');
 			this.mkdir('resources/scss/components');
 			this.mkdir('resources/scss/modules');
+			this.mkdir('resources/scss/regions');
 		}
 
 		// Add Demo Content
 		if (this.features.indexOf('installDemoContent') != -1) {
 
-			this.directory('resources/scss/components');
 			this.directory('resources/scss/blocks');
+			this.directory('resources/scss/components');
+			this.directory('resources/scss/regions');
 
 			this.copy('resources/js/demo.js', 'resources/js/demo.js');
 
@@ -756,15 +757,6 @@ PrototypeGenerator.prototype.appJSLibs = function appJSLibs() {
 			this.copy('resources/js/app.js', 'resources/js/app.js');
 		}
 	}
-};
-
-
-/**
- * Bower file generation
- *
- */
-PrototypeGenerator.prototype.appBower = function appBower() {
-	this.copy('_bower.json', 'bower.json');
 };
 
 /**

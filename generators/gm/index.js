@@ -232,7 +232,7 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 
 		if (this.modules.indexOf('grunt-version') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/version.js', 'helpers/_grunt/version.js');
-			this.copy('../../app/templates/resources/templates/partials/_global/_version.hbs', 'resources/templates/partials/_global/_version.hbs');
+			this.copy('../../app/templates/resources/templates/partials/blocks/b-version.hbs', 'resources/templates/partials/blocks/b-version.hbs');
 			this.npmInstall(['grunt-version'], {'saveDev': true}, done);
 		}
 
