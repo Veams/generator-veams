@@ -7,9 +7,15 @@ $gutter: 22px;
 $grid-columns: 12;
 $max-width: 1138px;
 
+$mobile-first: false; // This variable will be use in utils/mixins/_breakpoint.scss
+
 // Define your breakpoints
-$tablet: new-breakpoint(max-width 768px 8);
-$mobile: new-breakpoint(max-width 480px 4);
+// $tablet: new-breakpoint(max-width 768px 8);
+// $mobile: new-breakpoint(max-width 480px 4);
+
+// Demo vars, when you use bourbon neat just delete them and comment out the two lines above
+$tablet: 768px;
+$mobile: 480px;
 <% } else { %>
 <% } %>
 

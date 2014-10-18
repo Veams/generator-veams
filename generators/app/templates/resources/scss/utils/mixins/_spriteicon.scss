@@ -1,7 +1,7 @@
 /******************************************
 
 	Spriteicon mixin
-	usage: @include spriteicon(icon-name);
+	usage: @include spriteicon(filename);
 
 ******************************************/
 @mixin sprite($name) {

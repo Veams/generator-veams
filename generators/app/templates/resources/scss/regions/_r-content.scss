@@ -1,7 +1,7 @@
 .r-content {
 	width: 78%;
 	margin-right: 2%;
-	@include max-bp($mobile) {
+	@include breakpoint($mobile) {
 		width: 100%;
 	}
 }

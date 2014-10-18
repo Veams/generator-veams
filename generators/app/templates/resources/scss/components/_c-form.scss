@@ -9,7 +9,7 @@
 	@include rem("font-size", 18px);
 
 	.is-hidden {
-		@extend %hide-text;
+		@extend %hidden;
 	}
 
 	/* ---------------------------------------------------

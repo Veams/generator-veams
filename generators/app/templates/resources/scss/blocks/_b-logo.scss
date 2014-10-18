@@ -4,7 +4,7 @@
 
 	text-align: center;
 
-	@include max-bp($mobile) {
+	@include breakpoint($mobile) {
 		text-align: right;
 	}
 

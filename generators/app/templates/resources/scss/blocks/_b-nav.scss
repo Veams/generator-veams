@@ -60,7 +60,7 @@ $nav-mobile-width: 270px;
 	-o-transform: translate3d($nav-width, 0, 0);
 	transform: translate3d($nav-width, 0, 0);
 
-	@include max-bp($mobile) {
+	@include breakpoint($mobile) {
 		-webkit-transform: translateX($nav-mobile-width);
 		-moz-transform: translateX($nav-mobile-width);
 		-ms-transform: translateX($nav-mobile-width);
@@ -84,7 +84,7 @@ $nav-mobile-width: 270px;
 
 	background: lighten($color-logo, 5);
 
-	@include max-bp($mobile) {
+	@include breakpoint($mobile) {
 		left: -$nav-mobile-width;
 
 		width: $nav-mobile-width;
