@@ -10,14 +10,14 @@ module.exports = {
 	},
 	dev: {
 		options: {
-			out: "<%= paths.dev %>/js/development.js",
+			out: "<%= paths.dev %>/js/main.js",
 			optimize: "none", // no minification
 			generateSourceMaps: true
 		}
 	},
-	production: {
+	prod: {
 		options: {
-			out: "<%= paths.dev %>/js/production.js"
+			out: "<%= paths.dev %>/js/main.min.js"
 		}
 	}
 };

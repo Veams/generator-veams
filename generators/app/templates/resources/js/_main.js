@@ -5,13 +5,13 @@
  */
 require.config({
     paths: {<% if(jsLibs && jsLibs.length > 0){ %><% if(typeof jsLibs === 'object'){ _.each(jsLibs, function(name, i) { %><% if(name == 'jquery') { %> 
-		jquery: '../bower_components/jquery/dist/jquery'<% if(i < (jsLibs.length - 1)) { %>,<% } %><% } %><% if(name == 'backbone') { %>
-        backbone: '../bower_components/backbone/backbone'<% if(i < (jsLibs.length - 1)) { %>,<% } %><% } %><% if(name == 'angular') { %>
-        angular: '../bower_components/angular/angular'<% } %><% }); }  %><% } %>
+		jquery: '../bower-components/jquery/dist/jquery'<% if(i < (jsLibs.length - 1)) { %>,<% } %><% } %><% if(name == 'backbone') { %>
+        backbone: '../bower-components/backbone/backbone'<% if(i < (jsLibs.length - 1)) { %>,<% } %><% } %><% if(name == 'angular') { %>
+        angular: '../bower-components/angular/angular'<% } %><% }); }  %><% } %>
     },
     shim: {<% if (jsLibs && jsLibs.length > 0) { if (jsLibs.indexOf('backbone') != -1) { %>
         'backbone': {
-            deps: ['../bower_components/underscore/underscore', 'jquery'],
+            deps: ['../bower-components/underscore/underscore', 'jquery'],
             exports: 'Backbone'
         }<% }} %>
     }

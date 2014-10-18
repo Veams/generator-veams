@@ -5,7 +5,7 @@
 			"article-header": true,
 			"article-h1": "Build your website with PG",
 			"article-h2": "Use PG to give your projects a simple but scalable structure.",
-			"article-md": "resources/data/pages/homepage.md"
+			"article-md": "resources/data/pages/index/homepage.md"
 		}
 	]
 }

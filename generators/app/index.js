@@ -43,7 +43,8 @@ var PrototypeGenerator = module.exports = function PrototypeGenerator(args, opti
 		installCMS: false,
 		modules: [
 			"grunt-combine-media-queries",
-			"grunt-dr-svg-sprites"
+			"grunt-grunticon",
+			"grunt-data-separator"
 		],
 		features: [
 			"sassInsteadOfCompass"
