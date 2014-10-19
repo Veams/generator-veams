@@ -54,7 +54,7 @@ You can scaffold your project in an instance. The first question is:
 
 If you choose "Minimal installation" you skip the rest of the questions and get the default values with:
  * Libsass (grunt-sass)
- * Grunt Modules: grunt-dr-svg-sprites, grunt-combine-media-queries
+ * Grunt Modules: grunt-grunticon, grunt-data-separator
  * Assemble as Template Engine
 
 ## Structure
@@ -214,16 +214,16 @@ For further informations and instructions see:
 
 ### v0.4.65
 
-#### General
+**General**
 - Refactored Gruntfile.js
 - Added loadCSS.js to load CSS Styles asynchronous
 
-#### Assemble
+**Assemble**
 - Added custom helper-partial.js
 - Added support for assemble factories
 - Added Regions Readme.md
 
-#### SASS
+**SASS**
 - Added custom breakpoint mixin
 
 ### v0.4.64
