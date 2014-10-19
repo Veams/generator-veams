@@ -34,9 +34,9 @@ module.exports = {<% if (features && features.length > 0) { if (features.indexOf
 					'../bower-components/bourbon/app/assets/stylesheets/_bourbon.scss',
 					'../bower-components/neat/app/assets/stylesheets/_neat.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
 					'../bower-components/sass-bootstrap/lib/bootstrap.scss',<% }} %>
-					'global/_vars.scss',
 					'utils/extends/**/*.scss',
 					'utils/mixins/**/*.scss',
+					'global/_vars.scss',
 					'global/_base.scss',<% if (features && features.length > 0) { if (features.indexOf('PGFM') != -1 || features.indexOf('installDemoContent') != -1) { %>
 					'regions/**/*.scss',
 					'components/**/*.scss',

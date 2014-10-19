@@ -12,4 +12,4 @@ module.exports = {
 			'<%= paths.dev %>/css/styles.css': ['<%= paths.dev %>/css/styles.css']
 		}
 	}
-}
+};

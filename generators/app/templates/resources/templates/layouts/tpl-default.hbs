@@ -63,11 +63,9 @@
 				<div class="container main__container">
 					<aside class="r-sidebar is-right">
 						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-						{{#ifBlock "sidebar-right"}}
 							{{#block "sidebar-right"}}
 								{{> b-release }}
 							{{/block}}
-						{{/ifBlock}}
 						<% } else { %>
 						{{> b-release }}
 						<% } %>
@@ -107,13 +105,13 @@
 	{{/block}}
 	<% } else { %>
 	{{> body }}
-	<% } %> <% } %> <% if (jsLibs && jsLibs.length > 0 || features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>	<!-- Scripts
-	================================================== -->	<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+	<% } %> <% } %><!-- Scripts
+	================================================== --> <% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 	{{#block "scripts"}}
 		{{> _scripts }}
 	{{/block}}
 	<% } else { %>
 	{{> _scripts }}
-	<% } %><% } %>
+	<% } %>
 </body>
 </html>

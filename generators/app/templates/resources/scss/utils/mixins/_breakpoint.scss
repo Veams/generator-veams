@@ -7,59 +7,52 @@
 
 	Usage:
 	1. Define your project settings in global/_vars.scss:
-		- change the breakpoints when you have to
+		- change/add the breakpoints you need for your project
 		- change the variable $mobile-first so that it fits your needs (true or false)
 
 	2. Add a specific breakpoint with:
 		- @include breakpoint($my-breakpoint-variable){};
 
 	3. When you need "min-width" and "max-width" you just have to provide a second parameter:
-		- @include breakpoint($my-breakpoint-variable-1, $my-breakpoint-variable-1){};
+		- @include breakpoint($my-breakpoint-variable-1, $my-breakpoint-variable-2){};
 
 
-	Output with §mobile-first: true:
+	Example: $mobile-first: true;
 		@include breakpoint(400px){
 			color: red;
 		};
 
-		@media only screen and (min-width: 400px) {
-			 color: red;
-		}
+		Output:
+			@media only screen and (min-width: 400px) {
+				 color: red;
+			}
 
-	Output with §mobile-first: false:
+	Example: $mobile-first: false;
 		@include breakpoint(400px){
 			color: red;
 		};
 
-		@media only screen and (max-width: 400px) {
-			 color: red;
-		}
+		Output:
+			@media only screen and (max-width: 400px) {
+				 color: red;
+			}
 
 ******************************************/
+$mobile-first: false;
 
 @mixin breakpoint($breakpoint-1, $breakpoint-2: null) {
-
-	@if $mobile-first == true {
-
-		@if $breakpoint-2 != null {
-			@media only screen and (min-width: $breakpoint-1) and (max-width: $breakpoint-2) {
-				@content;
-			}
-		} @else {
+	@if $breakpoint-2 != null {
+		@media only screen and (min-width: $breakpoint-1) and (max-width: $breakpoint-2) {
+			@content;
+		}
+	} @else {
+		@if $mobile-first == true {
 			@media only screen and (min-width: $breakpoint-1) {
 				@content;
 			}
-		}
-
-	} @else {
-		@if $breakpoint-2 == null {
+		} @else {
 			$breakpoint-2: $breakpoint-1;
 			@media only screen and (max-width: $breakpoint-2) {
-				@content;
-			}
-
-		} @else {
-			@media only screen and (min-width: $breakpoint-1) and (max-width: $breakpoint-2) {
 				@content;
 			}
 		}

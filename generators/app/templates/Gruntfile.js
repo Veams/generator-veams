@@ -124,7 +124,7 @@ module.exports = function(grunt) {
 	
 	// Screenshot Tasks (Take screenshots from your environments)
 	grunt.registerTask('photoLocal', [
-		'photobox:local' (// e sure grunt server is running
+		'photobox:local' // be sure grunt server is running
 	]);
 	grunt.registerTask('photoDev', [
 		'photobox:dev'

@@ -1,14 +1,14 @@
 ---
-component: navbar
+block: navbar
 ---
 
 <nav class="b-navbar" id="site-menu">
 	<h2>Navigation</h2>
 	<ul class="navbar__list">
 		{{#withSort pages 'data.sortOrder'}}
-				<li class="navbar__list-item">
-					<a href="{{autolink}}" {{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.menuLink}}</a>
-				</li>
+			<li class="navbar__list-item">
+				<a href="{{autolink}}" {{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.menuLink}}</a>
+			</li>
 		{{/withSort}}
 	</ul>
 </nav>

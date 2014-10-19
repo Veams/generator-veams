@@ -26,7 +26,7 @@ Your component folder structure can look like this:
 ├───article
 │       c-article.hbs
 │       c-article__header.hbs
-│       c-article__read-more.hbs
+│       c-article__footer.hbs
 │
 ├───figure
 │       c-figure.hbs
@@ -61,4 +61,4 @@ Here are some examples:
 * figure - Figures can be placed in an article or teaser or carousel. 
 * picture - Pictures can be placed in figures.
 * teaser - When you use teasers in sliders and other modules and the content is flexible then it should be a component.
-* list-item
+* lists

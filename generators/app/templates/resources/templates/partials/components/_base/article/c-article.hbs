@@ -19,13 +19,16 @@ component: Article
 		{{! Use md files (md article-md) or json content (article-content) or both}}
 
 			{{{ article-content }}}
-			{{md article-md}}
+
+			{{#if md}}
+				{{md article-md}}
+			{{/if}}
 
 		{{/if}}
 	</div>
 
 	{{#if article-morelink}}
-		{{partial "c-article__read-more" }}
+		{{partial "c-article__footer" }}
 	{{/if}}
 
 </article>

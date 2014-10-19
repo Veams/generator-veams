@@ -432,6 +432,19 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 };
 
 /**
+ * Settings file generation
+ *
+ */
+PrototypeGenerator.prototype.appSettingFiles = function appSettingFiles() {
+	this.template('Gruntfile.js', 'Gruntfile.js');
+	this.template('_package.json', 'package.json');
+	this.template('_bower.json', 'bower.json');
+	this.copy('bowerrc', '.bowerrc');
+	this.copy('gitignore', '.gitignore');
+	this.template('README.md', 'README.md');
+};
+
+/**
  * Default file generation
  *
  */
@@ -452,10 +465,6 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 	this.copy('helpers/configs/.jsbeautifierrc', 'helpers/configs/.jsbeautifierrc');
 	this.template('helpers/_grunt/_sync.js', 'helpers/_grunt/sync.js');
 	this.template('helpers/_grunt/_watch.js', 'helpers/_grunt/watch.js');
-	this.copy('bowerrc', '.bowerrc');
-	this.copy('_bower.json', 'bower.json');
-	this.copy('gitignore', '.gitignore');
-	this.template('README.md', 'README.md');
 
 	this.mkdir('_output');
 
@@ -479,8 +488,7 @@ PrototypeGenerator.prototype.appDefault = function appDefault() {
 
 	this.directory('resources/scss/utils/extends', 'resources/scss/utils/extends');
 	this.copy('resources/scss/utils/mixins/_cp.scss');
-	this.copy('resources/scss/utils/mixins/_max-bp.scss');
-	this.copy('resources/scss/utils/mixins/_min-bp.scss');
+	this.copy('resources/scss/utils/mixins/_breakpoint.scss');
 	this.copy('resources/scss/utils/mixins/_rem.scss');
 
 	this.template('resources/scss/_all.scss', 'resources/scss/_all.scss');
@@ -500,7 +508,7 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 		this.mkdir('resources/templates');
 		this.directory('resources/templates/ajax', 'resources/templates/ajax');
 		this.directory('resources/templates/helpers', 'resources/templates/helpers');
-		this.directory('resources/templates/layouts', 'resources/templates/layouts');
+		this.copy('resources/templates/layouts/tpl-default.hbs');
 		this.copy('resources/templates/pages/index.hbs');
 
 		// Add global partials
@@ -522,6 +530,9 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 				this.mkdir('resources/data/blocks');
 				this.mkdir('resources/data/pages');
 				this.mkdir('resources/data/_global');
+
+				// Layouts
+				this.copy('resources/templates/layouts/README.md');
 
 				// Blocks
 				this.copy('resources/templates/partials/blocks/b-sitemap.hbs');
@@ -550,6 +561,10 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 				this.copy('resources/templates/partials/blocks/b-release.hbs');
 				this.copy('resources/templates/partials/blocks/b-stage-content.hbs');
 				this.copy('resources/templates/partials/blocks/b-toggle.hbs');
+
+				// Components
+				this.directory('resources/templates/partials/components/_base', 'resources/templates/partials/components');
+				this.directory('resources/templates/partials/components/form', 'resources/templates/partials/components/form');
 			}
 		}
 	}
@@ -601,7 +616,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 		if (this.modules.indexOf('grunt-contrib-requirejs') != -1 || (this.jsLibs && this.jsLibs.length > 0 && this.jsLibs.indexOf('requirejs') != -1)) {
 			this.copy('helpers/_grunt/requirejs.js', 'helpers/_grunt/requirejs.js');
-			this.bowerInstall(['almond'], { 'saveDev': true });
+			this.bowerInstall(['almond'], {'saveDev': true});
 		}
 		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
 			this.template('helpers/_grunt/_uglify.js', 'helpers/_grunt/uglify.js');
@@ -641,6 +656,10 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 
 		if (this.modules.indexOf('grunt-grunticon') != -1 || this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 			this.template('helpers/_grunt/_replace.js', 'helpers/_grunt/replace.js');
+		}
+
+		if (this.modules.indexOf('grunt-grunticon') != -1 && this.modules.indexOf('grunt-data-separator') != -1) {
+			this.copy('resources/js/vendor/loadCSS.js', 'resources/js/vendor/loadCSS.js');
 		}
 	}
 };
@@ -758,15 +777,6 @@ PrototypeGenerator.prototype.appJSLibs = function appJSLibs() {
 			this.copy('resources/js/app.js', 'resources/js/app.js');
 		}
 	}
-};
-
-/**
- * Gruntfile and package.json file generation
- *
- */
-PrototypeGenerator.prototype.appSettingFiles = function appSettingFiles() {
-	this.template('_package.json', 'package.json');
-	this.template('Gruntfile.js', 'Gruntfile.js');
 };
 
 /**
