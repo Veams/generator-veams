@@ -65,7 +65,6 @@ If you choose "Minimal installation" you skip the rest of the questions and get 
 │   ├───templates
 │   │   ├───grunticon-template
 │   │   └───styleguide-template
-│   │       └───public
 │   └───_grunt
 ├───resources
 │   ├───ajax
@@ -77,21 +76,14 @@ If you choose "Minimal installation" you skip the rest of the questions and get 
 │   │   └───media
 │   ├───bower-components
 │   ├───data
-│   │   ├───blocks
-│   │   └───global
-│   │   └───pages
 │   ├───js
 │   ├───scss
-│   │   ├───blocks
-│   │   ├───components
-│   │   ├───docs
 │   │   ├───global
 │   │   ├───icons
 │   │   └───utils
 │   │       ├───extends
 │   │       └───mixins
 │   └───templates
-│       ├───docs
 │       ├───helpers
 │       ├───layouts
 │       ├───pages
@@ -125,6 +117,7 @@ There are standard grunt modules I use. These are:
  * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods
  * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass) - Come on, use Node-SASS ...
  * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) - Minify your HTML files.
+ * [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) - Optimize RequireJS projects using r.js.
  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify) - Minify files with UglifyJS.
  * [grunt-csscomb](https://github.com/csscomb/grunt-csscomb) - The grunt plugin for sorting CSS properties in specific order.
  * [grunt-devtools](https://github.com/vladikoff/grunt-devtools) - An user interface in chrome to execute grunt tasks in your project
@@ -162,6 +155,7 @@ The Generator-Prototype supports different features. Just check/uncheck them in 
 * You want to add a separate distribution folder? - Check!
 * You want to add a CSS Styleguide and Assemble Development Documenation? - Check! (See "Developer Documentation")
 * You want to use Libsass instead of Ruby to compile SASS files? - Check!
+* You want to use [PG Methodology](http://www.prototype-generator.com/pg-methodology/pg-methodology-overview.html)? - Check!
 * You begin your project with mobile first but need to support desktop styles in IE8? - Check!
 
 ## JS Libraries and CSS Frameworks
@@ -181,7 +175,7 @@ And you can also choose SCSS Frameworks like:
 All files will be included and configured. Have fun!
 
 ## Sub Generators
-To help you in your workflow, we integrated some sub generators for you: 
+We integrated some sub generators for you: 
 
 ### BackboneJS: 
  
@@ -217,6 +211,32 @@ For further informations and instructions see:
 [yeoman]: http://yeoman.io/
 
 ## Release History
+
+### v0.4.65
+
+#### General
+- Refactored Gruntfile.js
+- Added loadCSS.js to load CSS Styles asynchronous
+
+#### Assemble
+- Added custom helper-partial.js
+- Added support for assemble factories
+- Added Regions Readme.md
+
+#### SASS
+- Added custom breakpoint mixin
+
+### v0.4.64
+- Fixed bug with version block
+- Fixed async task
+- Added c-form.scss 
+
+### v0.4.63
+- Added `Regions` for PG Frontend Methodology
+- Modified form component 
+- Deleted batch files
+- Refactored bower directory in demo files
+- Added almond and grunt-contrib-requirejs 
 
 ### v0.4.62
 - Optimized package.json 
