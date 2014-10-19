@@ -19,8 +19,7 @@
 
 // Utilities
 @import "utils/extends/extends";
-@import "utils/mixins/min-bp";
-@import "utils/mixins/max-bp";
+@import "utils/mixins/breakpoint";
 @import "utils/mixins/cp"; <% if (modules && modules.length > 0 && modules.indexOf('grunt-grunticon') != -1) { %>
 @import "utils/mixins/grunticon"; <% } %><% if (modules && modules.length > 0 && modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
 @import "utils/mixins/spriteicon"; <% } %>
@@ -29,18 +28,19 @@
 // Global
 @import "global/vars";
 @import "global/base";
-
 <% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
-
+// Regions
 @import "regions/r-sidebar";
 @import "regions/r-header";
 @import "regions/r-stage";
 @import "regions/r-content";
 @import "regions/r-main";
 
+// Components
 @import "components/c-form";
 @import "components/c-article";
 
+// Blocks
 @import "blocks/b-logo";
 @import "blocks/b-toggle";
 @import "blocks/b-stage-content";
