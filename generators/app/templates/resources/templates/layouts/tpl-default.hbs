@@ -44,7 +44,9 @@
 					================================================== -->
 					{{> b-nav }}
 				{{/block}}
+			</section>
 				<% } else { %>
+			<section class="r-nav">
 				{{> b-nav }}
 			</section>
 			<% } %>
@@ -63,9 +65,9 @@
 				<div class="container main__container">
 					<aside class="r-sidebar is-right">
 						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-							{{#block "sidebar-right"}}
-								{{> b-release }}
-							{{/block}}
+						{{#block "sidebar-right"}}
+							{{> b-release }}
+						{{/block}}
 						<% } else { %>
 						{{> b-release }}
 						<% } %>
