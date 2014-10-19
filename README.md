@@ -214,16 +214,16 @@ For further informations and instructions see:
 
 ### v0.4.65
 
-#### General
+**General**
 - Refactored Gruntfile.js
 - Added loadCSS.js to load CSS Styles asynchronous
 
-#### Assemble
+**Assemble**
 - Added custom helper-partial.js
 - Added support for assemble factories
 - Added Regions Readme.md
 
-#### SASS
+**SASS**
 - Added custom breakpoint mixin
 
 ### v0.4.64
