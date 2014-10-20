@@ -213,8 +213,9 @@ For further informations and instructions see:
 
 ## Release History
 
-### v0.4.66
+### v0.4.67
 - Added grunt-comment-toggler for RequireJS
+- Changed components/c-article.hbs
 
 ### v0.4.65
 
