@@ -33,7 +33,9 @@
 		"grunt-dr-svg-sprites": "Sebastian-Fitzner/grunt-dr-svg-sprites",
         <% } %><% if(name == 'grunt-dr-svg-sprites' || name == "grunt-grunticon") { %>
 		"grunt-text-replace": "~0.3.11",
-        <% } %><% if(name == 'grunt-contrib-compass') { %>
+        <% } %><% if(name == 'grunt-comment-toggler' || name == 'grunt-contrib-requirejs') { %>
+        "grunt-comment-toggler": "^0.2.0",
+		<% } %><% if(name == 'grunt-contrib-compass') { %>
         "grunt-contrib-compass": "*",
 		<% } %><% if(name == 'grunt-devtools') { %>
 		"grunt-devtools": "~0.2.1",

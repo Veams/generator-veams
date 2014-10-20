@@ -115,6 +115,7 @@ There are standard grunt modules I use. These are:
  * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices
  * [grunt-comment-media-queries](https://github.com/cruncher/grunt-comment-media-queries) - You begin your project with mobile first but need to support desktop styles in IE8? That's your module! (see _Features_)
  * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods
+ * [grunt-comment-toggler](https://github.com/Cryszon/grunt-comment-toggler) - Toggle comments inside build blocks. 
  * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass) - Come on, use Node-SASS ...
  * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) - Minify your HTML files.
  * [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) - Optimize RequireJS projects using r.js.
@@ -212,6 +213,9 @@ For further informations and instructions see:
 
 ## Release History
 
+### v0.4.66
+- Added grunt-comment-toggler for RequireJS
+
 ### v0.4.65
 
 **General**
@@ -263,3 +267,7 @@ For further informations and instructions see:
 - Added fork of grunt-dr-svg-sprites and dr-svg-sprites to support placeholders in scss files
 - Changed replace.js to change file path
 - Added PG Frontend Methodology
+
+## TODO: 
+- Tests
+- Integrate Broccoli.js as option

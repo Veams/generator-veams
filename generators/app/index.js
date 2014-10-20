@@ -225,6 +225,7 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{name: "grunt-bless"},
 			{name: "grunt-browser-sync", checked: true},
 			{name: "grunt-combine-media-queries", checked: true},
+			{name: "grunt-comment-toggler"},
 			{name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"},
 			{name: "grunt-contrib-compass"},
 			{name: "grunt-contrib-htmlmin"},
@@ -607,6 +608,9 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy('resources/js/project.jspackcfg');
 			this.copy('helpers/_grunt/packager.js', 'helpers/_grunt/packager.js');
 		}
+		if (this.modules.indexOf('grunt-comment-toggler') != -1) {
+			this.copy('helpers/_grunt/toggleComments.js', 'helpers/_grunt/toggleComments.js');
+		}
 		if (this.modules.indexOf('grunt-csscomb') != -1) {
 			this.copy('helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
 			this.copy('helpers/configs/csscomb.json', 'helpers/configs/csscomb.json');
@@ -616,6 +620,7 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 		if (this.modules.indexOf('grunt-contrib-requirejs') != -1 || (this.jsLibs && this.jsLibs.length > 0 && this.jsLibs.indexOf('requirejs') != -1)) {
 			this.copy('helpers/_grunt/requirejs.js', 'helpers/_grunt/requirejs.js');
+			this.copy('helpers/_grunt/toggleComments.js', 'helpers/_grunt/toggleComments.js');
 			this.bowerInstall(['almond'], {'saveDev': true});
 		}
 		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {

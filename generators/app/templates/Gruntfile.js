@@ -23,7 +23,8 @@ module.exports = function(grunt) {
 	
 	// load only used tasks and add fallbacks for those which cannot be find
 	require('jit-grunt')(grunt, { <% if (modules.indexOf('grunt-combine-media-queries') != -1) { %>
-		cmq: 'grunt-combine-media-queries'<% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,<% } %><% } %><% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+		cmq: 'grunt-combine-media-queries'<% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1 || (modules.indexOf('grunt-comment-toggler') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1)) { %>,<% } %><% } %><% if (modules.indexOf('grunt-comment-toggler') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1) { %>
+		toggleComments: 'grunt-comment-toggler'<% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,<% } %><% } %><% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
 		replace: 'grunt-text-replace'<% } %><% if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
 		'svg-sprites': 'grunt-dr-svg-sprites'<% } %>
 	});
@@ -202,7 +203,8 @@ module.exports = function(grunt) {
 		'autoprefixer',<% }} %>
 		'cssmin',<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-bless') != -1) { %>
 		'bless',<% }} %>
-		'concurrent:build',
+		'concurrent:build',<% if (modules && modules.length > 0 && (modules.indexOf('grunt-comment-toggler') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1)) { %>
+		'toggleComments',<% } %>
 		'check-js',
 		'check-html'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-contrib.htmlmin') != -1) { %>, 
 		'htmlmin'<% }} %>
