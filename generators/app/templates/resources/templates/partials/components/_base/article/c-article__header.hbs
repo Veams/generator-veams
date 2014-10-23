@@ -2,7 +2,7 @@
 component: Article Header
 ---
 
-<header class="article__header">
+<header class="article__header {{article-header-classes}}">
 
 	{{#if article-date }}
 		<time datetime="{{article-datetime}}">{{article-date}}</time>

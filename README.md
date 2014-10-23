@@ -114,8 +114,8 @@ There are standard grunt modules I use. These are:
  * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
  * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices
  * [grunt-comment-media-queries](https://github.com/cruncher/grunt-comment-media-queries) - You begin your project with mobile first but need to support desktop styles in IE8? That's your module! (see _Features_)
+  * [grunt-comment-toggler](https://github.com/Cryszon/grunt-comment-toggler) - Toggle comments inside build blocks.
  * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods
- * [grunt-comment-toggler](https://github.com/Cryszon/grunt-comment-toggler) - Toggle comments inside build blocks. 
  * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass) - Come on, use Node-SASS ...
  * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) - Minify your HTML files.
  * [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) - Optimize RequireJS projects using r.js.
@@ -143,6 +143,17 @@ In your installation routine you can choose specific modules for Assemble:
  * assemble-contrib-permalinks
  * assemble-contrib-sitemap
  * assemble-related-pages
+ 
+#### Custom Helpers
+We provide some custom helpers to speed up your prototyping. These helpers provide:
+
+* repeating elements
+* limiting JSON output
+* partials with multiple contexts
+* factories for grid systems
+* and a few more ... 
+
+You want to know more? See [PG Custom Helpers](http://prototype-generator.com/templating-in-pg/template-helpers.html)
 
 ## Gruntfile
 For our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split the file up in multiple files. 
@@ -212,6 +223,10 @@ For further informations and instructions see:
 [yeoman]: http://yeoman.io/
 
 ## Release History
+
+### v0.4.68
+- Split custom partial helper and factory helper
+- Added possibility to extend options in Assemble to activate factories
 
 ### v0.4.67
 - Added grunt-comment-toggler for RequireJS

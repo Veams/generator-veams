@@ -2,7 +2,7 @@
 component: Figure
 ---
 
-<figure class="c-figure {{figure-class}}">
+<figure class="c-figure{{#if figure-modifier-class}}--{{figure-modifier-class}}{{/if}} {{figure-classes}}">
 
 	{{#if figure-picture}}
 		{{partial "c-picture"}}
@@ -11,7 +11,7 @@ component: Figure
 	{{/if}}{{/if}}
 
 	{{#if figure-caption}}
-		<figcaption class="figure__caption">
+		<figcaption class="figure__caption {{figure-caption-classes}}">
 			{{ figure-caption }}
 		</figcaption>
 	{{/if}}
