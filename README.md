@@ -14,7 +14,7 @@
 * Node.js & Node Package Manager
 * Grunt Command Line Interface – npm install -g grunt-cli
 
-#### Optional Use of Ruby (SASS & Compass)
+**Optional Use of Ruby (SASS & Compass)**
 * SASS 3.4 (only when you do not want to use node-sass) – gem install sass
 * Compass 1 (because of Source Maps) – gem install compass --pre 
 
@@ -35,7 +35,6 @@
 ### Scaffold your new prototype project.
 
 ```bash
-mkdir project && cd project
 yo prototype
 ```
 
@@ -52,7 +51,7 @@ You can scaffold your project in an instance. The first question is:
 "Choose your installation routine"
 ```
 
-If you choose "Minimal installation" you skip the rest of the questions and get the default values with:
+If you choose `Minimal installation` you skip the rest of the questions and get the default values with:
  * Libsass (grunt-sass)
  * Grunt Modules: grunt-grunticon, grunt-data-separator
  * Assemble as Template Engine
@@ -105,10 +104,10 @@ There are standard grunt modules I use. These are:
  * [grunt-combine-media-queries](https://github.com/stefanjudis/grunt-combine-media-queries) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module
  * [jit-grunt](https://github.com/shootaroo/jit-grunt) - A JIT(Just In Time) plugin loader for Grunt.
  * [time-grunt](https://github.com/sindresorhus/time-grunt) - Displays the execution time of grunt tasks.
-
-***But you can also apply additional addons and grunt modules to your project. Just choose specific ones:***
  
 ### Grunt modules
+
+**But you can also apply additional addons and grunt modules to your project. Just choose specific ones:**
 
  * [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer) - Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the Can I Use database.
  * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
@@ -125,6 +124,7 @@ There are standard grunt modules I use. These are:
  * [grunt-data-separator](https://github.com/Sebastian-Fitzner/grunt-data-separator) - Split up your Data-URI into a separate CSS file.
  * [grunt-dr-svg-sprites](https://github.com/drdk/grunt-dr-svg-sprites) - Generate SVG Sprites with scss files (we use an own fork to support placeholders in scss) 
  * [grunt-grunticon](https://github.com/filamentgroup/grunticon) - Generate SVG-URI-SASS files with png fallbacks
+ * [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc) - This plugin enables you to integrate the generation of comments based documentation into your Grunt build.
  * [grunt-modernizr](https://github.com/Modernizr/grunt-modernizr) - grunt-modernizr sifts through your project files, gathers up your references to Modernizr tests and outputs a lean, mean Modernizr machine.
  * [grunt-packager](https://github.com/bobbor/grunt-packager) (only executable when your project.jspackcfg is configured) - package your js.
  * [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas) - PhantomJS-based web performance metrics collector and monitoring tool.
@@ -156,13 +156,13 @@ We provide some custom helpers to speed up your prototyping. These helpers provi
 You want to know more? See [PG Custom Helpers](http://prototype-generator.com/templating-in-pg/template-helpers.html)
 
 ## Gruntfile
-For our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split the file up in multiple files. 
-These files/tasks you can find in this directory:
+For our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split up the file in multiple task files. 
+You can find these task files in the following directory:
 
  * helpers/_grunt
 
 ## Features
-The Generator-Prototype supports different features. Just check/uncheck them in the __custom installation routine__:
+PG supports different features. Just check/uncheck them in the __custom installation routine__:
 
 * You want to add a separate distribution folder? - Check!
 * You want to add a CSS Styleguide and Assemble Development Documenation? - Check! (See "Developer Documentation")
@@ -206,7 +206,7 @@ You want to install all base templates, a form template or other modules? _(work
 Others will follow.
 
 ## Developer Documentation
-Generator-Prototype provides a way to document your assemble modules via markdown and a separate docs folder. 
+PG provides a way to document your assemble modules via markdown and a separate docs folder. 
 Just use the custom installation route and check: 
 * _Create Developer Documentation_
 
@@ -223,6 +223,11 @@ For further informations and instructions see:
 [yeoman]: http://yeoman.io/
 
 ## Release History
+
+### v0.4.69
+- grunt-jsdoc@beta added with custom configs
+- prototype:gm => added grunt-jsdoc, grunt-contrib-requirejs, grunt-comment-toggler
+- Refactored index.js to prepare PG for Gulp support
 
 ### v0.4.68
 - Split custom partial helper and factory helper

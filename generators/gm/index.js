@@ -48,8 +48,10 @@ GMGenerator.prototype.askFor = function askFor() {
 			{name: "grunt-bless"},
 			{name: "grunt-browser-sync"},
 			{name: "grunt-combine-media-queries"},
+			{name: "grunt-comment-toggler"},
 			{name: "grunt-contrib-compass"},
 			{name: "grunt-contrib-htmlmin"},
+			{name: "grunt-contrib-requirejs"},
 			{name: "grunt-contrib-uglify"},
 			{name: "grunt-csscomb"},
 			{name: "grunt-data-separator"},
@@ -57,6 +59,7 @@ GMGenerator.prototype.askFor = function askFor() {
 			{name: "grunt-dr-svg-sprites"},
 			{name: "grunt-grunticon"},
 			{name: "grunt-jsbeautifier"},
+			{name: "grunt-jsdoc"},
 			{name: "grunt-modernizr"},
 			{name: "grunt-packager"},
 			{name: "grunt-phantomas"},
@@ -155,6 +158,10 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy('../../app/templates/helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');
 			this.npmInstall(['grunt-combine-media-queries'], {'saveDev': true}, done);
 		}
+		if (this.modules.indexOf('grunt-comment-toggler') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/toggleComments.js', 'helpers/_grunt/toggleComments.js');
+			this.npmInstall(['grunt-comment-toggler'], {'saveDev': true}, done);
+		}
 		if (this.modules.indexOf('grunt-contrib-compass') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/compass.js', 'helpers/_grunt/compass.js');
 			this.npmInstall(['grunt-contrib-compass'], {'saveDev': true}, done);
@@ -162,6 +169,12 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-contrib-htmlmin') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
 			this.npmInstall(['grunt-contrib-htmlmin'], {'saveDev': true}, done);
+		}
+		if (this.modules.indexOf('grunt-contrib-requirejs') != -1) {
+			this.copy('../../app/templates/helpers/_grunt/requirejs.js', 'helpers/_grunt/requirejs.js');
+			this.copy('../../app/templates/helpers/_grunt/toggleComments.js', 'helpers/_grunt/toggleComments.js');
+			this.bowerInstall(['almond'], {'saveDev': true});
+			this.npmInstall(['grunt-contrib-requirejs'], {'saveDev': true}, done);
 		}
 		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
 			this.template('../../app/templates/helpers/_grunt/_uglify.js', 'helpers/_grunt/uglify.js');
@@ -182,9 +195,9 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy('../../app/templates/resources/scss/utils/mixins/_spriteicon.scss');
 
 			this.npmInstall(['Sebastian-Fitzner/grunt-dr-svg-sprites'], {'saveDev': true}, done);
-			console.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n')  +
-				chalk.yellow('\n "svg-sprites": "grunt-dr-svg-sprites"') + ('\n')  +
-				chalk.bgRed('\n Please add the following lines to your Gruntfile.js to your custom tasks:') + ('\n')  +
+			console.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n') +
+				chalk.yellow('\n "svg-sprites": "grunt-dr-svg-sprites"') + ('\n') +
+				chalk.bgRed('\n Please add the following lines to your Gruntfile.js to your custom tasks:') + ('\n') +
 				chalk.yellow('\n grunt.registerTask(\'sprites\', [') +
 				chalk.yellow('\n    \'svg-sprites\',') +
 				chalk.yellow('\n    \'replace:spriteUrl\'' +
@@ -196,13 +209,16 @@ GMGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.directory('../../app/templates/helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
 			this.template('../../app/templates/helpers/_grunt/_grunticon.js', 'helpers/_grunt/grunticon.js');
 			this.copy('../../app/templates/resources/scss/utils/mixins/_grunticon.scss');
-
 			this.npmInstall(['grunt-grunticon'], {'saveDev': true}, done);
 		}
 		if (this.modules.indexOf('grunt-jsbeautifier') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
 			this.copy('../../app/templates/helpers/configs/.jsbeautifierrc', 'helpers/configs/.jsbeautifierrc');
 			this.npmInstall(['grunt-jsbeautifier'], {'saveDev': true}, done);
+		}
+		if (this.modules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length > 0 && this.features.indexOf('installDocs') != -1)) {
+			this.copy('../../app/templates/helpers/_grunt/jsdoc.js', 'helpers/_grunt/jsdoc.js');
+			this.npmInstall(['grunt-jsdoc@beta'], {'saveDev': true}, done);
 		}
 		if (this.modules.indexOf('grunt-modernizr') != -1) {
 			this.copy('../../app/templates/helpers/_grunt/modernizr.js', 'helpers/_grunt/modernizr.js');
