@@ -1,38 +1,105 @@
-<article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
-<a name="prototype-generator" class="anchor" href="#prototype-generator"><span class="octicon octicon-link"></span></a>Prototype Generator</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Generator-prototype by Prototype-Group</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/Prototype-Group/generator-prototype">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Generator-prototype</h1>
+            <h2>You want to build prototypes in a smart and effective way? Just check out PG!</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/Prototype-Group/generator-prototype/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/Prototype-Group/generator-prototype/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <p align="center"><img src="http://prototype-generator.com/img/logo-pg.png" height="94"></p>
+
+<p align="center">Visit the PG-website to learn how to use PG: http://prototype-generator.com </p>
 
 <blockquote>
-<p><a href="http://yeoman.io/">Yeoman</a> generator for Prototype.</p>
+<p><a href="http://yeoman.io/">Yeoman</a> generator for Prototype <a href="http://badge.fury.io/js/generator-prototype"><img src="https://badge.fury.io/js/generator-prototype.svg" alt="NPM version"></a> <a href="https://travis-ci.org/Prototype-Group/generator-prototype"><img src="https://travis-ci.org/Prototype-Group/generator-prototype.svg" alt="Build Status"></a></p>
 </blockquote>
+
+<p><a href="https://nodei.co/npm/generator-prototype/"><img src="https://nodei.co/npm/generator-prototype.png?downloads=true&amp;stars=true" alt="NPM"></a></p>
 
 <h2>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
 
+<h3>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h3>
+
+<ul>
+<li>Node.js &amp; Node Package Manager</li>
+<li>Grunt Command Line Interface – npm install -g grunt-cli</li>
+</ul>
+
+<p><strong>Optional Use of Ruby (SASS &amp; Compass)</strong></p>
+
+<ul>
+<li>SASS 3.4 (only when you do not want to use node-sass) – gem install sass</li>
+<li>Compass 1 (because of Source Maps) – gem install compass --pre </li>
+</ul>
+
+<h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
+
 <ul>
 <li><p>Install Yeoman:
 <code>npm install -g yo</code></p></li>
-<li><p>Install the package via:
+<li><p>Install the Generator-Prototype via:
 <code>npm install -g generator-prototype</code></p></li>
-<li><p>Or copy the repository via clone to your directory (it depends on the system, just find your directory with yo installed):
-<code>git clone https://github.com/Prototype-Group/generator-prototype.git 
-~/AppData/Roaming/npm/node_modules</code></p></li>
-</ul><h3>
-<a name="hints" class="anchor" href="#hints"><span class="octicon octicon-link"></span></a>Hints</h3>
+</ul>
 
-<p>Sometimes you need to clone the package with an absolute path. On windows the clone command can look like this:
-<code>git clone https://github.com/Prototype-Group/generator-prototype.git 
-D:\Users\Username\AppData\Roaming\npm\node_modules</code></p>
+<h3>
+<a name="update" class="anchor" href="#update"><span class="octicon octicon-link"></span></a>Update</h3>
 
 <ul>
-<li>Replace 'Username' with your username</li>
-</ul><h2>
+<li>Update the Generator-Prototype via:
+<code>npm update -g generator-prototype</code>
+</li>
+</ul>
+
+<h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <h3>
-<a name="prototype-app-scaffolds" class="anchor" href="#prototype-app-scaffolds"><span class="octicon octicon-link"></span></a>Prototype app scaffolds.</h3>
+<a name="scaffold-your-new-prototype-project" class="anchor" href="#scaffold-your-new-prototype-project"><span class="octicon octicon-link"></span></a>Scaffold your new prototype project.</h3>
 
-<div class="highlight highlight-bash"><pre>mkdir project <span class="o">&amp;&amp;</span> <span class="nb">cd </span>project
-yo prototype <span class="o">[</span>--skip-install<span class="o">]</span>
+<div class="highlight highlight-bash"><pre>yo prototype
 </pre></div>
 
 <h4>
@@ -44,83 +111,419 @@ yo prototype <span class="o">[</span>--skip-install<span class="o">]</span>
 
 <p>Skips the automatic execution of <code>bower</code> and <code>npm</code> after scaffolding has finished.</p>
 </li>
-<li>
-<p><code>-w</code> alias <code>--skip-welcome-message</code></p>
+</ul>
 
-<p>Skips app welcome message.</p>
-</li>
-</ul><h2>
+<h2>
+<a name="quick-start" class="anchor" href="#quick-start"><span class="octicon octicon-link"></span></a>Quick Start</h2>
+
+<p>You can scaffold your project in an instance. The first question is:</p>
+
+<pre><code>"Choose your installation routine"
+</code></pre>
+
+<p>If you choose <code>Minimal installation</code> you skip the rest of the questions and get the default values with:</p>
+
+<ul>
+<li>Libsass (grunt-sass)</li>
+<li>Grunt Modules: grunt-grunticon, grunt-data-separator</li>
+<li>Assemble as Template Engine</li>
+</ul>
+
+<h2>
+<a name="structure" class="anchor" href="#structure"><span class="octicon octicon-link"></span></a>Structure</h2>
+
+<div class="highlight highlight-bash"><pre>├───helpers
+│   ├───configs
+│   ├───templates
+│   │   ├───grunticon-template
+│   │   └───styleguide-template
+│   └───_grunt
+├───resources
+│   ├───ajax
+│   ├───assets
+│   │   ├───fonts
+│   │   ├───img
+│   │   │   ├───svg
+│   │   │   │   └───icons
+│   │   └───media
+│   ├───bower-components
+│   ├───data
+│   ├───js
+│   ├───scss
+│   │   ├───global
+│   │   ├───icons
+│   │   └───utils
+│   │       ├───extends
+│   │       └───mixins
+│   └───templates
+│       ├───helpers
+│       ├───layouts
+│       ├───pages
+│       └───partials
+├───_dist
+└───_output
+</pre></div>
+
+<h2>
 <a name="plugins-and-modules" class="anchor" href="#plugins-and-modules"><span class="octicon octicon-link"></span></a>Plugins and Modules</h2>
 
-<p>You can apply multiple addons and grunt modules to your project. Just choose specific ones:</p>
+<p>There are standard grunt modules I use. These are:</p>
+
+<ul>
+<li>
+<a href="https://github.com/gruntjs/grunt-contrib-clean">grunt-contrib-clean</a> - Clean your directories.</li>
+<li>
+<a href="https://github.com/sindresorhus/grunt-concurrent">grunt-concurrent</a> - Run grunt tasks concurrently .</li>
+<li>
+<a href="https://github.com/gruntjs/grunt-contrib-cssmin">grunt-contrib-cssmin</a> - Minify your CSS.</li>
+<li>
+<a href="https://github.com/yaniswang/grunt-htmlhint">grunt-htmlhint</a> - Check your html for errors.</li>
+<li>
+<a href="https://github.com/gruntjs/grunt-contrib-jshint">grunt-contrib-jshint</a> - Check your js for errors.</li>
+<li>
+<a href="https://github.com/vkadam/grunt-jsbeautifier">grunt-jsbeautifier</a> - Format your js and html files.</li>
+<li>
+<a href="https://github.com/stefanjudis/grunt-combine-media-queries">grunt-combine-media-queries</a> - When you use mixins for media queries in your SASS files, you can combine your media queries with this module</li>
+<li>
+<a href="https://github.com/shootaroo/jit-grunt">jit-grunt</a> - A JIT(Just In Time) plugin loader for Grunt.</li>
+<li>
+<a href="https://github.com/sindresorhus/time-grunt">time-grunt</a> - Displays the execution time of grunt tasks.</li>
+</ul>
+
+<h3>
+<a name="grunt-modules" class="anchor" href="#grunt-modules"><span class="octicon octicon-link"></span></a>Grunt modules</h3>
+
+<p><strong>But you can also apply additional addons and grunt modules to your project. Just choose specific ones:</strong></p>
+
+<ul>
+<li>
+<a href="https://github.com/nDmitry/grunt-autoprefixer">grunt-autoprefixer</a> - Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the Can I Use database.</li>
+<li>
+<a href="https://github.com/stefanjudis/grunt-bless">grunt-bless</a> - Split your css after you reach size limit for ie9</li>
+<li>
+<a href="https://npmjs.org/package/grunt-browser-sync">grunt-browser-sync</a> - Sync and auto-reload your local server over multiple devices</li>
+<li>
+<a href="https://github.com/cruncher/grunt-comment-media-queries">grunt-comment-media-queries</a> - You begin your project with mobile first but need to support desktop styles in IE8? That's your module! (see <em>Features</em>)</li>
+<li>
+<a href="https://github.com/Cryszon/grunt-comment-toggler">grunt-comment-toggler</a> - Toggle comments inside build blocks.</li>
+<li>
+<a href="https://github.com/drewzboto/grunt-connect-proxy">grunt-connect-proxy</a> - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods</li>
+<li>
+<a href="https://github.com/gruntjs/grunt-contrib-compass">grunt-contrib-compass</a> - Come on, use Node-SASS ...</li>
+<li>
+<a href="https://github.com/gruntjs/grunt-contrib-htmlmin">grunt-contrib-htmlmin</a> - Minify your HTML files.</li>
+<li>
+<a href="https://github.com/gruntjs/grunt-contrib-requirejs">grunt-contrib-requirejs</a> - Optimize RequireJS projects using r.js.</li>
+<li>
+<a href="https://github.com/gruntjs/grunt-contrib-uglify">grunt-contrib-uglify</a> - Minify files with UglifyJS.</li>
+<li>
+<a href="https://github.com/csscomb/grunt-csscomb">grunt-csscomb</a> - The grunt plugin for sorting CSS properties in specific order.</li>
+<li>
+<a href="https://github.com/vladikoff/grunt-devtools">grunt-devtools</a> - An user interface in chrome to execute grunt tasks in your project</li>
+<li>
+<a href="https://github.com/Sebastian-Fitzner/grunt-data-separator">grunt-data-separator</a> - Split up your Data-URI into a separate CSS file.</li>
+<li>
+<a href="https://github.com/drdk/grunt-dr-svg-sprites">grunt-dr-svg-sprites</a> - Generate SVG Sprites with scss files (we use an own fork to support placeholders in scss) </li>
+<li>
+<a href="https://github.com/filamentgroup/grunticon">grunt-grunticon</a> - Generate SVG-URI-SASS files with png fallbacks</li>
+<li>
+<a href="https://github.com/krampstudio/grunt-jsdoc">grunt-jsdoc</a> - This plugin enables you to integrate the generation of comments based documentation into your Grunt build.</li>
+<li>
+<a href="https://github.com/Modernizr/grunt-modernizr">grunt-modernizr</a> - grunt-modernizr sifts through your project files, gathers up your references to Modernizr tests and outputs a lean, mean Modernizr machine.</li>
+<li>
+<a href="https://github.com/bobbor/grunt-packager">grunt-packager</a> (only executable when your project.jspackcfg is configured) - package your js.</li>
+<li>
+<a href="https://github.com/stefanjudis/grunt-phantomas">grunt-phantomas</a> - PhantomJS-based web performance metrics collector and monitoring tool.</li>
+<li>
+<a href="https://github.com/stefanjudis/grunt-photobox">grunt-photobox</a> - Take snapshots from homepage</li>
+<li>
+<a href="https://github.com/andismith/grunt-responsive-images">grunt-responsive-images</a> - Produces images at different sizes (be sure you have installed GraphicsMagick)</li>
+<li>
+<a href="https://github.com/sindresorhus/grunt-sass">grunt-sass</a> - You want to use Libsass instead of Compass to render your stylesheets 10 times faster? Here you go! (see <em>Features</em>)</li>
+<li>
+<a href="https://github.com/sindresorhus/grunt-svgmin">grunt-svgmin</a> - Minify SVG using SVGO.</li>
+<li>
+<a href="https://github.com/kswedberg/grunt-version">grunt-version</a> - Grunt task to handle versioning of a project.</li>
+</ul>
 
 <h3>
 <a name="assemble" class="anchor" href="#assemble"><span class="octicon octicon-link"></span></a>Assemble</h3>
 
+<p>We use Assemble as template engine. Assemble is a component and static site generator that makes it dead simple to build modular sites, documentation and components from reusable templates and data.
+You want to know more? Here you go: <a href="http://assemble.io">assemble.io</a></p>
+
+<p>In your installation routine you can choose specific modules for Assemble:</p>
+
 <ul>
-<li>permalinks</li>
-<li>assemble-contrib-contextual</li>
+<li>assemble-contrib-permalinks</li>
 <li>assemble-contrib-sitemap</li>
 <li>assemble-related-pages</li>
-<li>assemble-markdown</li>
-</ul><h3>
-<a name="grunt-modules" class="anchor" href="#grunt-modules"><span class="octicon octicon-link"></span></a>Grunt modules</h3>
+</ul>
+
+<h4>
+<a name="custom-helpers" class="anchor" href="#custom-helpers"><span class="octicon octicon-link"></span></a>Custom Helpers</h4>
+
+<p>We provide some custom helpers to speed up your prototyping. These helpers provide:</p>
 
 <ul>
-<li>
-<a href="https://github.com/vladikoff/grunt-devtools">grunt-devtools</a> - An user interface in chrome to execute grunt tasks in your project</li>
-<li>
-<a href="https://github.com/Prototype-Group/grunticon">grunticon-sass</a> - Generate SVG-URI-SASS files with png fallbacks</li>
-<li>
-<a href="https://github.com/drdk/dr-grunt-svg-sprites">dr-grunt-svg-sprites</a> - Generate SVG Sprites with css files</li>
-<li>
-<a href="https://github.com/bobbor/grunt-packager">grunt-packager</a> (only executable when your project.jspackcfg is configured) - package your js</li>
-<li><a href="https://github.com/gruntjs/grunt-contrib-compass">grunt-contrib-compass</a></li>
-<li>
-<a href="https://npmjs.org/package/grunt-browser-sync">grunt-browser-sync</a> - Sync and aut-reload your local server over multiple devices</li>
-<li>
-<a href="https://github.com/yaniswang/grunt-htmlhint">grunt-htmlhint</a> - Check your html for errors</li>
-<li>
-<a href="https://github.com/brandonminch/grunt-prettysass">grunt-prettysass</a> - Format your SASS-files</li>
-<li>
-<a href="https://github.com/stefanjudis/grunt-photobox">grunt-photobox</a> - Take snapshots from homepage</li>
-<li>
-<a href="https://github.com/stefanjudis/grunt-bless">grunt-bless</a> - Split your css after you reach size limit for ie9</li>
-<li>
-<a href="https://github.com/stefanjudis/grunt-combine-media-queries">grunt-combine-media-queries</a> - When you use mixins for media queries in your SASS files, you can combine your media queries with this module</li>
-</ul><h2>
+<li>repeating elements</li>
+<li>limiting JSON output</li>
+<li>partials with multiple contexts</li>
+<li>factories for grid systems</li>
+<li>and a few more ... </li>
+</ul>
+
+<p>You want to know more? See <a href="http://prototype-generator.com/templating-in-pg/template-helpers.html">PG Custom Helpers</a></p>
+
+<h2>
 <a name="gruntfile" class="anchor" href="#gruntfile"><span class="octicon octicon-link"></span></a>Gruntfile</h2>
 
-<p>For our Gruntfile we use the grunt module <a href="https://github.com/creynders/load-grunt-configs/">load-grunt-configs</a> to split the file up in multiple files. 
-These files/tasks you can find in this directory:</p>
+<p>For our Gruntfile we use the grunt module <a href="https://github.com/creynders/load-grunt-configs/">load-grunt-configs</a> to split up the file in multiple task files. 
+You can find these task files in the following directory:</p>
 
 <ul>
-<li>helper_files/grunt</li>
-</ul><h2>
-<a name="cms-snippets-work-in-progress" class="anchor" href="#cms-snippets-work-in-progress"><span class="octicon octicon-link"></span></a>CMS snippets (work in progress)</h2>
+<li>helpers/_grunt</li>
+</ul>
 
-<p>You can choose between multiple content management systems (Drupal, Typo3, Magnolia, CoreMedia). 
-After choosing a system you will get HTML-snippets and a few new SCSS files, which you can use:</p>
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<p>PG supports different features. Just check/uncheck them in the <strong>custom installation routine</strong>:</p>
 
 <ul>
-<li>Drupal 7</li>
-<li>TYPO3 6.2</li>
-<li>Magnolia</li>
-<li>CoreMedia</li>
-</ul><h2>
+<li>You want to add a separate distribution folder? - Check!</li>
+<li>You want to add a CSS Styleguide and Assemble Development Documenation? - Check! (See "Developer Documentation")</li>
+<li>You want to use Libsass instead of Ruby to compile SASS files? - Check!</li>
+<li>You want to use <a href="http://www.prototype-generator.com/pg-methodology/pg-methodology-overview.html">PG Methodology</a>? - Check!</li>
+<li>You begin your project with mobile first but need to support desktop styles in IE8? - Check!</li>
+</ul>
+
+<h2>
+<a name="js-libraries-and-css-frameworks" class="anchor" href="#js-libraries-and-css-frameworks"><span class="octicon octicon-link"></span></a>JS Libraries and CSS Frameworks</h2>
+
+<p>You can choose JS Libraries like:</p>
+
+<ul>
+<li>jQuery</li>
+<li>BackboneJS</li>
+<li>RequireJS</li>
+<li>AngularJS</li>
+</ul>
+
+<p>And you can also choose SCSS Frameworks like:</p>
+
+<ul>
+<li>Foundation</li>
+<li>Bourbon Neat</li>
+<li>SASS Bootstrap</li>
+</ul>
+
+<p>All files will be included and configured. Have fun!</p>
+
+<h2>
+<a name="sub-generators" class="anchor" href="#sub-generators"><span class="octicon octicon-link"></span></a>Sub Generators</h2>
+
+<p>We integrated some sub generators for you: </p>
+
+<h3>
+<a name="backbonejs" class="anchor" href="#backbonejs"><span class="octicon octicon-link"></span></a>BackboneJS:</h3>
+
+<ul>
+<li>Create a Backbone Model: yo prototype:bm</li>
+<li>Create a Backbone View: yo prototype:bv</li>
+<li>Create a Backbone Collection: yo prototype:bc</li>
+</ul>
+
+<h3>
+<a name="grunt-modules-1" class="anchor" href="#grunt-modules-1"><span class="octicon octicon-link"></span></a>Grunt Modules:</h3>
+
+<p>You forgot a grunt module?</p>
+
+<ul>
+<li>Install your grunt modules: yo prototype:gm</li>
+</ul>
+
+<h3>
+<a name="frontend-components" class="anchor" href="#frontend-components"><span class="octicon octicon-link"></span></a>Frontend Components:</h3>
+
+<p>You want to install all base templates, a form template or other modules? <em>(work in progress)</em></p>
+
+<ul>
+<li>Here you go: yo prototype:components</li>
+</ul>
+
+<p>Others will follow.</p>
+
+<h2>
+<a name="developer-documentation" class="anchor" href="#developer-documentation"><span class="octicon octicon-link"></span></a>Developer Documentation</h2>
+
+<p>PG provides a way to document your assemble modules via markdown and a separate docs folder. 
+Just use the custom installation route and check: </p>
+
+<ul>
+<li><em>Create Developer Documentation</em></li>
+</ul>
+
+<p>For further informations and instructions see: </p>
+
+<ul>
+<li><a href="https://github.com/Sebastian-Fitzner/assemble-documentation-example">assemble-documentation-example</a></li>
+</ul>
+
+<h2>
 <a name="alternative" class="anchor" href="#alternative"><span class="octicon octicon-link"></span></a>Alternative</h2>
 
 <ul>
 <li><a href="https://github.com/assemble/grunt-init-assemble">grunt-init-assemble</a></li>
 <li><a href="https://github.com/assemble/generator-assemble">generator-assemble</a></li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p><a href="http://en.wikipedia.org/wiki/MIT_License">MIT License</a></p>
 
 <h2>
+<a name="release-history" class="anchor" href="#release-history"><span class="octicon octicon-link"></span></a>Release History</h2>
+
+<h3>
+<a name="v0469" class="anchor" href="#v0469"><span class="octicon octicon-link"></span></a>v0.4.69</h3>
+
+<ul>
+<li>grunt-jsdoc@beta added with custom configs</li>
+<li>prototype:gm =&gt; added grunt-jsdoc, grunt-contrib-requirejs, grunt-comment-toggler</li>
+<li>Refactored index.js to prepare PG for Gulp support</li>
+</ul>
+
+<h3>
+<a name="v0468" class="anchor" href="#v0468"><span class="octicon octicon-link"></span></a>v0.4.68</h3>
+
+<ul>
+<li>Split custom partial helper and factory helper</li>
+<li>Added possibility to extend options in Assemble to activate factories</li>
+</ul>
+
+<h3>
+<a name="v0467" class="anchor" href="#v0467"><span class="octicon octicon-link"></span></a>v0.4.67</h3>
+
+<ul>
+<li>Added grunt-comment-toggler for RequireJS</li>
+<li>Changed components/c-article.hbs</li>
+</ul>
+
+<h3>
+<a name="v0465" class="anchor" href="#v0465"><span class="octicon octicon-link"></span></a>v0.4.65</h3>
+
+<p><strong>General</strong></p>
+
+<ul>
+<li>Refactored Gruntfile.js</li>
+<li>Added loadCSS.js to load CSS Styles asynchronous</li>
+</ul>
+
+<p><strong>Assemble</strong></p>
+
+<ul>
+<li>Added custom helper-partial.js</li>
+<li>Added support for assemble factories</li>
+<li>Added Regions Readme.md</li>
+</ul>
+
+<p><strong>SASS</strong></p>
+
+<ul>
+<li>Added custom breakpoint mixin</li>
+</ul>
+
+<h3>
+<a name="v0464" class="anchor" href="#v0464"><span class="octicon octicon-link"></span></a>v0.4.64</h3>
+
+<ul>
+<li>Fixed bug with version block</li>
+<li>Fixed async task</li>
+<li>Added c-form.scss </li>
+</ul>
+
+<h3>
+<a name="v0463" class="anchor" href="#v0463"><span class="octicon octicon-link"></span></a>v0.4.63</h3>
+
+<ul>
+<li>Added <code>Regions</code> for PG Frontend Methodology</li>
+<li>Modified form component </li>
+<li>Deleted batch files</li>
+<li>Refactored bower directory in demo files</li>
+<li>Added almond and grunt-contrib-requirejs </li>
+</ul>
+
+<h3>
+<a name="v0462" class="anchor" href="#v0462"><span class="octicon octicon-link"></span></a>v0.4.62</h3>
+
+<ul>
+<li>Optimized package.json </li>
+<li>Integrated git submodule for components</li>
+<li>Integrated {{#ifBlock}} helper</li>
+</ul>
+
+<h3>
+<a name="v0461" class="anchor" href="#v0461"><span class="octicon octicon-link"></span></a>v0.4.61</h3>
+
+<ul>
+<li>Minor change in svg-sprites task </li>
+<li>Bugfix with version.js</li>
+<li>Mixin: spriteicon() added</li>
+<li>Updated prototype:gm to support automated download of grunt-text-replace</li>
+<li>Changed path for prototype:plugin</li>
+</ul>
+
+<h3>
+<a name="v0460" class="anchor" href="#v0460"><span class="octicon octicon-link"></span></a>v0.4.60</h3>
+
+<ul>
+<li>Updated grunt-photobox to support grunt-browser-sync or grunt-contrib-connect</li>
+<li>Changed output of photobox to Dev folder</li>
+</ul>
+
+<h3>
+<a name="v0459" class="anchor" href="#v0459"><span class="octicon octicon-link"></span></a>v0.4.59</h3>
+
+<ul>
+<li>Changed Standard Installation to Minimal Installation</li>
+<li>Optimized svg-sprites and svgmin workflow</li>
+<li>Changed classes fo PG Frontend Methodology</li>
+</ul>
+
+<h3>
+<a name="v0458" class="anchor" href="#v0458"><span class="octicon octicon-link"></span></a>v0.4.58</h3>
+
+<ul>
+<li>Added fork of grunt-dr-svg-sprites and dr-svg-sprites to support placeholders in scss files</li>
+<li>Changed replace.js to change file path</li>
+<li>Added PG Frontend Methodology</li>
+</ul>
+
+<h2>
 <a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO:</h2>
 
 <ul>
-<li>CMS Snippets</li>
-</ul></article>
+<li>Tests</li>
+<li>Integrate Broccoli.js as option</li>
+</ul>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/Prototype-Group">Prototype-Group</a> can be found on <a href="https://github.com/Prototype-Group/generator-prototype">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
