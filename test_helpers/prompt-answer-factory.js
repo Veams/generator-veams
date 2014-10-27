@@ -1,29 +1,38 @@
 module.exports = function promptAnwerFactory(customAnswers) {
 	var defaults = {
-	  'projectName': true,
-	  'projectAuthor': 'Test Author',
-	  'installAssemble': true,
-	  'installPlugin': true,
-	  'plugin': ['assemble-related-pages'],
-	  'modules': [	'grunt-grunticon', 
-	  				'grunt-packager',
-	  				'grunt-browser-sync',
-	  				'grunt-autoprefixer'
-	  ],
-	  'features': [],
-	  'mobileFirst': false,
-	  'jsLibs': false,
-	  'cssLibs': false,
-	  'installCMS': false
+		projectName: "",
+		projectAuthor: "",
+		batchFiles: false,
+		installAssemble: "",
+		installPlugin: false,
+		installCMS: false,
+		modules: [
+			"grunt-combine-media-queries",
+			"grunt-grunticon",
+			"grunt-data-separator"
+		],
+		features: [
+			"sassInsteadOfCompass"
+		],
+		jsLibs: [],
+		cssLibs: [],
+		installProxy: false,
+		proxyHost: '',
+		proxyPort: '',
+		author: {
+			name: "",
+			login: "",
+			email: ""
+		}
 	};
 
 	var custom = defaults;
 	var val;
 
-	for(val in customAnswers) {
-		if(customAnswers.hasOwnProperty(val) && defaults[val]) {
+	for (val in customAnswers) {
+		if (customAnswers.hasOwnProperty(val) && defaults[val]) {
 			custom[val] = customAnswers[val];
-		} 
+		}
 	}
 
 	return custom;
