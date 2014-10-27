@@ -14,7 +14,7 @@ describe('prototype-generator', function () {
       }
 
       this.app = helpers.createGenerator('prototype:app', [
-        '../../app'
+        '../../generators/app'
       ]);
       done();
     }.bind(this));
