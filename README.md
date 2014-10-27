@@ -1,8 +1,8 @@
 <p align="center"><img src="http://prototype-generator.com/img/logo-pg.png" height="94"></p>
 
-<p align="center"> Visit the PG-website to learn how to use PG: http://prototype-generator.com </p>
+<p align="center">Visit the PG-website to learn how to use PG: http://prototype-generator.com </p>
 
-> [Yeoman][yeoman] generator for Prototype.
+> [Yeoman][yeoman] generator for Prototype [![NPM version](https://badge.fury.io/js/generator-prototype.svg)](http://badge.fury.io/js/generator-prototype) .
 
 [![NPM](https://nodei.co/npm/generator-prototype.png?downloads=true&stars=true)](https://nodei.co/npm/generator-prototype/)
 
