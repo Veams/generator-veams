@@ -187,21 +187,24 @@ And you can also choose SCSS Frameworks like:
 All files will be included and configured. Have fun!
 
 ## Sub Generators
-We integrated some sub generators for you: 
-
-### BackboneJS: 
- 
- * Create a Backbone Model: yo prototype:bm
- * Create a Backbone View: yo prototype:bv
- * Create a Backbone Collection: yo prototype:bc
+We integrated some sub generators for you:
 
 ### Grunt Modules:
 You forgot a grunt module?
-* Install your grunt modules: yo prototype:gm
+* Install your grunt modules: `yo prototype:grunt`
+
+### Assemble Helpers:
+You want to install assemble helpers? 
+* Here you go: `yo prototype:assemble`
 
 ### Frontend Components:
 You want to install all base templates, a form template or other modules? _(work in progress)_
-* Here you go: yo prototype:components
+* Here you go: `yo prototype:components`
+
+### BackboneJS:
+ * Create a Backbone Model: `yo prototype:bm`
+ * Create a Backbone View: `yo prototype:bv`
+ * Create a Backbone Collection: `yo prototype:bc
 
 Others will follow.
 
@@ -223,6 +226,11 @@ For further informations and instructions see:
 [yeoman]: http://yeoman.io/
 
 ## Release History
+
+### v0.4.70
+- added travis ci
+- changed prototype:gm => prototype:grunt
+- added prototype:assemble for helper files
 
 ### v0.4.69
 - grunt-jsdoc@beta added with custom configs
