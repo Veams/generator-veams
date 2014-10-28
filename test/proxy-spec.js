@@ -15,7 +15,7 @@ var answers = require('../test_helpers/prompt-answer-factory')({
 
 describe('grunt-connect-proxy', function () {
 	beforeEach(function (done) {
-		helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
+		helpers.testDirectory(path.join(__dirname, 'temp-proxy'), function (err) {
 			if (err) {
 				return done(err);
 			}
@@ -26,12 +26,13 @@ describe('grunt-connect-proxy', function () {
 		}.bind(this));
 	});
 
-	it('adds references to package.json and Gruntfile.js', function (done) {
+	it('adds references to package.json and connect.js', function (done) {
 		helpers.mockPrompt(this.app, answers);
 		this.app.options['skip-install'] = true;
 		this.app.options['skip-welcome-message'] = true;
 		this.app.run({}, function () {
 			helpers.assertFile('package.json', /grunt-connect-proxy/);
+			// helpers.assertFile('helpers/_grunt/connect.js', /proxy/);
 			done();
 		});
 	});

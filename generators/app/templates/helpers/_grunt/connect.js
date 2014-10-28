@@ -12,8 +12,8 @@ module.exports = {
                 '<%%= paths.dev %>'
             ]
         }
-    }<% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>,
-    'proxy': {
+    }<% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') != -1 && proxyHost && proxyPort) { %>,
+    proxy: {
         options: {
             hostname: '0.0.0.0',
             port: 8000,
