@@ -1,28 +1,27 @@
 module.exports = function promptAnwerFactory(customAnswers) {
 	var defaults = {
-		projectName: "",
-		projectAuthor: "",
-		batchFiles: false,
-		installAssemble: "",
-		installPlugin: false,
-		installCMS: false,
-		modules: [
+		"projectName": "",
+		"projectAuthor": "",
+		"installAssemble": true,
+		"installPlugin": false,
+		"installCMS": false,
+		"modules": [
 			"grunt-combine-media-queries",
 			"grunt-grunticon",
 			"grunt-data-separator"
 		],
-		features: [
+		"features": [
 			"sassInsteadOfCompass"
 		],
-		jsLibs: [],
-		cssLibs: [],
-		installProxy: false,
-		proxyHost: '',
-		proxyPort: '',
-		author: {
-			name: "",
-			login: "",
-			email: ""
+		"jsLibs": [],
+		"cssLibs": [],
+		"installProxy": false,
+		"proxyHost": "0.0.0.0",
+		"proxyPort": 80,
+		"author": {
+			"name": "",
+			"login": "",
+			"email": ""
 		}
 	};
 
