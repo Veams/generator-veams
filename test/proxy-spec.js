@@ -55,4 +55,10 @@ describe('grunt-connect-proxy', function () {
 			done();
 		});
 	});
+	it('adds task to Gruntfile.js', function (done) {
+		this.app.run({}, function () {
+			helpers.assertFile('Gruntfile.js', /\'devProxy\'/);
+			done();
+		});
+	});
 });
