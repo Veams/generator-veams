@@ -228,7 +228,7 @@ For further informations and instructions see:
 ## Release History
 
 ### v0.4.71
-- updated packagees in package.json
+- updated packages in package.json
 - added assemble-spec.js
 
 ### v0.4.70
