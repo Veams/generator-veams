@@ -227,6 +227,10 @@ For further informations and instructions see:
 
 ## Release History
 
+### v0.4.71
+- updated packagees in package.json
+- added assemble-spec.js
+
 ### v0.4.70
 - added travis ci
 - changed prototype:gm => prototype:grunt
