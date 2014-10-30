@@ -2,7 +2,6 @@
 'use strict';
 
 var path = require('path');
-var temp = require('temp');
 var helpers = require('yeoman-generator').test;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
