@@ -1,4 +1,4 @@
-/*global describe, beforeEach, it, after*/
+/*global describe, beforeEach, it*/
 'use strict';
 
 var path = require('path');
@@ -17,10 +17,6 @@ var answers = require('../test_helpers/prompt-answer-factory')({
 
 describe('grunt-connect-proxy', function () {
 	var helperPath = "helpers/";
-
-	after(function () {
-		path.join(__dirname, 'tmp').cleanup();
-	});
 
 	beforeEach(function (done) {
 		helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {

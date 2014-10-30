@@ -1,4 +1,4 @@
-/*global describe, beforeEach, it, after*/
+/*global describe, beforeEach, it*/
 'use strict';
 
 var path = require('path');
@@ -12,10 +12,6 @@ var answers = require('../test_helpers/prompt-answer-factory')({
 describe('assemble', function () {
 	var srcPath = "resources/";
 	var helperPath = "helpers/";
-	
-	after(function () {
-		path.join(__dirname, 'tmp').cleanup();
-	});
 
 	beforeEach(function (done) {
 		helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
@@ -28,7 +24,6 @@ describe('assemble', function () {
 			]);
 
 			helpers.mockPrompt(this.app, answers);
-			console.log('answers: ', answers);
 			this.app.options['skip-install'] = true;
 			this.app.options['skip-welcome-message'] = true;
 
@@ -44,11 +39,8 @@ describe('assemble', function () {
 	});
 
 	it('creates helper files', function (done) {
-		var expected = [
-			helperPath + "_grunt/assemble.js"
-		];
 		this.app.run({}, function () {
-			helpers.assertFile(expected);
+			helpers.assertFile(helperPath + "_grunt/assemble.js");
 			done();
 		});
 	});
@@ -56,8 +48,6 @@ describe('assemble', function () {
 	it('creates resources files', function (done) {
 		var expected = [
 			srcPath + "data/site.json",
-			srcPath + "data/pages/index/homepage.json",
-			srcPath + "data/pages/index/homepage.md",
 			srcPath + "templates/helpers/helper-factory.js",
 			srcPath + "templates/helpers/helper-for.js",
 			srcPath + "templates/helpers/helper-ifBlock.js",
@@ -72,7 +62,7 @@ describe('assemble', function () {
 			srcPath + "templates/partials/_global/head/_styles.hbs"
 		];
 		this.app.run({}, function () {
-			helpers.assertFile(expected);
+			helpers.assertFiles(expected);
 			done();
 		});
 	});
