@@ -10,7 +10,6 @@ var answers = require('../test_helpers/prompt-answer-factory')({
 
 
 describe('grunt-bg-shell', function () {
-	var srcPath = "resources/";
 	var helperPath = "helpers/";
 
 	beforeEach(function (done) {
@@ -48,6 +47,7 @@ describe('grunt-bg-shell', function () {
 	it('adds task to Gruntfile.js file', function (done) {
 		this.app.run({}, function () {
 			helpers.assertFile("Gruntfile.js", /\'bgShell:prodCompass\'/);
+			helpers.assertFile("Gruntfile.js", /\'cssProd\'/);
 			done();
 		});
 	});

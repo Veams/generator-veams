@@ -12,7 +12,6 @@ var answers = require('../test_helpers/prompt-answer-factory')({
 
 
 describe('grunt-browser-sync', function () {
-	var srcPath = "resources/";
 	var helperPath = "helpers/";
 
 	beforeEach(function (done) {
