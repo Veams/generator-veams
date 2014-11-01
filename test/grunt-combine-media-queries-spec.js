@@ -11,7 +11,6 @@ var answers = require('../test_helpers/prompt-answer-factory')({
 	]
 });
 
-
 describe('grunt-combine-media-queries', function () {
 	var helperPath = "helpers/";
 
