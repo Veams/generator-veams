@@ -73,11 +73,11 @@
 		<% } %><% if(name == 'grunt-version') { %>
         "grunt-version": "^0.3.0",
 		<% } %><% if(name == 'grunt-photobox') { %>
-		"grunt-photobox": "~0.5.0",
+		"grunt-photobox": "~0.8.0",
 		<% } %><%}); %><%} %><%} %>
 		"jit-grunt": "^0.9.0",
-		"load-grunt-configs": "~0.4.1",
-		"grunt-bg-shell": "*",
+		"load-grunt-configs": "~0.4.1",<% if (features.indexOf('sassInsteadOfCompass') == -1) { %>
+        "grunt-bg-shell": "*",<% } %>
 		"grunt-sync": "~0.2.0",
 		"grunt-htmlhint": "~0.4.0",
 		"grunt-contrib-htmlmin": "~0.3.0",
