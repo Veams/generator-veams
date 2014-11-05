@@ -1,8 +1,8 @@
-module.exports = function promptAnwerFactory(customAnswers) {
+module.exports = function promptAnswerFactory(customAnswers) {
 	var defaults = {
 		"projectName": "",
 		"projectAuthor": "",
-		"installAssemble": true,
+		"installAssemble": false,
 		"installPlugin": false,
 		"installCMS": false,
 		"modules": [
@@ -29,7 +29,7 @@ module.exports = function promptAnwerFactory(customAnswers) {
 	var val;
 
 	for (val in customAnswers) {
-		if (customAnswers.hasOwnProperty(val) && defaults[val]) {
+		if (customAnswers.hasOwnProperty(val)) {
 			custom[val] = customAnswers[val];
 		}
 	}
