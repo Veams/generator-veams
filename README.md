@@ -227,6 +227,10 @@ For further informations and instructions see:
 
 ## Release History
 
+### v0.4.72
+- updated sub generators to support grunt-sass and autolink helper
+- added multiple specs
+
 ### v0.4.71
 - updated packages in package.json
 - added assemble-spec.js
@@ -303,4 +307,4 @@ For further informations and instructions see:
 
 ## TODO: 
 - Tests
-- Integrate Broccoli.js as option
+- Integrate Gulp as option
