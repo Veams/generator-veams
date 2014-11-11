@@ -108,7 +108,7 @@ AssembleGenerator.prototype.appHelperFiles = function appHelperFiles() {
 				chalk.yellow('\n ]') + ('\n') + ('\n')
 			);
 		}
-		if (this.assembleHelperFiles.indexOf('helperAutolink') != -1) {
+		if (this.assembleHelperFiles.indexOf('helperFactory') != -1) {
 			this.copy(root + 'helper-factory.js', this.path + 'templates/helpers/helper-factory.js');
 			this.npmInstall(['lodash'], {'saveDev': true});
 			this.npmInstall(['gray-matter'], {'saveDev': true});

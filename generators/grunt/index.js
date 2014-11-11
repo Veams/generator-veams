@@ -71,6 +71,7 @@ GruntGenerator.prototype.askFor = function askFor() {
 			{name: "grunt-phantomas"},
 			{name: "grunt-photobox"},
 			{name: "grunt-responsive-images"},
+			{name: "grunt-sass"},
 			{name: "grunt-svgmin"},
 			{name: "grunt-version"},
 			{
@@ -252,11 +253,14 @@ GruntGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy(root + 'responsive_images.js', this.path + 'responsive_images.js');
 			this.npmInstall(['grunt-responsive-images'], {'saveDev': true}, done);
 		}
+		if (this.modules.indexOf('grunt-sass') != -1) {
+			this.template(root + '_sass.js', this.path + 'sass.js');
+			this.npmInstall(['grunt-sass'], {'saveDev': true}, done);
+		}
 		if (this.modules.indexOf('grunt-svgmin') != -1) {
 			this.copy(root + 'svgmin.js', this.path + 'svgmin.js');
 			this.npmInstall(['grunt-svgmin'], {'saveDev': true}, done);
 		}
-
 		if (this.modules.indexOf('grunt-version') != -1) {
 			this.copy(root + 'version.js', this.path + 'version.js');
 			this.copy('../../app/templates/resources/templates/partials/blocks/b-version.hbs', 'resources/templates/partials/blocks/b-version.hbs');
