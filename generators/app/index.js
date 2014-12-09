@@ -225,7 +225,6 @@ PrototypeGenerator.prototype._askFor = function _askFor() {
 			{name: "grunt-bless"},
 			{name: "grunt-browser-sync", checked: true},
 			{name: "grunt-combine-media-queries", checked: true},
-			{name: "grunt-comment-toggler"},
 			{name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"},
 			{name: "grunt-contrib-compass"},
 			{name: "grunt-contrib-htmlmin"},
@@ -506,7 +505,7 @@ PrototypeGenerator.prototype.appAssembling = function appAssembling() {    // ad
 
 	// add global assemble files
 	if (this.config.get("installAssemble") == true) {
-		this.copy('resources/data/site.json');
+		this.copy('resources/data/config.json');
 		this.mkdir('resources/templates');
 		this.directory('resources/templates/ajax', 'resources/templates/ajax');
 		this.directory('resources/templates/helpers', 'resources/templates/helpers');
@@ -596,9 +595,6 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-data-separator') != -1) {
 			this.copy('helpers/_grunt/dataSeparator.js', 'helpers/_grunt/dataSeparator.js');
 		}
-		if (this.modules.indexOf('grunt-comment-toggler') != -1) {
-			this.copy('helpers/_grunt/toggleComments.js', 'helpers/_grunt/toggleComments.js');
-		}
 		if (this.modules.indexOf('grunt-csscomb') != -1) {
 			this.copy('helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
 			this.copy('helpers/configs/csscomb.json', 'helpers/configs/csscomb.json');
@@ -608,7 +604,6 @@ PrototypeGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 		if (this.modules.indexOf('grunt-contrib-requirejs') != -1 || (this.jsLibs && this.jsLibs.length > 0 && this.jsLibs.indexOf('requirejs') != -1)) {
 			this.copy('helpers/_grunt/requirejs.js', 'helpers/_grunt/requirejs.js');
-			this.copy('helpers/_grunt/toggleComments.js', 'helpers/_grunt/toggleComments.js');
 			this.bowerInstall(['almond'], {'saveDev': true});
 		}
 		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {

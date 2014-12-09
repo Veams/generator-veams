@@ -25,12 +25,12 @@ BVGenerator.prototype.askFor = function askFor() {
 		default: 'Product'
 	}, {
 		name: 'path',
-		message: 'Where would you like to place your View? root -> resources/js/views/'
+		message: 'Where would you like to place your View? root -> resources/js/'
 	}, {
 		type: 'confirm',
 		name: 'temp',
 		message: 'Would you like to create a template with your View?',
-		default: true
+		default: false
 	}];
 
 	this.prompt(prompts, function(props) {
@@ -45,11 +45,11 @@ BVGenerator.prototype.askFor = function askFor() {
 };
 
 BVGenerator.prototype.placeView = function placeView() {
-	this.template('_View.js', 'resources/js/views/' + this.path + this.initName + 'View.js');
+	this.template('_View.js.ejs', 'resources/js/' + this.path + this.initName + 'View.js');
 };
 
 BVGenerator.prototype.placeTemplate = function placeTemplate() {
 	if (this.temp) {
-		this.template('_Template.html', 'resources/js/views/' + this.path + this.initName + '.html');
+		this.template('_Template.html', 'resources/js/' + this.path + this.initName + '.html');
 	}
 };

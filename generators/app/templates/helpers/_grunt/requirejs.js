@@ -17,7 +17,7 @@ module.exports = {
 	},
 	prod: {
 		options: {
-			out: "<%= paths.dev %>/js/main.min.js"
+			out: "<%= paths.dev %>/js/main.js"
 		}
 	}
 };

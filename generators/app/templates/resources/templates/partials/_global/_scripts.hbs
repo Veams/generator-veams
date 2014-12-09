@@ -1,8 +1,5 @@
 <% if (jsLibs && jsLibs.length > 0) { if (jsLibs.indexOf('requirejs') != -1) { %>
-<!-- comments:toggle html -->
-<script data-main="js/main" src="bower-components/requirejs/require.js"></script>
-  <!-- <script src="js/main.min.js"></script> -->
-<!-- endcomments -->
+<script src="js/main"></script>
 <% } if ((jsLibs.indexOf('requirejs') == -1) && (jsLibs.indexOf('jquery') != -1)){ %>
 <script src="bower-components/jquery/dist/jquery.js"></script>
 <% } if ((jsLibs.indexOf('requirejs') == -1) && (jsLibs.indexOf('backbone') != -1)){ %>

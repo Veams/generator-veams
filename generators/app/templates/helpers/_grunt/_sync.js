@@ -42,17 +42,7 @@ module.exports = {
 			dest: '<%%= paths.dev %>/bower-components'
 			}
 		]
-	}<% } %><% if(jsLibs && jsLibs.length > 0){ %>,<% if (jsLibs.indexOf('requirejs') != -1) { %>
-    requirejs: {
-        files: [
-            // includes files within path and its sub-directories
-            {
-                cwd: '<%%= paths.src %>/bower-components/requirejs',
-                src: 'require.js',
-                dest: '<%%= paths.dev %>/bower-components/requirejs'
-            }
-	]
-			},<% } %><% if (jsLibs.indexOf('backbone') != -1) { %>
+	}<% } %><% if(jsLibs && jsLibs.length > 0){ %>,<% if (jsLibs.indexOf('backbone') != -1 && jsLibs.indexOf('requirejs') == -1) { %>
     backbone: {
         files: [
             // includes files within path and its sub-directories
@@ -82,7 +72,7 @@ module.exports = {
                 dest: '<%%= paths.dev %>/bower-components/angular'
             }
         ]
-    },<% } %><% if (jsLibs.indexOf('jquery') != -1) { %>
+    },<% } %><% if (jsLibs.indexOf('jquery') != -1 && jsLibs.indexOf('requirejs') == -1) { %>
     jquery: {
         files: [
             // includes files within path and its sub-directories

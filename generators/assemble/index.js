@@ -110,8 +110,6 @@ AssembleGenerator.prototype.appHelperFiles = function appHelperFiles() {
 		}
 		if (this.assembleHelperFiles.indexOf('helperFactory') != -1) {
 			this.copy(root + 'helper-factory.js', this.path + 'templates/helpers/helper-factory.js');
-			this.npmInstall(['lodash'], {'saveDev': true});
-			this.npmInstall(['gray-matter'], {'saveDev': true});
 			console.log(
 				('\n') +
 				chalk.bgRed('Factory Helper - For further instructions see: http://www.prototype-generator.com/templating-in-pg/template-helpers.html)') +

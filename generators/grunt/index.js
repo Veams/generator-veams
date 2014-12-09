@@ -54,7 +54,6 @@ GruntGenerator.prototype.askFor = function askFor() {
 			{name: "grunt-bless"},
 			{name: "grunt-browser-sync"},
 			{name: "grunt-combine-media-queries"},
-			{name: "grunt-comment-toggler"},
 			{name: "grunt-contrib-compass"},
 			{name: "grunt-contrib-htmlmin"},
 			{name: "grunt-contrib-requirejs"},
@@ -170,10 +169,6 @@ GruntGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.copy(root + 'cmq.js', this.path + 'cmq.js');
 			this.npmInstall(['grunt-combine-media-queries'], {'saveDev': true}, done);
 		}
-		if (this.modules.indexOf('grunt-comment-toggler') != -1) {
-			this.copy(root + 'toggleComments.js', this.path + 'toggleComments.js');
-			this.npmInstall(['grunt-comment-toggler'], {'saveDev': true}, done);
-		}
 		if (this.modules.indexOf('grunt-contrib-compass') != -1) {
 			this.copy(root + 'compass.js', this.path + 'compass.js');
 			this.npmInstall(['grunt-contrib-compass'], {'saveDev': true}, done);
@@ -184,7 +179,6 @@ GruntGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 		if (this.modules.indexOf('grunt-contrib-requirejs') != -1) {
 			this.copy(root + 'requirejs.js', this.path + 'requirejs.js');
-			this.copy(root + 'toggleComments.js', this.path + 'toggleComments.js');
 			this.bowerInstall(['almond'], {'saveDev': true});
 			this.npmInstall(['grunt-contrib-requirejs'], {'saveDev': true}, done);
 		}

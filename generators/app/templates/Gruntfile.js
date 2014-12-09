@@ -23,8 +23,7 @@ module.exports = function(grunt) {
 	
 	// load only used tasks and add fallbacks for those which cannot be find
 	require('jit-grunt')(grunt, { <% if (modules.indexOf('grunt-combine-media-queries') != -1) { %>
-		cmq: 'grunt-combine-media-queries'<% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1 || (modules.indexOf('grunt-comment-toggler') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1)) { %>,<% } %><% } %><% if (modules.indexOf('grunt-comment-toggler') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1) { %>
-		toggleComments: 'grunt-comment-toggler'<% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,<% } %><% } %><% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+		cmq: 'grunt-combine-media-queries'<% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1 || (modules.indexOf('grunt-comment-toggler') != -1)) { %>,<% } %><% } %><% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
 		replace: 'grunt-text-replace'<% } %><% if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
 		'svg-sprites': 'grunt-dr-svg-sprites'<% } %>
 	});
@@ -50,9 +49,9 @@ module.exports = function(grunt) {
 		},
 	// define your ports for grunt-contrib-connect
 		ports: {
-			app: 9000,
-			test: 9001,
-			livereload: 35730
+			app: 3000,
+			test: 3001,
+			livereload: 35731
 		}
 	};
 

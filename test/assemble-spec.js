@@ -47,7 +47,7 @@ describe('assemble', function () {
 
 	it('creates resources files', function (done) {
 		var expected = [
-			srcPath + "data/site.json",
+			srcPath + "data/config.json",
 			srcPath + "templates/helpers/helper-factory.js",
 			srcPath + "templates/helpers/helper-for.js",
 			srcPath + "templates/helpers/helper-ifBlock.js",

@@ -2,9 +2,33 @@
 component: Picture
 ---
 
-<picture class="c-picture{{#if picture-modifier-class}}--{{picture-modifier-class}}{{/if}} {{picture-class}}" data-default-src="{{picture-url-std}}">
-	<source srcset="{{picture-url-large}}, {{picture-url-large-2x}}" media="(min-width: 768px)"/>
-	<source srcset="{{picture-url-medium}}, {{picture-url-medium-2x}}" media="(min-width: 481px)"/>
-	<source srcset="{{picture-url-small}}, {{picture-url-small-2x}}" media="(max-width: 480px)"/>
-	<img src="{{picture-url-std}}" alt="{{picture-alt}}"/>
+<picture class="c-picture{{#if picture-modifier-class}}--{{picture-modifier-class}}{{/if}} {{picture-classes}}" data-css="c-picture">
+
+	<!--[if IE 9]><audio><![endif]-->
+	{{#if picture-320}}
+		<source srcset="{{assets}}/{{picture-320}} 1x, {{assets}}/{{picture-320_2x}} 2x" media="(max-width: 320px)"/>
+	{{/if}}
+
+	{{#if picture-480}}
+		<source srcset="{{assets}}/{{picture-480}} 1x, {{assets}}/{{picture-480_2x}} 2x" media="(max-width: 480px)"/>
+	{{/if}}
+
+	{{#if picture-1024}}
+		<source srcset="{{assets}}/{{picture-1024}} 1x, {{assets}}/{{picture-1024_2x}} 2x" media="(min-width: 1024px)"/>
+	{{/if}}
+
+	{{#if picture-768}}
+		<source srcset="{{assets}}/{{picture-768}} 1x, {{assets}}/{{picture-768_2x}} 2x" media="(min-width: 768px)"/>
+	{{/if}}
+
+	{{#if picture-481}}
+		<source srcset="{{assets}}/{{picture-481}} 1x, {{assets}}/{{picture-481_2x}} 2x" media="(min-width: 481px)"/>
+	{{/if}}
+
+	{{#if picture-381}}
+		<source srcset="{{assets}}/{{picture-381}} 1x, {{assets}}/{{picture-381_2x}} 2x" media="(min-width: 380px)"/>
+	{{/if}}
+	<!--[if IE 9]></audio><![endif]-->
+
+	<img src="{{assets}}/{{picture-url-std}}" alt="{{picture-alt}}"/>
 </picture>
