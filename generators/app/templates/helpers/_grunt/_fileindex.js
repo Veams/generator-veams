@@ -29,14 +29,15 @@ module.exports = {<% if (features && features.length > 0) { if (features.indexOf
 				cwd: '<%%= paths.src %>/scss/',
 				// here you can build your _all.scss like you would do in _all.scss with sass-globbing
 				src: [
-					'global/_reset.scss',<% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
+					'global/_reset.scss',
+					'global/_vars.scss',<% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
 					'../bower-components/foundation/scss/foundation.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('neat') != -1) { %>
 					'../bower-components/bourbon/app/assets/stylesheets/_bourbon.scss',
 					'../bower-components/neat/app/assets/stylesheets/_neat.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
 					'../bower-components/sass-bootstrap/lib/bootstrap.scss',<% }} %>
+					'utils/_system.scss',
 					'utils/extends/**/*.scss',
 					'utils/mixins/**/*.scss',
-					'global/_vars.scss',
 					'global/_base.scss',<% if (features && features.length > 0) { if (features.indexOf('PGFM') != -1 || features.indexOf('installDemoContent') != -1) { %>
 					'regions/**/*.scss',
 					'components/**/*.scss',

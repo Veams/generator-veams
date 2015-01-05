@@ -1,6 +1,9 @@
 // Reset imports
 @import "global/_reset";
 
+// Vars
+@import "global/_vars";
+
 // Frameworks
 <% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
 @import "../bower-components/foundation/scss/foundation"; // You can choose your specific components
@@ -18,31 +21,31 @@
 <% }} %>
 
 // Utilities
-@import "utils/extends/extends";
-@import "utils/mixins/breakpoint";
-@import "utils/mixins/cp"; <% if (modules && modules.length > 0 && modules.indexOf('grunt-grunticon') != -1) { %>
-@import "utils/mixins/grunticon"; <% } %><% if (modules && modules.length > 0 && modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
-@import "utils/mixins/spriteicon"; <% } %>
-@import "utils/mixins/rem";
+@import "utils/_system";
+@import "utils/extends/_extends";
+@import "utils/mixins/_breakpoint";
+@import "utils/mixins/_cp"; <% if (modules && modules.length > 0 && modules.indexOf('grunt-grunticon') != -1) { %>
+@import "utils/mixins/_grunticon"; <% } %><% if (modules && modules.length > 0 && modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+@import "utils/mixins/_spriteicon"; <% } %>
+@import "utils/mixins/_rem";
 
 // Global
-@import "global/vars";
-@import "global/base";
+@import "global/_base";
 <% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
 // Regions
-@import "regions/r-sidebar";
-@import "regions/r-header";
-@import "regions/r-stage";
-@import "regions/r-content";
-@import "regions/r-main";
+@import "regions/_r-sidebar";
+@import "regions/_r-header";
+@import "regions/_r-stage";
+@import "regions/_r-content";
+@import "regions/_r-main";
 
 // Components
-@import "components/c-form";
-@import "components/c-article";
+@import "components/_c-form";
+@import "components/_c-article";
 
 // Blocks
-@import "blocks/b-logo";
-@import "blocks/b-toggle";
-@import "blocks/b-stage-content";
-@import "blocks/b-nav";
+@import "blocks/_b-logo";
+@import "blocks/_b-toggle";
+@import "blocks/_b-stage-content";
+@import "blocks/_b-nav";
 <% } %>

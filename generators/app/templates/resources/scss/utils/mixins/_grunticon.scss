@@ -1,8 +1,6 @@
 /******************************************
-
 	Grunticon mixin
 	usage: @include grunticon(filename);
-
 ******************************************/
 @mixin grunticon($name) {
 	@extend %icon-data-svg-#{$name};

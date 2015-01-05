@@ -1,0 +1,19 @@
+/* ===================================================
+SYSTEM TOOLS
+=================================================== */
+
+/* ---------------------------------------------------
+@mixin: importOnce
+- this mixin makes it possible to have a file imported at multiple place and only be output the first time it is called
+- it is used for placeholders to prevent them from being repeated by each file depending on them
+
+see: https://github.com/mlarcher/docssa/blob/master/sass/base/utils/_system.scss
+--------------------------------------------------- */
+
+$modules: () !default;
+@mixin importOnce($uniqeRef) {
+	@if not index($modules, $uniqeRef) {
+		$modules: append($modules, $uniqeRef);
+		@content;
+	}
+}
