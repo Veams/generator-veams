@@ -179,8 +179,8 @@ GruntGenerator.prototype.appGruntModules = function appGruntModules() {
 		}
 		if (this.modules.indexOf('grunt-contrib-requirejs') != -1) {
 			this.copy(root + 'requirejs.js', this.path + 'requirejs.js');
-			this.bowerInstall(['almond'], {'saveDev': true});
-			this.npmInstall(['grunt-contrib-requirejs'], {'saveDev': true}, done);
+			this.bowerInstall(['almond'], {'save': true});
+			this.npmInstall(['grunt-contrib-requirejs'], {'save': true}, done);
 		}
 		if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
 			this.template(root + '_uglify.js', this.path + 'uglify.js');
@@ -198,9 +198,9 @@ GruntGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 			this.mkdir('resources/scss/icons');
 			this.template(root + '_svg-sprites.js', this.path + 'svg-sprites.js');
-			this.copy('../../app/templates/resources/scss/utils/mixins/_spriteicon.scss');
+			this.bowerInstall(['pg-scss'], {'save': true});
+			this.npmInstall(['grunt-dr-svg-sprites'], {'saveDev': true}, done);
 
-			this.npmInstall(['Sebastian-Fitzner/grunt-dr-svg-sprites'], {'saveDev': true}, done);
 			console.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n') +
 				chalk.yellow('\n "svg-sprites": "grunt-dr-svg-sprites"') + ('\n') +
 				chalk.bgRed('\n Please add the following lines to your Gruntfile.js to your custom tasks:') + ('\n') +
@@ -214,7 +214,7 @@ GruntGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.directory('../../app/templates/helpers/resources/scss/icons', 'resources/scss/icons');
 			this.directory('../../app/templates/helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
 			this.template(root + '_grunticon.js', this.path + 'grunticon.js');
-			this.copy('../../app/templates/resources/scss/utils/mixins/_grunticon.scss');
+			this.bowerInstall(['pg-scss'], {'save': true});
 			this.npmInstall(['grunt-grunticon'], {'saveDev': true}, done);
 		}
 		if (this.modules.indexOf('grunt-jsbeautifier') != -1) {

@@ -1,14 +1,17 @@
 {
-  "name": "<%= _.slugify(projectName) %>",
   "version": "0.1.0",
-  "devDependencies": { <% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>
-	"highlightjs": "~8.0.0"<% } %><% if((jsLibs && jsLibs.length > 0 || cssLibs && cssLibs.length > 0) && features && features.length > 0 && features.indexOf('installDocs') != -1){ %>,<% } %><% if(jsLibs && jsLibs.length > 0){ %><% if(typeof jsLibs === 'object'){ _.each(jsLibs, function(name, i) { %>
-    "<%= name %>": "*"<% if(i < (jsLibs.length - 1) || (cssLibs && cssLibs.length > 0)) { %>,<% } %><% }); } else { %>
-    "<%= name %>": "*"<% }} %><% if(cssLibs && cssLibs.length > 0){ %><% if(typeof cssLibs === 'object'){ _.each(cssLibs, function(name, i) { %><% if(name == 'foundation') { %> 
-	"foundation": "~5.2.0"<% if(i < (cssLibs.length - 1)) { %>,<% } %><% } %><% if(name == 'sass-bootstrap') { %> 
-	"sass-bootstrap": "*"<% if(i < (cssLibs.length - 1)) { %>,<% } %><% } %><% if(name == 'neat') { %> 
-	"bourbon": "~3.1.8",
-	"neat": "~1.5.0"<% if(i < (cssLibs.length - 1)) { %>,<% } %><% } %><% }); }  %><% } %>
-  },
-  "dependencies": {}
+  "dependencies": {
+    "highlightjs": "~8.0.0",
+    "backbone": "*",
+    "requirejs": "*",
+    "jquery": "*",
+    "almond": "*",
+    "foundation": "~5.2.0",
+    "sass-bootstrap": "*" ,
+    "bourbon": "~3.1.8",
+    "neat": "~1.5.0",
+    "pg-scss": "~0.1.5",
+    "pg-js": "~0.1.0",
+    "pg-components": "~0.1.0"
+  }
 }
