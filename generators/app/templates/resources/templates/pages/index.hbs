@@ -10,28 +10,19 @@ lead: Scaffold prototypes in a quick way and use Grunt, Bower and Assemble for a
 <% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 {{#extend "tpl-default"}}
 	{{#content "body"}}
-
 		<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
-
 		{{#homepage.data}}
 			{{partial "c-article" }}
 		{{/homepage.data}}
 		<% } else { %>
-
 		<h3>Place your content here!</h3>
-
 		<% } %>
-
 	{{/content}}
 {{/extend}}
 <% } else { %><% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
-
 {{#homepage.data}}
 	{{partial "c-article" }}
 {{/homepage.data}}
-
 <% } else { %>
-
 <h3>Place your content here!</h3>
-
 <% } %><% } %>

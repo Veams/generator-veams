@@ -1,8 +1,0 @@
-<label for="{{ id }}">
-	{{ label }} {{#is required "required"}}<abbr title="Required">*</abbr>{{/is}}
-</label>
-<textarea id="{{id}}" rows="5" {{#if data-minlength}}data-minlength="{{data-minlength}}"{{/if}}
-	{{#if data-maxlength}}data-maxlength="{{data-maxlength}}"{{/if}}
-	{{#if data-errormessage}}data-errormessage="{{data-errormessage}}"{{/if}}
-	{{#is required "required"}}required="required"{{/is}}
-	      placeholder="{{ placeholder }}"></textarea>
