@@ -1,22 +1,20 @@
-// IndexView.js
-
 define(["jquery", "backbone"<% if(temp === true){ %>, "text!templates/<%= path %><%= initName %>.html"<% } %>],
 
 	function($, Backbone<% if(temp === true){ %>,template<% } %>){
 
-	var <%= initName %>View = Backbone.View.extend({
+	var <%= initName %> = Backbone.View.extend({
 			// The DOM Element associated with this view
 			el: ".yourElement",
+
+			// View Event Handlers
+			events: {
+			},
 
 			// View constructor
 			initialize: function() {
 				// Calls the view's render method
+				// Please remove render() form initialize() and execute it when it is needed
 				this.render();
-			},
-
-			// View Event Handlers
-			events: {
-
 			},
 
 			// Renders the view's template to the UI
@@ -33,6 +31,6 @@ define(["jquery", "backbone"<% if(temp === true){ %>, "text!templates/<%= path %
 			}
 		});
 		// Returns the View class
-		return <%= initName %>View;
+		return <%= initName %>;
 	}
 );
