@@ -7,8 +7,11 @@ module.exports = {
 		layout: false, <% } else { %>
 		layout: 'tpl-default.hbs', <% } %>
 		partials: [
-		'<%%= paths.src %>/templates/partials/**/*.hbs'<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>,
-		'<%%= paths.src %>/templates/layouts/tpl-default.hbs'<% } %>
+			'<%%= paths.src %>/templates/partials/**/*.hbs'<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>,
+			'<%%= paths.src %>/templates/layouts/*.hbs'<% } %>
+		],
+		collections: [
+			'sitemap'
 		]
 	},
 	pages: {
@@ -36,7 +39,7 @@ _.each(plugin, function(name, i) { if(name == 'permalinks') { %>
 			cwd: '<%%= paths.src %>/templates/docs/',
 			dest: '<%%= paths.dev %>/docs',
 			expand: true,
-			flatten: true,
+			flatten: false,
 			src: ['**/*.hbs']
 			}
 		]

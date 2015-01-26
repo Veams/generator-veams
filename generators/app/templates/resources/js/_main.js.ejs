@@ -1,0 +1,14 @@
+require([
+		'app'<% if(jsLibs && jsLibs.length > 0){ %>,<% if(typeof jsLibs === 'object'){ _.each(jsLibs, function(name, i) { %><% if(name == 'jquery') { %>
+		'jquery'<% if(i < (jsLibs.length - 1)) { %>,<% } %><% } %><% if(name == 'backbone') { %>
+        'backbone'<% } %><% }); }  %><% } %>
+	], function (
+		app<% if(jsLibs && jsLibs.length > 0){ %>,<% if(typeof jsLibs === 'object'){ _.each(jsLibs, function(name, i) { %><% if(name == 'jquery') { %>
+		$<% if(i < (jsLibs.length - 1)) { %>,<% } %><% } %><% if(name == 'backbone') { %>
+        backbone<% } %><% }); }  %><% } %>
+) {
+    'use strict';
+		console.log(app);<% if(jsLibs && jsLibs.length > 0){ %><% if(typeof jsLibs === 'object'){ _.each(jsLibs, function(name, i) { %><% if(name == 'jquery') { %>
+		console.log('Running jQuery %s', $().jquery);<% } %> <% if(name == 'backbone') { %>
+		console.log(backbone);<% } %> <% }); }  %><% } %>
+});

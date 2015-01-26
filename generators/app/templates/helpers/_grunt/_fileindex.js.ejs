@@ -16,7 +16,6 @@ module.exports = {<% if (features && features.length > 0) { if (features.indexOf
 					// concatenate our cleaned up item with '@import ""' and add it to our imports array
 					imports += '@import "' + listElName + '";\n';
 				}
-
 				// return the imports array
 				return imports;
 			}
@@ -28,16 +27,17 @@ module.exports = {<% if (features && features.length > 0) { if (features.indexOf
 				// define your current working directory in which the sass files are located
 				cwd: '<%%= paths.src %>/scss/',
 				// here you can build your _all.scss like you would do in _all.scss with sass-globbing
-				src: [
-					'global/_reset.scss',<% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
+				src: [<% if (pgPackages && pgPackages.length > 0) { if (pgPackages.indexOf('pgMethodology') != -1) { %>
+					'../bower-components/pg-scss/resources/scss/_pg-reset.scss',
+					'../bower-components/pg-scss/resources/scss/_pg.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
 					'../bower-components/foundation/scss/foundation.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('neat') != -1) { %>
 					'../bower-components/bourbon/app/assets/stylesheets/_bourbon.scss',
 					'../bower-components/neat/app/assets/stylesheets/_neat.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
 					'../bower-components/sass-bootstrap/lib/bootstrap.scss',<% }} %>
-					'utils/extends/**/*.scss',
-					'utils/mixins/**/*.scss',
 					'global/_vars.scss',
-					'global/_base.scss',<% if (features && features.length > 0) { if (features.indexOf('PGFM') != -1 || features.indexOf('installDemoContent') != -1) { %>
+					'utils/mixins/**/*.scss',
+					'utils/extends/**/*.scss',
+					'global/_base.scss',<% if (pgPackages && pgPackages.length > 0) { if (pgPackages.indexOf('pgMethodology') != -1) { %>
 					'regions/**/*.scss',
 					'components/**/*.scss',
 					'modules/**/*.scss',
