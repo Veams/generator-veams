@@ -1,4 +1,4 @@
-module.exports = {<% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
+module.exports = {<% if (features && features.length) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
 	libsassGlobbing: {
 		options: {
 			format: function (list, options, dest) {
@@ -23,11 +23,11 @@ module.exports = {<% if (features && features.length > 0) { if (features.indexOf
 		files: [
 			{
 				// define your destination file
-				dest: '<%%= paths.src %>/scss/_all.scss',
+				dest: '<%%= paths.src %>/scss/styles.scss',
 				// define your current working directory in which the sass files are located
 				cwd: '<%%= paths.src %>/scss/',
-				// here you can build your _all.scss like you would do in _all.scss with sass-globbing
-				src: [<% if (pgPackages && pgPackages.length > 0) { if (pgPackages.indexOf('pgMethodology') != -1) { %>
+				// here you can build your styles.scss like you would do in styles.scss with sass-globbing
+				src: [<% if (pgPackages && pgPackages.length) { if (pgPackages.indexOf('pgSCSS') != -1) { %>
 					'../bower-components/pg-scss/resources/scss/_pg-reset.scss',
 					'../bower-components/pg-scss/resources/scss/_pg.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
 					'../bower-components/foundation/scss/foundation.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('neat') != -1) { %>
@@ -42,11 +42,12 @@ module.exports = {<% if (features && features.length > 0) { if (features.indexOf
 					'components/**/*.scss',
 					'modules/**/*.scss',
 					'blocks/**/*.scss',<% }} %>
-					'icons/**/*.scss'
+					'icons/**/*.scss',
+					'global/_print.scss'
 				]
 			}
 		]
-	}<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-responsive-images') != -1) { %>,<% }} %><% }} %><% if (modules && modules.length > 0) { if (modules.indexOf('grunt-responsive-images') != -1) { %>
+	}<% if (modules && modules.length) { if (modules.indexOf('grunt-responsive-images') != -1) { %>,<% }} %><% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-responsive-images') != -1) { %>
 	pictures: {
 		options: {
 			format: 'json_flat',

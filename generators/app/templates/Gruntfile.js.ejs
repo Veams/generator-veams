@@ -67,7 +67,7 @@ module.exports = function(grunt) {
 	<% if(features && features.length > 0){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
 	// SASS Task
 	grunt.registerTask('watchCSS', [
-		'fileindex', // Sass Globbing with Grunt (see: http://www.prototype-generator.com/getting-started/features.html)
+		'fileindex:libsassGlobbing', // Sass Globbing with Grunt (see: http://www.prototype-generator.com/getting-started/features.html)
 		'sass:dist'
 	]); <% } else { %>
 	grunt.registerTask('cssDev', [

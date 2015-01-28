@@ -1,1 +1,0 @@
-Place your custom extends into this folder.

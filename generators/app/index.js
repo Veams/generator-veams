@@ -287,16 +287,6 @@ module.exports = yeoman.generators.Base.extend({
 					name: 'Create Developer Documentation',
 					value: 'installDocs',
 					checked: true
-				},
-				{
-					name: 'Support IE8',
-					value: 'supportIE8',
-					checked: false
-				},
-				{
-					name: 'Start developing mobile first and need to support desktop styles in IE8',
-					value: 'mobileFirst',
-					checked: false
 				}
 			],
 			default: this.config.get("features")
@@ -444,12 +434,11 @@ module.exports = yeoman.generators.Base.extend({
 			this.mkdir('resources/scss');
 			this.mkdir('resources/scss/utils/extends');
 			this.mkdir('resources/scss/utils/mixins');
-			this.copy('resources/scss/global/_base.scss', 'resources/scss/global/_base.scss');
-			this.copy('resources/scss/global/_vars.scss', 'resources/scss/global/_vars.scss');
 			this.copy('resources/scss/global/_print.scss', 'resources/scss/global/_print.scss');
-			this.copy('resources/scss/styles.scss', 'resources/scss/styles.scss');
 
-			this.template('resources/scss/_all.scss', 'resources/scss/_all.scss');
+			this.template('resources/scss/global/_base.scss.ejs', 'resources/scss/global/_base.scss');
+			this.template('resources/scss/global/_vars.scss.ejs', 'resources/scss/global/_vars.scss');
+			this.template('resources/scss/_styles.scss.ejs', 'resources/scss/styles.scss');
 		},
 
 		assemble: function () {
@@ -464,9 +453,7 @@ module.exports = yeoman.generators.Base.extend({
 
 				// Add global partials
 				this.mkdir('resources/templates/partials');
-				this.mkdir('resources/templates/partials/_global');
-				this.directory('resources/templates/partials/_global/head', 'resources/templates/partials/_global/head');
-				this.template('resources/templates/partials/_global/_scripts.hbs', 'resources/templates/partials/_global/_scripts.hbs');
+				this.directory('resources/templates/partials/_global', 'resources/templates/partials/_global');
 
 				// Add Gruntfile-helper file
 				this.copy('helpers/_grunt/_assemble.js.ejs', 'helpers/_grunt/assemble.js');
@@ -681,9 +668,9 @@ module.exports = yeoman.generators.Base.extend({
 					this.mkdir('resources/scss/regions');
 				}
 
-				if(this.pgPackages.indexOf('pg-scss') == -1) delete this.bowerFile['dependencies']['pg-scss'];
-				if(this.pgPackages.indexOf('pg-js') == -1) delete this.bowerFile['dependencies']['pg-js'];
-				if(this.pgPackages.indexOf('pg-components') == -1) delete this.bowerFile['dependencies']['pg-components'];
+				if(this.pgPackages.indexOf('pgSCSS') == -1) delete this.bowerFile['dependencies']['pg-scss'];
+				if(this.pgPackages.indexOf('pgJS') == -1) delete this.bowerFile['dependencies']['pg-js'];
+				if(this.pgPackages.indexOf('pgComponents') == -1) delete this.bowerFile['dependencies']['pg-components'];
 			}
 		},
 

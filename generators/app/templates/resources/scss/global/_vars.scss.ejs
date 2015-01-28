@@ -1,0 +1,22 @@
+<% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('neat') != -1) { %>@import "../../bower-components/neat/app/assets/stylesheets/neat-helpers";
+// Change the grid settings
+$column: 73px;
+$gutter: 22px;
+$grid-columns: 12;
+$max-width: 1138px;
+
+// Define your breakpoints for Bourbon Neat
+$tablet-l: new-breakpoint(max-width 1024px 12);
+$tablet-p: new-breakpoint(max-width 768px 8);
+$mobile-l: new-breakpoint(max-width 640px 8);
+$mobile-p: new-breakpoint(max-width 480px 4);
+<% } else { %>
+// Demo vars, when you use bourbon neat just delete them and comment out the two lines above
+$tablet-l: 1024px;
+$tablet-p: 768px;
+$mobile-l: 640px;
+$mobile-p: 480px;
+<% } %>
+<% if (pgPackages && pgPackages.length && pgPackages.indexOf('pgSCSS') != -1) { %>
+$use-min-width: false; // This variable will be used pg-scss
+<% } %>
