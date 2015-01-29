@@ -20,100 +20,23 @@
 	{{> _metadata }}
 	{{> _styles }}
 	<% } %>
-</head>
-
-<body class="<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>{{ bodyclass }}<% } %>">
-	<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
-
-	<div id="site-wrapper">
-		<div class="canvas" id="site-canvas">
-
-			<!-- Header
-			================================================== -->
-			<header class="r-header">
-				<div class="container header__container">
-					{{partial "b-toggle" }}
-					{{partial "b-logo" }}
-				</div>
-			</header>
-
-			<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-			<section class="r-nav">
-				{{#block "nav"}}
-					<!-- Navbar
-					================================================== -->
-					{{> b-nav }}
-				{{/block}}
-			</section>
-				<% } else { %>
-			<section class="r-nav">
-				{{> b-nav }}
-			</section>
-			<% } %>
-
-			<!-- Stage
-			================================================== -->
-			<section class="r-stage">
-				<div class="container stage__container">
-					{{> b-stage-content }}
-				</div>
-			</section>
-
-			<!-- Content
-			================================================== -->
-			<main class="r-main" id="main">
-				<div class="container main__container">
-					<aside class="r-sidebar is-right">
-						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-						{{#block "sidebar-right"}}
-							{{> b-release }}
-						{{/block}}
-						<% } else { %>
-						{{> b-release }}
-						<% } %>
-					</aside>
-					<div class="r-content">
-						<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-						{{#block "body"}}
-							{{> body }}
-						{{/block}}
-						<% } else { %>
-						{{> body }}
-						<% } %>
-					</div>
-
-				</div>
-			</main>
-
-			<!-- Footer
-			================================================== -->
-			<footer class="r-footer">
-				<div class="container footer__container">
-					<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-					{{#block "footer"}}
-						{{> b-footer-copy }}
-					{{/block}}
-					<% } else { %>
-					{{> b-footer-copy }}
-					<% } %>
-				</div>
-			</footer>
-
-		</div>
-	</div>
-	<% } else { %> <% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
-	{{#block "body"}}
-		{{> body }}
-	{{/block}}
-	<% } else { %>
-	{{> body }}
-	<% } %> <% } %><!-- Scripts
+	<!-- Scripts
 	================================================== --> <% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 	{{#block "scripts"}}
 		{{> _scripts }}
 	{{/block}}
 	<% } else { %>
 	{{> _scripts }}
+	<% } %>
+</head>
+
+<body class="{{ bodyclass }}">
+	<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+	{{#block "body"}}
+		{{> body }}
+	{{/block}}
+	<% } else { %>
+	{{> body }}
 	<% } %>
 </body>
 </html>

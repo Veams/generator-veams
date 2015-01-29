@@ -48,7 +48,7 @@ describe('assemble', function () {
 	it('creates resources files', function (done) {
 		var expected = [
 			srcPath + "data/config.json",
-			srcPath + "templates/helpers/helper-factory.js",
+			srcPath + "templates/helpers/helper-panel.js",
 			srcPath + "templates/helpers/helper-for.js",
 			srcPath + "templates/helpers/helper-ifBlock.js",
 			srcPath + "templates/helpers/helper-limit.js",
@@ -58,8 +58,8 @@ describe('assemble', function () {
 			srcPath + "templates/layouts/tpl-default.hbs",
 			srcPath + "templates/pages/index.hbs",
 			srcPath + "templates/partials/_global/_scripts.hbs",
-			srcPath + "templates/partials/_global/head/_metadata.hbs",
-			srcPath + "templates/partials/_global/head/_styles.hbs"
+			srcPath + "templates/partials/_global/_metadata.hbs",
+			srcPath + "templates/partials/_global/_styles.hbs"
 		];
 		this.app.run({}, function () {
 			helpers.assertFiles(expected);

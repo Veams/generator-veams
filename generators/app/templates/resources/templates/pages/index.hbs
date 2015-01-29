@@ -2,27 +2,13 @@
 title: Build Better Prototypes with PG
 menuLink: Home
 sortOrder: 01
-<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
-bodyclass: front
-lead: Scaffold prototypes in a quick way and use Grunt, Bower and Assemble for an optimized and effective workflow. <% } %>
 ---
-
 <% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
 {{#extend "tpl-default"}}
 	{{#content "body"}}
-		<% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
-		{{#homepage.data}}
-			{{partial "c-article" }}
-		{{/homepage.data}}
-		<% } else { %>
 		<h3>Place your content here!</h3>
-		<% } %>
 	{{/content}}
 {{/extend}}
-<% } else { %><% if (features && features.length > 0 && features.indexOf('installDemoContent') != -1) { %>
-{{#homepage.data}}
-	{{partial "c-article" }}
-{{/homepage.data}}
 <% } else { %>
 <h3>Place your content here!</h3>
-<% } %><% } %>
+<% } %>

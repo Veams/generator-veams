@@ -1,13 +1,13 @@
 ---
-block: navbar
+block: nav
 ---
 
-<nav class="b-navbar" id="site-menu">
+<nav class="b-nav">
 	<h2>Navigation</h2>
-	<ul class="navbar__list">
+	<ul class="nav__list">
 		{{#withSort pages 'data.sortOrder'}}
-			<li class="navbar__list-item">
-				<a href="{{autolink}}" {{#is ../page.dest this.dest}} class="active"{{/is}}>{{data.menuLink}}</a>
+			<li class="nav__list-item">
+				<a href="{{autolink}}" class="nav__list-item-link{{#is ../page.dest this.dest}} is-active"{{/is}}>{{data.menuLink}}</a>
 			</li>
 		{{/withSort}}
 	</ul>
