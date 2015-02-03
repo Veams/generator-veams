@@ -434,7 +434,8 @@ module.exports = yeoman.generators.Base.extend({
 			this.mkdir('resources/scss');
 			this.mkdir('resources/scss/utils/extends');
 			this.mkdir('resources/scss/utils/mixins');
-			this.copy('resources/scss/global/_print.scss', 'resources/scss/global/_print.scss');
+			this.copy('resources/scss/global/_print.scss');
+			this.copy('resources/scss/universal.scss');
 
 			this.template('resources/scss/global/_base.scss.ejs', 'resources/scss/global/_base.scss');
 			this.template('resources/scss/global/_vars.scss.ejs', 'resources/scss/global/_vars.scss');
@@ -486,7 +487,7 @@ module.exports = yeoman.generators.Base.extend({
 				if (this.modules.indexOf('grunt-contrib-htmlmin') != -1) {
 					this.copy('helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
 				}
-				if (this.modules.indexOf('grunt-contrib-requirejs') != -1 || (this.jsLibs && this.jsLibs.length > 0 && this.jsLibs.indexOf('requirejs') != -1)) {
+				if (this.modules.indexOf('grunt-contrib-requirejs') != -1 || (this.jsLibs && this.jsLibs.length && this.jsLibs.indexOf('requirejs') != -1)) {
 					this.copy('helpers/_grunt/requirejs.js', 'helpers/_grunt/requirejs.js');
 				}
 				if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
@@ -507,7 +508,7 @@ module.exports = yeoman.generators.Base.extend({
 					this.directory('helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
 					this.template('helpers/_grunt/_grunticon.js.ejs', 'helpers/_grunt/grunticon.js');
 				}
-				if (this.modules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length > 0 && this.features.indexOf('installDocs') != -1)) {
+				if (this.modules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length && this.features.indexOf('installDocs') != -1)) {
 					this.copy('helpers/_grunt/jsdoc.js');
 				}
 				if (this.modules.indexOf('grunt-modernizr') != -1) {
@@ -534,7 +535,7 @@ module.exports = yeoman.generators.Base.extend({
 					this.copy('resources/templates/partials/blocks/b-version.hbs', 'resources/templates/partials/blocks/b-version.hbs');
 				}
 
-				if (this.features && this.features.length > 0 && this.features.indexOf('sassInsteadOfCompass') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
+				if (this.features && this.features.length && this.features.indexOf('sassInsteadOfCompass') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
 					this.template('helpers/_grunt/_fileindex.js.ejs', 'helpers/_grunt/fileindex.js');
 				}
 
@@ -586,58 +587,44 @@ module.exports = yeoman.generators.Base.extend({
 					if (this.config.get("installAssemble") == true) {
 						this.directory('resources/templates/docs', 'resources/templates/docs');
 					}
-				} else {
-					delete this.bowerFile['dependencies']['highlightjs'];
 				}
-
 				// Add Dev Folder
 				if (this.features.indexOf('createDevFolder') != -1) {
 					this.mkdir('_dist');
 				}
-
-				// Add IE Styles
-				if (this.features.indexOf('supportIE8') != -1) {
-					this.copy('resources/scss/ie8.scss', 'resources/scss/ie8.scss');
-				}
-
 			}
+			if (this.features.indexOf('installDocs') == -1) delete this.bowerFile['dependencies']['highlightjs'];
 		},
 
 		cssLibs: function () {
 			// Delete CSS packages
-			if (this.cssLibs && this.cssLibs.length) {
-				if(this.cssLibs.indexOf('foundation') == -1) delete this.bowerFile['dependencies']['foundation'];
-				if(this.cssLibs.indexOf('sass-bootstrap') == -1) delete this.bowerFile['dependencies']['sass-bootstrap'];
-				if(this.cssLibs.indexOf('bourbon') == -1) {
-					delete this.bowerFile['dependencies']['bourbon'];
-					delete this.bowerFile['dependencies']['neat'];
-				}
-
+			if (this.cssLibs.indexOf('foundation') == -1) delete this.bowerFile['dependencies']['foundation'];
+			if (this.cssLibs.indexOf('sass-bootstrap') == -1) delete this.bowerFile['dependencies']['sass-bootstrap'];
+			if (this.cssLibs.indexOf('neat') == -1) {
+				delete this.bowerFile['dependencies']['bourbon'];
+				delete this.bowerFile['dependencies']['neat'];
 			}
 		},
 
 		jsLibs: function () {
 			// Add JS files for libraries
-			if (this.jsLibs && this.jsLibs.length) {
-				if (this.jsLibs.indexOf('requirejs') != -1) {
-					this.template('resources/js/_main.js.ejs', 'resources/js/main.js');
-					this.template('resources/js/_config.js.ejs', 'resources/js/config.js');
-					this.copy('resources/js/app.js', 'resources/js/app.js');
-				} else {
-					delete this.bowerFile['dependencies']['almond'];
-					delete this.bowerFile['dependencies']['requirejs'];
-					delete this.bowerFile['dependencies']['requirejs-text'];
-				}
-				if(this.jsLibs.indexOf('backbone') == -1) delete this.bowerFile['dependencies']['backbone'];
-				if(this.jsLibs.indexOf('jquery') == -1) delete this.bowerFile['dependencies']['jquery'];
-
+			if (this.jsLibs.indexOf('requirejs') != -1) {
+				this.template('resources/js/_main.js.ejs', 'resources/js/main.js');
+				this.template('resources/js/_config.js.ejs', 'resources/js/config.js');
+				this.copy('resources/js/app.js', 'resources/js/app.js');
+			} else {
+				delete this.bowerFile['dependencies']['almond'];
+				delete this.bowerFile['dependencies']['requirejs'];
+				delete this.bowerFile['dependencies']['requirejs-text'];
 			}
+
+			if (this.jsLibs.indexOf('backbone') == -1) delete this.bowerFile['dependencies']['backbone'];
+			if (this.jsLibs.indexOf('jquery') == -1) delete this.bowerFile['dependencies']['jquery'];
 		},
 
 		pg: function () {
 			// Add PG methodology
 			if (this.pgPackages && this.pgPackages.length) {
-
 				if (this.pgPackages.indexOf('pgMethodology') != -1) {
 
 					// Data
@@ -652,7 +639,6 @@ module.exports = yeoman.generators.Base.extend({
 					this.copy('resources/templates/panels/README.md');
 
 					// Blocks
-					this.copy('resources/templates/partials/blocks/b-sitemap.hbs');
 					this.copy('resources/templates/partials/blocks/README.md');
 
 					// Components
@@ -667,14 +653,13 @@ module.exports = yeoman.generators.Base.extend({
 					this.mkdir('resources/scss/modules');
 					this.mkdir('resources/scss/regions');
 				}
-
-				if(this.pgPackages.indexOf('pgSCSS') == -1) delete this.bowerFile['dependencies']['pg-scss'];
-				if(this.pgPackages.indexOf('pgJS') == -1) delete this.bowerFile['dependencies']['pg-js'];
-				if(this.pgPackages.indexOf('pgComponents') == -1) delete this.bowerFile['dependencies']['pg-components'];
 			}
+			if (this.pgPackages.indexOf('pgSCSS') == -1) delete this.bowerFile['dependencies']['pg-scss'];
+			if (this.pgPackages.indexOf('pgJS') == -1) delete this.bowerFile['dependencies']['pg-js'];
+			if (this.pgPackages.indexOf('pgComponents') == -1) delete this.bowerFile['dependencies']['pg-components'];
 		},
 
-		bower: function(){
+		bower: function () {
 			this.dest.write('bower.json', JSON.stringify(this.bowerFile, null, 4));
 		}
 	},
