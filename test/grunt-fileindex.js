@@ -46,7 +46,7 @@ describe('grunt-fileindex', function () {
 			done();
 		});
 	});
-	it('refers in task file to styles.scss', function (done) {
+	it('refers to styles.scss in task file', function (done) {
 		this.app.run({}, function () {
 			helpers.assertFile(helperPath + "_grunt/fileindex.js", /dest: \'<%= paths\.src %>\/scss\/styles\.scss\'/);
 			done();
