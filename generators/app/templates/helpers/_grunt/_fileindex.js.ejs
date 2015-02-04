@@ -29,15 +29,15 @@ module.exports = {<% if (features && features.length) { if (features.indexOf('sa
 				// here you can build your styles.scss like you would do in styles.scss with sass-globbing
 				src: [<% if (pgPackages && pgPackages.length) { if (pgPackages.indexOf('pgSCSS') != -1) { %>
 					'../bower-components/pg-scss/resources/scss/_pg-reset.scss',
-					'../bower-components/pg-scss/resources/scss/_pg.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('foundation') != -1) { %>
-					'../bower-components/foundation/scss/foundation.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('neat') != -1) { %>
-					'../bower-components/bourbon/app/assets/stylesheets/_bourbon.scss',
-					'../bower-components/neat/app/assets/stylesheets/_neat.scss',<% }} %><% if (cssLibs && cssLibs.length > 0) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
-					'../bower-components/sass-bootstrap/lib/bootstrap.scss',<% }} %>
 					'global/_vars.scss',
+					'../bower-components/pg-scss/resources/scss/_pg.scss',<% }} %><% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('foundation') != -1) { %>
+					'../bower-components/foundation/scss/foundation.scss',<% }} %><% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('neat') != -1) { %>
+					'../bower-components/bourbon/app/assets/stylesheets/_bourbon.scss',
+					'../bower-components/neat/app/assets/stylesheets/_neat.scss',<% }} %><% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
+					'../bower-components/sass-bootstrap/lib/bootstrap.scss',<% }} %>
 					'utils/mixins/**/*.scss',
 					'utils/extends/**/*.scss',
-					'global/_base.scss',<% if (pgPackages && pgPackages.length > 0) { if (pgPackages.indexOf('pgMethodology') != -1) { %>
+					'global/_base.scss',<% if (pgPackages && pgPackages.length) { if (pgPackages.indexOf('pgMethodology') != -1) { %>
 					'regions/**/*.scss',
 					'components/**/*.scss',
 					'modules/**/*.scss',
