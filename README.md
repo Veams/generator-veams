@@ -167,7 +167,6 @@ PG supports different features. Just check/uncheck them in the __custom installa
 * You want to add a CSS Styleguide and Assemble Development Documenation? - Check! (See "Developer Documentation")
 * You want to use Libsass instead of Ruby to compile SASS files? - Check!
 * You want to use [PG Methodology](http://www.prototype-generator.com/pg-methodology/pg-methodology-overview.html)? - Check!
-* You begin your project with mobile first but need to support desktop styles in IE8? - Check!
 
 ## JS Libraries and CSS Frameworks
 You can choose JS Libraries like:
@@ -175,7 +174,6 @@ You can choose JS Libraries like:
 * jQuery
 * BackboneJS
 * RequireJS
-* AngularJS
 
 And you can also choose SCSS Frameworks like:
 
@@ -184,6 +182,13 @@ And you can also choose SCSS Frameworks like:
 * SASS Bootstrap
 
 All files will be included and configured. Have fun!
+
+## PG Methodology 
+Now you can add different bower components I provide: 
+
+* [pg-scss](https://github.com/Sebastian-Fitzner/pg-scss)
+* [pg-js](https://github.com/Sebastian-Fitzner/pg-js)
+* [pg-components](https://github.com/Sebastian-Fitzner/pg-components)
 
 ## Sub Generators
 We integrated some sub generators for you:
