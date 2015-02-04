@@ -510,6 +510,8 @@ module.exports = yeoman.generators.Base.extend({
 				}
 				if (this.modules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length && this.features.indexOf('installDocs') != -1)) {
 					this.copy('helpers/_grunt/jsdoc.js');
+					this.copy('helpers/configs/jsdoc.conf.json');
+					this.copy('resources/js/README.md');
 				}
 				if (this.modules.indexOf('grunt-modernizr') != -1) {
 					this.copy('helpers/_grunt/modernizr.js', 'helpers/_grunt/modernizr.js');

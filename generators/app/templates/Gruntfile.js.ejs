@@ -205,7 +205,8 @@ module.exports = function(grunt) {
 		'toggleComments',<% } %>
 		'check-js',
 		'check-html'<% if (modules && modules.length) { if (modules.indexOf('grunt-contrib.htmlmin') != -1) { %>, 
-		'htmlmin'<% }} %>
+		'htmlmin'<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-jsdoc') != -1) { %>,
+		'jsdoc'<% }} %>
 	]);
 
 	grunt.registerTask('default', [
