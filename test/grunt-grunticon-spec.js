@@ -16,45 +16,29 @@ describe('grunt-grunticon', function () {
 	var helperPath = "helpers/";
 
 	beforeEach(function (done) {
-		helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
-			if (err) {
-				return done(err);
-			}
-
-			this.app = helpers.createGenerator('prototype:app', [
-				'../../generators/app'
-			]);
-
-			helpers.mockPrompt(this.app, answers);
-			this.app.options['skip-install'] = true;
-			this.app.options['skip-welcome-message'] = true;
-
-			done();
-		}.bind(this));
+		helpers.run(path.join(__dirname, '../generators/app'))
+			.inDir(path.join(__dirname, 'tmp'))
+			.withOptions({
+				'skip-install': true,
+				'skip-welcome-message': true
+			})
+			.withPrompts(answers)
+			.on('end', done);
 	});
 
-	it('adds references to package.json', function (done) {
-		this.app.run({}, function () {
-			helpers.assertFile('package.json', /grunt-grunticon/);
-			helpers.assertFile('package.json', /grunt-text-replace/);
-			done();
-		});
+	it('adds references to package.json', function () {
+		helpers.assertFile('package.json', /grunt-grunticon/);
+		helpers.assertFile('package.json', /grunt-text-replace/);
 	});
 
-	it('creates helper files', function (done) {
-		this.app.run({}, function () {
-			helpers.assertFile(helperPath + "_grunt/grunticon.js");
-			helpers.assertFile(helperPath + "_grunt/replace.js");
-			done();
-		});
+	it('creates helper files', function () {
+		helpers.assertFile(helperPath + "_grunt/grunticon.js");
+		helpers.assertFile(helperPath + "_grunt/replace.js");
 	});
 
-	it('adds tasks to Gruntfile.js file', function (done) {
-		this.app.run({}, function () {
-			helpers.assertFile("Gruntfile.js", /\'icons\'/);
-			helpers.assertFile("Gruntfile.js", /\'grunticon\'/);
-			helpers.assertFile("Gruntfile.js", /\'replace\'/);
-			done();
-		});
+	it('adds tasks to Gruntfile.js file', function () {
+		helpers.assertFile("Gruntfile.js", /\'icons\'/);
+		helpers.assertFile("Gruntfile.js", /\'grunticon\'/);
+		helpers.assertFile("Gruntfile.js", /\'replace\'/);
 	});
 });
