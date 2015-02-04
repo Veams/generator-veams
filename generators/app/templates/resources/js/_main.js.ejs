@@ -1,14 +1,9 @@
 require([
-		'app'<% if(jsLibs && jsLibs.length > 0){ %>,<% if(typeof jsLibs === 'object'){ _.each(jsLibs, function(name, i) { %><% if(name == 'jquery') { %>
-		'jquery'<% if(i < (jsLibs.length - 1)) { %>,<% } %><% } %><% if(name == 'backbone') { %>
-        'backbone'<% } %><% }); }  %><% } %>
-	], function (
-		app<% if(jsLibs && jsLibs.length > 0){ %>,<% if(typeof jsLibs === 'object'){ _.each(jsLibs, function(name, i) { %><% if(name == 'jquery') { %>
-		$<% if(i < (jsLibs.length - 1)) { %>,<% } %><% } %><% if(name == 'backbone') { %>
-        backbone<% } %><% }); }  %><% } %>
-) {
+	'app'<% if(jsLibs && jsLibs.length && jsLibs.indexOf('jquery') != -1) { %>, 'jquery'<% } %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('backbone') != -1) { %>, 'backbone'<% } %>
+	], function (app<% if(jsLibs && jsLibs.length && jsLibs.indexOf('jquery') != -1) { %>, $<% } %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('backbone') != -1) { %>, Backbone<% } %>) {
     'use strict';
-		console.log(app);<% if(jsLibs && jsLibs.length > 0){ %><% if(typeof jsLibs === 'object'){ _.each(jsLibs, function(name, i) { %><% if(name == 'jquery') { %>
-		console.log('Running jQuery %s', $().jquery);<% } %> <% if(name == 'backbone') { %>
-		console.log(backbone);<% } %> <% }); }  %><% } %>
+
+	console.log(app);<% if(jsLibs && jsLibs.length && jsLibs.indexOf('jquery') != -1) { %>
+	console.log('Running jQuery %s', $().jquery);<% } %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('backbone') != -1) { %>
+	console.log(Backbone);<% } %>
 });
