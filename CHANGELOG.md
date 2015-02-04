@@ -2,8 +2,14 @@
 - outsourced scss mixins and extends into own bower component (pg-scss)
 - outsourced yo prototype:components into own bower component (pg-components)
 - added bower component (pg-js)
-- updated grunt-cmq
 - deleted demo content
+- deleted mobile first and ie8 support at the same time
+- refactored generator to be up to date with yeoman
+- added new specs
+- refactored whole specs section
+- fixed minor bugs with jsdoc and js-section
+- refactored scss section
+- renamed factory helper to panel helper, added panel section in templates
 
 ### v0.4.72
 - updated sub generators to support grunt-sass and autolink helper
