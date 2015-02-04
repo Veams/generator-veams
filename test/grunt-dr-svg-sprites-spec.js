@@ -5,9 +5,13 @@ var path = require('path');
 var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({});
+var answers = require('../test_helpers/prompt-answer-factory')({
+	"modules": [
+		"grunt-dr-svg-sprites"
+	]
+});
 
-describe('grunt-htmlhint', function () {
+describe('grunt-dr-svg-sprites', function () {
 	var helperPath = "helpers/";
 
 	beforeEach(function (done) {
@@ -22,14 +26,15 @@ describe('grunt-htmlhint', function () {
 	});
 
 	it('adds references to package.json', function () {
-		assert.fileContent('package.json', /grunt-htmlhint/);
+		assert.fileContent('package.json', /grunt-dr-svg-sprites/);
 	});
 
 	it('creates helper files', function () {
-		assert.file(helperPath + "_grunt/htmlhint.js");
+		assert.file(helperPath + "_grunt/svg-sprites.js");
 	});
 
-	it('adds task to Gruntfile.js file', function () {
-		assert.fileContent("Gruntfile.js", /\'htmlhint\'/);
+	it('adds task and fallback to Gruntfile.js file', function () {
+		assert.fileContent("Gruntfile.js", /\'icons\'/);
+		assert.fileContent("Gruntfile.js", /\'svg-sprites\'/);
 	});
 });
