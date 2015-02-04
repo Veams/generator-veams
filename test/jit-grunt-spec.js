@@ -33,8 +33,8 @@ describe('jit-grunt', function () {
 	it('adds references to package.json', function (done) {
 		this.app.run({}, function () {
 			helpers.assertFile('package.json', /jit-grunt/);
+			done();
 		});
-		done();
 	});
 
 	it('adds task to Gruntfile.js file', function (done) {

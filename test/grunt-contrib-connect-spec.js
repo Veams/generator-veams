@@ -32,8 +32,8 @@ describe('grunt-contrib-connect', function () {
 	it('adds references to package.json', function (done) {
 		this.app.run({}, function () {
 			helpers.assertFile('package.json', /grunt-contrib-connect/);
+			done();
 		});
-		done();
 	});
 
 	it('creates helper files', function (done) {

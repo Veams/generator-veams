@@ -39,8 +39,8 @@ describe('grunt-connect-proxy', function () {
 	it('adds references to package.json, connect.js and watch.js', function (done) {
 		this.app.run({}, function () {
 			helpers.assertFile('package.json', /grunt-connect-proxy/);
+			done();
 		});
-		done();
 	});
 
 	it('creates the helpers/_grunt/connect.js with the specified host and port', function (done) {

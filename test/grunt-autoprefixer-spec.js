@@ -36,8 +36,8 @@ describe('grunt-autoprefixer', function () {
 	it('adds references to package.json', function (done) {
 		this.app.run({}, function () {
 			helpers.assertFile('package.json', /grunt-autoprefixer/);
+			done();
 		});
-		done();
 	});
 
 	it('creates helper files', function (done) {

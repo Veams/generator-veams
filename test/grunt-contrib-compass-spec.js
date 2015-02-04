@@ -34,8 +34,8 @@ describe('grunt-contrib-compass', function () {
 	it('adds references to package.json', function (done) {
 		this.app.run({}, function () {
 			helpers.assertFile('package.json', /grunt-contrib-compass/);
+			done();
 		});
-		done();
 	});
 
 	it('creates helper files', function (done) {

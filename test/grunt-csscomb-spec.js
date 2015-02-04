@@ -36,8 +36,8 @@ describe('grunt-csscomb', function () {
 	it('adds references to package.json', function (done) {
 		this.app.run({}, function () {
 			helpers.assertFile('package.json', /grunt-csscomb/);
+			done();
 		});
-		done();
 	});
 
 	it('creates helper files', function (done) {

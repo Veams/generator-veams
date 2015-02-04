@@ -37,8 +37,8 @@ describe('grunt-grunticon', function () {
 		this.app.run({}, function () {
 			helpers.assertFile('package.json', /grunt-grunticon/);
 			helpers.assertFile('package.json', /grunt-text-replace/);
+			done();
 		});
-		done();
 	});
 
 	it('creates helper files', function (done) {
