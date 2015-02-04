@@ -1,30 +1,30 @@
 {
-    "name": "<%= _.slugify(projectName) %>",
-    "description": "Prototype",
-    "version": "0.1.0",
-    "author": {
-        "name": "<%= authorLogin %>",
-        "email": "<%= authorEmail %>",
-        "url": "http://github.com/<%= _.slugify(authorLogin) %>/"
-    },
-    "engines": {
-        "node": ">=0.8"
-    },
-    "scripts": {
-        "test": "grunt test"
-    },
+	"name": "<%= _.slugify(projectName) %>",
+	"description": "Prototype",
+	"version": "0.1.0",
+	"author": {
+		"name": "<%= authorLogin %>",
+		"email": "<%= authorEmail %>",
+		"url": "http://github.com/<%= _.slugify(authorLogin) %>/"
+	},
+	"engines": {
+		"node": ">=0.8"
+	},
+	"scripts": {
+		"test": "grunt test"
+	},
     "devDependencies": {
 		"grunt": "~0.4.5", <% if(installAssemble != false){ %>
         "assemble": "~0.4.42",
 		"lodash" : "*",
 		"gray-matter": "*",
 		"handlebars-helper-autolink": "^0.1.1",<% } %><% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
-        "grunt-sass": "^0.16.0",<% }} %><% if ((features && features.length > 0 && features.indexOf('sassInsteadOfCompass') != -1) || (modules && modules.length > 0 && modules.indexOf('grunt-responsive-images') != -1)) { %>
-        "grunt-fileindex": "^0.1.0",<% } %><% if (features && features.length > 0) { if (features.indexOf('mobileFirst') != -1) { %>
-        "grunt-comment-media-queries": "~0.1.0", <% }} %><% if (features && features.length > 0) { if (features.indexOf('installDocs') != -1) { %>
-        "grunt-styleguide": "~0.2.14",<% }} %><% if (features && features.length > 0 && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
-        "grunt-contrib-copy": "~0.7.0",<% } %>
-        "grunt-newer": "~0.8.0",<% if(modules && modules.length > 0){ %>
+		"grunt-sass": "^0.16.0",<% }} %><% if ((features && features.length > 0 && features.indexOf('sassInsteadOfCompass') != -1) || (modules && modules.length > 0 && modules.indexOf('grunt-responsive-images') != -1)) { %>
+		"grunt-fileindex": "^0.1.0",<% } %><% if ((jsLibs && jsLibs.length > 0 && jsLibs.indexOf('requirejs') != -1) || (modules && modules.length > 0 && modules.indexOf('grunt-contrib-requirejs') != -1)) { %>
+		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features && features.length > 0) { if (features.indexOf('installDocs') != -1) { %>
+		"grunt-styleguide": "~0.2.14",<% }} %><% if (features && features.length > 0 && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
+		"grunt-contrib-copy": "~0.7.0",<% } %>
+		"grunt-newer": "~0.8.0",<% if(modules && modules.length > 0){ %>
 		<% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
 		if(name == 'grunt-grunticon') { %>
 		"grunt-grunticon": "~1.0.0-beta.0",
@@ -33,13 +33,11 @@
         <% } %><% if(name == 'grunt-dr-svg-sprites' || name == "grunt-grunticon") { %>
 		"grunt-text-replace": "~0.3.11",
         <% } %><% if(name == 'grunt-contrib-compass') { %>
-        "grunt-contrib-compass": "*",
+		"grunt-contrib-compass": "*",
 		<% } %><% if(name == 'grunt-devtools') { %>
 		"grunt-devtools": "~0.2.1",
 		<% } %><% if(name == 'grunt-packager') { %>
 		"grunt-packager": "~0.1.0",
-		<% } %><% if(name == 'grunt-contrib-requirejs') { %>
-		"grunt-contrib-requirejs": "~0.4.4",
 		<% } %><% if(name == 'grunt-jsdoc') { %>
 		"grunt-jsdoc": "^0.6.1",
 		<% } %><% if(name == 'grunt-contrib-uglify') { %>
