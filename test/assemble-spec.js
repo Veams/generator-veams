@@ -3,6 +3,7 @@
 
 var path = require('path');
 var helpers = require('yeoman-generator').test;
+var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
 	"installAssemble": true
@@ -14,38 +15,27 @@ describe('assemble', function () {
 	var helperPath = "helpers/";
 
 	beforeEach(function (done) {
-		helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
-			if (err) {
-				return done(err);
-			}
-
-			this.app = helpers.createGenerator('prototype:app', [
-				'../../generators/app'
-			]);
-
-			helpers.mockPrompt(this.app, answers);
-			this.app.options['skip-install'] = true;
-			this.app.options['skip-welcome-message'] = true;
-
-			done();
-		}.bind(this));
+		helpers.run(path.join(__dirname, '../generators/app'))
+			.inDir(path.join(__dirname, 'tmp'))
+			.withOptions({
+				'skip-install': true,
+				'skip-welcome-message': true
+			})
+			.withPrompts(answers)
+			.on('end', done);
 	});
 
-	it('adds references to package.json', function (done) {
-		this.app.run({}, function () {
-			helpers.assertFile('package.json', /assemble/);
-			done();
-		});
+	it('adds references to package.json', function () {
+		helpers.assertFile('package.json', /assemble/);
+
 	});
 
-	it('creates helper files', function (done) {
-		this.app.run({}, function () {
-			helpers.assertFile(helperPath + "_grunt/assemble.js");
-			done();
-		});
+	it('creates helper files', function () {
+		helpers.assertFile(helperPath + "_grunt/assemble.js");
+
 	});
 
-	it('creates resources files', function (done) {
+	it('creates resources files', function () {
 		var expected = [
 			srcPath + "data/config.json",
 			srcPath + "templates/helpers/helper-panel.js",
@@ -61,30 +51,20 @@ describe('assemble', function () {
 			srcPath + "templates/partials/_global/_metadata.hbs",
 			srcPath + "templates/partials/_global/_styles.hbs"
 		];
-		this.app.run({}, function () {
-			helpers.assertFiles(expected);
-			done();
-		});
+		helpers.assertFiles(expected);
+
 	});
 
-	it('adds task to watch.js file', function (done) {
-		this.app.run({}, function () {
-			helpers.assertFile(helperPath + "_grunt/watch.js", /templates/);
-			done();
-		});
+	it('adds task to watch.js file', function () {
+		helpers.assertFile(helperPath + "_grunt/watch.js", /templates/);
 	});
 
-	it('adds task to concurrent.js file', function (done) {
-		this.app.run({}, function () {
-			helpers.assertFile(helperPath + "_grunt/concurrent.js", /\'assemble\'/);
-			done();
-		});
+	it('adds task to concurrent.js file', function () {
+		helpers.assertFile(helperPath + "_grunt/concurrent.js", /\'assemble\'/);
 	});
 
-	it('adds task to Gruntfile.js file', function (done) {
-		this.app.run({}, function () {
-			helpers.assertFile("Gruntfile.js", /\'newer:assemble\'/);
-			done();
-		});
+	it('adds task to Gruntfile.js file', function () {
+		helpers.assertFile("Gruntfile.js", /\'newer:assemble\'/);
 	});
-});
+})
+;

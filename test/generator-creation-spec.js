@@ -8,19 +8,17 @@ var defaultPrompts = require('../test_helpers/prompt-answer-factory')();
 
 describe('prototype-generator', function () {
 	beforeEach(function (done) {
-		helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
-			if (err) {
-				return done(err);
-			}
-
-			this.app = helpers.createGenerator('prototype:app', [
-				'../../generators/app'
-			]);
-			done();
-		}.bind(this));
+		helpers.run(path.join(__dirname, '../generators/app'))
+			.inDir(path.join(__dirname, 'tmp'))
+			.withOptions({
+				'skip-install': true,
+				'skip-welcome-message': true
+			})
+			.withPrompts(defaultPrompts)
+			.on('end', done);
 	});
 
-	it('creates expected files', function (done) {
+	it('creates expected files', function () {
 		var expected = [
 			// add files you expect to exist here.
 			'Gruntfile.js',
@@ -30,14 +28,6 @@ describe('prototype-generator', function () {
 			'bower.json',
 			'README.md'
 		];
-
-		helpers.mockPrompt(this.app, defaultPrompts);
-
-		this.app.options['skip-install'] = true;
-		this.app.options['skip-welcome-message'] = true;
-		this.app.run({}, function () {
-			helpers.assertFiles(expected);
-			done();
-		});
+		helpers.assertFiles(expected);
 	});
 });
