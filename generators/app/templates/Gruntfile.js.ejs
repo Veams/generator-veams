@@ -204,7 +204,7 @@ module.exports = function(grunt) {
 		'concurrent:build',<% if (modules && modules.length && (modules.indexOf('grunt-comment-toggler') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1)) { %>
 		'toggleComments',<% } %>
 		'check-js',
-		'check-html'<% if (modules && modules.length) { if (modules.indexOf('grunt-contrib.htmlmin') != -1) { %>, 
+		'check-html'<% if (modules && modules.length) { if (modules.indexOf('grunt-contrib-htmlmin') != -1) { %>,
 		'htmlmin'<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-jsdoc') != -1) { %>,
 		'jsdoc'<% }} %>
 	]);
