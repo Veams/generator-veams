@@ -491,7 +491,7 @@ module.exports = yeoman.generators.Base.extend({
 					this.copy('helpers/_grunt/requirejs.js', 'helpers/_grunt/requirejs.js');
 				}
 				if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
-					this.template('helpers/_grunt/_uglify.js.ejs', 'helpers/_grunt/uglify.js');
+					this.template('helpers/_grunt/uglify.js', 'helpers/_grunt/uglify.js');
 				}
 				if (this.modules.indexOf('grunt-combine-media-queries') != -1) {
 					this.copy('helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');
