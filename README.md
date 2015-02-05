@@ -232,3 +232,6 @@ see: [Changelog.md](CHANGELOG.md)
 ## TODO: 
 - Tests
 - Integrate Gulp as option
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Prototype-Group/generator-prototype/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
