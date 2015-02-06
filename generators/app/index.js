@@ -407,7 +407,7 @@ module.exports = yeoman.generators.Base.extend({
 			// Copy standard files
 			this.mkdir('helpers/_grunt');
 			this.template('helpers/_grunt/clean.js', 'helpers/_grunt/clean.js');
-			this.template('helpers/_grunt/concurrent.js', 'helpers/_grunt/concurrent.js');
+			this.template('helpers/_grunt/_concurrent.js.ejs', 'helpers/_grunt/concurrent.js');
 			this.template('helpers/_grunt/connect.js', 'helpers/_grunt/connect.js');
 			this.copy('helpers/_grunt/cssmin.js', 'helpers/_grunt/cssmin.js');
 			this.copy('helpers/_grunt/htmlhint.js', 'helpers/_grunt/htmlhint.js');

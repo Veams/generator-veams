@@ -196,13 +196,11 @@ module.exports = function(grunt) {
 		'cssProd',<% } %><% if (features && features.length && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>
 		'sass:docs',<% } %><% if (modules && modules.length) { if (modules.indexOf('grunt-combine-media-queries') != -1) { %>
 		'cmq',<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-data-separator') != -1) { %>
-		'dataSeparator',<% }} %><% if(features && features.length){ if(features.indexOf('mobileFirst') != -1) { %>
-		'comment-media-queries:dist',<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-autoprefixer') != -1) { %>
+		'dataSeparator',<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-autoprefixer') != -1) { %>
 		'autoprefixer',<% }} %>
 		'cssmin',<% if (modules && modules.length) { if (modules.indexOf('grunt-bless') != -1) { %>
 		'bless',<% }} %>
-		'concurrent:build',<% if (modules && modules.length && (modules.indexOf('grunt-comment-toggler') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1)) { %>
-		'toggleComments',<% } %>
+		'concurrent:build',
 		'check-js',
 		'check-html'<% if (modules && modules.length) { if (modules.indexOf('grunt-contrib-htmlmin') != -1) { %>,
 		'htmlmin'<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-jsdoc') != -1) { %>,
