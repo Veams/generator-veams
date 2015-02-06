@@ -559,17 +559,11 @@ module.exports = yeoman.generators.Base.extend({
 					this.copy('config.rb', 'config.rb');
 				}
 
-				// add mobile first grunt task
-				if (this.features.indexOf('mobileFirst') != -1) {
-					this.copy('helpers/_grunt/comment-media-queries.js', 'helpers/_grunt/comment-media-queries.js');
-				}
-
 				// Add copy task
 				if (this.features.indexOf('createDevFolder') != -1 || this.features.indexOf('installDocs') != -1) {
 					this.copy('helpers/_grunt/_copy.js.ejs', 'helpers/_grunt/copy.js');
 				}
-
-
+				
 			} else {
 				this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
 				this.copy('config.rb', 'config.rb');
