@@ -563,7 +563,7 @@ module.exports = yeoman.generators.Base.extend({
 				if (this.features.indexOf('createDevFolder') != -1 || this.features.indexOf('installDocs') != -1) {
 					this.copy('helpers/_grunt/_copy.js.ejs', 'helpers/_grunt/copy.js');
 				}
-				
+
 			} else {
 				this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
 				this.copy('config.rb', 'config.rb');
