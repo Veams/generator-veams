@@ -524,7 +524,7 @@ module.exports = yeoman.generators.Base.extend({
 					this.copy('helpers/_grunt/phantomas.js', 'helpers/_grunt/phantomas.js');
 				}
 				if (this.modules.indexOf('grunt-photobox') != -1) {
-					this.template('helpers/_grunt/_photobox.js.ejs', 'helpers/_grunt/photobox.js');
+					this.template('helpers/_grunt/photobox.js', 'helpers/_grunt/photobox.js');
 				}
 				if (this.modules.indexOf('grunt-responsive-images') != -1) {
 					this.copy('helpers/_grunt/responsive_images.js', 'helpers/_grunt/responsive_images.js');
