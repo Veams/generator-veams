@@ -4,7 +4,7 @@ module.exports = {
 		"devFile" : "remote",
 
 		// [REQUIRED] Path to save out the built file.
-		"outputFile" : "<%= paths.src %>/js/libs/modernizr.js",
+		"outputFile" : "<%= paths.src %>/js/vendor/modernizr.js",
 
 		// Based on default settings on http://modernizr.com/download/
 		"extra" : {
