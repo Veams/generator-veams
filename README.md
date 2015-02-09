@@ -2,10 +2,7 @@
 
 <p align="center">Visit the PG-website to learn how to use PG: http://prototype-generator.com </p>
 
-> [Yeoman][yeoman] generator for Prototype [![NPM version](https://badge.fury.io/js/generator-prototype.svg)](http://badge.fury.io/js/generator-prototype) [![Build Status](https://travis-ci.org/Prototype-Group/generator-prototype.svg)](https://travis-ci.org/Prototype-Group/generator-prototype)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Prototype-Group/generator-prototype/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
-[![NPM](https://nodei.co/npm/generator-prototype.png?downloads=true&stars=true)](https://nodei.co/npm/generator-prototype/)
+> [Yeoman][yeoman] generator for Prototype [![NPM version](https://badge.fury.io/js/generator-prototype.svg)](http://badge.fury.io/js/generator-prototype) [![Build Status](https://travis-ci.org/Prototype-Group/generator-prototype.svg)](https://travis-ci.org/Prototype-Group/generator-prototype) [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/generator-prototype)
 
 
 ## Getting started

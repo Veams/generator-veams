@@ -1,3 +1,8 @@
+### v0.5.2
+- added full test spec 
+- added pg packages 
+- clean up requirejs files generation
+
 ### v0.5.0
 - outsourced scss mixins and extends into own bower component (pg-scss)
 - outsourced yo prototype:components into own bower component (pg-components)

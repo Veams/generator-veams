@@ -3,11 +3,11 @@ module.exports = {
 		assets: '<%%= paths.dev %>',
 		data: '<%%= paths.src %>/data/**/*.{json,yml}',
 		helpers: '<%%= paths.src %>/templates/helpers/**/*.js',
-		layoutdir: '<%%= paths.src %>/templates/layouts/',<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+		layoutdir: '<%%= paths.src %>/templates/layouts/',<% if (features && features.length && features.indexOf('installExtendedLayout') != -1) { %>
 		layout: false, <% } else { %>
 		layout: 'tpl-default.hbs', <% } %>
 		partials: [
-			'<%%= paths.src %>/templates/partials/**/*.hbs'<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>,
+			'<%%= paths.src %>/templates/partials/**/*.hbs'<% if (features && features.length && features.indexOf('installExtendedLayout') != -1) { %>,
 			'<%%= paths.src %>/templates/layouts/*.hbs'<% } %>
 		],
 		collections: [
@@ -15,7 +15,7 @@ module.exports = {
 		]
 	},
 	pages: {
-		options: {<% if(plugin && plugin.length > 0){ %>
+		options: {<% if(plugin && plugin.length){ %>
 		plugins: [<% if(typeof plugin === 'object'){ _.each(plugin, function(name, i) { %>'<%= name %>'<% if(i < (plugin.length - 1)) { %>,<% } }); } else { %>'<%= name %>'<%} %>],<%}
 _.each(plugin, function(name, i) { if(name == 'permalinks') { %>
 			permalinks: {
@@ -32,7 +32,7 @@ _.each(plugin, function(name, i) { if(name == 'permalinks') { %>
 			flatten: true,
 			src: ['**/*.hbs']
 		}]
-	}<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>,
+	}<% if (features && features.length && features.indexOf('installDocs') != -1) { %>,
 	docs: {
 		files: [
 		{

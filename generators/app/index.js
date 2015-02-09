@@ -632,7 +632,7 @@ module.exports = yeoman.generators.Base.extend({
 					this.copy('resources/templates/layouts/README.md');
 
 					// Panels/Factories
-					this.copy('resources/templates/panels/README.md');
+					this.copy('resources/templates/partials/panels/README.md');
 
 					// Blocks
 					this.copy('resources/templates/partials/blocks/README.md');
