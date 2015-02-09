@@ -6,7 +6,6 @@
 
 [![NPM version](https://badge.fury.io/js/generator-prototype.svg)](http://badge.fury.io/js/generator-prototype) [![Build Status](https://travis-ci.org/Prototype-Group/generator-prototype.svg)](https://travis-ci.org/Prototype-Group/generator-prototype)
 [![NPM](https://nodei.co/npm/generator-prototype.png?mini=true)](https://nodei.co/npm/generator-prototype/)
-[![NPM](https://nodei.co/npm/generator-prototype.png?mini=true)](https://nodei.co/npm/generator-prototype/)
 
 ## Getting started
 
