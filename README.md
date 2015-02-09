@@ -2,9 +2,11 @@
 
 <p align="center">Visit the PG-website to learn how to use PG: http://prototype-generator.com </p>
 
-> [Yeoman][yeoman] generator for Prototype [![NPM version](https://badge.fury.io/js/generator-prototype.svg)](http://badge.fury.io/js/generator-prototype) [![Build Status](https://travis-ci.org/Prototype-Group/generator-prototype.svg)](https://travis-ci.org/Prototype-Group/generator-prototype)
-[![NPM](https://nodei.co/npm/generator-prototype.png?mini=true)](https://nodei.co/npm/generator-prototype/)
+> [Yeoman][yeoman] generator for Web Apps and Prototypes.
 
+[![NPM version](https://badge.fury.io/js/generator-prototype.svg)](http://badge.fury.io/js/generator-prototype) [![Build Status](https://travis-ci.org/Prototype-Group/generator-prototype.svg)](https://travis-ci.org/Prototype-Group/generator-prototype)
+[![NPM](https://nodei.co/npm/generator-prototype.png?mini=true)](https://nodei.co/npm/generator-prototype/)
+[![NPM](https://nodei.co/npm/generator-prototype.png?mini=true)](https://nodei.co/npm/generator-prototype/)
 
 ## Getting started
 
@@ -104,7 +106,7 @@ There are standard grunt modules I use. These are:
  * [jit-grunt](https://github.com/shootaroo/jit-grunt) - A JIT(Just In Time) plugin loader for Grunt.
  * [time-grunt](https://github.com/sindresorhus/time-grunt) - Displays the execution time of grunt tasks.
  
-### Grunt modules
+### Optional Grunt modules
 
 **But you can also apply additional addons and grunt modules to your project. Just choose specific ones:**
 

@@ -32,7 +32,7 @@ describe('pg packages', function () {
 		it('creates READMEs', function () {
 			var expected = [
 				srcPath + "templates/layouts/README.md",
-				srcPath + "templates/panels/README.md",
+				srcPath + "templates/partials/panels/README.md",
 				srcPath + "templates/partials/blocks/README.md",
 				srcPath + "templates/partials/components/README.md",
 				srcPath + "templates/partials/modules/README.md"
