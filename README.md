@@ -2,7 +2,7 @@
 
 <p align="center">Visit the PG-website to learn how to use PG: http://prototype-generator.com </p>
 
-> [Yeoman][http://yeoman.io] generator for Web Apps and Prototypes.
+> [Yeoman](http://yeoman.io) generator for Web Apps and Prototypes.
 
 [![NPM version](https://badge.fury.io/js/generator-prototype.svg)](http://badge.fury.io/js/generator-prototype) [![Build Status](https://travis-ci.org/Prototype-Group/generator-prototype.svg)](https://travis-ci.org/Prototype-Group/generator-prototype)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](http://en.wikipedia.org/wiki/MIT_License)
@@ -221,7 +221,7 @@ For further informations and instructions see:
 ## Release History
 see: [Changelog.md](CHANGELOG.md)
 
+[![NPM](https://nodei.co/npm-dl/generator-prototype.png?height=3)](https://nodei.co/npm/generator-prototype/)
+
 ## TODO: 
 - Integrate Gulp as option
-
-[![NPM](https://nodei.co/npm-dl/generator-prototype.png?height=3)](https://nodei.co/npm/generator-prototype/)

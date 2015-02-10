@@ -2,6 +2,7 @@
 - added full test spec 
 - added pg packages 
 - clean up requirejs files generation
+- added grunt-combine-mq to replace deprecated version
 
 ### v0.5.0
 - outsourced scss mixins and extends into own bower component (pg-scss)
