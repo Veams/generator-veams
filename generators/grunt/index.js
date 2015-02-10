@@ -53,7 +53,7 @@ GruntGenerator.prototype.askFor = function askFor() {
 			{name: "grunt-autoprefixer"},
 			{name: "grunt-bless"},
 			{name: "grunt-browser-sync"},
-			{name: "grunt-combine-media-queries"},
+			{name: "grunt-combine-mq"},
 			{name: "grunt-contrib-compass"},
 			{name: "grunt-contrib-htmlmin"},
 			{name: "grunt-contrib-requirejs"},
@@ -165,9 +165,9 @@ GruntGenerator.prototype.appGruntModules = function appGruntModules() {
 			this.template(root + '_browserSync.js', this.path + 'browserSync.js');
 			this.npmInstall(['grunt-browser-sync'], {'saveDev': true}, done);
 		}
-		if (this.modules.indexOf('grunt-combine-media-queries') != -1) {
-			this.copy(root + 'cmq.js', this.path + 'cmq.js');
-			this.npmInstall(['grunt-combine-media-queries'], {'saveDev': true}, done);
+		if (this.modules.indexOf('grunt-combine-mq') != -1) {
+			this.copy(root + 'combine_mq.js', this.path + 'combine_mq.js');
+			this.npmInstall(['grunt-combine-mq'], {'saveDev': true}, done);
 		}
 		if (this.modules.indexOf('grunt-contrib-compass') != -1) {
 			this.copy(root + 'compass.js', this.path + 'compass.js');

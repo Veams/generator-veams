@@ -3,15 +3,16 @@
 
 var path = require('path');
 var helpers = require('yeoman-generator').test;
+var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
 	"installAssemble": false,
 	"modules": [
-		"grunt-combine-media-queries"
+		"grunt-combine-mq"
 	]
 });
 
-describe('grunt-combine-media-queries', function () {
+describe('grunt-combine-mq', function () {
 	var helperPath = "helpers/";
 
 	beforeEach(function (done) {
@@ -25,16 +26,15 @@ describe('grunt-combine-media-queries', function () {
 			.on('end', done);
 	});
 
-
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /grunt-combine-media-queries/);
+		assert.fileContent('package.json', /grunt-combine-mq/);
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + "_grunt/cmq.js");
+		assert.file(helperPath + "_grunt/combine_mq.js");
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'cmq\'/);
+		assert.fileContent("Gruntfile.js", /\'combine_mq\'/);
 	});
 });

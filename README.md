@@ -6,6 +6,7 @@
 
 [![NPM version](https://badge.fury.io/js/generator-prototype.svg)](http://badge.fury.io/js/generator-prototype) [![Build Status](https://travis-ci.org/Prototype-Group/generator-prototype.svg)](https://travis-ci.org/Prototype-Group/generator-prototype)
 [![NPM](https://nodei.co/npm/generator-prototype.png?mini=true)](https://nodei.co/npm/generator-prototype/)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](http://en.wikipedia.org/wiki/MIT_License)
 
 ## Getting started
 
@@ -15,8 +16,7 @@
 * Grunt Command Line Interface – npm install -g grunt-cli
 
 **Optional Use of Ruby (SASS & Compass)**
-* SASS 3.4 (only when you do not want to use node-sass) – gem install sass
-* Compass 1 (because of Source Maps) – gem install compass --pre 
+* SASS 3.4 and Compass 1 (because of Source Maps)
 
 ### Installation 
 
@@ -30,20 +30,20 @@
 - Update the Generator-Prototype via:
   `npm update -g generator-prototype`
 
-## Usage
+### Usage
 
-### Scaffold your new prototype project.
+#### Scaffold your new prototype project.
 
 ```bash
 yo prototype
 ```
 
-#### Options
+##### Options
 
 * `-s` alias `--skip-install`
   Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
 
-## Quick Start
+#### Quick Start
 You can scaffold your project in an instance. The first question is:
 
 ```
@@ -52,8 +52,8 @@ You can scaffold your project in an instance. The first question is:
 
 If you choose `Minimal installation` you skip the rest of the questions and get the default values with:
 * Libsass (grunt-sass)
-* Grunt Modules: grunt-grunticon, grunt-data-separator
-* Assemble as Template Engine
+* Grunt modules: grunt-grunticon, grunt-data-separator
+* Assemble as template engine
 
 ## Structure
 
@@ -117,7 +117,6 @@ There are standard grunt modules I use. These are:
  * [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer) - Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the Can I Use database.
  * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
  * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices
- * [grunt-comment-media-queries](https://github.com/cruncher/grunt-comment-media-queries) - You begin your project with mobile first but need to support desktop styles in IE8? That's your module! (see _Features_)
  * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods
  * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass) - Come on, use Node-SASS ...
  * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) - Minify your HTML files.
@@ -125,8 +124,8 @@ There are standard grunt modules I use. These are:
  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify) - Minify files with UglifyJS.
  * [grunt-csscomb](https://github.com/csscomb/grunt-csscomb) - The grunt plugin for sorting CSS properties in specific order.
  * [grunt-devtools](https://github.com/vladikoff/grunt-devtools) - An user interface in chrome to execute grunt tasks in your project
- * [grunt-data-separator](https://github.com/Sebastian-Fitzner/grunt-data-separator) - Split up your Data-URI into a separate CSS file.
- * [grunt-dr-svg-sprites](https://github.com/drdk/grunt-dr-svg-sprites) - Generate SVG Sprites with scss files (we use an own fork to support placeholders in scss) 
+ * [grunt-data-separator](https://github.com/Sebastian-Fitzner/grunt-data-separator) - Split up your Data-URI or anything else into a separate CSS file.
+ * [grunt-dr-svg-sprites](https://github.com/drdk/grunt-dr-svg-sprites) - Generate SVG Sprites with scss files. 
  * [grunt-grunticon](https://github.com/filamentgroup/grunticon) - Generate SVG-URI-SASS files with png fallbacks
  * [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc) - This plugin enables you to integrate the generation of comments based documentation into your Grunt build.
  * [grunt-modernizr](https://github.com/Modernizr/grunt-modernizr) - grunt-modernizr sifts through your project files, gathers up your references to Modernizr tests and outputs a lean, mean Modernizr machine.
@@ -149,7 +148,7 @@ In your installation routine you can choose specific modules for Assemble:
  * assemble-related-pages
  
 #### Custom Helpers
-We provide some custom helpers to speed up your prototyping. These helpers provide:
+We provide some custom helpers to speed up your Assemble workflow. These helpers provide:
 
 * repeating elements
 * limiting JSON output
@@ -177,7 +176,7 @@ You can choose JS Libraries like:
 And you can also choose SCSS Frameworks like:
 
 * Foundation
-* Bourbon Neat
+* Bourbon and Bourbon Neat
 * SASS Bootstrap
 
 All files will be included and configured. Have fun!
@@ -211,8 +210,7 @@ Others will follow.
 
 ## Developer Documentation
 PG provides a way to document your assemble modules via markdown and a separate docs folder. 
-Just use the custom installation route and check: 
-* _Create Developer Documentation_
+Just use the custom installation route and check `Create Developer Documentation`.
 
 For further informations and instructions see: 
 * [assemble-documentation-example](https://github.com/Sebastian-Fitzner/assemble-documentation-example)
@@ -220,13 +218,7 @@ For further informations and instructions see:
 ## Alternative
 * [generator-assemble](https://github.com/assemble/generator-assemble)
 
-## License
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
-
-[yeoman]: http://yeoman.io/
-
 ## Release History
-
 see: [Changelog.md](CHANGELOG.md)
 
 ## TODO: 

@@ -29,7 +29,7 @@ module.exports = yeoman.generators.Base.extend({
 			installAssemble: "",
 			installPlugin: false,
 			modules: [
-				"grunt-combine-media-queries",
+				"grunt-combine-mq",
 				"grunt-grunticon",
 				"grunt-data-separator"
 			],
@@ -201,7 +201,7 @@ module.exports = yeoman.generators.Base.extend({
 				{name: "grunt-autoprefixer", checked: true},
 				{name: "grunt-bless"},
 				{name: "grunt-browser-sync", checked: true},
-				{name: "grunt-combine-media-queries", checked: true},
+				{name: "grunt-combine-mq", checked: true},
 				{name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"},
 				{name: "grunt-contrib-compass"},
 				{name: "grunt-contrib-htmlmin"},
@@ -493,8 +493,8 @@ module.exports = yeoman.generators.Base.extend({
 				if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
 					this.template('helpers/_grunt/uglify.js', 'helpers/_grunt/uglify.js');
 				}
-				if (this.modules.indexOf('grunt-combine-media-queries') != -1) {
-					this.copy('helpers/_grunt/cmq.js', 'helpers/_grunt/cmq.js');
+				if (this.modules.indexOf('grunt-combine-mq') != -1) {
+					this.copy('helpers/_grunt/combine_mq.js', 'helpers/_grunt/combine_mq.js');
 				}
 				if (this.modules.indexOf('grunt-contrib-compass') != -1) {
 					this.copy('helpers/_grunt/compass.js', 'helpers/_grunt/compass.js');
