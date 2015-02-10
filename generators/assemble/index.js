@@ -53,8 +53,8 @@ AssembleGenerator.prototype.askFor = function askFor() {
 				value: "helperAutolink"
 			},
 			{
-				name: "Factory (Block Helper) - Enclose snippets/partials with a predefined markup.",
-				value: "helperFactory"
+				name: "Panel (Block Helper) - Enclose snippets/partials with a predefined markup.",
+				value: "helperPanel"
 			}
 		]
 	}];
@@ -78,6 +78,7 @@ AssembleGenerator.prototype.askFor = function askFor() {
  */
 AssembleGenerator.prototype.appHelperFiles = function appHelperFiles() {
 	var root = '../../app/templates/resources/templates/helpers/';
+	var assemble = '../../app/templates/resources/templates/';
 
 // Grunt modules are splitted up in separate files and modules
 	if (this.assembleHelperFiles && this.assembleHelperFiles.length > 0) {
@@ -108,11 +109,12 @@ AssembleGenerator.prototype.appHelperFiles = function appHelperFiles() {
 				chalk.yellow('\n ]') + ('\n') + ('\n')
 			);
 		}
-		if (this.assembleHelperFiles.indexOf('helperFactory') != -1) {
-			this.copy(root + 'helper-factory.js', this.path + 'templates/helpers/helper-factory.js');
+		if (this.assembleHelperFiles.indexOf('helperPanel') != -1) {
+			this.copy(root + 'helper-panel.js', this.path + 'templates/helpers/helper-panel.js');
+			this.copy(assemble + 'partials/panels/README.md', this.path + 'templates/panels/README.md');
 			console.log(
 				('\n') +
-				chalk.bgRed('Factory Helper - For further instructions see: http://www.prototype-generator.com/templating-in-pg/template-helpers.html)') +
+				chalk.bgRed('Panel Helper - For further instructions see: http://www.prototype-generator.com/templating-in-pg/template-helpers.html)') +
 				chalk.yellow('\n') + ('\n') + ('\n')
 			);
 		}

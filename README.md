@@ -21,14 +21,14 @@
 ### Installation 
 
 - Install Yeoman:
-    `npm install -g yo`
+  `npm install -g yo`
 
 - Install the Generator-Prototype via:
-    `npm install -g generator-prototype`
+  `npm install -g generator-prototype`
 
 ### Update
 - Update the Generator-Prototype via:
-    `npm update -g generator-prototype`
+  `npm update -g generator-prototype`
 
 ## Usage
 
@@ -41,7 +41,6 @@ yo prototype
 #### Options
 
 * `-s` alias `--skip-install`
-
   Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
 
 ## Quick Start
@@ -52,9 +51,9 @@ You can scaffold your project in an instance. The first question is:
 ```
 
 If you choose `Minimal installation` you skip the rest of the questions and get the default values with:
- * Libsass (grunt-sass)
- * Grunt Modules: grunt-grunticon, grunt-data-separator
- * Assemble as Template Engine
+* Libsass (grunt-sass)
+* Grunt Modules: grunt-grunticon, grunt-data-separator
+* Assemble as Template Engine
 
 ## Structure
 
@@ -90,6 +89,12 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 ├───_dist
 └───_output
 ```
+
+## Gruntfile
+For our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split up the file in multiple task files. 
+You can find these task files in the following directory:
+
+ * helpers/_grunt
 
 ## Plugins and Modules
 
@@ -154,19 +159,13 @@ We provide some custom helpers to speed up your prototyping. These helpers provi
 
 You want to know more? See [PG Custom Helpers](http://prototype-generator.com/templating-in-pg/template-helpers.html)
 
-## Gruntfile
-For our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split up the file in multiple task files. 
-You can find these task files in the following directory:
-
- * helpers/_grunt
-
 ## Features
 PG supports different features. Just check/uncheck them in the __custom installation routine__:
 
-* You want to add a separate distribution folder? - Check!
-* You want to add a CSS Styleguide and Assemble Development Documenation? - Check! (See "Developer Documentation")
 * You want to use Libsass instead of Ruby to compile SASS files? - Check!
-* You want to use [PG Methodology](http://www.prototype-generator.com/pg-methodology/pg-methodology-overview.html)? - Check!
+* You want to use Extended Layouts in Assemble? - Check!
+* You want to add a separate distribution folder? - Check!
+* You want to add a CSS Styleguide and Assemble Development Documentation? - Check! (See "Developer Documentation")
 
 ## JS Libraries and CSS Frameworks
 You can choose JS Libraries like:
@@ -184,7 +183,9 @@ And you can also choose SCSS Frameworks like:
 All files will be included and configured. Have fun!
 
 ## PG Methodology 
-Now you can add different bower components I provide: 
+You can scaffold your project with our [PG Methodology](http://www.prototype-generator.com/pg-methodology/pg-methodology-overview.html). 
+
+Furthermore you can add different bower components we provide: 
 
 * [pg-scss](https://github.com/Sebastian-Fitzner/pg-scss)
 * [pg-js](https://github.com/Sebastian-Fitzner/pg-js)
@@ -195,7 +196,7 @@ We integrated some sub generators for you:
 
 ### Grunt Modules:
 You forgot a grunt module?
-* Install your grunt modules: `yo prototype:grunt`
+* Install further grunt modules: `yo prototype:grunt`
 
 ### Assemble Helpers:
 You want to install assemble helpers? 
@@ -204,7 +205,7 @@ You want to install assemble helpers?
 ### BackboneJS:
  * Create a Backbone Model: `yo prototype:bm`
  * Create a Backbone View: `yo prototype:bv`
- * Create a Backbone Collection: `yo prototype:bc
+ * Create a Backbone Collection: `yo prototype:bc`
 
 Others will follow.
 
@@ -217,7 +218,6 @@ For further informations and instructions see:
 * [assemble-documentation-example](https://github.com/Sebastian-Fitzner/assemble-documentation-example)
 
 ## Alternative
-* [grunt-init-assemble](https://github.com/assemble/grunt-init-assemble)
 * [generator-assemble](https://github.com/assemble/generator-assemble)
 
 ## License
@@ -230,5 +230,6 @@ For further informations and instructions see:
 see: [Changelog.md](CHANGELOG.md)
 
 ## TODO: 
-- Tests
 - Integrate Gulp as option
+
+[![NPM](https://nodei.co/npm-dl/generator-prototype.png?height=3)](https://nodei.co/npm/generator-prototype/)
