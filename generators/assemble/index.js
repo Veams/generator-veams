@@ -55,6 +55,10 @@ AssembleGenerator.prototype.askFor = function askFor() {
 			{
 				name: "Panel (Block Helper) - Enclose snippets/partials with a predefined markup.",
 				value: "helperPanel"
+			},
+			{
+				name: "Random Helper - Returns a random number.",
+				value: "helperRandom"
 			}
 		]
 	}];
@@ -117,6 +121,9 @@ AssembleGenerator.prototype.appHelperFiles = function appHelperFiles() {
 				chalk.bgRed('Panel Helper - For further instructions see: http://www.prototype-generator.com/templating-in-pg/template-helpers.html)') +
 				chalk.yellow('\n') + ('\n') + ('\n')
 			);
+		}
+		if (this.assembleHelperFiles.indexOf('helperRandom') != -1) {
+			this.copy(root + 'helper-random.js', this.path + 'templates/helpers/helper-random.js');
 		}
 	}
 };
