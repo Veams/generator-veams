@@ -1,4 +1,4 @@
-module.exports = { <% if (features && features.length > 0) { %><% if (features.indexOf('installDocs') != -1) { %>
+module.exports = { <% if (features && features.length) { %><% if (features.indexOf('installDocs') != -1) { %>
 	styleguide: {
 		dest: '<%%= paths.dev %>/styleguide/css/',
 		expand: true,
@@ -11,6 +11,5 @@ module.exports = { <% if (features && features.length > 0) { %><% if (features.i
 		dest: '<%%= paths.dist %>',
 		expand: true,
 		src: ['**']
-	}<% } %>
-	<% } %>
+	}<% } %><% } %>
 };

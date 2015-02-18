@@ -145,6 +145,7 @@ GruntGenerator.prototype.askFor = function askFor() {
  */
 GruntGenerator.prototype.appGruntModules = function appGruntModules() {
 	var done = this.async();
+	var helpers = '../../app/templates/helpers/';
 	var root = '../../app/templates/helpers/_grunt/';
 
 // Grunt modules are splitted up in separate files and modules
@@ -198,7 +199,7 @@ GruntGenerator.prototype.appGruntModules = function appGruntModules() {
 		if (this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 			this.mkdir('resources/scss/icons');
 			this.template(root + '_svg-sprites.js', this.path + 'svg-sprites.js');
-			this.bowerInstall(['pg-scss'], {'save': true});
+			this.copy(helpers + 'templates/svg-sprites/stylesheet.hbs');
 			this.npmInstall(['grunt-dr-svg-sprites'], {'saveDev': true}, done);
 
 			console.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n') +

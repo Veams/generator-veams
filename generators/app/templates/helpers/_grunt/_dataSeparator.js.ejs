@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = {<% if (modules && modules.length && modules.indexOf('grunt-grunticon') != -1) { %>
 	icons: {
 		options: {
 			pattern: {
@@ -6,10 +6,10 @@ module.exports = {
 				matchRule: false, // The RegExp to match rules with
 				matchParent: true // Rules (eg. in @media blocks) include their parent node.
 			},
-			output: '<%= paths.dev %>/css/styles.icons.css'
+			output: '<%%= paths.dev %>/css/styles.icons.css'
 		},
 		files: {
-			'<%= paths.dev %>/css/styles.css': ['<%= paths.dev %>/css/styles.css']
+			'<%%= paths.dev %>/css/styles.css': ['<%%= paths.dev %>/css/styles.css']
 		}
-	}
+	}<% } %>
 };

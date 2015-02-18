@@ -31,10 +31,15 @@ describe('grunt-dr-svg-sprites', function () {
 
 	it('creates helper files', function () {
 		assert.file(helperPath + "_grunt/svg-sprites.js");
+		assert.file(helperPath + "templates/svg-sprites/stylesheet.hbs");
 	});
 
 	it('adds task and fallback to Gruntfile.js file', function () {
 		assert.fileContent("Gruntfile.js", /\'icons\'/);
 		assert.fileContent("Gruntfile.js", /\'svg-sprites\'/);
+	});
+
+	it('adds sub-task to replace.js', function () {
+		assert.fileContent(helperPath + "_grunt/replace.js", /spriteUrl/);
 	});
 });

@@ -96,11 +96,9 @@ module.exports = function(grunt) {
 	]); <% } %><% if (modules && modules.length && modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
 	
 	// Sprites Task
-	grunt.registerTask('icons', [<% if (modules.indexOf('grunt-svgmin') != -1) { %>
-		'svgmin',<% } %>
+	grunt.registerTask('icons', [
 		'svg-sprites',
-		'replace:spriteUrl',
-		'replace:spriteCleaner'
+		'replace:spriteUrl'
 	]); <% } %><% if ((modules && modules.length && modules.indexOf('grunt-packager') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1) || jsLibs.indexOf('requirejs') != -1) { %>
 	
 	// JS Task
