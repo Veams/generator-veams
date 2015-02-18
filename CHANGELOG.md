@@ -1,3 +1,8 @@
+### v0.5.3
+- added new sprites icon workflow with custom template and selector function to provide mixins and extends
+- updated grunt-sass, grunt-contrib-cssmin, bower components
+- updated sg grunt to support new icon workflow
+
 ### v0.5.2
 - added full test spec 
 - added pg packages 
