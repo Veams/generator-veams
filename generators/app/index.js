@@ -25,7 +25,6 @@ module.exports = yeoman.generators.Base.extend({
 		this.config.defaults({
 			projectName: "",
 			projectAuthor: "",
-			batchFiles: false,
 			installAssemble: "",
 			installPlugin: false,
 			modules: [
