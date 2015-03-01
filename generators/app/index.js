@@ -29,8 +29,7 @@ module.exports = yeoman.generators.Base.extend({
 			installPlugin: false,
 			modules: [
 				"grunt-combine-mq",
-				"grunt-grunticon",
-				"grunt-data-separator"
+				"grunt-dr-svg-sprites"
 			],
 			features: [
 				"sassInsteadOfCompass"
