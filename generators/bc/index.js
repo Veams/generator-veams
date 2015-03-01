@@ -1,47 +1,54 @@
 'use strict';
 var util = require('util');
+var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
+var pg = require('../../lib/pg-helpers');
 
-var BCGenerator = module.exports = function BCGenerator(args, options, config) {
-	// By calling `NamedBase` here, we get the argument to the subgenerator call
-	// as `this.name`.
-	yeoman.generators.Base.apply(this, arguments);
+module.exports = yeoman.generators.Base.extend({
 
-};
+// Custom prompts routine
+	prompting: function () {
+		var cb = this.async();
 
-util.inherits(BCGenerator, yeoman.generators.NamedBase);
+		console.log(
+			('\n') + chalk.bgCyan('Generate your Backbone Collection') + ('\n')
+		);
 
-BCGenerator.prototype.askFor = function askFor() {
-	var cb = this.async();
+		var prompts = [
+			{
+				name: "srcPath",
+				message: "Where do you have your source files?",
+				default: "resources"
+			},
+			{
+				name: 'path',
+				message: 'Where would you like to place your Collection? root -> js/'
+			},
+			{
+				name: 'initName',
+				message: 'What do you want to name your Collection?',
+				default: 'Data'
+			}
+		];
 
-	console.log(
-        ('\n') + chalk.bgCyan('Generate your Backbone Collection') +('\n')
-    );
+		this.prompt(prompts, function (props) {
+			this.initName = props.initName;
+			this.collection = props.collection;
+			this.srcPath = pg.cleanupPath(props.srcPath);
+			this.path = pg.cleanupPath(props.path);
 
-	var prompts = [{
-		name: 'initName',
-		message: 'What do you want to name your Collection?',
-		default: 'Data'
-	}, {
-		name: 'path',
-		message: 'Where would you like to place your Collection? root -> resources/js/collection/',
-		default: ''
-	}];
+			cb();
+		}.bind(this));
+	},
 
-	this.prompt(prompts, function (props) {
-		this.initName = props.initName;
-		this.collection = props.collection;
-		this.path = props.path;
-		if (this.path !== '') {
-			this.path = this.path.replace(/\/?$/, '/');
+	/**
+	 * Grunt modules file generation
+	 *
+	 */
+	writing: {
+		placeCollection: function () {
+			this.template('_Collection.js.ejs', this.srcPath + 'js/' + this.path + this.initName + 'Collection.js');
 		}
-
-		cb();
-	}.bind(this));
-};
-
-
-BCGenerator.prototype.placeCollection = function placeCollection() {
-		this.template('_Collection.js', 'resources/js/collections/' + this.path + this.initName + 'Collection.js');
-};
+	}
+});

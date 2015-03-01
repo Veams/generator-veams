@@ -1,7 +1,10 @@
 // IndexCollection.js
 
-define(["jquery", "backbone", "models/<%= path %><%= initName %>Model"],
-	function($, Backbone, Model) {
+define([
+	'jquery',
+	'backbone',
+	'models/<%= path %><%= initName %>Model'
+], function($, Backbone, Model) {
 
 		// Creates a new Backbone Collection class object
 		var <%= initName %>Collection = Backbone.Collection.extend({
@@ -13,7 +16,5 @@ define(["jquery", "backbone", "models/<%= path %><%= initName %>Model"],
 
 		// Returns the Model class
 		return <%= initName %>Collection;
-
 	}
-
 );
