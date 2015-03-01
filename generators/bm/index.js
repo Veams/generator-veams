@@ -1,57 +1,61 @@
 'use strict';
 var util = require('util');
+var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
+var pg = require('../../lib/pg-helpers');
 
-var BMGenerator = module.exports = function BMGenerator(args, options, config) {
-	// By calling `NamedBase` here, we get the argument to the subgenerator call
-	// as `this.name`.
-	yeoman.generators.Base.apply(this, arguments);
+module.exports = yeoman.generators.Base.extend({
 
-};
+// Custom prompts routine
+	prompting: function () {
+		var cb = this.async();
 
-util.inherits(BMGenerator, yeoman.generators.NamedBase);
+		console.log(
+			('\n') + chalk.bgMagenta('Generate your Backbone Model') + ('\n')
+		);
 
-BMGenerator.prototype.askFor = function askFor() {
-	var cb = this.async();
+		var prompts = [{
+			name: "srcPath",
+			message: "Where do you have your source files?",
+			default: "resources"
+		}, {
+			name: 'path',
+			message: 'Where would you like to place your Model? root -> js/',
+			default: 'models'
+		}, {
+			name: 'initName',
+			message: 'What do you want to name your Model?',
+			default: 'Data'
+		}, {
+			type: 'confirm',
+			name: 'collection',
+			message: 'Would you like to initialize a Collection with your Model?',
+			default: true
+		}];
 
-	console.log(
-        ('\n') + chalk.bgMagenta('Generate your Backbone Model') +('\n')
-    );
+		this.prompt(prompts, function (props) {
+			this.initName = props.initName;
+			this.collection = props.collection;
+			this.srcPath = pg.cleanupPath(props.srcPath);
+			this.path = pg.cleanupPath(props.path);
 
-	var prompts = [{
-		name: 'initName',
-		message: 'What do you want to name your Model?',
-		default: 'Data'
-	}, {
-		name: 'path',
-		message: 'Where would you like to place your Model? root -> resources/js/models/',
-		default: ''
-	}, {
-		type: 'confirm',
-		name: 'collection',
-		message: 'Would you like to initialize a Collection with your Model?',
-		default: true
-	}];
+			cb();
+		}.bind(this));
+	},
 
-	this.prompt(prompts, function (props) {
-		this.initName = props.initName;
-		this.collection = props.collection;
-		this.path = props.path;
-		if (this.path !== '') {
-			this.path = this.path.replace(/\/?$/, '/');
+	/**
+	 * File generation
+	 *
+	 */
+	writing: {
+		placeModel: function () {
+			this.template('_Model.js.ejs', this.srcPath + 'js/' + this.path + this.initName + 'Model.js');
+		},
+		placeCollection: function () {
+			if (this.collection) {
+				this.template('_Collection.js.ejs',  this.srcPath + 'js/' + this.path + this.initName + 'Collection.js');
+			}
 		}
-
-		cb();
-	}.bind(this));
-};
-
-BMGenerator.prototype.placeModel = function placeModel() {
-	this.template('_Model.js', 'resources/js/models/' + this.path + this.initName + 'Model.js');
-};
-
-BMGenerator.prototype.placeCollection = function placeCollection() {
-	if (this.collection) {
-		this.template('_Collection.js', 'resources/js/collections/' + this.path + this.initName + 'Collection.js');
 	}
-};
+});
