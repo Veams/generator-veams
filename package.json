@@ -1,16 +1,20 @@
 {
 	"name": "generator-prototype",
-	"version": "0.5.3",
+	"version": "0.5.4",
 	"homepage": "http://prototype-generator.com/",
 	"description": "The scaffolding project for better prototypes",
 	"keywords": [
 		"yeoman-generator",
 		"assemble",
+		"web apps",
 		"prototype",
 		"prototypes",
+		"component",
+		"front-end",
 		"scaffold",
 		"boilerplate",
 		"templating",
+		"backbone",
 		"grunt"
 	],
 	"author": {

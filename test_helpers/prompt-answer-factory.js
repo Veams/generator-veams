@@ -6,9 +6,8 @@ module.exports = function promptAnswerFactory(customAnswers) {
 		"installPlugin": false,
 		"installCMS": false,
 		"modules": [
-			"grunt-combine-media-queries",
-			"grunt-grunticon",
-			"grunt-data-separator"
+			"grunt-combine-mq",
+			"grunt-dr-svg-sprites"
 		],
 		"features": [
 			"sassInsteadOfCompass"
