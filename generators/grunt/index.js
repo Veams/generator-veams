@@ -37,9 +37,15 @@ module.exports = yeoman.generators.Base.extend({
 		var cb = this.async();
 
 		questions.push({
-			name: "path",
+			name: "helperPath",
 			message: "Where do you have your task files?",
 			default: "helpers/_grunt"
+		});
+
+		questions.push({
+			name: "srcPath",
+			message: "Where do you have your source files?",
+			default: "resources"
 		});
 
 		questions.push({
@@ -119,9 +125,13 @@ module.exports = yeoman.generators.Base.extend({
 		});
 
 		this.prompt(questions, function (answers) {
-			this.path = answers.path;
-			if (this.path !== '') {
-				this.path = this.path.replace(/\/?$/, '/');
+			this.helperPath = answers.helperPath;
+			if (this.helperPath !== '') {
+				this.helperPath = this.helperPath.replace(/\/?$/, '/');
+			}
+			this.srcPath = answers.srcPath;
+			if (this.srcPath !== '') {
+				this.srcPath = this.srcPath.replace(/\/?$/, '/');
 			}
 
 			this.modules = answers.modules;
@@ -146,60 +156,73 @@ module.exports = yeoman.generators.Base.extend({
 		grunt: function () {
 			var helpers = '../../app/templates/helpers/';
 			var root = '../../app/templates/helpers/_grunt/';
+			var src = '../../app/templates/resources/';
 
 			// Grunt modules are splitted up in separate files and modules
 			if (this.modules && this.modules.length) {
 				if (this.modules.indexOf('grunt-autoprefixer') != -1) {
-					this.copy(root + 'autoprefixer.js', this.path + 'autoprefixer.js');
-					this.npmInstall(['grunt-autoprefixer'], {'saveDev': true}, done);
+					this.copy(root + 'autoprefixer.js', this.helperPath + 'autoprefixer.js');
+
+					this.npmInstall(['grunt-autoprefixer'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-accessibility') != -1) {
-					this.copy(root + 'accessibility.js', this.path + 'accessibility.js');
-					this.npmInstall(['grunt-accessibility'], {'saveDev': true}, done);
+					this.copy(root + 'accessibility.js', this.helperPath + 'accessibility.js');
+
+					this.npmInstall(['grunt-accessibility'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-bless') != -1) {
-					this.copy(root + 'bless.js', this.path + 'bless.js');
-					this.npmInstall(['grunt-bless'], {'saveDev': true}, done);
+					this.copy(root + 'bless.js', this.helperPath + 'bless.js');
+
+					this.npmInstall(['grunt-bless'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-browser-sync') != -1) {
-					this.template(root + '_browserSync.js.ejs', this.path + 'browserSync.js');
-					this.npmInstall(['grunt-browser-sync'], {'saveDev': true}, done);
+					this.template(root + '_browserSync.js.ejs', this.helperPath + 'browserSync.js');
+
+					this.npmInstall(['grunt-browser-sync'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-combine-mq') != -1) {
-					this.copy(root + 'combine_mq.js', this.path + 'combine_mq.js');
-					this.npmInstall(['grunt-combine-mq'], {'saveDev': true}, done);
+					this.copy(root + 'combine_mq.js', this.helperPath + 'combine_mq.js');
+
+					this.npmInstall(['grunt-combine-mq'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-contrib-compass') != -1) {
-					this.copy(root + 'compass.js', this.path + 'compass.js');
-					this.npmInstall(['grunt-contrib-compass'], {'saveDev': true}, done);
+					this.copy(root + 'compass.js', this.helperPath + 'compass.js');
+
+					this.npmInstall(['grunt-contrib-compass'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-contrib-htmlmin') != -1) {
-					this.copy(root + 'htmlmin.js', this.path + 'htmlmin.js');
-					this.npmInstall(['grunt-contrib-htmlmin'], {'saveDev': true}, done);
+					this.copy(root + 'htmlmin.js', this.helperPath + 'htmlmin.js');
+
+					this.npmInstall(['grunt-contrib-htmlmin'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-contrib-requirejs') != -1) {
-					this.copy(root + 'requirejs.js', this.path + 'requirejs.js');
+					this.copy(root + 'requirejs.js', this.helperPath + 'requirejs.js');
+
 					this.bowerInstall(['almond'], {'save': true});
-					this.npmInstall(['grunt-contrib-requirejs'], {'save': true}, done);
+					this.npmInstall(['grunt-contrib-requirejs'], {'save': true});
 				}
 				if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
-					this.template(root + 'uglify.js', this.path + 'uglify.js');
-					this.npmInstall(['grunt-contrib-uglify'], {'saveDev': true}, done);
+					this.template(root + 'uglify.js', this.helperPath + 'uglify.js');
+
+					this.npmInstall(['grunt-contrib-uglify'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-csscomb') != -1) {
-					this.directory('../../app/templates/helpers/csscomb', 'helpers/csscomb');
-					this.copy(root + 'csscomb.js', this.path + 'csscomb.js');
-					this.npmInstall(['grunt-csscomb'], {'saveDev': true}, done);
+					this.directory(helpers + 'csscomb', 'helpers/csscomb');
+					this.copy(root + 'csscomb.js', this.helperPath + 'csscomb.js');
+
+					this.npmInstall(['grunt-csscomb'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-data-separator') != -1) {
-					this.template(root + '_dataSeparator.js.ejs', this.path + 'dataSeparator.js');
-					this.npmInstall(['grunt-data-separator'], {'saveDev': true}, done);
+					this.template(root + '_dataSeparator.js.ejs', this.helperPath + 'dataSeparator.js');
+
+					this.npmInstall(['grunt-data-separator'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 					this.mkdir('resources/scss/icons');
-					this.template(root + '_svg-sprites.js.ejs', this.path + 'svg-sprites.js');
-					this.copy(helpers + 'templates/svg-sprites/stylesheet.hbs');
-					this.npmInstall(['grunt-dr-svg-sprites'], {'saveDev': true}, done);
+					this.template(root + '_svg-sprites.js.ejs', this.helperPath + 'svg-sprites.js');
+					this.copy(helpers + 'templates/svg-sprites/stylesheet.hbs', 'helpers/templates/svg-sprites/stylesheet.hbs');
+
+					this.npmInstall(['grunt-dr-svg-sprites'], {'saveDev': true});
 
 					console.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n') +
 						chalk.yellow('\n "svg-sprites": "grunt-dr-svg-sprites"') + ('\n') +
@@ -211,54 +234,65 @@ module.exports = yeoman.generators.Base.extend({
 					);
 				}
 				if (this.modules.indexOf('grunt-grunticon') != -1) {
-					this.directory('../../app/templates/helpers/resources/scss/icons', 'resources/scss/icons');
-					this.directory('../../app/templates/helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
-					this.template(root + '_grunticon.js.ejs', this.path + 'grunticon.js');
+					this.directory(helpers + 'templates/grunticon-template', 'helpers/templates/grunticon-template');
+					this.template(root + '_grunticon.js.ejs', this.helperPath + 'grunticon.js');
+					this.copy(src + 'js/vendor/loadCSS.js', this.srcPath + 'js/vendor/loadCSS.js');
+
 					this.bowerInstall(['pg-scss'], {'save': true});
-					this.npmInstall(['grunt-grunticon'], {'saveDev': true}, done);
+					this.npmInstall(['grunt-grunticon'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-jsbeautifier') != -1) {
-					this.copy(root + 'jsbeautifier.js', this.path + 'jsbeautifier.js');
-					this.copy('../../app/templates/helpers/configs/.jsbeautifierrc', 'helpers/configs/.jsbeautifierrc');
-					this.npmInstall(['grunt-jsbeautifier'], {'saveDev': true}, done);
+					this.copy(root + 'jsbeautifier.js', this.helperPath + 'jsbeautifier.js');
+					this.copy(helpers + 'configs/.jsbeautifierrc', 'helpers/configs/.jsbeautifierrc');
+
+					this.npmInstall(['grunt-jsbeautifier'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length > 0 && this.features.indexOf('installDocs') != -1)) {
-					this.copy(root + 'jsdoc.js', this.path + 'jsdoc.js');
-					this.npmInstall(['grunt-jsdoc@beta'], {'saveDev': true}, done);
+					this.copy(root + 'jsdoc.js', this.helperPath + 'jsdoc.js');
+
+					this.npmInstall(['grunt-jsdoc@beta'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-modernizr') != -1) {
-					this.copy(root + 'modernizr.js', this.path + 'modernizr.js');
-					this.npmInstall(['grunt-modernizr'], {'saveDev': true}, done);
+					this.copy(root + 'modernizr.js', this.helperPath + 'modernizr.js');
+
+					this.npmInstall(['grunt-modernizr'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-packager') != -1) {
-					this.copy('../../app/templates/resources/js/project.jspackcfg', 'resources/js/project.jspackcfg');
-					this.copy(root + 'packager.js', this.path + 'packager.js');
-					this.npmInstall(['grunt-packager'], {'saveDev': true}, done);
+					this.copy(src + 'js/project.jspackcfg', this.srcPath + 'js/project.jspackcfg');
+					this.copy(root + 'packager.js', this.helperPath + 'packager.js');
+
+					this.npmInstall(['grunt-packager'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-phantomas') != -1) {
-					this.copy(root + 'phantomas.js', this.path + 'phantomas.js');
-					this.npmInstall(['grunt-phantomas'], {'saveDev': true}, done);
+					this.copy(root + 'phantomas.js', this.helperPath + 'phantomas.js');
+
+					this.npmInstall(['grunt-phantomas'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-photobox') != -1) {
-					this.template(root + 'photobox.js', this.path + 'photobox.js');
-					this.npmInstall(['grunt-photobox'], {'saveDev': true}, done);
+					this.template(root + 'photobox.js', this.helperPath + 'photobox.js');
+
+					this.npmInstall(['grunt-photobox'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-responsive-images') != -1) {
-					this.copy(root + 'responsive_images.js', this.path + 'responsive_images.js');
-					this.npmInstall(['grunt-responsive-images'], {'saveDev': true}, done);
+					this.copy(root + 'responsive_images.js', this.helperPath + 'responsive_images.js');
+
+					this.npmInstall(['grunt-responsive-images'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-sass') != -1) {
-					this.template(root + '_sass.js.ejs', this.path + 'sass.js');
-					this.npmInstall(['grunt-sass'], {'saveDev': true}, done);
+					this.template(root + '_sass.js.ejs', this.helperPath + 'sass.js');
+
+					this.npmInstall(['grunt-sass'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-svgmin') != -1) {
-					this.copy(root + 'svgmin.js', this.path + 'svgmin.js');
-					this.npmInstall(['grunt-svgmin'], {'saveDev': true}, done);
+					this.copy(root + 'svgmin.js', this.helperPath + 'svgmin.js');
+
+					this.npmInstall(['grunt-svgmin'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-version') != -1) {
-					this.copy(root + 'version.js', this.path + 'version.js');
-					this.copy('../../app/templates/resources/templates/partials/blocks/b-version.hbs', 'resources/templates/partials/blocks/b-version.hbs');
-					this.npmInstall(['grunt-version'], {'saveDev': true}, done);
+					this.copy(root + 'version.js', this.helperPath + 'version.js');
+					this.copy(src + 'templates/partials/blocks/b-version.hbs', this.srcPath + 'templates/partials/blocks/b-version.hbs');
+
+					this.npmInstall(['grunt-version'], {'saveDev': true});
 				}
 
 				if (this.modules.indexOf('sass-globbing') != -1) {
@@ -284,13 +318,15 @@ module.exports = yeoman.generators.Base.extend({
 				}
 
 				if (this.modules.indexOf('sass-globbing') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
-					this.template(root + '_fileindex.js.ejs', this.path + 'fileindex.js');
-					this.npmInstall(['grunt-fileindex'], {'saveDev': true}, done);
+					this.template(root + '_fileindex.js.ejs', this.helperPath + 'fileindex.js');
+
+					this.npmInstall(['grunt-fileindex'], {'saveDev': true});
 				}
 
 				if (this.modules.indexOf('grunt-grunticon') != -1 || this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
-					this.template(root + '_replace.js.ejs', this.path + 'replace.js');
-					this.npmInstall(['grunt-text-replace'], {'saveDev': true}, done);
+					this.template(root + '_replace.js.ejs', this.helperPath + 'replace.js');
+					
+					this.npmInstall(['grunt-text-replace'], {'saveDev': true});
 				}
 			}
 		}
