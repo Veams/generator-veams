@@ -6,29 +6,34 @@
 
 define([
 	'jquery',
-	'backbone'<% if(temp === true){ %>,
+	'backbone'<% if(tpl === true){ %>,
 	'text!templates/<%= path %><%= initName %>.html'<% } %>
 ],
-	function($, Backbone<% if(temp === true){ %>, template<% } %>){
+	function($, Backbone<% if(tpl === true){ %>, template<% } %>){
 
 		var <%= initName %> = Backbone.View.extend({
 			// The DOM Element associated with this view
 			el: '.yourElement',
+
+			// Options
+			options: {
+			},
 
 			// View Event Handlers
 			events: {
 			},
 
 			// View constructor
-			initialize: function() {
+			initialize: function(obj) {
+				this.options = _.defaults(obj.options || {}, this.options); // get/set default options using Underscore
+				<% if(tpl === true){ %>
+				this.template = _.template(template, {}); // Setting the view's template property using the Underscore template method
+				<% } %>
 			},
 
 			// Renders the view's template to the UI
 			render: function() {
-				<% if(temp === true){ %>
-				// Setting the view's template property using the Underscore template method
-				this.template = _.template(template, {});
-
+				<% if(tpl === true){ %>
 				// Dynamically updates the UI with the view's template
 				this.$el.html(this.template());
 				<% } %>

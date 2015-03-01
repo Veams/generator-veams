@@ -1,55 +1,66 @@
 'use strict';
 var util = require('util');
+var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
+var pg = require('../../lib/pg-helpers');
 
-var BVGenerator = module.exports = function BVGenerator(args, options, config) {
-	// By calling `NamedBase` here, we get the argument to the subgenerator call
-	// as `this.name`.
-	yeoman.generators.Base.apply(this, arguments);
+console.log('helpers: ', helpers);
 
-};
+module.exports = yeoman.generators.Base.extend({
 
-util.inherits(BVGenerator, yeoman.generators.NamedBase);
+// Custom prompts routine
+	prompting: function () {
+		var cb = this.async();
 
-BVGenerator.prototype.askFor = function askFor() {
-	var cb = this.async();
+		console.log(
+			('\n') + chalk.bgGreen('Generate your Backbone View') + ('\n')
+		);
 
-    console.log(
-        ('\n') + chalk.bgGreen('Generate your Backbone View') +('\n')
-    );
+		var prompts = [
+			{
+				name: "srcPath",
+				message: "Where do you have your source files?",
+				default: "resources"
+			},
+			{
+				name: 'path',
+				message: 'Where would you like to place your View? root -> js/'
+			},
+			{
+				name: 'initName',
+				message: 'What do you want to name your View?',
+				default: 'product'
+			}, {
+				type: 'confirm',
+				name: 'tpl',
+				message: 'Would you like to create a template with your View?',
+				default: false
+			}
+		];
 
-	var prompts = [{
-		name: 'initName',
-		message: 'What do you want to name your View?',
-		default: 'Product'
-	}, {
-		name: 'path',
-		message: 'Where would you like to place your View? root -> resources/js/'
-	}, {
-		type: 'confirm',
-		name: 'temp',
-		message: 'Would you like to create a template with your View?',
-		default: false
-	}];
+		this.prompt(prompts, function (props) {
+			this.initName = props.initName;
+			this.srcPath = pg.cleanupPath(props.srcPath);
+			this.path = pg.cleanupPath(props.path);
+			this.tpl = props.tpl;
 
-	this.prompt(prompts, function(props) {
-		this.initName = props.initName;
-		this.path = props.path;
-		this.temp = props.temp;
-		if (this.path !== '' ) {
-			this.path = this.path.replace(/\/?$/, '/');
+			cb();
+		}.bind(this));
+	},
+
+	/**
+	 * File generation
+	 *
+	 */
+	writing: {
+		placeView: function () {
+			this.template('_View.js.ejs', this.srcPath + 'js/' + this.path + this.initName + 'View.js');
+		},
+		placeTpl: function () {
+			if (this.tpl) {
+				this.template('_Template.html', this.srcPath + 'js/' + this.path + this.initName + '.html');
+			}
 		}
-		cb();
-	}.bind(this));
-};
-
-BVGenerator.prototype.placeView = function placeView() {
-	this.template('_View.js.ejs', 'resources/js/' + this.path + this.initName + 'View.js');
-};
-
-BVGenerator.prototype.placeTemplate = function placeTemplate() {
-	if (this.temp) {
-		this.template('_Template.html', 'resources/js/' + this.path + this.initName + '.html');
 	}
-};
+});
