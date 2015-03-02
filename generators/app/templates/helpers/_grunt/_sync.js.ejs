@@ -25,8 +25,8 @@ module.exports = {
 			{
 				cwd: '<%%= paths.src %>/assets',
 				src: [
-					'**/{,*/}*'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-svgmin') != -1) { %>,
-					'!img/svg/**/{,*/}*'<% if (modules && modules.length > 0) { if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
+					'**/{,*/}*'<% if (gruntModules && gruntModules.length > 0) { if (gruntModules.indexOf('grunt-svgmin') != -1) { %>,
+					'!img/svg/**/{,*/}*'<% if (gruntModules && gruntModules.length > 0) { if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
 					'!img/svgmin/**/{,*/}*'<% }} %><% }} %>
 				],
 				dest: '<%%= paths.dev %>'

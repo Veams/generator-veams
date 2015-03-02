@@ -1,4 +1,4 @@
-module.exports = {<% if (modules && modules.length) { if (modules.indexOf('grunt-grunticon') != -1) { %>
+module.exports = {<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-grunticon') != -1) { %>
 	datasvg: {
 		src: ['<%%= paths.src %>/scss/icons/_icons-data-svg.scss'],             // source files array (supports minimatch)
 		dest: '<%%= paths.src %>/scss/icons/_icons-data-svg.scss',               // destination directory or file
@@ -38,7 +38,7 @@ module.exports = {<% if (modules && modules.length) { if (modules.indexOf('grunt
 				to: '../img/'
 			}
 		]
-	}<% if (modules && modules.length) { if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,<% }} %><% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+	}<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>,<% }} %><% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>
 	spriteUrl: {
 		src: ['<%%= paths.src %>/scss/icons/_sprites-icons-sprite.scss'],             // source files array (supports minimatch)
 		dest: '<%%= paths.src %>/scss/icons/_sprites-icons-sprite.scss',               // destination directory or file

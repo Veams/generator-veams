@@ -5,7 +5,8 @@ module.exports = function promptAnswerFactory(customAnswers) {
 		"installAssemble": false,
 		"installPlugin": false,
 		"installCMS": false,
-		"modules": [
+		"gulpModules": [],
+		"gruntModules": [
 			"grunt-combine-mq",
 			"grunt-dr-svg-sprites"
 		],

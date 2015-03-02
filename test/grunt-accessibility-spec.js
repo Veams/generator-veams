@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
 	"installAssemble": false,
-	"modules": [
+	"gruntModules": [
 		"grunt-accessibility"
 	]
 });

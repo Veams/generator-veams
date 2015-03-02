@@ -3,13 +3,13 @@
 <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<% if (modules && modules.length > 0 && modules.indexOf('grunt-version') != -1) { %>
+<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-version') != -1) { %>
 {{> b-version }}
 <% } %>
 <html lang="en" class="no-js"> <!--<![endif]-->
 
 <head>
-	<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+	<% if (features && features.length && features.indexOf('installExtendedLayout') != -1) { %>
 	{{#block "metadata"}}
 		{{> _metadata }}
 	{{/block}}
@@ -21,7 +21,7 @@
 	{{> _styles }}
 	<% } %>
 	<!-- Scripts
-	================================================== --> <% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+	================================================== --> <% if (features && features.length && features.indexOf('installExtendedLayout') != -1) { %>
 	{{#block "scripts"}}
 		{{> _scripts }}
 	{{/block}}
@@ -31,7 +31,7 @@
 </head>
 
 <body class="{{ bodyclass }}">
-	<% if (features && features.length > 0 && features.indexOf('installExtendedLayout') != -1) { %>
+	<% if (features && features.length && features.indexOf('installExtendedLayout') != -1) { %>
 	{{#block "body"}}
 		{{> body }}
 	{{/block}}

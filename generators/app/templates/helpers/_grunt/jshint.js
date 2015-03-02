@@ -29,7 +29,7 @@ module.exports = {
         'browser': true
     },
     all: [
-        'Gruntfile.js',<% if(modules && modules.length > 0){ if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-packager') { %>
+        'Gruntfile.js',<% if(gruntModules && gruntModules.length > 0){ if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) { if(name == 'grunt-packager') { %>
         '<%%= paths.src %>/js/init/*.js'<% }}); }} %>
     ]
 }

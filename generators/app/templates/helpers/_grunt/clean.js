@@ -7,7 +7,7 @@ module.exports = {
 		'<%%= paths.dev %>/styleguide/**/*',<% }} %>
         '<%%= paths.dev %>/css/**/*',
         '<%%= paths.dev %>/js/**/*',
-        '<%%= paths.dev %>/img/**/*'] <% if(modules && modules.length > 0){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-grunticon') { %>,
+        '<%%= paths.dev %>/img/**/*'] <% if(gruntModules && gruntModules.length > 0){ %><% if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) { if(name == 'grunt-grunticon') { %>,
 	grunticon: [
         '<%%= paths.src %>/scss/icons/*.{html,js,txt}'
     ]<% } %><%}); %><%} %><%} %>

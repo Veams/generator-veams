@@ -12,7 +12,7 @@ module.exports = {
                 '<%%= paths.dev %>'
             ]
         }
-    }<% if(modules && modules.length > 0 && modules.indexOf('grunt-connect-proxy') != -1 && proxyHost && proxyPort) { %>,
+    }<% if(gruntModules && gruntModules.length > 0 && gruntModules.indexOf('grunt-connect-proxy') != -1 && proxyHost && proxyPort) { %>,
     proxy: {
         options: {
             hostname: '0.0.0.0',

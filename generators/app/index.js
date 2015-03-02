@@ -27,7 +27,8 @@ module.exports = yeoman.generators.Base.extend({
 			projectAuthor: "",
 			installAssemble: "",
 			installPlugin: false,
-			modules: [
+			gulpModules: [],
+			gruntModules: [
 				"grunt-combine-mq",
 				"grunt-dr-svg-sprites"
 			],
@@ -116,7 +117,8 @@ module.exports = yeoman.generators.Base.extend({
 				this.authorLogin = this.config.get("projectAuthor");
 				this.installAssemble = this.config.set("installAssemble", true);
 				this.plugin = this.config.get("plugin");
-				this.modules = this.config.get("modules");
+				this.gulpModules = this.config.get("gulpModules");
+				this.gruntModules = this.config.get("gruntModules");
 				this.features = this.config.get("features");
 				this.jsLibs = this.config.get("jsLibs");
 				this.cssLibs = this.config.get("cssLibs");
@@ -190,8 +192,8 @@ module.exports = yeoman.generators.Base.extend({
 		});
 
 
-		(!this.config.get("modules") || force) && questions.push({
-			name: "modules",
+		(!this.config.get("gruntModules") || force) && questions.push({
+			name: "gruntModules",
 			type: "checkbox",
 			message: "Which grunt modules do you want to use?",
 			choices: [
@@ -219,14 +221,14 @@ module.exports = yeoman.generators.Base.extend({
 				{name: "grunt-svgmin"},
 				{name: "grunt-version", checked: true}
 			],
-			default: this.config.get("modules")
+			default: this.config.get("gruntModules")
 		});
 
 		questions.push({
 			when: function (answers) {
-				return answers.modules
-					&& answers.modules.length > 0
-					&& answers.modules.indexOf('grunt-connect-proxy') !== -1;
+				return answers.gruntModules
+					&& answers.gruntModules.length > 0
+					&& answers.gruntModules.indexOf('grunt-connect-proxy') !== -1;
 			},
 			type: 'input',
 			name: 'proxyHost',
@@ -243,9 +245,9 @@ module.exports = yeoman.generators.Base.extend({
 
 		questions.push({
 			when: function (answers) {
-				return answers.modules
-					&& answers.modules.length > 0
-					&& answers.modules.indexOf('grunt-connect-proxy') !== -1
+				return answers.gruntModules
+					&& answers.gruntModules.length > 0
+					&& answers.gruntModules.indexOf('grunt-connect-proxy') !== -1
 					&& answers.proxyHost;
 			},
 			type: 'input',
@@ -373,7 +375,8 @@ module.exports = yeoman.generators.Base.extend({
 			this.authorLogin = answers.projectAuthor || this.config.get("projectAuthor");
 			this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
 			this.plugin = answers.plugin;
-			this.modules = answers.modules;
+			this.gulpModules = answers.gulpModules;
+			this.gruntModules = answers.gruntModules;
 			this.features = answers.features;
 			this.jsLibs = answers.jsLibs;
 			this.cssLibs = answers.cssLibs;
@@ -462,89 +465,89 @@ module.exports = yeoman.generators.Base.extend({
 		grunt: function () {
 			// var done = this.async();
 			// Grunt modules are splitted up in separate files and modules
-			if (this.modules && this.modules.length) {
-				if (this.modules.indexOf('grunt-accessibility') != -1) {
+			if (this.gruntModules && this.gruntModules.length) {
+				if (this.gruntModules.indexOf('grunt-accessibility') != -1) {
 					this.copy('helpers/_grunt/accessibility.js', 'helpers/_grunt/accessibility.js');
 				}
-				if (this.modules.indexOf('grunt-autoprefixer') != -1) {
+				if (this.gruntModules.indexOf('grunt-autoprefixer') != -1) {
 					this.copy('helpers/_grunt/autoprefixer.js', 'helpers/_grunt/autoprefixer.js');
 				}
-				if (this.modules.indexOf('grunt-bless') != -1) {
+				if (this.gruntModules.indexOf('grunt-bless') != -1) {
 					this.copy('helpers/_grunt/bless.js', 'helpers/_grunt/bless.js');
 				}
-				if (this.modules.indexOf('grunt-browser-sync') != -1) {
+				if (this.gruntModules.indexOf('grunt-browser-sync') != -1) {
 					this.template('helpers/_grunt/_browserSync.js.ejs', 'helpers/_grunt/browserSync.js');
 				}
-				if (this.modules.indexOf('grunt-data-separator') != -1) {
+				if (this.gruntModules.indexOf('grunt-data-separator') != -1) {
 					this.copy('helpers/_grunt/_dataSeparator.js.ejs', 'helpers/_grunt/dataSeparator.js');
 				}
-				if (this.modules.indexOf('grunt-csscomb') != -1) {
+				if (this.gruntModules.indexOf('grunt-csscomb') != -1) {
 					this.copy('helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
 					this.copy('helpers/configs/csscomb.json', 'helpers/configs/csscomb.json');
 				}
-				if (this.modules.indexOf('grunt-contrib-htmlmin') != -1) {
+				if (this.gruntModules.indexOf('grunt-contrib-htmlmin') != -1) {
 					this.copy('helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
 				}
-				if (this.modules.indexOf('grunt-contrib-requirejs') != -1 || (this.jsLibs && this.jsLibs.length && this.jsLibs.indexOf('requirejs') != -1)) {
+				if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || (this.jsLibs && this.jsLibs.length && this.jsLibs.indexOf('requirejs') != -1)) {
 					this.copy('helpers/_grunt/requirejs.js', 'helpers/_grunt/requirejs.js');
 				}
-				if (this.modules.indexOf('grunt-contrib-uglify') != -1) {
+				if (this.gruntModules.indexOf('grunt-contrib-uglify') != -1) {
 					this.template('helpers/_grunt/uglify.js', 'helpers/_grunt/uglify.js');
 				}
-				if (this.modules.indexOf('grunt-combine-mq') != -1) {
+				if (this.gruntModules.indexOf('grunt-combine-mq') != -1) {
 					this.copy('helpers/_grunt/combine_mq.js', 'helpers/_grunt/combine_mq.js');
 				}
-				if (this.modules.indexOf('grunt-contrib-compass') != -1) {
+				if (this.gruntModules.indexOf('grunt-contrib-compass') != -1) {
 					this.copy('helpers/_grunt/compass.js', 'helpers/_grunt/compass.js');
 				}
-				if (this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
+				if (this.gruntModules.indexOf('grunt-dr-svg-sprites') != -1) {
 					this.mkdir('resources/scss/icons');
 					this.template('helpers/_grunt/_svg-sprites.js.ejs', 'helpers/_grunt/svg-sprites.js');
 					this.copy('helpers/templates/svg-sprites/stylesheet.hbs');
 				}
-				if (this.modules.indexOf('grunt-grunticon') != -1) {
+				if (this.gruntModules.indexOf('grunt-grunticon') != -1) {
 					this.directory('resources/scss/icons', 'resources/scss/icons');
 					this.directory('helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
 					this.template('helpers/_grunt/_grunticon.js.ejs', 'helpers/_grunt/grunticon.js');
 				}
-				if (this.modules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length && this.features.indexOf('installDocs') != -1)) {
+				if (this.gruntModules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length && this.features.indexOf('installDocs') != -1)) {
 					this.copy('helpers/_grunt/jsdoc.js');
 					this.copy('helpers/configs/jsdoc.conf.json');
 					this.copy('resources/js/README.md');
 				}
-				if (this.modules.indexOf('grunt-modernizr') != -1) {
+				if (this.gruntModules.indexOf('grunt-modernizr') != -1) {
 					this.copy('helpers/_grunt/modernizr.js', 'helpers/_grunt/modernizr.js');
 				}
-				if (this.modules.indexOf('grunt-packager') != -1) {
+				if (this.gruntModules.indexOf('grunt-packager') != -1) {
 					this.copy('resources/js/project.jspackcfg');
 					this.copy('helpers/_grunt/packager.js', 'helpers/_grunt/packager.js');
 				}
-				if (this.modules.indexOf('grunt-phantomas') != -1) {
+				if (this.gruntModules.indexOf('grunt-phantomas') != -1) {
 					this.copy('helpers/_grunt/phantomas.js', 'helpers/_grunt/phantomas.js');
 				}
-				if (this.modules.indexOf('grunt-photobox') != -1) {
+				if (this.gruntModules.indexOf('grunt-photobox') != -1) {
 					this.template('helpers/_grunt/photobox.js', 'helpers/_grunt/photobox.js');
 				}
-				if (this.modules.indexOf('grunt-responsive-images') != -1) {
+				if (this.gruntModules.indexOf('grunt-responsive-images') != -1) {
 					this.copy('helpers/_grunt/responsive_images.js', 'helpers/_grunt/responsive_images.js');
 				}
-				if (this.modules.indexOf('grunt-svgmin') != -1) {
+				if (this.gruntModules.indexOf('grunt-svgmin') != -1) {
 					this.copy('helpers/_grunt/svgmin.js', 'helpers/_grunt/svgmin.js');
 				}
-				if (this.modules.indexOf('grunt-version') != -1) {
+				if (this.gruntModules.indexOf('grunt-version') != -1) {
 					this.copy('helpers/_grunt/version.js', 'helpers/_grunt/version.js');
 					this.copy('resources/templates/partials/blocks/b-version.hbs', 'resources/templates/partials/blocks/b-version.hbs');
 				}
 
-				if (this.features && this.features.length && this.features.indexOf('sassInsteadOfCompass') != -1 || this.modules.indexOf('grunt-responsive-images') != -1) {
+				if (this.features && this.features.length && this.features.indexOf('sassInsteadOfCompass') != -1 || this.gruntModules.indexOf('grunt-responsive-images') != -1) {
 					this.template('helpers/_grunt/_fileindex.js.ejs', 'helpers/_grunt/fileindex.js');
 				}
 
-				if (this.modules.indexOf('grunt-grunticon') != -1 || this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
+				if (this.gruntModules.indexOf('grunt-grunticon') != -1 || this.gruntModules.indexOf('grunt-dr-svg-sprites') != -1) {
 					this.template('helpers/_grunt/_replace.js.ejs', 'helpers/_grunt/replace.js');
 				}
 
-				if (this.modules.indexOf('grunt-grunticon') != -1 && this.modules.indexOf('grunt-data-separator') != -1) {
+				if (this.gruntModules.indexOf('grunt-grunticon') != -1 && this.gruntModules.indexOf('grunt-data-separator') != -1) {
 					this.copy('resources/js/vendor/loadCSS.js', 'resources/js/vendor/loadCSS.js');
 				}
 			}
