@@ -140,6 +140,30 @@ module.exports = yeoman.generators.Base.extend({
 		}.bind(this));
 	},
 
+	_generalPrompts: function () {
+		var done = this.async();
+		var force = false;
+		var questions = [];
+
+		if (!this.config.existed) {
+			force = true;
+		}
+
+		(!this.config.get("projectName") || force) && questions.push({
+			type: "input",
+			name: "projectName",
+			message: "Your project name",
+			default: this.appname
+		});
+
+		(!this.config.get("projectAuthor") || force) && questions.push({
+			type: "input",
+			name: "projectAuthor",
+			message: "Would you mind telling me your name?",
+			default: this.config.get("projectAuthor")
+		});
+	},
+
 	// Custom prompts routine
 	_prompting: function () {
 		var done = this.async();
