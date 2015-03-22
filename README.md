@@ -62,7 +62,7 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 │   ├───configs
 │   ├───templates
 │   │   ├───grunticon-template
-│   │   └───styleguide-template
+│   │   └───svg-sprites
 │   └───_grunt
 ├───resources
 │   ├───ajax
@@ -123,15 +123,15 @@ There are standard grunt modules I use. These are:
  * [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) - Optimize RequireJS projects using r.js.
  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify) - Minify files with UglifyJS.
  * [grunt-csscomb](https://github.com/csscomb/grunt-csscomb) - The grunt plugin for sorting CSS properties in specific order.
- * [grunt-devtools](https://github.com/vladikoff/grunt-devtools) - An user interface in chrome to execute grunt tasks in your project
- * [grunt-data-separator](https://github.com/Sebastian-Fitzner/grunt-data-separator) - Split up your Data-URI or anything else into a separate CSS file.
  * [grunt-dr-svg-sprites](https://github.com/drdk/grunt-dr-svg-sprites) - Generate SVG Sprites with scss files. We provide a custom template to generate mixins and extends.
  * [grunt-grunticon](https://github.com/filamentgroup/grunticon) - Generate SVG-URI-SASS files with png fallbacks
+ * [grunt-image-size-export](https://github.com/Sebastian-Fitzner/grunt-image-size-export) - Pass a folder of images to this module and get infos like width, height, filename, path and breakpoints.
  * [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc) - This plugin enables you to integrate the generation of comments based documentation into your Grunt build.
  * [grunt-modernizr](https://github.com/Modernizr/grunt-modernizr) - grunt-modernizr sifts through your project files, gathers up your references to Modernizr tests and outputs a lean, mean Modernizr machine.
  * [grunt-packager](https://github.com/bobbor/grunt-packager) (only executable when your project.jspackcfg is configured) - package your js.
  * [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas) - PhantomJS-based web performance metrics collector and monitoring tool.
  * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) - Take snapshots from homepage
+ * [grunt-postcss-separator](https://github.com/Sebastian-Fitzner/grunt-postcss-separator) - Split up your Data-URI or anything else into a separate CSS file.
  * [grunt-responsive-images](https://github.com/andismith/grunt-responsive-images) - Produces images at different sizes (be sure you have installed GraphicsMagick)
  * [grunt-sass](https://github.com/sindresorhus/grunt-sass) - You want to use Libsass instead of Compass to render your stylesheets 10 times faster? Here you go! (see _Features_)
  * [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin) - Minify SVG using SVGO.
@@ -211,9 +211,6 @@ Others will follow.
 ## Developer Documentation
 PG provides a way to document your assemble modules via markdown and a separate docs folder. 
 Just use the custom installation route and check `Create Developer Documentation`.
-
-For further informations and instructions see: 
-* [assemble-documentation-example](https://github.com/Sebastian-Fitzner/assemble-documentation-example)
 
 ## Alternative
 * [generator-assemble](https://github.com/assemble/generator-assemble)

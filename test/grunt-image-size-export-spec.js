@@ -1,19 +1,19 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
+var fs = require('fs');
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
-var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
-	"features": [
-		"installDocs"
+	"modules": [
+		"grunt-image-size-export"
 	]
 });
 
-describe('grunt-styleguide', function () {
-	var helperPath = "helpers/";
+describe('grunt-image-size-export', function () {
 	var srcPath = "resources/";
+	var helperPath = "helpers/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -27,23 +27,14 @@ describe('grunt-styleguide', function () {
 	});
 
 	it('adds references to package.json', function () {
-		assert.fileContent('package.json', /grunt-styleguide/);
+		assert.fileContent('package.json', /grunt-image-size-export/);
 	});
 
 	it('creates helper files', function () {
-		assert.file(helperPath + "_grunt/styleguide.js");
+		assert.file(helperPath + "_grunt/imageSizeExport.js");
 	});
 
-	it('adds styleguide template', function () {
-		assert.file(helperPath + "templates/styleguide-template/index.html");
+	it('adds task to Gruntfile.js file', function () {
+		assert.fileContent("Gruntfile.js", /\'imageSizeExport\'/);
 	});
-
-	it('adds task to concurrent.js file', function () {
-		assert.fileContent(helperPath + "_grunt/concurrent.js", /styleguide/);
-	});
-
-	it('adds styleguide.md to sass folder', function () {
-		assert.file(srcPath + "scss/styleguide.md");
-	});
-
 });

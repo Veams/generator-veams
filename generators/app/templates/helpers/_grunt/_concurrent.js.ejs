@@ -9,9 +9,11 @@ module.exports = {
     },
     build: {
         tasks: [<% if(installAssemble != false){ %>
-            'assemble'<% } %><% if (features && features.length) { if (features.indexOf('installDocs') != -1) { %>,
-            'copy:styleguide',
-            'styleguide'<% }} %>
+            'assemble',<% } %>
+			'jshint',
+            'htmlhint'<% if (modules && modules.length) { if (modules.indexOf('grunt-contrib-htmlmin') != -1) { %>,
+            'htmlmin'<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-jsdoc') != -1) { %>,
+            'jsdoc'<% }} %>
         ],
         options: {
             logConcurrentOutput: true,

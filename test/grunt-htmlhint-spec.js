@@ -29,7 +29,7 @@ describe('grunt-htmlhint', function () {
 		assert.file(helperPath + "_grunt/htmlhint.js");
 	});
 
-	it('adds task to Gruntfile.js file', function () {
-		assert.fileContent("Gruntfile.js", /\'htmlhint\'/);
+	it('adds task to concurrent.js file', function () {
+		assert.fileContent(helperPath + "_grunt/concurrent.js", /\'htmlhint\'/);
 	});
 });

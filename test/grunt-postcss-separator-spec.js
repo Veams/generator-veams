@@ -1,17 +1,18 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
+var fs = require('fs');
 var path = require('path');
 var helpers = require('yeoman-generator').test;
-var fs = require('fs');
+var assert = require('yeoman-generator').assert;
 var answers = require('../test_helpers/prompt-answer-factory')({
 	"modules": [
-		"grunt-data-separator"
+		"grunt-postcss-separator"
 	]
 });
 
 
-describe('grunt-data-separator', function () {
+describe('grunt-postcss-separator', function () {
 	var srcPath = "resources/";
 	var helperPath = "helpers/";
 
@@ -27,14 +28,15 @@ describe('grunt-data-separator', function () {
 	});
 
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /grunt-data-separator/);
+		assert.fileContent('package.json', /grunt-postcss-separator/);
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + "_grunt/dataSeparator.js");
+		assert.file(helperPath + "_grunt/separator.js");
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'dataSeparator\'/);
+		assert.fileContent("Gruntfile.js", /\'separator\'/);
+		assert.fileContent("Gruntfile.js", /\'grunt-postcss-separator\'/);
 	});
 });

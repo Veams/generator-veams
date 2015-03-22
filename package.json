@@ -1,8 +1,8 @@
 {
 	"name": "generator-prototype",
-	"version": "0.5.5",
+	"version": "0.5.6",
 	"homepage": "http://prototype-generator.com/",
-	"description": "The scaffolding project for better prototypes",
+	"description": "Scaffold modern frontend web apps with Assemble, Grunt, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap, Foundation and structure the web app with Backbone and RequireJS.",
 	"keywords": [
 		"yeoman-generator",
 		"assemble",
@@ -37,11 +37,10 @@
 		"mocha": ">=1.13.0"
 	},
 	"peerDependencies": {
-		"yo": ">=1.0.4"
+		"yo": ">=1.2.0"
 	},
 	"engines": {
-		"node": ">=0.8.0",
-		"npm": ">=1.2.10"
+		"node": ">=0.10.0"
 	},
 	"readmeFilename": "README.md"
 }
