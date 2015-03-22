@@ -8,8 +8,7 @@ module.exports = {
         }
     },
     build: {
-        tasks: [<% if(installAssemble != false){ %>
-            'assemble',<% } %>
+        tasks: [
 			'jshint',
             'htmlhint'<% if (modules && modules.length) { if (modules.indexOf('grunt-contrib-htmlmin') != -1) { %>,
             'htmlmin'<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-jsdoc') != -1) { %>,

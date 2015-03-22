@@ -197,7 +197,8 @@ module.exports = function(grunt) {
 		'separator',<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-autoprefixer') != -1) { %>
 		'autoprefixer',<% }} %>
 		'cssmin',<% if (modules && modules.length) { if (modules.indexOf('grunt-bless') != -1) { %>
-		'bless',<% }} %>
+		'bless',<% }} %><% if(installAssemble != false){ %>
+        'assemble',<% } %>
 		'concurrent:build'
 	]);
 
