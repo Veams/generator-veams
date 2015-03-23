@@ -1,3 +1,6 @@
+### v0.5.7
+- deleted jit-grunt mappings to reduce complexity
+
 ### v0.5.6
 - updated bower dependencies
 - integrated new grunt modules (grunt-postcss-separator, grunt-image-size-export)
