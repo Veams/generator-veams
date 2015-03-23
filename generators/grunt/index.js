@@ -214,16 +214,14 @@ module.exports = yeoman.generators.Base.extend({
 				}
 				if (this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 					this.mkdir('resources/scss/icons');
-					this.template(root + '_svg-sprites.js.ejs', this.helperPath + 'svg-sprites.js');
+					this.template(root + '_dr-svg-sprites.js.ejs', this.helperPath + 'dr-svg-sprites.js');
 					this.copy(helpers + 'templates/svg-sprites/stylesheet.hbs', 'helpers/templates/svg-sprites/stylesheet.hbs');
 
 					this.npmInstall(['grunt-dr-svg-sprites'], {'saveDev': true});
 
-					console.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n') +
-						chalk.yellow('\n "svg-sprites": "grunt-dr-svg-sprites"') + ('\n') +
-						chalk.bgRed('\n Please add the following lines to your Gruntfile.js to your custom tasks:') + ('\n') +
+					console.log(('\n') + chalk.bgRed('Please add the following lines to your Gruntfile.js file') + ('\n') +
 						chalk.yellow('\n grunt.registerTask(\'sprites\', [') +
-						chalk.yellow('\n    \'svg-sprites\',') +
+						chalk.yellow('\n    \'dr-svg-sprites\',') +
 						chalk.yellow('\n    \'replace:spriteUrl\'' +
 						chalk.yellow('\n ]);') + ('\n') + ('\n'))
 					);
@@ -272,7 +270,7 @@ module.exports = yeoman.generators.Base.extend({
 					this.npmInstall(['grunt-photobox'], {'saveDev': true});
 				}
 				if (this.modules.indexOf('grunt-postcss-separator') != -1) {
-					this.copy(root + '_separator.js.ejs', this.helperPath + 'separator.js');
+					this.copy(root + '_postcssSeparator.js.ejs', this.helperPath + 'postcssSeparator.js');
 				}
 				if (this.modules.indexOf('grunt-responsive-images') != -1) {
 					this.copy(root + 'responsive_images.js', this.helperPath + 'responsive_images.js');

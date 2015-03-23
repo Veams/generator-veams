@@ -476,7 +476,7 @@ module.exports = yeoman.generators.Base.extend({
 					this.template('helpers/_grunt/_browserSync.js.ejs', 'helpers/_grunt/browserSync.js');
 				}
 				if (this.modules.indexOf('grunt-postcss-separator') != -1) {
-					this.copy('helpers/_grunt/_separator.js.ejs', 'helpers/_grunt/separator.js');
+					this.copy('helpers/_grunt/_postcssSeparator.js.ejs', 'helpers/_grunt/postcssSeparator.js');
 				}
 				if (this.modules.indexOf('grunt-csscomb') != -1) {
 					this.copy('helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
@@ -499,7 +499,7 @@ module.exports = yeoman.generators.Base.extend({
 				}
 				if (this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 					this.mkdir('resources/scss/icons');
-					this.template('helpers/_grunt/_svg-sprites.js.ejs', 'helpers/_grunt/svg-sprites.js');
+					this.template('helpers/_grunt/_dr-svg-sprites.js.ejs', 'helpers/_grunt/dr-svg-sprites.js');
 					this.copy('helpers/templates/svg-sprites/stylesheet.hbs');
 				}
 				if (this.modules.indexOf('grunt-grunticon') != -1) {

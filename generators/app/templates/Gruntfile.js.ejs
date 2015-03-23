@@ -22,9 +22,7 @@ module.exports = function(grunt) {
 	
 	// load only used tasks and add fallbacks for those which cannot be find
 	require('jit-grunt')(grunt, {<% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
-		'replace': 'grunt-text-replace'<% if (modules.indexOf('grunt-dr-svg-sprites') != -1 || modules.indexOf('grunt-postcss-separator') != -1 ) { %>,<% } %><% } %><% if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
-		'svg-sprites': 'grunt-dr-svg-sprites'<% if (modules.indexOf('grunt-postcss-separator') != -1 ) { %>,<% } %><% } %><% if (modules.indexOf('grunt-postcss-separator') != -1 ) { %>
-		'separator': 'grunt-postcss-separator'<% } %>
+		'replace': 'grunt-text-replace'<% } %>
 	});
 	// measures the time each task takes
 	require('time-grunt')(grunt);
@@ -98,7 +96,7 @@ module.exports = function(grunt) {
 	
 	// Sprites Task
 	grunt.registerTask('icons', [
-		'svg-sprites',
+		'dr-svg-sprites',
 		'replace:spriteUrl'
 	]); <% } %><% if ((modules && modules.length && modules.indexOf('grunt-packager') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1) || jsLibs.indexOf('requirejs') != -1) { %>
 	
@@ -194,7 +192,7 @@ module.exports = function(grunt) {
 		'cssProd',<% } %><% if (features && features.length && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>
 		'sass:docs',<% } %><% if (modules && modules.length) { if (modules.indexOf('grunt-combine-mq') != -1) { %>
 		'combine_mq',<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-postcss-separator') != -1) { %>
-		'separator',<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-autoprefixer') != -1) { %>
+		'postcssSeparator',<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-autoprefixer') != -1) { %>
 		'autoprefixer',<% }} %>
 		'cssmin',<% if (modules && modules.length) { if (modules.indexOf('grunt-bless') != -1) { %>
 		'bless',<% }} %><% if(installAssemble != false){ %>

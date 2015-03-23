@@ -32,11 +32,10 @@ describe('grunt-postcss-separator', function () {
 	});
 
 	it('creates helper files', function () {
-		assert.file(helperPath + "_grunt/separator.js");
+		assert.file(helperPath + "_grunt/postcssSeparator.js");
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		assert.fileContent("Gruntfile.js", /\'separator\'/);
-		assert.fileContent("Gruntfile.js", /\'grunt-postcss-separator\'/);
+		assert.fileContent("Gruntfile.js", /\'postcssSeparator\'/);
 	});
 });
