@@ -32,12 +32,10 @@ describe('feature docs', function () {
 		it('creates all doc files', function () {
 			var expected = [
 				helperPath + "_grunt/copy.js",
-				helperPath + "_grunt/styleguide.js",
 				helperPath + "_grunt/jsdoc.js",
 				helperPath + "configs/jsdoc.conf.json",
 				srcPath + "js/README.md",
 				srcPath + "templates/docs/index.hbs",
-				srcPath + "scss/styleguide.md",
 				srcPath + "scss/docs/_highlight.scss",
 				srcPath + "scss/docs/_monokai.scss",
 				srcPath + "scss/docs.scss"

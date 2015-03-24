@@ -4,7 +4,7 @@ module.exports = {
 			// htmlhintrc: '<%= paths.helper %>/.htmlhintrc',
 			force: true,
 			'attr-lowercase': true,
-			'attr-value-double-quotes': true,
+			'attr-value-double-quotes': false,
 			'attr-value-not-empty': true,
 			'doctype-first': true,
 			'doctype-html5': true,

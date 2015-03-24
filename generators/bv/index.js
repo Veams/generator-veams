@@ -5,8 +5,6 @@ var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var pg = require('../../lib/pg-helpers');
 
-console.log('helpers: ', helpers);
-
 module.exports = yeoman.generators.Base.extend({
 
 // Custom prompts routine

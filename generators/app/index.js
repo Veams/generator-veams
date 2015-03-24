@@ -232,15 +232,15 @@ module.exports = yeoman.generators.Base.extend({
 				{name: "grunt-contrib-requirejs"},
 				{name: "grunt-contrib-uglify"},
 				{name: "grunt-csscomb"},
-				{name: "grunt-data-separator", checked: true},
-				{name: "grunt-devtools"},
 				{name: "grunt-dr-svg-sprites", checked: true},
 				{name: "grunt-grunticon"},
+				{name: "grunt-image-size-export"},
 				{name: "grunt-jsdoc"},
 				{name: "grunt-modernizr"},
 				{name: "grunt-packager"},
 				{name: "grunt-phantomas"},
 				{name: "grunt-photobox"},
+				{name: "grunt-postcss-separator"},
 				{name: "grunt-responsive-images"},
 				{name: "grunt-svgmin"},
 				{name: "grunt-version", checked: true}
@@ -502,8 +502,8 @@ module.exports = yeoman.generators.Base.extend({
 				if (this.gruntModules.indexOf('grunt-browser-sync') != -1) {
 					this.template('helpers/_grunt/_browserSync.js.ejs', 'helpers/_grunt/browserSync.js');
 				}
-				if (this.gruntModules.indexOf('grunt-data-separator') != -1) {
-					this.copy('helpers/_grunt/_dataSeparator.js.ejs', 'helpers/_grunt/dataSeparator.js');
+				if (this.modules.indexOf('grunt-postcss-separator') != -1) {
+					this.copy('helpers/_grunt/_postcssSeparator.js.ejs', 'helpers/_grunt/postcssSeparator.js');
 				}
 				if (this.gruntModules.indexOf('grunt-csscomb') != -1) {
 					this.copy('helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
@@ -526,7 +526,7 @@ module.exports = yeoman.generators.Base.extend({
 				}
 				if (this.gruntModules.indexOf('grunt-dr-svg-sprites') != -1) {
 					this.mkdir('resources/scss/icons');
-					this.template('helpers/_grunt/_svg-sprites.js.ejs', 'helpers/_grunt/svg-sprites.js');
+					this.template('helpers/_grunt/_dr-svg-sprites.js.ejs', 'helpers/_grunt/dr-svg-sprites.js');
 					this.copy('helpers/templates/svg-sprites/stylesheet.hbs');
 				}
 				if (this.gruntModules.indexOf('grunt-grunticon') != -1) {
@@ -534,7 +534,10 @@ module.exports = yeoman.generators.Base.extend({
 					this.directory('helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
 					this.template('helpers/_grunt/_grunticon.js.ejs', 'helpers/_grunt/grunticon.js');
 				}
-				if (this.gruntModules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length && this.features.indexOf('installDocs') != -1)) {
+				if (this.modules.indexOf('grunt-image-size-export') != -1) {
+					this.copy('helpers/_grunt/imageSizeExport.js', 'helpers/_grunt/imageSizeExport.js');
+				}
+				if (this.modules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length && this.features.indexOf('installDocs') != -1)) {
 					this.copy('helpers/_grunt/jsdoc.js');
 					this.copy('helpers/configs/jsdoc.conf.json');
 					this.copy('resources/js/README.md');
@@ -571,7 +574,7 @@ module.exports = yeoman.generators.Base.extend({
 					this.template('helpers/_grunt/_replace.js.ejs', 'helpers/_grunt/replace.js');
 				}
 
-				if (this.gruntModules.indexOf('grunt-grunticon') != -1 && this.gruntModules.indexOf('grunt-data-separator') != -1) {
+				if (this.modules.indexOf('grunt-grunticon') != -1 && this.modules.indexOf('grunt-postcss-separator') != -1) {
 					this.copy('resources/js/vendor/loadCSS.js', 'resources/js/vendor/loadCSS.js');
 				}
 			}
@@ -599,12 +602,8 @@ module.exports = yeoman.generators.Base.extend({
 		features: function () {
 			if (this.features && this.features.length) {
 				if (this.features.indexOf('installDocs') != -1) {
-					// add styleguide files
-					this.directory('helpers/templates/styleguide-template', 'helpers/templates/styleguide-template');
 					this.directory('resources/scss/docs', 'resources/scss/docs');
 					this.copy('resources/scss/docs.scss', 'resources/scss/docs.scss');
-					this.copy('resources/scss/styleguide.md', 'resources/scss/styleguide.md');
-					this.copy('helpers/_grunt/styleguide.js', 'helpers/_grunt/styleguide.js');
 
 					if (this.config.get("installAssemble") == true) {
 						this.directory('resources/templates/docs', 'resources/templates/docs');

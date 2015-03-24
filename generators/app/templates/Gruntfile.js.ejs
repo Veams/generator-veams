@@ -22,8 +22,7 @@ module.exports = function(grunt) {
 	
 	// load only used tasks and add fallbacks for those which cannot be find
 	require('jit-grunt')(grunt, {<% if (gruntModules.indexOf('grunt-grunticon') != -1 || gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>
-		replace: 'grunt-text-replace'<% } %><% if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
-		'svg-sprites': 'grunt-dr-svg-sprites'<% } %>
+		'replace': 'grunt-text-replace'<% } %>
 	});
 	// measures the time each task takes
 	require('time-grunt')(grunt);
@@ -36,7 +35,7 @@ module.exports = function(grunt) {
 		},
 		// define your path structure
 		paths: {
-			// helpers folder with grunt tasks and styleguide templates, tests and photobox
+			// helpers folder with grunt tasks and templates, tests and photobox
 			helper: 'helpers',
 			// resources folder with working files
 			src: 'resources',<% if (features && features.length && features.indexOf('createDevFolder') != -1) { %>
@@ -97,7 +96,7 @@ module.exports = function(grunt) {
 	
 	// Sprites Task
 	grunt.registerTask('icons', [
-		'svg-sprites',
+		'dr-svg-sprites',
 		'replace:spriteUrl'
 	]); <% } %><% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1) || jsLibs.indexOf('requirejs') != -1) { %>
 	
@@ -105,13 +104,13 @@ module.exports = function(grunt) {
 	grunt.registerTask('js', [<% if(gruntModules.indexOf('grunt-packager') != -1) { %>
 		'packager'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1 || jsLibs.indexOf('requirejs') != -1) { %>
 		'requirejs:dev'<% } %>
-	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-responsive-images') != -1) { %>
-	
+	]); <% } %><% if (gruntModules && gruntModules.length) { %>
+	<% if (gruntModules.indexOf('grunt-responsive-images') != -1 || gruntModules.indexOf('grunt-image-size-export') != -1) {%>
 	// Picture Task (This task creates an additional JSON file with the path to your picture)
-	grunt.registerTask('pictures', [
-		'responsive_images',
-		'fileindex:pictures'
-	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-compass') != -1) { %>
+	grunt.registerTask('pictures', [<% if (gruntModules.indexOf('grunt-responsive-images') != -1) { %>
+		'responsive_images'<% if (gruntModules.indexOf('grunt-image-size-export') != -1) { %>,<% }} %><% if (gruntModules.indexOf('grunt-image-size-export') != -1) { %>
+		'imageSizeExport'<% } %>
+	]); <% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-compass') != -1) { %>
 	
 	// Compass Task
 	grunt.registerTask('css', [
@@ -192,16 +191,13 @@ module.exports = function(grunt) {
 		'cssProd',<% }} else { %>
 		'cssProd',<% } %><% if (features && features.length && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>
 		'sass:docs',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-combine-mq') != -1) { %>
-		'combine_mq',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-data-separator') != -1) { %>
-		'dataSeparator',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-autoprefixer') != -1) { %>
+		'combine_mq',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-postcss-separator') != -1) { %>
+		'postcssSeparator',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-autoprefixer') != -1) { %>
 		'autoprefixer',<% }} %>
 		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
-		'bless',<% }} %>
-		'concurrent:build',
-		'check-js',
-		'check-html'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-htmlmin') != -1) { %>,
-		'htmlmin'<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-jsdoc') != -1) { %>,
-		'jsdoc'<% }} %>
+		'bless',<% }} %><% if(installAssemble != false){ %>
+        'assemble',<% } %>
+		'concurrent:build'
 	]);
 
 	grunt.registerTask('default', [

@@ -35,8 +35,8 @@ describe('grunt-jsdoc', function () {
 		helpers.assertFile(helperPath + "_grunt/jsdoc.js");
 	});
 
-	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'jsdoc\'/);
+	it('adds task to concurrent.js file', function () {
+		helpers.assertFile(helperPath + "_grunt/concurrent.js", /\'jsdoc\'/);
 	});
 
 	it('adds README.md to js folder and adds jsdoc.conf.json', function () {

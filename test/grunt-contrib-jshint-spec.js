@@ -31,6 +31,10 @@ describe('grunt-contrib-jshint', function () {
 		helpers.assertFile(helperPath + "_grunt/jshint.js");
 	});
 
+	it('adds task to concurrent file', function () {
+		helpers.assertFile(helperPath + "_grunt/concurrent.js", /\'jshint\'/);
+	});
+
 	it('adds task to Gruntfile.js file', function () {
 		helpers.assertFile("Gruntfile.js", /\'check-js\'/);
 	});

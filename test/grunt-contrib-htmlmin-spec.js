@@ -33,7 +33,9 @@ describe('grunt-contrib-htmlmin', function () {
 		assert.file(helperPath + "_grunt/htmlmin.js");
 	});
 
-	it('adds task to Gruntfile.js file', function () {
-		assert.fileContent("Gruntfile.js", /\'htmlmin\'/);
+
+	it('adds task to concurrent.js file', function () {
+		helpers.assertFile(helperPath + "_grunt/concurrent.js", /\'htmlmin\'/);
 	});
+
 });

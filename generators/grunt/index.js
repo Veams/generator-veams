@@ -63,16 +63,16 @@ module.exports = yeoman.generators.Base.extend({
 				{name: "grunt-contrib-requirejs"},
 				{name: "grunt-contrib-uglify"},
 				{name: "grunt-csscomb"},
-				{name: "grunt-data-separator"},
-				{name: "grunt-devtools"},
 				{name: "grunt-dr-svg-sprites"},
 				{name: "grunt-grunticon"},
+				{name: "grunt-image-size-export"},
 				{name: "grunt-jsbeautifier"},
 				{name: "grunt-jsdoc"},
 				{name: "grunt-modernizr"},
 				{name: "grunt-packager"},
 				{name: "grunt-phantomas"},
 				{name: "grunt-photobox"},
+				{name: "grunt-postcss-separator"},
 				{name: "grunt-responsive-images"},
 				{name: "grunt-sass"},
 				{name: "grunt-svgmin"},
@@ -212,23 +212,16 @@ module.exports = yeoman.generators.Base.extend({
 
 					this.npmInstall(['grunt-csscomb'], {'saveDev': true});
 				}
-				if (this.modules.indexOf('grunt-data-separator') != -1) {
-					this.template(root + '_dataSeparator.js.ejs', this.helperPath + 'dataSeparator.js');
-
-					this.npmInstall(['grunt-data-separator'], {'saveDev': true});
-				}
 				if (this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 					this.mkdir('resources/scss/icons');
-					this.template(root + '_svg-sprites.js.ejs', this.helperPath + 'svg-sprites.js');
+					this.template(root + '_dr-svg-sprites.js.ejs', this.helperPath + 'dr-svg-sprites.js');
 					this.copy(helpers + 'templates/svg-sprites/stylesheet.hbs', 'helpers/templates/svg-sprites/stylesheet.hbs');
 
 					this.npmInstall(['grunt-dr-svg-sprites'], {'saveDev': true});
 
-					console.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n') +
-						chalk.yellow('\n "svg-sprites": "grunt-dr-svg-sprites"') + ('\n') +
-						chalk.bgRed('\n Please add the following lines to your Gruntfile.js to your custom tasks:') + ('\n') +
+					console.log(('\n') + chalk.bgRed('Please add the following lines to your Gruntfile.js file') + ('\n') +
 						chalk.yellow('\n grunt.registerTask(\'sprites\', [') +
-						chalk.yellow('\n    \'svg-sprites\',') +
+						chalk.yellow('\n    \'dr-svg-sprites\',') +
 						chalk.yellow('\n    \'replace:spriteUrl\'' +
 						chalk.yellow('\n ]);') + ('\n') + ('\n'))
 					);
@@ -240,6 +233,9 @@ module.exports = yeoman.generators.Base.extend({
 
 					this.bowerInstall(['pg-scss'], {'save': true});
 					this.npmInstall(['grunt-grunticon'], {'saveDev': true});
+				}
+				if (this.modules.indexOf('grunt-image-size-export') != -1) {
+					this.copy(root + 'imageSizeExport.js', this.helperPath + 'imageSizeExport.js');
 				}
 				if (this.modules.indexOf('grunt-jsbeautifier') != -1) {
 					this.copy(root + 'jsbeautifier.js', this.helperPath + 'jsbeautifier.js');
@@ -272,6 +268,9 @@ module.exports = yeoman.generators.Base.extend({
 					this.template(root + 'photobox.js', this.helperPath + 'photobox.js');
 
 					this.npmInstall(['grunt-photobox'], {'saveDev': true});
+				}
+				if (this.modules.indexOf('grunt-postcss-separator') != -1) {
+					this.copy(root + '_postcssSeparator.js.ejs', this.helperPath + 'postcssSeparator.js');
 				}
 				if (this.modules.indexOf('grunt-responsive-images') != -1) {
 					this.copy(root + 'responsive_images.js', this.helperPath + 'responsive_images.js');
@@ -325,7 +324,7 @@ module.exports = yeoman.generators.Base.extend({
 
 				if (this.modules.indexOf('grunt-grunticon') != -1 || this.modules.indexOf('grunt-dr-svg-sprites') != -1) {
 					this.template(root + '_replace.js.ejs', this.helperPath + 'replace.js');
-					
+
 					this.npmInstall(['grunt-text-replace'], {'saveDev': true});
 				}
 			}

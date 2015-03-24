@@ -1,3 +1,14 @@
+### v0.5.7
+- deleted jit-grunt mappings to reduce complexity
+
+### v0.5.6
+- updated bower dependencies
+- integrated new grunt modules (grunt-postcss-separator, grunt-image-size-export)
+- changed build task
+- updated pictures task to support grunt-image-size-export
+- deleted styleguide templates
+- updated htmlhint
+
 ### v0.5.3
 - added new sprites icon workflow with custom template and selector function to provide mixins and extends
 - updated grunt-sass, grunt-contrib-cssmin, bower components

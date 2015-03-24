@@ -59,12 +59,8 @@ describe('assemble', function () {
 		helpers.assertFile(helperPath + "_grunt/watch.js", /templates/);
 	});
 
-	it('adds task to concurrent.js file', function () {
-		helpers.assertFile(helperPath + "_grunt/concurrent.js", /\'assemble\'/);
-	});
-
 	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'newer:assemble\'/);
+		helpers.assertFile("Gruntfile.js", /assemble/);
 	});
 })
 ;
