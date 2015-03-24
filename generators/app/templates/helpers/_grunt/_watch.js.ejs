@@ -69,7 +69,7 @@ module.exports = {
 		tasks: 'sass:docs'
 	}<% } %><% }} %><% if(installAssemble != false){ %>,
 	templates: {
-		files: ['<%%= paths.src %>/{data,templates/layouts,templates/partials}/**/{,*/}*.{md,hbs,yml,json}'],
+		files: ['<%%= paths.src %>/{templates/data,templates/layouts,templates/partials}/**/{,*/}*.{md,hbs,yml,json}'],
 	    tasks: ['newer:assemble']<% if (modules && modules.length) { if (modules.indexOf('grunt-browser-sync') != -1) { %>,
 	    options: {
 			spawn: false

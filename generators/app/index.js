@@ -443,8 +443,8 @@ module.exports = yeoman.generators.Base.extend({
 		assemble: function () {
 			// add global assemble files
 			if (this.config.get("installAssemble") == true) {
-				this.copy('resources/data/config.json');
 				this.mkdir('resources/templates');
+				this.copy('resources/templates/data/config.json');
 				this.directory('resources/templates/ajax', 'resources/templates/ajax');
 				this.directory('resources/templates/helpers', 'resources/templates/helpers');
 				this.copy('resources/templates/layouts/tpl-default.hbs');

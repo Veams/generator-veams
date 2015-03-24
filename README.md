@@ -73,7 +73,6 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 │   │   │   │   └───icons
 │   │   └───media
 │   ├───bower-components
-│   ├───data
 │   ├───js
 │   ├───scss
 │   │   ├───global
@@ -82,6 +81,7 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 │   │       ├───extends
 │   │       └───mixins
 │   └───templates
+│       ├───data
 │       ├───helpers
 │       ├───layouts
 │       ├───pages
