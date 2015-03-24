@@ -1,6 +1,6 @@
 {
 	"name": "generator-prototype",
-	"version": "0.5.8",
+	"version": "0.5.9",
 	"homepage": "http://prototype-generator.com/",
 	"description": "Scaffold modern frontend web apps with Assemble, Grunt, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap, Foundation and structure the web app with Backbone and RequireJS.",
 	"keywords": [
