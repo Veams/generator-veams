@@ -25,6 +25,9 @@ module.exports = yeoman.generators.Base.extend({
 		this.config.defaults({
 			projectName: "",
 			projectAuthor: "",
+			taskRunner: [
+				"grunt"
+			],
 			installAssemble: "",
 			installPlugin: false,
 			gulpModules: [],
@@ -115,6 +118,7 @@ module.exports = yeoman.generators.Base.extend({
 				);
 				this.projectName = this.config.get("projectName");
 				this.authorLogin = this.config.get("projectAuthor");
+				this.taskRunner = this.config.get("taskRunner");
 				this.installAssemble = this.config.set("installAssemble", true);
 				this.plugin = this.config.get("plugin");
 				this.gulpModules = this.config.get("gulpModules");
@@ -140,83 +144,81 @@ module.exports = yeoman.generators.Base.extend({
 		}.bind(this));
 	},
 
-	_generalPrompts: function () {
-		var done = this.async();
-		var force = false;
-		var questions = [];
+	_prompting: function () {
+		var cb = this.async();
+		this.force = false;
+		this.questions = [];
 
 		if (!this.config.existed) {
-			force = true;
+			this.force = true;
 		}
 
-		(!this.config.get("projectName") || force) && questions.push({
+
+		this._generalPrompts();
+		this._gruntPrompts();
+		this._assemblePrompts();
+		this._featurePrompts();
+
+		this.prompt(this.questions, function (answers) {
+			this.authorName = this.config.get("author").name;
+			this.authorEmail = this.config.get("author").email;
+			this.projectName = answers.projectName || this.config.get("projectName");
+			this.authorLogin = answers.projectAuthor || this.config.get("projectAuthor");
+			this.taskRunner = answers.taskRunnter;
+			this.gulpModules = answers.gruntModules || this.config.get("gulpModules");
+			this.gruntModules = answers.gruntModules || this.config.get("gruntModules");
+			this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
+			this.plugin = answers.plugin;
+			this.features = answers.features;
+			this.jsLibs = answers.jsLibs;
+			this.cssLibs = answers.cssLibs;
+			this.pgPackages = answers.pgPackages;
+			this.proxyHost = this.config.get("proxyHost");
+			this.proxyPort = this.config.get("proxyPort");
+
+			//save config to .yo-rc.json
+			this.config.set(answers);
+			cb();
+
+		}.bind(this));
+	},
+
+	_generalPrompts: function () {
+		(!this.config.get("projectName") || this.force) && this.questions.push({
 			type: "input",
 			name: "projectName",
 			message: "Your project name",
 			default: this.appname
 		});
 
-		(!this.config.get("projectAuthor") || force) && questions.push({
+		(!this.config.get("projectAuthor") || this.force) && this.questions.push({
 			type: "input",
 			name: "projectAuthor",
 			message: "Would you mind telling me your name?",
 			default: this.config.get("projectAuthor")
+		});
+
+		(!this.config.get("taskRunner") || this.force) && this.questions.push({
+			type: "checkbox",
+			name: "taskRunner",
+			message: "Which task runner do you want to use?",
+			choices: [
+				{name: "Grunt", value: "grunt"},
+				{name: "Gulp", value: "gulp"},
+				{name: "Grunt and Gulp", value: "gulpGrunt"}
+			],
+			default: this.config.get("taskRunner")
 		});
 	},
 
 	// Custom prompts routine
-	_prompting: function () {
-		var done = this.async();
-		var force = false;
-		var questions = [];
-
-		if (!this.config.existed) {
-			force = true;
-		}
-
-		(!this.config.get("projectName") || force) && questions.push({
-			type: "input",
-			name: "projectName",
-			message: "Your project name",
-			default: this.appname
-		});
-
-		(!this.config.get("projectAuthor") || force) && questions.push({
-			type: "input",
-			name: "projectAuthor",
-			message: "Would you mind telling me your name?",
-			default: this.config.get("projectAuthor")
-		});
-
-		(!this.config.get("installAssemble") || force) && questions.push({
-			type: "confirm",
-			name: "installAssemble",
-			message: "Would you want to install assemble?",
-			default: this.config.get("installAssemble")
-		});
-
-		(!this.config.get("installPlugin") || force) && questions.push({
-			type: "confirm",
-			name: "installPlugin",
-			message: "Do you want to install assemble plugins?",
-			default: this.config.get("installPlugin")
-		});
-		questions.push({
-			name: "plugin",
-			type: "checkbox",
-			message: "Which assemble plugin do you want to use?",
-			choices: [
-				{name: "assemble-contrib-permalinks"},
-				{name: "assemble-contrib-sitemap"},
-				{name: "assemble-related-pages"}
-			],
+	_gruntPrompts: function () {
+		(!this.config.get("gruntModules") || this.force) && this.questions.push({
 			when: function (answers) {
-				return answers.installPlugin;
-			}
-		});
-
-
-		(!this.config.get("gruntModules") || force) && questions.push({
+				return answers.taskRunner
+					&& answers.taskRunner.length > 0
+					&& answers.taskRunner.indexOf('grunt') !== -1;
+			},
 			name: "gruntModules",
 			type: "checkbox",
 			message: "Which grunt modules do you want to use?",
@@ -248,7 +250,7 @@ module.exports = yeoman.generators.Base.extend({
 			default: this.config.get("gruntModules")
 		});
 
-		questions.push({
+		this.questions.push({
 			when: function (answers) {
 				return answers.gruntModules
 					&& answers.gruntModules.length > 0
@@ -267,7 +269,7 @@ module.exports = yeoman.generators.Base.extend({
 			default: this.config.get("proxyHost")
 		});
 
-		questions.push({
+		this.questions.push({
 			when: function (answers) {
 				return answers.gruntModules
 					&& answers.gruntModules.length > 0
@@ -286,8 +288,41 @@ module.exports = yeoman.generators.Base.extend({
 			message: 'Which port should be used for the proxy?',
 			default: this.config.get("proxyPort")
 		});
+	},
 
-		(!this.config.get("features") || force) && questions.push({
+	_assemblePrompts: function () {
+
+		(!this.config.get("installAssemble") || this.force) && this.questions.push({
+			type: "confirm",
+			name: "installAssemble",
+			message: "Would you want to install assemble?",
+			default: this.config.get("installAssemble")
+		});
+
+		(!this.config.get("installPlugin") || this.force) && this.questions.push({
+			type: "confirm",
+			name: "installPlugin",
+			message: "Do you want to install assemble plugins?",
+			default: this.config.get("installPlugin")
+		});
+		this.questions.push({
+			name: "plugin",
+			type: "checkbox",
+			message: "Which assemble plugin do you want to use?",
+			choices: [
+				{name: "assemble-contrib-permalinks"},
+				{name: "assemble-contrib-sitemap"},
+				{name: "assemble-related-pages"}
+			],
+			when: function (answers) {
+				return answers.installPlugin;
+			}
+		});
+	},
+
+	_featurePrompts: function () {
+
+		(!this.config.get("features") || this.force) && this.questions.push({
 			name: "features",
 			type: "checkbox",
 			message: "Do you need anything special?",
@@ -316,7 +351,7 @@ module.exports = yeoman.generators.Base.extend({
 			default: this.config.get("features")
 		});
 
-		(!this.config.get("jsLibs") || force) && questions.push({
+		(!this.config.get("jsLibs") || this.force) && this.questions.push({
 			name: "jsLibs",
 			type: "checkbox",
 			message: "Do you want to use any JS Libraries?",
@@ -340,7 +375,7 @@ module.exports = yeoman.generators.Base.extend({
 			default: this.config.get("jsLibs")
 		});
 
-		(!this.config.get("cssLibs") || force) && questions.push({
+		(!this.config.get("cssLibs") || this.force) && this.questions.push({
 			name: "cssLibs",
 			type: "checkbox",
 			message: "Do you want to use any CSS Frameworks?",
@@ -364,7 +399,7 @@ module.exports = yeoman.generators.Base.extend({
 			default: this.config.get("cssLibs")
 		});
 
-		(!this.config.get("pgPackages") || force) && questions.push({
+		(!this.config.get("pgPackages") || this.force) && this.questions.push({
 			name: "pgPackages",
 			type: "checkbox",
 			message: "Do you want to use PG Packages (Bower Component)?",
@@ -392,29 +427,6 @@ module.exports = yeoman.generators.Base.extend({
 			],
 			default: this.config.get("pgPackages")
 		});
-
-		this.prompt(questions, function (answers) {
-
-			this.projectName = answers.projectName || this.config.get("projectName");
-			this.authorLogin = answers.projectAuthor || this.config.get("projectAuthor");
-			this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
-			this.plugin = answers.plugin;
-			this.gulpModules = answers.gulpModules;
-			this.gruntModules = answers.gruntModules;
-			this.features = answers.features;
-			this.jsLibs = answers.jsLibs;
-			this.cssLibs = answers.cssLibs;
-			this.pgPackages = answers.pgPackages;
-			this.authorName = this.config.get("author").name;
-			this.authorEmail = this.config.get("author").email;
-			this.proxyHost = answers.proxyHost;
-			this.proxyPort = answers.proxyPort;
-
-			//save config to .yo-rc.json
-			this.config.set(answers);
-
-			done();
-		}.bind(this));
 	},
 
 	writing: {
@@ -470,8 +482,8 @@ module.exports = yeoman.generators.Base.extend({
 		assemble: function () {
 			// add global assemble files
 			if (this.config.get("installAssemble") == true) {
-				this.copy('resources/data/config.json');
 				this.mkdir('resources/templates');
+				this.copy('resources/templates/data/config.json');
 				this.directory('resources/templates/ajax', 'resources/templates/ajax');
 				this.directory('resources/templates/helpers', 'resources/templates/helpers');
 				this.copy('resources/templates/layouts/tpl-default.hbs');
@@ -502,7 +514,7 @@ module.exports = yeoman.generators.Base.extend({
 				if (this.gruntModules.indexOf('grunt-browser-sync') != -1) {
 					this.template('helpers/_grunt/_browserSync.js.ejs', 'helpers/_grunt/browserSync.js');
 				}
-				if (this.modules.indexOf('grunt-postcss-separator') != -1) {
+				if (this.gruntModules.indexOf('grunt-postcss-separator') != -1) {
 					this.copy('helpers/_grunt/_postcssSeparator.js.ejs', 'helpers/_grunt/postcssSeparator.js');
 				}
 				if (this.gruntModules.indexOf('grunt-csscomb') != -1) {
@@ -534,10 +546,10 @@ module.exports = yeoman.generators.Base.extend({
 					this.directory('helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
 					this.template('helpers/_grunt/_grunticon.js.ejs', 'helpers/_grunt/grunticon.js');
 				}
-				if (this.modules.indexOf('grunt-image-size-export') != -1) {
+				if (this.gruntModules.indexOf('grunt-image-size-export') != -1) {
 					this.copy('helpers/_grunt/imageSizeExport.js', 'helpers/_grunt/imageSizeExport.js');
 				}
-				if (this.modules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length && this.features.indexOf('installDocs') != -1)) {
+				if (this.gruntModules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length && this.features.indexOf('installDocs') != -1)) {
 					this.copy('helpers/_grunt/jsdoc.js');
 					this.copy('helpers/configs/jsdoc.conf.json');
 					this.copy('resources/js/README.md');
@@ -574,7 +586,7 @@ module.exports = yeoman.generators.Base.extend({
 					this.template('helpers/_grunt/_replace.js.ejs', 'helpers/_grunt/replace.js');
 				}
 
-				if (this.modules.indexOf('grunt-grunticon') != -1 && this.modules.indexOf('grunt-postcss-separator') != -1) {
+				if (this.gruntModules.indexOf('grunt-grunticon') != -1 && this.gruntModules.indexOf('grunt-postcss-separator') != -1) {
 					this.copy('resources/js/vendor/loadCSS.js', 'resources/js/vendor/loadCSS.js');
 				}
 			}
@@ -649,9 +661,9 @@ module.exports = yeoman.generators.Base.extend({
 				if (this.pgPackages.indexOf('pgMethodology') != -1) {
 
 					// Data
-					this.mkdir('resources/data/blocks');
-					this.mkdir('resources/data/pages');
-					this.mkdir('resources/data/_global');
+					this.mkdir('resources/templates/data/blocks');
+					this.mkdir('resources/templates/data/pages');
+					this.mkdir('resources/templates/data/_global');
 
 					// Layouts
 					this.copy('resources/templates/layouts/README.md');

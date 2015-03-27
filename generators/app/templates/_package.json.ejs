@@ -23,7 +23,7 @@
 		"grunt-fileindex": "^0.1.0",<% } %><% if ((jsLibs && jsLibs.length > 0 && jsLibs.indexOf('requirejs') != -1) || (gruntModules && gruntModules.length > 0 && gruntModules.indexOf('grunt-contrib-requirejs') != -1)) { %>
 		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features && features.length > 0 && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
 		"grunt-contrib-copy": "~0.7.0",<% } %>
-		"grunt-newer": "~0.8.0",<% if(gruntgruntModules && gruntModules.length > 0){ %>
+		"grunt-newer": "~0.8.0",<% if(gruntModules && gruntModules.length > 0){ %>
 		<% if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) {
 		if(name == 'grunt-grunticon') { %>
 		"grunt-grunticon": "~1.0.0-beta.0",

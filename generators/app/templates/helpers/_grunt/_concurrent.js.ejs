@@ -10,8 +10,8 @@ module.exports = {
     build: {
         tasks: [
 			'jshint',
-            'htmlhint'<% if (modules && modules.length) { if (modules.indexOf('grunt-contrib-htmlmin') != -1) { %>,
-            'htmlmin'<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-jsdoc') != -1) { %>,
+            'htmlhint'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-htmlmin') != -1) { %>,
+            'htmlmin'<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-jsdoc') != -1) { %>,
             'jsdoc'<% }} %>
         ],
         options: {

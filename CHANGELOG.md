@@ -1,3 +1,7 @@
+### v0.5.8
+- changed resources folder structure: data folder is located in templates
+- changed watch task
+
 ### v0.5.7
 - deleted jit-grunt mappings to reduce complexity
 
