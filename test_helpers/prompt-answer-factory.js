@@ -5,6 +5,9 @@ module.exports = function promptAnswerFactory(customAnswers) {
 		"installAssemble": false,
 		"installPlugin": false,
 		"installCMS": false,
+		"taskRunner": [
+			"grunt"
+		],
 		"gulpModules": [],
 		"gruntModules": [
 			"grunt-combine-mq",

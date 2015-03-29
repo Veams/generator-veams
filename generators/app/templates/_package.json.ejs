@@ -13,8 +13,9 @@
 	"scripts": {
 		"test": "grunt test"
 	},
-    "devDependencies": {
-		"grunt": "~0.4.5", <% if(installAssemble != false){ %>
+    "devDependencies": {<% if(taskRunner.length) {%><% if (taskRunner.indexOf('grunt') || taskRunner.indexOf('gulpGrunt')) {%>
+		"grunt": "~0.4.5",<% } %><% if (taskRunner.indexOf('gulp') || taskRunner.indexOf('gulpGrunt')) {%>
+		"gulp": "^3.8.11",<% } %><% } %><% if(installAssemble != false){ %>
 		"assemble": "~0.4.42",
 		"lodash" : "*",
 		"gray-matter": "*",
