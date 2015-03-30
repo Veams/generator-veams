@@ -1,0 +1,28 @@
+var config = require('./helpers/config');
+var gulp = require('gulp');
+var requireDir = require('require-dir');
+var dir = requireDir(config.options.paths.tasks);
+
+require('gulp-grunt')(gulp); // add all the gruntfile tasks to gulp
+// Default task
+gulp.task('default', function () {
+	gulp.start('serve');
+});
+
+// Static Server
+gulp.task('serve', ['styles'], function () {
+
+	config.server({
+		server: config.options.paths.dev
+	});
+
+	gulp.watch(config.options.paths.src + "/scss/**/*.scss", ['styles']);<% if (installAssemble != false) { %>
+	gulp.watch([
+			config.options.paths.src + "/templates/data/**/*.json",
+			config.options.paths.src + "/templates/pages/**/*.hbs",
+			config.options.paths.src + "/templates/layouts/**/*.hbs",
+			config.options.paths.src + "/templates/partials/**/*.hbs"],
+		['grunt-build-html']
+	);<% } %>
+	gulp.watch(config.options.paths.dev + "/*.html").on('change', config.server.reload);
+});
