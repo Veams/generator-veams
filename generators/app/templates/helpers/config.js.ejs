@@ -1,0 +1,35 @@
+/**
+ * Configuration file
+ */<% if (taskRunner === 'gulp' || taskRunner === 'gulpGrunt') {%>
+var browserSync = require('browser-sync');
+var notify = require('gulp-notify');
+<% } %>
+var config = module.exports;
+
+config.options = {<% if (taskRunner === 'grunt' || taskRunner === 'gulpGrunt') {%>
+	config: {
+		// in this directory you can find your grunt config tasks
+		src: "helpers/_grunt/*.js"
+	},<% } %>
+	paths: {
+		// tasks folder with gulp tasks<% if (taskRunner === 'gulp' || taskRunner === 'gulpGrunt') {%>
+		tasks: 'helpers/_gulp',<% } %>
+		// helpers folder with tasks
+		helpers: 'helpers',
+		// resources folder with working files
+		src: 'resources',
+		// dev/working folder
+		dev: '_output'
+	},
+
+	// define your ports for livereload
+	ports: {
+		app: 3000,
+		test: 3001,
+		livereload: 35731
+	}
+};
+<% if (taskRunner === 'gulp' || taskRunner === 'gulpGrunt') {%>
+config.server = browserSync;
+config.notify = notify;
+<% } %>
