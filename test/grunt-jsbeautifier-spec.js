@@ -34,7 +34,7 @@ describe('grunt-jsbeautifier', function () {
 	});
 
 	it('creates cnfig file', function () {
-		assert.file(helperPath + "configs/.jsbeautifierrc");
+		assert.file(helperPath + "task-configs/.jsbeautifierrc");
 	});
 
 	it('adds task to Gruntfile.js file', function () {

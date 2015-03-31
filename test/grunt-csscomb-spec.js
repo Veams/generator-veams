@@ -33,7 +33,7 @@ describe('grunt-csscomb', function () {
 
 	it('creates helper files', function () {
 		helpers.assertFile(helperPath + "_grunt/csscomb.js");
-		helpers.assertFile(helperPath + "configs/csscomb.json");
+		helpers.assertFile(helperPath + "task-configs/csscomb.json");
 	});
 
 	it('adds task to Gruntfile.js file', function () {

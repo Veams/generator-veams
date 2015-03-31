@@ -40,6 +40,9 @@ describe('grunt-jsdoc', function () {
 	});
 
 	it('adds README.md to js folder and adds jsdoc.conf.json', function () {
-		helpers.assertFiles(['resources/js/README.md', helperPath + 'configs/jsdoc.conf.json']);
+		helpers.assertFiles([
+			'resources/js/README.md',
+			helperPath + 'task-configs/jsdoc.conf.json'
+		]);
 	});
 });
