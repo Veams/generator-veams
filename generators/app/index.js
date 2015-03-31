@@ -134,6 +134,7 @@ module.exports = yeoman.generators.Base.extend({
 
 		this._generalPrompts();
 		this._gruntPrompts();
+		this._gulpPrompts();
 		this._assemblePrompts();
 		this._featurePrompts();
 
@@ -185,17 +186,24 @@ module.exports = yeoman.generators.Base.extend({
 				{name: "Gulp", value: "gulp"},
 				{name: "Grunt and Gulp", value: "gulpGrunt"}
 			],
+			validate: function (answer) {
+				if (answer.length === 0) {
+					return false;
+				} else {
+					return true;
+				}
+			},
 			default: this.config.get("taskRunner")
 		});
 	},
 
-	// Custom prompts routine
+	// Custom grunt prompts routine
 	_gruntPrompts: function () {
 		(!this.config.get("gruntModules") || this.force) && this.questions.push({
 			when: function (answers) {
 				return answers.taskRunner
 					&& answers.taskRunner.length > 0
-					&& answers.taskRunner.indexOf('grunt') !== -1;
+					&& answers.taskRunner.indexOf('grunt') !== -1 || answers.taskRunner.indexOf('gulpGrunt') !== -1;
 			},
 			name: "gruntModules",
 			type: "checkbox",
@@ -265,6 +273,35 @@ module.exports = yeoman.generators.Base.extend({
 			},
 			message: 'Which port should be used for the proxy?',
 			default: this.config.get("proxyPort")
+		});
+	},
+
+	// Custom grunt prompts routine
+	_gulpPrompts: function () {
+		(!this.config.get("gulpModules") || this.force) && this.questions.push({
+			when: function (answers) {
+				return answers.taskRunner
+					&& answers.taskRunner.length
+					&& answers.taskRunner.indexOf('gulp') !== -1 || answers.taskRunner.indexOf('gulpGrunt') !== -1;
+			},
+			name: "gulpModules",
+			type: "checkbox",
+			message: "Which gulp modules do you want to use?",
+			choices: [
+				{name: "gulp-arialinter"},
+				{name: "gulp-autoprefixer", checked: true},
+				{name: "gulp-bless"},
+				{name: "gulp-combine-mq", checked: true},
+				{name: "gulp-compass"},
+				{name: "gulp-htmlmin"},
+				{name: "gulp-uglify"},
+				{name: "gulp-svg-sprite", checked: true},
+				{name: "gulp-iconify"},
+				{name: "gulp-jsdoc"},
+				{name: "gulp-modulizr"},
+				{name: "gulp-responsive"}
+			],
+			default: this.config.get("gulpModules")
 		});
 	},
 
@@ -410,6 +447,7 @@ module.exports = yeoman.generators.Base.extend({
 	writing: {
 		setup: function () {
 			this.template('_package.json.ejs', 'package.json');
+			this.template('helpers/config.js.ejs', 'helpers/config.js');
 			this.template('README.md.ejs', 'README.md');
 			this.copy('bowerrc', '.bowerrc');
 			this.copy('gitignore', '.gitignore');
@@ -444,8 +482,8 @@ module.exports = yeoman.generators.Base.extend({
 		},
 
 		workflow: function () {
-			if (this.taskRunner.indexOf('grunt') || this.taskRunner.indexOf('gulpGrunt')) this._scaffoldGrunt();
 			if (this.taskRunner.indexOf('gulp') || this.taskRunner.indexOf('gulpGrunt')) this._scaffoldGulp();
+			if (this.taskRunner.indexOf('grunt') || this.taskRunner.indexOf('gulpGrunt')) this._scaffoldGrunt();
 		},
 
 		assemble: function () {
@@ -557,16 +595,19 @@ module.exports = yeoman.generators.Base.extend({
 		// Copy standard files
 		this.template('Gruntfile.js.ejs', 'Gruntfile.js');
 		this.mkdir('helpers/_grunt');
-		this.template('helpers/_grunt/clean.js', 'helpers/_grunt/clean.js');
-		this.template('helpers/_grunt/_concurrent.js.ejs', 'helpers/_grunt/concurrent.js');
-		this.template('helpers/_grunt/connect.js', 'helpers/_grunt/connect.js');
-		this.copy('helpers/_grunt/cssmin.js', 'helpers/_grunt/cssmin.js');
-		this.copy('helpers/_grunt/htmlhint.js', 'helpers/_grunt/htmlhint.js');
-		this.copy('helpers/_grunt/jshint.js', 'helpers/_grunt/jshint.js');
-		this.copy('helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
-		this.copy('helpers/configs/.jsbeautifierrc', 'helpers/configs/.jsbeautifierrc');
-		this.template('helpers/_grunt/_sync.js.ejs', 'helpers/_grunt/sync.js');
-		this.template('helpers/_grunt/_watch.js.ejs', 'helpers/_grunt/watch.js');
+
+		if (this.taskRunner.indexOf('grunt') != -1) {
+			this.template('helpers/_grunt/clean.js', 'helpers/_grunt/clean.js');
+			this.template('helpers/_grunt/_concurrent.js.ejs', 'helpers/_grunt/concurrent.js');
+			this.template('helpers/_grunt/connect.js', 'helpers/_grunt/connect.js');
+			this.copy('helpers/_grunt/cssmin.js', 'helpers/_grunt/cssmin.js');
+			this.copy('helpers/_grunt/htmlhint.js', 'helpers/_grunt/htmlhint.js');
+			this.copy('helpers/_grunt/jshint.js', 'helpers/_grunt/jshint.js');
+			this.copy('helpers/_grunt/jsbeautifier.js', 'helpers/_grunt/jsbeautifier.js');
+			this.copy('helpers/task-configs/.jsbeautifierrc', 'helpers/task-configs/.jsbeautifierrc');
+			this.template('helpers/_grunt/_sync.js.ejs', 'helpers/_grunt/sync.js');
+			this.template('helpers/_grunt/_watch.js.ejs', 'helpers/_grunt/watch.js');
+		}
 
 		// Grunt modules are splitted up in separate files and modules
 		if (this.gruntModules && this.gruntModules.length) {
@@ -587,7 +628,7 @@ module.exports = yeoman.generators.Base.extend({
 			}
 			if (this.gruntModules.indexOf('grunt-csscomb') != -1) {
 				this.copy('helpers/_grunt/csscomb.js', 'helpers/_grunt/csscomb.js');
-				this.copy('helpers/configs/csscomb.json', 'helpers/configs/csscomb.json');
+				this.copy('helpers/task-configs/csscomb.json', 'helpers/task-configs/csscomb.json');
 			}
 			if (this.gruntModules.indexOf('grunt-contrib-htmlmin') != -1) {
 				this.copy('helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
@@ -611,7 +652,7 @@ module.exports = yeoman.generators.Base.extend({
 			}
 			if (this.gruntModules.indexOf('grunt-grunticon') != -1) {
 				this.directory('resources/scss/icons', 'resources/scss/icons');
-				this.directory('helpers/templates/grunticon-template', 'helpers/templates/grunticon-template');
+				this.directory('helpers/templates/grunticon', 'helpers/templates/grunticon');
 				this.template('helpers/_grunt/_grunticon.js.ejs', 'helpers/_grunt/grunticon.js');
 			}
 			if (this.gruntModules.indexOf('grunt-image-size-export') != -1) {
@@ -619,7 +660,7 @@ module.exports = yeoman.generators.Base.extend({
 			}
 			if (this.gruntModules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length && this.features.indexOf('installDocs') != -1)) {
 				this.copy('helpers/_grunt/jsdoc.js');
-				this.copy('helpers/configs/jsdoc.conf.json');
+				this.copy('helpers/task-configs/jsdoc.conf.json');
 				this.copy('resources/js/README.md');
 			}
 			if (this.gruntModules.indexOf('grunt-modernizr') != -1) {
@@ -680,6 +721,23 @@ module.exports = yeoman.generators.Base.extend({
 	},
 
 	_scaffoldGulp: function () {
+		// Copy standard files
+		this.template('Gulpfile.js.ejs', 'Gulpfile.js');
+		this.mkdir('helpers/_gulp');
+		// this.template('helpers/_gulp/clean.js', 'helpers/_gulp/clean.js');
+		this.template('helpers/_gulp/styles.js', 'helpers/_gulp/styles.js');
+		// this.copy('helpers/_gulp/hinting.js', 'helpers/_gulp/hinting.js');
+		// this.copy('helpers/_gulp/beautify.js', 'helpers/_grunt/beautify.js');
+		this.copy('helpers/task-configs/.jsbeautifierrc', 'helpers/task-configs/.jsbeautifierrc');
+
+		// Gulp modules are splitted up in separate files and modules
+		if (this.gulpModules && this.gulpModules.length) {
+			if (this.gulpModules.indexOf('grunt-autoprefixer') != -1) {
+			}
+		}
+		if (this.features.indexOf('sassInsteadOfCompass') == -1) {
+			this.copy('config.rb', 'config.rb');
+		}
 	},
 
 	install: function () {
