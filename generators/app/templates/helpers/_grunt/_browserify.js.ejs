@@ -1,0 +1,22 @@
+module.exports = {
+	options: {
+		transform: [
+			["babelify", {"stage": 0}]
+		]
+	},
+	dev: {
+		options: {
+			browserifyOptions: {
+				debug: true
+			}
+		},
+		files: {
+			<% paths.dev %> + "/js/main.js": <% paths.src %> + "/js/main.js"
+		}
+	},
+	dist: {
+		files: {
+			<% paths.dev %> + "/js/main.js": <% paths.src %> + "/js/main.js"
+		}
+	}
+};

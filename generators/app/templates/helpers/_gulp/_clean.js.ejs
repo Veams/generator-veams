@@ -1,0 +1,40 @@
+var config = require('../config');
+var gulp = require('gulp');
+var del = require('del');
+
+/**
+ * Clean Tasks
+ *
+ */
+
+// Clean dev folder
+gulp.task('clean:dev', function (cb) {
+	del([
+		config.options.paths.dev + '**/*'
+	], cb);
+	console.log('deleted files in ', config.options.paths.dev);
+});
+<% if (features.indexOf('createDevFolder') != -1) { %>
+// Clean dist folder
+gulp.task('clean:dist', function (cb) {
+	del([
+		config.options.paths.dist + '**/*'
+	], cb);
+	console.log('deleted files in ', config.options.paths.dist);
+});<% } %>
+<% if (gruntModules.length && gruntModules.indexOf('grunt-image-size-export') != -1) { %>
+// Clean pictures folder
+gulp.task('clean:pictures', function (cb) {
+	var imgPath = config.options.paths.src + '/assets/img/temp/pictures/**/*.jpg';
+
+	del([imgPath], cb);
+	console.log('deleted picture files in ', imgPath);
+});<% } %>
+<% if (gruntModules.length && gruntModules.indexOf('grunt-grunticon') != -1) { %>
+// Clean icons files
+gulp.task('clean:icons', function (cb) {
+	var iconsPath = config.options.paths.src + '/scss/icons/*.{html,js,txt}';
+	del([iconsPath], cb);
+	console.log('deleted picture files in ', iconsPath);
+});<% } %>
+

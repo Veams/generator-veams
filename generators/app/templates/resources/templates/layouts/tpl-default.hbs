@@ -9,7 +9,7 @@
 <html lang="en" class="no-js"> <!--<![endif]-->
 
 <head>
-	<% if (features && features.length && features.indexOf('installExtendedLayout') != -1) { %>
+	<% if (installExtendedLayout === true) { %>
 	{{#block "metadata"}}
 		{{> _metadata }}
 	{{/block}}
@@ -21,7 +21,7 @@
 	{{> _styles }}
 	<% } %>
 	<!-- Scripts
-	================================================== --> <% if (features && features.length && features.indexOf('installExtendedLayout') != -1) { %>
+	================================================== --> <% if (installExtendedLayout === true) { %>
 	{{#block "scripts"}}
 		{{> _scripts }}
 	{{/block}}
@@ -31,7 +31,7 @@
 </head>
 
 <body class="{{ bodyclass }}">
-	<% if (features && features.length && features.indexOf('installExtendedLayout') != -1) { %>
+	<% if (installExtendedLayout === true) { %>
 	{{#block "body"}}
 		{{> body }}
 	{{/block}}

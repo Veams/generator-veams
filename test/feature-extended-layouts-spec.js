@@ -34,9 +34,7 @@ describe('feature extended layouts', function () {
 	describe('when extended layouts will be installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"installAssemble": true,
-			"features": [
-				"installExtendedLayout"
-			]
+			"installExtendedLayout": true
 		});
 
 		beforeEach(function (done) {
@@ -57,7 +55,8 @@ describe('feature extended layouts', function () {
 
 	describe('when extended layouts will not be installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
-			"installAssemble": true
+			"installAssemble": true,
+			"installExtendedLayout": false
 		});
 
 		beforeEach(function (done) {

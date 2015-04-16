@@ -30,6 +30,7 @@ module.exports = yeoman.generators.Base.extend({
 				"grunt"
 			],
 			installAssemble: "",
+			installExtendedLayout: false,
 			installPlugin: false,
 			gulpModules: [],
 			gruntModules: [
@@ -99,6 +100,7 @@ module.exports = yeoman.generators.Base.extend({
 				this.authorLogin = this.config.get("projectAuthor");
 				this.taskRunner = this.config.get("taskRunner");
 				this.installAssemble = this.config.set("installAssemble", true);
+				this.installExtendedLayout = this.config.get("installExtendedLayout");
 				this.plugin = this.config.get("plugin");
 				this.gulpModules = this.config.get("gulpModules");
 				this.gruntModules = this.config.get("gruntModules");
@@ -133,10 +135,10 @@ module.exports = yeoman.generators.Base.extend({
 		}
 
 		this._generalPrompts();
-		this._gruntPrompts();
-		this._gulpPrompts();
-		this._assemblePrompts();
 		this._featurePrompts();
+		this._gulpPrompts();
+		this._gruntPrompts();
+		this._assemblePrompts();
 
 		this.prompt(this.questions, function (answers) {
 			this.authorName = this.config.get("author").name;
@@ -147,6 +149,7 @@ module.exports = yeoman.generators.Base.extend({
 			this.gulpModules = answers.gruntModules || this.config.get("gulpModules");
 			this.gruntModules = answers.gruntModules || this.config.get("gruntModules");
 			this.installAssemble = answers.installAssemble || this.config.get("installAssemble");
+			this.installExtendedLayout = answers.installExtendedLayout || this.config.get("installExtendedLayout");
 			this.plugin = answers.plugin;
 			this.features = answers.features;
 			this.jsLibs = answers.jsLibs;
@@ -183,155 +186,21 @@ module.exports = yeoman.generators.Base.extend({
 			message: "Which task runner do you want to use?",
 			choices: [
 				{name: "Grunt", value: "grunt"},
-				{name: "Gulp", value: "gulp"},
-				{name: "Grunt and Gulp", value: "gulpGrunt"}
+				{name: "Gulp", value: "gulp"}
 			],
 			validate: function (answer) {
 				if (answer.length === 0) {
 					return false;
+				} else if (answer.length > 1) {
+					console.log(
+						('\n') + chalk.bgGreen('With great power comes great responsibility. I hope you know what you\'re doing.') + ('\n')
+					);
+					return true;
 				} else {
 					return true;
 				}
 			},
 			default: this.config.get("taskRunner")
-		});
-	},
-
-	// Custom grunt prompts routine
-	_gruntPrompts: function () {
-		(!this.config.get("gruntModules") || this.force) && this.questions.push({
-			when: function (answers) {
-				return answers.taskRunner
-					&& answers.taskRunner.length > 0
-					&& answers.taskRunner.indexOf('grunt') !== -1 || answers.taskRunner.indexOf('gulpGrunt') !== -1;
-			},
-			name: "gruntModules",
-			type: "checkbox",
-			message: "Which grunt modules do you want to use?",
-			choices: [
-				{name: "grunt-accessibility"},
-				{name: "grunt-autoprefixer", checked: true},
-				{name: "grunt-bless"},
-				{name: "grunt-browser-sync", checked: true},
-				{name: "grunt-combine-mq", checked: true},
-				{name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"},
-				{name: "grunt-contrib-compass"},
-				{name: "grunt-contrib-htmlmin"},
-				{name: "grunt-contrib-requirejs"},
-				{name: "grunt-contrib-uglify"},
-				{name: "grunt-csscomb"},
-				{name: "grunt-dr-svg-sprites", checked: true},
-				{name: "grunt-grunticon"},
-				{name: "grunt-image-size-export"},
-				{name: "grunt-jsdoc"},
-				{name: "grunt-modernizr"},
-				{name: "grunt-packager"},
-				{name: "grunt-phantomas"},
-				{name: "grunt-photobox"},
-				{name: "grunt-postcss-separator"},
-				{name: "grunt-responsive-images"},
-				{name: "grunt-svgmin"},
-				{name: "grunt-version", checked: true}
-			],
-			default: this.config.get("gruntModules")
-		});
-
-		this.questions.push({
-			when: function (answers) {
-				return answers.gruntModules
-					&& answers.gruntModules.length > 0
-					&& answers.gruntModules.indexOf('grunt-connect-proxy') !== -1;
-			},
-			type: 'input',
-			name: 'proxyHost',
-			validate: function (answer) {
-				if (typeof answer !== 'string' || answer.length < 5 || answer.indexOf('.') === -1) {
-					return false;
-				} else {
-					return true;
-				}
-			},
-			message: 'Which host do you want me to proxy (e.g. domain.com)?',
-			default: this.config.get("proxyHost")
-		});
-
-		this.questions.push({
-			when: function (answers) {
-				return answers.gruntModules
-					&& answers.gruntModules.length > 0
-					&& answers.gruntModules.indexOf('grunt-connect-proxy') !== -1
-					&& answers.proxyHost;
-			},
-			type: 'input',
-			name: 'proxyPort',
-			validate: function (answer) {
-				if (isNaN(Number(answer))) {
-					return false;
-				} else {
-					return true;
-				}
-			},
-			message: 'Which port should be used for the proxy?',
-			default: this.config.get("proxyPort")
-		});
-	},
-
-	// Custom grunt prompts routine
-	_gulpPrompts: function () {
-		(!this.config.get("gulpModules") || this.force) && this.questions.push({
-			when: function (answers) {
-				return answers.taskRunner
-					&& answers.taskRunner.length
-					&& answers.taskRunner.indexOf('gulp') !== -1 || answers.taskRunner.indexOf('gulpGrunt') !== -1;
-			},
-			name: "gulpModules",
-			type: "checkbox",
-			message: "Which gulp modules do you want to use?",
-			choices: [
-				{name: "gulp-arialinter"},
-				{name: "gulp-autoprefixer", checked: true},
-				{name: "gulp-bless"},
-				{name: "gulp-combine-mq", checked: true},
-				{name: "gulp-compass"},
-				{name: "gulp-htmlmin"},
-				{name: "gulp-uglify"},
-				{name: "gulp-svg-sprite", checked: true},
-				{name: "gulp-iconify"},
-				{name: "gulp-jsdoc"},
-				{name: "gulp-modulizr"},
-				{name: "gulp-responsive"}
-			],
-			default: this.config.get("gulpModules")
-		});
-	},
-
-	_assemblePrompts: function () {
-
-		(!this.config.get("installAssemble") || this.force) && this.questions.push({
-			type: "confirm",
-			name: "installAssemble",
-			message: "Would you want to install assemble?",
-			default: this.config.get("installAssemble")
-		});
-
-		(!this.config.get("installPlugin") || this.force) && this.questions.push({
-			type: "confirm",
-			name: "installPlugin",
-			message: "Do you want to install assemble plugins?",
-			default: this.config.get("installPlugin")
-		});
-		this.questions.push({
-			name: "plugin",
-			type: "checkbox",
-			message: "Which assemble plugin do you want to use?",
-			choices: [
-				{name: "assemble-contrib-permalinks"},
-				{name: "assemble-contrib-sitemap"},
-				{name: "assemble-related-pages"}
-			],
-			when: function (answers) {
-				return answers.installPlugin;
-			}
 		});
 	},
 
@@ -348,8 +217,8 @@ module.exports = yeoman.generators.Base.extend({
 					checked: true
 				},
 				{
-					name: 'Extended Layout',
-					value: 'installExtendedLayout',
+					name: 'Babel (ES6) with Browserify (Babelify)',
+					value: 'babel',
 					checked: true
 				},
 				{
@@ -444,6 +313,157 @@ module.exports = yeoman.generators.Base.extend({
 		});
 	},
 
+	// Custom grunt prompts routine
+	_gruntPrompts: function () {
+		(!this.config.get("gruntModules") || this.force) && this.questions.push({
+			when: function (answers) {
+				return answers.taskRunner
+					&& answers.taskRunner.length > 0
+					&& answers.taskRunner.indexOf('grunt') !== -1 && answers.taskRunner.indexOf('gulp') !== -1;
+			},
+			name: "gruntModules",
+			type: "checkbox",
+			message: "Which grunt modules do you want to use?",
+			choices: [
+				{name: "grunt-accessibility"},
+				{name: "grunt-autoprefixer", checked: true},
+				{name: "grunt-bless"},
+				{name: "grunt-browser-sync", checked: true},
+				{name: "grunt-combine-mq", checked: true},
+				{name: "grunt-connect-proxy (CORS, Basic Auth and http methods)", value: "grunt-connect-proxy"},
+				{name: "grunt-contrib-compass"},
+				{name: "grunt-contrib-htmlmin"},
+				{name: "grunt-contrib-requirejs"},
+				{name: "grunt-contrib-uglify"},
+				{name: "grunt-csscomb"},
+				{name: "grunt-dr-svg-sprites", checked: true},
+				{name: "grunt-grunticon"},
+				{name: "grunt-image-size-export"},
+				{name: "grunt-jsdoc"},
+				{name: "grunt-modernizr"},
+				{name: "grunt-packager"},
+				{name: "grunt-phantomas"},
+				{name: "grunt-photobox"},
+				{name: "grunt-postcss-separator"},
+				{name: "grunt-responsive-images"},
+				{name: "grunt-svgmin"},
+				{name: "grunt-version", checked: true}
+			],
+			default: this.config.get("gruntModules")
+		});
+
+		this.questions.push({
+			when: function (answers) {
+				return answers.gruntModules
+					&& answers.gruntModules.length > 0
+					&& answers.gruntModules.indexOf('grunt-connect-proxy') !== -1;
+			},
+			type: 'input',
+			name: 'proxyHost',
+			validate: function (answer) {
+				if (typeof answer !== 'string' || answer.length < 5 || answer.indexOf('.') === -1) {
+					return false;
+				} else {
+					return true;
+				}
+			},
+			message: 'Which host do you want me to proxy (e.g. domain.com)?',
+			default: this.config.get("proxyHost")
+		});
+
+		this.questions.push({
+			when: function (answers) {
+				return answers.gruntModules
+					&& answers.gruntModules.length > 0
+					&& answers.gruntModules.indexOf('grunt-connect-proxy') !== -1
+					&& answers.proxyHost;
+			},
+			type: 'input',
+			name: 'proxyPort',
+			validate: function (answer) {
+				if (isNaN(Number(answer))) {
+					return false;
+				} else {
+					return true;
+				}
+			},
+			message: 'Which port should be used for the proxy?',
+			default: this.config.get("proxyPort")
+		});
+	},
+
+	// Custom grunt prompts routine
+	_gulpPrompts: function () {
+		(!this.config.get("gulpModules") || this.force) && this.questions.push({
+			when: function (answers) {
+				return answers.taskRunner
+					&& answers.taskRunner.length
+					&& answers.taskRunner.indexOf('gulp') !== -1 && answers.taskRunner.indexOf('gulp') !== -1;
+			},
+			name: "gulpModules",
+			type: "checkbox",
+			message: "Which gulp modules do you want to use?",
+			choices: [
+				{name: "gulp-arialinter"},
+				{name: "gulp-autoprefixer", checked: true},
+				{name: "gulp-bless"},
+				{name: "gulp-combine-mq", checked: true},
+				{name: "gulp-compass"},
+				{name: "gulp-htmlmin"},
+				{name: "gulp-uglify"},
+				{name: "gulp-svg-sprite", checked: true},
+				{name: "gulp-iconify"},
+				{name: "gulp-jsdoc"},
+				{name: "gulp-modulizr"},
+				{name: "gulp-responsive"}
+			],
+			default: this.config.get("gulpModules")
+		});
+	},
+
+	_assemblePrompts: function () {
+
+		(!this.config.get("installAssemble") || this.force) && this.questions.push({
+			type: "confirm",
+			name: "installAssemble",
+			message: "Would you want to install assemble?",
+			default: this.config.get("installAssemble")
+		});
+
+		this.questions.push({
+			when: function (answers) {
+				return answers.installAssemble;
+			},
+			type: "confirm",
+			message: 'Extended Layout for Assemble',
+			name: 'installExtendedLayout',
+			default: this.config.get("installExtendedLayout")
+		});
+
+		this.questions.push({
+			when: function (answers) {
+				return answers.installAssemble;
+			},
+			type: "confirm",
+			name: "installPlugin",
+			message: "Do you want to install assemble plugins?",
+			default: this.config.get("installPlugin")
+		});
+		this.questions.push({
+			when: function (answers) {
+				return answers.installPlugin;
+			},
+			name: "plugin",
+			type: "checkbox",
+			message: "Which assemble plugin do you want to use?",
+			choices: [
+				{name: "assemble-contrib-permalinks"},
+				{name: "assemble-contrib-sitemap"},
+				{name: "assemble-related-pages"}
+			]
+		});
+	},
+
 	writing: {
 		setup: function () {
 			this.template('_package.json.ejs', 'package.json');
@@ -482,8 +502,8 @@ module.exports = yeoman.generators.Base.extend({
 		},
 
 		workflow: function () {
-			if (this.taskRunner.indexOf('gulp') || this.taskRunner.indexOf('gulpGrunt')) this._scaffoldGulp();
-			if (this.taskRunner.indexOf('grunt') || this.taskRunner.indexOf('gulpGrunt')) this._scaffoldGrunt();
+			if (this.taskRunner.indexOf('gulp') != -1) this._scaffoldGulp();
+			if (this.taskRunner.indexOf('grunt') != -1) this._scaffoldGrunt();
 		},
 
 		assemble: function () {
@@ -493,8 +513,8 @@ module.exports = yeoman.generators.Base.extend({
 				this.copy('resources/templates/data/config.json');
 				this.directory('resources/templates/ajax', 'resources/templates/ajax');
 				this.directory('resources/templates/helpers', 'resources/templates/helpers');
-				this.copy('resources/templates/layouts/tpl-default.hbs');
-				this.copy('resources/templates/pages/index.hbs');
+				this.template('resources/templates/layouts/tpl-default.hbs');
+				this.template('resources/templates/pages/index.hbs');
 
 				// Add global partials
 				this.mkdir('resources/templates/partials');
@@ -506,20 +526,22 @@ module.exports = yeoman.generators.Base.extend({
 		},
 
 		features: function () {
-			if (this.features && this.features.length) {
-				if (this.features.indexOf('installDocs') != -1) {
-					this.directory('resources/scss/docs', 'resources/scss/docs');
-					this.copy('resources/scss/docs.scss', 'resources/scss/docs.scss');
-
-					if (this.config.get("installAssemble") == true) {
-						this.directory('resources/templates/docs', 'resources/templates/docs');
-					}
-				}
-				// Add Dev Folder
-				if (this.features.indexOf('createDevFolder') != -1) {
-					this.mkdir('_dist');
+			if (this.features.indexOf('installDocs') != -1 || this.gruntModules.indexOf('grunt-jsdoc') || this.gulpModules.indexOf('gulp-jsdoc')) {
+				this.copy('helpers/task-configs/jsdoc.conf.json');
+				this.copy('resources/js/README.md');
+			}
+			if (this.features.indexOf('installDocs') != -1) {
+				this.directory('resources/scss/docs', 'resources/scss/docs');
+				this.copy('resources/scss/docs.scss', 'resources/scss/docs.scss');
+				if (this.config.get("installAssemble") == true) {
+					this.directory('resources/templates/docs', 'resources/templates/docs');
 				}
 			}
+			// Add Dev Folder
+			if (this.features.indexOf('createDevFolder') != -1) {
+				this.mkdir('_dist');
+			}
+
 			if (this.features.indexOf('installDocs') == -1) delete this.bowerFile['dependencies']['highlightjs'];
 		},
 
@@ -596,8 +618,8 @@ module.exports = yeoman.generators.Base.extend({
 		this.template('Gruntfile.js.ejs', 'Gruntfile.js');
 		this.mkdir('helpers/_grunt');
 
-		if (this.taskRunner.indexOf('grunt') != -1) {
-			this.template('helpers/_grunt/clean.js', 'helpers/_grunt/clean.js');
+		if (this.taskRunner.indexOf('grunt') != -1 && this.taskRunner.indexOf('gulp') == -1) {
+			this.template('helpers/_grunt/_clean.js.ejs', 'helpers/_grunt/clean.js');
 			this.template('helpers/_grunt/_concurrent.js.ejs', 'helpers/_grunt/concurrent.js');
 			this.template('helpers/_grunt/connect.js', 'helpers/_grunt/connect.js');
 			this.copy('helpers/_grunt/cssmin.js', 'helpers/_grunt/cssmin.js');
@@ -633,7 +655,7 @@ module.exports = yeoman.generators.Base.extend({
 			if (this.gruntModules.indexOf('grunt-contrib-htmlmin') != -1) {
 				this.copy('helpers/_grunt/htmlmin.js', 'helpers/_grunt/htmlmin.js');
 			}
-			if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || (this.jsLibs && this.jsLibs.length && this.jsLibs.indexOf('requirejs') != -1)) {
+			if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || (this.jsLibs.indexOf('requirejs') != -1)) {
 				this.copy('helpers/_grunt/requirejs.js', 'helpers/_grunt/requirejs.js');
 			}
 			if (this.gruntModules.indexOf('grunt-contrib-uglify') != -1) {
@@ -658,10 +680,8 @@ module.exports = yeoman.generators.Base.extend({
 			if (this.gruntModules.indexOf('grunt-image-size-export') != -1) {
 				this.copy('helpers/_grunt/imageSizeExport.js', 'helpers/_grunt/imageSizeExport.js');
 			}
-			if (this.gruntModules.indexOf('grunt-jsdoc') != -1 || (this.features && this.features.length && this.features.indexOf('installDocs') != -1)) {
+			if (this.gruntModules.indexOf('grunt-jsdoc') != -1 || (this.features.indexOf('installDocs') != -1)) {
 				this.copy('helpers/_grunt/jsdoc.js');
-				this.copy('helpers/task-configs/jsdoc.conf.json');
-				this.copy('resources/js/README.md');
 			}
 			if (this.gruntModules.indexOf('grunt-modernizr') != -1) {
 				this.copy('helpers/_grunt/modernizr.js', 'helpers/_grunt/modernizr.js');
@@ -687,7 +707,7 @@ module.exports = yeoman.generators.Base.extend({
 				this.copy('resources/templates/partials/blocks/b-version.hbs', 'resources/templates/partials/blocks/b-version.hbs');
 			}
 
-			if (this.features && this.features.length && this.features.indexOf('sassInsteadOfCompass') != -1 || this.gruntModules.indexOf('grunt-responsive-images') != -1) {
+			if ((this.features.indexOf('sassInsteadOfCompass') != -1 && this.taskRunner.indexOf('gulp') == -1)) {
 				this.template('helpers/_grunt/_fileindex.js.ejs', 'helpers/_grunt/fileindex.js');
 			}
 
@@ -703,19 +723,25 @@ module.exports = yeoman.generators.Base.extend({
 
 			// Add Libsass
 			if (this.features.indexOf('sassInsteadOfCompass') != -1) {
-				this.template('helpers/_grunt/_sass.js.ejs', 'helpers/_grunt/sass.js');
+				if (this.taskRunner.indexOf('gulp') == -1) {
+					this.template('helpers/_grunt/_sass.js.ejs', 'helpers/_grunt/sass.js');
+				}
 			} else {
-				this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
+				if (this.taskRunner.indexOf('gulp') == -1) {
+					this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
+				}
 				this.copy('config.rb', 'config.rb');
 			}
 
 			// Add copy task
-			if (this.features.indexOf('createDevFolder') != -1 || this.features.indexOf('installDocs') != -1) {
+			if (this.taskRunner.indexOf('grunt') && (this.features.indexOf('createDevFolder') != -1 || this.features.indexOf('installDocs') != -1)) {
 				this.copy('helpers/_grunt/_copy.js.ejs', 'helpers/_grunt/copy.js');
 			}
 
 		} else {
-			this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
+			if (this.taskRunner.indexOf('gulp') == -1) {
+				this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
+			}
 			this.copy('config.rb', 'config.rb');
 		}
 	},

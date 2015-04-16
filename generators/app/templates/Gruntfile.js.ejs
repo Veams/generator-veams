@@ -38,21 +38,12 @@ module.exports = function(grunt) {
 	/*
 	 *	SIMPLE TASKS
 	 */
-	<% if(features && features.length){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
+	<% if(features.indexOf('sassInsteadOfCompass') != -1) { %>
 	// SASS Task
 	grunt.registerTask('watchCSS', [
 		'fileindex:libsassGlobbing', // Sass Globbing with Grunt (see: http://www.prototype-generator.com/getting-started/features.html)
 		'sass:dist'
 	]); <% } else { %>
-	grunt.registerTask('cssDev', [
-		'bgShell:devCompass'
-	]);
-	grunt.registerTask('watchCSS', [
-		'bgShell:watchCompass'
-	]);
-	grunt.registerTask('cssProd', [
-		'bgShell:prodCompass'
-	]); <% }} else { %>
 	grunt.registerTask('cssDev', [
 		'bgShell:devCompass'
 	]);
@@ -103,18 +94,18 @@ module.exports = function(grunt) {
 	]);
 	grunt.registerTask('photoProd', [
 		'photobox:prod'
-	]);	<% } %>
+	]);	<% } %><% if(gruntModules.indexOf('grunt-packager') != -1) { %>
 	
 	// Sync JS Task
 	grunt.registerTask('syncJS', [
 		'sync:js'
-	]);<% if(installAssemble != false){ %>
+	]);<% } %><% if(installAssemble != false){ %>
 	
 	// Build HTML Task
 	grunt.registerTask('build-html', [
 		'assemble'
 	]);<% } %>
-	
+	<% if (taskRunner.indexOf('gulp') == -1) { %>
 	// HTML Hint Task (Check your HTML)
 	grunt.registerTask('check-html', [
 		'htmlhint'
@@ -126,7 +117,7 @@ module.exports = function(grunt) {
 	// Beautifier Task (Beautify your JS files)
 	grunt.registerTask('beauty-files', [
 		'jsbeautifier'
-	]);<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-csscomb') != -1) { %>
+	]);<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-csscomb') != -1) { %>
 	
 	// CSSComb Task (Beautify your SASS files)
 	grunt.registerTask('beauty-scss', [
@@ -134,8 +125,10 @@ module.exports = function(grunt) {
 	]);<% }} %>
 
 	/*
-	 *	ADVANCED TASKS
-	 */
+	 *	ADVANCED TASKS	<% if (taskRunner.indexOf('gulp') != -1) { %>
+	 *  You have chosen Gulp and Grunt as task runners.
+	 *  Please define all your advanced tasks in Gulp or set your own grunt tasks here. <% } %>
+	 */<% if (taskRunner.indexOf('gulp') == -1) { %>
 	grunt.registerTask('server', [<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1) || jsLibs.indexOf('requirejs') != -1) {  %>
 		'js',<% } %><% if(installAssemble != false){ %>
 		'newer:assemble',<% } %>
@@ -192,4 +185,5 @@ module.exports = function(grunt) {
 		'build',
 		'copy:dist'
 	]); <% } %>
+<% } %>
 };

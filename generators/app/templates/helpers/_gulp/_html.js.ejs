@@ -1,0 +1,15 @@
+var config = require('../config');
+var gulp = require('gulp');
+var size = require('gulp-filesize');
+var htmlmin = require('gulp-htmlmin');
+
+// HTML Hinting Task
+gulp.task('html-build', <% if (installAssemble != false) { %>['grunt-build-html'],<% } %> function () {
+	return gulp.src(config.options.paths.dev + '/*.html')
+		.pipe(htmlmin({
+			removeComments: false,
+			collapseWhitespace: true
+		}))
+		.pipe(gulp.dest(config.options.paths.dev))
+		.pipe(size());
+});

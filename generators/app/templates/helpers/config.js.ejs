@@ -1,25 +1,27 @@
 /**
  * Configuration file
- */<% if (taskRunner === 'gulp' || taskRunner === 'gulpGrunt') {%>
+ */<% if (taskRunner.indexOf('gulp') != -1) {%>
 var browserSync = require('browser-sync');
 var notify = require('gulp-notify');
 <% } %>
 var config = module.exports;
 
-config.options = {<% if (taskRunner === 'grunt' || taskRunner === 'gulpGrunt') {%>
+config.options = {<% if (taskRunner.indexOf('grunt') != -1) {%>
 	config: {
 		// in this directory you can find your grunt config tasks
 		src: "helpers/_grunt/*.js"
 	},<% } %>
 	paths: {
-		// tasks folder with gulp tasks<% if (taskRunner === 'gulp' || taskRunner === 'gulpGrunt') {%>
+		// tasks folder with gulp tasks<% if (taskRunner.indexOf('gulp') != -1) {%>
 		tasks: 'helpers/_gulp',<% } %>
 		// helpers folder with tasks
 		helpers: 'helpers',
 		// resources folder with working files
 		src: 'resources',
 		// dev/working folder
-		dev: '_output'
+		dev: '_output',<% if (features.indexOf('createDevFolder') != -1) { %>
+		// dist folder with minified and optimized files
+		dist: '_dist'<% } %>
 	},
 
 	// define your ports for livereload
@@ -29,7 +31,7 @@ config.options = {<% if (taskRunner === 'grunt' || taskRunner === 'gulpGrunt') {
 		livereload: 35731
 	}
 };
-<% if (taskRunner === 'gulp' || taskRunner === 'gulpGrunt') {%>
+<% if (taskRunner.indexOf('gulp') != -1) {%>
 config.server = browserSync;
 config.notify = notify;
 <% } %>
