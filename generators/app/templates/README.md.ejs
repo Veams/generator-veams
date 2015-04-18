@@ -5,7 +5,12 @@
 
 * NodeJS (<= 0.10.26)
 * Grunt
-<% if (modules && modules.length > 0 && modules.indexOf('grunt-responsive-images') != -1) { %>
+<% if (features && features.length > 0 && features.indexOf('sassInsteadOfCompass') != -1) { %>
+### Libsass
+When using Libsass you should know the compatibility versions:
+- Version >= grunt-sass@0.18.0 (Node ~0.12.xx)
+- Version < grunt-sass@0.18.0 (Node ~0.10.xx)
+<% } %><% if (modules && modules.length > 0 && modules.indexOf('grunt-responsive-images') != -1) { %>
 ### Responsive Images
 If you want to use an automated task to create responsive images you need to make sure that you have installed GraphicsMagick.
 
