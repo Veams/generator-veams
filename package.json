@@ -1,6 +1,6 @@
 {
 	"name": "generator-prototype",
-	"version": "0.5.9",
+	"version": "0.6.0",
 	"homepage": "http://prototype-generator.com/",
 	"description": "Scaffold modern frontend web apps with Assemble, Grunt, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap, Foundation and structure the web app with Backbone and RequireJS.",
 	"keywords": [
@@ -30,7 +30,7 @@
 		"test": "mocha --reporter spec"
 	},
 	"dependencies": {
-		"yeoman-generator": ">=0.17.0",
+		"yeoman-generator": "~0.17.0",
 		"chalk": ">=0.3.0"
 	},
 	"devDependencies": {
