@@ -1,0 +1,35 @@
+var config = require('../config');
+var gulp = require('gulp'); <% if (gulpModules.indexOf('gulp-uglify')) { %>
+var uglify = require('gulp-uglify');<% } %> <% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
+var requirejsOptimize = require('gulp-requirejs-optimize');<% } %>
+
+gulp.task('scripts', function () {
+	return gulp.src(config.options.paths.src + '/js/main.js')<% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
+		.pipe(requirejsOptimize({
+			baseUrl: config.options.paths.src + '/js',
+			mainConfigFile: config.options.paths.src + '/js/main.js',
+			name: "../bower-components/almond/almond", // assumes a production build using almond
+			include: ["main"],
+			findNestedDependencies: true,
+			logLevel: 0,
+			wrapShim: true,
+			optimize: "none", // no minification
+			generateSourceMaps: true
+		}))<% } %>
+		.pipe(gulp.dest(config.options.paths.dev + '/js'));
+});
+
+gulp.task('scripts-dist', function () {
+	return gulp.src(config.options.paths.src + '/js/main.js')<% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
+		.pipe(requirejsOptimize({
+			baseUrl: config.options.paths.src + '/js',
+			mainConfigFile: config.options.paths.src + '/js/main.js',
+			name: "../bower-components/almond/almond", // assumes a production build using almond
+			include: ["main"],
+			findNestedDependencies: true,
+			logLevel: 0,
+			wrapShim: true
+		}))<% } %><% if (gulpModules.indexOf('gulp-uglify')) { %>
+		.pipe(uglify())<% } %>
+		.pipe(gulp.dest(config.options.paths.dev + '/js'));
+});

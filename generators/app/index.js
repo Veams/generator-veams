@@ -11,7 +11,6 @@ module.exports = yeoman.generators.Base.extend({
 	// Initialize general settings and store some files
 	initializing: function () {
 		this.pkg = require('../../package.json');
-		this.pkgFile = this.src.read['_package.json'];
 		this.bowerFile = this.src.readJSON('_bower.json');
 
 		this.dotFiles = [
@@ -410,12 +409,13 @@ module.exports = yeoman.generators.Base.extend({
 				{name: "gulp-combine-mq", checked: true},
 				{name: "gulp-compass"},
 				{name: "gulp-htmlmin"},
-				{name: "gulp-uglify"},
-				{name: "gulp-svg-sprite", checked: true},
 				{name: "gulp-iconify"},
 				{name: "gulp-jsdoc"},
 				{name: "gulp-modulizr"},
-				{name: "gulp-responsive"}
+				{name: "gulp-requirejs-optimize"},
+				{name: "gulp-responsive"},
+				{name: "gulp-svg-sprite", checked: true},
+				{name: "gulp-uglify"}
 			],
 			default: this.config.get("gulpModules")
 		});
@@ -759,6 +759,10 @@ module.exports = yeoman.generators.Base.extend({
 		// Gulp modules are splitted up in separate files and modules
 		if (this.gulpModules && this.gulpModules.length) {
 			if (this.gulpModules.indexOf('grunt-autoprefixer') != -1) {
+			}
+			if (this.gulpModules.indexOf('grunt-requirejs-optimize') != -1 ||
+				this.gulpModules.indexOf('grunt-uglify') != -1) {
+				this.template('helpers/_gulp/_scripts.js.ejs', 'helpers/_gulp/scripts.js');
 			}
 		}
 		if (this.features.indexOf('sassInsteadOfCompass') == -1) {
