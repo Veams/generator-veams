@@ -9,14 +9,20 @@ gulp.task('default', function () {
 	gulp.start('serve');
 });
 
-// Static Server
+/**
+ * Static Server
+ *
+ */
 gulp.task('serve', ['styles'], function () {
 
 	config.server({
 		server: config.options.paths.dev
 	});
 
+	// SCSS
 	gulp.watch(config.options.paths.src + "/scss/**/*.scss", ['styles']);<% if (installAssemble != false) { %>
+
+	// HTML
 	gulp.watch([
 			config.options.paths.src + "/templates/data/**/*.json",
 			config.options.paths.src + "/templates/pages/**/*.hbs",
@@ -24,5 +30,30 @@ gulp.task('serve', ['styles'], function () {
 			config.options.paths.src + "/templates/partials/**/*.hbs"],
 		['grunt-build-html']
 	);<% } %>
-	gulp.watch(config.options.paths.dev + "/*.html").on('change', config.server.reload);
+
+	// JS
+	gulp.watch([
+		config.options.paths.src + "/js/**/*.js",
+		config.options.paths.src + "/js/**/*.html"
+	], ['scripts']);
+
+	// Reload
+	gulp.watch([
+		config.options.paths.dev + "/*.html",
+		config.options.paths.dev + "/js/*.js",
+		config.options.paths.dev + "/css/*.css"
+	]).on('change', config.server.reload);
 });
+
+/**
+ * Build Task
+ *
+ */
+gulp.task('build', [
+	'clean:dist',
+	'styles-dist',
+	'scripts',
+	'grunt-build-html',
+	'html-hint',
+	'js-hint'
+]);

@@ -3,8 +3,9 @@ var gulp = require('gulp'); <% if (gulpModules.indexOf('gulp-uglify')) { %>
 var uglify = require('gulp-uglify');<% } %> <% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
 var requirejsOptimize = require('gulp-requirejs-optimize');<% } %>
 
-gulp.task('scripts', function () {
-	return gulp.src(config.options.paths.src + '/js/main.js')<% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
+gulp.task('scripts', function () {<% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
+	return gulp.src(config.options.paths.src + '/js/main.js')<% } else { %>
+	return gulp.src(config.options.paths.src + '/js/*.js')<% } %><% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
 		.pipe(requirejsOptimize({
 			baseUrl: config.options.paths.src + '/js',
 			mainConfigFile: config.options.paths.src + '/js/main.js',
@@ -19,8 +20,9 @@ gulp.task('scripts', function () {
 		.pipe(gulp.dest(config.options.paths.dev + '/js'));
 });
 
-gulp.task('scripts-dist', function () {
-	return gulp.src(config.options.paths.src + '/js/main.js')<% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
+gulp.task('scripts-dist', function () {<% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
+	return gulp.src(config.options.paths.src + '/js/main.js')<% } else { %>
+	return gulp.src(config.options.paths.src + '/js/*.js')<% } %><% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
 		.pipe(requirejsOptimize({
 			baseUrl: config.options.paths.src + '/js',
 			mainConfigFile: config.options.paths.src + '/js/main.js',
