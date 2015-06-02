@@ -21,7 +21,7 @@
 module.exports = function(grunt) {
 	
 	// load only used tasks and add fallbacks for those which cannot be find
-	require('jit-grunt')(grunt, {<% if (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+	require('jit-grunt')(grunt, {<% if (modules && modules.length && (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1)) { %>
 		'replace': 'grunt-text-replace'<% } %>
 	});
 	// measures the time each task takes
