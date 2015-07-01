@@ -1,12 +1,13 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
+var fs = require('fs');
 var path = require('path');
 var helpers = require('yeoman-generator').test;
-var fs = require('fs');
+var assert = require('yeoman-generator').assert;
 var answers = require('../test_helpers/prompt-answer-factory')({});
 
-describe('grunt-fileindex', function () {
+describe('grunt-sass-globber', function () {
 	var helperPath = "helpers/";
 
 	beforeEach(function (done) {
@@ -21,18 +22,18 @@ describe('grunt-fileindex', function () {
 	});
 
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /grunt-fileindex/);
+		assert.fileContent('package.json', /grunt-sass-globber/);
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + "_grunt/fileindex.js");
+		assert.file(helperPath + "_grunt/sassGlobber.js");
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'fileindex:libsassGlobbing\'/);
+		assert.fileContent("Gruntfile.js", /\'sassGlobber:dev\'/);
 	});
 
 	it('refers to styles.scss in task file', function () {
-		helpers.assertFile(helperPath + "_grunt/fileindex.js", /dest: \'<%= paths\.src %>\/scss\/styles\.scss\'/);
+		assert.fileContent(helperPath + "_grunt/sassGlobber.js", /source: \'styles\.scss\'/);
 	});
 });
