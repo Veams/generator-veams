@@ -23,7 +23,7 @@ var config = require('./helpers/config');
 module.exports = function(grunt) {
 	
 	// load only used tasks and add fallbacks for those which cannot be find
-	require('jit-grunt')(grunt, {<% if (gruntModules.indexOf('grunt-grunticon') != -1 || gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+	require('jit-grunt')(grunt, {<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-grunticon') != -1 || gruntModules.indexOf('grunt-dr-svg-sprites') != -1)) { %>
 		'replace': 'grunt-text-replace'<% } %>
 	});
 	// measures the time each task takes
@@ -38,11 +38,11 @@ module.exports = function(grunt) {
 	/*
 	 *	SIMPLE TASKS
 	 */
-	<% if(features.indexOf('sassInsteadOfCompass') != -1) { %>
+	<% if(features && features.indexOf('sassInsteadOfCompass') != -1) { %>
 	// SASS Task
 	grunt.registerTask('watchCSS', [
-		'fileindex:libsassGlobbing', // Sass Globbing with Grunt (see: http://www.prototype-generator.com/getting-started/features.html)
-		'sass:dist'
+		'sassGlobber:dev', // Sass Globbing with Grunt (see: http://www.prototype-generator.com/getting-started/features.html)
+		'sass:dev'
 	]); <% } else { %>
 	grunt.registerTask('cssDev', [
 		'bgShell:devCompass'
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
 	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-grunticon') != -1) { %>
 	
 	// Icons Task
-	grunt.registerTask('icons', [<% if (gruntModules.indexOf('grunt-svgmin') != -1) { %>
+	grunt.registerTask('icons', [<% if (gruntModules && gruntModules.indexOf('grunt-svgmin') != -1) { %>
 		'svgmin',<% } %>
 		'grunticon',
 		'clean:grunticon',
@@ -66,24 +66,21 @@ module.exports = function(grunt) {
 	grunt.registerTask('icons', [
 		'dr-svg-sprites',
 		'replace:spriteUrl'
-	]); <% } %><% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1) || jsLibs.indexOf('requirejs') != -1) { %>
+	]); <% } %><% if ((gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1 || gruntModules.indexOf('grunt-browserify') != -1)) || jsLibs.indexOf('requirejs') != -1) { %>
 	
 	// JS Task
 	grunt.registerTask('js', [<% if(gruntModules.indexOf('grunt-packager') != -1) { %>
 		'packager'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1 || jsLibs.indexOf('requirejs') != -1) { %>
-		'requirejs:dev'<% } %>
+		'requirejs:dev'<% } %><% if(gruntModules.indexOf('grunt-browserify') != -1) { %>
+		'browserify:vendor',
+		'browserify:dev'<% } %>
 	]); <% } %><% if (gruntModules && gruntModules.length) { %>
 	<% if (gruntModules.indexOf('grunt-responsive-images') != -1 || gruntModules.indexOf('grunt-image-size-export') != -1) {%>
 	// Picture Task (This task creates an additional JSON file with the path to your picture)
 	grunt.registerTask('pictures', [<% if (gruntModules.indexOf('grunt-responsive-images') != -1) { %>
 		'responsive_images'<% if (gruntModules.indexOf('grunt-image-size-export') != -1) { %>,<% }} %><% if (gruntModules.indexOf('grunt-image-size-export') != -1) { %>
 		'imageSizeExport'<% } %>
-	]); <% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-compass') != -1) { %>
-	
-	// Compass Task
-	grunt.registerTask('css', [
-		'compass:dist'
-	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-photobox') != -1) { %>
+	]); <% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-photobox') != -1) { %>
 	
 	// Screenshot Tasks (Take screenshots from your environments)
 	grunt.registerTask('photoLocal', [
@@ -99,7 +96,7 @@ module.exports = function(grunt) {
 	// Sync JS Task
 	grunt.registerTask('syncJS', [
 		'sync:js'
-	]);<% } %><% if(installAssemble != false){ %>
+	]);<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 	
 	// Build HTML Task
 	grunt.registerTask('build-html', [
@@ -129,8 +126,8 @@ module.exports = function(grunt) {
 	 *  You have chosen Gulp and Grunt as task runners.
 	 *  Please define all your advanced tasks in Gulp or set your own grunt tasks here. <% } %>
 	 */<% if (taskRunner.indexOf('gulp') == -1) { %>
-	grunt.registerTask('server', [<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1) || jsLibs.indexOf('requirejs') != -1) {  %>
-		'js',<% } %><% if(installAssemble != false){ %>
+	grunt.registerTask('server', [<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1)) {  %>
+		'js',<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 		'newer:assemble',<% } %>
 		'concurrent:syncing',
 		'watchCSS'<% if (features && features.length && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>,
@@ -152,7 +149,9 @@ module.exports = function(grunt) {
 		'jsbeautifier',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-modernizr') != -1) { %>
 		'modernizr',<% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1 || jsLibs.indexOf('requirejs') != -1) { %>
 		'requirejs:prod',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-packager') != -1) { %>
-		'packager',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-uglify') != -1) { %>
+		'packager',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
+		'browserify:vendor',
+		'browserify:dist',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-uglify') != -1) { %>
 		'uglify',<% }} %>
 		'concurrent:syncing', <% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-csscomb') != -1) { %>
 		'beauty-scss',<% }} %> <% if(features && features.length){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
@@ -165,7 +164,7 @@ module.exports = function(grunt) {
 		'postcssSeparator',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-autoprefixer') != -1) { %>
 		'autoprefixer',<% }} %>
 		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
-		'bless',<% }} %><% if(installAssemble != false){ %>
+		'bless',<% }} %><% if(templateEngine.indexOf('assemble') != -1){ %>
         'assemble',<% } %>
 		'concurrent:build'
 	]);
