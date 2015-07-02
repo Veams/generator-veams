@@ -3,13 +3,12 @@
 ---------------------------------------------------
 ## Requirements for FE
 
-* NodeJS (<= 0.10.26)
+* NodeJS (>= 0.12.0)
 * Grunt
 <% if (features && features.length && features.indexOf('sassInsteadOfCompass') != -1) { %>
 ### Libsass
 When using Libsass you should know the compatibility versions:
-- Version >= grunt-sass@0.18.0 (Node ~0.12.xx)
-- Version < grunt-sass@0.18.0 (Node ~0.10.xx)
+- Version >= grunt-sass@1.0.0 (Node ~0.12.xx)
 <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-responsive-images') != -1) { %>
 ### Responsive Images
 If you want to use an automated task to create responsive images you need to make sure that you have installed GraphicsMagick.
