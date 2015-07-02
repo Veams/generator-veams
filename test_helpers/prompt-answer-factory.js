@@ -2,7 +2,7 @@ module.exports = function promptAnswerFactory(customAnswers) {
 	var defaults = {
 		"projectName": "",
 		"projectAuthor": "",
-		"installAssemble": false,
+		"templateEngine": "",
 		"installPlugin": false,
 		"installCMS": false,
 		"taskRunner": [
