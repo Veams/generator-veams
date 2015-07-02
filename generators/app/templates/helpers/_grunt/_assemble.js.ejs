@@ -1,14 +1,14 @@
 module.exports = {
 	options: {
 		assets: '<%%= paths.dev %>',
-		data: '<%%= paths.src %>/templates/data/**/*.json',
-		helpers: '<%%= paths.src %>/templates/helpers/**/*.js',
-		layoutdir: '<%%= paths.src %>/templates/layouts/',<% if (installExtendedLayout === true) { %>
+		data: '<%%= paths.src %>/templating/data/**/*.json',
+		helpers: '<%%= paths.src %>/templating/helpers/**/*.js',
+		layoutdir: '<%%= paths.src %>/templating/layouts/',<% if (installExtendedLayout === true) { %>
 		layout: false, <% } else { %>
-		layout: 'tpl-default.hbs', <% } %>
+		layout: 'lyt-default.hbs', <% } %>
 		partials: [
-			'<%%= paths.src %>/templates/partials/**/*.hbs'<% if (installExtendedLayout === true) { %>,
-			'<%%= paths.src %>/templates/layouts/*.hbs'<% } %>
+			'<%%= paths.src %>/templating/partials/**/*.hbs'<% if (installExtendedLayout === true) { %>,
+			'<%%= paths.src %>/templating/layouts/*.hbs'<% } %>
 		],
 		collections: [
 			'sitemap'
@@ -26,7 +26,7 @@ _.each(plugin, function(name, i) { if(name == 'permalinks') { %>
 			},<% } }); %>
 		},
 		files: [{
-			cwd: '<%%= paths.src %>/templates/pages/',
+			cwd: '<%%= paths.src %>/templating/pages/',
 			dest: '<%%= paths.dev %>/',
 			expand: true,
 			flatten: true,
@@ -36,7 +36,7 @@ _.each(plugin, function(name, i) { if(name == 'permalinks') { %>
 	docs: {
 		files: [
 		{
-			cwd: '<%%= paths.src %>/templates/docs/',
+			cwd: '<%%= paths.src %>/templating/docs/',
 			dest: '<%%= paths.dev %>/docs',
 			expand: true,
 			flatten: false,
