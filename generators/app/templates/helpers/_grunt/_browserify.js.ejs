@@ -9,8 +9,9 @@ var libs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib,
 module.exports = {
 	options: {
 		transform: [
-			["babelify", {
-				"stage": 0
+			[
+				"babelify", {
+					"stage": 0
 				}
 			]
 		]
