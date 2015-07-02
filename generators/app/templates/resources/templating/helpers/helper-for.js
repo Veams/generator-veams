@@ -24,6 +24,5 @@
 				content += block.fn(i);
 			return content;
 		});
-
 	};
 }).call(this);
