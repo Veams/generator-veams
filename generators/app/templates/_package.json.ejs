@@ -8,53 +8,74 @@
 		"url": "http://github.com/<%= _.slugify(authorLogin) %>/"
 	},
 	"engines": {
-		"node": ">=0.10.0"
+		"node": ">=0.12.0"
 	},
 	"scripts": {
 		"test": "grunt test"
 	},
-	"devDependencies": {<% if(taskRunner.length) {%><% if (taskRunner.indexOf('gulp') != -1) {%>
+	"dependencies": {<% if(gruntModules && gruntModules.indexOf('grunt-browserify') !== -1 || gulpModules && gulpModules.indexOf('gulp-browserify') !== -1) { %> <% if(jsLibs && jsLibs.length) { jsLibs.forEach(function (lib, i) { %> <% if(lib == 'jquery') { %>
+		"jquery": "^2.1.4"<% if(i < (libs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %><% if(lib == 'backbone') { %>
+		"backbone": "^1.2.0",
+		"underscore": "^1.8.3"<% if(i < (libs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% }%><% if(lib == 'exoskeleton') { %>
+		"exoskeleton": "^0.7.0"<% if(i < (libs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %><% if(lib == 'ampersand') { %>
+		"ampersand": "*"<% if(i < (libs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %>
+		<% }) } %><% if(pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>
+		"document-register-element": "^0.3.0",
+		"respimage": "^1.4.0",
+		"handlebars": "^3.0.3",
+		"touchswipe": "^1.6.0"<% } %>
+	<% } %>},
+	"devDependencies": {<% if(taskRunner && taskRunner.length) {%><% if (taskRunner.indexOf('gulp') != -1) {%>
 		"del": "^1.1.1",
+		"run-sequence": "^1.1.0",
+		"browser-sync": "*",
+		"require-dir": "^0.3.0",
 		"gulp": "^3.8.11",
 		"gulp-notify": "^2.2.0",
 		"gulp-minify-css": "^0.5.1",
 		"gulp-htmlhint": "^0.1.1",
 		"gulp-jshint": "^1.9.4",
 		"gulp-filesize": "^0.0.6",
-		"gulp-grunt": "^0.5.2", <% if(gulpModules && gulpModules.length && typeof gulpModules === 'object'){ _.each(gulpModules, function(name) { if(name == 'gulp-autoprefixer') { %>
+		"gulp-grunt": "^0.5.2", <% if(gulpModules && gulpModules.length && typeof gulpModules === 'object'){ gulpModules.forEach(function(name) { if(name == 'gulp-autoprefixer') { %>
 		"gulp-autoprefixer": "^2.1.0",<% } %><% if(name == 'gulp-bless') { %>
-		"gulp-bless": "^3.0.1",<% } %><% if(name == 'gulp-combine-mq') { %>
+		"gulp-bless": "^3.0.1",<% } %><% if(name == 'browserify') { %>
+		"browserify": "^10.2.3",<% } %><% if(name == 'gulp-combine-mq') { %>
 		"gulp-combine-mq": "^0.4.0",<% } %><% if(name == 'gulp-htmlmin') { %>
-		"gulp-htmlmin": "^1.1.1",<% } %><% if(name == 'gulp-uglify') { %>
+		"gulp-htmlmin": "^1.1.1",<% } %><% if(name == 'gulp-htmlhint') { %>
+		"gulp-htmlhint": "^0.1.1",<% } %><% if(name == 'gulp-uglify') { %>
 		"gulp-uglify": "^1.1.0",<% } %><% if(name == 'gulp-svg-sprite') { %>
 		"gulp-svg-sprite": "^1.0.20",<% } %><% if(name == 'gulp-iconify') { %>
 		"gulp-iconify": "^0.3.0",<% } %><% if(name == 'gulp-jsdoc') { %>
-		"gulp-jsdoc": "^0.1.4",<% } %><% if(name == 'gulp-modulizr') { %>
-		"gulp-modulizr": "^0.0.2",<% } %><% if(name == 'gulp-responsive') { %>
+		"gulp-jsdoc": "^0.1.4",<% } %><% if(name == 'gulp-jshint') { %>
+		"gulp-jshint": "^1.9.4",
+		"jshint-stylish": "^2.0.0",<% } %><% if(name == 'gulp-modulizr') { %>
+		"gulp-modulizr": "^0.0.2",<% } %><% if(name == 'gulp-requirejs-optimize') { %>
+		"gulp-requirejs-optimize": "^0.1.3",<% } %><% if(name == 'gulp-responsive') { %>
 		"gulp-responsive": "^1.0.7",<% } %><% }); %><%} %><% if (features.indexOf('sassInsteadOfCompass') != -1) { %>
 		"gulp-sass": "^1.3.3",<% } else { %>
 		"gulp-compass": "^2.0.4",<% } %>
 		"gulp-load": "^0.1.1",
 		"gulp-load-plugins": "^0.8.1",
-		"gulp-sourcemaps": "^1.5.0",<% } %><% } %><% if(installAssemble != false){ %>
+		"gulp-sourcemaps": "^1.5.0"<% if(templateEngine.indexOf('assemble') != -1 || taskRunner && taskRunner.indexOf('grunt') != -1){ %>,<% } %><% } %><% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 		"assemble": "~0.4.42",
 		"lodash" : "*",
+		"path" : "*",
 		"gray-matter": "*",
 		"handlebars-helper-autolink": "^0.1.1",<% } %><% if(taskRunner.length) {%><% if (taskRunner.indexOf('grunt') != -1) { %>
 		"grunt": "~0.4.5",<% if (features && features.length) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
-		"grunt-sass": "~0.18.0",<% }} %><% if ((features && features.length && features.indexOf('sassInsteadOfCompass') != -1) || (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-responsive-images') != -1)) { %>
-		"grunt-fileindex": "^0.1.0",<% } %><% if ((jsLibs && jsLibs.length && jsLibs.indexOf('requirejs') != -1) || (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1)) { %>
+		"grunt-sass": "~0.18.0",<% }} %><% if ((features && features.length && features.indexOf('sassInsteadOfCompass') != -1)) { %>
+		"grunt-sass-globber": "^2.0.0",<% } %><% if ((jsLibs && jsLibs.length && jsLibs.indexOf('requirejs') != -1) || (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1)) { %>
 		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features && features.length && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
 		"grunt-contrib-copy": "~0.7.0",<% } %>
-		"grunt-newer": "~0.8.0",<% if(gruntModules && gruntModules.length){ %> <% if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) { if(name == 'grunt-grunticon') { %>
+		"grunt-newer": "~0.8.0",<% if(gruntModules && gruntModules.length){ %> <% if(typeof gruntModules === 'object'){ gruntModules.forEach(function(name, i) { if(name == 'grunt-grunticon') { %>
 		"grunt-grunticon": "~1.0.0-beta.0",<% } %><% if(name == 'grunt-dr-svg-sprites') { %>
 		"grunt-dr-svg-sprites": "^0.9.15",<% } %><% if(name == 'grunt-dr-svg-sprites' || name == "grunt-grunticon") { %>
-		"grunt-text-replace": "~0.3.11",<% } %><% if(name == 'grunt-contrib-compass') { %>
-		"grunt-contrib-compass": "*",<% } %><% if(name == 'grunt-packager') { %>
+		"grunt-text-replace": "~0.3.11",<% } %><% if(name == 'grunt-packager') { %>
 		"grunt-packager": "~0.1.0",<% } %><% if(name == 'grunt-jsdoc') { %>
 		"grunt-jsdoc": "^0.6.1",<% } %><% if(name == 'grunt-contrib-uglify') { %>
 		"grunt-contrib-uglify": "~0.5.1",<% } %><% if(name == 'grunt-modernizr') { %>
-		"grunt-modernizr": "^0.5.2",<% } %><% if(name == 'grunt-browser-sync') { %>
+		"grunt-modernizr": "^0.5.2",<% } %><% if(name == 'grunt-browserify') { %>
+		"grunt-browserify": "^3.8.0",<% } %><% if(name == 'grunt-browser-sync') { %>
 		"grunt-browser-sync": "~1.5.3",<% } %><% if(name == 'grunt-csscomb') { %>
 		"grunt-csscomb": "^3.0.0",<% } %><% if(name == 'grunt-combine-mq') { %>
 		"grunt-combine-mq": "^0.6.0",<% } %><% if(name == 'grunt-bless') { %>
@@ -83,7 +104,7 @@
 		"grunt-contrib-watch": "~0.6.1",
 		"grunt-contrib-jshint": "~0.8.0",<% } %>
 		"time-grunt": "*"<% if(plugin && plugin.length){ %>,
-<% if(typeof plugin === 'object'){ _.each(plugin, function(name, i) { %>
+<% if(typeof plugin === 'object'){ plugin.forEach(function(name, i) { %>
 		"<%= name %>": "*"<% if(i < (plugin.length - 1)) { %>,<% } %>
 <% }); } else { %>
 		"<%= plugin %>": "*"<% }} %><% } %><% } %>
@@ -92,7 +113,7 @@
 	{
 		"type": "MIT",
 		"url": "https://github.com/<%= _.slugify(authorLogin) %>/<%= _.slugify(projectName) %>/blob/master/LICENSE-MIT"
-	}] <% if(installAssemble != false){ %>,
+	}] <% if(templateEngine.indexOf('assemble') != -1){ %>,
 	"keywords": [
 		"handlebars-helper-autolink"
 	]<% } %>
