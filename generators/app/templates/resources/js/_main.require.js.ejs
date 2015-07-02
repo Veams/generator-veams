@@ -1,0 +1,23 @@
+require.config({
+    paths: {<% if(jsLibs && jsLibs.length){ %><% if(jsLibs.indexOf('jquery') != -1) { %>
+		jquery: '../bower-components/jquery/dist/jquery'<% if(jsLibs.indexOf('backbone') != -1) { %>,<% } %><% } %><% if(jsLibs.indexOf('backbone') != -1) { %>
+		backbone: '../bower-components/backbone/backbone'<% }} %>
+	},
+	shim: {<% if (jsLibs && jsLibs.length) { if (jsLibs.indexOf('backbone') != -1) { %>
+		'backbone': {
+			deps: ['../bower-components/underscore/underscore', 'jquery'],
+			exports: 'Backbone'
+		}<% }} %>
+	}
+});
+
+require([
+	'app'<% if(jsLibs && jsLibs.length && jsLibs.indexOf('jquery') != -1) { %>, 'jquery'<% } %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('backbone') != -1) { %>, 'backbone'<% } %>
+	], function (app<% if(jsLibs && jsLibs.length && jsLibs.indexOf('jquery') != -1) { %>, $<% } %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('backbone') != -1) { %>, Backbone<% } %>) {
+    'use strict';
+
+	console.log(app);<% if(jsLibs && jsLibs.length && jsLibs.indexOf('jquery') != -1) { %>
+	console.log('Running jQuery %s', $().jquery);<% } %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('backbone') != -1) { %>
+	console.log(Backbone);<% } %>
+	console.log('JS initialized in version:' App.version);
+});
