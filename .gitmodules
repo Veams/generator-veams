@@ -1,3 +1,0 @@
-[submodule "generators/components/templates/frontend-modules"]
-	path = generators/components/templates/frontend-modules
-	url = https://github.com/Sebastian-Fitzner/pg-modules
