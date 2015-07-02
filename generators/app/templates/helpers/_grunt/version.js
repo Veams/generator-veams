@@ -9,7 +9,7 @@ module.exports = {
 		src: [
 			'package.json',
 			'README.md',
-			'<%= paths.src %>/templates/partials/blocks/b-version.hbs'
+			'<%= paths.src %>/templating/partials/blocks/b-version.hbs'
 		]
 	},
 	minor: {
@@ -19,7 +19,7 @@ module.exports = {
 		src: [
 			'package.json',
 			'README.md',
-			'<%= paths.src %>/templates/partials/blocks/b-version.hbs'
+			'<%= paths.src %>/templating/partials/blocks/b-version.hbs'
 		]
 	},
 	patch: {
@@ -29,7 +29,7 @@ module.exports = {
 		src: [
 			'package.json',
 			'README.md',
-			'<%= paths.src %>/templates/partials/blocks/b-version.hbs'
+			'<%= paths.src %>/templating/partials/blocks/b-version.hbs'
 		]
 	},
 	prerelease: {
@@ -39,7 +39,7 @@ module.exports = {
 		src: [
 			'package.json',
 			'README.md',
-			'<%= paths.src %>/templates/partials/blocks/b-version.hbs'
+			'<%= paths.src %>/templating/partials/blocks/b-version.hbs'
 		]
 	}
 };
