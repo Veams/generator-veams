@@ -188,7 +188,11 @@ module.exports = yeoman.generators.Base.extend({
 				{name: 'Gulp', value: 'gulp'}
 			],
 			validate: function (answer) {
-				return answer.length === 0;
+				if (answer.length === 0) {
+					return false;
+				} else {
+					return true;
+				}
 			},
 			default: this.config.get('taskRunner')
 		});
@@ -296,7 +300,7 @@ module.exports = yeoman.generators.Base.extend({
 				{
 					name: 'PG Components',
 					value: 'pgComponents',
-					checked: true
+					checked: false
 				}
 			],
 			default: this.config.get('pgPackages')
@@ -352,7 +356,11 @@ module.exports = yeoman.generators.Base.extend({
 			type: 'input',
 			name: 'proxyHost',
 			validate: function (answer) {
-				return typeof answer !== 'string' || answer.length < 5 || answer.indexOf('.') === -1;
+				if (typeof answer !== 'string' || answer.length < 5 || answer.indexOf('.') === -1) {
+					return false;
+				} else {
+					return true;
+				}
 			},
 			message: 'Which host do you want me to proxy (e.g. domain.com)?',
 			default: this.config.get('proxyHost')
@@ -368,7 +376,11 @@ module.exports = yeoman.generators.Base.extend({
 			type: 'input',
 			name: 'proxyPort',
 			validate: function (answer) {
-				return (isNaN(Number(answer)));
+				if (isNaN(Number(answer))) {
+					return false;
+				} else {
+					return true;
+				}
 			},
 			message: 'Which port should be used for the proxy?',
 			default: this.config.get('proxyPort')
