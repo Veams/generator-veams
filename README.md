@@ -52,7 +52,8 @@ You can scaffold your project in an instance. The first question is:
 
 If you choose `Minimal installation` you skip the rest of the questions and get the default values with:
 * Libsass (grunt-sass)
-* Grunt modules: grunt-grunticon, grunt-data-separator
+- Task Runner: Grunt
+* Grunt modules: `grunt-combine-mq`, `grunt-dr-svg-sprites`
 * Assemble as template engine
 
 ## Structure
@@ -63,7 +64,8 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 │   ├───templates
 │   │   ├───grunticon-template
 │   │   └───svg-sprites
-│   └───_grunt
+│   ├───_grunt
+│   └───_gulp
 ├───resources
 │   ├───ajax
 │   ├───assets
@@ -90,15 +92,20 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 └───_output
 ```
 
-## Gruntfile
-For our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split up the file in multiple task files. 
+## Task Runners
+
+PG supports `Grunt` and/or `Gulp` as task runner. 
+
+### Grunt
+
+For Grunt and our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split up the file in multiple task files. 
 You can find these task files in the following directory:
 
  * helpers/_grunt
+ 
+#### Grunt Modules
 
-## Plugins and Modules
-
-There are standard grunt modules I use. These are:
+There are standard grunt modules we use. These are:
 
  * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) - Clean your directories.
  * [grunt-concurrent](https://github.com/sindresorhus/grunt-concurrent) - Run grunt tasks concurrently .
@@ -110,9 +117,9 @@ There are standard grunt modules I use. These are:
  * [jit-grunt](https://github.com/shootaroo/jit-grunt) - A JIT(Just In Time) plugin loader for Grunt.
  * [time-grunt](https://github.com/sindresorhus/time-grunt) - Displays the execution time of grunt tasks.
  
-### Optional Grunt modules
+**Optional Grunt modules**
 
-**But you can also apply additional addons and grunt modules to your project. Just choose specific ones:**
+_But you can also apply additional addons and gulp modules to your project. Just choose specific ones:_
 
  * [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer) - Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the Can I Use database.
  * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
@@ -136,6 +143,40 @@ There are standard grunt modules I use. These are:
  * [grunt-sass](https://github.com/sindresorhus/grunt-sass) - You want to use Libsass instead of Compass to render your stylesheets 10 times faster? Here you go! (see _Features_)
  * [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin) - Minify SVG using SVGO.
  * [grunt-version](https://github.com/kswedberg/grunt-version) - Grunt task to handle versioning of a project.
+
+### Gulp
+
+For Gulp and our Gulpfile we use the node module [require-dir](https://www.npmjs.com/package/require-dir) to split up the file in multiple task files. 
+You can find these task files in the following directory:
+
+ * helpers/_gulp
+ 
+#### Gulp Modules
+
+There are standard Gulp modules we use. These are:
+
+* del - Clean your directories.
+* run-sequence - Run gulp tasks in a sequence.
+* browser-sync - Sync and auto-reload your local server over multiple devices
+* gulp-notify - Add notifications.
+* gulp-minify-css - Minify your CSS.
+* gulp-htmlhint - Check your html for errors.
+* gulp-jshint": - Check your js for errors.
+* gulp-filesize - Return the filesize in your console.
+ 
+**Optional Gulp modules**
+
+_But you can also apply additional addons and gulp modules to your project. Just choose specific ones:_
+
+
+
+
+### Gulp And Grunt 
+
+When you want to use both at the same time, do it to your own risk. You will probably have to change a few settings. 
+Furthermore Gulp will be your primary task runner. 
+
+## Template Engines
 
 ### Assemble
 We use Assemble as template engine. Assemble is a component and static site generator that makes it dead simple to build modular sites, documentation and components from reusable templates and data.
@@ -162,7 +203,6 @@ You want to know more? See [PG Custom Helpers](http://prototype-generator.com/te
 PG supports different features. Just check/uncheck them in the __custom installation routine__:
 
 * You want to use Libsass instead of Ruby to compile SASS files? - Check!
-* You want to use Extended Layouts in Assemble? - Check!
 * You want to add a separate distribution folder? - Check!
 * You want to add a CSS Styleguide and Assemble Development Documentation? - Check! (See "Developer Documentation")
 
@@ -171,7 +211,8 @@ You can choose JS Libraries like:
 
 * jQuery
 * BackboneJS
-* RequireJS
+* Exoskeleton
+* Ampersand
 
 And you can also choose SCSS Frameworks like:
 
@@ -221,4 +262,4 @@ see: [Changelog.md](CHANGELOG.md)
 [![NPM](https://nodei.co/npm-dl/generator-prototype.png?height=3)](https://nodei.co/npm/generator-prototype/)
 
 ## TODO: 
-- Integrate Gulp as option
+- Own template wrapper for handlebars
