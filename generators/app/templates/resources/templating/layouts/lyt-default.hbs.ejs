@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-version') != -1) { %>
-{{> b-version }}
+{{> b-version}}
 <% } %>
 <html lang="en" class="no-js"> <!--<![endif]-->
 
@@ -20,6 +20,16 @@
 	{{> _metadata }}
 	{{> _styles }}
 	<% } %>
+</head>
+
+<body class="{{bodyclass}}">
+	<% if (installExtendedLayout === true) { %>
+	{{#block "body"}}
+		{{> body }}
+	{{/block}}
+	<% } else { %>
+	{{> body }}
+	<% } %>
 	<!-- Scripts
 	================================================== --> <% if (installExtendedLayout === true) { %>
 	{{#block "scripts"}}
@@ -27,16 +37,6 @@
 	{{/block}}
 	<% } else { %>
 	{{> _scripts }}
-	<% } %>
-</head>
-
-<body class="{{ bodyclass }}">
-	<% if (installExtendedLayout === true) { %>
-	{{#block "body"}}
-		{{> body }}
-	{{/block}}
-	<% } else { %>
-	{{> body }}
 	<% } %>
 </body>
 </html>

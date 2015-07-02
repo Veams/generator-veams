@@ -15,7 +15,7 @@ This image is actually borrowed from Drupal.org.
 
 ### Assemble
 
-Every region should be defined in your layout (`tpl-default.hbs`) which can look like that:
+Every region should be defined in your layout (`lyt-default.hbs`) which can look like that:
 
 ``` hbs
 <!-- Header
