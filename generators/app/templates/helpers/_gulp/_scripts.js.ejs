@@ -1,11 +1,11 @@
 var config = require('../config');
-var gulp = require('gulp'); <% if (gulpModules.indexOf('gulp-uglify')) { %>
-var uglify = require('gulp-uglify');<% } %> <% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
-var requirejsOptimize = require('gulp-requirejs-optimize');<% } %>
+var gulp = require('gulp'); <% if (gulpModules && gulpModules.indexOf('gulp-uglify') != -1) { %>
+var uglify = require('gulp-uglify');<% } %> <% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') != -1) { %>
+var requirejsOptimize = require('gulp-requirejs-optimize');<% } %><% if (gulpModules && gulpModules.indexOf('browserify') != -1) { %>
+var browserify = require('browserify');<% } %>
 
-gulp.task('scripts', function () {<% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
-	return gulp.src(config.options.paths.src + '/js/main.js')<% } else { %>
-	return gulp.src(config.options.paths.src + '/js/*.js')<% } %><% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
+gulp.task('scripts', function () {<% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') != -1 || gulpModules && gulpModules.indexOf('browserify') != -1) { %>
+	return gulp.src(config.options.paths.src + '/js/main.js')<% } else { %>return gulp.src(config.options.paths.src + '/js/**/*.js')<% } %><% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') != -1) { %>
 		.pipe(requirejsOptimize({
 			baseUrl: config.options.paths.src + '/js',
 			mainConfigFile: config.options.paths.src + '/js/main.js',
@@ -20,9 +20,8 @@ gulp.task('scripts', function () {<% if (gulpModules.indexOf('gulp-requirejs-opt
 		.pipe(gulp.dest(config.options.paths.dev + '/js'));
 });
 
-gulp.task('scripts-dist', function () {<% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
-	return gulp.src(config.options.paths.src + '/js/main.js')<% } else { %>
-	return gulp.src(config.options.paths.src + '/js/*.js')<% } %><% if (gulpModules.indexOf('gulp-requirejs-optimize')) { %>
+gulp.task('scripts-dist', function () {<% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') != -1 || gulpModules && gulpModules.indexOf('browserify') != -1) { %>
+	return gulp.src(config.options.paths.src + '/js/main.js')<% } else { %>return gulp.src(config.options.paths.src + '/js/**/*.js')<% } %><% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') != -1) { %>
 		.pipe(requirejsOptimize({
 			baseUrl: config.options.paths.src + '/js',
 			mainConfigFile: config.options.paths.src + '/js/main.js',
@@ -31,7 +30,7 @@ gulp.task('scripts-dist', function () {<% if (gulpModules.indexOf('gulp-requirej
 			findNestedDependencies: true,
 			logLevel: 0,
 			wrapShim: true
-		}))<% } %><% if (gulpModules.indexOf('gulp-uglify')) { %>
+		}))<% } %><% if (gulpModules && gulpModules.indexOf('gulp-uglify') != -1) { %>
 		.pipe(uglify())<% } %>
 		.pipe(gulp.dest(config.options.paths.dev + '/js'));
 });

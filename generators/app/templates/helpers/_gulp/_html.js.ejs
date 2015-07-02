@@ -1,15 +1,15 @@
 var config = require('../config');
 var gulp = require('gulp');
-var size = require('gulp-filesize');
-var htmlmin = require('gulp-htmlmin');
+var size = require('gulp-filesize');<% if (gulpModules && gulpModules.indexOf('gulp-htmlmin') !== -1) { %>
+var htmlmin = require('gulp-htmlmin');<% } %>
 
 // HTML Hinting Task
-gulp.task('html-build', <% if (installAssemble != false) { %>['grunt-build-html'],<% } %> function () {
-	return gulp.src(config.options.paths.dev + '/*.html')
+gulp.task('html-build', <% if (templateEngine.indexOf('assemble') != -1) { %>['grunt-build-html'],<% } %> function () {
+	return gulp.src(config.options.paths.dev + '/*.html')<% if (gulpModules && gulpModules.indexOf('gulp-htmlmin') !== -1) { %>
 		.pipe(htmlmin({
 			removeComments: false,
 			collapseWhitespace: true
-		}))
+		}))<% } %>
 		.pipe(gulp.dest(config.options.paths.dev))
 		.pipe(size());
 });
