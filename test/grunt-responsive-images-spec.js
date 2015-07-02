@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
-	"gruntModules":[
+	"gruntModules": [
 		"grunt-responsive-images"
 	]
 });
@@ -27,19 +27,13 @@ describe('grunt-responsive-images', function () {
 
 	it('adds references to package.json', function () {
 		assert.fileContent('package.json', /grunt-responsive-images/);
-		assert.fileContent('package.json', /grunt-fileindex/);
 	});
 
 	it('creates helper files', function () {
 		assert.file(helperPath + "_grunt/responsive_images.js");
-		assert.file(helperPath + "_grunt/fileindex.js");
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		assert.fileContent("Gruntfile.js", /\'pictures\'/);
-	});
-
-	it('adds task to fileindex.js file', function () {
-		assert.fileContent(helperPath + "_grunt/fileindex.js", /pictures/);
+		assert.fileContent("Gruntfile.js", /pictures/);
 	});
 });

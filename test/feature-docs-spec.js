@@ -12,7 +12,7 @@ describe('feature docs', function () {
 
 	describe('when docs will be installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
-			"installAssemble": true,
+			"templateEngine": "assemble",
 			"features": [
 				"installDocs"
 			]
@@ -35,7 +35,7 @@ describe('feature docs', function () {
 				helperPath + "_grunt/jsdoc.js",
 				helperPath + "task-configs/jsdoc.conf.json",
 				srcPath + "js/README.md",
-				srcPath + "templates/docs/index.hbs",
+				srcPath + "templating/docs/index.hbs",
 				srcPath + "scss/docs/_highlight.scss",
 				srcPath + "scss/docs/_monokai.scss",
 				srcPath + "scss/docs.scss"

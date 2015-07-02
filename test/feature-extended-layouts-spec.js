@@ -12,7 +12,7 @@ describe('feature extended layouts', function () {
 
 	describe('assemble files', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
-			"installAssemble": true
+			"templateEngine": "assemble"
 		});
 
 		beforeEach(function (done) {
@@ -27,13 +27,13 @@ describe('feature extended layouts', function () {
 		});
 
 		it('creates page', function () {
-			assert.file(srcPath + "templates/pages/index.hbs");
+			assert.file(srcPath + "templating/pages/index.hbs");
 		});
 	});
 
 	describe('when extended layouts will be installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
-			"installAssemble": true,
+			"templateEngine": "assemble",
 			"installExtendedLayout": true
 		});
 
@@ -49,13 +49,13 @@ describe('feature extended layouts', function () {
 		});
 
 		it('the index.hbs contains extend syntax', function () {
-			assert.fileContent(srcPath + "templates/pages/index.hbs", /{{#extend/);
+			assert.fileContent(srcPath + "templating/pages/index.hbs", /{{#extend/);
 		});
 	});
 
 	describe('when extended layouts will not be installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
-			"installAssemble": true,
+			"templateEngine": "assemble",
 			"installExtendedLayout": false
 		});
 
@@ -71,7 +71,7 @@ describe('feature extended layouts', function () {
 		});
 
 		it('the index.hbs contains simple syntax', function () {
-			assert.noFileContent(srcPath + "templates/pages/index.hbs", /{{#extend/);
+			assert.noFileContent(srcPath + "templating/pages/index.hbs", /{{#extend/);
 		});
 	});
 });

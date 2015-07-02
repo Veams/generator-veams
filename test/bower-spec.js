@@ -23,7 +23,7 @@ describe('bower', function () {
 				.on('end', done);
 		});
 
-		it('deletes all bower dependenies', function () {
+		it('delete all bower dependenies', function () {
 			assert.noFileContent('bower.json', /pg-components|pg-scss|pg-js|almond|requirejs|requirejs-text|backbone|jquery|foundation|sass-bootstrap|bourbon|neat/);
 		});
 

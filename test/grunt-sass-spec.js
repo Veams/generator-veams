@@ -26,14 +26,16 @@ describe('grunt-sass', function () {
 		assert.fileContent('package.json', /grunt-sass/);
 	});
 
-	it('creates helper files: sass and fileindex', function () {
+	it('creates helper files: sass', function () {
 		assert.file(helperPath + "_grunt/sass.js");
-		assert.file(helperPath + "_grunt/fileindex.js");
+	});
+
+	it('it compiles temp file', function () {
+		assert.fileContent(helperPath + "_grunt/sass.js", /styles\.tmp\.scss/);
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		assert.fileContent("Gruntfile.js", /sass:dist/);
-		assert.fileContent("Gruntfile.js", /fileindex:libsassGlobbing/);
+		assert.fileContent("Gruntfile.js", /sass:dev/);
 	});
 
 });

@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
-	"installAssemble": true
+	"templateEngine": "assemble"
 });
 
 
@@ -32,31 +32,30 @@ describe('assemble', function () {
 
 	it('creates helper files', function () {
 		helpers.assertFile(helperPath + "_grunt/assemble.js");
-
 	});
 
 	it('creates resources files', function () {
 		var expected = [
-			srcPath + "templates/data/config.json",
-			srcPath + "templates/helpers/helper-panel.js",
-			srcPath + "templates/helpers/helper-for.js",
-			srcPath + "templates/helpers/helper-ifBlock.js",
-			srcPath + "templates/helpers/helper-limit.js",
-			srcPath + "templates/helpers/helper-partial.js",
-			srcPath + "templates/helpers/helper-syntax.js",
-			srcPath + "templates/helpers/helper-xif.js",
-			srcPath + "templates/layouts/tpl-default.hbs",
-			srcPath + "templates/pages/index.hbs",
-			srcPath + "templates/partials/_global/_scripts.hbs",
-			srcPath + "templates/partials/_global/_metadata.hbs",
-			srcPath + "templates/partials/_global/_styles.hbs"
+			srcPath + "templating/data/config.json",
+			srcPath + "templating/helpers/helper-panel.js",
+			srcPath + "templating/helpers/helper-for.js",
+			srcPath + "templating/helpers/helper-ifBlock.js",
+			srcPath + "templating/helpers/helper-limit.js",
+			srcPath + "templating/helpers/helper-partial.js",
+			srcPath + "templating/helpers/helper-syntax.js",
+			srcPath + "templating/helpers/helper-xif.js",
+			srcPath + "templating/layouts/lyt-default.hbs",
+			srcPath + "templating/pages/index.hbs",
+			srcPath + "templating/partials/_global/_scripts.hbs",
+			srcPath + "templating/partials/_global/_metadata.hbs",
+			srcPath + "templating/partials/_global/_styles.hbs"
 		];
 		helpers.assertFiles(expected);
 
 	});
 
 	it('adds task to watch.js file', function () {
-		helpers.assertFile(helperPath + "_grunt/watch.js", /templates/);
+		helpers.assertFile(helperPath + "_grunt/watch.js", /templating/);
 	});
 
 	it('adds task to Gruntfile.js file', function () {

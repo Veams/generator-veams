@@ -3,13 +3,20 @@
 
 var path = require('path');
 var helpers = require('yeoman-generator').test;
+var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
+	'taskRunner': [
+		'gulp'
+	],
+	'gulpModules': [
+		'gulp-htmlhint'
+	]
 });
 
-
-describe('jit-grunt', function () {
-	var helperPath = "helpers/";
+describe('gulp-htmlhint', function () {
+	var helperPath = 'helpers/';
+	var srcPath = 'resources/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -23,10 +30,14 @@ describe('jit-grunt', function () {
 	});
 
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /jit-grunt/);
+		assert.fileContent('package.json', /gulp-htmlhint/);
 	});
 
-	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'jit-grunt\'/);
+	it('creates helper files', function () {
+		assert.file(helperPath + '_gulp/hinting.js');
+	});
+
+	it('adds task to helper file', function () {
+		assert.fileContent(helperPath + '_gulp/hinting.js', /gulp-htmlhint/);
 	});
 });
