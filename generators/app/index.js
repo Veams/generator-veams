@@ -400,7 +400,7 @@ module.exports = yeoman.generators.Base.extend({
 			message: 'Which gulp modules do you want to use?',
 			choices: [
 				// {name: 'gulp-arialinter'},
-				// {name: 'browserify'},
+				{name: 'browserify'},
 				{name: 'gulp-autoprefixer', checked: true},
 				{name: 'gulp-bless'},
 				{name: 'gulp-combine-mq', checked: true},
@@ -574,15 +574,22 @@ module.exports = yeoman.generators.Base.extend({
 			if (this.gruntModules.indexOf('grunt-browserify') !== -1 || this.gulpModules.indexOf('browserify') !== -1) {
 				this.template('resources/js/_main.browserify.js.ejs', 'resources/js/main.js');
 				this.template('resources/js/_app.browserify.js.ejs', 'resources/js/app.js');
-			}
-			// Add JS files for libraries
-			if (this.jsLibs.indexOf('requirejs') == -1) {
+
 				delete this.bowerFile['dependencies']['almond'];
 				delete this.bowerFile['dependencies']['requirejs'];
 				delete this.bowerFile['dependencies']['requirejs-text'];
 			}
-			if (this.jsLibs.indexOf('backbone') == -1) delete this.bowerFile['dependencies']['backbone'];
-			if (this.jsLibs.indexOf('jquery') == -1) delete this.bowerFile['dependencies']['jquery'];
+
+			// Add JS files for libraries
+			if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || this.gulpModules.indexOf('gulp-requirejs-optimize') != -1) {
+				this.template('resources/js/_main.require.js.ejs', 'resources/js/main.js');
+				this.template('resources/js/_app.require.js.ejs', 'resources/js/app.js');
+			}
+
+			if (this.jsLibs.indexOf('backbone') == -1 &&
+				this.gruntModules.indexOf('grunt-contrib-requirejs') != -1) delete this.bowerFile['dependencies']['backbone'];
+			if (this.jsLibs.indexOf('jquery') == -1 &&
+				this.gruntModules.indexOf('grunt-contrib-requirejs') != -1) delete this.bowerFile['dependencies']['jquery'];
 		},
 
 		pg: function () {
@@ -677,8 +684,6 @@ module.exports = yeoman.generators.Base.extend({
 			}
 			if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1) {
 				this.copy('helpers/_grunt/requirejs.js', 'helpers/_grunt/requirejs.js');
-				this.template('resources/js/_main.require.js.ejs', 'resources/js/main.js');
-				this.template('resources/js/_app.require.js.ejs', 'resources/js/app.js');
 			}
 			if (this.gruntModules.indexOf('grunt-contrib-uglify') != -1) {
 				this.template('helpers/_grunt/_uglify.js.ejs', 'helpers/_grunt/uglify.js');

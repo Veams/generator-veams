@@ -40,7 +40,7 @@ This project builds on following setup (please read requirements and getting sta
 ## Browser-Support
 
 - all modern desktop browsers: Firefox, Chrome, IE and Safari/Mac latest version
-- also: IE 10, 9 and 8
+- also: IE 10
 - all modern mobile browsers: iOS and Android latest two versions
 
 ---------------------------------------------------
@@ -52,30 +52,8 @@ This project builds on following setup (please read requirements and getting sta
 <% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-responsive-images') != -1) { %>
 ### Responsive Images
 
-**Example**
-``` js
-sizes: [
-	{
-		name: "mobile",
-		width: 480
-	},
-	{
-		name: "mobile_2x",
-		width: 960,
-		quality: 50
-	},
-	{
-		name: "desktop",
-		width: 972,
-		quality: 80
-	},
-	{
-		name: "desktop_2x",
-		width: 1920,
-		quality: 50
-	}
-]
-```
+You can use `grunt-responsive-images` to build all pictures with predefined presets.
+To export this data you can use `grunt-image-size-export`.
 <% } %>
 ### Breakpoints
 - $small-range: (0, 640px); // smartphone portrait and smartphone landscape

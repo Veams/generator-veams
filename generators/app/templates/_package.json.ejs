@@ -13,7 +13,7 @@
 	"scripts": {
 		"test": "grunt test"
 	},
-	"dependencies": {<% if(gruntModules && gruntModules.indexOf('grunt-browserify') !== -1 || gulpModules && gulpModules.indexOf('gulp-browserify') !== -1) { %> <% if(jsLibs && jsLibs.length) { jsLibs.forEach(function (lib, i) { %> <% if(lib == 'jquery') { %>
+	"dependencies": {<% if(gruntModules && gruntModules.indexOf('grunt-browserify') !== -1 || gulpModules && gulpModules.indexOf('browserify') !== -1) { %> <% if(jsLibs && jsLibs.length) { jsLibs.forEach(function (lib, i) { %> <% if(lib == 'jquery') { %>
 		"jquery": "^2.1.4"<% if(i < (libs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %><% if(lib == 'backbone') { %>
 		"backbone": "^1.2.0",
 		"underscore": "^1.8.3"<% if(i < (libs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% }%><% if(lib == 'exoskeleton') { %>
