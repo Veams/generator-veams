@@ -14,11 +14,11 @@
 		"test": "grunt test"
 	},
 	"dependencies": {<% if(gruntModules && gruntModules.indexOf('grunt-browserify') !== -1 || gulpModules && gulpModules.indexOf('browserify') !== -1) { %> <% if(jsLibs && jsLibs.length) { jsLibs.forEach(function (lib, i) { %> <% if(lib == 'jquery') { %>
-		"jquery": "^2.1.4"<% if(i < (libs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %><% if(lib == 'backbone') { %>
+		"jquery": "^2.1.4"<% if(i < (jsLibs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %><% if(lib == 'backbone') { %>
 		"backbone": "^1.2.0",
-		"underscore": "^1.8.3"<% if(i < (libs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% }%><% if(lib == 'exoskeleton') { %>
-		"exoskeleton": "^0.7.0"<% if(i < (libs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %><% if(lib == 'ampersand') { %>
-		"ampersand": "*"<% if(i < (libs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %>
+		"underscore": "^1.8.3"<% if(i < (jsLibs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% }%><% if(lib == 'exoskeleton') { %>
+		"exoskeleton": "^0.7.0"<% if(i < (jsLibs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %><% if(lib == 'ampersand') { %>
+		"ampersand": "*"<% if(i < (jsLibs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %>
 		<% }) } %><% if(pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>
 		"document-register-element": "^0.3.0",
 		"respimage": "^1.4.0",
