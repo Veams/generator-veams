@@ -586,10 +586,13 @@ module.exports = yeoman.generators.Base.extend({
 				this.template('resources/js/_app.require.js.ejs', 'resources/js/app.js');
 			}
 
-			if (this.jsLibs.indexOf('backbone') == -1 &&
-				this.gruntModules.indexOf('grunt-contrib-requirejs') != -1) delete this.bowerFile['dependencies']['backbone'];
-			if (this.jsLibs.indexOf('jquery') == -1 &&
-				this.gruntModules.indexOf('grunt-contrib-requirejs') != -1) delete this.bowerFile['dependencies']['jquery'];
+			if (this.jsLibs.indexOf('backbone') == -1 && this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 ||
+				this.gruntModules.indexOf('grunt-browserify') !== -1 ||
+				this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['backbone'];
+
+			if (this.jsLibs.indexOf('jquery') == -1 && this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 ||
+				this.gruntModules.indexOf('grunt-browserify') !== -1 ||
+				this.gulpModules.indexOf('browserify')) delete this.bowerFile['dependencies']['jquery'];
 		},
 
 		pg: function () {
@@ -780,9 +783,11 @@ module.exports = yeoman.generators.Base.extend({
 
 		// Add scripts task
 		if (this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 ||
-			this.gulpModules.indexOf('browserify') !== -1 ||
-			this.gulpModules.indexOf('gulp-uglify') !== -1) {
-			this.template('helpers/_gulp/_scripts.js.ejs', 'helpers/_gulp/scripts.js');
+			this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 && this.gulpModules.indexOf('gulp-uglify') !== -1) {
+			this.template('helpers/_gulp/_scripts.require.js.ejs', 'helpers/_gulp/scripts.js');
+		} else if (this.gulpModules.indexOf('browserify') !== -1 ||
+			this.gulpModules.indexOf('browserify') !== -1 && this.gulpModules.indexOf('gulp-uglify') !== -1) {
+			this.template('helpers/_gulp/_scripts.browserify.js.ejs', 'helpers/_gulp/scripts.js');
 		}
 		// this.copy('helpers/_gulp/beautify.js', 'helpers/_grunt/beautify.js');
 		this.copy('helpers/task-configs/.jsbeautifierrc', 'helpers/task-configs/.jsbeautifierrc');
