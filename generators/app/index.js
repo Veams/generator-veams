@@ -571,28 +571,32 @@ module.exports = yeoman.generators.Base.extend({
 		},
 
 		jsLibs: function () {
-			if (this.gruntModules.indexOf('grunt-browserify') !== -1 || this.gulpModules.indexOf('browserify') !== -1) {
-				this.template('resources/js/_main.browserify.js.ejs', 'resources/js/main.js');
-				this.template('resources/js/_app.browserify.js.ejs', 'resources/js/app.js');
+			// Bower handling
+			if (this.gruntModules.indexOf('grunt-browserify') !== -1 ||
+				this.gulpModules.indexOf('browserify') !== -1 ||
+				this.gruntModules.indexOf('grunt-contrib-requirejs') === -1) {
 
 				delete this.bowerFile['dependencies']['almond'];
 				delete this.bowerFile['dependencies']['requirejs'];
 				delete this.bowerFile['dependencies']['requirejs-text'];
 			}
 
+			if (this.jsLibs.indexOf('backbone') == -1 ||
+				this.gruntModules.indexOf('grunt-browserify') !== -1 ||
+				this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['backbone'];
+
+			if (this.jsLibs.indexOf('jquery') == -1 ||
+				this.gruntModules.indexOf('grunt-browserify') !== -1 ||
+				this.gulpModules.indexOf('browserify')) delete this.bowerFile['dependencies']['jquery'];
+
 			// Add JS files for libraries
 			if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || this.gulpModules.indexOf('gulp-requirejs-optimize') != -1) {
 				this.template('resources/js/_main.require.js.ejs', 'resources/js/main.js');
 				this.template('resources/js/_app.require.js.ejs', 'resources/js/app.js');
+			} else if (this.gruntModules.indexOf('grunt-browserify') !== -1 || this.gulpModules.indexOf('browserify') !== -1) {
+				this.template('resources/js/_main.browserify.js.ejs', 'resources/js/main.js');
+				this.template('resources/js/_app.browserify.js.ejs', 'resources/js/app.js');
 			}
-
-			if (this.jsLibs.indexOf('backbone') == -1 && this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 ||
-				this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-				this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['backbone'];
-
-			if (this.jsLibs.indexOf('jquery') == -1 && this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 ||
-				this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-				this.gulpModules.indexOf('browserify')) delete this.bowerFile['dependencies']['jquery'];
 		},
 
 		pg: function () {
