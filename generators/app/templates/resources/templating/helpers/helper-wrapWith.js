@@ -10,8 +10,10 @@ module.exports.register = function (Handlebars, options) {
 	var panelsDir = path.join(process.cwd(), config.options.paths.panels, '/**/*.hbs');
 	var panels = getFiles(panelsDir);
 	var aliases = [
+		'area',
+		'component',
 		'factory',
-		'component'
+		'panel'
 	];
 
 	/*
@@ -19,7 +21,7 @@ module.exports.register = function (Handlebars, options) {
 	 *
 	 * @return content with defined markup in panel
 	 */
-	Handlebars.registerHelper('panel', function (name, options) {
+	Handlebars.registerHelper('wrapWith', function (name, options) {
 		if ('string' !== typeof name) {
 			options = name;
 			name = 'default';
