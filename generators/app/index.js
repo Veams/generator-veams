@@ -610,11 +610,11 @@ module.exports = yeoman.generators.Base.extend({
 						this.mkdir('resources/templating/data/pages');
 						this.mkdir('resources/templating/data/_global');
 
+						// General partial Readme
+						this.copy('resources/templating/partials/README.md');
+
 						// Layouts
 						this.copy('resources/templating/layouts/README.md');
-
-						// Panels/Factories
-						this.copy('resources/templating/partials/panels/README.md');
 
 						// Blocks
 						this.copy('resources/templating/partials/blocks/README.md');
@@ -787,6 +787,7 @@ module.exports = yeoman.generators.Base.extend({
 
 		// Add scripts task
 		if (this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 ||
+			this.gulpModules.indexOf('gulp-uglify') !== -1 && this.gulpModules.indexOf('browserify') === -1  ||
 			this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 && this.gulpModules.indexOf('gulp-uglify') !== -1) {
 			this.template('helpers/_gulp/_scripts.require.js.ejs', 'helpers/_gulp/scripts.js');
 		} else if (this.gulpModules.indexOf('browserify') !== -1 ||
