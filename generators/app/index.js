@@ -4,6 +4,7 @@ var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var pgHelpers = require('../../lib/pg-helpers');
+var jsGenerator = require('./js-generator');
 
 
 module.exports = yeoman.generators.Base.extend({
@@ -62,7 +63,7 @@ module.exports = yeoman.generators.Base.extend({
 		var welcome = pgHelpers.welcome;
 
 		if (!this.options['skip-welcome-message']) {
-			console.log(welcome);
+			this.log(welcome);
 		}
 
 		if (!this.config.existed) {
@@ -92,7 +93,7 @@ module.exports = yeoman.generators.Base.extend({
 
 			//save config to .yo-rc.json
 			if (this.defaultInstall === 'stdInstall') {
-				console.log(
+				this.log(
 					('\n') + chalk.bgCyan('Standard installation routine selected.') + ('\n')
 				);
 				this.projectName = this.config.get('projectName');
@@ -116,7 +117,7 @@ module.exports = yeoman.generators.Base.extend({
 				this.config.set(answers);
 				cb();
 			} else {
-				console.log(
+				this.log(
 					('\n') + chalk.green('Custom installation routine selected.') + ('\n')
 				);
 				this._prompting();
@@ -224,34 +225,9 @@ module.exports = yeoman.generators.Base.extend({
 			default: this.config.get('features')
 		});
 
-		(!this.config.get('jsLibs') || this.force) && this.questions.push({
-			name: 'jsLibs',
-			type: 'checkbox',
-			message: 'Do you want to use any JS Libraries?',
-			choices: [
-				{
-					name: 'jQuery (latest Version)',
-					value: 'jquery',
-					checked: true
-				},
-				{
-					name: 'BackboneJS',
-					value: 'backbone',
-					checked: false
-				},
-				{
-					name: 'Exoskeleton',
-					value: 'exoskeleton',
-					checked: true
-				},
-				{
-					name: 'Ampersand (can only be used with CommonJS)',
-					value: 'ampersand',
-					checked: false
-				}
-			],
-			default: this.config.get('jsLibs')
-		});
+		(!this.config.get('jsLibs') || this.force) && this.questions.push(
+			jsGenerator.questions.call(this)
+		);
 
 		(!this.config.get('cssLibs') || this.force) && this.questions.push({
 			name: 'cssLibs',
@@ -475,6 +451,8 @@ module.exports = yeoman.generators.Base.extend({
 			this.template('helpers/config.js.ejs', 'helpers/config.js');
 			this.template('README.md.ejs', 'README.md');
 
+			jsGenerator.setup.call(this);
+
 			this.bowerFile['name'] = this.config.get('projectName');
 		},
 
@@ -633,6 +611,11 @@ module.exports = yeoman.generators.Base.extend({
 		},
 
 		bower: function () {
+
+			if(this.cssLibs.length === 0 && this.jsLibs.length === 0 && this.pgPackages.length === 0) {
+				this.bowerFile['dependencies'] = [];
+			}
+
 			this.dest.write('bower.json', JSON.stringify(this.bowerFile, null, 4));
 		}
 	},
@@ -782,7 +765,7 @@ module.exports = yeoman.generators.Base.extend({
 		if (this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 ||
 			this.gulpModules.indexOf('browserify') !== -1 ||
 			this.gulpModules.indexOf('gulp-uglify') !== -1) {
-			this.template('helpers/_gulp/_scripts.js.ejs', 'helpers/_gulp/scripts.js');
+			this.template('helpers/_gulp/_scripts.require.js.ejs', 'helpers/_gulp/scripts.js');
 		}
 		// this.copy('helpers/_gulp/beautify.js', 'helpers/_grunt/beautify.js');
 		this.copy('helpers/task-configs/.jsbeautifierrc', 'helpers/task-configs/.jsbeautifierrc');

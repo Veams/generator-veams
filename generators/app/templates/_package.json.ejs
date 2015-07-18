@@ -13,18 +13,17 @@
 	"scripts": {
 		"test": "grunt test"
 	},
-	"dependencies": {<% if(gruntModules && gruntModules.indexOf('grunt-browserify') !== -1 || gulpModules && gulpModules.indexOf('browserify') !== -1) { %> <% if(jsLibs && jsLibs.length) { jsLibs.forEach(function (lib, i) { %> <% if(lib == 'jquery') { %>
-		"jquery": "^2.1.4"<% if(i < (jsLibs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %><% if(lib == 'backbone') { %>
+	"dependencies": {<% if(gruntModules && gruntModules.indexOf('grunt-browserify') !== -1 || gulpModules && gulpModules.indexOf('browserify') !== -1) { %> <% if(jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function jsLibsEach(lib, i) { %> <% if(lib == 'jquery') { %>
+		"jquery": "^2.1.4"<% } %><% if(lib == 'backbone') { %>,
 		"backbone": "^1.2.0",
-		"underscore": "^1.8.3"<% if(i < (jsLibs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% }%><% if(lib == 'exoskeleton') { %>
-		"exoskeleton": "^0.7.0"<% if(i < (jsLibs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %><% if(lib == 'ampersand') { %>
-		"ampersand": "*"<% if(i < (jsLibs.length - 1) || pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>,<% } %><% } %>
-		<% }) } %><% if(pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>
-		"document-register-element": "^0.3.0",
-		"respimage": "^1.4.0",
-		"handlebars": "^3.0.3",
+		"underscore": "^1.8.3"<% } %><% if(lib == 'exoskeleton') { %>,
+		"exoskeleton": "^0.7.0"<% } %><% if(lib == 'ampersand') { %>,
+		"ampersand": "*"<% } %><% if(lib == 'document-register-element') { %>,
+		"document-register-element": "^0.4.5"<% } %><% if(lib == 'respimage') { %>,
+		"respimage": "^1.4.0"<% } %><% if(lib == 'handlebars') { %>,
+		"handlebars": "^3.0.3"<% } %><% if(lib == 'touchswipe') { %>,
 		"touchswipe": "^1.6.0"<% } %>
-	<% } %>},
+	<% }) %><% } %><% } %>},
 	"devDependencies": {<% if(taskRunner && taskRunner.length) {%><% if (taskRunner.indexOf('gulp') != -1) {%>
 		"del": "^1.1.1",
 		"run-sequence": "^1.1.0",
