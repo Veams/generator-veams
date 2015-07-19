@@ -445,18 +445,18 @@ module.exports = yeoman.generators.Base.extend({
 
 	writing: {
 		setup: function () {
+			jsGenerator.setup.call(this);
+		},
+
+		defaults: function () {
+			// Standard files
 			this.copy('gitignore', '.gitignore');
 			this.copy('bowerrc', '.bowerrc');
 			this.template('_package.json.ejs', 'package.json');
 			this.template('helpers/config.js.ejs', 'helpers/config.js');
 			this.template('README.md.ejs', 'README.md');
-
-			jsGenerator.setup.call(this);
-
 			this.bowerFile['name'] = this.config.get('projectName');
-		},
 
-		defaults: function () {
 			this.mkdir('_output');
 
 			// add specific resources to make it possible to split up some directories
@@ -612,7 +612,7 @@ module.exports = yeoman.generators.Base.extend({
 
 		bower: function () {
 
-			if(this.cssLibs.length === 0 && this.jsLibs.length === 0 && this.pgPackages.length === 0) {
+			if (this.cssLibs.length === 0 && this.jsLibs.length === 0 && this.pgPackages.length === 0) {
 				this.bowerFile['dependencies'] = [];
 			}
 
