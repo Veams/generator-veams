@@ -65,7 +65,8 @@
 		"grunt-sass": "~0.18.0",<% }} %><% if ((features && features.length && features.indexOf('sassInsteadOfCompass') != -1)) { %>
 		"grunt-sass-globber": "^2.0.0",<% } %><% if ((jsLibs && jsLibs.length && jsLibs.indexOf('requirejs') != -1) || (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1)) { %>
 		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features && features.length && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
-		"grunt-contrib-copy": "~0.7.0",<% } %>
+		"grunt-contrib-copy": "~0.7.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
+		"grunt-jscs": "^1.8.0",<% } %>
 		"grunt-newer": "~0.8.0",<% if(gruntModules && gruntModules.length){ %> <% if(typeof gruntModules === 'object'){ gruntModules.forEach(function(name, i) { if(name == 'grunt-grunticon') { %>
 		"grunt-grunticon": "~1.0.0-beta.0",<% } %><% if(name == 'grunt-dr-svg-sprites') { %>
 		"grunt-dr-svg-sprites": "^0.9.15",<% } %><% if(name == 'grunt-dr-svg-sprites' || name == "grunt-grunticon") { %>
@@ -83,11 +84,11 @@
 		"grunt-postcss-separator": "~0.1.1",<% } %><% if(name == 'grunt-image-size-export') { %>
 		"grunt-image-size-export": "~0.1.0",<% } %><% if(name == 'grunt-accessibility') { %>
 		"grunt-accessibility": "~0.1.2",<% } %><% if(name == 'grunt-connect-proxy') { %>
-        "grunt-connect-proxy": "~0.1.8",<% } %><% if(name == 'grunt-svgmin') { %>
-        "grunt-svgmin": "^1.0.0",<% } %><% if(name == 'grunt-phantomas') { %>
-        "grunt-phantomas": "^0.10.0",<% } %><% if(name == 'grunt-responsive-images') { %>
-        "grunt-responsive-images": "^0.1.3",<% } %><% if(name == 'grunt-version') { %>
-        "grunt-version": "^0.3.0",<% } %><% if(name == 'grunt-photobox') { %>
+		"grunt-connect-proxy": "~0.1.8",<% } %><% if(name == 'grunt-svgmin') { %>
+		"grunt-svgmin": "^1.0.0",<% } %><% if(name == 'grunt-phantomas') { %>
+		"grunt-phantomas": "^0.10.0",<% } %><% if(name == 'grunt-responsive-images') { %>
+		"grunt-responsive-images": "^0.1.3",<% } %><% if(name == 'grunt-version') { %>
+		"grunt-version": "^0.3.0",<% } %><% if(name == 'grunt-photobox') { %>
 		"grunt-photobox": "~0.8.0",<% } %><%}); %><%} %><%} %>
 		"jit-grunt": "^0.9.0",
 		"load-grunt-configs": "~0.4.1",<%if (taskRunner.indexOf('gulp') == -1) { %><% if (features.indexOf('sassInsteadOfCompass') == -1) { %>

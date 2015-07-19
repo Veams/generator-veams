@@ -5,6 +5,6 @@ module.exports = {
 		"<%= paths.src %>/js/**/*.js"
 	],
 	options: {
-		config: "<%= paths.helper %>/task-configs/.jsbeautifierrc"
+		config: "<%= paths.helpers %>/task-configs/.jsbeautifierrc"
 	}
 };

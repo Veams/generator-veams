@@ -5,7 +5,7 @@ var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var pgHelpers = require('../../lib/pg-helpers');
 var jsGenerator = require('../../generator-files/js-generator');
-
+var testAndQAGenerator = require('../../generator-files/test-and-qa-generator');
 
 module.exports = yeoman.generators.Base.extend({
 
@@ -42,6 +42,8 @@ module.exports = yeoman.generators.Base.extend({
 			],
 			jsLibs: [],
 			cssLibs: [],
+			testAndQA: false,
+			testAndQALibs: [],
 			pgPackages: [],
 			installProxy: false,
 			proxyHost: '0.0.0.0 ',
@@ -154,6 +156,8 @@ module.exports = yeoman.generators.Base.extend({
 			this.features = answers.features;
 			this.jsLibs = answers.jsLibs;
 			this.cssLibs = answers.cssLibs;
+			this.testAndQA = answers.testAndQA;
+			this.testAndQALibs = answers.testAndQALibs;
 			this.pgPackages = answers.pgPackages;
 			this.proxyHost = this.config.get('proxyHost');
 			this.proxyPort = this.config.get('proxyPort');
@@ -252,6 +256,16 @@ module.exports = yeoman.generators.Base.extend({
 			],
 			default: this.config.get('cssLibs')
 		});
+
+		this.log((!this.config.get('testAndQA') || this.force) && 'yes yes yes');
+
+		console.log(testAndQAGenerator.questions.call(this));
+
+		if (!this.config.get('testAndQA') || this.force) {
+			this.questions = this.questions.concat(
+				testAndQAGenerator.questions.call(this)
+			);
+		}
 
 		(!this.config.get('pgPackages') || this.force) && this.questions.push({
 			name: 'pgPackages',
@@ -446,6 +460,7 @@ module.exports = yeoman.generators.Base.extend({
 	writing: {
 		setup: function () {
 			jsGenerator.setup.call(this);
+			testAndQAGenerator.setup.call(this);
 		},
 
 		defaults: function () {
