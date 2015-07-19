@@ -4,7 +4,7 @@ var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var pgHelpers = require('../../lib/pg-helpers');
-var jsGenerator = require('./generators/js-generator');
+var jsGenerator = require('../../generator-files/js-generator');
 
 
 module.exports = yeoman.generators.Base.extend({
