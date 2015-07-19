@@ -8,7 +8,6 @@ var documentRegisterElementId = 'document-register-element';
 var handlebarsId = 'handlebars';
 var respimageId = 'respimage';
 var touchswipeId = 'touchswipe';
-var jsTestAndQAId = 'testandqa';
 
 var pgJSPreset = [
 	backboneId,
@@ -50,11 +49,6 @@ exports.questions = function () {
 				name: 'document-register-element',
 				value: documentRegisterElementId,
 				checked: false
-			},
-			{
-				name: 'JS Testing and Code Quality Tools',
-				value: jsTestAndQAId,
-				checked: true
 			}
 		],
 

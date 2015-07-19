@@ -1,9 +1,5 @@
 var libs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
-	'<%= lib %>'<% if(i < (jsLibs.length - 1 || pgPackages && pgPackages.indexOf('pgJS') !== -1)) { %>,<% } %><% }); } %><% if (pgPackages && pgPackages.indexOf('pgJS') !== -1) { %>
-	'respimage',
-	'touchswipe',
-	'handlebars/runtime',
-	'document-register-element'<% } %>
+	'<%= lib %>'<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% }); } %>
 ]
 
 module.exports = {
