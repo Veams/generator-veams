@@ -8,7 +8,7 @@
 		"almond": "~0.3.0",
 		"requirejs-text": "~2.0.13",
 		"foundation": "~5.2.0",
-		"sass-bootstrap": "*",
+		"bootstrap-sass": "*",
 		"bourbon": "~3.1.8",
 		"neat": "~1.5.0",
 		"pg-components": "~0.2.0",
