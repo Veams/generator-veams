@@ -4,7 +4,8 @@ var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var pgHelpers = require('../../lib/pg-helpers');
-
+var jsGenerator = require('../../generator-files/js-generator');
+var testAndQAGenerator = require('../../generator-files/test-and-qa-generator');
 
 module.exports = yeoman.generators.Base.extend({
 
@@ -41,6 +42,8 @@ module.exports = yeoman.generators.Base.extend({
 			],
 			jsLibs: [],
 			cssLibs: [],
+			testAndQA: false,
+			testAndQALibs: [],
 			pgPackages: [],
 			installProxy: false,
 			proxyHost: '0.0.0.0 ',
@@ -62,7 +65,7 @@ module.exports = yeoman.generators.Base.extend({
 		var welcome = pgHelpers.welcome;
 
 		if (!this.options['skip-welcome-message']) {
-			console.log(welcome);
+			this.log(welcome);
 		}
 
 		if (!this.config.existed) {
@@ -92,7 +95,7 @@ module.exports = yeoman.generators.Base.extend({
 
 			//save config to .yo-rc.json
 			if (this.defaultInstall === 'stdInstall') {
-				console.log(
+				this.log(
 					('\n') + chalk.bgCyan('Standard installation routine selected.') + ('\n')
 				);
 				this.projectName = this.config.get('projectName');
@@ -116,7 +119,7 @@ module.exports = yeoman.generators.Base.extend({
 				this.config.set(answers);
 				cb();
 			} else {
-				console.log(
+				this.log(
 					('\n') + chalk.green('Custom installation routine selected.') + ('\n')
 				);
 				this._prompting();
@@ -153,6 +156,8 @@ module.exports = yeoman.generators.Base.extend({
 			this.features = answers.features;
 			this.jsLibs = answers.jsLibs;
 			this.cssLibs = answers.cssLibs;
+			this.testAndQA = answers.testAndQA;
+			this.testAndQALibs = answers.testAndQALibs;
 			this.pgPackages = answers.pgPackages;
 			this.proxyHost = this.config.get('proxyHost');
 			this.proxyPort = this.config.get('proxyPort');
@@ -224,34 +229,9 @@ module.exports = yeoman.generators.Base.extend({
 			default: this.config.get('features')
 		});
 
-		(!this.config.get('jsLibs') || this.force) && this.questions.push({
-			name: 'jsLibs',
-			type: 'checkbox',
-			message: 'Do you want to use any JS Libraries?',
-			choices: [
-				{
-					name: 'jQuery (latest Version)',
-					value: 'jquery',
-					checked: true
-				},
-				{
-					name: 'BackboneJS',
-					value: 'backbone',
-					checked: false
-				},
-				{
-					name: 'Exoskeleton',
-					value: 'exoskeleton',
-					checked: true
-				},
-				{
-					name: 'Ampersand (can only be used with CommonJS)',
-					value: 'ampersand',
-					checked: false
-				}
-			],
-			default: this.config.get('jsLibs')
-		});
+		(!this.config.get('jsLibs') || this.force) && this.questions.push(
+			jsGenerator.questions.call(this)
+		);
 
 		(!this.config.get('cssLibs') || this.force) && this.questions.push({
 			name: 'cssLibs',
@@ -276,6 +256,10 @@ module.exports = yeoman.generators.Base.extend({
 			],
 			default: this.config.get('cssLibs')
 		});
+
+		(!this.config.get('testAndQA') || this.force) && this.questions.push(
+			testAndQAGenerator.questions.call(this)
+		);
 
 		(!this.config.get('pgPackages') || this.force) && this.questions.push({
 			name: 'pgPackages',
@@ -469,16 +453,19 @@ module.exports = yeoman.generators.Base.extend({
 
 	writing: {
 		setup: function () {
+			jsGenerator.setup.call(this);
+			testAndQAGenerator.setup.call(this);
+		},
+
+		defaults: function () {
+			// Standard files
 			this.copy('gitignore', '.gitignore');
 			this.copy('bowerrc', '.bowerrc');
 			this.template('_package.json.ejs', 'package.json');
 			this.template('helpers/config.js.ejs', 'helpers/config.js');
 			this.template('README.md.ejs', 'README.md');
-
 			this.bowerFile['name'] = this.config.get('projectName');
-		},
 
-		defaults: function () {
 			this.mkdir('_output');
 
 			// add specific resources to make it possible to split up some directories
@@ -640,6 +627,11 @@ module.exports = yeoman.generators.Base.extend({
 		},
 
 		bower: function () {
+
+			if (this.cssLibs.length === 0 && this.jsLibs.length === 0 && this.pgPackages.length === 0) {
+				this.bowerFile['dependencies'] = [];
+			}
+
 			this.dest.write('bower.json', JSON.stringify(this.bowerFile, null, 4));
 		}
 	},
@@ -787,7 +779,7 @@ module.exports = yeoman.generators.Base.extend({
 
 		// Add scripts task
 		if (this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 ||
-			this.gulpModules.indexOf('gulp-uglify') !== -1 && this.gulpModules.indexOf('browserify') === -1  ||
+			this.gulpModules.indexOf('gulp-uglify') !== -1 && this.gulpModules.indexOf('browserify') === -1 ||
 			this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 && this.gulpModules.indexOf('gulp-uglify') !== -1) {
 			this.template('helpers/_gulp/_scripts.require.js.ejs', 'helpers/_gulp/scripts.js');
 		} else if (this.gulpModules.indexOf('browserify') !== -1 ||

@@ -70,7 +70,7 @@ module.exports = function(grunt) {
 	
 	// JS Task
 	grunt.registerTask('js', [<% if(gruntModules.indexOf('grunt-packager') != -1) { %>
-		'packager'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1 || jsLibs.indexOf('requirejs') != -1) { %>
+		'packager'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
 		'requirejs:dev'<% } %><% if(gruntModules.indexOf('grunt-browserify') != -1) { %>
 		'browserify:vendor',
 		'browserify:dev'<% } %>
@@ -127,7 +127,8 @@ module.exports = function(grunt) {
 	 *  Please define all your advanced tasks in Gulp or set your own grunt tasks here. <% } %>
 	 */<% if (taskRunner.indexOf('gulp') == -1) { %>
 	grunt.registerTask('server', [<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1)) {  %>
-		'js',<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
+		'js',<% } %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
+		'jscs',<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 		'newer:assemble',<% } %>
 		'concurrent:syncing',
 		'watchCSS'<% if (features && features.length && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>,
@@ -147,7 +148,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', [
 		'clean:dev',
 		'jsbeautifier',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-modernizr') != -1) { %>
-		'modernizr',<% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1 || jsLibs.indexOf('requirejs') != -1) { %>
+		'modernizr',<% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
 		'requirejs:prod',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-packager') != -1) { %>
 		'packager',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
 		'browserify:vendor',

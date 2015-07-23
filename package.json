@@ -1,46 +1,47 @@
 {
-	"name": "generator-prototype",
-	"version": "6.0.0",
-	"homepage": "http://prototype-generator.com/",
-	"description": "Scaffold modern frontend web apps with Assemble, Grunt, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap, Foundation and structure the web app with Backbone and RequireJS.",
-	"keywords": [
-		"yeoman-generator",
-		"assemble",
-		"web apps",
-		"prototype",
-		"prototypes",
-		"component",
-		"front-end",
-		"scaffold",
-		"boilerplate",
-		"templating",
-		"backbone",
-		"grunt"
-	],
-	"author": {
-		"name": "Sebastian Fitzner",
-		"email": "sebastian@jci-werbeagentur.com"
-	},
-	"main": "app/index.js",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/Prototype-Group/generator-prototype"
-	},
-	"scripts": {
-		"test": "mocha --reporter spec"
-	},
-	"dependencies": {
-		"yeoman-generator": "~0.17.0",
-		"chalk": ">=0.3.0"
-	},
-	"devDependencies": {
-		"mocha": ">=1.13.0"
-	},
-	"peerDependencies": {
-		"yo": ">=1.2.0"
-	},
-	"engines": {
-		"node": ">=0.10.0"
-	},
-	"readmeFilename": "README.md"
+  "name": "generator-prototype",
+  "version": "6.0.0",
+  "homepage": "http://prototype-generator.com/",
+  "description": "Scaffold modern frontend web apps with Assemble, Grunt, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap, Foundation and structure the web app with Backbone and RequireJS.",
+  "keywords": [
+    "yeoman-generator",
+    "assemble",
+    "web apps",
+    "prototype",
+    "prototypes",
+    "component",
+    "front-end",
+    "scaffold",
+    "boilerplate",
+    "templating",
+    "backbone",
+    "grunt"
+  ],
+  "author": {
+    "name": "Sebastian Fitzner",
+    "email": "sebastian@jci-werbeagentur.com"
+  },
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Prototype-Group/generator-prototype"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "dependencies": {
+    "chalk": ">=0.3.0",
+    "lodash": "^3.10.0",
+    "yeoman-generator": "~0.17.0"
+  },
+  "devDependencies": {
+    "mocha": ">=1.13.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.2.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "readmeFilename": "README.md"
 }
