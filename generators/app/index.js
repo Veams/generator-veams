@@ -109,6 +109,8 @@ module.exports = yeoman.generators.Base.extend({
 				this.features = this.config.get('features');
 				this.jsLibs = this.config.get('jsLibs');
 				this.cssLibs = this.config.get('cssLibs');
+				this.testAndQA = this.config.get('testAndQA');
+				this.testAndQALibs = this.config.get('testAndQALibs');
 				this.pgPackages = this.config.get('pgPackages');
 				this.authorName = this.config.get('author').name;
 				this.authorEmail = this.config.get('author').email;
@@ -257,9 +259,11 @@ module.exports = yeoman.generators.Base.extend({
 			default: this.config.get('cssLibs')
 		});
 
-		(!this.config.get('testAndQA') || this.force) && this.questions.push(
-			testAndQAGenerator.questions.call(this)
-		);
+		if (!this.config.get('testAndQA') || this.force) {
+			this.questions = this.questions.concat(
+				testAndQAGenerator.questions.call(this)
+			);
+		}
 
 		(!this.config.get('pgPackages') || this.force) && this.questions.push({
 			name: 'pgPackages',
