@@ -28,6 +28,9 @@ exports.questions = function () {
 };
 
 exports.setup = function () {
+};
+
+exports.scaffold = function () {
 	this.copy('helpers/task-configs/jscs.airbnb.json');
 
 	if (this.testAndQALibs && this.testAndQALibs.length) {

@@ -62,7 +62,7 @@
 		"gray-matter": "*",
 		"handlebars-helper-autolink": "^0.1.1"<% if(taskRunner.length && taskRunner.indexOf('grunt') != -1) { %>,<% } %><% } %><% if(taskRunner.length) {%><% if (taskRunner.indexOf('grunt') != -1) { %>
 		"grunt": "~0.4.5",<% if (features && features.length) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
-		"grunt-sass": "~0.18.0",<% }} %><% if ((features && features.length && features.indexOf('sassInsteadOfCompass') != -1)) { %>
+		"grunt-sass": "~1.0.0",<% }} %><% if ((features && features.length && features.indexOf('sassInsteadOfCompass') != -1)) { %>
 		"grunt-sass-globber": "^2.0.0",<% } %><% if ((jsLibs && jsLibs.length && jsLibs.indexOf('requirejs') != -1) || (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1)) { %>
 		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features && features.length && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
 		"grunt-contrib-copy": "~0.7.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
