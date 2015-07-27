@@ -4,7 +4,10 @@ var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var pgHelpers = require('../../lib/pg-helpers');
+var taskRunnerGenerator = require('../../generator-files/taskrunner-generator');
+var featuresGenerator = require('../../generator-files/features-generator');
 var jsGenerator = require('../../generator-files/js-generator');
+var cssGenerator = require('../../generator-files/css-generator');
 var testAndQAGenerator = require('../../generator-files/test-and-qa-generator');
 
 module.exports = yeoman.generators.Base.extend({
@@ -186,78 +189,24 @@ module.exports = yeoman.generators.Base.extend({
 			default: this.config.get('projectAuthor')
 		});
 
-		(!this.config.get('taskRunner') || this.force) && this.questions.push({
-			type: 'checkbox',
-			name: 'taskRunner',
-			message: 'Which task runner do you want to use?',
-			choices: [
-				{name: 'Grunt', value: 'grunt'},
-				{name: 'Gulp', value: 'gulp'}
-			],
-			validate: function (answer) {
-				if (answer.length === 0) {
-					return false;
-				} else {
-					return true;
-				}
-			},
-			default: this.config.get('taskRunner')
-		});
+		(!this.config.get('taskRunner') || this.force) && this.questions.push(
+			taskRunnerGenerator.questions.call(this)
+		);
 	},
 
 	_featurePrompts: function () {
 
-		(!this.config.get('features') || this.force) && this.questions.push({
-			name: 'features',
-			type: 'checkbox',
-			message: 'Do you need anything special?',
-			choices: [
-				{
-					name: 'Node-Sass instead of Ruby Sass',
-					value: 'sassInsteadOfCompass',
-					checked: true
-				},
-				{
-					name: 'Dev-Output & Dist-Output?',
-					value: 'createDevFolder',
-					checked: true
-				},
-				{
-					name: 'Create Developer Documentation',
-					value: 'installDocs',
-					checked: false
-				}
-			],
-			default: this.config.get('features')
-		});
-
-		(!this.config.get('jsLibs') || this.force) && this.questions.push(
-			jsGenerator.questions.call(this)
+		(!this.config.get('features') || this.force) && this.questions.push(
+			featuresGenerator.questions.call(this)
 		);
 
-		(!this.config.get('cssLibs') || this.force) && this.questions.push({
-			name: 'cssLibs',
-			type: 'checkbox',
-			message: 'Do you want to use any CSS Frameworks?',
-			choices: [
-				{
-					name: 'Foundation',
-					value: 'foundation',
-					checked: false
-				},
-				{
-					name: 'Bourbon Neat',
-					value: 'neat',
-					checked: false
-				},
-				{
-					name: 'SASS Bootstrap',
-					value: 'sass-bootstrap',
-					checked: false
-				}
-			],
-			default: this.config.get('cssLibs')
-		});
+		(!this.config.get('jsLibs') || this.force) && this.questions.push(
+			cssGenerator.questions.call(this)
+		);
+
+		(!this.config.get('cssLibs') || this.force) && this.questions.push(
+			jsGenerator.questions.call(this)
+		);
 
 		if (!this.config.get('testAndQA') || this.force) {
 			this.questions = this.questions.concat(
@@ -457,8 +406,19 @@ module.exports = yeoman.generators.Base.extend({
 
 	writing: {
 		setup: function () {
+			taskRunnerGenerator.setup.call(this);
+			featuresGenerator.setup.call(this);
 			jsGenerator.setup.call(this);
+			cssGenerator.setup.call(this);
 			testAndQAGenerator.setup.call(this);
+		},
+
+		scaffold: function () {
+			taskRunnerGenerator.scaffold.call(this);
+			featuresGenerator.scaffold.call(this);
+			jsGenerator.scaffold.call(this);
+			cssGenerator.scaffold.call(this);
+			testAndQAGenerator.scaffold.call(this);
 		},
 
 		defaults: function () {
@@ -531,65 +491,6 @@ module.exports = yeoman.generators.Base.extend({
 			}
 		},
 
-		features: function () {
-			if (this.features.indexOf('installDocs') != -1 || this.gruntModules.indexOf('grunt-jsdoc') || this.gulpModules.indexOf('gulp-jsdoc')) {
-				this.copy('helpers/task-configs/jsdoc.conf.json');
-				this.copy('resources/js/README.md');
-			}
-			if (this.features.indexOf('installDocs') != -1) {
-				this.directory('resources/scss/docs', 'resources/scss/docs');
-				this.copy('resources/scss/docs.scss', 'resources/scss/docs.scss');
-				if (this.templateEngine !== '') {
-					this.template('resources/templating/docs/index.hbs.ejs', 'resources/templating/docs/index.hbs');
-				}
-			}
-			// Add Dev Folder
-			if (this.features.indexOf('createDevFolder') != -1) {
-				this.mkdir('_dist');
-			}
-
-			if (this.features.indexOf('installDocs') == -1) delete this.bowerFile['dependencies']['highlightjs'];
-		},
-
-		cssLibs: function () {
-			// Delete CSS packages
-			if (this.cssLibs.indexOf('foundation') == -1) delete this.bowerFile['dependencies']['foundation'];
-			if (this.cssLibs.indexOf('sass-bootstrap') == -1) delete this.bowerFile['dependencies']['sass-bootstrap'];
-			if (this.cssLibs.indexOf('neat') == -1) {
-				delete this.bowerFile['dependencies']['bourbon'];
-				delete this.bowerFile['dependencies']['neat'];
-			}
-		},
-
-		jsLibs: function () {
-			// Bower handling
-			if (this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-				this.gulpModules.indexOf('browserify') !== -1 ||
-				this.gruntModules.indexOf('grunt-contrib-requirejs') === -1) {
-
-				delete this.bowerFile['dependencies']['almond'];
-				delete this.bowerFile['dependencies']['requirejs'];
-				delete this.bowerFile['dependencies']['requirejs-text'];
-			}
-
-			if (this.jsLibs.indexOf('backbone') == -1 ||
-				this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-				this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['backbone'];
-
-			if (this.jsLibs.indexOf('jquery') == -1 ||
-				this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-				this.gulpModules.indexOf('browserify')) delete this.bowerFile['dependencies']['jquery'];
-
-			// Add JS files for libraries
-			if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || this.gulpModules.indexOf('gulp-requirejs-optimize') != -1) {
-				this.template('resources/js/_main.require.js.ejs', 'resources/js/main.js');
-				this.template('resources/js/_app.require.js.ejs', 'resources/js/app.js');
-			} else if (this.gruntModules.indexOf('grunt-browserify') !== -1 || this.gulpModules.indexOf('browserify') !== -1) {
-				this.template('resources/js/_main.browserify.js.ejs', 'resources/js/main.js');
-				this.template('resources/js/_app.browserify.js.ejs', 'resources/js/app.js');
-			}
-		},
-
 		pg: function () {
 			// Add PG methodology
 			if (this.pgPackages && this.pgPackages.length) {
@@ -625,8 +526,6 @@ module.exports = yeoman.generators.Base.extend({
 					this.mkdir('resources/scss/regions');
 				}
 			}
-			if (this.pgPackages.indexOf('pgSCSS') == -1) delete this.bowerFile['dependencies']['pg-scss'];
-			if (this.pgPackages.indexOf('pgJS') == -1) delete this.bowerFile['dependencies']['pg-js'];
 			if (this.pgPackages.indexOf('pgComponents') == -1) delete this.bowerFile['dependencies']['pg-components'];
 		},
 
@@ -742,32 +641,6 @@ module.exports = yeoman.generators.Base.extend({
 				this.copy('resources/js/vendor/loadCSS.js', 'resources/js/vendor/loadCSS.js');
 			}
 		}
-		if (this.features && this.features.length) {
-
-			// Add Libsass
-			if (this.features.indexOf('sassInsteadOfCompass') != -1) {
-				if (this.taskRunner.indexOf('gulp') == -1) {
-					this.template('helpers/_grunt/_sass.js.ejs', 'helpers/_grunt/sass.js');
-					this.template('helpers/_grunt/_sassGlobber.js.ejs', 'helpers/_grunt/sassGlobber.js');
-				}
-			} else {
-				if (this.taskRunner.indexOf('gulp') == -1) {
-					this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
-				}
-				this.copy('config.rb', 'config.rb');
-			}
-
-			// Add copy task
-			if (this.taskRunner.indexOf('grunt') != -1 && (this.features.indexOf('createDevFolder') != -1 || this.features.indexOf('installDocs') != -1)) {
-				this.copy('helpers/_grunt/_copy.js.ejs', 'helpers/_grunt/copy.js');
-			}
-
-		} else {
-			if (this.taskRunner.indexOf('gulp') == -1) {
-				this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
-			}
-			this.copy('config.rb', 'config.rb');
-		}
 	},
 
 	_scaffoldGulp: function () {
@@ -798,9 +671,6 @@ module.exports = yeoman.generators.Base.extend({
 			if (this.gulpModules.indexOf('gulp-iconify') != -1 || this.gulpModules.indexOf('gulp-svg-sprite') != -1) {
 				this.template('helpers/_gulp/_icons.js.ejs', 'helpers/_gulp/icons.js');
 			}
-		}
-		if (this.features.indexOf('sassInsteadOfCompass') == -1) {
-			this.copy('config.rb', 'config.rb');
 		}
 	},
 
