@@ -9,6 +9,7 @@ var featuresGenerator = require('../../generator-files/features-generator');
 var jsGenerator = require('../../generator-files/js-generator');
 var cssGenerator = require('../../generator-files/css-generator');
 var testAndQAGenerator = require('../../generator-files/test-and-qa-generator');
+var templatingGenerator = require('../../generator-files/templating-generator');
 
 module.exports = yeoman.generators.Base.extend({
 
@@ -357,51 +358,11 @@ module.exports = yeoman.generators.Base.extend({
 	},
 
 	_templatePrompts: function () {
-
-		(!this.config.get('templateEngine') || this.force) && this.questions.push({
-			type: 'list',
-			name: 'templateEngine',
-			message: 'Which template engine do you want to install?',
-			choices: [
-				{name: 'Assemble', value: 'assemble'},
-				{name: 'none', value: ''}
-				// {name: 'veams'}
-			],
-			default: 'assemble'
-		});
-
-		this.questions.push({
-			when: function (answers) {
-				return answers.templateEngine.indexOf('assemble') !== -1;
-			},
-			type: 'confirm',
-			message: 'Extended Layout for Assemble?',
-			name: 'installExtendedLayout',
-			default: true
-		});
-
-		this.questions.push({
-			when: function (answers) {
-				return answers.templateEngine.indexOf('assemble') !== -1;
-			},
-			type: 'confirm',
-			name: 'installPlugin',
-			message: 'Do you want to install assemble plugins?',
-			default: this.config.get('installPlugin')
-		});
-		this.questions.push({
-			when: function (answers) {
-				return answers.installPlugin;
-			},
-			name: 'plugin',
-			type: 'checkbox',
-			message: 'Which assemble plugin do you want to use?',
-			choices: [
-				{name: 'assemble-contrib-permalinks'},
-				{name: 'assemble-contrib-sitemap'},
-				{name: 'assemble-related-pages'}
-			]
-		});
+		if (!this.config.get('templateEngine') || this.force) {
+			this.questions = this.questions.concat(
+				templatingGenerator.questions.call(this)
+			);
+		}
 	},
 
 	writing: {
@@ -411,6 +372,7 @@ module.exports = yeoman.generators.Base.extend({
 			jsGenerator.setup.call(this);
 			cssGenerator.setup.call(this);
 			testAndQAGenerator.setup.call(this);
+			templatingGenerator.setup.call(this);
 		},
 
 		scaffold: function () {
@@ -419,6 +381,7 @@ module.exports = yeoman.generators.Base.extend({
 			jsGenerator.scaffold.call(this);
 			cssGenerator.scaffold.call(this);
 			testAndQAGenerator.scaffold.call(this);
+			templatingGenerator.scaffold.call(this);
 		},
 
 		defaults: function () {
@@ -458,37 +421,6 @@ module.exports = yeoman.generators.Base.extend({
 		workflow: function () {
 			if (this.taskRunner.indexOf('gulp') != -1) this._scaffoldGulp();
 			if (this.taskRunner.indexOf('grunt') != -1) this._scaffoldGrunt();
-		},
-
-		templateSystem: function () {
-			// add global assemble files
-			if (this.templateEngine !== '') {
-				this.mkdir('resources/templating');
-				this.copy('resources/templating/data/config.json');
-				this.directory('resources/templating/ajax', 'resources/templating/ajax');
-				this.directory('resources/templating/helpers', 'resources/templating/helpers');
-				this.template('resources/templating/layouts/lyt-default.hbs.ejs', 'resources/templating/layouts/lyt-default.hbs');
-				this.template('resources/templating/pages/index.hbs.ejs', 'resources/templating/pages/index.hbs');
-
-				// Add global partials
-				this.mkdir('resources/templating/partials');
-				this.copy('resources/templating/partials/_global/_metadata.hbs');
-				this.template('resources/templating/partials/_global/_scripts.hbs.ejs', 'resources/templating/partials/_global/_scripts.hbs');
-				this.copy('resources/templating/partials/_global/_styles.hbs', 'resources/templating/partials/_global/_styles.hbs');
-
-				// Add HTML build task for gulp
-				if (this.taskRunner.indexOf('gulp') !== -1) this.template('helpers/_gulp/_html.js.ejs', 'helpers/_gulp/html.js');
-
-				if (this.templateEngine.indexOf('assemble') !== -1) {
-					// Add Gruntfile-helper file
-					this.copy('helpers/_grunt/_assemble.js.ejs', 'helpers/_grunt/assemble.js');
-				}
-
-				if (this.templateEngine.indexOf('veams') !== -1) {
-					// Add Gruntfile-helper file
-					// this.copy('helpers/_grunt/_veams.js.ejs', 'helpers/_grunt/veams.js');
-				}
-			}
 		},
 
 		pg: function () {
