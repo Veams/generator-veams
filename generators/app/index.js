@@ -245,16 +245,6 @@ module.exports = yeoman.generators.Base.extend({
 			templatingGenerator.setup.call(this);
 		},
 
-		scaffold: function () {
-			taskRunnerGenerator.scaffold.call(this);
-			featuresGenerator.scaffold.call(this);
-			jsGenerator.scaffold.call(this);
-			cssGenerator.scaffold.call(this);
-			testAndQAGenerator.scaffold.call(this);
-			pgGenerator.scaffold.call(this);
-			templatingGenerator.scaffold.call(this);
-		},
-
 		defaults: function () {
 			// Standard files
 			this.copy('gitignore', '.gitignore');
@@ -289,7 +279,15 @@ module.exports = yeoman.generators.Base.extend({
 			this.template('resources/scss/_styles.scss.ejs', 'resources/scss/styles.scss');
 		},
 
-		workflow: function () {
+		scaffold: function () {
+			taskRunnerGenerator.scaffold.call(this);
+			featuresGenerator.scaffold.call(this);
+			jsGenerator.scaffold.call(this);
+			cssGenerator.scaffold.call(this);
+			testAndQAGenerator.scaffold.call(this);
+			pgGenerator.scaffold.call(this);
+			templatingGenerator.scaffold.call(this);
+
 			if (this.taskRunner.indexOf('gulp') != -1) gulpGenerator.scaffold.call(this);
 			if (this.taskRunner.indexOf('grunt') != -1) gruntGenerator.scaffold.call(this);
 		},
