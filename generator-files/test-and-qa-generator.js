@@ -28,14 +28,15 @@ exports.questions = function () {
 };
 
 exports.setup = function () {
+	this.testAndQALibs = this.config.get('testAndQALibs') || [];
 };
 
 exports.scaffold = function () {
 	this.copy('helpers/task-configs/jscs.airbnb.json');
 
-	if (this.testAndQALibs && this.testAndQALibs.length) {
-		if (this.testAndQALibs.indexOf('jscs') != -1) {
-			this.copy('helpers/_grunt/jscs.js', 'helpers/_grunt/jscs.js');
-		}
+	if (!this.testAndQALibs && !this.testAndQALibs.length) return;
+
+	if (this.testAndQALibs.indexOf('jscs') != -1) {
+		this.copy('helpers/_grunt/jscs.js', 'helpers/_grunt/jscs.js');
 	}
 };
