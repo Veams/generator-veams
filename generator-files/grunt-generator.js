@@ -39,7 +39,6 @@ exports.questions = function (obj) {
 				{name: 'grunt-postcss-separator'},
 				{name: 'grunt-responsive-images'},
 				{name: 'grunt-svgmin'},
-				{name: 'grunt-ts'},
 				{name: 'grunt-version', checked: object.defaults}
 			],
 			default: this.config.get('gruntModules')
@@ -241,7 +240,7 @@ exports.scaffold = function (obj) {
 		}
 	}
 	if (this.gruntModules.indexOf('grunt-jsdoc') != -1 || (this.features.indexOf('installDocs') != -1)) {
-		this.copy(this.generatorGruntPath + 'jsdoc.js');
+		this.copy(this.generatorGruntPath + 'jsdoc.js', this.gruntPath + 'jsdoc.js');
 
 		if (object.installDeps) {
 			this.npmInstall(['grunt-jsdoc@beta'], {'saveDev': true});
@@ -255,7 +254,7 @@ exports.scaffold = function (obj) {
 		}
 	}
 	if (this.gruntModules.indexOf('grunt-packager') != -1) {
-		this.copy('resources/js/project.jspackcfg');
+		this.copy(this.generatorSrcPath + '/js/project.jspackcfg', this.srcPath + '/js/project.jspackcfg');
 		this.copy(this.generatorGruntPath + 'packager.js', this.gruntPath + 'packager.js');
 
 		if (object.installDeps) {
