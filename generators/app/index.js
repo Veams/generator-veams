@@ -28,7 +28,6 @@ module.exports = yeoman.generators.Base.extend({
 			'bowerrc',
 			'jshintrc'
 		];
-
 		//
 		this.config.defaults({
 			projectName: '',
