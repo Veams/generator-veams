@@ -82,7 +82,7 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 │   │   └───utils
 │   │       ├───extends
 │   │       └───mixins
-│   └───templates
+│   └───templating
 │       ├───data
 │       ├───helpers
 │       ├───layouts
@@ -94,11 +94,11 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 
 ## Task Runners
 
-PG supports `Grunt` and/or `Gulp` as task runner. 
+PG supports `Grunt` and/or `Gulp` as task runner. Our primary task runner is `Grunt`, so when you have some ideas to improve our `Gulp` workflow just open an issue. 
 
 ### Grunt
 
-For Grunt and our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split up the file in multiple task files. 
+For Grunt and our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split up the file in multfniple task files. 
 You can find these task files in the following directory:
 
  * helpers/_grunt
@@ -107,13 +107,14 @@ You can find these task files in the following directory:
 
 There are standard grunt modules we use. These are:
 
- * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) - Clean your directories.
- * [grunt-concurrent](https://github.com/sindresorhus/grunt-concurrent) - Run grunt tasks concurrently .
- * [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin) - Minify your CSS.
- * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint) - Check your html for errors.
- * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint) - Check your js for errors.
- * [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier) - Format your js and html files.
  * [grunt-combine-mq](https://github.com/frontendfriends/grunt-combine-mq) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module
+ * [grunt-concurrent](https://github.com/sindresorhus/grunt-concurrent) - Run grunt tasks concurrently .
+ * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) - Clean your directories.
+ * [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin) - Minify your CSS.
+ * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint) - Check your js for errors.
+ * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint) - Check your html for errors.
+ * [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier) - Format your js and html files.
+ * [grunt-sass-globber](https://github.com/Sebastian-Fitzner/grunt-sass-globber) - This module provides a simple globbing functionality for sass files like the ruby gem sass-globbing.
  * [jit-grunt](https://github.com/shootaroo/jit-grunt) - A JIT(Just In Time) plugin loader for Grunt.
  * [time-grunt](https://github.com/sindresorhus/time-grunt) - Displays the execution time of grunt tasks.
  
@@ -124,6 +125,7 @@ _But you can also apply additional addons and gulp modules to your project. Just
  * [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer) - Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the Can I Use database.
  * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
  * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices
+ * [grunt-browserify](https://github.com/jmreidy/grunt-browserify) - Use a node-style require() to organize your browser code and load modules installed by npm.
  * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods
  * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass) - Come on, use Node-SASS ...
  * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) - Minify your HTML files.
