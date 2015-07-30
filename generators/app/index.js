@@ -287,8 +287,8 @@ module.exports = yeoman.generators.Base.extend({
 			pgGenerator.scaffold.call(this);
 			templatingGenerator.scaffold.call(this);
 
-			if (this.taskRunner.indexOf('gulp') != -1) gulpGenerator.scaffold.call(this);
-			if (this.taskRunner.indexOf('grunt') != -1) gruntGenerator.scaffold.call(this);
+			if (this.taskRunner.indexOf('gulp') !== -1) gulpGenerator.scaffold.call(this);
+			if (this.taskRunner.indexOf('grunt') !== -1) gruntGenerator.scaffold.call(this);
 		},
 
 		bower: function () {
