@@ -212,7 +212,7 @@ exports.scaffold = function (obj) {
 		if (object.installDeps) {
 			this.npmInstall(['grunt-dr-svg-sprites'], {'saveDev': true});
 
-			console.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n') +
+			this.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n') +
 				chalk.yellow('\n "svg-sprites": "grunt-dr-svg-sprites"') + ('\n') +
 				chalk.bgRed('\n Please add the following lines to your Gruntfile.js to your custom tasks:') + ('\n') +
 				chalk.yellow('\n grunt.registerTask(\'sprites\', [') +

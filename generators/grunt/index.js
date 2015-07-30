@@ -37,7 +37,7 @@ module.exports = yeoman.generators.Base.extend({
 
 	// Custom prompts routine
 	prompting: function () {
-		console.log(
+		this.log(
 			('\n') + chalk.bgMagenta('Install your grunt modules') + ('\n') +
 			('\n') + chalk.magenta('* Be sure you know what you do') +
 			('\n') + chalk.magenta('Additional add your custom grunt task in your Gruntfile.js') + ('\n')
