@@ -240,9 +240,9 @@ We integrated some sub generators for you:
 You forgot a grunt module?
 * Install further grunt modules: `yo prototype:grunt`
 
-### Assemble Helpers:
-You want to install assemble helpers? 
-* Here you go: `yo prototype:assemble`
+### Handlebars Template Helpers:
+You want to install custom handlebars helpers for templating from `PG`? 
+* Here you go: `yo prototype:templating`
 
 ### BackboneJS:
  * Create a Backbone Model: `yo prototype:bm`
