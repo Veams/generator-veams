@@ -9,7 +9,7 @@ module.exports = yeoman.generators.Base.extend({
 		var cb = this.async();
 
 		this.log(
-			('\n') + chalk.bgMagenta('Install Assemble Helpers') + ('\n')
+			('\n') + chalk.bgMagenta('Install Template Helpers') + ('\n')
 		);
 
 		var questions = [];
@@ -19,11 +19,7 @@ module.exports = yeoman.generators.Base.extend({
 		);
 
 		this.prompt(questions, function (props) {
-			this.helperPath = props.helperPath;
-			this.assembleHelperFiles = props.assembleHelperFiles;
-
-			//save config to .yo-rc.json
-			this.config.set(props);
+			hbsHelpersGenerator.prompts.call(this, props);
 			cb();
 		}.bind(this));
 	},
