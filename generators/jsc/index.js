@@ -12,7 +12,7 @@ module.exports = yeoman.generators.Base.extend({
 		var cb = this.async();
 
 		console.log(
-			('\n') + chalk.bgGreen('Generate your Backbone View') + ('\n')
+			('\n') + chalk.bgCyan('Generate your JS Collection') + ('\n')
 		);
 
 		var prompts = [
@@ -23,42 +23,32 @@ module.exports = yeoman.generators.Base.extend({
 			},
 			{
 				name: 'path',
-				message: 'Where would you like to place your View? root -> js/'
+				message: 'Where would you like to place your Collection? root -> js/'
 			},
 			{
 				name: 'initName',
-				message: 'What do you want to name your View?',
-				default: 'product'
-			}, {
-				type: 'confirm',
-				name: 'tpl',
-				message: 'Would you like to create a template with your View?',
-				default: false
+				message: 'What do you want to name your Collection?',
+				default: 'Data'
 			}
 		];
 
 		this.prompt(prompts, function (props) {
 			this.initName = props.initName;
+			this.collection = props.collection;
 			this.srcPath = pg.cleanupPath(props.srcPath);
 			this.path = pg.cleanupPath(props.path);
-			this.tpl = props.tpl;
 
 			cb();
 		}.bind(this));
 	},
 
 	/**
-	 * File generation
+	 * Grunt modules file generation
 	 *
 	 */
 	writing: {
-		placeView: function () {
-			this.template('_View.js.ejs', this.srcPath + 'js/' + this.path + this.initName + 'View.js');
-		},
-		placeTpl: function () {
-			if (this.tpl) {
-				this.template('_Template.html', this.srcPath + 'js/' + this.path + this.initName + '.html');
-			}
+		placeCollection: function () {
+			this.template('_Collection.js.ejs', this.srcPath + 'js/' + this.path + this.initName + 'Collection.js');
 		}
 	}
 });

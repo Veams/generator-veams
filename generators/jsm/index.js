@@ -12,16 +12,16 @@ module.exports = yeoman.generators.Base.extend({
 		var cb = this.async();
 
 		console.log(
-			('\n') + chalk.bgMagenta('Generate your Backbone Model') + ('\n')
+			('\n') + chalk.bgMagenta('Generate your JS Model') + ('\n')
 		);
 
 		var prompts = [{
 			name: "srcPath",
-			message: "Where do you have your source files?",
-			default: "resources"
+			message: "Where do you have your JS files?",
+			default: "resources/js"
 		}, {
 			name: 'path',
-			message: 'Where would you like to place your Model? root -> js/',
+			message: 'Where would you like to place your Model?',
 			default: 'models'
 		}, {
 			name: 'initName',
@@ -50,11 +50,11 @@ module.exports = yeoman.generators.Base.extend({
 	 */
 	writing: {
 		placeModel: function () {
-			this.template('_Model.js.ejs', this.srcPath + 'js/' + this.path + this.initName + 'Model.js');
+			this.template('_Model.js.ejs', this.srcPath + '/' + this.path + this.initName + 'Model.js');
 		},
 		placeCollection: function () {
 			if (this.collection) {
-				this.template('_Collection.js.ejs',  this.srcPath + 'js/' + this.path + this.initName + 'Collection.js');
+				this.template('_Collection.js.ejs',  this.srcPath + '/' + this.path + this.initName + 'Collection.js');
 			}
 		}
 	}

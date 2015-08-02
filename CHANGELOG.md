@@ -1,3 +1,26 @@
+### v6.0.0
+
+**General**
+- refactored prompts
+- added new structure to use separate generator files
+- updated packages
+- added testing
+
+**Task Runners**
+- added first gulp support
+- added new structure to use gulp and grunt at the same time
+
+**JS**
+- added browserify
+- added ESHarmony 
+
+**Templating**
+- added new helpers for handlebars templating 
+
+**CSS and Icons**
+- deleted compass 
+- added @root to svg-sprites templates
+
 ### v0.5.8
 - changed resources folder structure: data folder is located in templates
 - changed watch task

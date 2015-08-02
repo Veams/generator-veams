@@ -165,9 +165,6 @@ There are standard Gulp modules we use. These are:
 
 _But you can also apply additional addons and gulp modules to your project. Just choose specific ones:_
 
-
-
-
 ### Gulp And Grunt 
 
 When you want to use both at the same time, do it to your own risk. You will probably have to change a few settings. 
@@ -238,24 +235,15 @@ You forgot a grunt module?
 You want to install custom handlebars helpers for templating from `PG`? 
 * Here you go: `yo prototype:templating`
 
-### BackboneJS:
- * Create a Backbone Model: `yo prototype:bm`
- * Create a Backbone View: `yo prototype:bv`
- * Create a Backbone Collection: `yo prototype:bc`
+### Backbone|Exoskeleton|Ampersand:
+ * Create a Backbone|Exoskeleton|Ampersand Model: `yo prototype:jsm`
+ * Create a Backbone|Exoskeleton|Ampersand View: `yo prototype:jsv`
+ * Create a Backbone|Exoskeleton|Ampersand Collection: `yo prototype:jsc`
 
 Others will follow.
 
-## Developer Documentation
-PG provides a way to document your assemble modules via markdown and a separate docs folder. 
-Just use the custom installation route and check `Create Developer Documentation`.
-
-## Alternative
-* [generator-assemble](https://github.com/assemble/generator-assemble)
-
 ## Release History
 see: [Changelog.md](CHANGELOG.md)
-
-[![NPM](https://nodei.co/npm-dl/generator-prototype.png?height=3)](https://nodei.co/npm/generator-prototype/)
 
 ## TODO: 
 - Own template wrapper for handlebars
