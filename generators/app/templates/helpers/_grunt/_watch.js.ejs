@@ -35,7 +35,7 @@ module.exports = {
 			'!<%%= paths.src %>/assets/img/svgmin/**/*'<% }} %><% }} %>
 			],
 		tasks: 'sync:assets'
-	}<% if (features && features.length) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>,
+	},
 	scss: {
 		files: '<%%= paths.src %>/scss/**/*',
 		tasks: 'sass:dev'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
@@ -50,7 +50,7 @@ module.exports = {
 	scssDocs: {
 		files: '<%%= paths.src %>/scss/docs/*',
 		tasks: 'sass:docs'
-	}<% } %><% }} %><% if(templateEngine.indexOf('assemble') != -1){ %>,
+	}<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>,
 	templating: {
 		files: ['<%%= paths.src %>/{templating/data,templating/layouts,templating/partials}/**/{,*/}*.{md,hbs,json}'],
 	    tasks: ['newer:assemble']<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
