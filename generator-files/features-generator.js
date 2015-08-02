@@ -1,4 +1,3 @@
-var libassId = 'sassInsteadOfCompass';
 var devFolderId = 'createDevFolder';
 var docsId = 'installDocs';
 
@@ -8,11 +7,6 @@ exports.questions = function () {
 		type: 'checkbox',
 		message: 'Do you need anything special?',
 		choices: [
-			{
-				name: 'Node-Sass instead of Ruby Sass',
-				value: libassId,
-				checked: true
-			},
 			{
 				name: 'Dev-Output & Dist-Output?',
 				value: devFolderId,
@@ -62,23 +56,13 @@ exports.scaffold = function () {
 	if (this.taskRunner.indexOf('grunt') !== -1) {
 
 		// Add Libsass
-		if (this.features.indexOf('sassInsteadOfCompass') != -1) {
-			this.template('helpers/_grunt/_sass.js.ejs', 'helpers/_grunt/sass.js');
-			this.template('helpers/_grunt/_sassGlobber.js.ejs', 'helpers/_grunt/sassGlobber.js');
-		} else {
-			this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
-			this.copy('config.rb', 'config.rb');
-		}
+		this.template('helpers/_grunt/_sass.js.ejs', 'helpers/_grunt/sass.js');
+		this.template('helpers/_grunt/_sassGlobber.js.ejs', 'helpers/_grunt/sassGlobber.js');
 
 		// Add copy task
 		if (this.taskRunner.indexOf('grunt') !== -1 && (this.features.indexOf('createDevFolder') != -1 || this.features.indexOf('installDocs') != -1)) {
 			this.copy('helpers/_grunt/_copy.js.ejs', 'helpers/_grunt/copy.js');
 		}
 
-	} else {
-		if (this.taskRunner.indexOf('gulp') == -1) {
-			this.copy('helpers/_grunt/bgShell.js', 'helpers/_grunt/bgShell.js');
-		}
-		this.copy('config.rb', 'config.rb');
 	}
 };

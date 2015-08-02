@@ -15,9 +15,6 @@
 * Node.js & Node Package Manager
 * Grunt Command Line Interface – npm install -g grunt-cli
 
-**Optional Use of Ruby (SASS & Compass)**
-* SASS 3.4 and Compass 1 (because of Source Maps)
-
 ### Installation 
 
 - Install Yeoman:
@@ -127,7 +124,6 @@ _But you can also apply additional addons and gulp modules to your project. Just
  * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices
  * [grunt-browserify](https://github.com/jmreidy/grunt-browserify) - Use a node-style require() to organize your browser code and load modules installed by npm.
  * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods
- * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass) - Come on, use Node-SASS ...
  * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) - Minify your HTML files.
  * [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) - Optimize RequireJS projects using r.js.
  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify) - Minify files with UglifyJS.
@@ -142,7 +138,6 @@ _But you can also apply additional addons and gulp modules to your project. Just
  * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) - Take snapshots from homepage
  * [grunt-postcss-separator](https://github.com/Sebastian-Fitzner/grunt-postcss-separator) - Split up your Data-URI or anything else into a separate CSS file.
  * [grunt-responsive-images](https://github.com/andismith/grunt-responsive-images) - Produces images at different sizes (be sure you have installed GraphicsMagick)
- * [grunt-sass](https://github.com/sindresorhus/grunt-sass) - You want to use Libsass instead of Compass to render your stylesheets 10 times faster? Here you go! (see _Features_)
  * [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin) - Minify SVG using SVGO.
  * [grunt-version](https://github.com/kswedberg/grunt-version) - Grunt task to handle versioning of a project.
 
@@ -204,7 +199,6 @@ You want to know more? See [PG Custom Helpers](http://prototype-generator.com/te
 ## Features
 PG supports different features. Just check/uncheck them in the __custom installation routine__:
 
-* You want to use Libsass instead of Ruby to compile SASS files? - Check!
 * You want to add a separate distribution folder? - Check!
 * You want to add a CSS Styleguide and Assemble Development Documentation? - Check! (See "Developer Documentation")
 
@@ -240,9 +234,9 @@ We integrated some sub generators for you:
 You forgot a grunt module?
 * Install further grunt modules: `yo prototype:grunt`
 
-### Assemble Helpers:
-You want to install assemble helpers? 
-* Here you go: `yo prototype:assemble`
+### Handlebars Template Helpers:
+You want to install custom handlebars helpers for templating from `PG`? 
+* Here you go: `yo prototype:templating`
 
 ### BackboneJS:
  * Create a Backbone Model: `yo prototype:bm`

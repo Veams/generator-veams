@@ -38,21 +38,12 @@ module.exports = function(grunt) {
 	/*
 	 *	SIMPLE TASKS
 	 */
-	<% if(features && features.indexOf('sassInsteadOfCompass') != -1) { %>
+
 	// SASS Task
 	grunt.registerTask('watchCSS', [
-		'sassGlobber:dev', // Sass Globbing with Grunt (see: http://www.prototype-generator.com/getting-started/features.html)
+		'sassGlobber:dev',
 		'sass:dev'
-	]); <% } else { %>
-	grunt.registerTask('cssDev', [
-		'bgShell:devCompass'
-	]);
-	grunt.registerTask('watchCSS', [
-		'bgShell:watchCompass'
-	]);
-	grunt.registerTask('cssProd', [
-		'bgShell:prodCompass'
-	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-grunticon') != -1) { %>
+	]);<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-grunticon') != -1) { %>
 	
 	// Icons Task
 	grunt.registerTask('icons', [<% if (gruntModules && gruntModules.indexOf('grunt-svgmin') != -1) { %>
@@ -131,7 +122,7 @@ module.exports = function(grunt) {
 		'jscs',<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 		'newer:assemble',<% } %>
 		'concurrent:syncing',
-		'watchCSS'<% if (features && features.length && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>,
+		'watchCSS'<% if (features && features.length && features.indexOf('installDocs') != -1) { %>,
 		'sass:docs'<% } %><% if(gruntModules && gruntModules.length){ if(gruntModules.indexOf('grunt-browser-sync') == -1) { %>,
 		'connect:livereload',<% }} if(gruntModules && gruntModules.length){ %><% if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) { if(name == 'grunt-browser-sync') { %>,
 		// 'connect:livereload',
@@ -155,11 +146,10 @@ module.exports = function(grunt) {
 		'browserify:dist',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-uglify') != -1) { %>
 		'uglify',<% }} %>
 		'concurrent:syncing', <% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-csscomb') != -1) { %>
-		'beauty-scss',<% }} %> <% if(features && features.length){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
-		'watchCSS',
-		'sass:universal',<% } else { %>
-		'cssProd',<% }} else { %>
-		'cssProd',<% } %><% if (features && features.length && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>
+		'beauty-scss',<% }} %>
+		'sassGlobber:dist',
+		'sass:dist',
+		'sass:universal',<% if (features && features.length && features.indexOf('installDocs') != -1) { %>
 		'sass:docs',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-combine-mq') != -1) { %>
 		'combine_mq',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-postcss-separator') != -1) { %>
 		'postcssSeparator',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-autoprefixer') != -1) { %>
