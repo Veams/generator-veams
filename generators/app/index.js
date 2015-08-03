@@ -1,5 +1,4 @@
 'use strict';
-var util = require('util');
 var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
@@ -53,12 +52,7 @@ module.exports = yeoman.generators.Base.extend({
 			pgPackages: [],
 			installProxy: false,
 			proxyHost: '0.0.0.0 ',
-			proxyPort: 80,
-			author: {
-				name: '',
-				login: '',
-				email: ''
-			}
+			proxyPort: 80
 		});
 	},
 
@@ -105,7 +99,7 @@ module.exports = yeoman.generators.Base.extend({
 					('\n') + chalk.bgCyan('Standard installation routine selected.') + ('\n')
 				);
 				this.projectName = this.config.get('projectName');
-				this.authorLogin = this.config.get('projectAuthor');
+				this.authorName = this.config.get('projectAuthor');
 				this.taskRunner = this.config.get('taskRunner');
 				this.templateEngine = this.config.set('templateEngine', 'assemble');
 				this.installExtendedLayout = this.config.set('installExtendedLayout', true);
@@ -118,8 +112,6 @@ module.exports = yeoman.generators.Base.extend({
 				this.testAndQA = this.config.get('testAndQA');
 				this.testAndQALibs = this.config.get('testAndQALibs');
 				this.pgPackages = this.config.get('pgPackages');
-				this.authorName = this.config.get('author').name;
-				this.authorEmail = this.config.get('author').email;
 				this.proxyHost = this.config.get('proxyHost');
 				this.proxyPort = this.config.get('proxyPort');
 
@@ -147,10 +139,8 @@ module.exports = yeoman.generators.Base.extend({
 		this._prompts();
 
 		this.prompt(this.questions, function (answers) {
-			this.authorName = this.config.get('author').name;
-			this.authorEmail = this.config.get('author').email;
+			this.authorName = answers.projectAuthor || this.config.get('projectAuthor');
 			this.projectName = answers.projectName || this.config.get('projectName');
-			this.authorLogin = answers.projectAuthor || this.config.get('projectAuthor');
 			this.taskRunner = answers.taskRunner;
 			this.gulpModules = answers.gulpModules || this.config.get('gulpModules');
 			this.gruntModules = answers.gruntModules || this.config.get('gruntModules');
