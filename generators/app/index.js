@@ -3,6 +3,7 @@ var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var pgHelpers = require('../../lib/pg-helpers');
+var configFile = require('../../generator-files/config');
 var taskRunnerGenerator = require('../../generator-files/taskrunner-generator');
 var featuresGenerator = require('../../generator-files/features-generator');
 var jsGenerator = require('../../generator-files/js-generator');
@@ -27,33 +28,8 @@ module.exports = yeoman.generators.Base.extend({
 			'bowerrc',
 			'jshintrc'
 		];
-		//
-		this.config.defaults({
-			projectName: '',
-			projectAuthor: '',
-			taskRunner: [
-				'grunt'
-			],
-			templateEngine: '',
-			installExtendedLayout: false,
-			installPlugin: false,
-			gulpModules: [],
-			gruntModules: [
-				'grunt-combine-mq',
-				'grunt-dr-svg-sprites'
-			],
-			features: [
-				'sassInsteadOfCompass'
-			],
-			jsLibs: [],
-			cssLibs: [],
-			testAndQA: false,
-			testAndQALibs: [],
-			pgPackages: [],
-			installProxy: false,
-			proxyHost: '0.0.0.0 ',
-			proxyPort: 80
-		});
+
+		this.config.defaults(configFile.setup.empty);
 	},
 
 	selectRoutine: function () {
@@ -100,12 +76,17 @@ module.exports = yeoman.generators.Base.extend({
 				);
 				this.projectName = this.config.get('projectName');
 				this.authorName = this.config.get('projectAuthor');
-				this.taskRunner = this.config.get('taskRunner');
+				this.taskRunner = this.config.set('taskRunner', [
+					'grunt'
+				]);
 				this.templateEngine = this.config.set('templateEngine', 'assemble');
 				this.installExtendedLayout = this.config.set('installExtendedLayout', true);
 				this.plugin = this.config.get('plugin');
 				this.gulpModules = this.config.get('gulpModules');
-				this.gruntModules = this.config.get('gruntModules');
+				this.gruntModules = this.config.set('gruntModules', [
+					'grunt-combine-mq',
+					'grunt-dr-svg-sprites'
+				]);
 				this.features = this.config.get('features');
 				this.jsLibs = this.config.get('jsLibs');
 				this.cssLibs = this.config.get('cssLibs');
