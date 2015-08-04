@@ -1,38 +1,15 @@
 'use strict';
-var util = require('util');
 var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var gruntGenerator = require('../../generator-files/grunt-generator');
+var configFile = require('../../generator-files/config');
 
 module.exports = yeoman.generators.Base.extend({
 
 	// Initialize general settings and store some files
 	initializing: function () {
-		this.config.defaults({
-			taskRunner: [
-				'grunt'
-			],
-			templateEngine: '',
-			installExtendedLayout: false,
-			installPlugin: false,
-			gulpModules: [],
-			gruntModules: [],
-			features: [],
-			jsLibs: [],
-			cssLibs: [],
-			testAndQA: false,
-			testAndQALibs: [],
-			pgPackages: [],
-			installProxy: false,
-			proxyHost: '0.0.0.0 ',
-			proxyPort: 80,
-			author: {
-				name: "",
-				login: "",
-				email: ""
-			}
-		});
+		this.config.defaults(configFile.setup.empty);
 	},
 
 	// Custom prompts routine
@@ -79,10 +56,10 @@ module.exports = yeoman.generators.Base.extend({
 			this.srcPath = answers.srcPath;
 
 			this.projectName = this.config.get('projectName');
-			this.authorLogin = this.config.get('projectAuthor');
+			this.authorName = this.config.get('projectAuthor');
 			this.taskRunner = this.config.get('taskRunner');
-			this.templateEngine = this.config.set('templateEngine', 'assemble');
-			this.installExtendedLayout = this.config.set('installExtendedLayout', true);
+			this.templateEngine = this.config.get('templateEngine');
+			this.installExtendedLayout = this.config.get('installExtendedLayout');
 			this.plugin = this.config.get('plugin');
 			this.gulpModules = this.config.get('gulpModules');
 			this.gruntModules = answers.gruntModules || this.config.get('gruntModules');
@@ -92,8 +69,6 @@ module.exports = yeoman.generators.Base.extend({
 			this.testAndQA = this.config.get('testAndQA');
 			this.testAndQALibs = this.config.get('testAndQALibs');
 			this.pgPackages = this.config.get('pgPackages');
-			this.authorName = this.config.get('author').name;
-			this.authorEmail = this.config.get('author').email;
 			this.proxyHost = this.config.get('proxyHost');
 			this.proxyPort = this.config.get('proxyPort');
 
