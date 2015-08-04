@@ -57,10 +57,10 @@ module.exports = function(grunt) {
 	grunt.registerTask('icons', [
 		'dr-svg-sprites',
 		'replace:spriteUrl'
-	]); <% } %><% if ((gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1 || gruntModules.indexOf('grunt-browserify') != -1)) || jsLibs.indexOf('requirejs') != -1) { %>
+	]); <% } %><% if ((gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1 || gruntModules.indexOf('grunt-browserify') != -1))) { %>
 	
 	// JS Task
-	grunt.registerTask('js', [<% if(gruntModules.indexOf('grunt-packager') != -1) { %>
+	grunt.registerTask('jsDev', [<% if(gruntModules.indexOf('grunt-packager') != -1) { %>
 		'packager'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
 		'requirejs:dev'<% } %><% if(gruntModules.indexOf('grunt-browserify') != -1) { %>
 		'browserify:vendor',
@@ -117,8 +117,8 @@ module.exports = function(grunt) {
 	 *  You have chosen Gulp and Grunt as task runners.
 	 *  Please define all your advanced tasks in Gulp or set your own grunt tasks here. <% } %>
 	 */<% if (taskRunner.indexOf('gulp') == -1) { %>
-	grunt.registerTask('server', [<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1)) {  %>
-		'js',<% } %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
+	grunt.registerTask('server', [<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1 || gruntModules.indexOf('grunt-browserify') != -1)) {  %>
+		'jsDev',<% } %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
 		'jscs',<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 		'newer:assemble',<% } %>
 		'concurrent:syncing',
