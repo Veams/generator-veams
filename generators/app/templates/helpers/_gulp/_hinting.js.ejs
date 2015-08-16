@@ -1,4 +1,5 @@
 var config = require('../config');
+var path = config.options.paths;
 var gulp = require('gulp');<% if (gulpModules && gulpModules.indexOf('gulp-htmlhint') !== -1) { %>
 var htmlhint = require('gulp-htmlhint');<% } %><% if (gulpModules && gulpModules.indexOf('gulp-jshint') !== -1) { %>
 var jshint = require('gulp-jshint');
@@ -6,7 +7,7 @@ var stylish = require('jshint-stylish');<% } %>
 <% if (gulpModules && gulpModules.indexOf('gulp-htmlhint') !== -1) { %>
 // HTML Hinting Task
 gulp.task('html-hint', function () {
-	return gulp.src(config.options.paths.dev + '/*.html')
+	return gulp.src(path.dev + '/*.html')
 		.pipe(htmlhint({ // Want to know what configurations are available? http://htmlhint.com/
 				force: true,
 				'attr-lowercase': true,
@@ -30,7 +31,7 @@ gulp.task('html-hint', function () {
 <% if (gulpModules && gulpModules.indexOf('gulp-jshint') !== -1) { %>
 // JS Hinting Task
 gulp.task('js-hint', function () {
-	return gulp.src(config.options.paths.src + '/js/**/*.js')
+	return gulp.src(path.src + '/js/**/*.js')
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish));
 });<% } %>
