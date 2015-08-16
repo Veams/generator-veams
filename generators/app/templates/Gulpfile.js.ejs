@@ -1,9 +1,9 @@
 var config = require('./helpers/config');
 var gulp = require('gulp');
+var requireDir = require('require-dir');
 var dir = requireDir(config.options.paths.tasks);
 var runSequence = require('run-sequence').use(gulp);
 
-require('require-dir');
 <% if (taskRunner && taskRunner.indexOf('grunt') !== -1) { %>
 require('gulp-grunt')(gulp); // add all the gruntfile tasks to gulp<% } %>
 // Default task
