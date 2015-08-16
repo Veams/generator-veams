@@ -68,8 +68,8 @@ exports.scaffold = function () {
 	// Bower handling
 	if (this.gruntModules.indexOf('grunt-browserify') !== -1 ||
 		this.gulpModules.indexOf('browserify') !== -1 ||
-		this.gruntModules.indexOf('grunt-contrib-requirejs') === -1) {
-
+		this.taskRunner.indexOf('gulp') !== -1 && this.gulpModules.indexOf('gulp-requirejs-optimize') === -1 ||
+		this.taskRunner.indexOf('grunt') !== -1 && this.gruntModules.indexOf('grunt-contrib-requirejs') === -1) {
 		delete this.bowerFile['dependencies']['almond'];
 		delete this.bowerFile['dependencies']['requirejs'];
 		delete this.bowerFile['dependencies']['requirejs-text'];
