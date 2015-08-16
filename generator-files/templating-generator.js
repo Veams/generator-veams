@@ -4,6 +4,11 @@ var gulpId = 'gulp';
 exports.questions = function () {
 	return [
 		{
+			when: function (answers) {
+				return answers.taskRunner
+					&& answers.taskRunner.length
+					&& answers.taskRunner.indexOf('gulp') === -1;
+			},
 			type: 'list',
 			name: 'templateEngine',
 			message: 'Which template engine do you want to install?',

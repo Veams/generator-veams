@@ -22,16 +22,7 @@ gulp.task('serve', ['sass-globbing', 'styles'], function () {
 	});
 
 	// SCSS
-	gulp.watch(config.options.paths.src + "/scss/**/*.scss", ['styles']);<% if (templateEngine.indexOf('assemble') != -1) { %>
-
-	// HTML
-	gulp.watch([
-			config.options.paths.src + "/templating/data/**/*.json",
-			config.options.paths.src + "/templating/pages/**/*.hbs",
-			config.options.paths.src + "/templating/layouts/**/*.hbs",
-			config.options.paths.src + "/templating/partials/**/*.hbs"],
-		['grunt-build-html']
-	);<% } %>
+	gulp.watch(config.options.paths.src + "/scss/**/*.scss", ['styles']);
 
 	// JS
 	gulp.watch([
@@ -60,8 +51,7 @@ gulp.task('build', function(callback) {
 		],
 		'styles-dist',<% if (gulpModules && (gulpModules.indexOf('gulp-requirejs-optimize') !== -1 || gulpModules.indexOf('browserify') !== -1)) { %>
 		'scripts',<% } else { %>
-		'copy:js',<% } %><% if (templateEngine.indexOf('assemble') != -1) { %>
-		'grunt-build-html',<% } %><% if (gulpModules && gulpModules.indexOf('gulp-htmlhint') !== -1) { %>
+		'copy:js',<% } %><% if (gulpModules && gulpModules.indexOf('gulp-htmlhint') !== -1) { %>
 		'html-hint',<% } %><% if (gulpModules && gulpModules.indexOf('gulp-jshint') !== -1) { %>
 		'js-hint',<% } %>
 		callback

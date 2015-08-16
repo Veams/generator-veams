@@ -5,7 +5,7 @@ var size = require('gulp-filesize');<% if (gulpModules && gulpModules.indexOf('g
 var htmlmin = require('gulp-htmlmin');<% } %>
 
 // HTML Hinting Task
-gulp.task('html-build', <% if (templateEngine.indexOf('assemble') != -1) { %>['grunt-build-html'],<% } %> function () {
+gulp.task('html-build', function () {
 	return gulp.src(path.dev + '/*.html')<% if (gulpModules && gulpModules.indexOf('gulp-htmlmin') !== -1) { %>
 		.pipe(htmlmin({
 			removeComments: false,
