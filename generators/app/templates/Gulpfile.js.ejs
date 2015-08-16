@@ -15,7 +15,7 @@ gulp.task('default', function () {
  * Static Server
  *
  */
-gulp.task('serve', ['styles'], function () {
+gulp.task('serve', ['sass-globbing', 'styles'], function () {
 
 	config.server({
 		server: config.options.paths.dev

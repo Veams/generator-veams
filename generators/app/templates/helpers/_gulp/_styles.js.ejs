@@ -1,5 +1,5 @@
 var config = require('../config');
-var path = path;
+var path = config.options.paths;
 var server = config.server;
 var size = require('gulp-filesize');
 var gulp = require('gulp');
@@ -22,9 +22,11 @@ function globSassFiles(mode) {
 	});
 }
 
+// Globbing task with watcher
+gulp.task('sass-globbing', globSassFiles(true));
+
 // Dev Styles Task
 gulp.task('styles', function () {
-	globSassFiles(true);
 	return gulp.src(path.src + '/scss/styles.tmp.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass())
