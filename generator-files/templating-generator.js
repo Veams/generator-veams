@@ -21,7 +21,9 @@ exports.questions = function () {
 		},
 		{
 			when: function (answers) {
-				return answers.templateEngine.indexOf('assemble') !== -1;
+				return answers.templateEngine
+					&& answers.templateEngine.length
+					&& answers.templateEngine.indexOf('assemble') !== -1;
 			},
 			type: 'confirm',
 			message: 'Extended Layout for Assemble?',
@@ -30,7 +32,9 @@ exports.questions = function () {
 		},
 		{
 			when: function (answers) {
-				return answers.templateEngine.indexOf('assemble') !== -1;
+				return answers.templateEngine
+					&& answers.templateEngine.length
+					&& answers.templateEngine.indexOf('assemble') !== -1;
 			},
 			type: 'confirm',
 			name: 'installPlugin',
@@ -39,7 +43,9 @@ exports.questions = function () {
 		},
 		{
 			when: function (answers) {
-				return answers.installPlugin;
+				return answers.templateEngine
+					&& answers.templateEngine.length
+					&& answers.installPlugin;
 			},
 			name: 'plugin',
 			type: 'checkbox',
@@ -54,12 +60,12 @@ exports.questions = function () {
 };
 
 exports.setup = function () {
-	this.templateEngine = this.config.get('templateEngine') || [];
+	this.templateEngine = this.config.get('templateEngine') || '';
 };
 
 exports.scaffold = function () {
 	// add global assemble files
-	if (this.templateEngine !== '') {
+	if (this.templateEngine && this.templateEngine !== '') {
 		this.mkdir('resources/templating');
 		this.copy('resources/templating/data/config.json');
 		this.directory('resources/templating/ajax', 'resources/templating/ajax');
