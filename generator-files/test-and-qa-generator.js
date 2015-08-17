@@ -3,6 +3,11 @@ var jscsId = 'jscs';
 exports.questions = function () {
 	return [
 		{
+			when: function (answers) {
+				return answers.taskRunner
+					&& answers.taskRunner.length
+					&& answers.taskRunner.indexOf('gulp') === -1;
+			},
 			name: 'testAndQA',
 			type: 'confirm',
 			message: 'Would you like to add testing and qa?',
@@ -32,11 +37,10 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-	this.copy('helpers/task-configs/jscs.airbnb.json');
-
 	if (!this.testAndQALibs && !this.testAndQALibs.length) return;
 
-	if (this.testAndQALibs.indexOf('jscs') != -1) {
+	if (this.taskRunner.indexOf('gulp') === -1 && this.testAndQALibs.indexOf('jscs') != -1) {
+		this.copy('helpers/task-configs/jscs.airbnb.json');
 		this.copy('helpers/_grunt/jscs.js', 'helpers/_grunt/jscs.js');
 	}
 };
