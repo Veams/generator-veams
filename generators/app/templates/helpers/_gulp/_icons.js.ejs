@@ -28,7 +28,8 @@ var options = {<% if (gulpModules && gulpModules.indexOf('gulp-svg-sprite') !== 
 		src: path.src + '/assets/img/svg/icons/**/*.svg',
 		pngOutput: path.src + '/assets/img/png/icons/',
 		scssOutput: path.src + '/scss/icons',
-		styleTemplate: path.helpers + '/templates/iconify.mustache',
+		cssOutput: false,
+		styleTemplate: path.helpers + '/templates/iconify/stylesheet.hbs',
 		svgoOptions: {
 			enabled: true,
 			options: {
