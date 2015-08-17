@@ -23,10 +23,17 @@ function globSassFiles(mode) {
 }
 
 // Globbing task with watcher
-gulp.task('sass-globbing', globSassFiles(true));
+gulp.task('sassGlobbing:dev', function () {
+	globSassFiles(true);
+});
+
+// Globbing task without watcher
+gulp.task('sassGlobbing:dist', function () {
+	globSassFiles(false);
+});
 
 // Dev Styles Task
-gulp.task('styles', function () {
+gulp.task('styles:dev', function () {
 	return gulp.src(path.src + '/scss/styles.tmp.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass())
@@ -42,8 +49,7 @@ gulp.task('styles', function () {
 });
 
 // Dist Styles Task
-gulp.task('styles-dist', function () {
-	globSassFiles(false);
+gulp.task('styles:dist', function () {
 	return gulp.src(path.src + '/scss/styles.tmp.scss')
 		.pipe(sass({
 			style: 'expanded'
