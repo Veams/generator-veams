@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var foundationId = 'foundation';
 var neatId = 'neat';
-var bootstrapId = 'sass-bootstrap';
+var bootstrapId = 'bootstrap-sass';
 var pgSCSSId = 'pgSCSS';
 
 var pgSCSSPreset = [
@@ -41,7 +41,7 @@ exports.setup = function () {
 exports.scaffold = function () {
 	// Delete CSS packages
 	if (this.cssLibs.indexOf(foundationId) == -1) delete this.bowerFile['dependencies']['foundation'];
-	if (this.cssLibs.indexOf(bootstrapId) == -1) delete this.bowerFile['dependencies']['sass-bootstrap'];
+	if (this.cssLibs.indexOf(bootstrapId) == -1) delete this.bowerFile['dependencies']['bootstrap-sass'];
 	if (this.cssLibs.indexOf(neatId) == -1) {
 		delete this.bowerFile['dependencies']['bourbon'];
 		delete this.bowerFile['dependencies']['neat'];
