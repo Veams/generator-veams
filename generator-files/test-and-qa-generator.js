@@ -41,6 +41,9 @@ exports.scaffold = function () {
 
 	if (this.taskRunner.indexOf('gulp') === -1 && this.testAndQALibs.indexOf('jscs') != -1) {
 		this.copy('helpers/task-configs/jscs.airbnb.json');
-		this.copy('helpers/_grunt/jscs.js', 'helpers/_grunt/jscs.js');
+
+		if (this.taskRunner.indexOf('grunt') !== -1) {
+			this.copy('helpers/_grunt/jscs.js', 'helpers/_grunt/jscs.js');
+		}
 	}
 };
