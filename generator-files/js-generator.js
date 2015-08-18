@@ -79,6 +79,10 @@ exports.scaffold = function () {
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
 		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['backbone'];
 
+	if (this.jsLibs.indexOf(exoskeletonId) == -1 ||
+			this.gruntModules.indexOf('grunt-browserify') !== -1 ||
+			this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['exoskeleton'];
+
 	if (this.jsLibs.indexOf(jqueryId) == -1 ||
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
 		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['jquery'];
