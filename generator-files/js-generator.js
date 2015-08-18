@@ -51,7 +51,18 @@ exports.questions = function () {
 				checked: false
 			}
 		],
+		validate: function (answer) {
+			var done = this.async();
 
+			if ((answer.indexOf(backboneId) != -1 && answer.indexOf(exoskeletonId) != -1) ||
+				(answer.indexOf(backboneId) != -1 && answer.indexOf(ampersandId) != -1) ||
+				(answer.indexOf(exoskeletonId) != -1 && answer.indexOf(ampersandId) != -1)) {
+
+				done("Please choose only one of the MV frameworks.");
+				return;
+			}
+			done(true);
+		},
 		default: this.config.get('jsLibs')
 	};
 };
@@ -80,8 +91,8 @@ exports.scaffold = function () {
 		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['backbone'];
 
 	if (this.jsLibs.indexOf(exoskeletonId) == -1 ||
-			this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-			this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['exoskeleton'];
+		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
+		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['exoskeleton'];
 
 	if (this.jsLibs.indexOf(jqueryId) == -1 ||
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
