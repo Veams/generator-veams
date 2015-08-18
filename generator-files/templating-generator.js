@@ -26,7 +26,7 @@ exports.questions = function () {
 					&& answers.templateEngine.indexOf('assemble') !== -1;
 			},
 			type: 'confirm',
-			message: 'Extended Layout for Assemble?',
+			message: 'Do you want to use Extended Layouts in Assemble?',
 			name: 'installExtendedLayout',
 			default: true
 		},
@@ -38,7 +38,7 @@ exports.questions = function () {
 			},
 			type: 'confirm',
 			name: 'installPlugin',
-			message: 'Do you want to install assemble plugins?',
+			message: 'Do you want to install Assemble plugins?',
 			default: this.config.get('installPlugin')
 		},
 		{
@@ -49,7 +49,7 @@ exports.questions = function () {
 			},
 			name: 'plugin',
 			type: 'checkbox',
-			message: 'Which assemble plugin do you want to use?',
+			message: 'Which Assemble plugin do you want to use?',
 			choices: [
 				{name: 'assemble-contrib-permalinks'},
 				{name: 'assemble-contrib-sitemap'},

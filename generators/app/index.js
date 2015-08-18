@@ -54,12 +54,12 @@ module.exports = yeoman.generators.Base.extend({
 			message: 'Choose your installation routine:',
 			choices: [
 				{
-					name: 'Minimal Installation',
-					value: 'stdInstall'
-				},
-				{
 					name: 'Custom Installation',
 					value: 'customInstall'
+				},
+				{
+					name: 'Minimal Installation',
+					value: 'stdInstall'
 				}
 			],
 			default: this.config.get('defaultInstall')
@@ -173,16 +173,16 @@ module.exports = yeoman.generators.Base.extend({
 			gulpGenerator.questions.call(this)
 		);
 
-		(!this.config.get('features') || this.force) && this.questions.push(
-			featuresGenerator.questions.call(this)
-		);
-
-		(!this.config.get('jsLibs') || this.force) && this.questions.push(
+		(!this.config.get('cssLibs') || this.force) && this.questions.push(
 			cssGenerator.questions.call(this)
 		);
 
-		(!this.config.get('cssLibs') || this.force) && this.questions.push(
+		(!this.config.get('jsLibs') || this.force) && this.questions.push(
 			jsGenerator.questions.call(this)
+		);
+
+		(!this.config.get('pgPackages') || this.force) && this.questions.push(
+			pgGenerator.questions.call(this)
 		);
 
 		if (!this.config.get('testAndQA') || this.force) {
@@ -191,15 +191,15 @@ module.exports = yeoman.generators.Base.extend({
 			);
 		}
 
-		(!this.config.get('pgPackages') || this.force) && this.questions.push(
-			pgGenerator.questions.call(this)
-		);
-
 		if (!this.config.get('templateEngine') || this.force) {
 			this.questions = this.questions.concat(
 				templatingGenerator.questions.call(this)
 			);
 		}
+
+		(!this.config.get('features') || this.force) && this.questions.push(
+			featuresGenerator.questions.call(this)
+		);
 	},
 
 	writing: {
@@ -207,12 +207,12 @@ module.exports = yeoman.generators.Base.extend({
 			taskRunnerGenerator.setup.call(this);
 			gruntGenerator.setup.call(this);
 			gulpGenerator.setup.call(this);
-			featuresGenerator.setup.call(this);
-			jsGenerator.setup.call(this);
 			cssGenerator.setup.call(this);
-			testAndQAGenerator.setup.call(this);
+			jsGenerator.setup.call(this);
 			pgGenerator.setup.call(this);
+			testAndQAGenerator.setup.call(this);
 			templatingGenerator.setup.call(this);
+			featuresGenerator.setup.call(this);
 		},
 
 		defaults: function () {
@@ -251,12 +251,12 @@ module.exports = yeoman.generators.Base.extend({
 
 		scaffold: function () {
 			taskRunnerGenerator.scaffold.call(this);
-			featuresGenerator.scaffold.call(this);
 			jsGenerator.scaffold.call(this);
 			cssGenerator.scaffold.call(this);
-			testAndQAGenerator.scaffold.call(this);
 			pgGenerator.scaffold.call(this);
+			testAndQAGenerator.scaffold.call(this);
 			templatingGenerator.scaffold.call(this);
+			featuresGenerator.scaffold.call(this);
 
 			if (this.taskRunner.indexOf('gulp') !== -1) gulpGenerator.scaffold.call(this);
 			if (this.taskRunner.indexOf('grunt') !== -1) gruntGenerator.scaffold.call(this);
