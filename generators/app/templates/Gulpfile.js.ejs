@@ -51,12 +51,12 @@ gulp.task('build', function(callback) {
 		[
 			'styles:dist',<% if (gulpModules && (gulpModules.indexOf('gulp-requirejs-optimize') !== -1 || gulpModules.indexOf('browserify') !== -1)) { %>
 			'js:dist',<% } else { %>
-			'copy:js',<% } %>
+			'copy:js'<% } %>
 		],
 		[
 			<% if (gulpModules && gulpModules.indexOf('gulp-htmlhint') !== -1) { %>
 			'html-hint',<% } %><% if (gulpModules && gulpModules.indexOf('gulp-jshint') !== -1) { %>
-			'js-hint',<% } %>
+			'js-hint'<% } %>
 		],
 		callback
 	);
