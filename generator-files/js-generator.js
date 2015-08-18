@@ -81,7 +81,7 @@ exports.scaffold = function () {
 
 	if (this.jsLibs.indexOf(jqueryId) == -1 ||
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-		this.gulpModules.indexOf('browserify')) delete this.bowerFile['dependencies']['jquery'];
+		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['jquery'];
 
 	if (this.pgPackages.indexOf('pgJS') == -1) delete this.bowerFile['dependencies']['pg-js'];
 

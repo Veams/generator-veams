@@ -50,7 +50,7 @@ gulp.task('build', function(callback) {
 		'sassGlobbing:dist',
 		[
 			'styles:dist',<% if (gulpModules && (gulpModules.indexOf('gulp-requirejs-optimize') !== -1 || gulpModules.indexOf('browserify') !== -1)) { %>
-			'js:dist',<% } else { %>
+			'js:dist'<% } else { %>
 			'copy:js'<% } %>
 		],
 		[
