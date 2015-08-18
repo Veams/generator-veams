@@ -27,7 +27,7 @@ exports.questions = function () {
 			{
 				name: 'PG Components',
 				value: pgComponentsId,
-				checked: false
+				checked: true
 			}
 		],
 		default: this.config.get('pgPackages')

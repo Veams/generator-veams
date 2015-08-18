@@ -10,10 +10,6 @@ var respimageId = 'respimage';
 var touchswipeId = 'touchswipe';
 
 var pgJSPreset = [
-	backboneId,
-	underscoreId,
-	exoskeletonId,
-	documentRegisterElementId,
 	handlebarsId,
 	respimageId,
 	touchswipeId
