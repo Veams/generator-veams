@@ -49,14 +49,14 @@ gulp.task('build', function(callback) {
 		],
 		'sassGlobbing:dist',
 		[
-			'styles:dist',<% if (gulpModules && (gulpModules.indexOf('gulp-requirejs-optimize') !== -1 || gulpModules.indexOf('browserify') !== -1)) { %>
+			'styles:dist'<% if (gulpModules && (gulpModules.indexOf('gulp-requirejs-optimize') !== -1 || gulpModules.indexOf('browserify') !== -1)) { %>,
 			'js:dist'<% } else { %>
 			'copy:js'<% } %>
 		],
 		[
-			<% if (gulpModules && gulpModules.indexOf('gulp-htmlhint') !== -1) { %>
-			'html-hint',<% } %><% if (gulpModules && gulpModules.indexOf('gulp-jshint') !== -1) { %>
-			'js-hint'<% } %>
+
+			'hint:html'<% if (gulpModules && gulpModules.indexOf('gulp-jshint') !== -1) { %>,
+			'hint:js'<% } %>
 		],
 		callback
 	);

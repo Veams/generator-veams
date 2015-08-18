@@ -15,7 +15,6 @@ exports.questions = function () {
 			{name: 'gulp-bless'},
 			{name: 'gulp-combine-mq', checked: true},
 			{name: 'gulp-htmlmin'},
-			{name: 'gulp-htmlhint'},
 			{name: 'gulp-iconify'},
 			// {name: 'gulp-jsdoc'},
 			{name: 'gulp-jshint'},
