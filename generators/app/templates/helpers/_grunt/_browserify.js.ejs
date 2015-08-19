@@ -1,6 +1,6 @@
 var libs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
 	'<%= lib %>'<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% }); } %>
-]
+];
 
 module.exports = {
 	options: {

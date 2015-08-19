@@ -1,7 +1,10 @@
 var gruntId = 'grunt';
 var gulpId = 'gulp';
 
-exports.questions = function () {
+exports.questions = function (obj) {
+	var object = obj || {};
+	object.defaults = object.defaults !== false;
+
 	return {
 		type: 'checkbox',
 		name: 'taskRunner',
@@ -9,7 +12,8 @@ exports.questions = function () {
 		choices: [
 			{
 				name: 'Grunt',
-				value: gruntId
+				value: gruntId,
+				checked: object.defaults
 			},
 			{
 				name: 'Gulp',
@@ -31,4 +35,5 @@ exports.setup = function () {
 	this.taskRunner = this.config.get('taskRunner') || [];
 };
 
-exports.scaffold = function () {};
+exports.scaffold = function () {
+};

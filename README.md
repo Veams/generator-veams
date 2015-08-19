@@ -104,8 +104,8 @@ You can find these task files in the following directory:
 
 There are standard grunt modules we use. These are:
 
- * [grunt-combine-mq](https://github.com/frontendfriends/grunt-combine-mq) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module
- * [grunt-concurrent](https://github.com/sindresorhus/grunt-concurrent) - Run grunt tasks concurrently .
+ * [grunt-combine-mq](https://github.com/frontendfriends/grunt-combine-mq) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module.
+ * [grunt-concurrent](https://github.com/sindresorhus/grunt-concurrent) - Run grunt tasks concurrently.
  * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) - Clean your directories.
  * [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin) - Minify your CSS.
  * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint) - Check your js for errors.
@@ -120,24 +120,24 @@ There are standard grunt modules we use. These are:
 _But you can also apply additional addons and gulp modules to your project. Just choose specific ones:_
 
  * [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer) - Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the Can I Use database.
- * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
- * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices
+ * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9.
+ * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices.
  * [grunt-browserify](https://github.com/jmreidy/grunt-browserify) - Use a node-style require() to organize your browser code and load modules installed by npm.
- * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods
+ * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods.
  * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) - Minify your HTML files.
  * [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) - Optimize RequireJS projects using r.js.
  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify) - Minify files with UglifyJS.
  * [grunt-csscomb](https://github.com/csscomb/grunt-csscomb) - The grunt plugin for sorting CSS properties in specific order.
  * [grunt-dr-svg-sprites](https://github.com/drdk/grunt-dr-svg-sprites) - Generate SVG Sprites with scss files. We provide a custom template to generate mixins and extends.
- * [grunt-grunticon](https://github.com/filamentgroup/grunticon) - Generate SVG-URI-SASS files with png fallbacks
+ * [grunt-grunticon](https://github.com/filamentgroup/grunticon) - Generate SVG-URI-SASS files with png fallbacks.
  * [grunt-image-size-export](https://github.com/Sebastian-Fitzner/grunt-image-size-export) - Pass a folder of images to this module and get infos like width, height, filename, path and breakpoints.
  * [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc) - This plugin enables you to integrate the generation of comments based documentation into your Grunt build.
  * [grunt-modernizr](https://github.com/Modernizr/grunt-modernizr) - grunt-modernizr sifts through your project files, gathers up your references to Modernizr tests and outputs a lean, mean Modernizr machine.
- * [grunt-packager](https://github.com/bobbor/grunt-packager) (only executable when your project.jspackcfg is configured) - package your js.
+ * [grunt-packager](https://www.npmjs.com/package/grunt-packager) (only executable when your project.jspackcfg is configured) - package your JS.
  * [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas) - PhantomJS-based web performance metrics collector and monitoring tool.
  * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) - Take snapshots from homepage
  * [grunt-postcss-separator](https://github.com/Sebastian-Fitzner/grunt-postcss-separator) - Split up your Data-URI or anything else into a separate CSS file.
- * [grunt-responsive-images](https://github.com/andismith/grunt-responsive-images) - Produces images at different sizes (be sure you have installed GraphicsMagick)
+ * [grunt-responsive-images](https://github.com/andismith/grunt-responsive-images) - Produces images at different sizes (be sure you have installed GraphicsMagick).
  * [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin) - Minify SVG using SVGO.
  * [grunt-version](https://github.com/kswedberg/grunt-version) - Grunt task to handle versioning of a project.
 
@@ -152,27 +152,71 @@ You can find these task files in the following directory:
 
 There are standard Gulp modules we use. These are:
 
-* del - Clean your directories.
-* run-sequence - Run gulp tasks in a sequence.
-* browser-sync - Sync and auto-reload your local server over multiple devices
-* gulp-notify - Add notifications.
-* gulp-minify-css - Minify your CSS.
-* gulp-htmlhint - Check your html for errors.
-* gulp-jshint": - Check your js for errors.
-* gulp-filesize - Return the filesize in your console.
+* [del](https://www.npmjs.com/package/del) - Clean your directories.
+* [gulp-sequence](https://www.npmjs.com/package/gulp-sequence) - Run gulp tasks in a sequence.
+* [browser-sync](https://www.npmjs.com/package/browser-sync) - Sync and auto-reload your local server over multiple devices
+* [gulp-notify](https://www.npmjs.com/package/gulp-notify) - Add notifications.
+* [gulp-minify-css](https://www.npmjs.com/package/gulp-minify-css) - Minify your CSS.
+* [gulp-htmlhint](https://www.npmjs.com/package/gulp-htmlhint) - Check your HTML for errors.
+* [gulp-filesize](https://www.npmjs.com/package/gulp-filesize) - Return the filesize in your console.
  
 **Optional Gulp modules**
 
 _But you can also apply additional addons and gulp modules to your project. Just choose specific ones:_
 
+* [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) - Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the Can I Use database.
+* [gulp-bless](https://www.npmjs.com/package/gulp-bless) - Split your css after you reach size limit for ie9.
+* [gulp-combine-mq](https://www.npmjs.com/package/gulp-combine-mq) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module.
+* [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) - Minify your HTML files.
+* [gulp-iconify](https://www.npmjs.com/package/gulp-iconify) - A mystical CSS icon solution, grunticon-like build system.
+* [gulp-jshint](https://www.npmjs.com/package/gulp-jshint) - Check your JS for errors.
+* [gulp-requirejs-optimize](https://www.npmjs.com/package/gulp-requirejs-optimize) - Optimize AMD modules in javascript files using the requirejs optimizer.
+* [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) - Minify files with UglifyJS.
+
+Further packages will be included in later releases.
+
 ### Gulp And Grunt 
 
-When you want to use both at the same time, do it to your own risk. You will probably have to change a few settings. 
-Furthermore Gulp will be your primary task runner. 
+When you want to use both at the same time, do it at your own risk. You will probably have to change a few settings. 
+Furthermore Gulp will be your primary task runner. To support Grunt tasks in Gulp we use [gulp-grunt](https://www.npmjs.com/package/gulp-grunt). 
+
+## JS Libraries and CSS Frameworks
+
+You can choose JS Libraries/Frameworks like:
+
+* jQuery
+* BackboneJS
+* Exoskeleton
+* AmpersandJS
+* document-register-element
+
+And you can also choose SCSS Frameworks like:
+
+* Foundation
+* Bourbon and Bourbon Neat
+* Bootstrap Sass
+
+All files will be included and configured. Have fun!
+
+## PG Methodology 
+You can scaffold your project with our [PG Methodology](http://www.prototype-generator.com/pg-methodology/pg-methodology-overview.html). 
+
+Furthermore you can add different bower components we provide: 
+
+* [pg-scss](https://github.com/Sebastian-Fitzner/pg-scss)
+* [pg-js](https://github.com/Sebastian-Fitzner/pg-js)
+* [pg-components](https://github.com/Sebastian-Fitzner/pg-components)
+
+## Testing 
+
+You can add testing and qa tools. At this state we only provide: 
+
+* [JSCS](https://www.npmjs.com/package/jscs) - JSCS is a code style linter for programmatically enforcing your style guide.
 
 ## Template Engines
 
 ### Assemble
+
 We use Assemble as template engine. Assemble is a component and static site generator that makes it dead simple to build modular sites, documentation and components from reusable templates and data.
 You want to know more? Here you go: [assemble.io](http://assemble.io)
 
@@ -188,41 +232,17 @@ We provide some custom helpers to speed up your Assemble workflow. These helpers
 * repeating elements
 * limiting JSON output
 * partials with multiple contexts
-* factories for grid systems
+* factories/panels(`{{#wrapWith}}`) for grid systems
 * and a few more ... 
 
 You want to know more? See [PG Custom Helpers](http://prototype-generator.com/templating-in-pg/template-helpers.html)
 
 ## Features
+
 PG supports different features. Just check/uncheck them in the __custom installation routine__:
 
 * You want to add a separate distribution folder? - Check!
 * You want to add a CSS Styleguide and Assemble Development Documentation? - Check! (See "Developer Documentation")
-
-## JS Libraries and CSS Frameworks
-You can choose JS Libraries like:
-
-* jQuery
-* BackboneJS
-* Exoskeleton
-* Ampersand
-
-And you can also choose SCSS Frameworks like:
-
-* Foundation
-* Bourbon and Bourbon Neat
-* SASS Bootstrap
-
-All files will be included and configured. Have fun!
-
-## PG Methodology 
-You can scaffold your project with our [PG Methodology](http://www.prototype-generator.com/pg-methodology/pg-methodology-overview.html). 
-
-Furthermore you can add different bower components we provide: 
-
-* [pg-scss](https://github.com/Sebastian-Fitzner/pg-scss)
-* [pg-js](https://github.com/Sebastian-Fitzner/pg-js)
-* [pg-components](https://github.com/Sebastian-Fitzner/pg-components)
 
 ## Sub Generators
 We integrated some sub generators for you:
@@ -242,8 +262,13 @@ You want to install custom handlebars helpers for templating from `PG`?
 
 Others will follow.
 
+## Alternative
+* [generator-assemble](https://github.com/assemble/generator-assemble)
+
 ## Release History
 see: [Changelog.md](CHANGELOG.md)
+
+[![NPM](https://nodei.co/npm-dl/generator-prototype.png?height=3)](https://nodei.co/npm/generator-prototype/)
 
 ## TODO: 
 - Own template wrapper for handlebars

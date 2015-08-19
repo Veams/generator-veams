@@ -1,4 +1,5 @@
 var config = require('../config');
+var path = config.options.paths;
 var gulp = require('gulp');<% if (gulpModules && gulpModules.indexOf('gulp-iconify') !== -1) { %>
 var icons = require('gulp-iconify'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-svg-sprite') !== -1) { %>
 var sprite = require('gulp-svg-sprite'); <% } %>
@@ -14,20 +15,21 @@ var options = {<% if (gulpModules && gulpModules.indexOf('gulp-svg-sprite') !== 
 		mode: {
 			css: {
 				bust: false,
-				sprite: config.options.paths.src + '/assets/img/sprites/sprite.svg',
+				sprite: path.src + '/assets/img/sprites/sprite.svg',
 				render: {
 					scss: {
-						dest: config.options.paths.src + '/scss/icons/sprite.scss'
+						dest: path.src + '/scss/icons/sprite.scss'
 					}
 				}
 			}
 		}
 	}<% if (gulpModules && gulpModules.indexOf('gulp-iconify') !== -1) { %>,<% } %><% } %><% if (gulpModules && gulpModules.indexOf('gulp-iconify') !== -1) { %>
 	icons: {
-		src: config.options.paths.src + '/assets/img/svg/icons/**/*.svg',
-		pngOutput: config.options.paths.src + '/assets/img/png/icons/',
-		scssOutput: config.options.paths.src + '/scss/icons',
-		styleTemplate: config.options.paths.helpers + '/templates/iconify.mustache',
+		src: path.src + '/assets/img/svg/icons/**/*.svg',
+		pngOutput: path.src + '/assets/img/png/icons/',
+		scssOutput: path.src + '/scss/icons',
+		cssOutput: false,
+		styleTemplate: path.helpers + '/templates/iconify/stylesheet.hbs',
 		svgoOptions: {
 			enabled: true,
 			options: {
@@ -47,7 +49,7 @@ gulp.task('icons', function () {
 <% if (gulpModules && gulpModules.indexOf('gulp-svg-sprite') !== -1) { %>
 // Sprite generation
 gulp.task('sprites', function () {
-	return gulp.src(config.options.paths.src + '/assets/img/svg/icons/**/*.svg')
+	return gulp.src(path.src + '/assets/img/svg/icons/**/*.svg')
 		.pipe(sprite(options.sprite))
-		.pipe(gulp.dest(config.options.paths.src));
+		.pipe(gulp.dest(path.src));
 });<% } %>

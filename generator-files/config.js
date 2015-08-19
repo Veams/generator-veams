@@ -8,3 +8,25 @@ config.paths = {
 	gruntPath: 'helpers/_grunt/',
 	gulpPath: 'helpers/_gulp/'
 };
+
+config.setup = {
+	empty: {
+		projectName: '',
+		projectAuthor: '',
+		taskRunner: [],
+		templateEngine: '',
+		installExtendedLayout: false,
+		installPlugin: false,
+		gulpModules: [],
+		gruntModules: [],
+		features: [],
+		jsLibs: [],
+		cssLibs: [],
+		testAndQA: false,
+		testAndQALibs: [],
+		pgPackages: [],
+		installProxy: false,
+		proxyHost: '0.0.0.0 ',
+		proxyPort: 80
+	}
+};

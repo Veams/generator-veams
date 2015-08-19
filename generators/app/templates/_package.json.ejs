@@ -3,9 +3,8 @@
 	"description": "Prototype",
 	"version": "0.1.0",
 	"author": {
-		"name": "<%= authorLogin %>",
-		"email": "<%= authorEmail %>",
-		"url": "http://github.com/<%= _.slugify(authorLogin) %>/"
+		"name": "<%= authorName %>",
+		"url": "http://github.com/<%= _.slugify(authorName) %>/"
 	},
 	"engines": {
 		"node": ">=0.12.0"
@@ -26,22 +25,23 @@
 	<% }); %><% } %><% } %>},
 	"devDependencies": {<% if(taskRunner && taskRunner.length) {%><% if (taskRunner.indexOf('gulp') != -1) {%>
 		"del": "^1.1.1",
-		"run-sequence": "^1.1.0",
 		"browser-sync": "*",
 		"require-dir": "^0.3.0",
+		"sass-globber": "^2.0.1",
 		"gulp": "^3.8.11",
 		"gulp-notify": "^2.2.0",
 		"gulp-minify-css": "^0.5.1",
 		"gulp-htmlhint": "^0.1.1",
 		"gulp-jshint": "^1.9.4",
+		"gulp-sequence": "^0.4.0",
+		"gulp-htmlhint": "^0.1.1",
 		"gulp-filesize": "^0.0.6",<% if(taskRunner.indexOf('grunt') != -1) { %>
 		"gulp-grunt": "^0.5.2",<% } %><% if(gulpModules && gulpModules.length && typeof gulpModules === 'object'){ gulpModules.forEach(function(name) { if(name == 'gulp-autoprefixer') { %>
 		"gulp-autoprefixer": "^2.1.0",<% } %><% if(name == 'gulp-bless') { %>
 		"gulp-bless": "^3.0.1",<% } %><% if(name == 'browserify') { %>
 		"browserify": "^10.2.3",<% } %><% if(name == 'gulp-combine-mq') { %>
 		"gulp-combine-mq": "^0.4.0",<% } %><% if(name == 'gulp-htmlmin') { %>
-		"gulp-htmlmin": "^1.1.1",<% } %><% if(name == 'gulp-htmlhint') { %>
-		"gulp-htmlhint": "^0.1.1",<% } %><% if(name == 'gulp-uglify') { %>
+		"gulp-htmlmin": "^1.1.1",<% } %><% if(name == 'gulp-uglify') { %>
 		"gulp-uglify": "^1.1.0",<% } %><% if(name == 'gulp-svg-sprite') { %>
 		"gulp-svg-sprite": "^1.0.20",<% } %><% if(name == 'gulp-iconify') { %>
 		"gulp-iconify": "^0.3.0",<% } %><% if(name == 'gulp-jsdoc') { %>
@@ -51,13 +51,13 @@
 		"gulp-modulizr": "^0.0.2",<% } %><% if(name == 'gulp-requirejs-optimize') { %>
 		"gulp-requirejs-optimize": "^0.1.3",<% } %><% if(name == 'gulp-responsive') { %>
 		"gulp-responsive": "^1.0.7",<% } %><% }); %><%} %>
-		"gulp-sass": "^1.3.3",
+		"gulp-sass": "^2.0.4",
 		"gulp-load": "^0.1.1",
 		"gulp-load-plugins": "^0.8.1",
 		"gulp-sourcemaps": "^1.5.0"<% if(templateEngine.indexOf('assemble') != -1 || taskRunner && taskRunner.indexOf('grunt') != -1){ %>,<% } %><% } %><% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 		"assemble": "~0.4.42",
 		"lodash" : "*",
-		"glob" : "^5.0.14"",
+		"glob" : "^5.0.14",
 		"path" : "*",
 		"gray-matter": "*",
 		"handlebars-helper-autolink": "^0.1.1"<% if(taskRunner.length && taskRunner.indexOf('grunt') != -1) { %>,<% } %><% } %><% if(taskRunner.length) {%><% if (taskRunner.indexOf('grunt') != -1) { %>
@@ -78,7 +78,7 @@
 		"grunt-browserify": "^3.8.0",<% } %><% if(name == 'grunt-browser-sync') { %>
 		"grunt-browser-sync": "~1.5.3",<% } %><% if(name == 'grunt-csscomb') { %>
 		"grunt-csscomb": "^3.0.0",<% } %><% if(name == 'grunt-combine-mq') { %>
-		"grunt-combine-mq": "^0.6.0",<% } %><% if(name == 'grunt-bless') { %>
+		"grunt-combine-mq": "^0.9.0",<% } %><% if(name == 'grunt-bless') { %>
 		"grunt-bless": "~0.1.1",<% } %><% if(name == 'grunt-autoprefixer') { %>
 		"grunt-autoprefixer": "~0.6.5",<% } %><% if(name == 'grunt-postcss-separator') { %>
 		"grunt-postcss-separator": "~0.1.1",<% } %><% if(name == 'grunt-image-size-export') { %>
@@ -111,7 +111,7 @@
 	"licenses": [
 	{
 		"type": "MIT",
-		"url": "https://github.com/<%= _.slugify(authorLogin) %>/<%= _.slugify(projectName) %>/blob/master/LICENSE-MIT"
+		"url": "https://github.com/<%= _.slugify(authorName) %>/<%= _.slugify(projectName) %>/blob/master/LICENSE-MIT"
 	}] <% if(templateEngine.indexOf('assemble') != -1){ %>,
 	"keywords": [
 		"handlebars-helper-autolink"

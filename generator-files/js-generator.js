@@ -10,10 +10,6 @@ var respimageId = 'respimage';
 var touchswipeId = 'touchswipe';
 
 var pgJSPreset = [
-	backboneId,
-	underscoreId,
-	exoskeletonId,
-	documentRegisterElementId,
 	handlebarsId,
 	respimageId,
 	touchswipeId
@@ -51,7 +47,18 @@ exports.questions = function () {
 				checked: false
 			}
 		],
+		validate: function (answer) {
+			var done = this.async();
 
+			if ((answer.indexOf(backboneId) != -1 && answer.indexOf(exoskeletonId) != -1) ||
+				(answer.indexOf(backboneId) != -1 && answer.indexOf(ampersandId) != -1) ||
+				(answer.indexOf(exoskeletonId) != -1 && answer.indexOf(ampersandId) != -1)) {
+
+				done("Please choose only one of the MV frameworks.");
+				return;
+			}
+			done(true);
+		},
 		default: this.config.get('jsLibs')
 	};
 };
@@ -68,8 +75,8 @@ exports.scaffold = function () {
 	// Bower handling
 	if (this.gruntModules.indexOf('grunt-browserify') !== -1 ||
 		this.gulpModules.indexOf('browserify') !== -1 ||
-		this.gruntModules.indexOf('grunt-contrib-requirejs') === -1) {
-
+		this.taskRunner.indexOf('gulp') !== -1 && this.gulpModules.indexOf('gulp-requirejs-optimize') === -1 ||
+		this.taskRunner.indexOf('grunt') !== -1 && this.gruntModules.indexOf('grunt-contrib-requirejs') === -1) {
 		delete this.bowerFile['dependencies']['almond'];
 		delete this.bowerFile['dependencies']['requirejs'];
 		delete this.bowerFile['dependencies']['requirejs-text'];
@@ -79,9 +86,13 @@ exports.scaffold = function () {
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
 		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['backbone'];
 
+	if (this.jsLibs.indexOf(exoskeletonId) == -1 ||
+		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
+		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['exoskeleton'];
+
 	if (this.jsLibs.indexOf(jqueryId) == -1 ||
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-		this.gulpModules.indexOf('browserify')) delete this.bowerFile['dependencies']['jquery'];
+		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['jquery'];
 
 	if (this.pgPackages.indexOf('pgJS') == -1) delete this.bowerFile['dependencies']['pg-js'];
 

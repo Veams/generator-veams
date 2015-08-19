@@ -1,0 +1,10 @@
+{{#items}}
+@mixin icon-{{slug}} {
+    background-repeat: no-repeat;
+    background-image: url('{{{datauri}}}');
+}
+
+%icon-{{slug}} {
+    @include icon-{{slug}};
+}
+{{/items}}

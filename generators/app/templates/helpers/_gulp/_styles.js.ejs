@@ -1,4 +1,6 @@
 var config = require('../config');
+var path = config.options.paths;
+var server = config.server;
 var size = require('gulp-filesize');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
@@ -7,15 +9,37 @@ var autoprefixer = require('gulp-autoprefixer'); <% } %><% if (gulpModules && gu
 var bless = require('gulp-bless'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-combine-mq') != -1) { %>
 var combineMq = require('gulp-combine-mq'); <% } %>
 var minifycss = require('gulp-minify-css');
+var sassGlobbing = require('sass-globber');
+
+
+// Sass globbing module
+function globSassFiles(mode) {
+	sassGlobbing.compiled({
+		sassRoot: path.src + '/scss',
+		source: "styles.scss",
+		output: 'styles.tmp.scss',
+		watch: mode
+	});
+}
+
+// Globbing task with watcher
+gulp.task('sassGlobbing:dev', function () {
+	globSassFiles(true);
+});
+
+// Globbing task without watcher
+gulp.task('sassGlobbing:dist', function () {
+	globSassFiles(false);
+});
 
 // Dev Styles Task
-gulp.task('styles', function () {
-	return gulp.src(config.options.paths.src + '/scss/styles.scss')
+gulp.task('styles:dev', function () {
+	return gulp.src(path.src + '/scss/styles.tmp.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass())
 		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(config.options.paths.dev + '/css'))
-		.pipe(config.server.reload({
+		.pipe(gulp.dest(path.dev + '/css'))
+		.pipe(server.reload({
 			stream: true
 		}))
 		.pipe(config.notify({
@@ -25,8 +49,8 @@ gulp.task('styles', function () {
 });
 
 // Dist Styles Task
-gulp.task('styles-dist', function () {
-	return gulp.src(config.options.paths.src + '/scss/styles.scss')
+gulp.task('styles:dist', function () {
+	return gulp.src(path.src + '/scss/styles.tmp.scss')
 		.pipe(sass({
 			style: 'expanded'
 		}))<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
@@ -36,9 +60,8 @@ gulp.task('styles-dist', function () {
 		}))<% } %>
 		.pipe(minifycss())<% if (gulpModules && gulpModules.indexOf('gulp-bless') != -1) { %>
 		.pipe(bless())<% } %>
-		.pipe(gulp.dest(config.options.paths.dev + '/css'))
+		.pipe(gulp.dest(path.dev + '/css'))
 		.pipe(config.notify({
 			message: 'Compiling, minification and autoprefixing of styles completed'
-		}))
-		.pipe(size());
+		}));
 });

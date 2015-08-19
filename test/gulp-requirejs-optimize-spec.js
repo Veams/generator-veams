@@ -42,6 +42,6 @@ describe('gulp-requirejs-optimize', function () {
 	});
 
 	it('adds task to Gulpfile', function () {
-		assert.fileContent('Gulpfile.js', /scripts/);
+		assert.fileContent('Gulpfile.js', /js:dist/);
 	});
 });

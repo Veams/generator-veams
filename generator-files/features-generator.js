@@ -30,7 +30,9 @@ exports.scaffold = function () {
 
 	// TODO: Clean up and merge
 
-	if (this.features.indexOf(docsId) != -1 || this.gruntModules.indexOf('grunt-jsdoc') || this.gulpModules.indexOf('gulp-jsdoc')) {
+	if (this.features && this.features.indexOf(docsId) != -1 ||
+		this.gruntModules && this.gruntModules.indexOf('grunt-jsdoc') !== -1 ||
+		this.gulpModules && this.gulpModules.indexOf('gulp-jsdoc') !== -1) {
 		this.copy('helpers/task-configs/jsdoc.conf.json');
 		this.copy('resources/js/README.md');
 	}

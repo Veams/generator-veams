@@ -4,6 +4,11 @@ var gulpId = 'gulp';
 exports.questions = function () {
 	return [
 		{
+			when: function (answers) {
+				return answers.taskRunner
+					&& answers.taskRunner.length
+					&& answers.taskRunner.indexOf('gulp') === -1;
+			},
 			type: 'list',
 			name: 'templateEngine',
 			message: 'Which template engine do you want to install?',
@@ -16,29 +21,35 @@ exports.questions = function () {
 		},
 		{
 			when: function (answers) {
-				return answers.templateEngine.indexOf('assemble') !== -1;
+				return answers.templateEngine
+					&& answers.templateEngine.length
+					&& answers.templateEngine.indexOf('assemble') !== -1;
 			},
 			type: 'confirm',
-			message: 'Extended Layout for Assemble?',
+			message: 'Do you want to use Extended Layouts in Assemble?',
 			name: 'installExtendedLayout',
 			default: true
 		},
 		{
 			when: function (answers) {
-				return answers.templateEngine.indexOf('assemble') !== -1;
+				return answers.templateEngine
+					&& answers.templateEngine.length
+					&& answers.templateEngine.indexOf('assemble') !== -1;
 			},
 			type: 'confirm',
 			name: 'installPlugin',
-			message: 'Do you want to install assemble plugins?',
+			message: 'Do you want to install Assemble plugins?',
 			default: this.config.get('installPlugin')
 		},
 		{
 			when: function (answers) {
-				return answers.installPlugin;
+				return answers.templateEngine
+					&& answers.templateEngine.length
+					&& answers.installPlugin;
 			},
 			name: 'plugin',
 			type: 'checkbox',
-			message: 'Which assemble plugin do you want to use?',
+			message: 'Which Assemble plugin do you want to use?',
 			choices: [
 				{name: 'assemble-contrib-permalinks'},
 				{name: 'assemble-contrib-sitemap'},
@@ -49,12 +60,12 @@ exports.questions = function () {
 };
 
 exports.setup = function () {
-	this.templateEngine = this.config.get('templateEngine') || [];
+	this.templateEngine = this.config.get('templateEngine') || '';
 };
 
 exports.scaffold = function () {
 	// add global assemble files
-	if (this.templateEngine !== '') {
+	if (this.templateEngine && this.templateEngine !== '') {
 		this.mkdir('resources/templating');
 		this.copy('resources/templating/data/config.json');
 		this.directory('resources/templating/ajax', 'resources/templating/ajax');
