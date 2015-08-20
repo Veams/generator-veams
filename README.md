@@ -260,11 +260,26 @@ You want to install custom handlebars helpers for templating from `PG`?
 * Here you go: `yo prototype:templating`
 
 ### Backbone|Exoskeleton|Ampersand:
- * Create a Backbone|Exoskeleton|Ampersand Model: `yo prototype:jsm`
- * Create a Backbone|Exoskeleton|Ampersand View: `yo prototype:jsv`
- * Create a Backbone|Exoskeleton|Ampersand Collection: `yo prototype:jsc`
+We have integrated a sub generator which you can pass arguments and options. You can create a model, view or collection with these. 
 
-Others will follow.
+**Arguments:**
+
+The sub generator expects any of the following arguments:
+* `Model`
+* `Collection`
+* `View`
+
+**Options:**
+
+Furthermore you can pass an option with `--`. This option is only important when you do want to use AMD or CommonJS syntay instead of ES Harmony syntax.
+* `--amd`
+* `--commonjs`
+
+**Example:**
+
+``` bash
+yo prototype:js View --commonjs
+```
 
 ## Release History
 see: [Changelog.md](CHANGELOG.md)
