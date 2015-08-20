@@ -7,12 +7,24 @@ var pg = require('../../lib/pg-helpers');
 
 module.exports = yeoman.generators.Base.extend({
 
+	// note: arguments and options should be defined in the constructor.
+	constructor: function () {
+		yeoman.generators.Base.apply(this, arguments);
+
+		// This method adds support for a `--coffee` flag
+		this.option('amd');
+		this.option('commonjs');
+
+		// And you can then access it later on this way; e.g.
+		// this.scriptSuffix = (this.options.coffee ? ".coffee" : ".js");
+	},
+
 // Custom prompts routine
 	prompting: function () {
 		var cb = this.async();
 
 		console.log(
-			('\n') + chalk.bgCyan('Generate your JS Collection') + ('\n')
+			('\n') + chalk.bgCyan('Generate your JS Collection with/out ES6 syntax.') + ('\n')
 		);
 
 		var prompts = [
@@ -47,8 +59,19 @@ module.exports = yeoman.generators.Base.extend({
 	 *
 	 */
 	writing: {
+		setup: function(){
+			this.tplFile = '_Collection.esh.js.ejs';
+
+			if (this.options.amd) {
+				this.tplFile ='_Collection.amd.js.ejs'
+			}
+			if (this.options.commonjs) {
+				this.tplFile ='_Collection.common.js.ejs'
+			}
+		},
+
 		placeCollection: function () {
-			this.template('_Collection.js.ejs', this.srcPath + 'js/' + this.path + this.initName + 'Collection.js');
+			this.template(this.tplFile, this.srcPath + 'js/' + this.path + this.initName + 'Collection.js');
 		}
 	}
 });
