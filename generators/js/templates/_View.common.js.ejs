@@ -1,0 +1,51 @@
+/**
+ * Represents a view.
+ * @class <%= initName %>View
+ *
+ * Use the get keyword to make our methods serve as getters for a property.
+ * This means they will be accessible as properties, but defined as methods,
+ * retaining compatibility with any existing references if you're converting existing code.
+ *
+ * @author
+ */
+
+var App = require('../../app');
+var Helpers = require('../../utils/helpers');<% if(tpl && ext === 'hbs'){ %>
+var Handlebars = require('handlebars/runtime')['default'];
+var Template = require('../../templates/templates')(Handlebars);<% } %>
+var $ = App.$;
+
+// Creates a new view class object
+var <%= initName %>View = App.ComponentView.extend({
+	// The DOM element associated with this view
+	el: '.yourElement',
+	<% if(tpl){ %> <% if(ext === 'html'){ %>
+	template: _.template(Template, {}), // Setting the view's template property using the underscore template method<% } %><% if(ext === 'hbs'){ %>
+	template: Template['myTplName'], // Setting the view's template property using the handlebars template method<% } %>
+	<% } %>
+	// Options
+	options: {
+	},
+
+	// View event handlers
+	events: {
+	},
+
+	// View initialize
+	initialize: function(obj) {
+		this.options = Helpers.defaults(obj.options || {}, this.options);
+	},
+
+	// Renders the view's template to the UI
+	render: function() {
+		<% if(tpl){ %>
+		// Dynamically updates the UI with the view's template
+		this.$el.html(this.template());
+		<% } %>
+		// Maintains chainability
+		return this;
+	}
+});
+
+// Returns the view class
+module.exports = <%= initName %>View;

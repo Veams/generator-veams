@@ -10,40 +10,31 @@ module.exports = yeoman.generators.Base.extend({
 	// note: arguments and options should be defined in the constructor.
 	constructor: function () {
 		yeoman.generators.Base.apply(this, arguments);
-		subGeneratorJS.construct.call(this, 'Collection');
+
+		// This makes `type` a required argument.
+		this.argument('type', {
+			type: String,
+			required: true
+		});
+
+		subGeneratorJS.construct.call(this, this.type);
 	},
 
-// Custom prompts routine
+	// Custom prompts routine
 	prompting: function () {
 		var cb = this.async();
+		var prompts = [];
 
-		console.log(
-			('\n') + chalk.bgCyan('Generate your JS Collection with/out ES6 syntax.') + ('\n')
+		this.log(
+			('\n') + chalk.bgCyan('Generate your JS ' + this.type + ' with/out ES Harmony syntax.') + ('\n')
 		);
 
-		var prompts = [
-			{
-				name: "srcPath",
-				message: "Where do you have your source files?",
-				default: "resources"
-			},
-			{
-				name: 'path',
-				message: 'Where would you like to place your Collection? root -> js/'
-			},
-			{
-				name: 'initName',
-				message: 'What do you want to name your Collection?',
-				default: 'Data'
-			}
-		];
+		prompts = prompts.concat(
+			subGeneratorJS.questions.call(this)
+		);
 
 		this.prompt(prompts, function (props) {
-			this.initName = props.initName;
-			this.collection = props.collection;
-			this.srcPath = pg.cleanupPath(props.srcPath);
-			this.path = pg.cleanupPath(props.path);
-
+			subGeneratorJS.save.call(this, props);
 			cb();
 		}.bind(this));
 	},

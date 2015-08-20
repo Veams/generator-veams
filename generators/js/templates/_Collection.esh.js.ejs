@@ -10,7 +10,7 @@
  */
 
 import App from '../../app';
-import <%= initName %>Model from '../models/<%= initName %>Model';
+import <%= initName %>Model from './<%= initName %>Model';
 
 class <%= initName %>Collection extends App.ComponentCollection {
 
@@ -20,10 +20,8 @@ class <%= initName %>Collection extends App.ComponentCollection {
 	 * @return obj
 	 */
 	get model() {
-		return {
-			// Tells the Collection that all of it's models will be the type Model (listed up top as a dependency)
-			model: <%= initName %>Model
-		}
+		// Tells the collection that all of it's models will be the type model (listed up top as a dependency)
+		return <%= initName %>Model
 	}
 }
 

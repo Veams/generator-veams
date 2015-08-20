@@ -182,6 +182,8 @@ Furthermore Gulp will be your primary task runner. To support Grunt tasks in Gul
 
 ## JS Libraries and CSS Frameworks
 
+### JS Libraries|Frameworks
+
 You can choose JS Libraries/Frameworks like:
 
 * jQuery
@@ -189,6 +191,8 @@ You can choose JS Libraries/Frameworks like:
 * Exoskeleton
 * AmpersandJS
 * document-register-element
+
+### CSS Frameworks
 
 And you can also choose SCSS Frameworks like:
 
@@ -232,7 +236,7 @@ We provide some custom helpers to speed up your Assemble workflow. These helpers
 * repeating elements
 * limiting JSON output
 * partials with multiple contexts
-* factories/panels(`{{#wrapWith}}`) for grid systems
+* `{{#wrapWith}}` for grid systems
 * and a few more ... 
 
 You want to know more? See [PG Custom Helpers](http://prototype-generator.com/templating-in-pg/template-helpers.html)
@@ -262,13 +266,8 @@ You want to install custom handlebars helpers for templating from `PG`?
 
 Others will follow.
 
-## Alternative
-* [generator-assemble](https://github.com/assemble/generator-assemble)
-
 ## Release History
 see: [Changelog.md](CHANGELOG.md)
-
-[![NPM](https://nodei.co/npm-dl/generator-prototype.png?height=3)](https://nodei.co/npm/generator-prototype/)
 
 ## TODO: 
 - Own template wrapper for handlebars
