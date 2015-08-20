@@ -1,22 +1,16 @@
 'use strict';
-var util = require('util');
 var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var pg = require('../../lib/pg-helpers');
+var subGeneratorJS = require('../../generator-files/sub-generator-js.js');
 
 module.exports = yeoman.generators.Base.extend({
 
 	// note: arguments and options should be defined in the constructor.
 	constructor: function () {
 		yeoman.generators.Base.apply(this, arguments);
-
-		// This method adds support for a `--coffee` flag
-		this.option('amd');
-		this.option('commonjs');
-
-		// And you can then access it later on this way; e.g.
-		// this.scriptSuffix = (this.options.coffee ? ".coffee" : ".js");
+		subGeneratorJS.construct.call(this, 'Collection');
 	},
 
 // Custom prompts routine
@@ -59,19 +53,12 @@ module.exports = yeoman.generators.Base.extend({
 	 *
 	 */
 	writing: {
-		setup: function(){
-			this.tplFile = '_Collection.esh.js.ejs';
-
-			if (this.options.amd) {
-				this.tplFile ='_Collection.amd.js.ejs'
-			}
-			if (this.options.commonjs) {
-				this.tplFile ='_Collection.common.js.ejs'
-			}
+		setup: function () {
+			subGeneratorJS.setup.call(this);
 		},
 
-		placeCollection: function () {
-			this.template(this.tplFile, this.srcPath + 'js/' + this.path + this.initName + 'Collection.js');
+		scaffold: function () {
+			subGeneratorJS.scaffold.call(this);
 		}
 	}
 });
