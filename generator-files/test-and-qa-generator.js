@@ -32,12 +32,12 @@ exports.questions = function () {
 					name: 'E2E - End to End (webdriver)',
 					value: webdriverId,
 					checked: true
-				},
+				}/*,
 				{
 					name: 'Unit Testing (karma, mocha, sinon, chai)',
 					value: karmaId,
 					checked: false
-				}
+				}*/
 			],
 			default: this.config.get('testAndQALibs')
 		}
