@@ -13,13 +13,13 @@ describe('grunt-webdriverjs test', function () {
             .call(done);
     });
 
-    it('checks if a div with class name test is assigned via javascript on load', function(done) {
+    it('checks if a div with class name "test" is assigned via javascript on load', function(done) {
 
         browser
             .url(testDoc)
-            .waitForExist('.test',1000).then(function(err,res) {
-                console.log(res);
-                assert.strictEqual(res, 'Test Document');
+            .getAttribute('div','class')
+            .then(function(attr) {
+                assert.strictEqual(attr, 'test');
             })
             .call(done);
     });
