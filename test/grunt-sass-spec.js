@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({});
-var config = require('../generator-files/config');
+var config = require('../lib/config');
 
 describe('grunt-sass', function () {
 	var helperPath = config.paths.helperPath;

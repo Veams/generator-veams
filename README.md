@@ -108,9 +108,6 @@ There are standard grunt modules we use. These are:
  * [grunt-concurrent](https://github.com/sindresorhus/grunt-concurrent) - Run grunt tasks concurrently.
  * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) - Clean your directories.
  * [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin) - Minify your CSS.
- * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint) - Check your js for errors.
- * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint) - Check your html for errors.
- * [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier) - Format your js and html files.
  * [grunt-sass-globber](https://github.com/Sebastian-Fitzner/grunt-sass-globber) - This module provides a simple globbing functionality for sass files like the ruby gem sass-globbing.
  * [jit-grunt](https://github.com/shootaroo/jit-grunt) - A JIT(Just In Time) plugin loader for Grunt.
  * [time-grunt](https://github.com/sindresorhus/time-grunt) - Displays the execution time of grunt tasks.
@@ -157,7 +154,6 @@ There are standard Gulp modules we use. These are:
 * [browser-sync](https://www.npmjs.com/package/browser-sync) - Sync and auto-reload your local server over multiple devices
 * [gulp-notify](https://www.npmjs.com/package/gulp-notify) - Add notifications.
 * [gulp-minify-css](https://www.npmjs.com/package/gulp-minify-css) - Minify your CSS.
-* [gulp-htmlhint](https://www.npmjs.com/package/gulp-htmlhint) - Check your HTML for errors.
 * [gulp-filesize](https://www.npmjs.com/package/gulp-filesize) - Return the filesize in your console.
  
 **Optional Gulp modules**
@@ -169,7 +165,6 @@ _But you can also apply additional addons and gulp modules to your project. Just
 * [gulp-combine-mq](https://www.npmjs.com/package/gulp-combine-mq) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module.
 * [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) - Minify your HTML files.
 * [gulp-iconify](https://www.npmjs.com/package/gulp-iconify) - A mystical CSS icon solution, grunticon-like build system.
-* [gulp-jshint](https://www.npmjs.com/package/gulp-jshint) - Check your JS for errors.
 * [gulp-requirejs-optimize](https://www.npmjs.com/package/gulp-requirejs-optimize) - Optimize AMD modules in javascript files using the requirejs optimizer.
 * [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) - Minify files with UglifyJS.
 
@@ -213,9 +208,11 @@ Furthermore you can add different bower components we provide:
 
 ## Testing 
 
-You can add testing and qa tools. At this state we only provide: 
+You can add testing and qa tools. At this state we provide: 
 
-* [JSCS](https://www.npmjs.com/package/jscs) - JSCS is a code style linter for programmatically enforcing your style guide.
+* JS Code Style - JSCS is a code style linter for programmatically enforcing your style guide ([JSCS](https://www.npmjs.com/package/jscs)).
+* HTML Hinting - Check your HTML for errors ([gulp-htmlhint](https://www.npmjs.com/package/gulp-htmlhint), [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint)).
+* JS Hinting - Check your JS for errors ([gulp-jshint](https://www.npmjs.com/package/gulp-jshint), [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)).
 
 ## Template Engines
 
@@ -262,7 +259,7 @@ You want to install custom handlebars helpers for templating from `PG`?
 ### Backbone|Exoskeleton|Ampersand:
 We have integrated a sub generator which you can pass one argument and one option to create a model, view or collection. 
 
-**Arguments:**
+**Arguments (required):**
 
 The sub generator expects any of the following arguments:
 * `Model`

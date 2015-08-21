@@ -1,4 +1,5 @@
-var config = require('./config.js');
+var chalk = require('chalk');
+var pg = require('./../lib/pg-helpers.js');
 
 exports.questions = function (obj) {
 	var object = obj || {};
@@ -82,23 +83,7 @@ exports.questions = function (obj) {
 };
 
 exports.setup = function () {
-	this.generatorHelperPath = '../../' + config.paths.appPath + config.paths.helperPath;
-	this.generatorGruntPath = '../../' + config.paths.appPath + config.paths.gruntPath;
-	this.generatorSrcPath = '../../' + config.paths.appPath + config.paths.srcPath;
-
-	this.helperPath = this.helperPath || config.paths.helperPath;
-	this.gruntPath = this.gruntPath || config.paths.gruntPath;
-	this.srcPath = this.srcPath || config.paths.srcPath;
-
-	if (this.helperPath !== '') {
-		this.helperPath = this.helperPath.replace(/\/?$/, '/');
-	}
-	if (this.gruntPath !== '') {
-		this.gruntPath = this.gruntPath.replace(/\/?$/, '/');
-	}
-	if (this.srcPath !== '') {
-		this.srcPath = this.srcPath.replace(/\/?$/, '/');
-	}
+	pg.definePaths.call(this);
 };
 
 exports.scaffold = function (obj) {
@@ -115,10 +100,6 @@ exports.scaffold = function (obj) {
 			this.template(this.generatorGruntPath + '_concurrent.js.ejs', this.gruntPath + 'concurrent.js');
 			this.template(this.generatorGruntPath + 'connect.js', this.gruntPath + 'connect.js');
 			this.copy(this.generatorGruntPath + 'cssmin.js', this.gruntPath + 'cssmin.js');
-			this.copy(this.generatorGruntPath + 'htmlhint.js', this.gruntPath + 'htmlhint.js');
-			this.copy(this.generatorGruntPath + 'jshint.js', this.gruntPath + 'jshint.js');
-			this.copy(this.generatorGruntPath + 'jsbeautifier.js', this.gruntPath + 'jsbeautifier.js');
-			this.copy(this.generatorHelperPath + 'task-configs/.jsbeautifierrc', this.helperPath + 'task-configs/.jsbeautifierrc');
 			this.template(this.generatorGruntPath + '_sync.js.ejs', this.gruntPath + 'sync.js');
 			this.template(this.generatorGruntPath + '_watch.js.ejs', this.gruntPath + 'watch.js');
 		}

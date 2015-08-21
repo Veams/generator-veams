@@ -1,5 +1,5 @@
 var chalk = require('chalk');
-var config = require('./config.js');
+var config = require('./../lib/config.js');
 
 var hTimesId = 'helperTimes';
 var hLimitId = 'helperLimit';

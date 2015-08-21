@@ -50,14 +50,14 @@ gulp.task('build', function(callback) {
 		'sassGlobbing:dist',
 		[
 			'styles:dist'<% if (gulpModules && (gulpModules.indexOf('gulp-requirejs-optimize') !== -1 || gulpModules.indexOf('browserify') !== -1)) { %>,
-			'js:dist'<% } else { %>
+			'js:dist'<% } else { %>,
 			'copy:js'<% } %>
-		],
-		[
-
-			'hint:html'<% if (gulpModules && gulpModules.indexOf('gulp-jshint') !== -1) { %>,
-			'hint:js'<% } %>
-		],
+		],<% if (testAndQALibs) { %>
+		[<% if(testAndQALibs.indexOf('hintingHTML') !== -1) { %>,
+			'hint:html'<% } %><% if (testAndQALibs.indexOf('hintingJS') !== -1) { %>,
+			'hint:js'<% } %><% if (testAndQALibs.indexOf('jscs') !== -1) { %>,
+			'js:jscs'<% } %>
+		],<% } %>
 		callback
 	);
 });

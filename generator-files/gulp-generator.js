@@ -17,7 +17,6 @@ exports.questions = function () {
 			{name: 'gulp-htmlmin'},
 			{name: 'gulp-iconify'},
 			// {name: 'gulp-jsdoc'},
-			{name: 'gulp-jshint'},
 			// {name: 'gulp-modulizr'},
 			{name: 'gulp-requirejs-optimize'},
 			// {name: 'gulp-responsive'},
