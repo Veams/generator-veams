@@ -31,8 +31,6 @@
 		"gulp": "^3.8.11",
 		"gulp-notify": "^2.2.0",
 		"gulp-minify-css": "^0.5.1",
-		"gulp-htmlhint": "^0.1.1",
-		"gulp-jshint": "^1.9.4",
 		"gulp-sequence": "^0.4.0",
 		"gulp-htmlhint": "^0.1.1",
 		"gulp-filesize": "^0.0.6",<% if(taskRunner.indexOf('grunt') != -1) { %>
@@ -45,12 +43,14 @@
 		"gulp-uglify": "^1.1.0",<% } %><% if(name == 'gulp-svg-sprite') { %>
 		"gulp-svg-sprite": "^1.0.20",<% } %><% if(name == 'gulp-iconify') { %>
 		"gulp-iconify": "^0.3.0",<% } %><% if(name == 'gulp-jsdoc') { %>
-		"gulp-jsdoc": "^0.1.4",<% } %><% if(name == 'gulp-jshint') { %>
-		"gulp-jshint": "^1.9.4",
-		"jshint-stylish": "^2.0.0",<% } %><% if(name == 'gulp-modulizr') { %>
+		"gulp-jsdoc": "^0.1.4",<% } %><% if(name == 'gulp-modulizr') { %>
 		"gulp-modulizr": "^0.0.2",<% } %><% if(name == 'gulp-requirejs-optimize') { %>
 		"gulp-requirejs-optimize": "^0.1.3",<% } %><% if(name == 'gulp-responsive') { %>
-		"gulp-responsive": "^1.0.7",<% } %><% }); %><%} %>
+		"gulp-responsive": "^1.0.7",<% } %><% }); %><%} %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
+		"gulp-jscs": "^2.0.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingHTML') != -1){ %>
+		"gulp-htmlhint": "^0.1.1",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingJS') != -1){ %>
+		"gulp-jshint": "^1.9.4",
+		"jshint-stylish": "^2.0.0",<% } %>
 		"gulp-sass": "^2.0.4",
 		"gulp-load": "^0.1.1",
 		"gulp-load-plugins": "^0.8.1",
@@ -66,7 +66,9 @@
 		"grunt-sass-globber": "^2.0.0",<% if ((jsLibs && jsLibs.length && jsLibs.indexOf('requirejs') != -1) || (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1)) { %>
 		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features && features.length && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
 		"grunt-contrib-copy": "~0.7.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
-		"grunt-jscs": "^1.8.0",<% } %>
+		"grunt-jscs": "^1.8.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingHTML') != -1){ %>
+		"grunt-htmlhint": "~0.4.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingJS') != -1){ %>
+		"grunt-contrib-jshint": "~0.11.2",<% } %>
 		"grunt-newer": "~0.8.0",<% if(gruntModules && gruntModules.length){ %> <% if(typeof gruntModules === 'object'){ gruntModules.forEach(function(name, i) { if(name == 'grunt-grunticon') { %>
 		"grunt-grunticon": "~1.0.0-beta.0",<% } %><% if(name == 'grunt-dr-svg-sprites') { %>
 		"grunt-dr-svg-sprites": "^0.9.15",<% } %><% if(name == 'grunt-dr-svg-sprites' || name == "grunt-grunticon") { %>
@@ -93,15 +95,12 @@
 		"jit-grunt": "^0.9.0",
 		"load-grunt-configs": "~0.4.1",<%if (taskRunner.indexOf('gulp') == -1) { %>
 		"grunt-sync": "~0.2.0",
-		"grunt-htmlhint": "~0.4.0",
 		"grunt-contrib-htmlmin": "~0.3.0",
 		"grunt-concurrent": "~0.4.2",
-		"grunt-jsbeautifier": "~0.2.6",
 		"grunt-contrib-cssmin": "~0.11.0",
 		"grunt-contrib-clean": "~0.6.0",
 		"grunt-contrib-connect": "~0.8.0",
-		"grunt-contrib-watch": "~0.6.1",
-		"grunt-contrib-jshint": "~0.8.0",<% } %>
+		"grunt-contrib-watch": "~0.6.2",<% } %>
 		"time-grunt": "*"<% if(plugin && plugin.length){ %>,
 <% if(typeof plugin === 'object'){ plugin.forEach(function(name, i) { %>
 		"<%= name %>": "*"<% if(i < (plugin.length - 1)) { %>,<% } %>

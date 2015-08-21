@@ -3,7 +3,7 @@ var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var gruntGenerator = require('../../generator-files/grunt-generator');
-var configFile = require('../../generator-files/config');
+var configFile = require('../../lib/config');
 
 module.exports = yeoman.generators.Base.extend({
 

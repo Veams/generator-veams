@@ -8,6 +8,10 @@ var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
 	'taskRunner': [
 		'gulp'
+	],
+	'testAndQA': true,
+	'testAndQALibs': [
+		'hintingHTML'
 	]
 });
 
@@ -35,6 +39,6 @@ describe('gulp-htmlhint', function () {
 	});
 
 	it('adds task to helper file', function () {
-		assert.fileContent(helperPath + '_gulp/hinting.js', /gulp-htmlhint/);
+		assert.fileContent(helperPath + '_gulp/hinting.js', /hint:html/);
 	});
 });

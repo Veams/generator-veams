@@ -5,7 +5,12 @@ var path = require('path');
 var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({});
+var answers = require('../test_helpers/prompt-answer-factory')({
+	'testAndQA': true,
+	'testAndQALibs': [
+		'hintingHTML'
+	]
+});
 
 describe('grunt-htmlhint', function () {
 	var helperPath = "helpers/";

@@ -9,8 +9,9 @@ var answers = require('../test_helpers/prompt-answer-factory')({
 	'taskRunner': [
 		'gulp'
 	],
-	'gulpModules': [
-		'gulp-jshint'
+	'testAndQA': true,
+	'testAndQALibs': [
+		'hintingJS'
 	]
 });
 
@@ -38,6 +39,6 @@ describe('gulp-jshint', function () {
 	});
 
 	it('adds task to helper file', function () {
-		assert.fileContent(helperPath + '_gulp/hinting.js', /gulp-jshint/);
+		assert.fileContent(helperPath + '_gulp/hinting.js', /hint:js/);
 	});
 });
