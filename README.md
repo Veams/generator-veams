@@ -260,7 +260,7 @@ You want to install custom handlebars helpers for templating from `PG`?
 * Here you go: `yo prototype:templating`
 
 ### Backbone|Exoskeleton|Ampersand:
-We have integrated a sub generator which you can pass arguments and options. You can create a model, view or collection with these. 
+We have integrated a sub generator which you can pass one argument and one option to create a model, view or collection. 
 
 **Arguments:**
 
@@ -271,7 +271,7 @@ The sub generator expects any of the following arguments:
 
 **Options:**
 
-Furthermore you can pass an option with `--`. This option is only important when you do want to use AMD or CommonJS syntay instead of ES Harmony syntax.
+Furthermore you can pass an option with `--`. This option is only important when you do want to use AMD or CommonJS syntax instead of ES Harmony syntax.
 * `--amd`
 * `--commonjs`
 
