@@ -1,7 +1,7 @@
 /* ===================================================
 BASE
 =================================================== */
-<% if (pgPackages && pgPackages.length) { if (pgPackages.indexOf('pgSCSS') == -1) { %>
+<% if (pgPackages && pgPackages.length && pgPackages.indexOf('pgSCSS') != -1) { %>
 /* ---------------------------------------------------
 Global styles
 --------------------------------------------------- */
@@ -15,4 +15,4 @@ body {
 	font-size: 16px;
 	line-height: 140%;
 }
-<% }} %>
+<% } %>

@@ -61,16 +61,12 @@ exports.scaffold = function () {
 			this.copy('resources/templating/partials/blocks/b-nav.hbs');
 
 			// Components
-			this.directory('resources/templating/partials/components/_base', 'resources/templating/partials/components');
-
-			// Modules
-			this.directory('resources/templating/partials/modules', 'resources/templating/partials/modules');
+			this.copy('resources/templating/partials/components/README.md');
 		}
 
 		// SCSS
 		this.mkdir('resources/scss/blocks');
 		this.mkdir('resources/scss/components');
-		this.mkdir('resources/scss/modules');
 		this.mkdir('resources/scss/regions');
 	}
 	if (this.pgPackages.indexOf(pgComponentsId) == -1) delete this.bowerFile['dependencies']['pg-components'];
