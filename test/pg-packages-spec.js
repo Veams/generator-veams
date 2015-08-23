@@ -34,8 +34,7 @@ describe('pg packages', function () {
 				srcPath + "templating/layouts/README.md",
 				srcPath + "templating/partials/README.md",
 				srcPath + "templating/partials/blocks/README.md",
-				srcPath + "templating/partials/components/README.md",
-				srcPath + "templating/partials/modules/README.md"
+				srcPath + "templating/partials/components/README.md"
 			];
 			assert.file(expected);
 		});

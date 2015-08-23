@@ -37,11 +37,12 @@ describe('assemble', function () {
 	it('creates resources files', function () {
 		var expected = [
 			srcPath + "templating/data/config.json",
+			srcPath + "templating/helpers/alias.js",
 			srcPath + "templating/helpers/helper-wrapWith.js",
 			srcPath + "templating/helpers/helper-for.js",
 			srcPath + "templating/helpers/helper-ifBlock.js",
 			srcPath + "templating/helpers/helper-limit.js",
-			srcPath + "templating/helpers/helper-partial.js",
+			srcPath + "templating/helpers/helper-mergeData.js",
 			srcPath + "templating/helpers/helper-syntax.js",
 			srcPath + "templating/helpers/helper-xif.js",
 			srcPath + "templating/layouts/lyt-default.hbs",
