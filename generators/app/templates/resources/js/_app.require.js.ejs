@@ -5,7 +5,7 @@ define([], function () {
 
 	// Save a reference to the global object
 	var root = window;
-	var App = root.App;
+	var App = root.App = window.App || {};
 
 	// Versioning
 	App.version = "0.0.1";

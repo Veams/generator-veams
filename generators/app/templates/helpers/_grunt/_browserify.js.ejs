@@ -18,7 +18,9 @@ module.exports = {
 		options: {
 			debug: false,
 			alias: libs,
-			external: null  // Reset this here because it's not needed
+			external: <% if (jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>[
+				'underscore'
+			]<% } else { %> null  // Reset this here because it's not needed <% } %>
 		}
 	},
 	dev: {

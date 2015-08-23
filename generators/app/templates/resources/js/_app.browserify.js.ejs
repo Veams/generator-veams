@@ -8,9 +8,8 @@ export default (function(){
 
 	// Save a reference to the global object
 	var root = window;
-
-	var App = root.App;
-	<%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
+	var App = root.App = window.App || {};
+<%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
 	App.$ = $;<% } %>
 
 	// Versioning
