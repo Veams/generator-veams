@@ -213,6 +213,7 @@ You can add testing and qa tools. At this state we provide:
 * JS Code Style - JSCS is a code style linter for programmatically enforcing your style guide ([JSCS](https://www.npmjs.com/package/jscs)).
 * HTML Hinting - Check your HTML for errors ([gulp-htmlhint](https://www.npmjs.com/package/gulp-htmlhint), [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint)).
 * JS Hinting - Check your JS for errors ([gulp-jshint](https://www.npmjs.com/package/gulp-jshint), [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)).
+* E2E (webdriver) - WebdriverIO lets you control a browser or a mobile application with just a few lines of code. (only Grunt at this state: [grunt-webdriver](https://github.com/webdriverio/grunt-webdriver)).
 
 ## Template Engines
 
@@ -253,7 +254,7 @@ You forgot a grunt module?
 * Install further grunt modules: `yo prototype:grunt`
 
 ### Handlebars Template Helpers:
-You want to install custom handlebars helpers for templating from `PG`? 
+You want to install custom handlebars helpers? 
 * Here you go: `yo prototype:templating`
 
 ### Backbone|Exoskeleton|Ampersand:
@@ -283,3 +284,4 @@ see: [Changelog.md](CHANGELOG.md)
 
 ## TODO: 
 - Own template wrapper for handlebars
+- Update code base to match new yeoman-generator terms
