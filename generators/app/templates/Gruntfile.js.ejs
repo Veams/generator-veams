@@ -170,5 +170,10 @@ module.exports = function(grunt) {
 		'build',
 		'copy:dist'
 	]); <% } %>
+	<% if(testAndQALibs && (testAndQALibs.indexOf('webdriver') != -1 || testAndQALibs.indexOf('karma') != -1)){ %>
+	grunt.registerTask('e2e', [
+	<% if(testAndQALibs.indexOf('webdriver') != -1) { %>'webdriver:e2e'<% } %>
+	]);
+	<% } %>
 <% } %>
 };

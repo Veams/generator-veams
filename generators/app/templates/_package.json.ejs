@@ -66,7 +66,8 @@
 		"grunt-sass-globber": "^2.0.0",<% if ((jsLibs && jsLibs.length && jsLibs.indexOf('requirejs') != -1) || (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1)) { %>
 		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features && features.length && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
 		"grunt-contrib-copy": "~0.7.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
-		"grunt-jscs": "^1.8.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingHTML') != -1){ %>
+		"grunt-jscs": "^1.8.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('webdriver') != -1){ %>
+		"grunt-webdriver": "^0.5.2",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingHTML') != -1){ %>
 		"grunt-htmlhint": "~0.4.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingJS') != -1){ %>
 		"grunt-contrib-jshint": "~0.11.2",<% } %>
 		"grunt-newer": "~0.8.0",<% if(gruntModules && gruntModules.length){ %> <% if(typeof gruntModules === 'object'){ gruntModules.forEach(function(name, i) { if(name == 'grunt-grunticon') { %>
