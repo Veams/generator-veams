@@ -231,10 +231,10 @@ In your installation routine you can choose specific modules for Assemble:
 #### Custom Helpers
 We provide some custom helpers to speed up your Assemble workflow. These helpers provide:
 
-* repeating elements
-* limiting JSON output
-* partials with multiple contexts
-* `{{#wrapWith}}` for grid systems
+* `{{#wrapWith}}` - wrap your markup with predefined templates, useful for grid systems
+* `{{#mergeData}}` - merge two data objects
+* `{{#repeat}}` or `{{#times}}` - repeat elements
+* `{{#limit}}` - limit JSON output
 * and a few more ... 
 
 You want to know more? See [PG Custom Helpers](http://prototype-generator.com/templating-in-pg/template-helpers.html)
