@@ -1,3 +1,5 @@
+var Alias = require('./alias');
+
 (function () {
 	module.exports.register = function (Handlebars, options) {
 
@@ -12,6 +14,8 @@
 				content += block.fn(i);
 			return content;
 		});
+
+		Alias.create('repeat', Handlebars.helpers.times, Handlebars);
 
 		/*
 		 * Loop helper.

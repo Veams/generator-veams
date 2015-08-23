@@ -1,4 +1,8 @@
-
+/**
+ * Represents a helper to support wrapper partials.
+ *
+ * @author Sebastian Fitzner
+ */
 var fs = require('fs');
 var path = require('path');
 var glob = require('glob');
@@ -7,7 +11,7 @@ var Alias = require('./alias');
 
 module.exports.register = function (Handlebars, options) {
 
-	var panelsDir = path.join(process.cwd(), config.options.paths.panels, '/**/*.hbs');
+	var panelsDir = path.join(process.cwd(), config.options.paths.partials, '/**/*.hbs');
 	var panels = getFiles(panelsDir);
 	var aliases = [
 		'area',
@@ -17,7 +21,7 @@ module.exports.register = function (Handlebars, options) {
 	];
 
 	/*
-	 * Panels helper.
+	 * wrapWith helper.
 	 *
 	 * @return content with defined markup in panel
 	 */
@@ -41,7 +45,7 @@ module.exports.register = function (Handlebars, options) {
 	});
 
 	aliases.forEach(function (alias) {
-		Alias.create(alias, Handlebars.helpers.panel, Handlebars);
+		Alias.create(alias, Handlebars.helpers.wrapWith, Handlebars);
 	});
 
 };
