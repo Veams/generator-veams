@@ -2,7 +2,7 @@
   "name": "generator-pg",
   "version": "6.0.0",
   "homepage": "http://prototype-generator.com/",
-  "description": "Scaffold modern frontend web apps or web pages with Assemble, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure the web app with Backbone and RequireJS or Browserify.",
+  "description": "Scaffold modern frontend web apps or web pages with Assemble, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with Backbone and RequireJS or Browserify.",
   "keywords": [
     "yeoman-generator",
     "assemble",
