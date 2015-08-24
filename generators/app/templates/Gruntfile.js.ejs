@@ -18,42 +18,19 @@
  *
  */
 
+var config = require('./helpers/config');
+
 module.exports = function(grunt) {
 	
 	// load only used tasks and add fallbacks for those which cannot be find
-	require('jit-grunt')(grunt, {<% if (modules && modules.length && (modules.indexOf('grunt-grunticon') != -1 || modules.indexOf('grunt-dr-svg-sprites') != -1)) { %>
+	require('jit-grunt')(grunt, {<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-grunticon') != -1 || gruntModules.indexOf('grunt-dr-svg-sprites') != -1)) { %>
 		'replace': 'grunt-text-replace'<% } %>
 	});
 	// measures the time each task takes
 	require('time-grunt')(grunt);
 
-	var options = {
-	// Project settings
-		config: {
-			// in this directory you can find your grunt config tasks
-			src: "helpers/_grunt/*.js"
-		},
-		// define your path structure
-		paths: {
-			// helpers folder with grunt tasks and templates, tests and photobox
-			helper: 'helpers',
-			// resources folder with working files
-			src: 'resources',<% if (features && features.length && features.indexOf('createDevFolder') != -1) { %>
-			// dist folder
-			dist: '_dist', <% } %>
-			// dev/working folder
-			dev: '_output'
-		},
-	// define your ports for grunt-contrib-connect
-		ports: {
-			app: 3000,
-			test: 3001,
-			livereload: 35731
-		}
-	};
-
 	// Load grunt configurations automatically
-	var configs = require('load-grunt-configs')(grunt, options);
+	var configs = require('load-grunt-configs')(grunt, config.options);
 
 	// Define the configuration for all the tasks
 	grunt.initConfig(configs);
@@ -61,61 +38,40 @@ module.exports = function(grunt) {
 	/*
 	 *	SIMPLE TASKS
 	 */
-	<% if(features && features.length){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
+
 	// SASS Task
 	grunt.registerTask('watchCSS', [
-		'fileindex:libsassGlobbing', // Sass Globbing with Grunt (see: http://www.prototype-generator.com/getting-started/features.html)
-		'sass:dist'
-	]); <% } else { %>
-	grunt.registerTask('cssDev', [
-		'bgShell:devCompass'
-	]);
-	grunt.registerTask('watchCSS', [
-		'bgShell:watchCompass'
-	]);
-	grunt.registerTask('cssProd', [
-		'bgShell:prodCompass'
-	]); <% }} else { %>
-	grunt.registerTask('cssDev', [
-		'bgShell:devCompass'
-	]);
-	grunt.registerTask('watchCSS', [
-		'bgShell:watchCompass'
-	]);
-	grunt.registerTask('cssProd', [
-		'bgShell:prodCompass'
-	]); <% } %><% if (modules && modules.length && modules.indexOf('grunt-grunticon') != -1) { %>
+		'sassGlobber:dev',
+		'sass:dev'
+	]);<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-grunticon') != -1) { %>
 	
 	// Icons Task
-	grunt.registerTask('icons', [<% if (modules.indexOf('grunt-svgmin') != -1) { %>
+	grunt.registerTask('icons', [<% if (gruntModules && gruntModules.indexOf('grunt-svgmin') != -1) { %>
 		'svgmin',<% } %>
 		'grunticon',
 		'clean:grunticon',
 		'replace'
-	]); <% } %><% if (modules && modules.length && modules.indexOf('grunt-dr-svg-sprites') != -1) { %>
+	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>
 	
 	// Sprites Task
 	grunt.registerTask('icons', [
 		'dr-svg-sprites',
 		'replace:spriteUrl'
-	]); <% } %><% if ((modules && modules.length && modules.indexOf('grunt-packager') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1) || jsLibs.indexOf('requirejs') != -1) { %>
+	]); <% } %><% if ((gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1 || gruntModules.indexOf('grunt-browserify') != -1))) { %>
 	
 	// JS Task
-	grunt.registerTask('js', [<% if(modules.indexOf('grunt-packager') != -1) { %>
-		'packager'<% } %><% if(modules.indexOf('grunt-contrib-requirejs') != -1 || jsLibs.indexOf('requirejs') != -1) { %>
-		'requirejs:dev'<% } %>
-	]); <% } %><% if (modules && modules.length) { %>
-	<% if (modules.indexOf('grunt-responsive-images') != -1 || modules.indexOf('grunt-image-size-export') != -1) {%>
+	grunt.registerTask('jsDev', [<% if(gruntModules.indexOf('grunt-packager') != -1) { %>
+		'packager'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
+		'requirejs:dev'<% } %><% if(gruntModules.indexOf('grunt-browserify') != -1) { %>
+		'browserify:vendor',
+		'browserify:dev'<% } %>
+	]); <% } %><% if (gruntModules && gruntModules.length) { %>
+	<% if (gruntModules.indexOf('grunt-responsive-images') != -1 || gruntModules.indexOf('grunt-image-size-export') != -1) {%>
 	// Picture Task (This task creates an additional JSON file with the path to your picture)
-	grunt.registerTask('pictures', [<% if (modules.indexOf('grunt-responsive-images') != -1) { %>
-		'responsive_images'<% if (modules.indexOf('grunt-image-size-export') != -1) { %>,<% }} %><% if (modules.indexOf('grunt-image-size-export') != -1) { %>
+	grunt.registerTask('pictures', [<% if (gruntModules.indexOf('grunt-responsive-images') != -1) { %>
+		'responsive_images'<% if (gruntModules.indexOf('grunt-image-size-export') != -1) { %>,<% }} %><% if (gruntModules.indexOf('grunt-image-size-export') != -1) { %>
 		'imageSizeExport'<% } %>
-	]); <% }} %><% if (modules && modules.length && modules.indexOf('grunt-contrib-compass') != -1) { %>
-	
-	// Compass Task
-	grunt.registerTask('css', [
-		'compass:dist'
-	]); <% } %><% if (modules && modules.length && modules.indexOf('grunt-photobox') != -1) { %>
+	]); <% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-photobox') != -1) { %>
 	
 	// Screenshot Tasks (Take screenshots from your environments)
 	grunt.registerTask('photoLocal', [
@@ -126,18 +82,18 @@ module.exports = function(grunt) {
 	]);
 	grunt.registerTask('photoProd', [
 		'photobox:prod'
-	]);	<% } %>
+	]);	<% } %><% if(gruntModules.indexOf('grunt-packager') != -1) { %>
 	
 	// Sync JS Task
 	grunt.registerTask('syncJS', [
 		'sync:js'
-	]);<% if(installAssemble != false){ %>
+	]);<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 	
 	// Build HTML Task
 	grunt.registerTask('build-html', [
 		'assemble'
 	]);<% } %>
-	
+	<% if (taskRunner.indexOf('gulp') == -1) { %>
 	// HTML Hint Task (Check your HTML)
 	grunt.registerTask('check-html', [
 		'htmlhint'
@@ -145,11 +101,7 @@ module.exports = function(grunt) {
 	// JS Hint Task (Check you JS)
 	grunt.registerTask('check-js', [
 		'jshint'
-	]);
-	// Beautifier Task (Beautify your JS files)
-	grunt.registerTask('beauty-files', [
-		'jsbeautifier'
-	]);<% if (modules && modules.length) { if (modules.indexOf('grunt-csscomb') != -1) { %>
+	]);<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-csscomb') != -1) { %>
 	
 	// CSSComb Task (Beautify your SASS files)
 	grunt.registerTask('beauty-scss', [
@@ -157,19 +109,22 @@ module.exports = function(grunt) {
 	]);<% }} %>
 
 	/*
-	 *	ADVANCED TASKS
-	 */
-	grunt.registerTask('server', [<% if (modules && modules.length && (modules.indexOf('grunt-packager') != -1 || modules.indexOf('grunt-contrib-requirejs') != -1) || jsLibs.indexOf('requirejs') != -1) {  %>
-		'js',<% } %><% if(installAssemble != false){ %>
+	 *	ADVANCED TASKS	<% if (taskRunner.indexOf('gulp') != -1) { %>
+	 *  You have chosen Gulp and Grunt as task runners.
+	 *  Please define all your advanced tasks in Gulp or set your own grunt tasks here. <% } %>
+	 */<% if (taskRunner.indexOf('gulp') == -1) { %>
+	grunt.registerTask('server', [<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1 || gruntModules.indexOf('grunt-browserify') != -1)) {  %>
+		'jsDev',<% } %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
+		'jscs',<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 		'newer:assemble',<% } %>
 		'concurrent:syncing',
-		'watchCSS'<% if (features && features.length && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>,
-		'sass:docs'<% } %><% if(modules && modules.length){ if(modules.indexOf('grunt-browser-sync') == -1) { %>,
-		'connect:livereload',<% }} if(modules && modules.length){ %><% if(typeof modules === 'object'){ _.each(modules, function(name, i) { if(name == 'grunt-browser-sync') { %>,
+		'watchCSS'<% if (features && features.length && features.indexOf('installDocs') != -1) { %>,
+		'sass:docs'<% } %><% if(gruntModules && gruntModules.length){ if(gruntModules.indexOf('grunt-browser-sync') == -1) { %>,
+		'connect:livereload',<% }} if(gruntModules && gruntModules.length){ %><% if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) { if(name == 'grunt-browser-sync') { %>,
 		// 'connect:livereload',
 		'browserSync', <% } %><%}); %><%} %><%} %>
 		'watch'
-	]);<% if(modules && modules.length && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>
+	]);<% if(gruntModules && gruntModules.length && gruntModules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>
 	
 	grunt.registerTask('devProxy', [
 		'configureProxies:proxy', 
@@ -178,24 +133,24 @@ module.exports = function(grunt) {
 	]);<% } %>
 	
 	grunt.registerTask('build', [
-		'clean:dev',
-		'jsbeautifier',<% if (modules && modules.length) { if (modules.indexOf('grunt-modernizr') != -1) { %>
-		'modernizr',<% }} %><% if (modules && modules.length && modules.indexOf('grunt-contrib-requirejs') != -1 || jsLibs.indexOf('requirejs') != -1) { %>
-		'requirejs:prod',<% } %><% if (modules && modules.length) { if (modules.indexOf('grunt-packager') != -1) { %>
-		'packager',<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-contrib-uglify') != -1) { %>
+		'clean:dev',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-modernizr') != -1) { %>
+		'modernizr',<% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
+		'requirejs:prod',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-packager') != -1) { %>
+		'packager',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
+		'browserify:vendor',
+		'browserify:dist',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-uglify') != -1) { %>
 		'uglify',<% }} %>
-		'concurrent:syncing', <% if (modules && modules.length) { if (modules.indexOf('grunt-csscomb') != -1) { %>
-		'beauty-scss',<% }} %> <% if(features && features.length){ if(features.indexOf('sassInsteadOfCompass') != -1) { %>
-		'watchCSS',
-		'sass:universal',<% } else { %>
-		'cssProd',<% }} else { %>
-		'cssProd',<% } %><% if (features && features.length && features.indexOf('installDocs') != -1 && features.indexOf('sassInsteadOfCompass') != -1) { %>
-		'sass:docs',<% } %><% if (modules && modules.length) { if (modules.indexOf('grunt-combine-mq') != -1) { %>
-		'combine_mq',<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-postcss-separator') != -1) { %>
-		'postcssSeparator',<% }} %><% if (modules && modules.length) { if (modules.indexOf('grunt-autoprefixer') != -1) { %>
+		'concurrent:syncing', <% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-csscomb') != -1) { %>
+		'beauty-scss',<% }} %>
+		'sassGlobber:dist',
+		'sass:dist',
+		'sass:universal',<% if (features && features.length && features.indexOf('installDocs') != -1) { %>
+		'sass:docs',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-combine-mq') != -1) { %>
+		'combine_mq',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-postcss-separator') != -1) { %>
+		'postcssSeparator',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-autoprefixer') != -1) { %>
 		'autoprefixer',<% }} %>
-		'cssmin',<% if (modules && modules.length) { if (modules.indexOf('grunt-bless') != -1) { %>
-		'bless',<% }} %><% if(installAssemble != false){ %>
+		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
+		'bless',<% }} %><% if(templateEngine.indexOf('assemble') != -1){ %>
         'assemble',<% } %>
 		'concurrent:build'
 	]);
@@ -210,9 +165,15 @@ module.exports = function(grunt) {
 	]);<% if (features && features.length && features.indexOf('createDevFolder') != -1) { %>
 	
 	grunt.registerTask('dist', [
-		'clean',<% if (modules && modules.length) { if (modules.indexOf('grunt-version') != -1) { %>
+		'clean',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-version') != -1) { %>
 		'version:prerelease',<% }} %>
 		'build',
 		'copy:dist'
 	]); <% } %>
+	<% if(testAndQALibs && (testAndQALibs.indexOf('webdriver') != -1 || testAndQALibs.indexOf('karma') != -1)){ %>
+	grunt.registerTask('e2e', [
+	<% if(testAndQALibs.indexOf('webdriver') != -1) { %>'webdriver:e2e'<% } %>
+	]);
+	<% } %>
+<% } %>
 };

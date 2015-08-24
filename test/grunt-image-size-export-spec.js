@@ -6,7 +6,7 @@ var path = require('path');
 var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var answers = require('../test_helpers/prompt-answer-factory')({
-	"modules": [
+	"gruntModules": [
 		"grunt-image-size-export"
 	]
 });

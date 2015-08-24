@@ -2,10 +2,14 @@ module.exports = function promptAnswerFactory(customAnswers) {
 	var defaults = {
 		"projectName": "",
 		"projectAuthor": "",
-		"installAssemble": false,
+		"templateEngine": "",
 		"installPlugin": false,
 		"installCMS": false,
-		"modules": [
+		"taskRunner": [
+			"grunt"
+		],
+		"gulpModules": [],
+		"gruntModules": [
 			"grunt-combine-mq",
 			"grunt-dr-svg-sprites"
 		],

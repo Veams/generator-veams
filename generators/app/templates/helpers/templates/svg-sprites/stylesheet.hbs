@@ -52,7 +52,7 @@
 	height: {{unit height ../../../config/cssUnit ../../../config/cssBaseFontSize}};
 {{/if}}
 	background-position: {{unit x ../../config/cssUnit ../../config/cssBaseFontSize -1}} {{unit y ../../config/cssUnit ../../config/cssBaseFontSize -1}};
-	.no-svg & {
+	@at-root .no-svg & {
 		@extend %sprites-bg-png;
 	}
 }

@@ -1,9 +1,0 @@
-require([
-	'app'<% if(jsLibs && jsLibs.length && jsLibs.indexOf('jquery') != -1) { %>, 'jquery'<% } %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('backbone') != -1) { %>, 'backbone'<% } %>
-	], function (app<% if(jsLibs && jsLibs.length && jsLibs.indexOf('jquery') != -1) { %>, $<% } %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('backbone') != -1) { %>, Backbone<% } %>) {
-    'use strict';
-
-	console.log(app);<% if(jsLibs && jsLibs.length && jsLibs.indexOf('jquery') != -1) { %>
-	console.log('Running jQuery %s', $().jquery);<% } %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('backbone') != -1) { %>
-	console.log(Backbone);<% } %>
-});

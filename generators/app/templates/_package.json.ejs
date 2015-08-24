@@ -3,97 +3,118 @@
 	"description": "Prototype",
 	"version": "0.1.0",
 	"author": {
-		"name": "<%= authorLogin %>",
-		"email": "<%= authorEmail %>",
-		"url": "http://github.com/<%= _.slugify(authorLogin) %>/"
+		"name": "<%= authorName %>",
+		"url": "http://github.com/<%= _.slugify(authorName) %>/"
 	},
 	"engines": {
-		"node": ">=0.10.0"
+		"node": ">=0.12.0"
 	},
 	"scripts": {
 		"test": "grunt test"
 	},
-    "devDependencies": {
-		"grunt": "~0.4.5", <% if(installAssemble != false){ %>
+	"dependencies": {<% if(gruntModules && gruntModules.indexOf('grunt-browserify') !== -1 || gulpModules && gulpModules.indexOf('browserify') !== -1) { %> <% if(jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function jsLibsEach(lib, i) { %> <% if(lib == 'jquery') { %>
+		"jquery": "^2.1.4"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'backbone') { %>
+		"backbone": "^1.2.0",
+		"underscore": "^1.8.3"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'exoskeleton') { %>
+		"underscore": "^1.8.3",
+		"exoskeleton": "^0.7.0"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'ampersand') { %>
+		"underscore": "^1.8.3",
+		"ampersand": "*"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'document-register-element') { %>
+		"document-register-element": "^0.4.5"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'respimage') { %>
+		"respimage": "^1.4.0"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'handlebars') { %>
+		"handlebars": "^3.0.3"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'touchswipe') { %>
+		"touchswipe": "^1.6.0"<% } %>
+	<% }); %><% } %><% } %>},
+	"devDependencies": {<% if(taskRunner && taskRunner.length) {%><% if (taskRunner.indexOf('gulp') != -1) {%>
+		"del": "^1.1.1",
+		"browser-sync": "*",
+		"require-dir": "^0.3.0",
+		"sass-globber": "^2.0.1",
+		"gulp": "^3.8.11",
+		"gulp-notify": "^2.2.0",
+		"gulp-minify-css": "^0.5.1",
+		"gulp-sequence": "^0.4.0",
+		"gulp-htmlhint": "^0.1.1",
+		"gulp-filesize": "^0.0.6",<% if(taskRunner.indexOf('grunt') != -1) { %>
+		"gulp-grunt": "^0.5.2",<% } %><% if(gulpModules && gulpModules.length && typeof gulpModules === 'object'){ gulpModules.forEach(function(name) { if(name == 'gulp-autoprefixer') { %>
+		"gulp-autoprefixer": "^2.1.0",<% } %><% if(name == 'gulp-bless') { %>
+		"gulp-bless": "^3.0.1",<% } %><% if(name == 'browserify') { %>
+		"browserify": "^10.2.3",<% } %><% if(name == 'gulp-combine-mq') { %>
+		"gulp-combine-mq": "^0.4.0",<% } %><% if(name == 'gulp-htmlmin') { %>
+		"gulp-htmlmin": "^1.1.1",<% } %><% if(name == 'gulp-uglify') { %>
+		"gulp-uglify": "^1.1.0",<% } %><% if(name == 'gulp-svg-sprite') { %>
+		"gulp-svg-sprite": "^1.0.20",<% } %><% if(name == 'gulp-iconify') { %>
+		"gulp-iconify": "^0.3.0",<% } %><% if(name == 'gulp-jsdoc') { %>
+		"gulp-jsdoc": "^0.1.4",<% } %><% if(name == 'gulp-modulizr') { %>
+		"gulp-modulizr": "^0.0.2",<% } %><% if(name == 'gulp-requirejs-optimize') { %>
+		"gulp-requirejs-optimize": "^0.1.3",<% } %><% if(name == 'gulp-responsive') { %>
+		"gulp-responsive": "^1.0.7",<% } %><% }); %><%} %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
+		"gulp-jscs": "^2.0.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingHTML') != -1){ %>
+		"gulp-htmlhint": "^0.1.1",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingJS') != -1){ %>
+		"gulp-jshint": "^1.9.4",
+		"jshint-stylish": "^2.0.0",<% } %>
+		"gulp-sass": "^2.0.4",
+		"gulp-load": "^0.1.1",
+		"gulp-load-plugins": "^0.8.1",
+		"gulp-sourcemaps": "^1.5.0"<% if(templateEngine.indexOf('assemble') != -1 || taskRunner && taskRunner.indexOf('grunt') != -1){ %>,<% } %><% } %><% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 		"assemble": "~0.4.42",
 		"lodash" : "*",
+		"glob" : "^5.0.14",
+		"path" : "*",
 		"gray-matter": "*",
-		"handlebars-helper-autolink": "^0.1.1",<% } %><% if (features && features.length > 0) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>
-		"grunt-sass": "~0.18.0",<% }} %><% if ((features && features.length > 0 && features.indexOf('sassInsteadOfCompass') != -1) || (modules && modules.length > 0 && modules.indexOf('grunt-responsive-images') != -1)) { %>
-		"grunt-fileindex": "^0.1.0",<% } %><% if ((jsLibs && jsLibs.length > 0 && jsLibs.indexOf('requirejs') != -1) || (modules && modules.length > 0 && modules.indexOf('grunt-contrib-requirejs') != -1)) { %>
-		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features && features.length > 0 && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
-		"grunt-contrib-copy": "~0.7.0",<% } %>
-		"grunt-newer": "~0.8.0",<% if(modules && modules.length > 0){ %>
-		<% if(typeof modules === 'object'){ _.each(modules, function(name, i) { 
-		if(name == 'grunt-grunticon') { %>
-		"grunt-grunticon": "~1.0.0-beta.0",
-		<% } %><% if(name == 'grunt-dr-svg-sprites') { %>
-		"grunt-dr-svg-sprites": "^0.9.15",
-        <% } %><% if(name == 'grunt-dr-svg-sprites' || name == "grunt-grunticon") { %>
-		"grunt-text-replace": "~0.3.11",
-        <% } %><% if(name == 'grunt-contrib-compass') { %>
-		"grunt-contrib-compass": "*",
-		<% } %><% if(name == 'grunt-packager') { %>
-		"grunt-packager": "~0.1.0",
-		<% } %><% if(name == 'grunt-jsdoc') { %>
-		"grunt-jsdoc": "^0.6.1",
-		<% } %><% if(name == 'grunt-contrib-uglify') { %>
-		"grunt-contrib-uglify": "~0.5.1",
-		<% } %><% if(name == 'grunt-modernizr') { %>
-		"grunt-modernizr": "^0.5.2",
-		<% } %><% if(name == 'grunt-browser-sync') { %>
-		"grunt-browser-sync": "~1.5.3",
-		<% } %><% if(name == 'grunt-csscomb') { %>
-		"grunt-csscomb": "^3.0.0",
-		<% } %><% if(name == 'grunt-combine-mq') { %>
-		"grunt-combine-mq": "^0.6.0",
-		<% } %><% if(name == 'grunt-bless') { %>
-		"grunt-bless": "~0.1.1",
-		<% } %><% if(name == 'grunt-autoprefixer') { %>
-		"grunt-autoprefixer": "~0.6.5",
-		<% } %><% if(name == 'grunt-postcss-separator') { %>
-		"grunt-postcss-separator": "~0.1.1",
-		<% } %><% if(name == 'grunt-image-size-export') { %>
-		"grunt-image-size-export": "~0.1.0",
-		<% } %><% if(name == 'grunt-accessibility') { %>
-		"grunt-accessibility": "~0.1.2",
-        <% } %><% if(name == 'grunt-connect-proxy') { %>
-        "grunt-connect-proxy": "~0.1.8",
-		<% } %><% if(name == 'grunt-svgmin') { %>
-        "grunt-svgmin": "^1.0.0",
-		<% } %><% if(name == 'grunt-phantomas') { %>
-        "grunt-phantomas": "^0.10.0",
-		<% } %><% if(name == 'grunt-responsive-images') { %>
-        "grunt-responsive-images": "^0.1.3",
-		<% } %><% if(name == 'grunt-version') { %>
-        "grunt-version": "^0.3.0",
-		<% } %><% if(name == 'grunt-photobox') { %>
-		"grunt-photobox": "~0.8.0",
-		<% } %><%}); %><%} %><%} %>
+		"handlebars-helper-autolink": "^0.1.1"<% if(taskRunner.length && taskRunner.indexOf('grunt') != -1) { %>,<% } %><% } %><% if(taskRunner.length) {%><% if (taskRunner.indexOf('grunt') != -1) { %>
+		"grunt": "~0.4.5",
+		"grunt-sass": "~1.0.0",
+		"grunt-sass-globber": "^2.0.0",<% if ((jsLibs && jsLibs.length && jsLibs.indexOf('requirejs') != -1) || (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1)) { %>
+		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features && features.length && (features.indexOf('installDocs') != -1 || features.indexOf('createDevFolder') != -1)) { %>
+		"grunt-contrib-copy": "~0.7.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
+		"grunt-jscs": "^1.8.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('webdriver') != -1){ %>
+		"grunt-webdriver": "^0.5.2",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingHTML') != -1){ %>
+		"grunt-htmlhint": "~0.4.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingJS') != -1){ %>
+		"grunt-contrib-jshint": "~0.11.2",<% } %>
+		"grunt-newer": "~0.8.0",<% if(gruntModules && gruntModules.length){ %> <% if(typeof gruntModules === 'object'){ gruntModules.forEach(function(name, i) { if(name == 'grunt-grunticon') { %>
+		"grunt-grunticon": "~1.0.0-beta.0",<% } %><% if(name == 'grunt-dr-svg-sprites') { %>
+		"grunt-dr-svg-sprites": "^0.9.15",<% } %><% if(name == 'grunt-dr-svg-sprites' || name == "grunt-grunticon") { %>
+		"grunt-text-replace": "~0.3.11",<% } %><% if(name == 'grunt-packager') { %>
+		"grunt-packager": "~0.1.0",<% } %><% if(name == 'grunt-jsdoc') { %>
+		"grunt-jsdoc": "^0.6.1",<% } %><% if(name == 'grunt-contrib-uglify') { %>
+		"grunt-contrib-uglify": "~0.5.1",<% } %><% if(name == 'grunt-modernizr') { %>
+		"grunt-modernizr": "^0.5.2",<% } %><% if(name == 'grunt-browserify') { %>
+		"grunt-browserify": "https://github.com/Sebastian-Fitzner/grunt-browserify",<% } %><% if(name == 'grunt-browser-sync') { %>
+		"grunt-browser-sync": "~1.5.3",<% } %><% if(name == 'grunt-csscomb') { %>
+		"grunt-csscomb": "^3.0.0",<% } %><% if(name == 'grunt-combine-mq') { %>
+		"grunt-combine-mq": "^0.9.0",<% } %><% if(name == 'grunt-bless') { %>
+		"grunt-bless": "~0.1.1",<% } %><% if(name == 'grunt-autoprefixer') { %>
+		"grunt-autoprefixer": "~0.6.5",<% } %><% if(name == 'grunt-postcss-separator') { %>
+		"grunt-postcss-separator": "~0.1.1",<% } %><% if(name == 'grunt-image-size-export') { %>
+		"grunt-image-size-export": "~0.1.0",<% } %><% if(name == 'grunt-accessibility') { %>
+		"grunt-accessibility": "~0.1.2",<% } %><% if(name == 'grunt-connect-proxy') { %>
+		"grunt-connect-proxy": "~0.1.8",<% } %><% if(name == 'grunt-svgmin') { %>
+		"grunt-svgmin": "^1.0.0",<% } %><% if(name == 'grunt-phantomas') { %>
+		"grunt-phantomas": "^0.10.0",<% } %><% if(name == 'grunt-responsive-images') { %>
+		"grunt-responsive-images": "^0.1.3",<% } %><% if(name == 'grunt-version') { %>
+		"grunt-version": "^0.3.0",<% } %><% if(name == 'grunt-photobox') { %>
+		"grunt-photobox": "~0.8.0",<% } %><%}); %><%} %><%} %>
 		"jit-grunt": "^0.9.0",
-		"load-grunt-configs": "~0.4.1",<% if (features.indexOf('sassInsteadOfCompass') == -1) { %>
-		"grunt-bg-shell": "*",<% } %>
+		"load-grunt-configs": "~0.4.1",<%if (taskRunner.indexOf('gulp') == -1) { %>
 		"grunt-sync": "~0.2.0",
-		"grunt-htmlhint": "~0.4.0",
 		"grunt-contrib-htmlmin": "~0.3.0",
 		"grunt-concurrent": "~0.4.2",
-		"grunt-jsbeautifier": "~0.2.6",
 		"grunt-contrib-cssmin": "~0.11.0",
 		"grunt-contrib-clean": "~0.6.0",
 		"grunt-contrib-connect": "~0.8.0",
-		"grunt-contrib-watch": "~0.6.1",
-		"grunt-contrib-jshint": "~0.8.0",
-		"time-grunt": "*"<% if(plugin && plugin.length > 0){ %>,
-<% if(typeof plugin === 'object'){ _.each(plugin, function(name, i) { %>
+		"grunt-contrib-watch": "~0.6.1",<% } %>
+		"time-grunt": "*"<% if(plugin && plugin.length){ %>,
+<% if(typeof plugin === 'object'){ plugin.forEach(function(name, i) { %>
 		"<%= name %>": "*"<% if(i < (plugin.length - 1)) { %>,<% } %>
 <% }); } else { %>
-		"<%= plugin %>": "*"<% }} %>
+		"<%= plugin %>": "*"<% }} %><% } %><% } %>
 	},
 	"licenses": [
 	{
 		"type": "MIT",
-		"url": "https://github.com/<%= _.slugify(authorLogin) %>/<%= _.slugify(projectName) %>/blob/master/LICENSE-MIT"
-	}] <% if(installAssemble != false){ %>,
+		"url": "https://github.com/<%= _.slugify(authorName) %>/<%= _.slugify(projectName) %>/blob/master/LICENSE-MIT"
+	}] <% if(templateEngine.indexOf('assemble') != -1){ %>,
 	"keywords": [
 		"handlebars-helper-autolink"
 	]<% } %>

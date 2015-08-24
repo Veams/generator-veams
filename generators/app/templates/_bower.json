@@ -2,17 +2,18 @@
 	"version": "0.1.0",
 	"dependencies": {
 		"highlightjs": "~8.0.0",
-		"backbone": "~1.1.2",
-		"requirejs": "2.1.15",
-		"jquery": "~2.1.3",
 		"almond": "~0.3.0",
+		"requirejs": "~2.1.15",
 		"requirejs-text": "~2.0.13",
-		"foundation": "~5.2.0",
+		"jquery": "~2.1.4",
+		"backbone": "~1.1.2",
+		"exoskeleton": "^0.7.0",
 		"bootstrap-sass": "*",
-		"bourbon": "~3.1.8",
+		"bourbon": "~4.2.3",
 		"neat": "~1.5.0",
-		"pg-components": "~0.2.0",
-		"pg-js": "~0.1.0",
-		"pg-scss": "~0.2.0"
+		"foundation": "~5.2.0",
+		"pg-components": "~0.2.2",
+		"pg-js": "~1.1.3",
+		"pg-scss": "~0.2.9"
 	}
 }

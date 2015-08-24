@@ -1,0 +1,74 @@
+var config = require('./helpers/config');
+var gulp = require('gulp');
+var runSequence = require('gulp-sequence');
+var requireDir = require('require-dir');
+var dir = requireDir(config.options.paths.tasks);
+
+<% if (taskRunner && taskRunner.indexOf('grunt') !== -1) { %>
+require('gulp-grunt')(gulp); // add all the gruntfile tasks to gulp<% } %>
+// Default task
+gulp.task('default', function () {
+	gulp.start('serve');
+});
+
+/**
+ * Static Server
+ */
+gulp.task('serve', ['sassGlobbing:dev', 'styles:dev'], function () {
+
+	config.server({
+		server: config.options.paths.dev
+	});
+
+	// SCSS
+	gulp.watch(config.options.paths.src + "/scss/**/*.scss", ['styles:dev']);
+	<% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') !== -1) { %>
+	// JS
+	gulp.watch([
+		config.options.paths.src + "/js/**/*.js",
+		config.options.paths.src + "/js/**/*.html"
+	], ['js:dev']);
+	<% } %>
+	// Reload
+	gulp.watch([
+		config.options.paths.dev + "/*.html",
+		config.options.paths.dev + "/js/*.js",
+		config.options.paths.dev + "/css/*.css"
+	]).on('change', config.server.reload);
+});
+
+/**
+ * Build Task
+ */
+gulp.task('build', function(callback) {
+	runSequence(
+		'clean:dev',
+		[
+			'copy:assets',
+			'copy:ajax'
+		],
+		'sassGlobbing:dist',
+		[
+			'styles:dist'<% if (gulpModules && (gulpModules.indexOf('gulp-requirejs-optimize') !== -1 || gulpModules.indexOf('browserify') !== -1)) { %>,
+			'js:dist'<% } else { %>,
+			'copy:js'<% } %>
+		],<% if (testAndQALibs) { %>
+		[<% if(testAndQALibs.indexOf('hintingHTML') !== -1) { %>,
+			'hint:html'<% } %><% if (testAndQALibs.indexOf('hintingJS') !== -1) { %>,
+			'hint:js'<% } %><% if (testAndQALibs.indexOf('jscs') !== -1) { %>,
+			'js:jscs'<% } %>
+		],<% } %>
+		callback
+	);
+});
+<% if (features && features.indexOf('createDevFolder') != -1) { %>
+/**
+ * Dist Task
+ */
+gulp.task('dist', ['build'], function(cb) {
+	runSequence(
+		'clean:dist',
+		'copy:dist',
+		cb
+	);
+});<% } %>

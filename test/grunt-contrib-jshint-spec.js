@@ -4,7 +4,12 @@
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({});
+var answers = require('../test_helpers/prompt-answer-factory')({
+	'testAndQA': true,
+	'testAndQALibs': [
+		'hintingJS'
+	]
+});
 
 
 describe('grunt-contrib-jshint', function () {

@@ -6,11 +6,8 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
-	"modules": [
+	"gruntModules": [
 		"grunt-contrib-requirejs"
-	],
-	"jsLibs": [
-		"requirejs"
 	]
 });
 
@@ -45,8 +42,7 @@ describe('grunt-contrib-requirejs', function () {
 	it('adds app.js, main.js and config.js to js folder', function () {
 		assert.file([
 			srcPath + 'js/app.js',
-			srcPath + 'js/main.js',
-			srcPath + 'js/config.js'
+			srcPath + 'js/main.js'
 		]);
 	});
 });

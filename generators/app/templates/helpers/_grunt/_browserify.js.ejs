@@ -1,0 +1,43 @@
+var libs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
+	'<%= lib %>'<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% }); } %>
+];
+
+module.exports = {
+	options: {
+		transform: [
+			[
+				"babelify", {
+					"stage": 0
+				}
+			]
+		]
+	},
+	vendor: {
+		src: ['.'],
+		dest: '<%%= paths.dev %>/js/vendor/libs.js',
+		options: {
+			debug: false,
+			alias: libs,
+			external: <% if (jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>[
+				'underscore'
+			]<% } else { %> null  // Reset this here because it's not needed <% } %>
+		}
+	},
+	dev: {
+		options: {
+			external: libs,
+			browserifyOptions: {
+				debug: true
+			},
+			watch: true
+		},
+		files: {
+			'<%%= paths.dev %>/js/main.js': '<%%= paths.src %>/js/main.js'
+		}
+	},
+	dist: {
+		files: {
+			'<%%= paths.dev %>/js/main.js': '<%%= paths.src %>/js/main.js'
+		}
+	}
+};

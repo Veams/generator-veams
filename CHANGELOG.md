@@ -1,3 +1,35 @@
+### v6.0.0
+
+**General**
+- refactored prompts
+- added new structure to use separate generator files
+- updated packages
+- added testing
+- renamed package to `pg`
+
+**Task Runners**
+- added first gulp support
+- added new structure to use gulp and grunt at the same time
+
+**Testing**
+- added Hinting and Code Style Checks
+- added WebdriverIO for grunt
+
+**JS**
+- added browserify
+- added ESHarmony
+
+**Templating**
+- added new helpers for handlebars templating 
+
+**CSS and Icons**
+- deleted compass 
+- added @root to svg-sprites templates
+
+**Sub generators**
+- deleted plugin, bm, bv, bc
+- added js generator to scaffold js templates with arguments and options
+
 ### v0.5.8
 - changed resources folder structure: data folder is located in templates
 - changed watch task

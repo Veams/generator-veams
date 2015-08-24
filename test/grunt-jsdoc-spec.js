@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
-	"modules": [
+	"gruntModules": [
 		"grunt-jsdoc"
 	]
 });
@@ -40,6 +40,9 @@ describe('grunt-jsdoc', function () {
 	});
 
 	it('adds README.md to js folder and adds jsdoc.conf.json', function () {
-		helpers.assertFiles(['resources/js/README.md', helperPath + 'configs/jsdoc.conf.json']);
+		helpers.assertFiles([
+			'resources/js/README.md',
+			helperPath + 'task-configs/jsdoc.conf.json'
+		]);
 	});
 });

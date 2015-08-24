@@ -1,0 +1,52 @@
+---
+title: Documentation
+docs: true
+---
+
+<% if (installExtendedLayout === true) { %>
+{{#extend "lyt-default"}}
+	{{#content "body"}}
+		<header>
+			<h1><%= _.slugify(projectName) %></h1>
+		</header>
+
+		<p>
+			The docs platform provides a complete development solution for your web application. Here you define your code examples and describe your modules/partials/components of your website.
+		</p>
+
+		<h2>Site Index</h2>
+
+		<ul>
+			{{#withSort pages "data.title"}}
+				<li>
+					<a href="{{this.filename}}?devmode">{{data.title}}</a>
+				</li>
+			{{/withSort}}
+		</ul>
+
+		{{md "README.md"}}
+
+	{{/content}}
+{{/extend}}
+<% } else { %>
+<header>
+	<h1><%= _.slugify(projectName) %></h1>
+</header>
+
+<p>
+	The docs platform provides a complete development solution for your web application. Here you define your code examples and describe your modules/partials/components of your website.
+</p>
+
+
+<h2>Site Index</h2>
+
+<ul>
+	{{#withSort pages "data.title"}}
+		<li>
+			<a href="{{this.filename}}?devmode">{{data.title}}</a>
+		</li>
+	{{/withSort}}
+</ul>
+
+{{md "README.md"}}
+<% } %>

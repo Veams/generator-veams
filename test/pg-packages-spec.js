@@ -12,7 +12,7 @@ describe('pg packages', function () {
 
 	describe('when pg methodology is installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
-			"installAssemble": true,
+			"templateEngine": "assemble",
 			"pgPackages": [
 				"pgMethodology"
 			]
@@ -31,11 +31,10 @@ describe('pg packages', function () {
 
 		it('creates READMEs', function () {
 			var expected = [
-				srcPath + "templates/layouts/README.md",
-				srcPath + "templates/partials/panels/README.md",
-				srcPath + "templates/partials/blocks/README.md",
-				srcPath + "templates/partials/components/README.md",
-				srcPath + "templates/partials/modules/README.md"
+				srcPath + "templating/layouts/README.md",
+				srcPath + "templating/partials/README.md",
+				srcPath + "templating/partials/blocks/README.md",
+				srcPath + "templating/partials/components/README.md"
 			];
 			assert.file(expected);
 		});
@@ -44,7 +43,7 @@ describe('pg packages', function () {
 
 	describe('when pg-scss is installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
-			"installAssemble": true,
+			"templateEngine": "assemble",
 			"pgPackages": [
 				"pgSCSS"
 			]
@@ -68,7 +67,7 @@ describe('pg packages', function () {
 
 	describe('when pg-js is installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
-			"installAssemble": true,
+			"templateEngine": "assemble",
 			"pgPackages": [
 				"pgJS"
 			]
@@ -92,7 +91,7 @@ describe('pg packages', function () {
 
 	describe('when pg-components is installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
-			"installAssemble": true,
+			"templateEngine": "assemble",
 			"pgPackages": [
 				"pgComponents"
 			]
@@ -116,7 +115,7 @@ describe('pg packages', function () {
 
 	describe('when pg is not installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
-			"installAssemble": true,
+			"templateEngine": "assemble",
 			"pgPackages": [
 			]
 		});

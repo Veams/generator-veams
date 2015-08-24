@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
-	"modules":[
+	"gruntModules":[
 		"grunt-version"
 	],
 	"features": [
@@ -38,7 +38,7 @@ describe('grunt-version', function () {
 	});
 
 	it('creates partial file', function () {
-		assert.file(srcPath + "templates/partials/blocks/b-version.hbs");
+		assert.file(srcPath + "templating/partials/blocks/b-version.hbs");
 	});
 
 	it('adds task to Gruntfile.js file', function () {

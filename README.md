@@ -1,12 +1,12 @@
-<p align="center"><img src="http://prototype-generator.com/img/logo-pg.png" height="94"></p>
+<p align="center"><img src="http://prototype-generator.com/img/logo-pg.png"></p>
 
-<p align="center">Visit the PG-website to learn how to use PG: http://prototype-generator.com </p>
+<p align="center">One of the most flexible and efficient <a href="http://yeoman.io">Yeoman</a> generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.</p>
 
-> [Yeoman](http://yeoman.io) generator for Web Apps and Prototypes.
+> Visit the PG-website to learn how to use PG: http://prototype-generator.com 
 
-[![NPM version](https://badge.fury.io/js/generator-prototype.svg)](http://badge.fury.io/js/generator-prototype) [![Build Status](https://travis-ci.org/Prototype-Group/generator-prototype.svg)](https://travis-ci.org/Prototype-Group/generator-prototype)
+[![NPM version](https://badge.fury.io/js/generator-pg.svg)](http://badge.fury.io/js/generator-pg) [![Build Status](https://travis-ci.org/Sebastian-Fitzner/generator-pg.svg)](https://travis-ci.org/Sebastian-Fitzner/generator-pg)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](http://en.wikipedia.org/wiki/MIT_License)
-[![NPM](https://nodei.co/npm/generator-prototype.png?mini=true)](https://nodei.co/npm/generator-prototype/)
+[![NPM](https://nodei.co/npm/generator-pg.png?mini=true)](https://nodei.co/npm/generator-pg/)
 
 ## Getting started
 
@@ -15,27 +15,24 @@
 * Node.js & Node Package Manager
 * Grunt Command Line Interface – npm install -g grunt-cli
 
-**Optional Use of Ruby (SASS & Compass)**
-* SASS 3.4 and Compass 1 (because of Source Maps)
-
 ### Installation 
 
 - Install Yeoman:
   `npm install -g yo`
 
 - Install the Generator-Prototype via:
-  `npm install -g generator-prototype`
+  `npm install -g generator-pg`
 
 ### Update
 - Update the Generator-Prototype via:
-  `npm update -g generator-prototype`
+  `npm update -g generator-pg`
 
 ### Usage
 
-#### Scaffold your new prototype project.
+#### Scaffold your new web app project.
 
 ```bash
-yo prototype
+yo pg
 ```
 
 ##### Options
@@ -52,7 +49,8 @@ You can scaffold your project in an instance. The first question is:
 
 If you choose `Minimal installation` you skip the rest of the questions and get the default values with:
 * Libsass (grunt-sass)
-* Grunt modules: grunt-grunticon, grunt-data-separator
+- Task Runner: Grunt
+* Grunt modules: `grunt-combine-mq`, `grunt-dr-svg-sprites`
 * Assemble as template engine
 
 ## Structure
@@ -63,7 +61,8 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 │   ├───templates
 │   │   ├───grunticon-template
 │   │   └───svg-sprites
-│   └───_grunt
+│   ├───_grunt
+│   └───_gulp
 ├───resources
 │   ├───ajax
 │   ├───assets
@@ -80,7 +79,7 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 │   │   └───utils
 │   │       ├───extends
 │   │       └───mixins
-│   └───templates
+│   └───templating
 │       ├───data
 │       ├───helpers
 │       ├───layouts
@@ -90,94 +89,111 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 └───_output
 ```
 
-## Gruntfile
-For our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split up the file in multiple task files. 
+## Task Runners
+
+PG supports `Grunt` and/or `Gulp` as task runner. Our primary task runner is `Grunt`, so when you have some ideas to improve our `Gulp` workflow just open an issue. 
+
+### Grunt
+
+For Grunt and our Gruntfile we use the grunt module [load-grunt-configs](https://github.com/creynders/load-grunt-configs/) to split up the file in multfniple task files. 
 You can find these task files in the following directory:
 
  * helpers/_grunt
+ 
+#### Grunt Modules
 
-## Plugins and Modules
+There are standard grunt modules we use. These are:
 
-There are standard grunt modules I use. These are:
-
+ * [grunt-combine-mq](https://github.com/frontendfriends/grunt-combine-mq) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module.
+ * [grunt-concurrent](https://github.com/sindresorhus/grunt-concurrent) - Run grunt tasks concurrently.
  * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) - Clean your directories.
- * [grunt-concurrent](https://github.com/sindresorhus/grunt-concurrent) - Run grunt tasks concurrently .
  * [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin) - Minify your CSS.
- * [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint) - Check your html for errors.
- * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint) - Check your js for errors.
- * [grunt-jsbeautifier](https://github.com/vkadam/grunt-jsbeautifier) - Format your js and html files.
- * [grunt-combine-mq](https://github.com/frontendfriends/grunt-combine-mq) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module
+ * [grunt-sass-globber](https://github.com/Sebastian-Fitzner/grunt-sass-globber) - This module provides a simple globbing functionality for sass files like the ruby gem sass-globbing.
  * [jit-grunt](https://github.com/shootaroo/jit-grunt) - A JIT(Just In Time) plugin loader for Grunt.
  * [time-grunt](https://github.com/sindresorhus/time-grunt) - Displays the execution time of grunt tasks.
  
-### Optional Grunt modules
+**Optional Grunt modules**
 
-**But you can also apply additional addons and grunt modules to your project. Just choose specific ones:**
+_But you can also apply additional addons and gulp modules to your project. Just choose specific ones:_
 
  * [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer) - Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the Can I Use database.
- * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9
- * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices
- * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods
- * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass) - Come on, use Node-SASS ...
+ * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9.
+ * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices.
+ * [grunt-browserify](https://github.com/jmreidy/grunt-browserify) - Use a node-style require() to organize your browser code and load modules installed by npm.
+ * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your web app, with CORS, Basic Authentication support and http methods.
  * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) - Minify your HTML files.
  * [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) - Optimize RequireJS projects using r.js.
  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify) - Minify files with UglifyJS.
  * [grunt-csscomb](https://github.com/csscomb/grunt-csscomb) - The grunt plugin for sorting CSS properties in specific order.
  * [grunt-dr-svg-sprites](https://github.com/drdk/grunt-dr-svg-sprites) - Generate SVG Sprites with scss files. We provide a custom template to generate mixins and extends.
- * [grunt-grunticon](https://github.com/filamentgroup/grunticon) - Generate SVG-URI-SASS files with png fallbacks
+ * [grunt-grunticon](https://github.com/filamentgroup/grunticon) - Generate SVG-URI-SASS files with png fallbacks.
  * [grunt-image-size-export](https://github.com/Sebastian-Fitzner/grunt-image-size-export) - Pass a folder of images to this module and get infos like width, height, filename, path and breakpoints.
  * [grunt-jsdoc](https://github.com/krampstudio/grunt-jsdoc) - This plugin enables you to integrate the generation of comments based documentation into your Grunt build.
  * [grunt-modernizr](https://github.com/Modernizr/grunt-modernizr) - grunt-modernizr sifts through your project files, gathers up your references to Modernizr tests and outputs a lean, mean Modernizr machine.
- * [grunt-packager](https://github.com/bobbor/grunt-packager) (only executable when your project.jspackcfg is configured) - package your js.
+ * [grunt-packager](https://www.npmjs.com/package/grunt-packager) (only executable when your project.jspackcfg is configured) - package your JS.
  * [grunt-phantomas](https://github.com/stefanjudis/grunt-phantomas) - PhantomJS-based web performance metrics collector and monitoring tool.
  * [grunt-photobox](https://github.com/stefanjudis/grunt-photobox) - Take snapshots from homepage
  * [grunt-postcss-separator](https://github.com/Sebastian-Fitzner/grunt-postcss-separator) - Split up your Data-URI or anything else into a separate CSS file.
- * [grunt-responsive-images](https://github.com/andismith/grunt-responsive-images) - Produces images at different sizes (be sure you have installed GraphicsMagick)
- * [grunt-sass](https://github.com/sindresorhus/grunt-sass) - You want to use Libsass instead of Compass to render your stylesheets 10 times faster? Here you go! (see _Features_)
+ * [grunt-responsive-images](https://github.com/andismith/grunt-responsive-images) - Produces images at different sizes (be sure you have installed GraphicsMagick).
  * [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin) - Minify SVG using SVGO.
  * [grunt-version](https://github.com/kswedberg/grunt-version) - Grunt task to handle versioning of a project.
 
-### Assemble
-We use Assemble as template engine. Assemble is a component and static site generator that makes it dead simple to build modular sites, documentation and components from reusable templates and data.
-You want to know more? Here you go: [assemble.io](http://assemble.io)
+### Gulp
 
-In your installation routine you can choose specific modules for Assemble:
+For Gulp and our Gulpfile we use the node module [require-dir](https://www.npmjs.com/package/require-dir) to split up the file in multiple task files. 
+You can find these task files in the following directory:
 
- * assemble-contrib-permalinks
- * assemble-contrib-sitemap
- * assemble-related-pages
+ * helpers/_gulp
  
-#### Custom Helpers
-We provide some custom helpers to speed up your Assemble workflow. These helpers provide:
+#### Gulp Modules
 
-* repeating elements
-* limiting JSON output
-* partials with multiple contexts
-* factories for grid systems
-* and a few more ... 
+There are standard Gulp modules we use. These are:
 
-You want to know more? See [PG Custom Helpers](http://prototype-generator.com/templating-in-pg/template-helpers.html)
+* [del](https://www.npmjs.com/package/del) - Clean your directories.
+* [gulp-sequence](https://www.npmjs.com/package/gulp-sequence) - Run gulp tasks in a sequence.
+* [browser-sync](https://www.npmjs.com/package/browser-sync) - Sync and auto-reload your local server over multiple devices
+* [gulp-notify](https://www.npmjs.com/package/gulp-notify) - Add notifications.
+* [gulp-minify-css](https://www.npmjs.com/package/gulp-minify-css) - Minify your CSS.
+* [gulp-filesize](https://www.npmjs.com/package/gulp-filesize) - Return the filesize in your console.
+ 
+**Optional Gulp modules**
 
-## Features
-PG supports different features. Just check/uncheck them in the __custom installation routine__:
+_But you can also apply additional addons and gulp modules to your project. Just choose specific ones:_
 
-* You want to use Libsass instead of Ruby to compile SASS files? - Check!
-* You want to use Extended Layouts in Assemble? - Check!
-* You want to add a separate distribution folder? - Check!
-* You want to add a CSS Styleguide and Assemble Development Documentation? - Check! (See "Developer Documentation")
+* [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) - Autoprefixer parses CSS and adds vendor-prefixed CSS properties using the Can I Use database.
+* [gulp-bless](https://www.npmjs.com/package/gulp-bless) - Split your css after you reach size limit for ie9.
+* [gulp-combine-mq](https://www.npmjs.com/package/gulp-combine-mq) - When you use mixins for media queries in your SASS files, you can combine your media queries with this module.
+* [gulp-htmlmin](https://www.npmjs.com/package/gulp-htmlmin) - Minify your HTML files.
+* [gulp-iconify](https://www.npmjs.com/package/gulp-iconify) - A mystical CSS icon solution, grunticon-like build system.
+* [gulp-requirejs-optimize](https://www.npmjs.com/package/gulp-requirejs-optimize) - Optimize AMD modules in javascript files using the requirejs optimizer.
+* [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) - Minify files with UglifyJS.
+
+Further packages will be included in later releases.
+
+### Gulp And Grunt 
+
+When you want to use both at the same time, do it at your own risk. You will probably have to change a few settings. 
+Furthermore Gulp will be your primary task runner. To support Grunt tasks in Gulp we use [gulp-grunt](https://www.npmjs.com/package/gulp-grunt). 
 
 ## JS Libraries and CSS Frameworks
-You can choose JS Libraries like:
+
+### JS Libraries|Frameworks
+
+You can choose JS Libraries/Frameworks like:
 
 * jQuery
 * BackboneJS
-* RequireJS
+* Exoskeleton
+* AmpersandJS
+* document-register-element
+
+### CSS Frameworks
 
 And you can also choose SCSS Frameworks like:
 
 * Foundation
 * Bourbon and Bourbon Neat
-* SASS Bootstrap
+* Bootstrap Sass
 
 All files will be included and configured. Have fun!
 
@@ -190,35 +206,82 @@ Furthermore you can add different bower components we provide:
 * [pg-js](https://github.com/Sebastian-Fitzner/pg-js)
 * [pg-components](https://github.com/Sebastian-Fitzner/pg-components)
 
+## Testing 
+
+You can add testing and qa tools. At this state we provide: 
+
+* JS Code Style - JSCS is a code style linter for programmatically enforcing your style guide ([JSCS](https://www.npmjs.com/package/jscs)).
+* HTML Hinting - Check your HTML for errors ([gulp-htmlhint](https://www.npmjs.com/package/gulp-htmlhint), [grunt-htmlhint](https://github.com/yaniswang/grunt-htmlhint)).
+* JS Hinting - Check your JS for errors ([gulp-jshint](https://www.npmjs.com/package/gulp-jshint), [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)).
+* E2E (webdriver) - WebdriverIO lets you control a browser or a mobile application with just a few lines of code. (only Grunt at this state: [grunt-webdriver](https://github.com/webdriverio/grunt-webdriver)).
+
+## Template Engines
+
+### Assemble
+
+We use Assemble as template engine. Assemble is a component and static site generator that makes it dead simple to build modular sites, documentation and components from reusable templates and data.
+You want to know more? Here you go: [assemble.io](http://assemble.io)
+
+In your installation routine you can choose specific modules for Assemble:
+
+ * assemble-contrib-permalinks
+ * assemble-contrib-sitemap
+ * assemble-related-pages
+ 
+#### Custom Helpers
+We provide some custom helpers to speed up your Assemble workflow. These helpers provide:
+
+* `{{#wrapWith}}` - wrap your markup with predefined templates, useful for grid systems
+* `{{#mergeData}}` - merge two data objects
+* `{{#repeat}}` or `{{#times}}` - repeat elements
+* `{{#limit}}` - limit JSON output
+* and a few more ... 
+
+You want to know more? See [PG Custom Helpers](http://prototype-generator.com/templating-in-pg/template-helpers.html)
+
+## Features
+
+PG supports different features. Just check/uncheck them in the __custom installation routine__:
+
+* You want to add a separate distribution folder? - Check!
+* You want to add a CSS Styleguide and Assemble Development Documentation? - Check! (See "Developer Documentation")
+
 ## Sub Generators
 We integrated some sub generators for you:
 
 ### Grunt Modules:
 You forgot a grunt module?
-* Install further grunt modules: `yo prototype:grunt`
+* Install further grunt modules: `yo pg:grunt`
 
-### Assemble Helpers:
-You want to install assemble helpers? 
-* Here you go: `yo prototype:assemble`
+### Handlebars Template Helpers:
+You want to install custom handlebars helpers? 
+* Here you go: `yo pg:templating`
 
-### BackboneJS:
- * Create a Backbone Model: `yo prototype:bm`
- * Create a Backbone View: `yo prototype:bv`
- * Create a Backbone Collection: `yo prototype:bc`
+### Backbone|Exoskeleton|Ampersand:
+We have integrated a sub generator which you can pass one argument and one option to create a model, view or collection. 
 
-Others will follow.
+**Arguments (required):**
 
-## Developer Documentation
-PG provides a way to document your assemble modules via markdown and a separate docs folder. 
-Just use the custom installation route and check `Create Developer Documentation`.
+The sub generator expects any of the following arguments:
+* `Model`
+* `Collection`
+* `View`
 
-## Alternative
-* [generator-assemble](https://github.com/assemble/generator-assemble)
+**Options:**
+
+Furthermore you can pass an option with `--`. This option is only important when you do want to use AMD or CommonJS syntax instead of ES Harmony syntax.
+* `--amd`
+* `--commonjs`
+
+**Example:**
+
+``` bash
+yo pg:js View --commonjs
+```
 
 ## Release History
 see: [Changelog.md](CHANGELOG.md)
 
-[![NPM](https://nodei.co/npm-dl/generator-prototype.png?height=3)](https://nodei.co/npm/generator-prototype/)
-
 ## TODO: 
-- Integrate Gulp as option
+- Own template wrapper for handlebars
+- Update code base to match new yeoman-generator terms

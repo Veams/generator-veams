@@ -1,0 +1,20 @@
+var config = require('../config');
+var path = config.options.paths;
+var gulp = require('gulp');
+var htmlhint = require('gulp-htmlhint');<% if (testAndQALibs && testAndQALibs.indexOf('hintingJS') !== -1) { %>
+var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');<% } %>
+
+// HTML Hinting Task
+gulp.task('hint:html', function () {
+	return gulp.src(path.dev + '/*.html')
+		.pipe(htmlhint('../task-configs/.htmlhintrc'))
+		.pipe(htmlhint.reporter());
+});
+<% if (testAndQALibs && testAndQALibs.indexOf('hintingJS') !== -1) { %>
+// JS Hinting Task
+gulp.task('hint:js', function () {
+	return gulp.src(path.src + '/js/**/*.js')
+		.pipe(jshint('../task-configs/.jshintrc'))
+		.pipe(jshint.reporter(stylish));
+});<% } %>

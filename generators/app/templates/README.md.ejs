@@ -3,14 +3,13 @@
 ---------------------------------------------------
 ## Requirements for FE
 
-* NodeJS (<= 0.10.26)
+* NodeJS (>= 0.12.0)
 * Grunt
-<% if (features && features.length > 0 && features.indexOf('sassInsteadOfCompass') != -1) { %>
+
 ### Libsass
-When using Libsass you should know the compatibility versions:
-- Version >= grunt-sass@0.18.0 (Node ~0.12.xx)
-- Version < grunt-sass@0.18.0 (Node ~0.10.xx)
-<% } %><% if (modules && modules.length > 0 && modules.indexOf('grunt-responsive-images') != -1) { %>
+We use Libsass as standard SCSS compiler.
+
+<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-responsive-images') != -1) { %>
 ### Responsive Images
 If you want to use an automated task to create responsive images you need to make sure that you have installed GraphicsMagick.
 
@@ -18,7 +17,7 @@ To build responsive images just start the task `pictures`.
 <% } %>
 ---------------------------------------------------
 ## Frontend Methodology
-<% if(pgPackages.indexOf("pgMethodology") != -1) { %>
+<% if(pgPackages.indexOf('pgMethodology') != -1) { %>
 We build <%= _.slugify(projectName) %> with the PG Frontend Methodology: 
 * http://www.prototype-generator.com/pg-methodology/pg-methodology-overview.html
 <% } %>
@@ -28,9 +27,10 @@ We build <%= _.slugify(projectName) %> with the PG Frontend Methodology:
 This project builds on following setup (please read requirements and getting started):
 
 * PG Website: http://prototype-generator.com/
-* PG Github: https://github.com/Prototype-Group/generator-prototype
+* PG Github: https://github.com/Sebastian-Fitzner/generator-pg
 
-- We use [Grunt](http://gruntjs.com/) as our task runner and [Assemble](http://assemble.io/) as our static site generator.
+- We use <% if(taskRunner.indexOf('grunt') != -1) { %>[Grunt](http://gruntjs.com/)<% } %><% if(taskRunner.indexOf('grunt') != -1 && taskRunner.indexOf('gulp') != -1) { %> and <% } %><% if(taskRunner.indexOf('gulp') != -1) { %>[Gulp](http://gulpjs.com/)<% } %>as our task runner<% if(templateEngine && templateEngine.indexOf('assemble') != -1) { %>
+- We use [Assemble](http://assemble.io/) as our static site generator.<% } %>
 - We use [Git](#).
 - The folder __node_modules__ won't be comitted into GIT. Use ```.gitignore``` to ignore folders or files.
 - Git-commit-messages in english please.
@@ -41,7 +41,7 @@ This project builds on following setup (please read requirements and getting sta
 ## Browser-Support
 
 - all modern desktop browsers: Firefox, Chrome, IE and Safari/Mac latest version
-- also: IE 10, 9 and 8
+- also: IE 10
 - all modern mobile browsers: iOS and Android latest two versions
 
 ---------------------------------------------------
@@ -50,40 +50,19 @@ This project builds on following setup (please read requirements and getting sta
 - Desktop
 - Tablet
 - Phone
-<% if (modules && modules.length > 0 && modules.indexOf('grunt-responsive-images') != -1) { %>
+<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-responsive-images') != -1) { %>
 ### Responsive Images
 
-**Example**
-``` js
-sizes: [
-	{
-		name: "mobile",
-		width: 480
-	},
-	{
-		name: "mobile_2x",
-		width: 960,
-		quality: 50
-	},
-	{
-		name: "desktop",
-		width: 972,
-		quality: 80
-	},
-	{
-		name: "desktop_2x",
-		width: 1920,
-		quality: 50
-	}
-]
-```
+You can use `grunt-responsive-images` to build all pictures with predefined presets.
+To export this data you can use `grunt-image-size-export`.
 <% } %>
 ### Breakpoints
-- $small-range: (0, 640px); // smartphone portrait and smartphone landscape
-- $medium-range: (641px, 768px); // between smartphone landscape and tablet portrait
-- $large-range: (769px, 1022px); // only desktop
-- $xlarge-range: (1023px, 1279px); // desktop and tablet landscape
-- $xxlarge-range: (1280px); // desktop
+- $bp-mobile-s: (max 320px);
+- $bp-mobile-m: (max 480px);
+- $bp-mobile-l: (max 640px);
+- $bp-tablet-p: (max 768px);
+- $bp-tablet-l: (max 1024px);
+- $bp-desktop: (min 1025px);
 
 ---------------------------------------------------
 ## Team

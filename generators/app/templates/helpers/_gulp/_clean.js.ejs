@@ -1,0 +1,41 @@
+var config = require('../config');
+var path = config.options.paths;
+var gulp = require('gulp');
+var del = require('del');
+
+/**
+ * Clean Tasks
+ *
+ */
+
+// Clean dev folder
+gulp.task('clean:dev', function (cb) {
+	del([
+		path.dev + '**/*'
+	], cb);
+	console.log('deleted files in ', path.dev);
+});
+<% if (features && features.indexOf('createDevFolder') != -1) { %>
+// Clean dist folder
+gulp.task('clean:dist', function (cb) {
+	del([
+		path.dist + '**/*'
+	], cb);
+	console.log('deleted files in ', path.dist);
+});<% } %>
+<% if (gruntModules && gruntModules.indexOf('grunt-image-size-export') != -1) { %>
+// Clean pictures folder
+gulp.task('clean:pictures', function (cb) {
+	var imgPath = path.src + '/assets/img/temp/pictures/**/*.jpg';
+
+	del([imgPath], cb);
+	console.log('deleted picture files in ', imgPath);
+});<% } %>
+<% if (gruntModules && gruntModules.indexOf('grunt-grunticon') != -1) { %>
+// Clean icons files
+gulp.task('clean:icons', function (cb) {
+	var iconsPath = path.src + '/scss/icons/*.{html,js,txt}';
+	del([iconsPath], cb);
+	console.log('deleted picture files in ', iconsPath);
+});<% } %>
+

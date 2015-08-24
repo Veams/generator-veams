@@ -9,7 +9,7 @@ module.exports = {
 			'<%%= paths.dev %>/js/{,*/}*.js',
 			'<%%= paths.dev %>/img/**/*.{jpg,png}'
 		]
-	},<% if((jsLibs && jsLibs.length) && (jsLibs.indexOf('requirejs') != -1 || pgPackages.indexOf('pgJS') != -1)) { %>
+	},<% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
 	js: {
 		files: [
 			'<%%= paths.src %>/js/**/*.js',
@@ -19,43 +19,26 @@ module.exports = {
 		options: {
 			spawn: false
 		}
-	},<% } else { %>
-    js: {
-        files: '<%%= paths.src %>/js/**/*.js',
-        tasks: 'sync:js'
-    },<% } %>
-    ajax: {
-        files: '<%%= paths.src %>/ajax/**/*.{json,html}',
-        tasks: 'sync:assets'
-    },
-    assets: {
-        files: [
-			'<%%= paths.src %>/assets/**/*'<% if (modules && modules.length) { if (modules.indexOf('grunt-svgmin') != -1) { %>,
-			'!<%%= paths.src %>/assets/img/svg/**/*'<% if (modules && modules.length) { if (modules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
+	},<% } else if(gruntModules.indexOf('grunt-browserify') == -1 || pgPackages.indexOf('pgJS') == -1) { %>
+	js: {
+		files: '<%%= paths.src %>/js/**/*.js',
+		tasks: 'sync:js'
+	},<% } %>
+	ajax: {
+		files: '<%%= paths.src %>/ajax/**/*.{json,html}',
+		tasks: 'sync:ajax'
+	},
+	assets: {
+		files: [
+			'<%%= paths.src %>/assets/**/*'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-svgmin') != -1) { %>,
+			'!<%%= paths.src %>/assets/img/svg/**/*'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
 			'!<%%= paths.src %>/assets/img/svgmin/**/*'<% }} %><% }} %>
 			],
-        tasks: 'sync:assets'
-    }<% if (features && features.length) { if (features.indexOf('sassInsteadOfCompass') != -1) { %>,
-	globbing: {
-		options: {
-		event: ['added', 'deleted']
-		},
-		files: [
-			'<%%= paths.helper %>/_grunt/fileindex.js',
-			'<%%= paths.src %>/scss/**/*.scss',
-			'!<%%= paths.src %>/scss/_all.scss'
-		],
-		tasks: 'fileindex:libsassGlobbing'
-	},
-	fileindex: {
-		files: [
-			'<%%= paths.helper %>/_grunt/fileindex.js'
-		],
-		tasks: 'fileindex:libsassGlobbing'
+		tasks: 'sync:assets'
 	},
 	scss: {
 		files: '<%%= paths.src %>/scss/**/*',
-		tasks: 'sass:dist'<% if (modules && modules.length) { if (modules.indexOf('grunt-browser-sync') != -1) { %>,
+		tasks: 'sass:dev'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
 	    options: {
 			spawn: false
 		}<% }} %>
@@ -67,29 +50,29 @@ module.exports = {
 	scssDocs: {
 		files: '<%%= paths.src %>/scss/docs/*',
 		tasks: 'sass:docs'
-	}<% } %><% }} %><% if(installAssemble != false){ %>,
-	templates: {
-		files: ['<%%= paths.src %>/{templates/data,templates/layouts,templates/partials}/**/{,*/}*.{md,hbs,yml,json}'],
-	    tasks: ['newer:assemble']<% if (modules && modules.length) { if (modules.indexOf('grunt-browser-sync') != -1) { %>,
+	}<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>,
+	templating: {
+		files: ['<%%= paths.src %>/{templating/data,templating/layouts,templating/partials}/**/{,*/}*.{md,hbs,json}'],
+	    tasks: ['newer:assemble']<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
 	    options: {
 			spawn: false
 		}<% }} %>
 	},
-    pages: {
-        files: ['<%%= paths.src %>/templates/pages/**/{,*/}*.hbs'],
-        tasks: ['newer:assemble:pages']<% if (modules && modules.length) { if (modules.indexOf('grunt-browser-sync') != -1) { %>,
-	    options: {
+	pages: {
+		files: ['<%%= paths.src %>/templating/pages/**/{,*/}*.hbs'],
+		tasks: ['newer:assemble:pages']<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
+		options: {
 			spawn: false
 		}<% }} %>
-    }<% if (features.indexOf('installDocs') != -1) { %>,
-    docs: {
-        files: ['<%%= paths.src %>/templates/docs/**/{,*/}*.hbs'],
-        tasks: ['newer:assemble:docs']<% if (modules && modules.length) { if (modules.indexOf('grunt-browser-sync') != -1) { %>,
-	    options: {
+	}<% if (features.indexOf('installDocs') != -1) { %>,
+	docs: {
+		files: ['<%%= paths.src %>/templating/docs/**/{,*/}*.hbs'],
+		tasks: ['newer:assemble:docs']<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
+		options: {
 			spawn: false
 		}<% }} %>
-    }<% } %><% } %><% if(modules && modules.length && modules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>,
-    proxies: {
-        files: ['Gruntfile.js']
-    }<% } %>
+	}<% } %><% } %><% if(gruntModules && gruntModules.length && gruntModules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>,
+	proxies: {
+		files: ['Gruntfile.js']
+	}<% } %>
 };

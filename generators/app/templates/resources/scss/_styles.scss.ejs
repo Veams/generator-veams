@@ -1,23 +1,37 @@
-<% if (pgPackages && pgPackages.length) { if (pgPackages.indexOf('pgSCSS') != -1) { %>
-// PG SCSS
-@import "../bower-components/pg-scss/resources/scss/_pg-reset";
-@import "../bower-components/pg-scss/resources/scss/_pg";
-<% }} %>
-// Frameworks
+<% if (pgPackages && pgPackages.length && pgPackages.indexOf('pgSCSS') != -1) { %>
+// Reset your styles via reset or normalize
+@import "../bower-components/pg-scss/resources/scss/pg-reset";<% } %>
+
+// Global Variables and Settings
+@import "global/_vars";<% if (pgPackages && pgPackages.length && pgPackages.indexOf('pgSCSS') != -1) { %>
+@import "../bower-components/pg-scss/resources/scss/pg";<% } %>
 <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('foundation') != -1) { %>
-@import "../bower-components/foundation/scss/foundation"; // You can choose your specific components
-<% }} %><% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('neat') != -1) { %>
+// Frameworks
+@import "../bower-components/foundation/scss/foundation"; // You can choose your specific components<% }} %> <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('neat') != -1) { %>
 @import "../bower-components/bourbon/app/assets/stylesheets/bourbon";
-@import "../bower-components/neat/app/assets/stylesheets/neat";
-<% }} %><% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
-@import "../bower-components/sass-bootstrap/lib/bootstrap"; // You can choose your specific components
-<% }} %>
-// Global
-@import "global/vars";
-@import "global/base";
-<% if(modules && modules.length){ if(modules.indexOf('grunt-grunticon') != -1) { %>
+@import "../bower-components/neat/app/assets/stylesheets/neat";<% }} %> <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
+@import "../bower-components/sass-bootstrap/lib/bootstrap"; // You can choose your specific components<% }} %>
+
 // Icons
-@import "icons/_icons-data-svg";
-<% }} %>
+@import "icons/**/*";
+
+// Mixins
+@import "utils/mixins/**/*";
+
+// Extends
+@import "utils/extends/**/*";
+
+// Globals
+@import "global/_base";<% if (pgPackages && pgPackages.length && pgPackages.indexOf('pgMethodology') != -1) { %>
+
+// Regions
+@import "regions/**/*";
+
+// Components
+@import "components/**/*";
+
+// Blocks
+@import "blocks/**/*";<% } %>
+
 // Print
 @import "global/_print";

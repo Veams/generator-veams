@@ -1,0 +1,22 @@
+/**
+ * Represents a collection.
+ * @class <%= initName %>Collection
+ *
+ * @author
+ */
+
+define([
+	'app',
+	'<%= path %><%= initName %>Model'
+], function(App, <%= initName %>Model) {
+
+		// Creates a new Collection class object
+		var <%= initName %>Collection = App.ComponentCollection.extend({
+			// Tells the collection that all of it's models will be of type Model (listed up top as a dependency)
+			model: <%= initName %>Model
+		});
+
+		// Returns the Model class
+		return <%= initName %>Collection;
+	}
+);

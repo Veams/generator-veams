@@ -1,0 +1,76 @@
+/**
+ * Represents a view.
+ * @class <%= initName %>View
+ *
+ * Use the get keyword to make our methods serve as getters for a property.
+ * This means they will be accessible as properties, but defined as methods,
+ * retaining compatibility with any existing references if you're converting existing code.
+ *
+ * @author
+ */
+
+import App from '../../app';
+import Helpers from '../../utils/helpers';<% if(tpl && ext === 'hbs'){ %>
+import Tpl from '../../templates/templates';
+
+let Handlebars = require('handlebars/runtime')['default'];<% } %>
+let $ = App.$;<% if(tpl && ext === 'hbs'){ %>
+let Template = Tpl(Handlebars);<% } %>
+
+// Creates a new view class object
+class <%= initName %>View extends App.ComponentView {
+	// The DOM element associated with this view
+	get el() {
+		return '.yourElement';
+	}
+	<% if(tpl){ %>
+	get template() {<% if(ext === 'html'){ %>
+		return _.template(template, {}); // Setting the view's template property using the underscore template method<% } %><% if(ext === 'hbs'){ %>
+		return Template['myTplName']; // Setting the view's template property using the handlebars template method<% } %>
+	}<% } %>
+
+	// options property
+	get _options() {
+		return {
+
+		}
+	}
+
+	// set options
+	set _options(opts) {
+		this.option = opts;
+	}
+
+	/**
+	 * Events property
+	 */
+	get events() {
+		return {
+			'': ''
+		}
+	}
+
+	initialize(obj) {
+		this._options = Helpers.defaults(obj.options || {}, this._options);
+	}
+
+	/**
+	 * Bind all events
+	 */
+	bindEvents() {
+	}
+
+	// Renders the view's template to the UI
+	render() {
+		<% if(tpl){ %>
+		// Dynamically updates the UI with the view's template
+		this.$el.html(this.template());
+		<% } %>
+
+		// Maintains chainability
+		return this;
+	}
+}
+
+// Returns the view class
+export default <%= initName %>View;

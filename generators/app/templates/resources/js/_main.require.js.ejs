@@ -1,0 +1,33 @@
+require.config({
+    paths: {<% if(jsLibs && jsLibs.length){ %><% if(jsLibs.indexOf('jquery') != -1) { %>
+		jquery: '../bower-components/jquery/dist/jquery'<% if(jsLibs.indexOf('backbone') != -1 || jsLibs.indexOf('exoskeleton') != -1) { %>,<% } %><% } %><% if(jsLibs.indexOf('backbone') != -1) { %>
+		backbone: '../bower-components/backbone/backbone'<% } %><% if(jsLibs.indexOf('exoskeleton') != -1) { %>
+		exoskeleton: '../bower-components/exoskeleton/exoskeleton'<% } %><% } %>
+	},
+	shim: {<% if (jsLibs && jsLibs.length) { if (jsLibs.indexOf('backbone') != -1) { %>
+		'backbone': {
+			deps: ['../bower-components/underscore/underscore', 'jquery'],
+			exports: 'Backbone'
+		}<% }} %>
+	}
+});
+
+require([
+	'app'<% if(jsLibs && jsLibs.length) { %><% if(jsLibs.indexOf('jquery') != -1) { %>,
+	'jquery'<% } %><% if(jsLibs.indexOf('backbone') != -1) { %>,
+	'backbone'<% } %><% if(jsLibs.indexOf('exoskeleton') != -1) { %>,
+	'exoskeleton'<% } %><% } %>
+	], function (
+		app<% if(jsLibs && jsLibs.length) { %><%if(jsLibs.indexOf('jquery') != -1) { %>,
+		$<% } %><% if(jsLibs.indexOf('backbone') != -1) { %>,
+		Backbone<% } %><% if(jsLibs.indexOf('exoskeleton') != -1) { %>,
+		Exoskeleton<% } %><% } %>
+	) {
+    'use strict';
+
+	console.log(app);<% if(jsLibs && jsLibs.length) { %><% if(jsLibs.indexOf('jquery') != -1) { %>
+	console.log('Running jQuery %s', $().jquery);<% } %><% if(jsLibs.indexOf('backbone') != -1) { %>
+	console.log(Backbone);<% } %><% if(jsLibs.indexOf('exoskeleton') != -1) { %>
+	console.log(Exoskeleton);<% } %><% } %>
+	console.log('JS initialized in version:', App.version);
+});
