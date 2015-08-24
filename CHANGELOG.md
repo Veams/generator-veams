@@ -5,6 +5,7 @@
 - added new structure to use separate generator files
 - updated packages
 - added testing
+- renamed package to `pg`
 
 **Task Runners**
 - added first gulp support

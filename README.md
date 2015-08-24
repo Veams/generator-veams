@@ -1,12 +1,12 @@
-<p align="center"><img src="http://prototype-generator.com/img/logo-pg.png" height="94"></p>
+<p align="center"><img src="http://prototype-generator.com/img/logo-pg.png"></p>
 
 <p align="center">Visit the PG-website to learn how to use PG: http://prototype-generator.com </p>
 
 > [Yeoman](http://yeoman.io) generator for Web Apps and Prototypes.
 
-[![NPM version](https://badge.fury.io/js/generator-prototype.svg)](http://badge.fury.io/js/generator-prototype) [![Build Status](https://travis-ci.org/Prototype-Group/generator-prototype.svg)](https://travis-ci.org/Prototype-Group/generator-prototype)
+[![NPM version](https://badge.fury.io/js/generator-pg.svg)](http://badge.fury.io/js/generator-pg) [![Build Status](https://travis-ci.org/Sebastian-Fitzner/generator-pg.svg)](https://travis-ci.org/Sebastian-Fitzner/generator-pg)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](http://en.wikipedia.org/wiki/MIT_License)
-[![NPM](https://nodei.co/npm/generator-prototype.png?mini=true)](https://nodei.co/npm/generator-prototype/)
+[![NPM](https://nodei.co/npm/generator-pg.png?mini=true)](https://nodei.co/npm/generator-pg/)
 
 ## Getting started
 
@@ -21,18 +21,18 @@
   `npm install -g yo`
 
 - Install the Generator-Prototype via:
-  `npm install -g generator-prototype`
+  `npm install -g generator-pg`
 
 ### Update
 - Update the Generator-Prototype via:
-  `npm update -g generator-prototype`
+  `npm update -g generator-pg`
 
 ### Usage
 
-#### Scaffold your new prototype project.
+#### Scaffold your new web app project.
 
 ```bash
-yo prototype
+yo pg
 ```
 
 ##### Options
@@ -120,7 +120,7 @@ _But you can also apply additional addons and gulp modules to your project. Just
  * [grunt-bless](https://github.com/stefanjudis/grunt-bless) - Split your css after you reach size limit for ie9.
  * [grunt-browser-sync](https://npmjs.org/package/grunt-browser-sync) - Sync and auto-reload your local server over multiple devices.
  * [grunt-browserify](https://github.com/jmreidy/grunt-browserify) - Use a node-style require() to organize your browser code and load modules installed by npm.
- * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your prototype, with CORS, Basic Authentication support and http methods.
+ * [grunt-connect-proxy](https://github.com/drewzboto/grunt-connect-proxy) - a preconfigured proxy for developing clientside API interfaces in your web app, with CORS, Basic Authentication support and http methods.
  * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) - Minify your HTML files.
  * [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) - Optimize RequireJS projects using r.js.
  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify) - Minify files with UglifyJS.
@@ -251,11 +251,11 @@ We integrated some sub generators for you:
 
 ### Grunt Modules:
 You forgot a grunt module?
-* Install further grunt modules: `yo prototype:grunt`
+* Install further grunt modules: `yo pg:grunt`
 
 ### Handlebars Template Helpers:
 You want to install custom handlebars helpers? 
-* Here you go: `yo prototype:templating`
+* Here you go: `yo pg:templating`
 
 ### Backbone|Exoskeleton|Ampersand:
 We have integrated a sub generator which you can pass one argument and one option to create a model, view or collection. 
@@ -276,7 +276,7 @@ Furthermore you can pass an option with `--`. This option is only important when
 **Example:**
 
 ``` bash
-yo prototype:js View --commonjs
+yo pg:js View --commonjs
 ```
 
 ## Release History

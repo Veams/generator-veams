@@ -5,7 +5,7 @@ node_js:
   - '0.12'
 before_install:
   - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-prototype' ]; then cd .. && eval "mv $currentfolder generator-prototype" && cd generator-prototype; fi
+  - if [ "$currentfolder" != 'generator-pg' ]; then cd .. && eval "mv $currentfolder generator-pg" && cd generator-pg; fi
 
 git:
   submodules: false
