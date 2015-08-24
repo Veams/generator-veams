@@ -24,7 +24,7 @@ describe('bower', function () {
 		});
 
 		it('delete all bower dependenies', function () {
-			assert.noFileContent('bower.json', /pg-components|pg-scss|pg-js|almond|requirejs|requirejs-text|backbone|jquery|foundation|sass-bootstrap|bourbon|neat/);
+			assert.noFileContent('bower.json', /veams-components|veams-scss|veams-js|almond|requirejs|requirejs-text|backbone|jquery|foundation|sass-bootstrap|bourbon|neat/);
 		});
 
 	});

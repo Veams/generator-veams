@@ -2,7 +2,7 @@
 var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
-var pgHelpers = require('../../lib/pg-helpers');
+var helpers = require('../../lib/helpers');
 var configFile = require('../../lib/config');
 var taskRunnerGenerator = require('../../generator-files/taskrunner-generator');
 var featuresGenerator = require('../../generator-files/features-generator');
@@ -11,7 +11,7 @@ var cssGenerator = require('../../generator-files/css-generator');
 var testAndQAGenerator = require('../../generator-files/test-and-qa-generator');
 var gruntGenerator = require('../../generator-files/grunt-generator');
 var gulpGenerator = require('../../generator-files/gulp-generator');
-var pgGenerator = require('../../generator-files/pg-generator');
+var veamsGenerator = require('../../generator-files/veams-generator');
 var templatingGenerator = require('../../generator-files/templating-generator');
 
 module.exports = yeoman.generators.Base.extend({
@@ -38,7 +38,7 @@ module.exports = yeoman.generators.Base.extend({
 		var prompts = [];
 
 		// welcome message
-		var welcome = pgHelpers.welcome;
+		var welcome = helpers.welcome;
 
 		if (!this.options['skip-welcome-message']) {
 			this.log(welcome);
@@ -92,7 +92,7 @@ module.exports = yeoman.generators.Base.extend({
 				this.cssLibs = this.config.get('cssLibs');
 				this.testAndQA = this.config.get('testAndQA');
 				this.testAndQALibs = this.config.get('testAndQALibs');
-				this.pgPackages = this.config.get('pgPackages');
+				this.veamsPackages = this.config.get('veamsPackages');
 				this.proxyHost = this.config.get('proxyHost');
 				this.proxyPort = this.config.get('proxyPort');
 
@@ -133,7 +133,7 @@ module.exports = yeoman.generators.Base.extend({
 			this.cssLibs = answers.cssLibs;
 			this.testAndQA = answers.testAndQA;
 			this.testAndQALibs = answers.testAndQALibs;
-			this.pgPackages = answers.pgPackages;
+			this.veamsPackages = answers.veamsPackages;
 			this.proxyHost = this.config.get('proxyHost');
 			this.proxyPort = this.config.get('proxyPort');
 
@@ -181,8 +181,8 @@ module.exports = yeoman.generators.Base.extend({
 			jsGenerator.questions.call(this)
 		);
 
-		(!this.config.get('pgPackages') || this.force) && this.questions.push(
-			pgGenerator.questions.call(this)
+		(!this.config.get('veamsPackages') || this.force) && this.questions.push(
+			veamsGenerator.questions.call(this)
 		);
 
 		if (!this.config.get('testAndQA') || this.force) {
@@ -209,7 +209,7 @@ module.exports = yeoman.generators.Base.extend({
 			gulpGenerator.setup.call(this);
 			cssGenerator.setup.call(this);
 			jsGenerator.setup.call(this);
-			pgGenerator.setup.call(this);
+			veamsGenerator.setup.call(this);
 			testAndQAGenerator.setup.call(this);
 			templatingGenerator.setup.call(this);
 			featuresGenerator.setup.call(this);
@@ -253,7 +253,7 @@ module.exports = yeoman.generators.Base.extend({
 			taskRunnerGenerator.scaffold.call(this);
 			jsGenerator.scaffold.call(this);
 			cssGenerator.scaffold.call(this);
-			pgGenerator.scaffold.call(this);
+			veamsGenerator.scaffold.call(this);
 			testAndQAGenerator.scaffold.call(this);
 			templatingGenerator.scaffold.call(this);
 			featuresGenerator.scaffold.call(this);
@@ -263,7 +263,7 @@ module.exports = yeoman.generators.Base.extend({
 		},
 
 		bower: function () {
-			if (this.cssLibs.length === 0 && this.jsLibs.length === 0 && this.pgPackages.length === 0) {
+			if (this.cssLibs.length === 0 && this.jsLibs.length === 0 && this.veamsPackages.length === 0) {
 				this.bowerFile['dependencies'] = [];
 			}
 			this.dest.write('bower.json', JSON.stringify(this.bowerFile, null, 4));

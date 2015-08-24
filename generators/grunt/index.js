@@ -68,7 +68,7 @@ module.exports = yeoman.generators.Base.extend({
 			this.cssLibs = this.config.get('cssLibs');
 			this.testAndQA = this.config.get('testAndQA');
 			this.testAndQALibs = this.config.get('testAndQALibs');
-			this.pgPackages = this.config.get('pgPackages');
+			this.veamsPackages = this.config.get('veamsPackages');
 			this.proxyHost = this.config.get('proxyHost');
 			this.proxyPort = this.config.get('proxyPort');
 

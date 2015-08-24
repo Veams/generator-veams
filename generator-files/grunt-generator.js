@@ -1,5 +1,5 @@
 var chalk = require('chalk');
-var pg = require('./../lib/pg-helpers.js');
+var helpers = require('./../lib/helpers.js');
 
 exports.questions = function (obj) {
 	var object = obj || {};
@@ -83,7 +83,7 @@ exports.questions = function (obj) {
 };
 
 exports.setup = function () {
-	pg.definePaths.call(this);
+	helpers.definePaths.call(this);
 };
 
 exports.scaffold = function (obj) {
@@ -209,7 +209,7 @@ exports.scaffold = function (obj) {
 		this.template(this.generatorGruntPath + '_grunticon.js.ejs', this.gruntPath + 'grunticon.js');
 
 		if (object.installDeps) {
-			this.bowerInstall(['pg-scss'], {'save': true});
+			this.bowerInstall(['helpers-scss'], {'save': true});
 			this.npmInstall(['grunt-grunticon'], {'saveDev': true});
 		}
 	}

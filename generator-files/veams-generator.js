@@ -1,48 +1,48 @@
-var pgMethId = 'pgMethodology';
-var pgSCSSId = 'pgSCSS';
-var pgJSId = 'pgJS';
-var pgComponentsId = 'pgComponents';
+var veamsMethId = 'veamsMethodology';
+var veamsSCSSId = 'veamsSCSS';
+var veamsJSId = 'veamsJS';
+var veamsComponentsId = 'veamsComponents';
 
 exports.questions = function () {
 	return {
-		name: 'pgPackages',
+		name: 'veamsPackages',
 		type: 'checkbox',
-		message: 'Do you want to use PG Packages (Bower Component)?',
+		message: 'Do you want to use Veams Packages (Bower Component)?',
 		choices: [
 			{
-				name: 'PG Methodology',
-				value: pgMethId,
+				name: 'Veams Methodology',
+				value: veamsMethId,
 				checked: true
 			},
 			{
-				name: 'PG SCSS Starter Kit',
-				value: pgSCSSId,
+				name: 'Veams SCSS Starter Kit',
+				value: veamsSCSSId,
 				checked: true
 			},
 			{
-				name: 'PG JS Starter Kit',
-				value: pgJSId,
+				name: 'Veams JS Starter Kit',
+				value: veamsJSId,
 				checked: false
 			},
 			{
-				name: 'PG Components',
-				value: pgComponentsId,
+				name: 'Veams Components',
+				value: veamsComponentsId,
 				checked: true
 			}
 		],
-		default: this.config.get('pgPackages')
+		default: this.config.get('veamsPackages')
 	};
 };
 
 exports.setup = function () {
-	this.pgPackages = this.config.get('pgPackages') || [];
+	this.veamsPackages = this.config.get('veamsPackages') || [];
 };
 
 exports.scaffold = function () {
 	// Add PG methodology
-	if (!this.pgPackages && !this.pgPackages.length) return;
+	if (!this.veamsPackages && !this.veamsPackages.length) return;
 
-	if (this.pgPackages.indexOf(pgMethId) != -1) {
+	if (this.veamsPackages.indexOf(veamsMethId) != -1) {
 
 		if (this.templateEngine !== '') {
 			// Data
@@ -69,5 +69,5 @@ exports.scaffold = function () {
 		this.mkdir('resources/scss/components');
 		this.mkdir('resources/scss/regions');
 	}
-	if (this.pgPackages.indexOf(pgComponentsId) == -1) delete this.bowerFile['dependencies']['pg-components'];
+	if (this.veamsPackages.indexOf(veamsComponentsId) == -1) delete this.bowerFile['dependencies']['veams-components'];
 };

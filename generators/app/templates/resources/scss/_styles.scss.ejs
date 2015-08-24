@@ -1,10 +1,10 @@
-<% if (pgPackages && pgPackages.length && pgPackages.indexOf('pgSCSS') != -1) { %>
+<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
 // Reset your styles via reset or normalize
-@import "../bower-components/pg-scss/resources/scss/pg-reset";<% } %>
+@import "../bower-components/veams-scss/resources/scss/veams-reset";<% } %>
 
 // Global Variables and Settings
-@import "global/_vars";<% if (pgPackages && pgPackages.length && pgPackages.indexOf('pgSCSS') != -1) { %>
-@import "../bower-components/pg-scss/resources/scss/pg";<% } %>
+@import "global/_vars";<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
+@import "../bower-components/veams-scss/resources/scss/veams";<% } %>
 <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('foundation') != -1) { %>
 // Frameworks
 @import "../bower-components/foundation/scss/foundation"; // You can choose your specific components<% }} %> <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('neat') != -1) { %>
@@ -22,7 +22,7 @@
 @import "utils/extends/**/*";
 
 // Globals
-@import "global/_base";<% if (pgPackages && pgPackages.length && pgPackages.indexOf('pgMethodology') != -1) { %>
+@import "global/_base";<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsMethodology') != -1) { %>
 
 // Regions
 @import "regions/**/*";

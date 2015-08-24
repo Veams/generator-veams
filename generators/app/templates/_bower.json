@@ -12,8 +12,8 @@
 		"bourbon": "~4.2.3",
 		"neat": "~1.5.0",
 		"foundation": "~5.2.0",
-		"pg-components": "~0.2.2",
-		"pg-js": "~1.1.3",
-		"pg-scss": "~0.2.9"
+		"veams-components": "~1.0.0",
+		"veams-js": "~2.0.0",
+		"veams-scss": "~1.0.0"
 	}
 }

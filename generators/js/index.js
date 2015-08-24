@@ -2,7 +2,7 @@
 var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
-var pg = require('../../lib/pg-helpers');
+var helpers = require('../../lib/helpers');
 var subGeneratorJS = require('../../generator-files/sub-generator-js.js');
 
 module.exports = yeoman.generators.Base.extend({

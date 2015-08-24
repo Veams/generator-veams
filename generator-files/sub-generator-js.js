@@ -1,4 +1,4 @@
-var pg = require('../lib/pg-helpers');
+var helpers = require('../lib/helpers');
 
 exports.construct = function (name) {
 	// This method adds support for a `--coffee` flag
@@ -11,8 +11,8 @@ exports.questions = function () {
 	var prompts = [
 		{
 			name: "srcPath",
-			message: "Where do you have your source files?",
-			default: "resources"
+			message: "Where do you have your JS source files?",
+			default: "resources/js"
 		},
 		{
 			name: 'path',
@@ -58,8 +58,8 @@ exports.questions = function () {
 
 exports.save = function (props) {
 	this.initName = props.initName;
-	this.srcPath = pg.cleanupPath(props.srcPath);
-	this.path = pg.cleanupPath(props.path);
+	this.srcPath = helpers.cleanupPath(props.srcPath);
+	this.path = helpers.cleanupPath(props.path);
 	this.tpl = props.tpl || false;
 	this.ext = props.ext || 'hbs';
 };
@@ -76,9 +76,17 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-	this.template(this.tplFile, this.srcPath + 'js/' + this.path + this.initName + this.jsName + '.js');
+	this.template(this.tplFile,
+		this.srcPath + '/' +
+		this.path + '/' +
+		this.jsName + '/' +
+		this.initName + this.jsName + '.js');
 
 	if (this.tpl && this.ext) {
-		this.template('_Template.html', this.srcPath + 'js/' + this.path + this.initName + '.' + this.ext);
+		this.template('_Template.html',
+			this.srcPath + '/' +
+			this.path + '/' +
+			this.jsName + '/' +
+			this.initName + '.' + this.ext);
 	}
 };

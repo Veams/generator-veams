@@ -9,7 +9,7 @@ var handlebarsId = 'handlebars';
 var respimageId = 'respimage';
 var touchswipeId = 'touchswipe';
 
-var pgJSPreset = [
+var veamsJSPreset = [
 	handlebarsId,
 	respimageId,
 	touchswipeId
@@ -65,9 +65,9 @@ exports.questions = function () {
 
 exports.setup = function () {
 	this.jsLibs = this.config.get('jsLibs') || [];
-	if (this.config.get('pgPackages') && this.config.get('pgPackages').indexOf('pgJS') !== -1) {
+	if (this.config.get('veamsPackages') && this.config.get('veamsPackages').indexOf('veamsJS') !== -1) {
 		// merge array and remove duplicates
-		this.jsLibs = _.union(this.config.get('jsLibs'), pgJSPreset);
+		this.jsLibs = _.union(this.config.get('jsLibs'), veamsJSPreset);
 	}
 };
 
@@ -94,7 +94,7 @@ exports.scaffold = function () {
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
 		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['jquery'];
 
-	if (this.pgPackages.indexOf('pgJS') == -1) delete this.bowerFile['dependencies']['pg-js'];
+	if (this.veamsPackages.indexOf('veamsJS') == -1) delete this.bowerFile['dependencies']['veams-js'];
 
 	// Add JS files for libraries
 	if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || this.gulpModules.indexOf('gulp-requirejs-optimize') != -1) {

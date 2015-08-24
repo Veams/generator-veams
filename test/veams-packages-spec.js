@@ -13,8 +13,8 @@ describe('pg packages', function () {
 	describe('when pg methodology is installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"templateEngine": "assemble",
-			"pgPackages": [
-				"pgMethodology"
+			"veamsPackages": [
+				"veamsMethodology"
 			]
 		});
 
@@ -41,11 +41,11 @@ describe('pg packages', function () {
 
 	});
 
-	describe('when pg-scss is installed', function () {
+	describe('when veams-scss is installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"templateEngine": "assemble",
-			"pgPackages": [
-				"pgSCSS"
+			"veamsPackages": [
+				"veamsSCSS"
 			]
 		});
 
@@ -61,15 +61,15 @@ describe('pg packages', function () {
 		});
 
 		it('bower.json contains reference', function () {
-			assert.fileContent('bower.json', /pg-scss/);
+			assert.fileContent('bower.json', /veams-scss/);
 		});
 	});
 
-	describe('when pg-js is installed', function () {
+	describe('when veams-js is installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"templateEngine": "assemble",
-			"pgPackages": [
-				"pgJS"
+			"veamsPackages": [
+				"veamsJS"
 			]
 		});
 
@@ -85,15 +85,15 @@ describe('pg packages', function () {
 		});
 
 		it('bower.json contains reference', function () {
-			assert.fileContent('bower.json', /pg-js/);
+			assert.fileContent('bower.json', /veams-js/);
 		});
 	});
 
-	describe('when pg-components is installed', function () {
+	describe('when veams-components is installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"templateEngine": "assemble",
-			"pgPackages": [
-				"pgComponents"
+			"veamsPackages": [
+				"veamsComponents"
 			]
 		});
 
@@ -109,14 +109,14 @@ describe('pg packages', function () {
 		});
 
 		it('bower.json contains reference', function () {
-			assert.fileContent('bower.json', /pg-components/);
+			assert.fileContent('bower.json', /veams-components/);
 		});
 	});
 
 	describe('when pg is not installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"templateEngine": "assemble",
-			"pgPackages": [
+			"veamsPackages": [
 			]
 		});
 
@@ -132,7 +132,7 @@ describe('pg packages', function () {
 		});
 
 		it('bower.json contains no references', function () {
-			assert.noFileContent('bower.json', /pg-components|pg-scss|pg-js/);
+			assert.noFileContent('bower.json', /veams-components|veams-scss|veams-js/);
 		});
 	});
 

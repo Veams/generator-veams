@@ -7,7 +7,7 @@
 
 Here is an image to illustrate region areas: 
 
-![alt text](http://prototype-generator.com/img/pages/pg-methodology/regions.jpg "Regions")
+![alt text](http://veams.org/img/pages/veams-methodology/regions.jpg "Regions")
 
 This image is actually borrowed from Drupal.org.
 

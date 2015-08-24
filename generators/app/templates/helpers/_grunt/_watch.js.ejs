@@ -19,7 +19,7 @@ module.exports = {
 		options: {
 			spawn: false
 		}
-	},<% } else if(gruntModules.indexOf('grunt-browserify') == -1 || pgPackages.indexOf('pgJS') == -1) { %>
+	},<% } else if(gruntModules.indexOf('grunt-browserify') == -1 || veamsPackages.indexOf('veamsJS') == -1) { %>
 	js: {
 		files: '<%%= paths.src %>/js/**/*.js',
 		tasks: 'sync:js'

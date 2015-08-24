@@ -2,10 +2,10 @@ var _ = require('lodash');
 var foundationId = 'foundation';
 var neatId = 'neat';
 var bootstrapId = 'bootstrap-sass';
-var pgSCSSId = 'pgSCSS';
+var veamsSCSSId = 'veamsSCSS';
 
-var pgSCSSPreset = [
-	pgSCSSId
+var veamsSCSSPreset = [
+	veamsSCSSId
 ];
 
 exports.questions = function () {
@@ -47,11 +47,11 @@ exports.scaffold = function () {
 		delete this.bowerFile['dependencies']['neat'];
 	}
 
-	if (this.config.get('pgPackages') && this.config.get('pgPackages').indexOf(pgSCSSId) !== -1) {
+	if (this.config.get('veamsPackages') && this.config.get('veamsPackages').indexOf(veamsSCSSId) !== -1) {
 		// merge array and remove duplicates
-		this.cssLibs = _.union(this.config.get('cssLibs'), pgSCSSPreset);
+		this.cssLibs = _.union(this.config.get('cssLibs'), veamsSCSSPreset);
 	}
 
 	// Bower handling
-	if (this.config.get('pgPackages').indexOf(pgSCSSId) === -1) delete this.bowerFile['dependencies']['pg-scss'];
+	if (this.config.get('veamsPackages').indexOf(veamsSCSSId) === -1) delete this.bowerFile['dependencies']['veams-scss'];
 };

@@ -1,4 +1,4 @@
-var pg = require('./../lib/pg-helpers.js');
+var pg = require('./../lib/helpers.js');
 
 var jscsId = 'jscs';
 var htmlHintId = 'hintingHTML';
