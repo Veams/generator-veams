@@ -1,8 +1,8 @@
 <p align="center"><img src="http://prototype-generator.com/img/logo-pg.png"></p>
 
-<p align="center">Visit the PG-website to learn how to use PG: http://prototype-generator.com </p>
+<p align="center">One of the most flexible and efficient [Yeoman](http://yeoman.io) generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.</p>
 
-> A very flexible and efficient [Yeoman](http://yeoman.io) generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.
+> Visit the PG-website to learn how to use PG: http://prototype-generator.com 
 
 [![NPM version](https://badge.fury.io/js/generator-pg.svg)](http://badge.fury.io/js/generator-pg) [![Build Status](https://travis-ci.org/Sebastian-Fitzner/generator-pg.svg)](https://travis-ci.org/Sebastian-Fitzner/generator-pg)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](http://en.wikipedia.org/wiki/MIT_License)
