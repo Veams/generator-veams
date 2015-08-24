@@ -5,7 +5,7 @@
 - added new structure to use separate generator files
 - updated packages
 - added testing
-- renamed package to `pg`
+- renamed package to `veams` because pg is already used at npmjs.org
 
 **Task Runners**
 - added first gulp support

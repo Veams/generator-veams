@@ -1,5 +1,5 @@
 {
-  "name": "generator-pg",
+  "name": "generator-veams",
   "version": "6.0.0",
   "homepage": "http://prototype-generator.com/",
   "description": "Scaffold modern frontend web apps or web pages with Assemble, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with Backbone and RequireJS or Browserify.",
@@ -28,7 +28,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Sebastian-Fitzner/generator-pg"
+    "url": "git://github.com/Sebastian-Fitzner/generator-veams"
   },
   "scripts": {
     "test": "mocha --reporter spec"

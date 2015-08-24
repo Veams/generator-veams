@@ -1,12 +1,10 @@
-<p align="center"><img src="http://prototype-generator.com/img/logo-pg.png"></p>
-
 <p align="center">One of the most flexible and efficient <a href="http://yeoman.io">Yeoman</a> generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.</p>
 
-> Visit the PG-website to learn how to use PG: http://prototype-generator.com 
+> Visit the Veams-website to learn how to use Veams: http://prototype-generator.com 
 
-[![NPM version](https://badge.fury.io/js/generator-pg.svg)](http://badge.fury.io/js/generator-pg) [![Build Status](https://travis-ci.org/Sebastian-Fitzner/generator-pg.svg)](https://travis-ci.org/Sebastian-Fitzner/generator-pg)
+[![NPM version](https://badge.fury.io/js/generator-veams.svg)](http://badge.fury.io/js/generator-veams) [![Build Status](https://travis-ci.org/Sebastian-Fitzner/generator-veams.svg)](https://travis-ci.org/Sebastian-Fitzner/generator-veams)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](http://en.wikipedia.org/wiki/MIT_License)
-[![NPM](https://nodei.co/npm/generator-pg.png?mini=true)](https://nodei.co/npm/generator-pg/)
+[![NPM](https://nodei.co/npm/generator-veams.png?mini=true)](https://nodei.co/npm/generator-veams/)
 
 ## Getting started
 
@@ -21,18 +19,18 @@
   `npm install -g yo`
 
 - Install the Generator-Prototype via:
-  `npm install -g generator-pg`
+  `npm install -g generator-veams`
 
 ### Update
 - Update the Generator-Prototype via:
-  `npm update -g generator-pg`
+  `npm update -g generator-veams`
 
 ### Usage
 
 #### Scaffold your new web app project.
 
 ```bash
-yo pg
+yo veams
 ```
 
 ##### Options
@@ -91,7 +89,7 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 
 ## Task Runners
 
-PG supports `Grunt` and/or `Gulp` as task runner. Our primary task runner is `Grunt`, so when you have some ideas to improve our `Gulp` workflow just open an issue. 
+Veams supports `Grunt` and/or `Gulp` as task runner. Our primary task runner is `Grunt`, so when you have some ideas to improve our `Gulp` workflow just open an issue. 
 
 ### Grunt
 
@@ -197,14 +195,14 @@ And you can also choose SCSS Frameworks like:
 
 All files will be included and configured. Have fun!
 
-## PG Methodology 
-You can scaffold your project with our [PG Methodology](http://www.prototype-generator.com/pg-methodology/pg-methodology-overview.html). 
+## Veams Methodology 
+You can scaffold your project with our [Veams Methodology](http://www.prototype-generator.com/veams-methodology/veams-methodology-overview.html). 
 
 Furthermore you can add different bower components we provide: 
 
-* [pg-scss](https://github.com/Sebastian-Fitzner/pg-scss)
-* [pg-js](https://github.com/Sebastian-Fitzner/pg-js)
-* [pg-components](https://github.com/Sebastian-Fitzner/pg-components)
+* [veams-scss](https://github.com/Sebastian-Fitzner/veams-scss)
+* [veams-js](https://github.com/Sebastian-Fitzner/veams-js)
+* [veams-components](https://github.com/Sebastian-Fitzner/veams-components)
 
 ## Testing 
 
@@ -237,11 +235,11 @@ We provide some custom helpers to speed up your Assemble workflow. These helpers
 * `{{#limit}}` - limit JSON output
 * and a few more ... 
 
-You want to know more? See [PG Custom Helpers](http://prototype-generator.com/templating-in-pg/template-helpers.html)
+You want to know more? See [Veams Custom Helpers](http://prototype-generator.com/templating-in-veams/template-helpers.html)
 
 ## Features
 
-PG supports different features. Just check/uncheck them in the __custom installation routine__:
+Veams supports different features. Just check/uncheck them in the __custom installation routine__:
 
 * You want to add a separate distribution folder? - Check!
 * You want to add a CSS Styleguide and Assemble Development Documentation? - Check! (See "Developer Documentation")
@@ -251,11 +249,11 @@ We integrated some sub generators for you:
 
 ### Grunt Modules:
 You forgot a grunt module?
-* Install further grunt modules: `yo pg:grunt`
+* Install further grunt modules: `yo veams:grunt`
 
 ### Handlebars Template Helpers:
 You want to install custom handlebars helpers? 
-* Here you go: `yo pg:templating`
+* Here you go: `yo veams:templating`
 
 ### Backbone|Exoskeleton|Ampersand:
 We have integrated a sub generator which you can pass one argument and one option to create a model, view or collection. 
@@ -276,7 +274,7 @@ Furthermore you can pass an option with `--`. This option is only important when
 **Example:**
 
 ``` bash
-yo pg:js View --commonjs
+yo veams:js View --commonjs
 ```
 
 ## Release History
