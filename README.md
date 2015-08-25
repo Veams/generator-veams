@@ -1,10 +1,12 @@
-<p align="center">One of the most flexible and efficient <a href="http://yeoman.io">Yeoman</a> generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.</p>
-
-> Visit the Veams-website to learn how to use Veams: http://prototype-generator.com 
-
-[![NPM version](https://badge.fury.io/js/generator-veams.svg)](http://badge.fury.io/js/generator-veams) [![Build Status](https://travis-ci.org/Sebastian-Fitzner/generator-veams.svg)](https://travis-ci.org/Sebastian-Fitzner/generator-veams)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](http://en.wikipedia.org/wiki/MIT_License)
-[![NPM](https://nodei.co/npm/generator-veams.png?mini=true)](https://nodei.co/npm/generator-veams/)
+<p align="center">
+	<strong>One of the most flexible and efficient <a href="http://yeoman.io">Yeoman</a> generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.</strong>
+	<br><br>
+	[Visit the Veams-website to learn how to use Veams](http://prototype-generator.com)<br><br>
+	<a href="http://badge.fury.io/js/generator-veams"><img src="https://badge.fury.io/js/generator-veams.svg" alt="NPM version" /></a>
+	<a href="https://travis-ci.org/Sebastian-Fitzner/generator-veams"><img src="https://travis-ci.org/Sebastian-Fitzner/generator-veams.svg" alt="Build Status" /></a>
+	<a href="http://en.wikipedia.org/wiki/MIT_License"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license" /></a>
+	<a href="https://nodei.co/npm/generator-veams/"><img src="https://nodei.co/npm/generator-veams.png?mini=true" alt="NPM install" /></a>
+</p>
 
 ## Getting started
 
@@ -15,15 +17,12 @@
 
 ### Installation 
 
-- Install Yeoman:
-  `npm install -g yo`
+- Install Yeoman: `npm install -g yo`
 
-- Install the Generator-Prototype via:
-  `npm install -g generator-veams`
+- Install the Generator-Prototype via: `npm install -g generator-veams`
 
 ### Update
-- Update the Generator-Prototype via:
-  `npm update -g generator-veams`
+- Update the Generator-Prototype via: `npm update -g generator-veams`
 
 ### Usage
 
@@ -35,8 +34,7 @@ yo veams
 
 ##### Options
 
-* `-s` alias `--skip-install`
-  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
+* `-s` alias `--skip-install`: Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
 
 #### Quick Start
 You can scaffold your project in an instance. The first question is:
@@ -196,7 +194,7 @@ And you can also choose SCSS Frameworks like:
 All files will be included and configured. Have fun!
 
 ## Veams Methodology 
-You can scaffold your project with our [Veams Methodology](http://www.prototype-generator.com/veams-methodology/veams-methodology-overview.html). 
+You can scaffold your project with our Veams Methodology. 
 
 Furthermore you can add different bower components we provide: 
 
@@ -233,9 +231,7 @@ We provide some custom helpers to speed up your Assemble workflow. These helpers
 * `{{#mergeData}}` - merge two data objects
 * `{{#repeat}}` or `{{#times}}` - repeat elements
 * `{{#limit}}` - limit JSON output
-* and a few more ... 
-
-You want to know more? See [Veams Custom Helpers](http://prototype-generator.com/templating-in-veams/template-helpers.html)
+* and a few more ...
 
 ## Features
 

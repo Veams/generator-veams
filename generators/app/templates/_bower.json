@@ -14,6 +14,6 @@
 		"foundation": "~5.2.0",
 		"veams-components": "~1.0.0",
 		"veams-js": "~2.0.0",
-		"veams-scss": "~1.0.0"
+		"veams-scss": "~1.0.1"
 	}
 }
