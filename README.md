@@ -1,7 +1,7 @@
 <p align="center">
 	<strong>One of the most flexible and efficient <a href="http://yeoman.io">Yeoman</a> generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.</strong>
 	<br><br>
-	[Visit the Veams-website to learn how to use Veams](http://prototype-generator.com)<br><br>
+	<a href="http://prototype-generator.com">Visit the `Veams` website to learn how to use `Veams`.</a><br><br>
 	<a href="http://badge.fury.io/js/generator-veams"><img src="https://badge.fury.io/js/generator-veams.svg" alt="NPM version" /></a>
 	<a href="https://travis-ci.org/Sebastian-Fitzner/generator-veams"><img src="https://travis-ci.org/Sebastian-Fitzner/generator-veams.svg" alt="Build Status" /></a>
 	<a href="http://en.wikipedia.org/wiki/MIT_License"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license" /></a>
