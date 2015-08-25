@@ -19,10 +19,10 @@
 
 - Install Yeoman: `npm install -g yo`
 
-- Install the Generator-Prototype via: `npm install -g generator-veams`
+- Install `Veams` via: `npm install -g generator-veams`
 
 ### Update
-- Update the Generator-Prototype via: `npm update -g generator-veams`
+- Update `Veams` via: `npm update -g generator-veams`
 
 ### Usage
 
