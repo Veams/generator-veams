@@ -87,7 +87,7 @@ If you choose `Minimal installation` you skip the rest of the questions and get 
 
 ## Task Runners
 
-Veams supports `Grunt` and/or `Gulp` as task runner. Our primary task runner is `Grunt`, so when you have some ideas to improve our `Gulp` workflow just open an issue. 
+Veams supports `Grunt` and/or `Gulp` as task runner. Our primary task runner is `Grunt`, so when you have some ideas to how we can improve our `Gulp` workflow just open an issue. 
 
 ### Grunt
 
