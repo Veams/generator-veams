@@ -79,14 +79,12 @@ exports.scaffold = function () {
 	this.template(this.tplFile,
 		this.srcPath + '/' +
 		this.path + '/' +
-		this.jsName + '/' +
 		this.initName + this.jsName + '.js');
 
 	if (this.tpl && this.ext) {
 		this.template('_Template.html',
 			this.srcPath + '/' +
 			this.path + '/' +
-			this.jsName + '/' +
 			this.initName + '.' + this.ext);
 	}
 };
