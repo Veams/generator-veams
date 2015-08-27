@@ -25,7 +25,8 @@
 		"handlebars": "^3.0.3"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'touchswipe') { %>
 		"touchswipe": "^1.6.0"<% } %>
 	<% }); %><% } %><% } %>},
-	"devDependencies": {<% if(taskRunner && taskRunner.length) {%><% if (taskRunner.indexOf('gulp') != -1) {%>
+	"devDependencies": {<% if(gruntModules && gruntModules.indexOf('grunt-browserify') !== -1 || gulpModules && gulpModules.indexOf('browserify') !== -1) { %>
+		"babelify": "^6.2.0",<% } %><% if(taskRunner && taskRunner.length) {%><% if (taskRunner.indexOf('gulp') != -1) {%>
 		"del": "^1.1.1",
 		"browser-sync": "*",
 		"require-dir": "^0.3.0",
@@ -80,7 +81,7 @@
 		"grunt-jsdoc": "^0.6.1",<% } %><% if(name == 'grunt-contrib-uglify') { %>
 		"grunt-contrib-uglify": "~0.5.1",<% } %><% if(name == 'grunt-modernizr') { %>
 		"grunt-modernizr": "^0.5.2",<% } %><% if(name == 'grunt-browserify') { %>
-		"grunt-browserify": "https://github.com/Sebastian-Fitzner/grunt-browserify",<% } %><% if(name == 'grunt-browser-sync') { %>
+		"grunt-browserify": "git+https://git@github.com/Sebastian-Fitzner/grunt-browserify",<% } %><% if(name == 'grunt-browser-sync') { %>
 		"grunt-browser-sync": "~1.5.3",<% } %><% if(name == 'grunt-csscomb') { %>
 		"grunt-csscomb": "^3.0.0",<% } %><% if(name == 'grunt-combine-mq') { %>
 		"grunt-combine-mq": "^0.9.0",<% } %><% if(name == 'grunt-bless') { %>
