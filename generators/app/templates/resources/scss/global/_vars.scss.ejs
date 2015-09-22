@@ -1,5 +1,7 @@
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('neat') != -1) { %>@import "../../bower-components/neat/app/assets/stylesheets/neat-helpers";
-// Change the grid settings
+/* ===================================================
+BOURBON NEAT
+=================================================== */
 $column: 73px;
 $gutter: 22px;
 $grid-columns: 12;
@@ -19,4 +21,21 @@ $mobile-p: 480px;
 <% } %>
 <% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
 $use-min-width: false; // This variable will be used veams-scss
+<% } %>
+<% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('foundation') != -1) { %>
+/* ===================================================
+FOUNDATION SETTINGS
+=================================================== */
+// The settings can be found here:
+// ../../bower-components/foundation/scss/foundation/_settings.scss
+// Just copy and paste the things you need
+<% } %>
+<% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('bootstrap-sass') != -1) { %>
+/* ===================================================
+BOOTSTRAP SETTINGS
+=================================================== */
+// The settings can be found here:
+// ../../bower-components/foundation/scss/foundation/_settings.scss
+// Just copy and paste the things you need
+
 <% } %>
