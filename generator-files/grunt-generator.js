@@ -16,7 +16,7 @@ exports.questions = function (obj) {
 			},
 			name: 'gruntModules',
 			type: 'checkbox',
-			message: 'Which grunt modules do you want to use?',
+			message: 'Which Grunt-Plugins do you want to use?',
 			choices: [
 				{name: 'grunt-accessibility'},
 				{name: 'grunt-autoprefixer', checked: object.defaults},
@@ -24,7 +24,7 @@ exports.questions = function (obj) {
 				{name: 'grunt-browser-sync', checked: object.defaults},
 				{name: 'grunt-browserify', checked: object.defaults},
 				{name: 'grunt-combine-mq', checked: object.defaults},
-				{name: 'grunt-connect-proxy (CORS, Basic Auth and http methods)', value: 'grunt-connect-proxy'},
+				{name: 'grunt-contrib-handlebars'},
 				{name: 'grunt-contrib-htmlmin'},
 				{name: 'grunt-contrib-requirejs'},
 				{name: 'grunt-contrib-uglify'},
@@ -32,7 +32,6 @@ exports.questions = function (obj) {
 				{name: 'grunt-dr-svg-sprites', checked: object.defaults},
 				{name: 'grunt-grunticon'},
 				{name: 'grunt-image-size-export'},
-				{name: 'grunt-jsdoc'},
 				{name: 'grunt-modernizr'},
 				{name: 'grunt-packager'},
 				{name: 'grunt-phantomas'},
@@ -97,6 +96,8 @@ exports.scaffold = function (obj) {
 
 		if (this.taskRunner.indexOf('grunt') != -1 && this.taskRunner.indexOf('gulp') == -1) {
 			this.template(this.generatorGruntPath + '_clean.js.ejs', this.gruntPath + 'clean.js');
+			this.template(this.generatorGruntPath + '_sass.js.ejs', this.gruntPath + 'sass.js');
+			this.template(this.generatorGruntPath + '_sassGlobber.js.ejs', this.gruntPath + 'sassGlobber.js');
 			this.template(this.generatorGruntPath + '_concurrent.js.ejs', this.gruntPath + 'concurrent.js');
 			this.template(this.generatorGruntPath + 'connect.js', this.gruntPath + 'connect.js');
 			this.copy(this.generatorGruntPath + 'cssmin.js', this.gruntPath + 'cssmin.js');
@@ -136,7 +137,8 @@ exports.scaffold = function (obj) {
 			this.npmInstall(['grunt-browser-sync'], {'saveDev': true});
 		}
 	}
-	if (this.gruntModules.indexOf('grunt-browserify') != -1) {
+	if (this.gruntModules.indexOf('grunt-browserify') != -1 ||
+		this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
 		this.template(this.generatorGruntPath + '_browserify.js.ejs', this.gruntPath + 'browserify.js');
 
 		if (object.installDeps) {
@@ -155,6 +157,21 @@ exports.scaffold = function (obj) {
 
 		if (object.installDeps) {
 			this.npmInstall(['grunt-csscomb'], {'saveDev': true});
+		}
+	}
+	if (this.gruntModules.indexOf('grunt-contrib-handlebars') != -1 ||
+		this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
+		this.copy(this.generatorGruntPath + 'handlebars.js', this.gruntPath + 'handlebars.js');
+
+		if (object.installDeps) {
+			this.npmInstall(['grunt-contrib-handlebars'], {'saveDev': true});
+
+			this.log(('\n') + chalk.bgRed('lease add the following lines to your Gruntfile.js to your custom tasks: ') + ('\n') +
+				chalk.yellow('\n grunt.registerTask(\'jsTemplates\', [') +
+				chalk.yellow('\n    \'handlebars\',') +
+				chalk.yellow('\n    \'replace:jsTemplates\'' +
+					chalk.yellow('\n ]);') + ('\n') + ('\n'))
+			);
 		}
 	}
 	if (this.gruntModules.indexOf('grunt-contrib-htmlmin') != -1) {
@@ -199,7 +216,7 @@ exports.scaffold = function (obj) {
 				chalk.yellow('\n grunt.registerTask(\'sprites\', [') +
 				chalk.yellow('\n    \'svg-sprites\',') +
 				chalk.yellow('\n    \'replace:spriteUrl\'' +
-				chalk.yellow('\n ]);') + ('\n') + ('\n'))
+					chalk.yellow('\n ]);') + ('\n') + ('\n'))
 			);
 		}
 	}
@@ -209,7 +226,7 @@ exports.scaffold = function (obj) {
 		this.template(this.generatorGruntPath + '_grunticon.js.ejs', this.gruntPath + 'grunticon.js');
 
 		if (object.installDeps) {
-			this.bowerInstall(['helpers-scss'], {'save': true});
+			this.bowerInstall(['veams-sass'], {'save': true});
 			this.npmInstall(['grunt-grunticon'], {'saveDev': true});
 		}
 	}
@@ -218,13 +235,6 @@ exports.scaffold = function (obj) {
 
 		if (object.installDeps) {
 			this.npmInstall(['grunt-image-size-export'], {'saveDev': true});
-		}
-	}
-	if (this.gruntModules.indexOf('grunt-jsdoc') != -1 || (this.features.indexOf('installDocs') != -1)) {
-		this.copy(this.generatorGruntPath + 'jsdoc.js', this.gruntPath + 'jsdoc.js');
-
-		if (object.installDeps) {
-			this.npmInstall(['grunt-jsdoc@beta'], {'saveDev': true});
 		}
 	}
 	if (this.gruntModules.indexOf('grunt-modernizr') != -1) {
@@ -279,8 +289,11 @@ exports.scaffold = function (obj) {
 		}
 	}
 
-	if (this.gruntModules.indexOf('grunt-grunticon') != -1 || this.gruntModules.indexOf('grunt-dr-svg-sprites') != -1) {
-		this.template(this.generatorGruntPath + '_replace.js.ejs', this.gruntPath + 'replace.js')
+	if (this.gruntModules.indexOf('grunt-grunticon') != -1 ||
+		this.gruntModules.indexOf('grunt-dr-svg-sprites') != -1 ||
+		this.gruntModules.indexOf('grunt-contrib-handlebars') != -1 ||
+		this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
+		this.template(this.generatorGruntPath + '_replace.js.ejs', this.gruntPath + 'replace.js');
 
 		if (object.installDeps) {
 			this.npmInstall(['grunt-text-replace'], {'saveDev': true});

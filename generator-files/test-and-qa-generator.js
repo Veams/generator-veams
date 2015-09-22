@@ -8,7 +8,7 @@ var karmaId = 'karma';
 
 exports.questions = function () {
 	var qaLibsId = 'testAndQALibs';
-	var qaLibsQuestion = 'What would you like to test?';
+	var qaLibsQuestion = 'Which Testing and QA Tools do you want add?';
 	var choices = [
 		{
 			name: 'JavaScript Code Style (jscs)',
@@ -36,7 +36,7 @@ exports.questions = function () {
 		{
 			name: 'testAndQA',
 			type: 'confirm',
-			message: 'Would you like to add testing and qa?',
+			message: 'Would you like to add Testing and QA Tools?',
 			default: this.config.get('testAndQA')
 		},
 		{
@@ -71,7 +71,7 @@ exports.questions = function () {
 exports.setup = function () {
 	this.testAndQALibs = this.config.get('testAndQALibs') || [];
 
-	pg.definePaths.call(this);
+	pg.definePaths.bind(this);
 };
 
 exports.scaffold = function () {

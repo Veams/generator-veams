@@ -11,7 +11,7 @@ exports.questions = function () {
 			},
 			type: 'list',
 			name: 'templateEngine',
-			message: 'Which template engine do you want to install?',
+			message: 'Which Template Engine do you want to install?',
 			choices: [
 				{name: 'Assemble', value: 'assemble'},
 				// {name: 'veams', value: 'veams'}
@@ -26,19 +26,8 @@ exports.questions = function () {
 					&& answers.templateEngine.indexOf('assemble') !== -1;
 			},
 			type: 'confirm',
-			message: 'Do you want to use Extended Layouts in Assemble?',
-			name: 'installExtendedLayout',
-			default: true
-		},
-		{
-			when: function (answers) {
-				return answers.templateEngine
-					&& answers.templateEngine.length
-					&& answers.templateEngine.indexOf('assemble') !== -1;
-			},
-			type: 'confirm',
 			name: 'installPlugin',
-			message: 'Do you want to install Assemble plugins?',
+			message: 'Do you want to install Assemble-Plugins?',
 			default: this.config.get('installPlugin')
 		},
 		{
@@ -49,12 +38,23 @@ exports.questions = function () {
 			},
 			name: 'plugin',
 			type: 'checkbox',
-			message: 'Which Assemble plugin do you want to use?',
+			message: 'Which Assemble-Plugin do you want to use?',
 			choices: [
 				{name: 'assemble-contrib-permalinks'},
 				{name: 'assemble-contrib-sitemap'},
 				{name: 'assemble-related-pages'}
 			]
+		},
+		{
+			when: function (answers) {
+				return answers.templateEngine
+					&& answers.templateEngine.length
+					&& answers.templateEngine.indexOf('assemble') !== -1;
+			},
+			type: 'confirm',
+			message: 'Do you want to use Extended Layouts in Assemble?',
+			name: 'installExtendedLayout',
+			default: true
 		}
 	];
 };

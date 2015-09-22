@@ -7,25 +7,25 @@ exports.questions = function () {
 	return {
 		name: 'veamsPackages',
 		type: 'checkbox',
-		message: 'Do you want to use Veams Packages (Bower Component)?',
+		message: 'Do you want to use Veams Extensions?',
 		choices: [
 			{
-				name: 'Veams Methodology',
+				name: 'Veams-Methodology',
 				value: veamsMethId,
 				checked: true
 			},
 			{
-				name: 'Veams SCSS Starter Kit',
+				name: 'Veams-Sass (Bower Component)',
 				value: veamsSCSSId,
 				checked: true
 			},
 			{
-				name: 'Veams JS Starter Kit',
+				name: 'Veams-JS (Bower Component)',
 				value: veamsJSId,
 				checked: false
 			},
 			{
-				name: 'Veams Components',
+				name: 'Veams-Components (Bower Component)',
 				value: veamsComponentsId,
 				checked: true
 			}
@@ -36,6 +36,15 @@ exports.questions = function () {
 
 exports.setup = function () {
 	this.veamsPackages = this.config.get('veamsPackages') || [];
+
+	if (this.veamsPackages.indexOf(veamsJSId) !== -1) {
+		var gruntModules = this.config.get('gruntModules');
+
+		gruntModules.push('grunt-contrib-handlebars');
+		gruntModules.push('grunt-browserify');
+
+		this.config.set('gruntModules', gruntModules);
+	}
 };
 
 exports.scaffold = function () {
@@ -67,7 +76,7 @@ exports.scaffold = function () {
 		// SCSS
 		this.mkdir('resources/scss/blocks');
 		this.mkdir('resources/scss/components');
-		this.mkdir('resources/scss/regions');
+		this.mkdir('resources/scss/layouts');
 	}
 	if (this.veamsPackages.indexOf(veamsComponentsId) == -1) delete this.bowerFile['dependencies']['veams-components'];
 };

@@ -7,7 +7,7 @@ exports.questions = function () {
 		},
 		name: 'gulpModules',
 		type: 'checkbox',
-		message: 'Which gulp modules do you want to use?',
+		message: 'Which Gulp-Plugins do you want to use?',
 		choices: [
 			// {name: 'gulp-arialinter'},
 			// {name: 'browserify'},

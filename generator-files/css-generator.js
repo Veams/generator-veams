@@ -12,7 +12,7 @@ exports.questions = function () {
 	return {
 		name: 'cssLibs',
 		type: 'checkbox',
-		message: 'Do you want to use any CSS Frameworks?',
+		message: 'Do you want to use any Sass Frameworks?',
 		choices: [
 			{
 				name: 'Foundation',
