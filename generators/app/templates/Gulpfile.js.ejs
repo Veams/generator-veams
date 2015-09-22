@@ -53,10 +53,14 @@ gulp.task('build', function(callback) {
 			'js:dist'<% } else { %>,
 			'copy:js'<% } %>
 		],<% if (testAndQALibs) { %>
-		[<% if(testAndQALibs.indexOf('hintingHTML') !== -1) { %>,
+		[<% if(testAndQALibs.indexOf('hintingHTML') !== -1) { %>
 			'hint:html'<% } %><% if (testAndQALibs.indexOf('hintingJS') !== -1) { %>,
 			'hint:js'<% } %><% if (testAndQALibs.indexOf('jscs') !== -1) { %>,
 			'js:jscs'<% } %>
+		],<% } %><% if (docs && docs.length) { %>
+		[<% if(docs.indexOf('jsdoc') !== -1) { %>
+			'docs:js'<% } %><% if (testAndQALibs.indexOf('sassdoc') !== -1) { %>,
+			'docs:sass'<% } %>
 		],<% } %>
 		callback
 	);

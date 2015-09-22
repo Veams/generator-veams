@@ -57,12 +57,19 @@ module.exports = function(grunt) {
 	grunt.registerTask('icons', [
 		'dr-svg-sprites',
 		'replace:spriteUrl'
+	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
+
+	// FE Templates Task
+	grunt.registerTask('jsTemplates', [
+		'handlebars',
+		'replace:jsTemplates'
 	]); <% } %><% if ((gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-packager') != -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1 || gruntModules.indexOf('grunt-browserify') != -1))) { %>
 	
 	// JS Task
 	grunt.registerTask('jsDev', [<% if(gruntModules.indexOf('grunt-packager') != -1) { %>
 		'packager'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
-		'requirejs:dev'<% } %><% if(gruntModules.indexOf('grunt-browserify') != -1) { %>
+		'requirejs:dev'<% } %><% if(gruntModules.indexOf('grunt-browserify') != -1) { %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
+		'jsTemplates',<% } %>
 		'browserify:vendor',
 		'browserify:dev'<% } %>
 	]); <% } %><% if (gruntModules && gruntModules.length) { %>
@@ -118,7 +125,7 @@ module.exports = function(grunt) {
 		'jscs',<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
 		'newer:assemble',<% } %>
 		'concurrent:syncing',
-		'watchCSS'<% if (features && features.length && features.indexOf('installDocs') != -1) { %>,
+		'watchCSS'<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 		'sass:docs'<% } %><% if(gruntModules && gruntModules.length){ if(gruntModules.indexOf('grunt-browser-sync') == -1) { %>,
 		'connect:livereload',<% }} if(gruntModules && gruntModules.length){ %><% if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) { if(name == 'grunt-browser-sync') { %>,
 		// 'connect:livereload',
@@ -135,7 +142,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', [
 		'clean:dev',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-modernizr') != -1) { %>
 		'modernizr',<% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
-		'requirejs:prod',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-packager') != -1) { %>
+		'requirejs:prod',<% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
+		'jsTemplates',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-packager') != -1) { %>
 		'packager',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
 		'browserify:vendor',
 		'browserify:dist',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-uglify') != -1) { %>
@@ -143,8 +151,8 @@ module.exports = function(grunt) {
 		'concurrent:syncing', <% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-csscomb') != -1) { %>
 		'beauty-scss',<% }} %>
 		'sassGlobber:dist',
-		'sass:dist',
-		'sass:universal',<% if (features && features.length && features.indexOf('installDocs') != -1) { %>
+		'sass:dev',
+		'sass:universal',<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>
 		'sass:docs',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-combine-mq') != -1) { %>
 		'combine_mq',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-postcss-separator') != -1) { %>
 		'postcssSeparator',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-autoprefixer') != -1) { %>
@@ -152,7 +160,7 @@ module.exports = function(grunt) {
 		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
 		'bless',<% }} %><% if(templateEngine.indexOf('assemble') != -1){ %>
         'assemble',<% } %>
-		'concurrent:build'
+		'concurrent:hintAndDocs'
 	]);
 
 	grunt.registerTask('default', [

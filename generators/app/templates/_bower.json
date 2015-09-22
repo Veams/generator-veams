@@ -9,11 +9,11 @@
 		"backbone": "~1.1.2",
 		"exoskeleton": "^0.7.0",
 		"bootstrap-sass": "*",
-		"bourbon": "~4.2.3",
-		"neat": "~1.5.0",
-		"foundation": "~5.2.0",
+		"bourbon": "~4.2.4",
+		"neat": "~1.7.2",
+		"foundation": "~5.5.2",
 		"veams-components": "~1.0.0",
-		"veams-js": "~2.0.0",
-		"veams-scss": "~1.0.1"
+		"veams-js": "~2.0.7",
+		"veams-sass": "~1.0.1"
 	}
 }
