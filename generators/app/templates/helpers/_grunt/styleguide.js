@@ -1,7 +1,7 @@
 module.exports = {
 	options: {
 		template: {
-			src: '<%= paths.helper %>/templates/styleguide-template/'
+			src: '<%= paths.helpers %>/templates/styleguide-template/'
 		},
 		name: 'Style Guide',
 		framework: {

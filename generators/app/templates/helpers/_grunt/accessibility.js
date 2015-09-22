@@ -8,7 +8,7 @@ module.exports = {
 				expand: true,
 				cwd: '<%= paths.dev %>/',
 				src: ['*.html'],
-				dest: '<%= paths.helper %>/reports/accessibility',
+				dest: '<%= paths.helpers %>/reports/accessibility',
 				ext: '-report.txt'
 			}
 		]
