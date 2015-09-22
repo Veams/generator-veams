@@ -1,0 +1,19 @@
+var config = require('../config');
+var path = config.options.paths;
+var gulp = require('gulp');<% if (docs && docs.indexOf('jsdoc') !== -1) { %>
+var jsdoc = require("gulp-jsdoc");<% } %><% if (docs && docs.indexOf('sassdoc') !== -1) { %>
+var sassdoc = require("sassdoc");<% } %>
+<% if (docs && docs.indexOf('jsdoc') !== -1) { %>
+// JS Documentation
+gulp.task('docs:js', function () {
+	return gulp.src(path.src + '/js/**/*.js')
+		.pipe(jsdoc(path.dev + '/jsdoc'));
+});<% } %>
+<% if (docs && docs.indexOf('sassdoc') !== -1) { %>
+// Sass Documentation
+gulp.task('docs:sass', function () {
+	return gulp.src(path.src + '/scss/**/*.scss')
+		.pipe(sassdoc({
+			dest: path.dev + '/sassdoc'
+		}));
+});<% } %>

@@ -7,13 +7,12 @@ var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
 	"gruntModules":[
-		"grunt-packager"
+		"grunt-contrib-handlebars"
 	]
 });
 
-describe('grunt-packager', function () {
+describe('grunt-contrib-handlebars', function () {
 	var helperPath = "helpers/";
-	var srcPath = "resources/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -27,14 +26,16 @@ describe('grunt-packager', function () {
 	});
 
 	it('adds references to package.json', function () {
-		assert.fileContent('package.json', /grunt-packager/);
+		assert.fileContent('package.json', /grunt-contrib-handlebars/);
 	});
 
 	it('creates helper files', function () {
-		assert.file(helperPath + "_grunt/packager.js");
+		assert.file(helperPath + "_grunt/handlebars.js");
 	});
 
-	it('creates config file', function () {
-		assert.file(srcPath + "js/project.jspackcfg");
+
+	it('adds task to Gruntfile.js file', function () {
+		assert.fileContent('Gruntfile.js', /handlebars/);
 	});
+
 });

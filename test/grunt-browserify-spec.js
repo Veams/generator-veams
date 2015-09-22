@@ -6,14 +6,14 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
-	"gruntModules": [
-		"grunt-browserify"
+	'gruntModules': [
+		'grunt-browserify'
 	]
 });
 
 describe('grunt-browserify', function () {
-	var helperPath = "helpers/";
-	var srcPath = "resources/";
+	var helperPath = 'helpers/';
+	var srcPath = 'resources/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -32,13 +32,13 @@ describe('grunt-browserify', function () {
 	});
 
 	it('creates helper files', function () {
-		assert.file(helperPath + "_grunt/browserify.js");
+		assert.file(helperPath + '_grunt/browserify.js');
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		assert.fileContent("Gruntfile.js", /'browserify\:dev'/);
-		assert.fileContent("Gruntfile.js", /'browserify\:vendor'/);
-		assert.fileContent("Gruntfile.js", /'browserify\:dist'/);
+		assert.fileContent('Gruntfile.js', /'browserify\:dev'/);
+		assert.fileContent('Gruntfile.js', /'browserify\:vendor'/);
+		assert.fileContent('Gruntfile.js', /'browserify\:dist'/);
 	});
 
 	it('adds app.js, main.js and config.js to js folder', function () {
