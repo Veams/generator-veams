@@ -36,7 +36,6 @@ describe('grunt-sass', function () {
 
 	it('adds tasks to Gruntfile.js file', function () {
 		assert.fileContent("Gruntfile.js", /sass:dev/);
-		assert.fileContent("Gruntfile.js", /sass:dist/);
 	});
 
 });

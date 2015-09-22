@@ -22,7 +22,7 @@ module.exports = {
 				dest: '<%%= paths.dev %>'
 			}
 		]
-    }<% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>,
+    }<% if (docs && docs.length > 0 && docs.indexOf('htmldoc') != -1) { %>,
 	highlightjs: {
 		files: [
 			// includes files within path and its sub-directories
@@ -33,14 +33,14 @@ module.exports = {
 			}
 		]
 	}<% } %><% if(gruntModules.indexOf('grunt-packager') != -1){ %>,
-	js: {
-		files: [
-			// includes files within path and its sub-directories
-			{
-				cwd: '<%%= paths.src %>/js',
-				src: '**/*',
-				dest: '<%%= paths.dev %>/js'
-			}
-		]
-	}<% } %>
+		js: {
+			files: [
+				// includes files within path and its sub-directories
+				{
+					cwd: '<%%= paths.src %>/js',
+					src: '**/*',
+					dest: '<%%= paths.dev %>/js'
+				}
+			]
+		}<% } %>
 };

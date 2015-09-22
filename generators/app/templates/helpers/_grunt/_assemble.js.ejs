@@ -32,7 +32,7 @@ _.each(plugin, function(name, i) { if(name == 'permalinks') { %>
 			flatten: true,
 			src: ['**/*.hbs']
 		}]
-	}<% if (features && features.length && features.indexOf('installDocs') != -1) { %>,
+	}<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 	docs: {
 		files: [
 		{

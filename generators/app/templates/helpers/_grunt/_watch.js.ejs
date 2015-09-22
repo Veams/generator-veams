@@ -46,7 +46,7 @@ module.exports = {
 	universal: {
 		files: '<%%= paths.src %>/scss/universal.scss',
 		tasks: 'sass:universal'
-	}<% if (features.indexOf('installDocs') != -1) { %>,
+	}<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 	scssDocs: {
 		files: '<%%= paths.src %>/scss/docs/*',
 		tasks: 'sass:docs'
@@ -64,7 +64,7 @@ module.exports = {
 		options: {
 			spawn: false
 		}<% }} %>
-	}<% if (features.indexOf('installDocs') != -1) { %>,
+	}<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 	docs: {
 		files: ['<%%= paths.src %>/templating/docs/**/{,*/}*.hbs'],
 		tasks: ['newer:assemble:docs']<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,

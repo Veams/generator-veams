@@ -12,7 +12,7 @@ module.exports = {
 		files: {
 			'<%%= paths.dev %>/css/universal.css': '<%%= paths.src %>/scss/universal.scss'
 		}
-	}<% if (features && features.length && features.indexOf('installDocs') != -1) { %>,
+	}<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 	docs: {
 		files: {
 			'<%%= paths.dev %>/css/docs.css': '<%%= paths.src %>/scss/docs.scss'

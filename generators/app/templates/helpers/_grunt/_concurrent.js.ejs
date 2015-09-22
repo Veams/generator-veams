@@ -1,22 +1,23 @@
 module.exports = {
-    syncing: {
-        tasks: [
-            'sync'
-        ],
-        options: {
-            logConcurrentOutput: true
-        }
-    },
-    build: {
-        tasks: [
-			'jshint',
-            'htmlhint'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-htmlmin') != -1) { %>,
-            'htmlmin'<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-jsdoc') != -1) { %>,
-            'jsdoc'<% }} %>
-        ],
-        options: {
-            logConcurrentOutput: true,
-            limit: 5
-        }
+	syncing: {
+		tasks: [
+			'sync'
+		],
+		options: {
+			logConcurrentOutput: true
+		}
+	},
+	hintAndDocs: {
+		tasks: [<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-htmlmin') != -1) { %>,
+			'htmlmin'<% if(testAndQALibs && testAndQALibs.length || docs && docs.length) {%>,<%}%><% }} %><% if(testAndQALibs && testAndQALibs.length) { %><% if(testAndQALibs.indexOf('hintingJS') !== -1) { %>
+			'jshint'<% if(testAndQALibs.indexOf('hintingHTML') !== -1) { %>,<% } %><% } %><% if(testAndQALibs.indexOf('hintingHTML') !== -1) { %>
+			'htmlhint'<% } %><% if(docs && docs.length) {%>,<%}%><% } %><% if (docs && docs.length) { if (docs.indexOf('jsdoc') != -1) { %>
+			'jsdoc'<% if (docs.indexOf('sassdoc') != -1) { %>,<% } %><% } %><% if (docs.indexOf('sassdoc') != -1) { %>
+			'sassdoc'<% } %><% } %>
+		],
+		options: {
+			logConcurrentOutput: true,
+			limit: 5
+		}
 	}
 };

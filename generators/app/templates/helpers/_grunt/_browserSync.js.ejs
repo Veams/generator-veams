@@ -1,10 +1,8 @@
 module.exports = {
 	bsFiles: {
 		src: [
-			'<%%= paths.dev %>/css/styles.css', <% if (features && features.length > 0 && features.indexOf('installDocs') != -1) { %>
+			'<%%= paths.dev %>/css/styles.css', <% if (docs && docs.length > 0 && docs.indexOf('htmldoc') != -1) { %>
 			'<%%= paths.dev %>/css/docs.css', <% } %>
-			'<%%= paths.dev %>/img/**/*.{jpg,png,gif}',
-			'<%%= paths.dev %>/media/**/*.{jpg,png,gif}',
 			'<%%= paths.dev %>/js/**/*.js',
 			'<%%= paths.dev %>/**/*.html'
 		]
