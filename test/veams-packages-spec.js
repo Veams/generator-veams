@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 
-describe('pg packages', function () {
+describe('veams extensions', function () {
 	var helperPath = "helpers/";
 	var srcPath = "resources/";
 
@@ -61,7 +61,7 @@ describe('pg packages', function () {
 		});
 
 		it('bower.json contains reference', function () {
-			assert.fileContent('bower.json', /veams-scss/);
+			assert.fileContent('bower.json', /veams-sass/);
 		});
 	});
 
@@ -84,8 +84,32 @@ describe('pg packages', function () {
 				.on('end', done);
 		});
 
-		it('bower.json contains reference', function () {
+		it('contains reference in bower.json', function () {
 			assert.fileContent('bower.json', /veams-js/);
+		});
+
+		it('adds references to package.json', function () {
+			assert.fileContent('package.json', /grunt-browserify/);
+			assert.fileContent('package.json', /grunt-contrib-handlebars/);
+		});
+
+		it('creates helper files', function () {
+			assert.file(helperPath + '_grunt/browserify.js');
+			assert.file(helperPath + "_grunt/handlebars.js");
+		});
+
+		it('adds task to Gruntfile.js file', function () {
+			assert.fileContent('Gruntfile.js', /'browserify\:dev'/);
+			assert.fileContent('Gruntfile.js', /'browserify\:vendor'/);
+			assert.fileContent('Gruntfile.js', /'browserify\:dist'/);
+			assert.fileContent('Gruntfile.js', /handlebars/);
+		});
+
+		it('adds app.js, main.js and config.js to js folder', function () {
+			assert.file([
+				srcPath + 'js/app.js',
+				srcPath + 'js/main.js'
+			]);
 		});
 	});
 
@@ -113,11 +137,10 @@ describe('pg packages', function () {
 		});
 	});
 
-	describe('when pg is not installed', function () {
+	describe('when veams is not installed', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"templateEngine": "assemble",
-			"veamsPackages": [
-			]
+			"veamsPackages": []
 		});
 
 		beforeEach(function (done) {
@@ -132,7 +155,7 @@ describe('pg packages', function () {
 		});
 
 		it('bower.json contains no references', function () {
-			assert.noFileContent('bower.json', /veams-components|veams-scss|veams-js/);
+			assert.noFileContent('bower.json', /veams-components|veams-sass|veams-js/);
 		});
 	});
 
