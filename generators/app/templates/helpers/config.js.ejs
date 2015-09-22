@@ -1,6 +1,9 @@
 /**
  * Configuration file
- */<% if (taskRunner.indexOf('gulp') != -1) {%>
+ */
+var helperPath = 'helpers';
+var srcPath = 'resources';
+<% if (taskRunner.indexOf('gulp') != -1) {%>
 var browserSync = require('browser-sync');
 var notify = require('gulp-notify');
 <% } %>
@@ -9,17 +12,17 @@ var config = module.exports;
 config.options = {<% if (taskRunner.indexOf('grunt') != -1) {%>
 	config: {
 		// in this directory you can find your grunt config tasks
-		src: "helpers/_grunt/*.js"
+		src: helperPath + '/_grunt/*.js'
 	},<% } %>
 	paths: {
 		// tasks folder with gulp tasks<% if (taskRunner.indexOf('gulp') != -1) {%>
-		tasks: 'helpers/_gulp',<% } %>
+		tasks: helperPath + '/_gulp',<% } %>
 		// helpers folder with tasks
-		helpers: 'helpers',
+		helpers: helperPath,
 		// resources folder with working files
-		src: 'resources',
+		src: srcPath,
 		// partials path for wrapWith hbs helper
-		partials: 'resources/templating/partials',
+		partials: srcPath + '/templating/partials',
 		// dev/working folder
 		dev: '_output'<% if (features.indexOf('createDevFolder') != -1) { %>,
 		// dist folder with minified and optimized files
