@@ -1,6 +1,6 @@
 /**
 * Represents a view.
-* @class <%= initName %>View
+* @class <%= initName %>
 *
 * @author
 */
@@ -14,7 +14,7 @@ define([,
 	function(App, Helpers<% if(tpl === true){ %>, Template<% } %>){
 		var $ = App.$;
 
-		var <%= initName %>View = App.ComponentView.extend({
+		var <%= initName %> = App.ComponentView.extend({
 			// The DOM element associated with this view
 			el: '.yourElement',
 			<% if(tpl){ %><% if(ext === 'html'){ %>
@@ -45,6 +45,6 @@ define([,
 			}
 		});
 		// Returns the view class
-		return <%= initName %>View;
+		return <%= initName %>;
 	}
 );

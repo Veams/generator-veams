@@ -1,6 +1,6 @@
 /**
  * Represents a view.
- * @class <%= initName %>View
+ * @class <%= initName %>
  *
  * Use the get keyword to make our methods serve as getters for a property.
  * This means they will be accessible as properties, but defined as methods,
@@ -18,7 +18,7 @@ let $ = App.$;<% if(tpl && ext === 'hbs'){ %>
 let Template = Tpl(Handlebars);<% } %>
 
 // Creates a new view class object
-class <%= initName %>View extends App.ComponentView {
+class <%= initName %> extends App.ComponentView {
 	// The DOM element associated with this view
 	get el() {
 		return '.yourElement';
@@ -73,4 +73,4 @@ class <%= initName %>View extends App.ComponentView {
 }
 
 // Returns the view class
-export default <%= initName %>View;
+export default <%= initName %>;

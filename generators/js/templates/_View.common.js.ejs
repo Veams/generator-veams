@@ -1,6 +1,6 @@
 /**
  * Represents a view.
- * @class <%= initName %>View
+ * @class <%= initName %>
  *
  * Use the get keyword to make our methods serve as getters for a property.
  * This means they will be accessible as properties, but defined as methods,
@@ -16,7 +16,7 @@ var Template = require('../../templates/templates')(Handlebars);<% } %>
 var $ = App.$;
 
 // Creates a new view class object
-var <%= initName %>View = App.ComponentView.extend({
+var <%= initName %> = App.ComponentView.extend({
 	// The DOM element associated with this view
 	el: '.yourElement',
 	<% if(tpl){ %> <% if(ext === 'html'){ %>
@@ -48,4 +48,4 @@ var <%= initName %>View = App.ComponentView.extend({
 });
 
 // Returns the view class
-module.exports = <%= initName %>View;
+module.exports = <%= initName %>;
