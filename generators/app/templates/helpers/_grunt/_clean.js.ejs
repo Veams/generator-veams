@@ -1,13 +1,10 @@
-module.exports = {
+module.exports = {<% if(features && features.length && features.indexOf('createDevFolder') != -1) { %>
 	dist: [
-		'<%%= paths.dist %>/**'
-	],
-	dev: [<% if(templateEngine.indexOf('assemble') != -1){ %>
-		'<%%= paths.dev %>/**/*.{html,xml,txt}',<% } %><% if (features && features.length) { if (features.indexOf('installDocs') != -1) { %>
-		'<%%= paths.dev %>/styleguide/**/*',<% }} %>
-		'<%%= paths.dev %>/css/**/*',
-		'<%%= paths.dev %>/js/**/*',
-		'<%%= paths.dev %>/img/**/*'] <% if(gruntModules && gruntModules.length){ %><% if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) { if(name == 'grunt-grunticon') { %>,
+		'<%%= paths.dist %>/**/*'
+	],<% } %>
+	dev: [
+		'<%%= paths.dev %>/**/*'
+	] <% if(gruntModules && gruntModules.length){ %><% if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) { if(name == 'grunt-grunticon') { %>,
 	grunticon: [
 		'<%%= paths.src %>/scss/icons/*.{html,js,txt}'
 	]<% } %><%}); %><%} %><%} %>
