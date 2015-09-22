@@ -1,4 +1,4 @@
-<p align="center"><img src="http://veams.org/img/svg/icons/veams-js.svg"></p>
+<p align="center"><img src="http://veams.org/img/svg/icons/veams-generator.svg"></p>
 
 <p align="center">
 	<strong>One of the most flexible and efficient <a href="http://yeoman.io">Yeoman</a> generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.</strong>
