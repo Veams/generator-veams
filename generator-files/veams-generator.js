@@ -36,20 +36,28 @@ exports.questions = function () {
 
 exports.setup = function () {
 	this.veamsPackages = this.config.get('veamsPackages') || [];
+};
 
+exports.overwriteSetup = function () {
 	if (this.veamsPackages.indexOf(veamsJSId) !== -1) {
 		var gruntModules = this.config.get('gruntModules');
 
 		gruntModules.push('grunt-contrib-handlebars');
 		gruntModules.push('grunt-browserify');
+		gruntModules.push('grunt-contrib-uglify');
 
 		this.config.set('gruntModules', gruntModules);
 	}
 };
 
 exports.scaffold = function () {
-	// Add PG methodology
-	if (!this.veamsPackages && !this.veamsPackages.length) return;
+	if (!this.veamsPackages && !this.veamsPackages.length) {
+		delete this.bowerFile['dependencies']['veams-components'];
+		delete this.bowerFile['dependencies']['veams-js'];
+		delete this.bowerFile['dependencies']['veams-sass'];
+
+		return;
+	}
 
 	if (this.veamsPackages.indexOf(veamsMethId) != -1) {
 
@@ -78,5 +86,7 @@ exports.scaffold = function () {
 		this.mkdir('resources/scss/components');
 		this.mkdir('resources/scss/layouts');
 	}
-	if (this.veamsPackages.indexOf(veamsComponentsId) == -1) delete this.bowerFile['dependencies']['veams-components'];
+	if (this.veamsPackages.indexOf(veamsComponentsId) === -1) delete this.bowerFile['dependencies']['veams-components'];
+	if (this.veamsPackages.indexOf(veamsJSId) === -1) delete this.bowerFile['dependencies']['veams-js'];
+	if (this.veamsPackages.indexOf(veamsSCSSId) === -1) delete this.bowerFile['dependencies']['veams-sass'];
 };

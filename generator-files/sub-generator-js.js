@@ -85,6 +85,7 @@ exports.scaffold = function () {
 		this.template('_Template.html',
 			this.srcPath + '/' +
 			this.path + '/' +
+			'templates/' +
 			this.initName + '.' + this.ext);
 	}
 };

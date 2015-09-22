@@ -222,6 +222,10 @@ module.exports = yeoman.generators.Base.extend({
 			featuresGenerator.setup.call(this);
 		},
 
+		overwriteSetup: function () {
+			veamsGenerator.overwriteSetup.call(this);
+		},
+
 		defaults: function () {
 			// Standard files
 			this.copy('gitignore', '.gitignore');

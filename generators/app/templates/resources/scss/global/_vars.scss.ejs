@@ -8,16 +8,16 @@ $grid-columns: 12;
 $max-width: 1138px;
 
 // Define your breakpoints for Bourbon Neat
-$tablet-l: new-breakpoint(max-width 1024px 12);
-$tablet-p: new-breakpoint(max-width 768px 8);
-$mobile-l: new-breakpoint(max-width 640px 8);
-$mobile-p: new-breakpoint(max-width 480px 4);
+$bp-tablet-l: new-breakpoint(max-width 1024px 12);
+$bp-tablet-p: new-breakpoint(max-width 768px 8);
+$bp-mobile-l: new-breakpoint(max-width 640px 8);
+$bp-mobile-p: new-breakpoint(max-width 480px 4);
 <% } else { %>
 // Demo vars, when you use bourbon neat just delete them and comment out the two lines above
-$tablet-l: 1024px;
-$tablet-p: 768px;
-$mobile-l: 640px;
-$mobile-p: 480px;
+$bp-tablet-l: 1024px;
+$bp-tablet-p: 768px;
+$bp-mobile-l: 640px;
+$bp-mobile-p: 480px;
 <% } %>
 <% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
 $use-min-width: false; // This variable will be used veams-scss
@@ -35,7 +35,7 @@ FOUNDATION SETTINGS
 BOOTSTRAP SETTINGS
 =================================================== */
 // The settings can be found here:
-// ../../bower-components/foundation/scss/foundation/_settings.scss
+// ../../bower-components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
 // Just copy and paste the things you need
 
 <% } %>
