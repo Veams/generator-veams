@@ -33,7 +33,6 @@ exports.questions = function (obj) {
 				{name: 'grunt-grunticon'},
 				{name: 'grunt-image-size-export'},
 				{name: 'grunt-modernizr'},
-				{name: 'grunt-packager'},
 				{name: 'grunt-phantomas'},
 				{name: 'grunt-photobox'},
 				{name: 'grunt-postcss-separator'},
@@ -242,14 +241,6 @@ exports.scaffold = function (obj) {
 
 		if (object.installDeps) {
 			this.npmInstall(['grunt-modernizr'], {'saveDev': true});
-		}
-	}
-	if (this.gruntModules.indexOf('grunt-packager') != -1) {
-		this.copy(this.generatorSrcPath + '/js/project.jspackcfg', this.srcPath + '/js/project.jspackcfg');
-		this.copy(this.generatorGruntPath + 'packager.js', this.gruntPath + 'packager.js');
-
-		if (object.installDeps) {
-			this.npmInstall(['grunt-packager'], {'saveDev': true});
 		}
 	}
 	if (this.gruntModules.indexOf('grunt-phantomas') != -1) {

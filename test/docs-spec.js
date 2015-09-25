@@ -90,6 +90,34 @@ describe('Documenation', function () {
 			helpers.assertFile(helperPath + "_grunt/concurrent.js", /\'sassdoc\'/);
 		});
 	});
+	describe('When HTML Documenation will be installed and task runner is Grunt', function () {
+		var answers = require('../test_helpers/prompt-answer-factory')({
+			"taskRunner": "grunt",
+			"templateEngine": "assemble",
+			"docs": [
+				"htmldoc"
+			]
+		});
+
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../generators/app'))
+				.inDir(path.join(__dirname, 'tmp'))
+				.withOptions({
+					'skip-install': true,
+					'skip-welcome-message': true
+				})
+				.withPrompts(answers)
+				.on('end', done);
+		});
+
+		it('creates all doc files', function () {
+			var expected = [
+				helperPath + "_grunt/assemble.js",
+				srcPath + "scss/docs.scss"
+			];
+			assert.file(expected);
+		});
+	});
 
 	describe('When JavaScript Documenation will be installed and task runner is Gulp', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({

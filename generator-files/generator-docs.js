@@ -41,7 +41,7 @@ exports.scaffold = function () {
 			this.srcPath + 'scss/docs'
 		);
 		this.copy(
-			this.generatorSrcPath + 'resources/scss/docs.scss',
+			this.generatorSrcPath + 'scss/docs.scss',
 			this.srcPath + 'scss/docs.scss'
 		);
 		if (this.templateEngine !== '') {
