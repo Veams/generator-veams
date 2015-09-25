@@ -73,7 +73,7 @@ module.exports = yeoman.generators.Base.extend({
 			//save config to .yo-rc.json
 			if (this.defaultInstall === 'stdInstall') {
 				this.log(
-					('\n') + chalk.bgCyan('Standard installation routine selected.') + ('\n')
+					('\n') + chalk.bgCyan('Minimal installation routine selected.') + ('\n')
 				);
 				this.projectName = this.config.get('projectName');
 				this.authorName = this.config.get('projectAuthor');
