@@ -1,3 +1,12 @@
+### v6.1.4
+- fixed minor issues in documentation scaffold process
+- deleted grunt-packager
+- added container build in travis.yml
+
+### v6.1.2
+- deleted README.md instructions 
+- better veams-js installation with `overwriteSetup` method 
+
 ### v6.0.0
 
 **General**
