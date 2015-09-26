@@ -41,6 +41,6 @@ describe('grunt-contrib-jshint', function () {
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'check-js\'/);
+		helpers.assertFile("Gruntfile.js", /hintAndDocs/);
 	});
 });

@@ -33,6 +33,35 @@ describe('task runner is Grunt', function () {
 	it('creates Gruntfile.js', function () {
 		assert.file('Gruntfile.js');
 	});
+
+	it('creates default files', function () {
+		var expected = [
+			// add files you expect to exist here.
+			helperPath + '_grunt/clean.js',
+			helperPath + '_grunt/concurrent.js',
+			helperPath + '_grunt/connect.js',
+			helperPath + '_grunt/cssmin.js',
+			helperPath + '_grunt/sync.js',
+			helperPath + '_grunt/watch.js'
+		];
+		assert.files(expected);
+	});
+
+	it('adds standard tasks to watch.js file', function () {
+		assert.fileContent(helperPath + '_grunt/watch.js', /livereload/);
+		assert.fileContent(helperPath + '_grunt/watch.js', /ajax/);
+		assert.fileContent(helperPath + '_grunt/watch.js', /assets/);
+		assert.fileContent(helperPath + '_grunt/watch.js', /js/);
+		assert.fileContent(helperPath + '_grunt/watch.js', /\'sync\:js\'/);
+		assert.fileContent(helperPath + '_grunt/watch.js', /scss/);
+	});
+
+	it('adds standard tasks to sync.js file', function () {
+		assert.fileContent(helperPath + '_grunt/sync.js', /assets/);
+		assert.fileContent(helperPath + '_grunt/sync.js', /ajax/);
+		assert.fileContent(helperPath + '_grunt/sync.js', /js/);
+	});
+
 });
 
 describe('task runner is Gulp', function () {

@@ -45,4 +45,8 @@ describe('grunt-contrib-requirejs', function () {
 			srcPath + 'js/main.js'
 		]);
 	});
+
+	it('adds task to watch file', function () {
+		assert.fileContent(helperPath + "_grunt/watch.js", /requirejs\:dev/);
+	});
 });

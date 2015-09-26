@@ -95,8 +95,6 @@ module.exports = yeoman.generators.Base.extend({
 				this.testAndQALibs = this.config.get('testAndQALibs');
 				this.veamsPackages = this.config.get('veamsPackages');
 				this.docs = this.config.get('docs');
-				this.proxyHost = this.config.get('proxyHost');
-				this.proxyPort = this.config.get('proxyPort');
 
 				//save config to .yo-rc.json
 				this.config.set(answers);
@@ -136,8 +134,6 @@ module.exports = yeoman.generators.Base.extend({
 			this.testAndQA = answers.testAndQA;
 			this.testAndQALibs = answers.testAndQALibs;
 			this.veamsPackages = answers.veamsPackages;
-			this.proxyHost = this.config.get('proxyHost');
-			this.proxyPort = this.config.get('proxyPort');
 
 			//save config to .yo-rc.json
 			this.config.set(answers);

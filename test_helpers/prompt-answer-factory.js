@@ -18,9 +18,6 @@ module.exports = function promptAnswerFactory(customAnswers) {
 		],
 		"jsLibs": [],
 		"cssLibs": [],
-		"installProxy": false,
-		"proxyHost": "0.0.0.0",
-		"proxyPort": 80,
 		"author": {
 			"name": "",
 			"login": "",
