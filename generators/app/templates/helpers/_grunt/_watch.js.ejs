@@ -9,21 +9,7 @@ module.exports = {
 			'<%%= paths.dev %>/js/{,*/}*.js',
 			'<%%= paths.dev %>/img/**/*.{jpg,png}'
 		]
-	},<% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
-	js: {
-		files: [
-			'<%%= paths.src %>/js/**/*.js',
-			'<%%= paths.src %>/js/**/*.html'
-		],
-		tasks: 'js',
-		options: {
-			spawn: false
-		}
-	},<% } else if(gruntModules.indexOf('grunt-browserify') == -1 || veamsPackages.indexOf('veamsJS') == -1) { %>
-	js: {
-		files: '<%%= paths.src %>/js/**/*.js',
-		tasks: 'sync:js'
-	},<% } %>
+	},
 	ajax: {
 		files: '<%%= paths.src %>/ajax/**/*.{json,html}',
 		tasks: 'sync:ajax'
@@ -35,7 +21,20 @@ module.exports = {
 			'!<%%= paths.src %>/assets/img/svgmin/**/*'<% }} %><% }} %>
 			],
 		tasks: 'sync:assets'
-	},
+	},<% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1 || gruntModules.indexOf('grunt-includes') == -1) { %>
+	js: {
+		files: [
+			'<%%= paths.src %>/js/**/*.js'
+		],
+		tasks: 'jsDev',
+		options: {
+			spawn: false
+		}
+	},<% } else if(gruntModules.indexOf('grunt-browserify') == -1) { %>
+	js: {
+		files: '<%%= paths.src %>/js/**/*.js',
+		tasks: 'sync:js'
+	},<% } %>
 	scss: {
 		files: '<%%= paths.src %>/scss/**/*',
 		tasks: 'sass:dev'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
@@ -71,8 +70,5 @@ module.exports = {
 		options: {
 			spawn: false
 		}<% }} %>
-	}<% } %><% } %><% if(gruntModules && gruntModules.length && gruntModules.indexOf('grunt-connect-proxy') !== -1 && proxyHost && proxyPort) { %>,
-	proxies: {
-		files: ['Gruntfile.js']
-	}<% } %>
+	}<% } %><% } %>
 };
