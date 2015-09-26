@@ -8,7 +8,7 @@ module.exports = {
 				dest: '<%%= paths.dev %>/ajax'
 			}
 		]
-    },
+	},
 	assets: {
 		files: [
 			// includes files within path and its sub-directories
@@ -22,7 +22,7 @@ module.exports = {
 				dest: '<%%= paths.dev %>'
 			}
 		]
-    }<% if (docs && docs.length > 0 && docs.indexOf('htmldoc') != -1) { %>,
+	}<% if (docs && docs.length > 0 && docs.indexOf('htmldoc') != -1) { %>,
 	highlightjs: {
 		files: [
 			// includes files within path and its sub-directories
@@ -32,15 +32,15 @@ module.exports = {
 			dest: '<%%= paths.dev %>/bower-components'
 			}
 		]
-	}<% } %><% if(gruntModules.indexOf('grunt-packager') != -1){ %>,
-		js: {
-			files: [
-				// includes files within path and its sub-directories
-				{
-					cwd: '<%%= paths.src %>/js',
-					src: '**/*',
-					dest: '<%%= paths.dev %>/js'
-				}
-			]
-		}<% } %>
+	}<% } %><% if(gruntModules.indexOf('grunt-browserify') == -1 || gruntModules.indexOf('grunt-includes') == -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1){ %>,
+	js: {
+		files: [
+			// includes files within path and its sub-directories
+			{
+				cwd: '<%%= paths.src %>/js',
+				src: '**/*',
+				dest: '<%%= paths.dev %>/js'
+			}
+		]
+	}<% } %>
 };
