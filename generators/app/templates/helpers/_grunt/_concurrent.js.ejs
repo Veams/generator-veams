@@ -8,7 +8,7 @@ module.exports = {
 		}
 	},
 	hintAndDocs: {
-		tasks: [<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-htmlmin') != -1) { %>,
+		tasks: [<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-htmlmin') != -1) { %>
 			'htmlmin'<% if(testAndQALibs && testAndQALibs.length || docs && docs.length) {%>,<%}%><% }} %><% if(testAndQALibs && testAndQALibs.length) { %><% if(testAndQALibs.indexOf('hintingJS') !== -1) { %>
 			'jshint'<% if(testAndQALibs.indexOf('hintingHTML') !== -1) { %>,<% } %><% } %><% if(testAndQALibs.indexOf('hintingHTML') !== -1) { %>
 			'htmlhint'<% } %><% if(docs && docs.length) {%>,<%}%><% } %><% if (docs && docs.length) { if (docs.indexOf('jsdoc') != -1) { %>
