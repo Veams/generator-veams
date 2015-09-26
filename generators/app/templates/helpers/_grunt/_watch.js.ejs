@@ -28,12 +28,9 @@ module.exports = {
 		],
 		tasks: [<% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
 			'requirejs:dev'<% if(gruntModules.indexOf('grunt-includes') != -1) { %>,<% } %><% } %><% if(gruntModules.indexOf('grunt-includes') != -1) { %>
-			'includes:js'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') == -1 || gruntModules.indexOf('grunt-includes') == -1) { %>
+			'includes:js'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') == -1 && gruntModules.indexOf('grunt-includes') == -1) { %>
 			'sync:js'<% } %>
 		]
-		options: {
-			spawn: false
-		}
 	},<% } %>
 	scss: {
 		files: '<%%= paths.src %>/scss/**/*',
