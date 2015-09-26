@@ -1,7 +1,8 @@
-## README: <%= _.slugify(projectName) %> | version="0.1.0"
+# <%= _.slugify(projectName) %>
 
----------------------------------------------------
-## Requirements for FE
+Current version="0.1.0"
+
+## Requirements For Frontend Development
 
 * NodeJS (>= 0.12.0)
 * Grunt
@@ -9,28 +10,21 @@
 ### Libsass
 We use Libsass as standard SCSS compiler.
 
-<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-responsive-images') != -1) { %>
-### Responsive Images
-If you want to use an automated task to create responsive images you need to make sure that you have installed GraphicsMagick.
-
-To build responsive images just start the task `pictures`.
-<% } %>
----------------------------------------------------
 ## Frontend Methodology
 <% if(veamsPackages.indexOf('veamsMethodology') != -1) { %>
 We build <%= _.slugify(projectName) %> with the PG Frontend Methodology: 
 * http://veams.org/methodology/
 <% } %>
----------------------------------------------------
+
 ## Setup
 
 This project builds on following setup (please read requirements and getting started):
 
-* Veams Website: http://veams.org/
-* Veams-Generator Website: http://veams.org/generator/
-* Veams-Generator Github: https://github.com/Sebastian-Fitzner/generator-veams
+- Veams Website: http://veams.org/
+- Veams-Generator Website: http://veams.org/generator/
+- Veams-Generator Github: https://github.com/Sebastian-Fitzner/generator-veams
 
-- We use <% if(taskRunner.indexOf('grunt') != -1) { %>[Grunt](http://gruntjs.com/)<% } %><% if(taskRunner.indexOf('grunt') != -1 && taskRunner.indexOf('gulp') != -1) { %> and <% } %><% if(taskRunner.indexOf('gulp') != -1) { %>[Gulp](http://gulpjs.com/)<% } %>as our task runner<% if(templateEngine && templateEngine.indexOf('assemble') != -1) { %>
+- We use <% if(taskRunner.indexOf('grunt') != -1) { %>[Grunt](http://gruntjs.com/)<% } %><% if(taskRunner.indexOf('grunt') != -1 && taskRunner.indexOf('gulp') != -1) { %> and <% } %><% if(taskRunner.indexOf('gulp') != -1) { %>[Gulp](http://gulpjs.com/)<% } %> as our task runner<% if(templateEngine && templateEngine.indexOf('assemble') != -1) { %>
 - We use [Assemble](http://assemble.io/) as our static site generator.<% } %>
 - We use [Git](#).
 - The folder __node_modules__ won't be comitted into GIT. Use ```.gitignore``` to ignore folders or files.
@@ -38,14 +32,12 @@ This project builds on following setup (please read requirements and getting sta
 - All issues are recorded in [Jira](#).
 - Jira-Issues are commented in german/english.
 
----------------------------------------------------
 ## Browser-Support
 
 - all modern desktop browsers: Firefox, Chrome, IE and Safari/Mac latest version
 - also: IE 10
 - all modern mobile browsers: iOS and Android latest two versions
 
----------------------------------------------------
 ## Responsive-Webdesign-Support
 
 - Desktop
@@ -54,8 +46,11 @@ This project builds on following setup (please read requirements and getting sta
 <% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-responsive-images') != -1) { %>
 ### Responsive Images
 
-You can use `grunt-responsive-images` to build all pictures with predefined presets.
-To export this data you can use `grunt-image-size-export`.
+If you want to use an automated task to create responsive images you need to make sure that you have installed GraphicsMagick.
+
+You can use `grunt-responsive-images` to build all pictures with predefined presets. To build responsive images just start the task `pictures`.
+
+To export image data you can use `grunt-image-size-export`.
 <% } %>
 ### Breakpoints
 - $bp-mobile-s: (max 320px);
@@ -65,7 +60,6 @@ To export this data you can use `grunt-image-size-export`.
 - $bp-tablet-l: (max 1024px);
 - $bp-desktop: (min 1025px);
 
----------------------------------------------------
 ## Team
 
 - TPM/PM:
