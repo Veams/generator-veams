@@ -32,7 +32,7 @@ module.exports = {
 			dest: '<%%= paths.dev %>/bower-components'
 			}
 		]
-	}<% } %><% if(gruntModules.indexOf('grunt-browserify') == -1 || gruntModules.indexOf('grunt-includes') == -1 || gruntModules.indexOf('grunt-contrib-requirejs') != -1){ %>,
+	}<% } %><% if(gruntModules.indexOf('grunt-browserify') == -1 || gruntModules.indexOf('grunt-includes') == -1 || gruntModules.indexOf('grunt-contrib-requirejs') == -1){ %>,
 	js: {
 		files: [
 			// includes files within path and its sub-directories

@@ -70,7 +70,7 @@
 		"grunt": "~0.4.5",
 		"grunt-sass": "~1.0.0",
 		"grunt-sass-globber": "^2.0.0",<% if ((jsLibs && jsLibs.length && jsLibs.indexOf('requirejs') != -1) || (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1)) { %>
-		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features.indexOf('createDevFolder') != -1)) { %>
+		"grunt-contrib-requirejs": "~0.4.4",<% } %><% if (features.indexOf('createDevFolder') != -1) { %>
 		"grunt-contrib-copy": "~0.7.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
 		"grunt-jscs": "^1.8.0",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('webdriver') != -1){ %>
 		"grunt-webdriver": "^0.5.2",<% } %><% if(testAndQALibs && testAndQALibs.indexOf('hintingHTML') != -1){ %>

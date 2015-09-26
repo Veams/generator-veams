@@ -21,19 +21,19 @@ module.exports = {
 			'!<%%= paths.src %>/assets/img/svgmin/**/*'<% }} %><% }} %>
 			],
 		tasks: 'sync:assets'
-	},<% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1 || gruntModules.indexOf('grunt-includes') == -1) { %>
+	},<% if(gruntModules.indexOf('grunt-browserify') == -1) { %>
 	js: {
 		files: [
 			'<%%= paths.src %>/js/**/*.js'
 		],
-		tasks: 'jsDev',
+		tasks: [<% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
+			'requirejs:dev'<% if(gruntModules.indexOf('grunt-includes') != -1) { %>,<% } %><% } %><% if(gruntModules.indexOf('grunt-includes') != -1) { %>
+			'includes:js'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') == -1 || gruntModules.indexOf('grunt-includes') == -1) { %>
+			'sync:js'<% } %>
+		]
 		options: {
 			spawn: false
 		}
-	},<% } else if(gruntModules.indexOf('grunt-browserify') == -1) { %>
-	js: {
-		files: '<%%= paths.src %>/js/**/*.js',
-		tasks: 'sync:js'
 	},<% } %>
 	scss: {
 		files: '<%%= paths.src %>/scss/**/*',

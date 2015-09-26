@@ -32,6 +32,7 @@ exports.questions = function (obj) {
 				{name: 'grunt-dr-svg-sprites', checked: object.defaults},
 				{name: 'grunt-grunticon'},
 				{name: 'grunt-image-size-export'},
+				{name: 'grunt-includes'},
 				{name: 'grunt-modernizr'},
 				{name: 'grunt-phantomas'},
 				{name: 'grunt-photobox'},
@@ -41,41 +42,6 @@ exports.questions = function (obj) {
 				{name: 'grunt-version', checked: object.defaults}
 			],
 			default: this.config.get('gruntModules')
-		}, {
-			when: function (answers) {
-				return answers.gruntModules
-					&& answers.gruntModules.length > 0
-					&& answers.gruntModules.indexOf('grunt-connect-proxy') !== -1;
-			},
-			type: 'input',
-			name: 'proxyHost',
-			validate: function (answer) {
-				if (typeof answer !== 'string' || answer.length < 5 || answer.indexOf('.') === -1) {
-					return false;
-				} else {
-					return true;
-				}
-			},
-			message: 'Which host do you want me to proxy (e.g. domain.com)?',
-			default: this.config.get('proxyHost')
-		}, {
-			when: function (answers) {
-				return answers.gruntModules
-					&& answers.gruntModules.length > 0
-					&& answers.gruntModules.indexOf('grunt-connect-proxy') !== -1
-					&& answers.proxyHost;
-			},
-			type: 'input',
-			name: 'proxyPort',
-			validate: function (answer) {
-				if (isNaN(Number(answer))) {
-					return false;
-				} else {
-					return true;
-				}
-			},
-			message: 'Which port should be used for the proxy?',
-			default: this.config.get('proxyPort')
 		}
 	];
 };
@@ -234,6 +200,13 @@ exports.scaffold = function (obj) {
 
 		if (object.installDeps) {
 			this.npmInstall(['grunt-image-size-export'], {'saveDev': true});
+		}
+	}
+	if (this.gruntModules.indexOf('grunt-includes') != -1) {
+		this.copy(this.generatorGruntPath + 'includes.js', this.gruntPath + 'includes.js');
+
+		if (object.installDeps) {
+			this.npmInstall(['grunt-includes'], {'saveDev': true});
 		}
 	}
 	if (this.gruntModules.indexOf('grunt-modernizr') != -1) {
