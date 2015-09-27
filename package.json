@@ -1,11 +1,17 @@
 {
 	"name": "generator-veams",
-	"version": "6.2.0",
-	"homepage": "http://prototype-generator.com/",
-	"description": "Scaffold modern frontend web apps or web pages with Assemble, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with Backbone and RequireJS or Browserify.",
+	"version": "6.2.1",
+	"homepage": "http://veams.org/",
+	"description": "Scaffold modern frontend web apps or web pages with Assemble, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript (ES Harmony Support) with Backbone and Browserify or RequireJS.",
 	"keywords": [
 		"yeoman-generator",
+		"app",
 		"assemble",
+		"veams",
+		"veams-js",
+		"veams-sass",
+		"veams-components",
+		"veams-generator",
 		"websites",
 		"homepage",
 		"gulp",
@@ -19,6 +25,8 @@
 		"templating",
 		"backbone",
 		"browserify",
+		"es harmony",
+		"javascript",
 		"grunt"
 	],
 	"author": {
