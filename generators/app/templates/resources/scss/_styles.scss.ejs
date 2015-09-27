@@ -1,7 +1,11 @@
+/* ===================================================
+Main File For Imports
+=================================================== */
 <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('neat') != -1) { %>
+// Helpers
 @import "../bower-components/bourbon/app/assets/stylesheets/bourbon";<% }} %>
 <% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
-// Reset your styles via reset or normalize
+// Reset (veams-reset or veams-normalize)
 @import "../bower-components/veams-sass/resources/scss/veams-reset";<% } %>
 
 // Global Variables and Settings
@@ -9,9 +13,9 @@
 @import "../bower-components/veams-sass/resources/scss/veams";<% } %>
 <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('foundation') != -1) { %>
 // Frameworks
-@import "../bower-components/foundation/scss/foundation"; // You can choose your specific components<% }} %> <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('neat') != -1) { %>
-@import "../bower-components/neat/app/assets/stylesheets/neat";<% }} %> <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('sass-bootstrap') != -1) { %>
-@import "../bower-components/sass-bootstrap/lib/bootstrap"; // You can choose your specific components<% }} %>
+@import "../bower-components/foundation/scss/foundation"; // You can choose your specific components<% } %> <% if (cssLibs.indexOf('neat') != -1) { %>
+@import "../bower-components/neat/app/assets/stylesheets/neat";<% } %> <% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
+@import "../bower-components/bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components<% }} %>
 
 // Icons
 @import "icons/**/*";
@@ -25,7 +29,7 @@
 // Globals
 @import "global/_base";<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsMethodology') != -1) { %>
 
-// Regions
+// Regions in Layouts
 @import "layouts/**/*";
 
 // Components

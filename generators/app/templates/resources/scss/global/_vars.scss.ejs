@@ -7,20 +7,21 @@ $gutter: 22px;
 $grid-columns: 12;
 $max-width: 1138px;
 
-// Define your breakpoints for Bourbon Neat
+// Define Your Breakpoints For Bourbon Neat
 $bp-tablet-l: new-breakpoint(max-width 1024px 12);
-$bp-tablet-p: new-breakpoint(max-width 768px 8);
-$bp-mobile-l: new-breakpoint(max-width 640px 8);
-$bp-mobile-p: new-breakpoint(max-width 480px 4);
+$bp-tablet-p: new-breakpoint(max-width 768px 12);
+$bp-mobile-l: new-breakpoint(max-width 640px 12);
+$bp-mobile-p: new-breakpoint(max-width 480px 8);
+$bp-mobile-s: new-breakpoint(max-width 320px 8);
 <% } else { %>
-// Demo vars, when you use bourbon neat just delete them and comment out the two lines above
+// Demo Variables
 $bp-tablet-l: 1024px;
 $bp-tablet-p: 768px;
 $bp-mobile-l: 640px;
 $bp-mobile-p: 480px;
 <% } %>
 <% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
-$use-min-width: false; // This variable will be used veams-scss
+$use-min-width: false; // This variable will be used in veams-sass
 <% } %>
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('foundation') != -1) { %>
 /* ===================================================
