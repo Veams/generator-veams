@@ -6,13 +6,14 @@ var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
-	"gruntModules":[
+	"gruntModules": [
 		"grunt-includes"
 	]
 });
 
 describe('grunt-includes', function () {
-	var helperPath = "helpers/";
+	var helperPath = 'helpers/';
+	var srcPath = 'resources/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -41,4 +42,10 @@ describe('grunt-includes', function () {
 		assert.fileContent('Gruntfile.js', /includes\:js/);
 	});
 
+	it('adds app.js, main.js to js folder', function () {
+		assert.file([
+			srcPath + 'js/app.js',
+			srcPath + 'js/main.js'
+		]);
+	});
 });

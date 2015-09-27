@@ -1,0 +1,7 @@
+<% if(jsLibs && jsLibs.length){ %><% if(jsLibs.indexOf('jquery') != -1) { %>
+// import '../bower-components/jquery/dist/jquery.js'<% if(jsLibs.indexOf('backbone') != -1 || jsLibs.indexOf('exoskeleton') != -1) { %>,<% } %><% } %><% if(jsLibs.indexOf('backbone') != -1) { %>
+// import '../bower-components/backbone/backbone.js'<% } %><% if(jsLibs.indexOf('exoskeleton') != -1) { %>
+// import '../bower-components/exoskeleton/exoskeleton.js'<% } %><% } %>
+// import './app.js'
+
+console.log('JS initialized in version:', App.version);

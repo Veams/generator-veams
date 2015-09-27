@@ -41,7 +41,7 @@ describe('grunt-browserify', function () {
 		assert.fileContent('Gruntfile.js', /'browserify\:dist'/);
 	});
 
-	it('adds app.js, main.js and config.js to js folder', function () {
+	it('adds app.js, main.js to js folder', function () {
 		assert.file([
 			srcPath + 'js/app.js',
 			srcPath + 'js/main.js'

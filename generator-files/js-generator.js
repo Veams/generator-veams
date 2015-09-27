@@ -103,5 +103,8 @@ exports.scaffold = function () {
 	} else if (this.gruntModules.indexOf('grunt-browserify') !== -1 || this.gulpModules.indexOf('browserify') !== -1) {
 		this.template('resources/js/_main.browserify.js.ejs', 'resources/js/main.js');
 		this.template('resources/js/_app.browserify.js.ejs', 'resources/js/app.js');
+	} else if (this.gruntModules.indexOf('grunt-includes') !== -1) {
+		this.template('resources/js/_main.includes.js.ejs', 'resources/js/main.js');
+		this.template('resources/js/_app.includes.js.ejs', 'resources/js/app.js');
 	}
 };
