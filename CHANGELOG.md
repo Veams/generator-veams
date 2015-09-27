@@ -1,3 +1,10 @@
+### v6.2.0
+- added grunt-includes as simple js packager alternative
+- added further specs for sass frameworks, grunt-includes
+- cleaned up Gruntfile.js
+- cleaned up watch.js
+- added bootstrap-sass to styles.scss
+
 ### v6.1.4
 - fixed minor issues in documentation scaffold process
 - deleted grunt-packager

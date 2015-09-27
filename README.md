@@ -12,11 +12,28 @@
 
 ## Documentation
 
-<p align="center">Head to the <a href="http://veams.org/generator/">site</a> for more details.</p>
+<p align="center">Head to the <a href="http://veams.org/generator/">site</a> for a detailed overview and further instructions.</p>
+
+## Installation
+
+Install `Veams` via: `npm install -g generator-veams`.
+
+For more details [go to the website](http://veams.org/generator/installation.html). 
+
+## Usage 
+
+Scaffold your new web app project.
+
+```bash
+yo veams
+```
+
+For more details [go to the website](http://veams.org/generator/using-veams.html). 
 
 ## Release History
 see: [Changelog.md](CHANGELOG.md)
 
-## TODO: 
+## TODO
 - Own template wrapper for handlebars
 - Update code base to match new yeoman-generator terms
+- Automated styleguide generation
