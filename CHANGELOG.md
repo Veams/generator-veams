@@ -1,3 +1,23 @@
+### v6.2.1
+- fixed minor issue with sync task
+- updated grunt plugins versions for: 
+	- grunt-accessibility
+	- grunt-autoprefixer
+	- grunt-bless
+	- grunt-browser-sync
+	- grunt-contrib-copy
+	- grunt-contrib-jshint
+	- grunt-contrib-jsdoc
+	- grunt-contrib-uglify
+	- grunt-dr-svg-sprites
+	- grunt-text-replace
+	- grunt-svgmin
+	- grunt-phantomas
+	- grunt-sync
+	- grunt-connect
+	- grunt-concurrent
+	- grunt-contrib-cssmin
+
 ### v6.2.0
 - added grunt-includes as simple js packager alternative
 - added further specs for sass frameworks, grunt-includes
