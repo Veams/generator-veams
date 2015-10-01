@@ -45,15 +45,15 @@
 {{/if}}
 {{#items}}
 @mixin {{{selector}}}() {
-	@extend %sprites-bg-size;
-	@extend %sprites-bg-svg;
+	@include sprites-bg-size;
+	@include sprites-bg-svg;
 {{#if ../../config/cssIncludeElementSizes}}
 	width: {{unit width ../../../config/cssUnit ../../../config/cssBaseFontSize}};
 	height: {{unit height ../../../config/cssUnit ../../../config/cssBaseFontSize}};
 {{/if}}
 	background-position: {{unit x ../../config/cssUnit ../../config/cssBaseFontSize -1}} {{unit y ../../config/cssUnit ../../config/cssBaseFontSize -1}};
 	@at-root .no-svg & {
-		@extend %sprites-bg-png;
+		@include sprites-bg-png;
 	}
 }
 
@@ -67,8 +67,8 @@
 {{query}} {
 	{{#items}}
 @mixin {{{selector}}}() {
-	@extend %sprites-bg-size;
-	@extend %sprites-bg-svg;
+	@include sprites-bg-size;
+	@include sprites-bg-svg;
 	{{#if ../../../config/cssIncludeElementSizes}}
 		width: {{unit width ../../../../config/cssUnit ../../../../config/cssBaseFontSize}};
 		height: {{unit height ../../../../config/cssUnit ../../../../config/cssBaseFontSize}};

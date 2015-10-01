@@ -1,3 +1,7 @@
+### v6.2.3
+- updated grunt-bless task to use `force` in options
+- updated stylesheets template for svg-sprites to use mixins only
+
 ### v6.2.1
 - fixed minor issue with sync task
 - updated grunt plugins versions for: 
