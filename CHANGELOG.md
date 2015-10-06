@@ -1,3 +1,6 @@
+### v6.2.4
+- fixed bug in gulp `js` task
+
 ### v6.2.3
 - updated grunt-bless task to use `force` in options
 - updated stylesheets template for svg-sprites to use mixins only
