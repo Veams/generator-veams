@@ -1,5 +1,6 @@
 ### v6.2.4
 - fixed bug in gulp `js` task
+- added `mergeData` helper to sub generator `templating`
 
 ### v6.2.3
 - updated grunt-bless task to use `force` in options

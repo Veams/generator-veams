@@ -7,6 +7,7 @@ var hIfId = 'helperIf';
 var hIfBlockId = 'helperIfBlock';
 var hAutolinkId = 'helperAutolink';
 var hWrapWithId = 'helperWrapWith';
+var hMergeDataId = 'helperMergeData';
 var hRandomId = 'helperRandom';
 
 exports.questions = function () {
@@ -41,8 +42,12 @@ exports.questions = function () {
 					value: hAutolinkId
 				},
 				{
-					name: "WrapWith (Block Helper) - Enclose snippets/partials with a predefined markup.",
+					name: "WrapWith (Block Helper) - Enclose snippets with a predefined markup.",
 					value: hWrapWithId
+				},
+				{
+					name: "mergeData (Block Helper) - Merge two data objects.",
+					value: hMergeDataId
 				},
 				{
 					name: "Random Helper - Returns a random number.",
@@ -101,7 +106,16 @@ exports.scaffold = function () {
 
 			this.log(
 				('\n') +
-				chalk.bgRed('WrapWith Helper - For further instructions see: http://www.prototype-generator.com/templating-in-pg/template-helpers.html)') +
+				chalk.bgRed('WrapWith Helper - For further instructions see: http://www.veams.org/generator/prompts/template-engines.html)') +
+				chalk.yellow('\n') + ('\n') + ('\n')
+			);
+		}
+		if (this.templateHelperFiles.indexOf(hMergeDataId) != -1) {
+			this.copy(this.generatorHbsHelperPath + '/helper-mergeData.js', this.helperPath + '/helper-mergeData.js');
+
+			this.log(
+				('\n') +
+				chalk.bgRed('MergeData Helper - For further instructions see: http://www.veams.org/generator/prompts/template-engines.html)') +
 				chalk.yellow('\n') + ('\n') + ('\n')
 			);
 		}
