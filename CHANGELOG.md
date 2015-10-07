@@ -1,3 +1,8 @@
+### v6.2.5
+- added postInstall methods to support renaming of config files
+- added event handling in generator
+- clean up minimal installation routine
+
 ### v6.2.4
 - fixed bug in gulp `js` task
 - added `mergeData` helper to sub generator `templating`

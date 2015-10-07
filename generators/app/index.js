@@ -1,4 +1,5 @@
 'use strict';
+var fs = require('fs');
 var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
@@ -60,7 +61,7 @@ module.exports = yeoman.generators.Base.extend({
 				},
 				{
 					name: 'Minimal Installation',
-					value: 'stdInstall'
+					value: 'minInstall'
 				}
 			],
 			default: this.config.get('defaultInstall')
@@ -71,7 +72,7 @@ module.exports = yeoman.generators.Base.extend({
 			this.defaultInstall = answers.defaultInstall || this.config.get('defaultInstall');
 
 			//save config to .yo-rc.json
-			if (this.defaultInstall === 'stdInstall') {
+			if (this.defaultInstall === 'minInstall') {
 				this.log(
 					('\n') + chalk.bgCyan('Minimal installation routine selected.') + ('\n')
 				);
@@ -282,7 +283,21 @@ module.exports = yeoman.generators.Base.extend({
 		this.installDependencies({
 			skipInstall: this.options['skip-install'] || this.options['s'],
 			skipMessage: this.options['skip-welcome-message'] || this.options['w'],
-			standardInstall: this.options['standard'] || this.options['std']
+			// minInstall: this.options['minimal'] || this.options['min'],
+			callback: function () {
+				// Emit an event that all dependencies are installed
+				this.emit(configFile.events.depsIntalled);
+			}.bind(this)
+		});
+	},
+
+	bindEvents: function () {
+		var _this = this;
+
+		this.on(configFile.events.depsIntalled, function () {
+			fs.rename(path.join(this.destinationRoot(), '.yo-rc.json'), path.join(this.destinationRoot(), 'setup.json'), function (err) {
+				if (err) _this.log('ERROR: ' + err);
+			});
 		});
 	}
 });
