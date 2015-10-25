@@ -1,28 +1,27 @@
+var config = require('../lib/config');
+
 module.exports = function promptAnswerFactory(customAnswers) {
 	var defaults = {
-		"projectName": "",
-		"projectAuthor": "",
-		"templateEngine": "",
-		"installPlugin": false,
-		"installCMS": false,
-		"taskRunner": [
-			"grunt"
+		projectName: '',
+		projectAuthor: '',
+		taskRunner: [
+			'grunt'
 		],
-		"gulpModules": [],
-		"gruntModules": [
-			"grunt-combine-mq",
-			"grunt-dr-svg-sprites"
+		templateEngine: '',
+		installExtendedLayout: true,
+		installPlugin: false,
+		gulpModules: [],
+		gruntModules: [
+			'grunt-combine-mq',
+			'grunt-dr-svg-sprites'
 		],
-		"features": [
-			"sassInsteadOfCompass"
-		],
-		"jsLibs": [],
-		"cssLibs": [],
-		"author": {
-			"name": "",
-			"login": "",
-			"email": ""
-		}
+		features: [],
+		jsLibs: [],
+		cssLibs: [],
+		testAndQA: false,
+		testAndQALibs: [],
+		veamsPackages: [],
+		docs: []
 	};
 
 	var custom = defaults;

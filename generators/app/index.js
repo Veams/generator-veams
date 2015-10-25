@@ -294,7 +294,7 @@ module.exports = yeoman.generators.Base.extend({
 	bindEvents: function () {
 		var _this = this;
 
-		this.on(configFile.events.depsIntalled, function () {
+		this.on(configFile.events.end, function () {
 			fs.rename(path.join(this.destinationRoot(), '.yo-rc.json'), path.join(this.destinationRoot(), 'setup.json'), function (err) {
 				if (err) _this.log('ERROR: ' + err);
 			});

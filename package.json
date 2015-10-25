@@ -1,6 +1,6 @@
 {
 	"name": "generator-veams",
-	"version": "6.2.5",
+	"version": "6.2.6",
 	"homepage": "http://veams.org/",
 	"description": "Scaffold modern frontend web apps or web pages with Assemble, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript (ES Harmony Support) with Backbone and Browserify or RequireJS.",
 	"keywords": [
@@ -33,7 +33,7 @@
 		"name": "Sebastian Fitzner",
 		"email": "sebastian@jci-werbeagentur.com"
 	},
-	"main": "app/index.js",
+	"main": "generators/app/index.js",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/Sebastian-Fitzner/generator-veams"

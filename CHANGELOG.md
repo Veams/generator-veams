@@ -1,3 +1,9 @@
+### v6.2.6
+- outsourced event names to config file
+- updated bower component veams-sass version
+- changed test_helpers
+- changed title in page
+
 ### v6.2.5
 - added postInstall methods to support renaming of config files
 - added event handling in generator
