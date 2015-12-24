@@ -1,0 +1,27 @@
+{{! ---
+block: sitemap
+============================================
+
+Important Notes:
+Be sure you use collections to categorize your sitemap.
+If you do not want to use collections, just delete `sitemap`
+--- }}
+
+<nav class="b-sitemap">
+	{{#each sitemap}}
+		<div class="sitemap__overview">
+			<h3 class="sitemap__headline">{{sitemap}}</h3>
+			<ol class="sitemap__list">
+				{{#withSort ../pages "data.sortOrder"}}
+					{{#is data.sitemap ../sitemap}}
+						<li class="sitemap__list-item">
+							<a href="{{autolink}}" class="sitemap__list-item-link{{#is ../../page.dest ../this.dest}} is-active{{/is}}">
+								{{data.menuLink}}
+							</a>
+						</li>
+					{{/is}}
+				{{/withSort}}
+			</ol>
+		</div>
+	{{/each}}
+</nav>

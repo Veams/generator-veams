@@ -5,7 +5,7 @@ docs: true
 
 <% if (installExtendedLayout === true) { %>
 {{#extend "lyt-default"}}
-	{{#content "body"}}
+	{{#content "main"}}
 		<header>
 			<h1><%= _.slugify(projectName) %></h1>
 		</header>

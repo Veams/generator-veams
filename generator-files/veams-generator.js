@@ -75,7 +75,7 @@ exports.scaffold = function () {
 
 			// Blocks
 			this.copy('resources/templating/partials/blocks/README.md');
-			this.copy('resources/templating/partials/blocks/b-nav.hbs');
+			this.copy('resources/templating/partials/blocks/b-sitemap.hbs');
 
 			// Components
 			this.copy('resources/templating/partials/components/README.md');
