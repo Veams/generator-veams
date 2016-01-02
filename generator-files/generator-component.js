@@ -6,7 +6,16 @@ exports.questions = function () {
 		{
 			type: 'input',
 			name: 'componentName',
-			message: 'Define a component name'
+			message: 'Define a component name:',
+			validate: function (answer) {
+				var done = this.async();
+
+				if (!answer) {
+					done("Please add a component name!");
+					return;
+				}
+				done(true);
+			}
 		},
 		{
 			type: 'confirm',
@@ -38,7 +47,7 @@ exports.scaffold = function () {
 	this.template(this.tplFile, this.filename + '/partials/c-' + this.filename + '.hbs');
 	this.template(this.styleFile, this.filename + '/scss/_c-' + this.filename + '.scss');
 	this.template(this.usageFile, this.filename + '/usage/' + this.filename + '.md');
-	if(this.componentWithJs) {
+	if (this.componentWithJs) {
 		this.template(this.jsFile, this.filename + '/js/' + this.filename + '.js');
 	}
 };
