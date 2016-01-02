@@ -273,7 +273,7 @@ module.exports = yeoman.generators.Base.extend({
 
 		bower: function () {
 			if (this.cssLibs.length === 0 && this.jsLibs.length === 0 && this.veamsPackages.length === 0) {
-				this.bowerFile['dependencies'] = [];
+				this.bowerFile['dependencies'] = {};
 			}
 			this.dest.write('bower.json', JSON.stringify(this.bowerFile, null, 4));
 		}

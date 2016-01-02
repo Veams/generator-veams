@@ -1,0 +1,39 @@
+# <%= filename %>
+
+This component is based on the blueprint of Veams-Components.
+
+## Usage
+
+### Include: Page
+
+``` hbs
+{{#with <%= filename %>-bp}}
+	{{> c-<%= filename %>}}
+{{/with}}
+```
+
+### Include: SCSS
+
+``` scss
+@import "components/_c-<%= filename %>";
+```
+<% if(componentWithJs) {%>
+### Include: JavaScript
+
+#### Import
+``` js
+import <%= componentJsName %> from './modules/<%= filename %>/<%= filename %>';
+```
+
+#### Initializing
+``` js
+/**
+ * Init <%= componentJsName %>
+ */
+Helpers.loadModule({
+	el: '[data-js-module="<%= filename %>"]',
+	module: <%= componentJsName %>,
+	context: context
+});
+```
+<% } %>
