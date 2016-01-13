@@ -1,6 +1,6 @@
 # <%= filename %>
 
-This component is based on the blueprint of Veams-Components.
+This blueprint is based on the blueprint of Veams-Components.
 
 ## Usage
 
@@ -15,24 +15,24 @@ This component is based on the blueprint of Veams-Components.
 ### Include: SCSS
 
 ``` scss
-@import "components/_c-<%= filename %>";
+@import "blueprints/_c-<%= filename %>";
 ```
-<% if(componentWithJs) {%>
+<% if(blueprintWithJs) {%>
 ### Include: JavaScript
 
 #### Import
 ``` js
-import <%= componentJsName %> from './modules/<%= filename %>/<%= filename %>';
+import <%= blueprintJsName %> from './modules/<%= filename %>/<%= filename %>';
 ```
 
 #### Initializing
 ``` js
 /**
- * Init <%= componentJsName %>
+ * Init <%= blueprintJsName %>
  */
 Helpers.loadModule({
 	el: '[data-js-module="<%= filename %>"]',
-	module: <%= componentJsName %>,
+	module: <%= blueprintJsName %>,
 	context: context
 });
 ```

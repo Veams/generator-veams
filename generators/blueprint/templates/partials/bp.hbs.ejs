@@ -1,0 +1,37 @@
+{{! ---
+bp: <%= bpType %><%= filename %>
+============================================
+
+Requirements:
+- (only hbs)
+
+Options:
+- <%= bpName %>ContextClass {String} [default] - Just pass a string
+- <%= bpName %>Classes {String} - Modifier classes
+
+Important Notes:
+
+--- }}
+
+<% if (bpType === 'c-') { %>
+<div class="c-<%= filename %>{{#if <%= bpName %>ContextClass}}--{{<%= bpName %>ContextClass}}{{else}}--default{{/if}}{{#if <%= bpName %>Classes}} {{<%= bpName %>Classes}}{{/if}}"
+     data-css="c-<%= filename %>"<% if(bpWithJs) { %>
+     data-js-module="<%= filename %>"
+     data-js-options='{
+     	{{#each <%= bpName %>JsOptions}}"{{optionsKey}}": {{#unless optionsObject}}"{{/unless}}{{{optionsValue}}}{{#unless optionsObject}}"{{/unless}}{{#if @last}}{{else}}, {{/if}}{{/each}}
+     }'<% } %>>
+     <% if (bpWrapWith) { %>
+     {{{yield}}}
+     <% } %>
+</div>
+<% } else { %>
+<div class="<%= bpType %><%= filename %>{{#if <%= bpName %>Classes}} {{<%= bpName %>Classes}}{{/if}}"<% if(bpWithJs) { %>
+     data-js-module="<%= filename %>"
+     data-js-options='{
+     	{{#each <%= bpName %>JsOptions}}"{{optionsKey}}": {{#unless optionsObject}}"{{/unless}}{{{optionsValue}}}{{#unless optionsObject}}"{{/unless}}{{#if @last}}{{else}}, {{/if}}{{/each}}
+     }'<% } %>>
+     <% if (bpWrapWith) { %>
+     {{{yield}}}
+     <% } %>
+</div>
+<% } %>

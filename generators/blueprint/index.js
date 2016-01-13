@@ -3,7 +3,7 @@ var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var helpers = require('../../lib/helpers');
-var generatorComponent = require('../../generator-files/generator-component.js');
+var generatorBlueprint = require('../../generator-files/generator-blueprint.js');
 var configFile = require('../../lib/config');
 
 module.exports = yeoman.generators.Base.extend({
@@ -19,15 +19,15 @@ module.exports = yeoman.generators.Base.extend({
 		var prompts = [];
 
 		this.log(
-			('\n') + chalk.bgCyan('Create a new component based on Veams.') + ('\n')
+			('\n') + chalk.bgCyan('Create a new blueprint based on Veams.') + ('\n')
 		);
 
 		prompts = prompts.concat(
-			generatorComponent.questions.call(this)
+			generatorBlueprint.questions.call(this)
 		);
 
 		this.prompt(prompts, function (props) {
-			generatorComponent.save.call(this, props);
+			generatorBlueprint.save.call(this, props);
 			cb();
 		}.bind(this));
 	},
@@ -38,11 +38,11 @@ module.exports = yeoman.generators.Base.extend({
 	 */
 	writing: {
 		setup: function () {
-			generatorComponent.setup.call(this);
+			generatorBlueprint.setup.call(this);
 		},
 
 		scaffold: function () {
-			generatorComponent.scaffold.call(this);
+			generatorBlueprint.scaffold.call(this);
 		}
 	}
 });
