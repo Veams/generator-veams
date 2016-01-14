@@ -1,3 +1,6 @@
+### v6.4.0
+- added blueprints generator to support fast scaffolding of templates for blocks, components or global partials
+
 ### v6.2.6
 - outsourced event names to config file
 - updated bower component veams-sass version
