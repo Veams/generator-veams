@@ -1,5 +1,5 @@
-{
-	"<%= bpName %>ContextClass": "default",
+{<% if (bpType === 'c-') { %>
+	"<%= bpName %>ContextClass": "default",<% } %>
 	"<%= bpName %>Classes": false <% if(bpWithJs) {%>,
 	"<%= bpName %>JsOptions": [
 		{

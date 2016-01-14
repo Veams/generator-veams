@@ -8,31 +8,31 @@ This blueprint is based on the blueprint of Veams-Components.
 
 ``` hbs
 {{#with <%= filename %>-bp}}
-	{{> c-<%= filename %>}}
+	{{> <%= bpType %><%= filename %>}}
 {{/with}}
 ```
 
 ### Include: SCSS
 
 ``` scss
-@import "blueprints/_c-<%= filename %>";
+@import "<% if (bpType === 'c-') { %>components<% } else if (bpType === 'b-') { %>blocks<% } else { %>globals<% } %>/_<%= bpType %><%= filename %>";
 ```
-<% if(blueprintWithJs) {%>
+<% if(bpWithJs) {%>
 ### Include: JavaScript
 
 #### Import
 ``` js
-import <%= blueprintJsName %> from './modules/<%= filename %>/<%= filename %>';
+import <%= bpJsName %> from './modules/<%= filename %>/<%= filename %>';
 ```
 
 #### Initializing
 ``` js
 /**
- * Init <%= blueprintJsName %>
+ * Init <%= bpJsName %>
  */
 Helpers.loadModule({
-	el: '[data-js-module="<%= filename %>"]',
-	module: <%= blueprintJsName %>,
+	domName: '<%= filename %>',
+	module: <%= bpJsName %>,
 	context: context
 });
 ```

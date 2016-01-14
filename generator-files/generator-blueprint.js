@@ -58,7 +58,7 @@ exports.save = function (props) {
 	this.filename = helpers.hyphenate(props.bpName);
 	this.bpName = helpers.toCamelCase(props.bpName);
 	this.bpType = props.bpType === 'global' ? '' : props.bpType;
-	this.bpWithWrapWith = props.bpWithWrapWith;
+	this.bpWrapWith = props.bpWithWrapWith;
 	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
 	this.bpWithJs = props.bpWithJs || false;
 };

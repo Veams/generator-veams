@@ -1,12 +1,12 @@
 {{! ---
-bp: <%= bpType %><%= filename %>
+<% if (bpType === 'c-') { %>component<% } else if (bpType === 'b-') { %>block<% } else { %>general<% } %>: <%= bpType %><%= filename %>
 ============================================
 
 Requirements:
 - (only hbs)
 
-Options:
-- <%= bpName %>ContextClass {String} [default] - Just pass a string
+Options:<% if (bpType === 'c-') { %>
+- <%= bpName %>ContextClass {String} [default] - Just pass a string<% } %>
 - <%= bpName %>Classes {String} - Modifier classes
 
 Important Notes:
