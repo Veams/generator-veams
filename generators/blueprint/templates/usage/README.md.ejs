@@ -7,26 +7,33 @@ This blueprint is based on the blueprint of Veams-Components.
 ### Include: Page
 
 ``` hbs
+// @INSERT :: START @id: component, @tag: veams-component
 {{#with <%= filename %>-bp}}
 	{{> <%= bpType %><%= filename %>}}
 {{/with}}
+{{! @INSERT :: END }}
 ```
 
 ### Include: SCSS
 
 ``` scss
+// @INSERT :: START @id: scss-import, @tag: veams-component
 @import "<% if (bpType === 'c-') { %>components<% } else if (bpType === 'b-') { %>blocks<% } else { %>globals<% } %>/_<%= bpType %><%= filename %>";
+// @INSERT :: END
 ```
 <% if(bpWithJs) {%>
 ### Include: JavaScript
 
 #### Import
 ``` js
+// @INSERT :: START @id: js-import, @tag: veams-component
 import <%= bpJsName %> from './modules/<%= filename %>/<%= filename %>';
+// @INSERT :: END
 ```
 
 #### Initializing
 ``` js
+// @INSERT :: START @id: js-init, @tag: veams-component
 /**
  * Init <%= bpJsName %>
  */
@@ -35,5 +42,6 @@ Helpers.loadModule({
 	module: <%= bpJsName %>,
 	context: context
 });
+// @INSERT :: END
 ```
 <% } %>
