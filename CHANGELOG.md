@@ -1,4 +1,4 @@
-### v6.4.1
+### v6.5.0
 - updated config.js to support veams-cli, updated blueprints generator, added page-components.hbs
 
 ### v6.4.0
