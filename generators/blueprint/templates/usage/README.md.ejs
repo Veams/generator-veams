@@ -7,7 +7,7 @@ This blueprint is based on the blueprint of Veams-Components.
 ### Include: Page
 
 ``` hbs
-// @INSERT :: START @id: component, @tag: <% if (bpType === 'c-') { %>component<% } else if (bpType === 'b-') { %>block<% } else { %>global<% } %>
+{{! @INSERT :: START @id: component, @tag: <% if (bpType === 'c-') { %>component<% } else if (bpType === 'b-') { %>block<% } else { %>global<% } %>
 {{#with <%= filename %>-bp}}
 	{{> <%= bpType %><%= filename %>}}
 {{/with}}
