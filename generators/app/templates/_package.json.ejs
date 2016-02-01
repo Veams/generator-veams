@@ -1,7 +1,7 @@
 {
 	"name": "<%= _.slugify(projectName) %>",
 	"description": "Custom project description",
-	"version": "0.1.0",
+	"version": "0.0.1",
 	"author": {
 		"name": "<%= authorName %>",
 		"url": "http://github.com/<%= _.slugify(authorName) %>/"
@@ -13,6 +13,9 @@
 		"test": "grunt test",
 		"start": "grunt serve",
 		"build": "grunt dist"
+	},
+	"veams": {
+		"configFile": "helpers/config.js"
 	},
 	"dependencies": {<% if(gruntModules && gruntModules.indexOf('grunt-browserify') !== -1 || gulpModules && gulpModules.indexOf('browserify') !== -1) { %> <% if(jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function jsLibsEach(lib, i) { %> <% if(lib == 'jquery') { %>
 		"jquery": "^2.1.4"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'backbone') { %>

@@ -7,7 +7,7 @@ This blueprint is based on the blueprint of Veams-Components.
 ### Include: Page
 
 ``` hbs
-// @INSERT :: START @id: component, @tag: veams-component
+// @INSERT :: START @id: component, @tag: <% if (bpType === 'c-') { %>component<% } else if (bpType === 'b-') { %>block<% } else { %>global<% } %>
 {{#with <%= filename %>-bp}}
 	{{> <%= bpType %><%= filename %>}}
 {{/with}}
@@ -17,7 +17,7 @@ This blueprint is based on the blueprint of Veams-Components.
 ### Include: SCSS
 
 ``` scss
-// @INSERT :: START @id: scss-import, @tag: veams-component
+// @INSERT :: START @id: scss-import, @tag: <% if (bpType === 'c-') { %>component<% } else if (bpType === 'b-') { %>block<% } else { %>global<% } %>
 @import "<% if (bpType === 'c-') { %>components<% } else if (bpType === 'b-') { %>blocks<% } else { %>globals<% } %>/_<%= bpType %><%= filename %>";
 // @INSERT :: END
 ```
@@ -26,14 +26,28 @@ This blueprint is based on the blueprint of Veams-Components.
 
 #### Import
 ``` js
-// @INSERT :: START @id: js-import, @tag: veams-component
+// @INSERT :: START @id: js-import, @tag: <% if (bpType === 'c-') { %>component<% } else if (bpType === 'b-') { %>block<% } else { %>global<% } %>
 import <%= bpJsName %> from './modules/<%= filename %>/<%= filename %>';
 // @INSERT :: END
 ```
 
-#### Initializing
+#### Initializing in Veams V2
 ``` js
-// @INSERT :: START @id: js-init, @tag: veams-component
+// @INSERT :: START @id: js-init-v2, @tag: <% if (bpType === 'c-') { %>component<% } else if (bpType === 'b-') { %>block<% } else { %>global<% } %>
+/**
+ * Init <%= bpJsName %>
+ */
+Helpers.loadModule({
+	el: '[data-js-module="<%= filename %>"]',
+	module: <%= bpJsName %>,
+	context: context
+});
+// @INSERT :: END
+```
+
+#### Initializing in Veams V3
+``` js
+// @INSERT :: START @id: js-init-v3, @tag: <% if (bpType === 'c-') { %>component<% } else if (bpType === 'b-') { %>block<% } else { %>global<% } %>
 /**
  * Init <%= bpJsName %>
  */

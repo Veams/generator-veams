@@ -1,3 +1,6 @@
+### v6.4.1
+- updated config.js to support veams-cli, updated blueprints generator, added page-components.hbs
+
 ### v6.4.0
 - added blueprints generator to support fast scaffolding of templates for blocks, components or global partials
 

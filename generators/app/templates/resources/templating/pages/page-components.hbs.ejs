@@ -1,0 +1,19 @@
+---
+title: Build Better Prototypes with Veams
+menuLink: Components
+sortOrder: 02
+---
+<% if (installExtendedLayout == true) { %>
+{{#extend "lyt-default"}}
+	{{#content "main"}}
+		<h3>Place your content here!</h3>
+
+		{{! @INSERTPOINT :: @tag: component }}
+	{{/content}}
+{{/extend}}
+<% } else { %>
+<h3>Place your content here!</h3>
+
+{{! @INSERTPOINT :: @tag: component }}
+
+<% } %>

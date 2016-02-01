@@ -1,6 +1,6 @@
 # <%= _.slugify(projectName) %>
 
-Current version="0.1.0"
+Current version="0.0.1"
 
 ## Requirements For Frontend Development
 
@@ -12,7 +12,7 @@ We use Libsass as standard SCSS compiler.
 
 ## Frontend Methodology
 <% if(veamsPackages.indexOf('veamsMethodology') != -1) { %>
-We build <%= _.slugify(projectName) %> with the PG Frontend Methodology: 
+We build <%= _.slugify(projectName) %> with the Veams Methodology:
 * http://veams.org/methodology/
 <% } %>
 
@@ -35,7 +35,7 @@ This project builds on following setup (please read requirements and getting sta
 ## Browser-Support
 
 - all modern desktop browsers: Firefox, Chrome, IE and Safari/Mac latest version
-- also: IE 10
+- also: IE 11
 - all modern mobile browsers: iOS and Android latest two versions
 
 ## Responsive-Webdesign-Support
@@ -46,7 +46,10 @@ This project builds on following setup (please read requirements and getting sta
 <% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-responsive-images') != -1) { %>
 ### Responsive Images
 
-If you want to use an automated task to create responsive images you need to make sure that you have installed GraphicsMagick.
+If you want to use an automated task to create responsive images you need to make sure that you have installed GraphicsMagick. You can download and install GraphicsMagick here:
+
+- http://www.graphicsmagick.org/download.html
+- Windows (http://sourceforge.net/projects/graphicsmagick/files/graphicsmagick-binaries/)
 
 You can use `grunt-responsive-images` to build all pictures with predefined presets. To build responsive images just start the task `pictures`.
 

@@ -72,6 +72,7 @@ exports.scaffold = function () {
 		this.directory('resources/templating/helpers', 'resources/templating/helpers');
 		this.template('resources/templating/layouts/lyt-default.hbs.ejs', 'resources/templating/layouts/lyt-default.hbs');
 		this.template('resources/templating/pages/index.hbs.ejs', 'resources/templating/pages/index.hbs');
+		this.template('resources/templating/pages/page-components.hbs.ejs', 'resources/templating/pages/page-components.hbs');
 
 		// Add global partials
 		this.mkdir('resources/templating/partials');
