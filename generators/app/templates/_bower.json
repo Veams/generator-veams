@@ -13,7 +13,7 @@
 		"neat": "~1.7.2",
 		"foundation": "~5.5.2",
 		"veams-components": "~1.0.0",
-		"veams-js": "~2.0.7",
+		"veams-js": "~3.0.0",
 		"veams-sass": "~2.0.2"
 	}
 }
