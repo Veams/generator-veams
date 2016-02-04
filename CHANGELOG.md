@@ -1,3 +1,6 @@
+### v6.5.2
+- updated handlebars page
+
 ### v6.5.1
 - updated bower-component veams-js
 
