@@ -1,3 +1,6 @@
+### v6.5.3
+- minor improvements for better veams-cli integration, updated blueprint generator
+
 ### v6.5.2
 - updated handlebars page
 
