@@ -1,7 +1,10 @@
 module.exports = {
 	options: {
 		assets: '<%%= paths.dev %>',
-		data: '<%%= paths.src %>/templating/data/**/*.json',
+		data: [
+			'<%%= paths.src %>/templating/data/**/*.json',
+			'<%%= paths.src %>/templating/partials/**/*.json'
+		],
 		helpers: '<%%= paths.src %>/templating/helpers/**/*.js',
 		layoutdir: '<%%= paths.src %>/templating/layouts/',<% if (installExtendedLayout === true) { %>
 		layout: false, <% } else { %>
