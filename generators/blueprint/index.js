@@ -8,6 +8,18 @@ var configFile = require('../../lib/config');
 
 module.exports = yeoman.generators.Base.extend({
 
+	// note: arguments and options should be defined in the constructor.
+	constructor: function () {
+		yeoman.generators.Base.apply(this, arguments);
+
+		this.argument('type', {
+			type: Object,
+			required: false
+		});
+
+		generatorBlueprint.construct.call(this, this.type);
+	},
+
 	// Initialize general settings and store some files
 	initializing: function () {
 		this.config.defaults(configFile.setup.empty);
