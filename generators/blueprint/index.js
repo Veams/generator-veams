@@ -12,12 +12,12 @@ module.exports = yeoman.generators.Base.extend({
 	constructor: function () {
 		yeoman.generators.Base.apply(this, arguments);
 
-		this.argument('type', {
-			type: Object,
+		this.argument('name', {
+			type: String,
 			required: false
 		});
 
-		generatorBlueprint.construct.call(this, this.type);
+		generatorBlueprint.construct.call(this, this.name);
 	},
 
 	// Initialize general settings and store some files

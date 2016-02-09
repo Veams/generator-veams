@@ -17,7 +17,7 @@ This blueprint is based on the blueprint of Veams-Components.
 ### Include: SCSS
 
 ``` scss
-// @INSERT :: START @tag: scss-import
+// @INSERT :: START @tag: scss-import //
 @import "<% if (bpType === 'c-') { %>components<% } else if (bpType === 'b-') { %>blocks<% } else { %>globals<% } %>/_<%= bpType %><%= filename %>";
 // @INSERT :: END
 ```
@@ -26,14 +26,14 @@ This blueprint is based on the blueprint of Veams-Components.
 
 #### Import
 ``` js
-// @INSERT :: START @tag: js-import
+// @INSERT :: START @tag: js-import //
 import <%= bpJsName %> from './modules/<%= filename %>/<%= filename %>';
 // @INSERT :: END
 ```
 
 #### Initializing in Veams V2
 ``` js
-// @INSERT :: START @tag: js-init-v2
+// @INSERT :: START @tag: js-init-v2 //
 /**
  * Init <%= bpJsName %>
  */
@@ -47,7 +47,7 @@ Helpers.loadModule({
 
 #### Initializing in Veams V3
 ``` js
-// @INSERT :: START @tag: js-init-v3
+// @INSERT :: START @tag: js-init-v3 //
 /**
  * Init <%= bpJsName %>
  */

@@ -5,27 +5,32 @@ var config = require('../lib/config');
 exports.construct = function () {
 	// This method adds support for a `--coffee` flag
 	this.option('tmp');
+	this.option('component');
 };
 
 exports.questions = function () {
-	var prompts = [
-		{
-			type: 'input',
-			name: 'bpName',
-			message: 'Define a blueprint name:',
-			validate: function (answer) {
-				var done = this.async();
+	var prompts = [];
 
-				if (!answer) {
-					done("Please add a blueprint name!");
-					return;
+	if (!this.name) {
+		prompts = prompts.concat([
+			{
+				type: 'input',
+				name: 'bpName',
+				message: 'Define a blueprint name:',
+				validate: function (answer) {
+					var done = this.async();
+
+					if (!answer) {
+						done("Please add a blueprint name!");
+						return;
+					}
+					done(true);
 				}
-				done(true);
 			}
-		}
-	];
+		])
+	}
 
-	if (!this.type) {
+	if (!this.options.component && !this.options.block) {
 		prompts = prompts.concat([
 			{
 				name: 'bpType',
@@ -72,16 +77,17 @@ exports.questions = function () {
 
 
 exports.save = function (props) {
-	this.filename = helpers.hyphenate(props.bpName);
-	this.bpName = helpers.toCamelCase(props.bpName);
+	this.name = this.name ? this.name : props.bpName;
+	this.filename = helpers.hyphenate(this.name);
+	this.bpName = helpers.toCamelCase(this.name);
 	this.bpWrapWith = props.bpWithWrapWith;
 	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
 	this.bpWithJs = props.bpWithJs || false;
 
-	if (this.type) {
-		if (this.type === 'component') {
+	if (this.options.component || this.options.block) {
+		if (this.options.component) {
 			this.bpType = 'c-';
-		} else if (this.type === 'block') {
+		} else if (this.options.block) {
 			this.bpType = 'b-';
 		} else {
 			this.bpType = '';
