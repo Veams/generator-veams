@@ -20,9 +20,8 @@ We build <%= _.slugify(projectName) %> with the Veams Methodology:
 
 This project builds on following setup (please read requirements and getting started):
 
+- Veams Overview: https://github.com/Sebastian-Fitzner/Veams
 - Veams Website: http://veams.org/
-- Veams-Generator Website: http://veams.org/generator/
-- Veams-Generator Github: https://github.com/Sebastian-Fitzner/generator-veams
 
 - We use <% if(taskRunner.indexOf('grunt') != -1) { %>[Grunt](http://gruntjs.com/)<% } %><% if(taskRunner.indexOf('grunt') != -1 && taskRunner.indexOf('gulp') != -1) { %> and <% } %><% if(taskRunner.indexOf('gulp') != -1) { %>[Gulp](http://gulpjs.com/)<% } %> as our task runner<% if(templateEngine && templateEngine.indexOf('assemble') != -1) { %>
 - We use [Assemble](http://assemble.io/) as our static site generator.<% } %>

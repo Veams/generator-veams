@@ -7,6 +7,7 @@
 	<a href="http://badge.fury.io/js/generator-veams"><img src="https://badge.fury.io/js/generator-veams.svg" alt="NPM version" /></a>
 	<a href="https://travis-ci.org/Sebastian-Fitzner/generator-veams"><img src="https://travis-ci.org/Sebastian-Fitzner/generator-veams.svg" alt="Build Status" /></a>
 	<a href="https://nodei.co/npm/generator-veams/"><img src="https://nodei.co/npm/generator-veams.png?mini=true" alt="NPM install" /></a>
+	<a href="https://gitter.im/Sebastian-Fitzner/Veams?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Sebastian-Fitzner/Veams.svg" alt="Gitter Chat" /></a>
 </p>
 
 ## Documentation
@@ -23,7 +24,7 @@ If you only want to install the generator, just install it via: `npm install -g 
 
 I recommend to use `veams-cli` to scaffold projects, blueprints or something else.
 
-If you want to use the generator without `veams-cli` you can do the following:
+If you want to start generator-veams without `veams-cli` you can do the following:
 
 ```bash
 yo veams

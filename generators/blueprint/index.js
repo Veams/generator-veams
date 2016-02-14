@@ -14,7 +14,7 @@ module.exports = yeoman.generators.Base.extend({
 
 		this.argument('name', {
 			type: String,
-			required: false
+			required: true
 		});
 
 		generatorBlueprint.construct.call(this, this.name);
