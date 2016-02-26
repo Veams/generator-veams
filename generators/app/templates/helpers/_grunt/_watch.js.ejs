@@ -1,7 +1,7 @@
 module.exports = {
 	livereload: {
 		options: {
-			livereload: '<%%= connect.options.livereload %>'
+			livereload: true
 		},
 		files: [
 			'<%%= paths.dev %>/{,*/}*.html',
@@ -9,6 +9,15 @@ module.exports = {
 			'<%%= paths.dev %>/js/{,*/}*.js',
 			'<%%= paths.dev %>/img/**/*.{jpg,png}'
 		]
+	},
+	express: {
+		files: [
+			'./server/**/*.js'
+		],
+		tasks: ['express:dev'],
+		options: {
+			spawn: false
+		}
 	},
 	ajax: {
 		files: '<%%= paths.src %>/ajax/**/*.{json,html}',

@@ -24,7 +24,8 @@ module.exports = function(grunt) {
 	
 	// load only used tasks and add fallbacks for those which cannot be find
 	require('jit-grunt')(grunt, {<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-grunticon') != -1 || gruntModules.indexOf('grunt-dr-svg-sprites') != -1)) { %>
-		'replace': 'grunt-text-replace'<% } %>
+		'replace': 'grunt-text-replace',<% } %>
+		'express': 'grunt-express-server'
 	});
 	// measures the time each task takes
 	require('time-grunt')(grunt);
@@ -108,8 +109,8 @@ module.exports = function(grunt) {
 		'concurrent:syncing',
 		'watchCSS'<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 		'sass:docs'<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') == -1) { %>,
-		'connect:livereload',<% } else { %>,
-		// 'connect:livereload',
+		'express:dev',<% } else { %>,
+		'express:dev',
 		'browserSync',<% }} %>
 		'watch'
 	]);

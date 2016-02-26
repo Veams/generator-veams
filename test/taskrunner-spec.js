@@ -39,7 +39,7 @@ describe('task runner is Grunt', function () {
 			// add files you expect to exist here.
 			helperPath + '_grunt/clean.js',
 			helperPath + '_grunt/concurrent.js',
-			helperPath + '_grunt/connect.js',
+			helperPath + '_grunt/express.js',
 			helperPath + '_grunt/cssmin.js',
 			helperPath + '_grunt/sync.js',
 			helperPath + '_grunt/watch.js'
@@ -54,6 +54,7 @@ describe('task runner is Grunt', function () {
 		assert.fileContent(helperPath + '_grunt/watch.js', /js/);
 		assert.fileContent(helperPath + '_grunt/watch.js', /\'sync\:js\'/);
 		assert.fileContent(helperPath + '_grunt/watch.js', /scss/);
+		assert.fileContent(helperPath + '_grunt/watch.js', /express/);
 	});
 
 	it('adds standard tasks to sync.js file', function () {
