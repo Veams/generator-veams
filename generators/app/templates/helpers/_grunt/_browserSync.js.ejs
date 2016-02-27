@@ -2,10 +2,7 @@ module.exports = {
 	options: {
 		notify: false,
 		host: "localhost",
-		server: {
-			baseDir: '<%%= paths.dev %>',
-			index: "index.html"
-		},
+		proxy: 'localhost:<%%= ports.app %>',
 		watchTask: true,
 		ghostMode: {
 			clicks: true,
