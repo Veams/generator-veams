@@ -64,7 +64,7 @@ exports.scaffold = function (obj) {
 			this.template(this.generatorGruntPath + '_sass.js.ejs', this.gruntPath + 'sass.js');
 			this.template(this.generatorGruntPath + '_sassGlobber.js.ejs', this.gruntPath + 'sassGlobber.js');
 			this.template(this.generatorGruntPath + '_concurrent.js.ejs', this.gruntPath + 'concurrent.js');
-			this.template(this.generatorGruntPath + 'connect.js', this.gruntPath + 'connect.js');
+			this.template(this.generatorGruntPath + 'express.js', this.gruntPath + 'express.js');
 			this.copy(this.generatorGruntPath + 'cssmin.js', this.gruntPath + 'cssmin.js');
 			this.template(this.generatorGruntPath + '_sync.js.ejs', this.gruntPath + 'sync.js');
 			this.template(this.generatorGruntPath + '_watch.js.ejs', this.gruntPath + 'watch.js');

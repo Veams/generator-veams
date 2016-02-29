@@ -9,6 +9,7 @@ var taskRunnerGenerator = require('../../generator-files/taskrunner-generator');
 var featuresGenerator = require('../../generator-files/features-generator');
 var jsGenerator = require('../../generator-files/js-generator');
 var cssGenerator = require('../../generator-files/css-generator');
+var expressGenerator = require('../../generator-files/express-generator');
 var testAndQAGenerator = require('../../generator-files/test-and-qa-generator');
 var gruntGenerator = require('../../generator-files/grunt-generator');
 var gulpGenerator = require('../../generator-files/gulp-generator');
@@ -212,6 +213,7 @@ module.exports = yeoman.generators.Base.extend({
 			gulpGenerator.setup.call(this);
 			templatingGenerator.setup.call(this);
 			cssGenerator.setup.call(this);
+			expressGenerator.setup.call(this);
 			jsGenerator.setup.call(this);
 			veamsGenerator.setup.call(this);
 			testAndQAGenerator.setup.call(this);
@@ -261,6 +263,7 @@ module.exports = yeoman.generators.Base.extend({
 			taskRunnerGenerator.scaffold.call(this);
 			jsGenerator.scaffold.call(this);
 			cssGenerator.scaffold.call(this);
+			expressGenerator.scaffold.call(this);
 			testAndQAGenerator.scaffold.call(this);
 			veamsGenerator.scaffold.call(this);
 			templatingGenerator.scaffold.call(this);
