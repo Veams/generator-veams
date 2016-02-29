@@ -4,18 +4,24 @@
  * @author Sebastian Fitzner
  */
 
-module.exports.register = function (Handlebars, options) {
+module.exports.register = function(Handlebars, options) {
 	/*
 	 * merge data helper.
 	 *
 	 * @return object
 	 */
-	Handlebars.registerHelper('mergeData', function (file, obj) {
+	Handlebars.registerHelper('mergeData', function(file, obj) {
 		var obj1 = file;
-		var obj2 = JSON.parse(obj.hash.data);
+		var obj2 = obj.hash.file ? obj.hash.file : JSON.parse(obj.hash.data);
+
+		if (Array.isArray(obj2)) {
+			obj2 = {
+				'mergedDataObj': obj2
+			};
+		}
+
 		return obj.fn(extend(obj1, obj2));
 	});
-
 };
 
 function extend(a, b) {

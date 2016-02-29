@@ -9,6 +9,9 @@ var hAutolinkId = 'helperAutolink';
 var hWrapWithId = 'helperWrapWith';
 var hMergeDataId = 'helperMergeData';
 var hRandomId = 'helperRandom';
+var hMarkdownId = 'helperMarkdown';
+var hConcatPathId = 'helperConcatPath';
+var hPictureDataId = 'helperPictureData';
 
 exports.questions = function () {
 	return [
@@ -52,6 +55,18 @@ exports.questions = function () {
 				{
 					name: "Random Helper - Returns a random number.",
 					value: hRandomId
+				},
+				{
+					name: "Markdown Helper - Use markdown files to write your content.",
+					value: hMarkdownId
+				},
+				{
+					name: "Concat Path Helper - Concat paths in Veams.",
+					value: hConcatPathId
+				},
+				{
+					name: "Picture Data Helper - Get pictures presets from JSON.",
+					value: hPictureDataId
 				}
 			]
 		}
@@ -121,6 +136,15 @@ exports.scaffold = function () {
 		}
 		if (this.templateHelperFiles.indexOf(hRandomId) != -1) {
 			this.copy(this.generatorHbsHelperPath + '/helper-random.js', this.helperPath + '/helper-random.js');
+		}
+		if (this.templateHelperFiles.indexOf(hMarkdownId) != -1) {
+			this.copy(this.generatorHbsHelperPath + '/helper-markdown.js', this.helperPath + '/helper-markdown.js');
+		}
+		if (this.templateHelperFiles.indexOf(hConcatPathId) != -1) {
+			this.copy(this.generatorHbsHelperPath + '/helper-concatPath.js', this.helperPath + '/helper-concatPath.js');
+		}
+		if (this.templateHelperFiles.indexOf(hPictureDataId) != -1) {
+			this.copy(this.generatorHbsHelperPath + '/helper-pictureData.js', this.helperPath + '/helper-pictureData.js');
 		}
 	}
 };
