@@ -20,9 +20,9 @@ var apiServerHosts = {
 
 var apiServerHostRoutes = [];
 
-Object.keys(apiServerHosts).forEach((route) => {
-	apiServerHostRoutes.push(`/${route}`);
-	apiServerHostRoutes.push(`/${route}.json`);
+Object.keys(apiServerHosts).forEach(function (route) {
+	apiServerHostRoutes.push('/' + route);
+	apiServerHostRoutes.push('/' + route + '.json');
 });
 
 app.set('port', process.env.PORT || 3000);
@@ -31,7 +31,7 @@ app.use(livereload({
 	port: args[3]
 }));
 
-app.use(apiServerHostRoutes, function(req, res) {
+app.use(apiServerHostRoutes, function (req, res) {
 	var key, url;
 	var format = '';
 
@@ -48,7 +48,7 @@ app.use(apiServerHostRoutes, function(req, res) {
 });
 
 // an example route for an API
-app.get('/test-express.json', function(req, res) {
+app.get('/test-express.json', function (req, res) {
 	var responseObject = {
 		works: true
 	};

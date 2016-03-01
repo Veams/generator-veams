@@ -1,3 +1,9 @@
+### v6.6.0
+- added express support, deleted grunt-connect
+- added new handlebars helpers (`pictureData`, `concatPath`, `markdown`)
+- updated `mergeData` to support files
+- updated versioning task
+
 ### v6.5.3
 - minor improvements for better veams-cli integration, updated blueprint generator
 

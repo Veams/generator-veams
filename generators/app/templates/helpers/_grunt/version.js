@@ -31,15 +31,5 @@ module.exports = {
 			'README.md',
 			'<%= paths.src %>/templating/partials/blocks/b-version.hbs'
 		]
-	},
-	prerelease: {
-		options: {
-			release: 'prerelease'
-		},
-		src: [
-			'package.json',
-			'README.md',
-			'<%= paths.src %>/templating/partials/blocks/b-version.hbs'
-		]
 	}
 };
