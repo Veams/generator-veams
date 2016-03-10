@@ -1,5 +1,4 @@
 'use strict';
-var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var helpers = require('../../lib/helpers');
@@ -12,12 +11,7 @@ module.exports = yeoman.generators.Base.extend({
 	constructor: function () {
 		yeoman.generators.Base.apply(this, arguments);
 
-		this.argument('name', {
-			type: String,
-			required: true
-		});
-
-		generatorBlueprint.construct.call(this, this.name);
+		generatorBlueprint.construct.call(this);
 	},
 
 	// Initialize general settings and store some files
@@ -31,7 +25,7 @@ module.exports = yeoman.generators.Base.extend({
 		var prompts = [];
 
 		this.log(
-			('\n') + chalk.bgCyan('Create a new blueprint based on Veams.') + ('\n')
+			('\n') + chalk.bgCyan('Create a new blueprint based on Veams or your own templates.') + ('\n')
 		);
 
 		prompts = prompts.concat(
@@ -45,7 +39,7 @@ module.exports = yeoman.generators.Base.extend({
 	},
 
 	/**
-	 * Grunt modules file generation
+	 * File generation
 	 *
 	 */
 	writing: {

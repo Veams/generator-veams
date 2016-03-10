@@ -3,9 +3,23 @@ var config = require('../lib/config');
 
 
 exports.construct = function () {
-	// This method adds support for a `--coffee` flag
+	this.argument('name', {
+		type: String,
+		required: true
+	});
+
+	this.argument('configFile', {
+		type: String,
+		required: false,
+		optional: true
+	});
+
+	// This method adds support for flags
 	this.option('tmp');
 	this.option('component');
+
+	console.log('this.name: ', this.name);
+	console.log('configFile: ', this.configFile);
 };
 
 exports.questions = function () {
@@ -45,6 +59,11 @@ exports.questions = function () {
 					{
 						name: 'component',
 						value: 'c-',
+						checked: true
+					},
+					{
+						name: 'utility',
+						value: 'u-',
 						checked: true
 					},
 					{
@@ -89,6 +108,8 @@ exports.save = function (props) {
 			this.bpType = 'c-';
 		} else if (this.options.block) {
 			this.bpType = 'b-';
+		} else if (this.options.utility) {
+			this.bpType = 'u-';
 		} else {
 			this.bpType = '';
 		}
