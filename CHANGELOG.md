@@ -3,6 +3,7 @@
 - added new handlebars helpers (`pictureData`, `concatPath`, `markdown`)
 - updated `mergeData` to support files
 - updated versioning task
+- added possibility to pass blueprints paths to veams:blueprint
 
 ### v6.5.3
 - minor improvements for better veams-cli integration, updated blueprint generator

@@ -1,5 +1,8 @@
 var helpers = require('../lib/helpers');
 var config = require('../lib/config');
+var configFile = helpers.getProjectConfig();
+
+console.log('configFIle: ', configFile);
 
 
 exports.construct = function () {
@@ -18,8 +21,10 @@ exports.construct = function () {
 	this.option('tmp');
 	this.option('component');
 
-	console.log('this.name: ', this.name);
-	console.log('configFile: ', this.configFile);
+
+	if (this.configFile) {
+		configFile = require(process.cwd() + '/' + this.configFile);
+	}
 };
 
 exports.questions = function () {
@@ -120,11 +125,19 @@ exports.save = function (props) {
 };
 
 exports.setup = function () {
-	this.dataFile = 'data/bp.json.ejs';
-	this.tplFile = 'partials/bp.hbs.ejs';
-	this.styleFile = 'scss/bp.scss.ejs';
-	this.usageFile = 'usage/README.md.ejs';
-	this.jsFile = 'js/bp.js.ejs';
+	var checkConfig = function (type) {
+		return configFile &&
+			configFile.options &&
+			configFile.options.paths &&
+			configFile.options.paths.blueprints &&
+			configFile.options.paths.blueprints[type]
+	};
+
+	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.options.paths.blueprints.data : 'data/bp.json.ejs';
+	this.tplFile = checkConfig('partial') ? process.cwd() + '/' + configFile.options.paths.blueprints.partial : 'partials/bp.hbs.ejs';
+	this.styleFile = checkConfig('style') ? process.cwd() + '/' + configFile.options.paths.blueprints.style : 'scss/bp.scss.ejs';
+	this.usageFile = checkConfig('readme') ? process.cwd() + '/' + configFile.options.paths.blueprints.readme : 'usage/README.md.ejs';
+	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.options.paths.blueprints.js : 'js/bp.js.ejs';
 };
 
 exports.scaffold = function () {
