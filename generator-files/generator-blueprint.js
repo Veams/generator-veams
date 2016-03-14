@@ -2,9 +2,6 @@ var helpers = require('../lib/helpers');
 var config = require('../lib/config');
 var configFile = helpers.getProjectConfig();
 
-console.log('configFIle: ', configFile);
-
-
 exports.construct = function () {
 	this.argument('name', {
 		type: String,
