@@ -58,6 +58,11 @@ describe('assemble', function () {
 
 	});
 
+	it('adds paths to config.js', function () {
+		helpers.assertFile(helperPath + "config.js", /'resources\/templating\/pages'/);
+		helpers.assertFile(helperPath + "config.js", /partials/);
+	});
+
 	it('adds task to watch.js file', function () {
 		helpers.assertFile(helperPath + "_grunt/watch.js", /templating/);
 	});

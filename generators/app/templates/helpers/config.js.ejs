@@ -34,7 +34,12 @@ config.options = {<% if (taskRunner.indexOf('grunt') != -1) {%>
 		block: partialsPath + '/blocks',
 		component: partialsPath + '/components',<% } %>
 		scss: srcPath + '/scss',
-		js: srcPath + '/js'
+		js: srcPath + '/js',
+		endpoints: [<% if(templateEngine) { %>
+			'resources/templating/pages',<% } %>
+			'resources/js/main.js',
+			'resources/scss/styles.scss'
+		]
 	},
 
 	// define your ports for livereload
