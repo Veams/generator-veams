@@ -8,8 +8,11 @@ This blueprint is based on the blueprint of Veams-Components.
 
 ``` hbs
 {{! @INSERT :: START @id: <%= filename %>, @tag: <% if (bpType === 'c-') { %>component-partial<% } else if (bpType === 'b-') { %>block-partial<% } else { %>global-partial<% } %> }}
-{{#with <%= filename %>-bp}}
-	{{> <%= bpType %><%= filename %>}}
+{{#with <%= filename %>-bp}}<% if (bpWrapWith) { %>
+	{{#wrapWith "<%= bpType %><%= filename %>"}}
+		Wrapped with markup from <%= filename %>.
+	{{/wrapWith}}<% } else { %>
+	{{> <%= bpType %><%= filename %>}}<% } %>
 {{/with}}
 {{! @INSERT :: END }}
 ```

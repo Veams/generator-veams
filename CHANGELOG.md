@@ -1,3 +1,7 @@
+### v6.6.2
+- added utilities support in veams:blueprint
+- changed readme scaffold directory in veams:blueprint
+
 ### v6.6.0
 - added express support, deleted grunt-connect
 - added new handlebars helpers (`pictureData`, `concatPath`, `markdown`)

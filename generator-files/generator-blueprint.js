@@ -46,7 +46,7 @@ exports.questions = function () {
 		])
 	}
 
-	if (!this.options.component && !this.options.block) {
+	if (!this.options.component && !this.options.block && !this.options.utility) {
 		prompts = prompts.concat([
 			{
 				name: 'bpType',
@@ -66,7 +66,7 @@ exports.questions = function () {
 					{
 						name: 'utility',
 						value: 'u-',
-						checked: true
+						checked: false
 					},
 					{
 						name: 'something else',
@@ -105,7 +105,7 @@ exports.save = function (props) {
 	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
 	this.bpWithJs = props.bpWithJs || false;
 
-	if (this.options.component || this.options.block) {
+	if (this.options.component || this.options.block || this.options.utility) {
 		if (this.options.component) {
 			this.bpType = 'c-';
 		} else if (this.options.block) {
@@ -128,6 +128,10 @@ exports.setup = function () {
 			configFile.options.paths &&
 			configFile.options.paths.blueprints &&
 			configFile.options.paths.blueprints[type]
+	};
+
+	// TODO
+	var setExtensions = function (type) {
 	};
 
 	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.options.paths.blueprints.data : 'data/bp.json.ejs';
