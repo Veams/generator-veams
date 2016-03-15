@@ -32,7 +32,8 @@ config.options = {<% if (taskRunner.indexOf('grunt') != -1) {%>
 		page: srcPath + '/templating/pages',
 		global: partialsPath + '/globals',
 		block: partialsPath + '/blocks',
-		component: partialsPath + '/components',<% } %>
+		component: partialsPath + '/components',
+		utility: partialsPath + '/utilities',<% } %>
 		scss: srcPath + '/scss',
 		js: srcPath + '/js',
 		endpoints: [<% if(templateEngine) { %>
