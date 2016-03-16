@@ -10,6 +10,15 @@ module.exports = yeoman.generators.Base.extend({
 	// Initialize general settings and store some files
 	initializing: function () {
 		this.config.defaults(configFile.setup.empty);
+		this.bindEvents();
+	},
+
+	bindEvents: function () {
+		var _this = this;
+
+		this.on(configFile.events.end, function () {
+			gruntGenerator.postInstall.call(_this);
+		});
 	},
 
 	// Custom prompts routine

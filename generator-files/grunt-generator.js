@@ -268,3 +268,7 @@ exports.scaffold = function (obj) {
 		this.copy(this.generatorSrcPath + 'js/vendor/loadCSS.js', this.srcPath + 'js/vendor/loadCSS.js');
 	}
 };
+
+exports.postInstall = function () {
+	helpers.deleteSettingsFile();
+};

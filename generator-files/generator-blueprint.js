@@ -46,6 +46,21 @@ exports.questions = function () {
 		])
 	}
 
+	prompts = prompts.concat([
+		{
+			type: 'confirm',
+			name: 'bpWithWrapWith',
+			message: 'Do you want to use this blueprint as wrap-writh template?',
+			default: false
+		},
+		{
+			type: 'confirm',
+			name: 'bpWithJs',
+			message: 'Do you want to add JavaScript to this blueprint?',
+			default: true
+		}
+	]);
+
 	if (!this.options.component && !this.options.block && !this.options.utility) {
 		prompts = prompts.concat([
 			{
@@ -77,21 +92,6 @@ exports.questions = function () {
 			}
 		]);
 	}
-
-	prompts = prompts.concat([
-		{
-			type: 'confirm',
-			name: 'bpWithWrapWith',
-			message: 'Do you want use this blueprint as wrap-writh template?',
-			default: false
-		},
-		{
-			type: 'confirm',
-			name: 'bpWithJs',
-			message: 'Do you want to add JavaScript to this blueprint?',
-			default: true
-		}
-	]);
 
 	return prompts;
 };
@@ -151,4 +151,8 @@ exports.scaffold = function () {
 	if (this.bpWithJs) {
 		this.template(this.jsFile, path + this.filename + '/js/' + this.filename + '.js');
 	}
+};
+
+exports.postInstall = function () {
+	helpers.deleteSettingsFile();
 };

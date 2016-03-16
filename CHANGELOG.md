@@ -1,3 +1,8 @@
+### v6.6.5
+- added delete functionality for settings file
+- minor improvements
+- workaround for nodejs problems with lists in console
+
 ### v6.6.2
 - added utilities support in veams:blueprint
 - changed readme scaffold directory in veams:blueprint

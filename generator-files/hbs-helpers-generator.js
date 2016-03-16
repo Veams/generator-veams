@@ -1,5 +1,6 @@
 var chalk = require('chalk');
 var config = require('./../lib/config.js');
+var helpers = require('../lib/helpers');
 
 var hTimesId = 'helperTimes';
 var hLimitId = 'helperLimit';
@@ -68,7 +69,14 @@ exports.questions = function () {
 					name: "Picture Data Helper - Get pictures presets from JSON.",
 					value: hPictureDataId
 				}
-			]
+			],
+			validate: function (answer) {
+				if (answer.length === 0) {
+					return false;
+				} else {
+					return true;
+				}
+			}
 		}
 	];
 };
@@ -147,4 +155,8 @@ exports.scaffold = function () {
 			this.copy(this.generatorHbsHelperPath + '/helper-pictureData.js', this.helperPath + '/helper-pictureData.js');
 		}
 	}
+};
+
+exports.postInstall = function () {
+	helpers.deleteSettingsFile();
 };

@@ -1,10 +1,23 @@
 'use strict';
-var path = require('path');
 var chalk = require('chalk');
 var yeoman = require('yeoman-generator');
 var hbsHelpersGenerator = require('../../generator-files/hbs-helpers-generator');
+var configFile = require('../../lib/config');
 
 module.exports = yeoman.generators.Base.extend({
+	// Initialize general settings and store some files
+	initializing: function () {
+		this.bindEvents();
+	},
+
+	bindEvents: function () {
+		var _this = this;
+
+		this.on(configFile.events.end, function () {
+			hbsHelpersGenerator.postInstall.call(_this);
+		});
+	},
+
 	prompting: function () {
 		var cb = this.async();
 
@@ -23,6 +36,7 @@ module.exports = yeoman.generators.Base.extend({
 			cb();
 		}.bind(this));
 	},
+
 	writing: {
 		setup: function () {
 			hbsHelpersGenerator.setup.call(this);
