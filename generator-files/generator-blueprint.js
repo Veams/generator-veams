@@ -1,3 +1,4 @@
+var path = require('path');
 var helpers = require('../lib/helpers');
 var config = require('../lib/config');
 var configFile = helpers.getProjectConfig();
@@ -130,26 +131,33 @@ exports.setup = function () {
 			configFile.options.paths.blueprints[type]
 	};
 
-	// TODO
-	var setExtensions = function (type) {
-	};
-
 	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.options.paths.blueprints.data : 'data/bp.json.ejs';
+	this.dataFileExtension = path.extname(helpers.deleteFileExtension(this.dataFile));
+
 	this.tplFile = checkConfig('partial') ? process.cwd() + '/' + configFile.options.paths.blueprints.partial : 'partials/bp.hbs.ejs';
+	this.tplFileExtension = path.extname(helpers.deleteFileExtension(this.tplFile));
+
 	this.styleFile = checkConfig('style') ? process.cwd() + '/' + configFile.options.paths.blueprints.style : 'scss/bp.scss.ejs';
+	this.styleFileExtension = path.extname(helpers.deleteFileExtension(this.styleFile));
+
 	this.usageFile = checkConfig('readme') ? process.cwd() + '/' + configFile.options.paths.blueprints.readme : 'usage/README.md.ejs';
+	this.usageFileExtension = path.extname(helpers.deleteFileExtension(this.usageFile));
+
 	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.options.paths.blueprints.js : 'js/bp.js.ejs';
+	this.jsFileExtension = path.extname(helpers.deleteFileExtension(this.jsFile));
+
+
 };
 
 exports.scaffold = function () {
 	var path = this.options.tmp ? 'tmp/' : '';
 
-	this.template(this.dataFile, path + this.filename + '/data/' + this.filename + '-bp.json');
-	this.template(this.tplFile, path + this.filename + '/partials/' + this.bpType + this.filename + '.hbs');
-	this.template(this.styleFile, path + this.filename + '/scss/_' + this.bpType + this.filename + '.scss');
-	this.template(this.usageFile, path + this.filename + '/usage/README.md');
+	this.template(this.dataFile, path + this.filename + '/data/' + this.filename + '-bp' + this.dataFileExtension);
+	this.template(this.tplFile, path + this.filename + '/partials/' + this.bpType + this.filename + this.tplFileExtension);
+	this.template(this.styleFile, path + this.filename + '/scss/_' + this.bpType + this.filename + this.styleFileExtension);
+	this.template(this.usageFile, path + this.filename + '/usage/README' + this.usageFileExtension);
 	if (this.bpWithJs) {
-		this.template(this.jsFile, path + this.filename + '/js/' + this.filename + '.js');
+		this.template(this.jsFile, path + this.filename + '/js/' + this.filename + this.jsFileExtension);
 	}
 };
 

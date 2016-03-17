@@ -1,3 +1,6 @@
+### v6.6.6
+- added individual extensions and file types in blueprints generator
+
 ### v6.6.5
 - added delete functionality for settings file
 - minor improvements
