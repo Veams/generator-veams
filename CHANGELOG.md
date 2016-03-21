@@ -1,3 +1,7 @@
+### v6.6.7
+- added custom events to blueprint generator
+- updated endpoints in config.js
+
 ### v6.6.6
 - added individual extensions and file types in blueprints generator
 

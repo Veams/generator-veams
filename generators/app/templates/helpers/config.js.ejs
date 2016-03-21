@@ -38,7 +38,8 @@ config.options = {<% if (taskRunner.indexOf('grunt') != -1) {%>
 		js: srcPath + '/js',
 		endpoints: [<% if(templateEngine) { %>
 			'resources/templating/pages',<% } %>
-			'resources/js/main.js',
+			'resources/js/main.js',<% if(veamsPackages && veamsPackages.indexOf('veamsJS') != -1) { %>
+			'resources/js/utils/events.js',<% } %>
 			'resources/scss/styles.scss'
 		]
 	},

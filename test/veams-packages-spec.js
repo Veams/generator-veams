@@ -20,13 +20,13 @@ describe('veams extensions', function () {
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/app'))
-				.inDir(path.join(__dirname, 'tmp'))
-				.withOptions({
-					'skip-install': true,
-					'skip-welcome-message': true
-				})
-				.withPrompts(answers)
-				.on('end', done);
+					.inDir(path.join(__dirname, 'tmp'))
+					.withOptions({
+						'skip-install': true,
+						'skip-welcome-message': true
+					})
+					.withPrompts(answers)
+					.on('end', done);
 		});
 
 		it('creates READMEs', function () {
@@ -51,13 +51,13 @@ describe('veams extensions', function () {
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/app'))
-				.inDir(path.join(__dirname, 'tmp'))
-				.withOptions({
-					'skip-install': true,
-					'skip-welcome-message': true
-				})
-				.withPrompts(answers)
-				.on('end', done);
+					.inDir(path.join(__dirname, 'tmp'))
+					.withOptions({
+						'skip-install': true,
+						'skip-welcome-message': true
+					})
+					.withPrompts(answers)
+					.on('end', done);
 		});
 
 		it('bower.json contains reference', function () {
@@ -75,13 +75,13 @@ describe('veams extensions', function () {
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/app'))
-				.inDir(path.join(__dirname, 'tmp'))
-				.withOptions({
-					'skip-install': true,
-					'skip-welcome-message': true
-				})
-				.withPrompts(answers)
-				.on('end', done);
+					.inDir(path.join(__dirname, 'tmp'))
+					.withOptions({
+						'skip-install': true,
+						'skip-welcome-message': true
+					})
+					.withPrompts(answers)
+					.on('end', done);
 		});
 
 		it('contains reference in bower.json', function () {
@@ -103,6 +103,10 @@ describe('veams extensions', function () {
 			assert.fileContent('Gruntfile.js', /'browserify\:vendor'/);
 			assert.fileContent('Gruntfile.js', /'browserify\:dist'/);
 			assert.fileContent('Gruntfile.js', /handlebars/);
+		});
+
+		it('adds event endpoint to config.js file', function () {
+			assert.fileContent('helpers/config.js', /'resources\/js\/utils\/events.js'/);
 		});
 
 		it('adds app.js, main.js and config.js to js folder', function () {
@@ -127,13 +131,13 @@ describe('veams extensions', function () {
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/app'))
-				.inDir(path.join(__dirname, 'tmp'))
-				.withOptions({
-					'skip-install': true,
-					'skip-welcome-message': true
-				})
-				.withPrompts(answers)
-				.on('end', done);
+					.inDir(path.join(__dirname, 'tmp'))
+					.withOptions({
+						'skip-install': true,
+						'skip-welcome-message': true
+					})
+					.withPrompts(answers)
+					.on('end', done);
 		});
 
 		it('bower.json contains reference', function () {
@@ -149,13 +153,13 @@ describe('veams extensions', function () {
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/app'))
-				.inDir(path.join(__dirname, 'tmp'))
-				.withOptions({
-					'skip-install': true,
-					'skip-welcome-message': true
-				})
-				.withPrompts(answers)
-				.on('end', done);
+					.inDir(path.join(__dirname, 'tmp'))
+					.withOptions({
+						'skip-install': true,
+						'skip-welcome-message': true
+					})
+					.withPrompts(answers)
+					.on('end', done);
 		});
 
 		it('bower.json contains no references', function () {
