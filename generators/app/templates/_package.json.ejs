@@ -30,7 +30,7 @@
 		"ampersand": "*"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'document-register-element') { %>
 		"document-register-element": "^0.4.5"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'respimage') { %>
 		"respimage": "^1.4.0"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'handlebars') { %>
-		"handlebars": "^3.0.3"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'touchswipe') { %>
+		"handlebars": "^4.0.0"<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% } %><% if(lib == 'touchswipe') { %>
 		"touchswipe": "^1.6.0"<% } %>
 	<% }); %><% } %><% } %>},
 	"devDependencies": {<% if(gruntModules && gruntModules.indexOf('grunt-browserify') !== -1 || gulpModules && gulpModules.indexOf('browserify') !== -1) { %>
@@ -89,10 +89,10 @@
 		"grunt-grunticon": "~1.0.0-beta.0",<% } %><% if(name == 'grunt-dr-svg-sprites') { %>
 		"grunt-dr-svg-sprites": "^0.9.31",<% } %><% if(name == 'grunt-dr-svg-sprites' || name == "grunt-grunticon" || name == 'grunt-contrib-handlebars') { %>
 		"grunt-text-replace": "~0.4.0",<% } %><% if(name == 'grunt-contrib-uglify') { %>
-		"grunt-contrib-uglify": "~0.9.2",<% } %><% if(name == 'grunt-includes') { %>
+		"grunt-contrib-uglify": "~1.0.0",<% } %><% if(name == 'grunt-includes') { %>
 		"grunt-includes": "~0.5.1",<% } %><% if(name == 'grunt-modernizr') { %>
 		"grunt-modernizr": "~0.5.2",<% } %><% if(name == 'grunt-contrib-handlebars') { %>
-		"grunt-contrib-handlebars": "~0.10.2",<% } %><% if(name == 'grunt-browserify') { %>
+		"grunt-contrib-handlebars": "~1.0.0",<% } %><% if(name == 'grunt-browserify') { %>
 		"grunt-browserify": "~4.0.1",<% } %><% if(name == 'grunt-browser-sync') { %>
 		"grunt-browser-sync": "~2.1.3",<% } %><% if(name == 'grunt-csscomb') { %>
 		"grunt-csscomb": "^3.0.0",<% } %><% if(name == 'grunt-combine-mq') { %>
