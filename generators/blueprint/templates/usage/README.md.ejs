@@ -7,7 +7,7 @@ This blueprint is based on the blueprint of Veams-Components.
 ### Include: Page
 
 ``` hbs
-{{! @INSERT :: START @id: <%= filename %>, @tag: <% if (bpType === 'c-') { %>component-partial<% } else if (bpType === 'b-') { %>block-partial<% } else { %>global-partial<% } %> }}
+{{! @INSERT :: START @id: <%= filename %>, @tag: <% if (bpType === 'c-') { %>component-partial<% } else if (bpType === 'u-') { %>utility-partial<% } else if (bpType === 'b-') { %>block-partial<% } else { %>global-partial<% } %> }}
 {{#with <%= filename %>-bp}}<% if (bpWrapWith) { %>
 	{{#wrapWith "<%= bpType %><%= filename %>"}}
 		Wrapped with markup from <%= filename %>.
@@ -21,7 +21,7 @@ This blueprint is based on the blueprint of Veams-Components.
 
 ``` scss
 // @INSERT :: START @tag: scss-import //
-@import "<% if (bpType === 'c-') { %>components<% } else if (bpType === 'b-') { %>blocks<% } else { %>globals<% } %>/_<%= bpType %><%= filename %>";
+@import "<% if (bpType === 'c-') { %>components<% } else if (bpType === 'b-') { %><% } else if (bpType === 'u-') { %>utilities<% } else { %>globals<% } %>/_<%= bpType %><%= filename %>";
 // @INSERT :: END
 ```
 <% if(bpWithJs) {%>

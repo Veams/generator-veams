@@ -1,3 +1,8 @@
+### v6.6.8
+- added bp generator tests, 
+- updated setup file deletion
+- updated bp templates to support utilities
+
 ### v6.6.7
 - added custom events to blueprint generator
 - updated endpoints in config.js
