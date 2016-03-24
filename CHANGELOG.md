@@ -1,3 +1,6 @@
+### v6.6.9
+- fixed insertpoint `veamsJS-scss-import`
+
 ### v6.6.8
 - added bp generator tests, 
 - updated setup file deletion

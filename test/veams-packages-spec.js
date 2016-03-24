@@ -117,7 +117,7 @@ describe('veams extensions', function () {
 		});
 
 		it('adds INSERPOINT to sass file', function () {
-			assert.fileContent(srcPath + 'scss/styles.scss', /veamsJS-scss-import/);
+			assert.fileContent(srcPath + 'scss/styles.scss', /@INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false/);
 		});
 	});
 
