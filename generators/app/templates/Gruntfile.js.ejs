@@ -108,7 +108,8 @@ module.exports = function(grunt) {
 		'newer:assemble',<% } %>
 		'concurrent:syncing',
 		'watchCSS'<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
-		'sass:docs'<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') == -1) { %>,
+		'sass:docs'<% } %><% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>
+		'postcss:dev',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') == -1) { %>,
 		'express:dev',<% } else { %>,
 		'express:dev',
 		'browserSync',<% }} %>
@@ -131,8 +132,8 @@ module.exports = function(grunt) {
 		'sass:universal',<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>
 		'sass:docs',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-combine-mq') != -1) { %>
 		'combine_mq',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-postcss-separator') != -1) { %>
-		'postcssSeparator',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-autoprefixer') != -1) { %>
-		'autoprefixer',<% }} %>
+		'postcssSeparator',<% }} %><% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-autoprefixer') != -1) || (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1)) { %>
+		'postcss:dist',<% } %>
 		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
 		'bless',<% }} %><% if(templateEngine.indexOf('assemble') != -1){ %>
         'assemble',<% } %>

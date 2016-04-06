@@ -82,10 +82,10 @@ exports.scaffold = function (obj) {
 		}
 	}
 	if (this.gruntModules.indexOf('grunt-autoprefixer') != -1) {
-		this.copy(this.generatorGruntPath + 'autoprefixer.js', this.gruntPath + 'autoprefixer.js');
+		this.copy(this.generatorGruntPath + 'postcss.js.ejs', this.gruntPath + 'postcss.js');
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-autoprefixer'], {'saveDev': true});
+			this.npmInstall(['grunt-postcss'], {'saveDev': true});
 		}
 	}
 	if (this.gruntModules.indexOf('grunt-bless') != -1) {

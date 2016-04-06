@@ -1,26 +1,36 @@
-# Blocks 
+### General 
 
-`Blocks` are very simple to understand. 
+Blocks are partials which are very simple to understand. 
 
-1. Blocks are content blocks. 
-2. Blocks can contain modules or components. 
+1. Blocks are unique snippets, this means you can add an `id` to it.  
+2. Blocks can contain components. 
 3. They are **not reusable**.
+4. Blocks **cannot** contain regions.
 
-When you have worked with Drupal you should see similarities. 
+You do not have to use Blocks when you think it is not necessary - this is up to you.  
 
-When you use `blocks`, you have to prefix them with `b-` (or `_b-` for scss files). The declaration helps you structuring your code base.
+### Why do we use Blocks?
 
-### Assemble
+We use Blocks, because ...  
 
-Every block `.hbs` file get following structure:
+1. ... sometimes we need to create simple snippets without thinking about generalization
+2. ... we need to define unique elements which should not be used a second time on the same page 
 
-``` YAML
----
-block: My Block Name
----
+### Structure
+
+When we use Blocks, we prefix them with `b-` (or `_b-` for scss files). The declaration helps us structuring our code base.
+
+#### Example Snippet
+
+``` hbs
+<nav class="b-breadcrumb" role="navigation" id="breadcrumb"></nav>
 ```
 
-Your block folder structure can look like this: 
+### File/Folder Structure
+
+When you use a Template Engine, it is important to create a folder for your blocks. 
+
+Our block folder structure can look like this: 
 
 ``` bash
     └───partials
@@ -34,18 +44,19 @@ Your block folder structure can look like this:
 
 ```
 
-### SCSS Structure
+### Styles and Sass Structure
 
-For each block you have to create a scss file. The folder can look like this: 
+The styles are scoped to the block. 
+
+For each Block we create a Sass file. The folder can look like this: 
 
 ``` bash
 ├───scss
 	└───blocks
-			_b-nav.scss
-			_b-aside-content.scss
-			_b-toggle.scss
+			_b-logo.scss
+			_b-release.scss
+			_b-footer-copy.scss
 ```
-
 
 ### Examples
 

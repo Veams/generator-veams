@@ -27,14 +27,19 @@ describe('grunt-autoprefixer', function () {
 	});
 
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /grunt-autoprefixer/);
+		helpers.assertFile('package.json', /grunt-postcss/);
+		helpers.assertFile('package.json', /autoprefixer/);
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + "_grunt/autoprefixer.js");
+		helpers.assertFile(helperPath + "_grunt/postcss.js");
+	});
+
+	it('adds task to postcss.js file', function () {
+		helpers.assertFile(helperPath + "_grunt/postcss.js", /\'autoprefixer\'/);
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'autoprefixer\'/);
+		helpers.assertFile("Gruntfile.js", /\'postcss:dist\'/);
 	});
 });

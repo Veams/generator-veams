@@ -1,93 +1,64 @@
-# Regions
+### General 
 
-`Regions` are areas in your layout. **They are not reusable.**
+Because images speak louder than words, here is an image to illustrate Regions:
 
-1. `Regions` are only defined in your layouts. 
-2. `Regions` subdivide your layout. 
+![alt text](http://www.veams.org/img/temp/regions.jpg "Regions")
 
-Here is an image to illustrate region areas: 
+This image makes it clear, that: 
 
-![alt text](http://veams.org/img/pages/veams-methodology/regions.jpg "Regions")
+1. Regions are not reusable. 
+2. Regions are only defined in your layout files.
+3. Regions subdivide your layout.
 
-This image is actually borrowed from Drupal.org.
+_This image is actually borrowed from Drupal.org._
 
-**When you use `regions`, you have to prefix your classes with `r-` (and in scss use `_r-` for your files name). The declaration helps you structuring your code base.**
+### Why do we use Regions?
 
-### Assemble
+By using Regions we separate layout styles from our other instruments (`Components` and `Blocks`). The main benefit is drop-in replacement. 
 
-Every region should be defined in your layout (`lyt-default.hbs`) which can look like that:
+In example we can just replace our `logo` (Block) and replace it with a `language-switcher` (Block) without worrying about layout issues.  
+
+### Structure
+
+When we use Regions, we prefix them with `r-` (or `_r-` for scss files). The declaration helps us structuring our code base.
+
+#### Example Snippet
 
 ``` hbs
-<!-- Header
-================================================== -->
-<header class="r-header">
-	<div class="header__rotate">
-		<div class="container header__container">
+<div class="r-header">
+	<div class="header__inner is-container is-table-lyt">
+		<div class="r-header-left">
+		</div>
+		<div class="r-header-right">
 		</div>
 	</div>
-</header>
-
-<!-- Nav
-================================================== -->
-<section class="r-nav">
-	<div class="nav__rotate">
-	</div>
-</section>
-
-<!-- Stage
-================================================== -->
-<section class="r-stage">
-	<div class="stage__rotate">
-		<div class="container stage__container">
-		</div>
-	</div>
-</section>
-
-<!-- Content
-================================================== -->
-<main class="r-main" id="main">
-	<div class="main__rotate">
-		<div class="container main__container">
-			<aside class="r-sidebar is-right">
-			</aside>
-			<div class="r-content">
-			</div>
-		</div>
-	</div>
-
-</main>
-
-<!-- Footer
-================================================== -->
-<footer class="r-footer">
-	<div class="container footer__container">
-		<div class="footer__inner">
-		</div>
-	</div>
-</footer>
+</div>
 ```
 
-### SCSS Structure
+### File/Folder Structure
 
-For each region you have to create a scss file. The folder can look like this: 
+Every region should be defined in our layout file (in example `lyt-default.hbs` which you can find in your `templating` directory). 
+
+### Styles and Sass Structure
+
+For each layout section we create a Sass file. In this layout Sass file we define our regions. 
+
+The folder can look like this: 
 
 ``` bash
 ├───scss
-	└───regions
-			_r-main.scss
-			_r-sidebar.scss
-			_r-stage.scss
+	└───layout
+			_header.scss
+			_main.scss
+			_footer.scss
 ```
-
-The region style files can only contain layout specific styles. 
 
 ### Examples
 
-Here are some examples: 
-
-* Header 
-* Stage
-* Footer
-* Main
-* Sidebar Left
-* Sidebar Right
+* Header Region
+* Logo Region in Header
+* Navigation Region in Header
+* Stage Region
+* Main Content Region
+* Sidebar Region
+* Footer Region

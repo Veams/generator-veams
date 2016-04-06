@@ -1,6 +1,11 @@
-<% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('neat') != -1) { %>@import "../../bower-components/neat/app/assets/stylesheets/neat-helpers";
+<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
 /* ===================================================
-BOURBON NEAT
+VEAMS SETTINGS
+=================================================== */
+$min-width: false; // This variable will be used in veams-sass
+<% } %><% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('neat') != -1) { %>@import "../../bower-components/neat/app/assets/stylesheets/neat-helpers";
+/* ===================================================
+BOURBON NEAT SETTINGS
 =================================================== */
 $column: 73px;
 $gutter: 22px;
@@ -10,18 +15,15 @@ $max-width: 1138px;
 // Define Your Breakpoints For Bourbon Neat
 $bp-tablet-l: new-breakpoint(max-width 1024px 12);
 $bp-tablet-p: new-breakpoint(max-width 768px 12);
-$bp-mobile-l: new-breakpoint(max-width 640px 12);
+$bp-mobile-l: new-breakpoint(max-width 657px 12);
 $bp-mobile-p: new-breakpoint(max-width 480px 8);
 $bp-mobile-s: new-breakpoint(max-width 320px 8);
 <% } else { %>
 // Demo Variables
 $bp-tablet-l: 1024px;
 $bp-tablet-p: 768px;
-$bp-mobile-l: 640px;
+$bp-mobile-l: 657px;
 $bp-mobile-p: 480px;
-<% } %>
-<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
-$use-min-width: false; // This variable will be used in veams-sass
 <% } %>
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('foundation') != -1) { %>
 /* ===================================================
@@ -39,4 +41,17 @@ BOOTSTRAP SETTINGS
 // ../../bower-components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
 // Just copy and paste the things you need
 
+<% } %>
+<% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('lost-grid') != -1) { %>
+/* ===================================================
+LOST SETTINGS
+=================================================== */
+@lost flexbox flex;
+@lost gutter 30px;
+
+$max-width: 1440px;
+
+body {
+	lost-utility: edit;
+}
 <% } %>

@@ -1,7 +1,6 @@
 var veamsMethId = 'veamsMethodology';
 var veamsSCSSId = 'veamsSCSS';
 var veamsJSId = 'veamsJS';
-var veamsComponentsId = 'veamsComponents';
 
 exports.questions = function () {
 	return {
@@ -23,11 +22,6 @@ exports.questions = function () {
 				name: 'Veams-JS (Bower Component)',
 				value: veamsJSId,
 				checked: false
-			},
-			{
-				name: 'Veams-Components (Bower Component)',
-				value: veamsComponentsId,
-				checked: true
 			}
 		],
 		default: this.config.get('veamsPackages')
@@ -52,7 +46,6 @@ exports.overwriteSetup = function () {
 
 exports.scaffold = function () {
 	if (!this.veamsPackages && !this.veamsPackages.length) {
-		delete this.bowerFile['dependencies']['veams-components'];
 		delete this.bowerFile['dependencies']['veams-js'];
 		delete this.bowerFile['dependencies']['veams-sass'];
 
@@ -67,9 +60,6 @@ exports.scaffold = function () {
 			this.mkdir('resources/templating/data/pages');
 			this.mkdir('resources/templating/data/_global');
 
-			// General partial Readme
-			this.copy('resources/templating/partials/README.md');
-
 			// Layouts
 			this.copy('resources/templating/layouts/README.md');
 
@@ -79,14 +69,17 @@ exports.scaffold = function () {
 
 			// Components
 			this.copy('resources/templating/partials/components/README.md');
+
+			// Utilities
+			this.copy('resources/templating/partials/utilities/README.md');
 		}
 
 		// SCSS
 		this.mkdir('resources/scss/blocks');
+		this.mkdir('resources/scss/utilities');
 		this.mkdir('resources/scss/components');
 		this.mkdir('resources/scss/layouts');
 	}
-	if (this.veamsPackages.indexOf(veamsComponentsId) === -1) delete this.bowerFile['dependencies']['veams-components'];
 	if (this.veamsPackages.indexOf(veamsJSId) === -1) delete this.bowerFile['dependencies']['veams-js'];
 	if (this.veamsPackages.indexOf(veamsSCSSId) === -1) delete this.bowerFile['dependencies']['veams-sass'];
 };

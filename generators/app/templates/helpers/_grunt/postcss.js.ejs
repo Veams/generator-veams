@@ -1,0 +1,23 @@
+module.exports = {
+	options: {
+    log: true,
+    processors: [<% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') != -1) {%>
+		require('lost')<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-autoprefixer') != -1) { %>,<% } %><% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-autoprefixer') != -1) { %>
+		require('autoprefixer')({
+			browsers: ['last 2 versions', 'ie >= 10']
+     	})<% } %>
+    ]
+  },
+	dev: {
+		options: {
+			map: true
+		},
+		src: '<%%= paths.dev %>/css/styles.css'
+	},
+	dist: {
+		options: {
+			map: false
+		},
+		src: '<%%= paths.dev %>/css/styles.css'
+	}
+};

@@ -30,7 +30,8 @@ describe('gulp-autoprefixer', function () {
 	});
 
 	it('adds references to package.json', function () {
-		assert.fileContent('package.json', /gulp-autoprefixer/);
+		assert.fileContent('package.json', /autoprefixer/);
+		assert.fileContent('package.json', /gulp-postcss/);
 	});
 
 	it('creates helper files', function () {

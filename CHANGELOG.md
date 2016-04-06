@@ -1,3 +1,7 @@
+### v6.7.0
+- added lost grid (PostCSS grid system) 
+- added postcss for autoprefixer to Gulp and Grunt
+
 ### v6.6.9
 - fixed insertpoint `veamsJS-scss-import`
 

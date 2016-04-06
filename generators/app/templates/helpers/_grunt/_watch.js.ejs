@@ -43,7 +43,10 @@ module.exports = {
 	},<% } %>
 	scss: {
 		files: '<%%= paths.src %>/scss/**/*',
-		tasks: 'sass:dev'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
+		tasks: [
+			'sass:dev'<% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
+			'postcss:dev'<% } %>
+		]<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
 	    options: {
 			spawn: false
 		}<% }} %>

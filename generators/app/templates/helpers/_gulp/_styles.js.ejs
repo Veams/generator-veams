@@ -5,11 +5,13 @@ var size = require('gulp-filesize');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
-var autoprefixer = require('gulp-autoprefixer'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-bless') != -1) { %>
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-bless') != -1) { %>
 var bless = require('gulp-bless'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-combine-mq') != -1) { %>
 var combineMq = require('gulp-combine-mq'); <% } %>
 var minifycss = require('gulp-minify-css');
-var sassGlobbing = require('sass-globber');
+var sassGlobbing = require('sass-globber');<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1) { %>
+var lost = require('lost');<% } %>
 
 
 // Sass globbing module
@@ -36,7 +38,11 @@ gulp.task('sassGlobbing:dist', function () {
 gulp.task('styles:dev', function () {
 	return gulp.src(path.src + '/scss/styles.tmp.scss')
 		.pipe(sourcemaps.init())
-		.pipe(sass())
+		.pipe(sass())<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1 || gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+		.pipe(postcss([<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1) { %>
+			lost()<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>,<% } %><% } %><% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+			autoprefixer()<% } %>
+        ]))<% } %>
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(path.dev + '/css'))
 		.pipe(server.reload({
@@ -53,8 +59,11 @@ gulp.task('styles:dist', function () {
 	return gulp.src(path.src + '/scss/styles.tmp.scss')
 		.pipe(sass({
 			style: 'expanded'
-		}))<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
-		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 7', 'android 4'))<% } %><% if (gulpModules && gulpModules.indexOf('gulp-combine-mq') != -1) { %>
+		}))<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1 || gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+		.pipe(postcss([<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1) { %>
+			lost()<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>,<% } %><% } %><% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+			autoprefixer()<% } %>
+        ]))<% } %><% if (gulpModules && gulpModules.indexOf('gulp-combine-mq') != -1) { %>
 		.pipe(combineMq({
 			beautify: false
 		}))<% } %>

@@ -2,6 +2,7 @@ var _ = require('lodash');
 var foundationId = 'foundation';
 var neatId = 'neat';
 var bootstrapId = 'bootstrap-sass';
+var lostGridId = 'lost-grid';
 var veamsSCSSId = 'veamsSCSS';
 
 var veamsSCSSPreset = [
@@ -27,6 +28,11 @@ exports.questions = function () {
 			{
 				name: 'SASS Bootstrap',
 				value: bootstrapId,
+				checked: false
+			},
+			{
+				name: 'Lost Grid (PostCSS)',
+				value: lostGridId,
 				checked: false
 			}
 		],
@@ -54,4 +60,11 @@ exports.scaffold = function () {
 
 	// Bower handling
 	if (this.config.get('veamsPackages').indexOf(veamsSCSSId) === -1) delete this.bowerFile['dependencies']['veams-scss'];
+
+	// Grunt handling
+	if (this.cssLibs.indexOf(lostGridId) != -1) {
+		if(this.taskRunner.indexOf('grunt') !== -1) {
+			this.copy(this.generatorGruntPath + 'postcss.js.ejs', this.gruntPath + 'postcss.js');
+		}
+	}
 };
