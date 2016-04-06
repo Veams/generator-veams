@@ -108,8 +108,8 @@ module.exports = function(grunt) {
 		'newer:assemble',<% } %>
 		'concurrent:syncing',
 		'watchCSS'<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
-		'sass:docs'<% } %><% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>
-		'postcss:dev',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') == -1) { %>,
+		'sass:docs'<% } %><% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
+		'postcss:dev'<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') == -1) { %>,
 		'express:dev',<% } else { %>,
 		'express:dev',
 		'browserSync',<% }} %>
