@@ -1,3 +1,6 @@
+### v6.7.1
+- bugfix release
+
 ### v6.7.0
 - added lost grid (PostCSS grid system) 
 - added postcss for autoprefixer to Gulp and Grunt
