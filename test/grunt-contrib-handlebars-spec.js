@@ -33,9 +33,11 @@ describe('grunt-contrib-handlebars', function () {
 		assert.file(helperPath + "_grunt/handlebars.js");
 	});
 
-
-	it('adds task to Gruntfile.js file', function () {
+	it('adds handlebars task to Gruntfile.js', function () {
 		assert.fileContent('Gruntfile.js', /handlebars/);
 	});
 
+	it('adds replace task to Gruntfile.js', function () {
+		assert.fileContent('Gruntfile.js', /grunt-text-replace/);
+	});
 });
