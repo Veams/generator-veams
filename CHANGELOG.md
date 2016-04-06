@@ -1,5 +1,8 @@
+### v6.7.2
+- bugfix release (handlebars)
+
 ### v6.7.1
-- bugfix release
+- bugfix release (Gruntfile.js)
 
 ### v6.7.0
 - added lost grid (PostCSS grid system) 
