@@ -1,3 +1,6 @@
+### v6.7.3
+- added global module registry to js blueprint
+
 ### v6.7.2
 - bugfix release (handlebars)
 
