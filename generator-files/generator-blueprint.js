@@ -4,6 +4,7 @@ var config = require('../lib/config');
 var configFile = helpers.getProjectConfig();
 
 exports.construct = function () {
+
 	this.argument('name', {
 		type: String,
 		required: true
@@ -27,6 +28,9 @@ exports.construct = function () {
 
 exports.questions = function () {
 	var prompts = [];
+	var _this = this;
+
+	console.log('type: ', this.options.custom);
 
 	if (!this.name) {
 		prompts = prompts.concat([
@@ -62,7 +66,7 @@ exports.questions = function () {
 		}
 	]);
 
-	if (!this.options.component && !this.options.block && !this.options.utility) {
+	if (!this.options.component && !this.options.block && !this.options.utility && !this.options.custom) {
 		prompts = prompts.concat([
 			{
 				name: 'bpType',
@@ -85,14 +89,40 @@ exports.questions = function () {
 						checked: false
 					},
 					{
-						name: 'something else',
+						name: 'general',
 						value: 'global',
+						checked: false
+					},
+					{
+						name: 'custom',
+						value: 'custom',
 						checked: false
 					}
 				]
 			}
 		]);
 	}
+
+	prompts = prompts.concat([
+		{
+			when: function (answers) {
+				return _this.options.custom || answers.bpType === 'custom';
+			},
+			type: 'input',
+			name: 'customType',
+			message: 'How do you want to prefix your custom type?',
+			default: ''
+		},
+		{
+			when: function (answers) {
+				return answers.customType;
+			},
+			type: 'input',
+			name: 'customFolder',
+			message: 'In which folder do you want to save your custom type?',
+			default: 'custom'
+		}
+	]);
 
 	return prompts;
 };
@@ -105,19 +135,28 @@ exports.save = function (props) {
 	this.bpWrapWith = props.bpWithWrapWith;
 	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
 	this.bpWithJs = props.bpWithJs || false;
+	this.customType = false;
+	this.customFolder = props.customFolder;
 
-	if (this.options.component || this.options.block || this.options.utility) {
+	if (this.options.component || this.options.block || this.options.utility || this.options.custom) {
 		if (this.options.component) {
 			this.bpType = 'c-';
 		} else if (this.options.block) {
 			this.bpType = 'b-';
 		} else if (this.options.utility) {
 			this.bpType = 'u-';
+		} else if (this.options.custom) {
+			this.bpType = 'custom';
 		} else {
 			this.bpType = '';
 		}
 	} else {
 		this.bpType = props.bpType === 'global' ? '' : props.bpType;
+	}
+
+	if (this.bpType === 'custom') {
+		this.bpType = props.customType + '-';
+		this.customType = true;
 	}
 
 };

@@ -177,6 +177,49 @@ describe('Blueprints generator', function () {
 
 	});
 
+	describe('when blueprints type is custom', function () {
+		var answers = {
+			bpName: 'test-custom',
+			bpWithWrapWith: false,
+			bpWithJs: false,
+			customType: 'k',
+			customFolder: 'custom'
+		};
+
+		var tmpPath = 'tmp/' + answers.bpName;
+
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../generators/blueprint'))
+				.inDir(path.join(__dirname, 'tmp'))
+				.withOptions({
+					'custom': true,
+					'tmp': true,
+					'skip-install': true,
+					'skip-welcome-message': true
+				})
+				.withArguments(answers.bpName)
+				.withPrompts(answers)
+				.on('end', done);
+		});
+
+		it('adds prefix to files', function () {
+			var expected = [
+				tmpPath + '/partials/k-' + answers.bpName + '.hbs',
+				tmpPath + '/scss/_k-' + answers.bpName + '.scss'
+			];
+			assert.file(expected);
+		});
+
+		it('adds its type to all files', function () {
+			assert.fileContent([
+				[tmpPath + '/usage/README.md', /custom/],
+				[tmpPath + '/partials/k-' + answers.bpName + '.hbs', /k-test-custom/],
+				[tmpPath + '/scss/_k-' + answers.bpName + '.scss', /Custom/]
+			]);
+		});
+
+	});
+
 	describe('when blueprints is wrap with template', function () {
 		var answers = {
 			bpName: 'test-util',

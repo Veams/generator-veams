@@ -1,3 +1,6 @@
+### v6.7.3
+- added custom blueprint type support
+
 ### v6.7.2
 - bugfix release (handlebars)
 

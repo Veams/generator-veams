@@ -13,9 +13,15 @@ exports.questions = function () {
 			name: 'templateEngine',
 			message: 'Which Template Engine do you want to install?',
 			choices: [
-				{name: 'Assemble', value: 'assemble'},
+				{
+					name: 'Assemble',
+					value: 'assemble'
+				},
 				// {name: 'veams', value: 'veams'}
-				{name: 'none', value: ''}
+				{
+					name: 'none',
+					value: ''
+				}
 			],
 			default: 'assemble'
 		},
