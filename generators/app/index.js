@@ -22,6 +22,7 @@ module.exports = yeoman.generators.Base.extend({
 	// Initialize general settings and store some files
 	initializing: function () {
 		this.pkg = require('../../package.json');
+		this.pkgFile = this.src.readJSON('_package.json');
 		this.bowerFile = this.src.readJSON('_bower.json');
 
 		this.dotFiles = [
@@ -229,10 +230,10 @@ module.exports = yeoman.generators.Base.extend({
 			// Standard files
 			this.copy('gitignore', '.gitignore');
 			this.copy('bowerrc', '.bowerrc');
-			this.template('_package.json.ejs', 'package.json');
 			this.template('helpers/config.js.ejs', 'helpers/config.js');
 			this.template('README.md.ejs', 'README.md');
-			this.bowerFile['name'] = this.config.get('projectName');
+			this.bowerFile['name'] = this.config.get('projectName') || 'Minimal project';
+			this.pkgFile['name'] = this.config.get('projectName') || 'Minimal project';
 
 			this.mkdir('_output');
 
@@ -279,6 +280,10 @@ module.exports = yeoman.generators.Base.extend({
 				this.bowerFile['dependencies'] = {};
 			}
 			this.dest.write('bower.json', JSON.stringify(this.bowerFile, null, 4));
+		},
+
+		pkg: function () {
+			this.dest.write('package.json', JSON.stringify(this.pkgFile, null, 4));
 		}
 	},
 

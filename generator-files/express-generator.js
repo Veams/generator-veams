@@ -5,5 +5,5 @@ exports.questions = function () {
 exports.setup = function () {};
 
 exports.scaffold = function () {
-	this.copy('server/main.js', 'server/main.js');
+	this.template('server/main.js.ejs', 'server/main.js');
 };

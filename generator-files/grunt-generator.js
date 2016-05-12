@@ -33,7 +33,7 @@ exports.questions = function (obj) {
 				{name: 'grunt-grunticon'},
 				{name: 'grunt-image-size-export'},
 				{name: 'grunt-includes'},
-				{name: 'grunt-modernizr'},
+				// {name: 'grunt-modernizr'},
 				{name: 'grunt-phantomas'},
 				{name: 'grunt-photobox'},
 				{name: 'grunt-postcss-separator'},
@@ -71,9 +71,11 @@ exports.scaffold = function (obj) {
 		}
 	}
 
-	if (!this.gruntModules && !this.gruntModules.length) return;
+	// if (!this.gruntModules && !this.gruntModules.length) return;
 
 	// Grunt modules are splitted up in separate files and modules
+	if(this.gruntModules.indexOf('grunt-accessiblity') == -1) delete this.pkgFile['devDependencies']['grunt-accessibility'];
+
 	if (this.gruntModules.indexOf('grunt-accessibility') != -1) {
 		this.copy(this.generatorGruntPath + 'accessibility.js', this.gruntPath + 'accessibility.js');
 
