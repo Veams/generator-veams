@@ -136,7 +136,8 @@ module.exports = function(grunt) {
 		'postcss:dist',<% } %>
 		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
 		'bless',<% }} %><% if(templateEngine.indexOf('assemble') != -1){ %>
-        'assemble',<% } %>
+        'assemble',<% } %><% if(templateEngine.indexOf('mangony') != -1){ %>
+        'mangony:dist',<% } %>
 		'concurrent:hintAndDocs'
 	]);
 

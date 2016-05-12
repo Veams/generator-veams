@@ -13,11 +13,11 @@ exports.questions = function () {
 			name: 'templateEngine',
 			message: 'Which Template Engine do you want to install?',
 			choices: [
+				{name: 'Mangony', value: 'mangony'},
 				{name: 'Assemble', value: 'assemble'},
-				// {name: 'veams', value: 'veams'}
 				{name: 'none', value: ''}
 			],
-			default: 'assemble'
+			default: 'mangony'
 		},
 		{
 			when: function (answers) {
@@ -88,9 +88,9 @@ exports.scaffold = function () {
 			this.copy('helpers/_grunt/_assemble.js.ejs', 'helpers/_grunt/assemble.js');
 		}
 
-		if (this.templateEngine.indexOf('veams') !== -1) {
+		if (this.templateEngine.indexOf('mangony') !== -1) {
 			// Add Gruntfile-helper file
-			// this.copy('helpers/_grunt/_veams.js.ejs', 'helpers/_grunt/veams.js');
+			this.copy('helpers/_grunt/_mangony.js.ejs', 'helpers/_grunt/mangony.js');
 		}
 	}
 };

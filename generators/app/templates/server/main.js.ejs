@@ -1,7 +1,17 @@
 var express = require('express');
 var request = require('request');
 var livereload = require('connect-livereload');
-var app = express();
+var app = express();<% if (templateEngine.indexOF('mangony') !== -1) { %>
+var deepExtend = require('deep-extend');
+var Mangony = require('mangony');
+var mangonyOptions = require('../helpers/_grunt/mangony');
+var mangonyDevOptions = deepExtend(mangonyOptions.dev.options, {
+	devServer: {
+		express: app
+	}
+});
+var mangonyServer = new Mangony(deepExtend(mangonyOptions.options, mangonyDevOptions));
+<% } %>
 /**
  * parameter passing from grunt
  * @type {Array}
@@ -24,7 +34,9 @@ Object.keys(apiServerHosts).forEach(function (route) {
 	apiServerHostRoutes.push('/' + route);
 	apiServerHostRoutes.push('/' + route + '.json');
 });
-
+<% if (templateEngine.indexOF('mangony') !== -1) { %>
+mangonyServer.render();
+<% } %>
 app.set('port', process.env.PORT || 3000);
 
 app.use(livereload({
