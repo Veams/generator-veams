@@ -1,5 +1,7 @@
-### v6.7.3
+### v6.7.4
 - added custom blueprint type support
+### v6.7.3
+- added global module registry to js blueprint
 
 ### v6.7.2
 - bugfix release (handlebars)

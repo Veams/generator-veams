@@ -1,8 +1,10 @@
 /**
  * Description of <%= bpJsName %>.
- * @module <%= bpJsName %>
  *
- * @author
+ * @module <%= bpJsName %>
+ * @version v0.0.0
+ *
+ * @author your_name
  */
 
 import Helpers from '../../utils/helpers';
@@ -24,6 +26,17 @@ class <%= bpJsName %> extends AppModule {
 		let options = {};
 
 		super(obj, options);
+		App.registerModule && App.registerModule(<%= bpJsName %>.info, this.el);
+	}
+
+	/**
+	 * Get module information
+	 */
+	static get info() {
+		return {
+			name: '<%= bpJsName %>',
+			version: '0.0.0'
+		};
 	}
 
 	/**
