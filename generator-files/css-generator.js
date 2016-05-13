@@ -63,8 +63,11 @@ exports.scaffold = function () {
 
 	// Grunt handling
 	if (this.cssLibs.indexOf(lostGridId) != -1) {
-		if(this.taskRunner.indexOf('grunt') !== -1) {
+		if (this.taskRunner.indexOf('grunt') !== -1) {
 			this.copy(this.generatorGruntPath + 'postcss.js.ejs', this.gruntPath + 'postcss.js');
+			delete this.pkgFile['devDependencies']['gulp-postcss'];
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-postcss'];
 		}
 	}
 };

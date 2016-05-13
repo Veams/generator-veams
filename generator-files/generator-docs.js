@@ -68,6 +68,8 @@ exports.scaffold = function () {
 				this.generatorGruntPath + 'jsdoc.js',
 				this.gruntPath + 'jsdoc.js'
 			);
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-jsdoc'];
 		}
 	}
 
@@ -82,6 +84,8 @@ exports.scaffold = function () {
 				this.generatorGruntPath + 'sassdoc.js',
 				this.gruntPath + 'sassdoc.js'
 			);
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-sassdoc'];
 		}
 	}
 
@@ -91,5 +95,8 @@ exports.scaffold = function () {
 			this.generatorGulpPath + '_docs.js.ejs',
 			this.gulpPath + 'docs.js'
 		);
+	} else {
+		delete this.pkgFile['devDependencies']['gulp-jsdoc'];
+		delete this.pkgFile['devDependencies']['sassdoc'];
 	}
 };
