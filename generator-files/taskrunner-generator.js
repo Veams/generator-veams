@@ -45,6 +45,7 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['grunt-sync'];
 		delete this.pkgFile['devDependencies']['grunt-express'];
 		delete this.pkgFile['devDependencies']['grunt-sass-globber'];
+		delete this.pkgFile['devDependencies']['grunt-sass'];
 		delete this.pkgFile['devDependencies']['jit-grunt'];
 		delete this.pkgFile['devDependencies']['time-grunt'];
 		delete this.pkgFile['devDependencies']['gulp-grunt'];
@@ -71,10 +72,13 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['sass-globber'];
 		delete this.pkgFile['devDependencies']['gulp'];
 		delete this.pkgFile['devDependencies']['gulp-filesize'];
+		delete this.pkgFile['devDependencies']['gulp-htmlhint'];
 		delete this.pkgFile['devDependencies']['gulp-grunt'];
 		delete this.pkgFile['devDependencies']['gulp-minify-css'];
 		delete this.pkgFile['devDependencies']['gulp-minify-filesize'];
 		delete this.pkgFile['devDependencies']['gulp-notify'];
+		delete this.pkgFile['devDependencies']['gulp-sass'];
 		delete this.pkgFile['devDependencies']['gulp-sequence'];
+		delete this.pkgFile['devDependencies']['gulp-sourcemaps'];
 	}
 };
