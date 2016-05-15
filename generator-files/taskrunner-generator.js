@@ -71,9 +71,11 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['require-dir'];
 		delete this.pkgFile['devDependencies']['sass-globber'];
 		delete this.pkgFile['devDependencies']['gulp'];
+		delete this.pkgFile['devDependencies']['gulp-load'];
+		delete this.pkgFile['devDependencies']['gulp-load-plugins'];
 		delete this.pkgFile['devDependencies']['gulp-filesize'];
-		delete this.pkgFile['devDependencies']['gulp-htmlhint'];
 		delete this.pkgFile['devDependencies']['gulp-grunt'];
+		delete this.pkgFile['devDependencies']['gulp-htmlhint'];
 		delete this.pkgFile['devDependencies']['gulp-minify-css'];
 		delete this.pkgFile['devDependencies']['gulp-minify-filesize'];
 		delete this.pkgFile['devDependencies']['gulp-notify'];

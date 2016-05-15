@@ -64,6 +64,14 @@ exports.scaffold = function () {
 	// Deletion in package.json
 	if (this.gulpModules.indexOf('gulp-requirejs-optimize') === -1) delete this.pkgFile['devDependencies']['gulp-requirejs-optimize'];
 	if (this.gulpModules.indexOf('gulp-uglify') === -1) delete this.pkgFile['devDependencies']['gulp-uglify'];
-	if (this.gulpModules.indexOf('gulp-iconify') === -1) delete this.pkgFile['devDependencies']['gulp-iconify'];
+	if (this.gulpModules.indexOf('gulp-iconify') === -1) {
+		delete this.pkgFile['devDependencies']['gulp-iconify'];
+	}
 	if (this.gulpModules.indexOf('gulp-svg-sprite') === -1) delete this.pkgFile['devDependencies']['gulp-svg-sprite'];
+	if (this.gulpModules.indexOf('gulp-htmlmin') === -1) delete this.pkgFile['devDependencies']['gulp-htmlmin'];
+	if (this.gulpModules.indexOf('gulp-modulizr') === -1) delete this.pkgFile['devDependencies']['gulp-modulizr'];
+	if (this.gulpModules.indexOf('gulp-responsive') === -1) delete this.pkgFile['devDependencies']['gulp-responsive'];
+	if (this.gulpModules.indexOf('gulp-bless') === -1) delete this.pkgFile['devDependencies']['gulp-bless'];
+	if (this.gulpModules.indexOf('gulp-combine-mq') === -1) delete this.pkgFile['devDependencies']['gulp-combine-mq'];
+	if (this.gulpModules.indexOf('gulp-autoprefixer') === -1 && this.cssLibs.indexOf('lost') === -1) delete this.pkgFile['devDependencies']['gulp-postcss'];
 };

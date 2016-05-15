@@ -100,5 +100,9 @@ exports.scaffold = function () {
 			delete this.pkgFile['devDependencies']['mangony'];
 			delete this.pkgFile['devDependencies']['grunt-mangony'];
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['assemble'];
+		delete this.pkgFile['devDependencies']['mangony'];
+		delete this.pkgFile['devDependencies']['grunt-mangony'];
 	}
 };

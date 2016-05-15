@@ -8,7 +8,6 @@ exports.questions = function (obj) {
 	return [
 		{
 			when: function (answers) {
-				console.log('answer: ', answers);
 				var taskRunner = answers.taskRunner || obj.taskRunner;
 
 				return taskRunner
@@ -69,6 +68,11 @@ exports.scaffold = function (obj) {
 			this.copy(this.generatorGruntPath + 'cssmin.js', this.gruntPath + 'cssmin.js');
 			this.template(this.generatorGruntPath + '_sync.js.ejs', this.gruntPath + 'sync.js');
 			this.template(this.generatorGruntPath + '_watch.js.ejs', this.gruntPath + 'watch.js');
+		} else {
+			if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
+			if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-sass'];
+			if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-sass-globber'];
+			if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-express'];
 		}
 	}
 
