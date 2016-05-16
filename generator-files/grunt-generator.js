@@ -54,30 +54,6 @@ exports.scaffold = function (obj) {
 	var object = obj || {};
 	object.defaults = object.defaults !== false;
 
-	// Copy standard files
-	if (object.defaults) {
-		this.template('Gruntfile.js.ejs', 'Gruntfile.js');
-		this.mkdir('helpers/_grunt');
-
-		if (this.taskRunner.indexOf('grunt') != -1 && this.taskRunner.indexOf('gulp') == -1) {
-			this.template(this.generatorGruntPath + '_clean.js.ejs', this.gruntPath + 'clean.js');
-			this.template(this.generatorGruntPath + '_sass.js.ejs', this.gruntPath + 'sass.js');
-			this.template(this.generatorGruntPath + '_sassGlobber.js.ejs', this.gruntPath + 'sassGlobber.js');
-			this.template(this.generatorGruntPath + '_concurrent.js.ejs', this.gruntPath + 'concurrent.js');
-			this.template(this.generatorGruntPath + 'express.js', this.gruntPath + 'express.js');
-			this.copy(this.generatorGruntPath + 'cssmin.js', this.gruntPath + 'cssmin.js');
-			this.template(this.generatorGruntPath + '_sync.js.ejs', this.gruntPath + 'sync.js');
-			this.template(this.generatorGruntPath + '_watch.js.ejs', this.gruntPath + 'watch.js');
-		} else {
-			if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
-			if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-sass'];
-			if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-sass-globber'];
-			if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-express'];
-		}
-	}
-
-	// if (!this.gruntModules && !this.gruntModules.length) return;
-
 	// Grunt modules are splitted up in separate files and modules
 	if (this.gruntModules.indexOf('grunt-accessibility') != -1) {
 		this.copy(this.generatorGruntPath + 'accessibility.js', this.gruntPath + 'accessibility.js');
@@ -133,7 +109,7 @@ exports.scaffold = function (obj) {
 			this.npmInstall(['grunt-postcss-separator'], {'saveDev': true});
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-postcss-seperator'];
+		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-postcss-separator'];
 	}
 	if (this.gruntModules.indexOf('grunt-csscomb') != -1) {
 		this.copy(this.generatorGruntPath + 'csscomb.js', this.gruntPath + 'csscomb.js');

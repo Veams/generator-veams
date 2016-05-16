@@ -42,26 +42,38 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['grunt-contrib-watch'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-cssmin'];
-		delete this.pkgFile['devDependencies']['grunt-sync'];
 		delete this.pkgFile['devDependencies']['grunt-express'];
+		delete this.pkgFile['devDependencies']['grunt-sync'];
 		delete this.pkgFile['devDependencies']['grunt-sass-globber'];
 		delete this.pkgFile['devDependencies']['grunt-sass'];
 		delete this.pkgFile['devDependencies']['jit-grunt'];
 		delete this.pkgFile['devDependencies']['time-grunt'];
 		delete this.pkgFile['devDependencies']['gulp-grunt'];
 	} else {
+		this.mkdir('helpers/_grunt');
+		this.template('Gruntfile.js.ejs', 'Gruntfile.js');
+
 		if (this.taskRunner.indexOf(gulpId) !== -1) {
 			this.pkgFile['scripts'] = {
 				"test": "gulp test",
 				"start": "gulp start",
 				"build": "gulp build"
-			}
+			};
 		} else {
 			this.pkgFile['scripts'] = {
 				"test": "grunt test",
 				"start": "grunt start",
 				"build": "grunt build"
-			}
+			};
+
+			this.template(this.generatorGruntPath + '_clean.js.ejs', this.gruntPath + 'clean.js');
+			this.template(this.generatorGruntPath + '_concurrent.js.ejs', this.gruntPath + 'concurrent.js');
+			this.copy(this.generatorGruntPath + 'cssmin.js', this.gruntPath + 'cssmin.js');
+			this.template(this.generatorGruntPath + 'express.js', this.gruntPath + 'express.js');
+			this.template(this.generatorGruntPath + '_sync.js.ejs', this.gruntPath + 'sync.js');
+			this.template(this.generatorGruntPath + '_sassGlobber.js.ejs', this.gruntPath + 'sassGlobber.js');
+			this.template(this.generatorGruntPath + '_sass.js.ejs', this.gruntPath + 'sass.js');
+			this.template(this.generatorGruntPath + '_watch.js.ejs', this.gruntPath + 'watch.js');
 		}
 	}
 
@@ -82,5 +94,15 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['gulp-sass'];
 		delete this.pkgFile['devDependencies']['gulp-sequence'];
 		delete this.pkgFile['devDependencies']['gulp-sourcemaps'];
+	} else {
+		// Copy standard files
+		this.template('Gulpfile.js.ejs', 'Gulpfile.js');
+		this.mkdir('helpers/_gulp');
+		this.template('helpers/_gulp/_clean.js.ejs', 'helpers/_gulp/clean.js');
+		this.template('helpers/_gulp/_styles.js.ejs', 'helpers/_gulp/styles.js');
+		// if .gulpModules.indexOf('gulp-htmlhint') !== -1 || this.gulpModules.indexOf()
+		this.template('helpers/_gulp/_hinting.js.ejs', 'helpers/_gulp/hinting.js');
+		this.template('helpers/_gulp/_html.js.ejs', 'helpers/_gulp/html.js');
+		this.template('helpers/_gulp/_copy.js.ejs', 'helpers/_gulp/copy.js');
 	}
 };
