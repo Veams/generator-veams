@@ -42,7 +42,7 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['grunt-contrib-watch'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-cssmin'];
-		delete this.pkgFile['devDependencies']['grunt-express'];
+		delete this.pkgFile['devDependencies']['grunt-express-server'];
 		delete this.pkgFile['devDependencies']['grunt-sync'];
 		delete this.pkgFile['devDependencies']['grunt-sass-globber'];
 		delete this.pkgFile['devDependencies']['grunt-sass'];

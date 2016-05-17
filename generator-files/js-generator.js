@@ -72,16 +72,6 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-	// Bower handling
-	if (this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-		this.gulpModules.indexOf('browserify') !== -1 ||
-		this.taskRunner.indexOf('gulp') !== -1 && this.gulpModules.indexOf('gulp-requirejs-optimize') === -1 ||
-		this.taskRunner.indexOf('grunt') !== -1 && this.gruntModules.indexOf('grunt-contrib-requirejs') === -1) {
-		delete this.bowerFile['dependencies']['almond'];
-		delete this.bowerFile['dependencies']['requirejs'];
-		delete this.bowerFile['dependencies']['requirejs-text'];
-	}
-
 	if (this.jsLibs.indexOf(backboneId) == -1 ||
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
 		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['backbone'];
@@ -94,7 +84,7 @@ exports.scaffold = function () {
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
 		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['jquery'];
 
-	if (this.veamsPackages.indexOf('veamsJS') == -1) delete this.bowerFile['dependencies']['veams-js'];
+	if (this.veamsPackages.indexOf('veamsJS') === -1) delete this.bowerFile['dependencies']['veams-js'];
 
 	// Add JS files for libraries
 	if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || this.gulpModules.indexOf('gulp-requirejs-optimize') != -1) {

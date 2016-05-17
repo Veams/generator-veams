@@ -34,6 +34,7 @@ exports.setup = function () {
 exports.scaffold = function () {
 	if (!this.gulpModules && !this.gulpModules.length) {
 		delete this.pkgFile['devDependencies']['gulp-postcss'];
+		delete this.pkgFile['devDependencies']['jshint-stylish'];
 	}
 
 	// Add scripts task

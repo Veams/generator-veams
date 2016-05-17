@@ -67,8 +67,7 @@
 		"glob": "^5.0.14",
 		"path": "*",
 		"gray-matter": "*",
-		"handlebars-helper-autolink": "^0.1.1",
-		"grunt": "~0.4.5",
+		"grunt": "~1.0.0",
 		"grunt-sass": "~1.0.0",
 		"grunt-sass-globber": "^2.0.0",
 		"grunt-postcss": "~0.8.0",
@@ -121,6 +120,5 @@
 		}
 	],
 	"keywords": [
-		"handlebars-helper-autolink"
 	]
 }

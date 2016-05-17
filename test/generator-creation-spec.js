@@ -6,7 +6,7 @@ var helpers = require('yeoman-generator').test;
 var fs = require('fs');
 var defaultPrompts = require('../test_helpers/prompt-answer-factory')();
 
-describe('prototype-generator', function () {
+describe('generator-veams', function () {
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
 			.inDir(path.join(__dirname, 'tmp'))
