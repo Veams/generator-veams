@@ -10,7 +10,7 @@ describe('Documenation', function () {
 	var helperPath = "helpers/";
 	var srcPath = "resources/";
 
-	describe('When JavaScript Documenation will be installed and task runner is Grunt', function () {
+	describe('when JavaScript Documenation will be installed in Grunt', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"taskRunner": "grunt",
 			"docs": [
@@ -51,7 +51,7 @@ describe('Documenation', function () {
 		});
 	});
 
-	describe('When Sass Documenation will be installed and task runner is Grunt', function () {
+	describe('When Sass Documenation will be installed in Grunt', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"taskRunner": "grunt",
 			"docs": [
@@ -90,7 +90,7 @@ describe('Documenation', function () {
 			helpers.assertFile(helperPath + "_grunt/concurrent.js", /\'sassdoc\'/);
 		});
 	});
-	describe('When HTML Documenation will be installed and task runner is Grunt', function () {
+	describe('When HTML Documenation will be installed in Grunt', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"taskRunner": "grunt",
 			"templateEngine": "assemble",
@@ -119,7 +119,7 @@ describe('Documenation', function () {
 		});
 	});
 
-	describe('When JavaScript Documenation will be installed and task runner is Gulp', function () {
+	describe('When JavaScript Documenation will be installed in Gulp', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"taskRunner": "gulp",
 			"docs": [
@@ -152,7 +152,7 @@ describe('Documenation', function () {
 		});
 	});
 
-	describe('When Sass Documenation will be installed and task runner is Gulp', function () {
+	describe('When Sass Documenation will be installed in Gulp', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			"taskRunner": "gulp",
 			"docs": [

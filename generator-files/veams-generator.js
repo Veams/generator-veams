@@ -34,13 +34,15 @@ exports.setup = function () {
 
 exports.overwriteSetup = function () {
 	if (this.veamsPackages.indexOf(veamsJSId) !== -1) {
-		var gruntModules = this.config.get('gruntModules');
+		if (this.taskRunner.indexOf('gulp') === -1) {
+			var gruntModules = this.config.get('gruntModules');
 
-		gruntModules.push('grunt-contrib-handlebars');
-		gruntModules.push('grunt-browserify');
-		gruntModules.push('grunt-contrib-uglify');
+			gruntModules.push('grunt-contrib-handlebars');
+			gruntModules.push('grunt-browserify');
+			gruntModules.push('grunt-contrib-uglify');
 
-		this.config.set('gruntModules', gruntModules);
+			this.config.set('gruntModules', gruntModules);
+		}
 	}
 };
 

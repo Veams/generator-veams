@@ -3,7 +3,7 @@ title: Build Better Prototypes with Veams
 menuLink: Components
 sortOrder: 02
 ---
-<% if (installExtendedLayout == true) { %>
+<% if (installExtendedLayout == true || templateEngine.indexOf('mangony') !== -1) { %>
 {{#extend "lyt-default"}}
 	{{#content "main"}}
 		<h3>Place your components here!</h3>

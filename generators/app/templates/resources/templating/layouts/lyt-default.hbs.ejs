@@ -9,7 +9,7 @@
 <html lang="en" class="no-js"> <!--<![endif]-->
 
 <head>
-	<% if (installExtendedLayout === true) { %>
+	<% if (installExtendedLayout === true || templateEngine.indexOf('mangony') !== -1) { %>
 	{{#block "metadata"}}
 		{{> _metadata }}
 	{{/block}}
@@ -23,7 +23,7 @@
 </head>
 
 <body class="{{bodyclass}}">
-	<% if (installExtendedLayout === true) { %>
+	<% if (installExtendedLayout === true || templateEngine.indexOf('mangony') !== -1) { %>
 	{{#block "main"}}
 		{{> body }}
 	{{/block}}
@@ -31,7 +31,7 @@
 	{{> body }}
 	<% } %>
 	<!-- Scripts
-	================================================== --> <% if (installExtendedLayout === true) { %>
+	================================================== --> <% if (installExtendedLayout === true || templateEngine.indexOf('mangony') !== -1) { %>
 	{{#block "scripts"}}
 		{{> _scripts }}
 	{{/block}}

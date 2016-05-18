@@ -32,17 +32,10 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-	// Copy standard files
-	this.template('Gulpfile.js.ejs', 'Gulpfile.js');
-	this.mkdir('helpers/_gulp');
-	this.template('helpers/_gulp/_clean.js.ejs', 'helpers/_gulp/clean.js');
-	this.template('helpers/_gulp/_styles.js.ejs', 'helpers/_gulp/styles.js');
-	// if .gulpModules.indexOf('gulp-htmlhint') !== -1 || this.gulpModules.indexOf()
-	this.template('helpers/_gulp/_hinting.js.ejs', 'helpers/_gulp/hinting.js');
-	this.template('helpers/_gulp/_html.js.ejs', 'helpers/_gulp/html.js');
-	this.template('helpers/_gulp/_copy.js.ejs', 'helpers/_gulp/copy.js');
-
-	if (!this.gulpModules && !this.gulpModules.length) return;
+	if (!this.gulpModules || !this.gulpModules.length) {
+		delete this.pkgFile['devDependencies']['gulp-postcss'];
+		delete this.pkgFile['devDependencies']['jshint-stylish'];
+	}
 
 	// Add scripts task
 	if (this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 ||
@@ -58,4 +51,17 @@ exports.scaffold = function () {
 	if (this.gulpModules.indexOf('gulp-iconify') != -1 || this.gulpModules.indexOf('gulp-svg-sprite') != -1) {
 		this.template('helpers/_gulp/_icons.js.ejs', 'helpers/_gulp/icons.js');
 	}
+
+	// Deletion in package.json
+	if (this.gulpModules.indexOf('browserify') === -1) delete this.pkgFile['devDependencies']['browserify'];
+	if (this.gulpModules.indexOf('gulp-autoprefixer') === -1 && this.cssLibs.indexOf('lost') === -1) delete this.pkgFile['devDependencies']['gulp-postcss'];
+	if (this.gulpModules.indexOf('gulp-bless') === -1) delete this.pkgFile['devDependencies']['gulp-bless'];
+	if (this.gulpModules.indexOf('gulp-combine-mq') === -1) delete this.pkgFile['devDependencies']['gulp-combine-mq'];
+	if (this.gulpModules.indexOf('gulp-htmlmin') === -1) delete this.pkgFile['devDependencies']['gulp-htmlmin'];
+	if (this.gulpModules.indexOf('gulp-iconify') === -1) delete this.pkgFile['devDependencies']['gulp-iconify'];
+	if (this.gulpModules.indexOf('gulp-modulizr') === -1) delete this.pkgFile['devDependencies']['gulp-modulizr'];
+	if (this.gulpModules.indexOf('gulp-requirejs-optimize') === -1) delete this.pkgFile['devDependencies']['gulp-requirejs-optimize'];
+	if (this.gulpModules.indexOf('gulp-responsive') === -1) delete this.pkgFile['devDependencies']['gulp-responsive'];
+	if (this.gulpModules.indexOf('gulp-svg-sprite') === -1) delete this.pkgFile['devDependencies']['gulp-svg-sprite'];
+	if (this.gulpModules.indexOf('gulp-uglify') === -1) delete this.pkgFile['devDependencies']['gulp-uglify'];
 };

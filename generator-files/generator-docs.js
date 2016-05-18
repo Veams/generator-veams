@@ -68,7 +68,11 @@ exports.scaffold = function () {
 				this.generatorGruntPath + 'jsdoc.js',
 				this.gruntPath + 'jsdoc.js'
 			);
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-jsdoc'];
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['grunt-jsdoc'];
 	}
 
 	if (this.docs && this.docs.indexOf(sassDocsId) !== -1) {
@@ -82,7 +86,11 @@ exports.scaffold = function () {
 				this.generatorGruntPath + 'sassdoc.js',
 				this.gruntPath + 'sassdoc.js'
 			);
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-sassdoc'];
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['grunt-sassdoc'];
 	}
 
 	if (this.taskRunner.indexOf('gulp') !== -1 && this.docs && (this.docs.indexOf(sassDocsId) !== -1 || this.docs.indexOf(jsDocsId) !== -1)) {
@@ -91,5 +99,8 @@ exports.scaffold = function () {
 			this.generatorGulpPath + '_docs.js.ejs',
 			this.gulpPath + 'docs.js'
 		);
+	} else {
+		delete this.pkgFile['devDependencies']['gulp-jsdoc'];
+		delete this.pkgFile['devDependencies']['sassdoc'];
 	}
 };

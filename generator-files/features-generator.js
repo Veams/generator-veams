@@ -32,6 +32,10 @@ exports.scaffold = function () {
 		// Add copy task
 		if (this.features.indexOf('createDevFolder') != -1) {
 			this.copy('helpers/_grunt/_copy.js.ejs', 'helpers/_grunt/copy.js');
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-contrib-copy'];
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['grunt-contrib-copy'];
 	}
 };

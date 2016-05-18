@@ -72,7 +72,7 @@ module.exports = {
 		options: {
 			spawn: false
 		}<% }} %>
-	}<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
+	}<% if (templateEngine.indexOf('assemble') != -1 && docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 	docs: {
 		files: ['<%%= paths.src %>/templating/docs/**/{,*/}*.hbs'],
 		tasks: ['newer:assemble:docs']<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,

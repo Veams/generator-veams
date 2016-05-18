@@ -75,9 +75,6 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-	if (!this.testAndQALibs && !this.testAndQALibs.length) return;
-
-
 	if (this.testAndQALibs.indexOf(jscsId) !== -1) {
 		this.copy(
 			this.generatorHelperPath + 'task-configs/jscs.airbnb.json',
@@ -89,6 +86,9 @@ exports.scaffold = function () {
 				this.generatorHelperPath + '_grunt/jscs.js',
 				this.helperPath + '_grunt/jscs.js'
 			);
+			delete this.pkgFile['devDependencies']['gulp-jscs'];
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-jscs'];
 		}
 
 		if (this.taskRunner.indexOf('gulp') !== -1) {
@@ -97,6 +97,9 @@ exports.scaffold = function () {
 				this.gulpPath + 'testing.js'
 			);
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['grunt-jscs'];
+		delete this.pkgFile['devDependencies']['gulp-jscs'];
 	}
 
 	if (this.testAndQALibs.indexOf(htmlHintId) !== -1) {
@@ -110,7 +113,13 @@ exports.scaffold = function () {
 				this.generatorGruntPath + 'htmlhint.js',
 				this.gruntPath + 'htmlhint.js'
 			);
+			delete this.pkgFile['devDependencies']['gulp-htmlhint'];
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-htmlhint'];
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['gulp-htmlhint'];
+		delete this.pkgFile['devDependencies']['grunt-htmlhint'];
 	}
 
 	if (this.testAndQALibs.indexOf(jsHintId) != -1) {
@@ -124,7 +133,13 @@ exports.scaffold = function () {
 				this.generatorGruntPath + 'jshint.js',
 				this.gruntPath + 'jshint.js'
 			);
+			delete this.pkgFile['devDependencies']['gulp-jshint'];
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-contrib-jshint'];
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['gulp-jshint'];
+		delete this.pkgFile['devDependencies']['grunt-contrib-jshint'];
 	}
 
 	if (this.testAndQALibs.indexOf(htmlHintId) !== -1 || this.testAndQALibs.indexOf(jsHintId) !== -1) {
@@ -149,7 +164,11 @@ exports.scaffold = function () {
 			this.copy('test/demo.test.js', 'test/helpers/html/demo.test.js');
 			// create demo spec
 			this.copy('test/demo.spec.js', 'test/spec/e2e/demo.spec.js');
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-webdriver'];
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['grunt-webdriver'];
 	}
 
 	if (this.testAndQALibs.indexOf(karmaId) !== -1) {

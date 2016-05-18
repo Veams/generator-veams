@@ -6,24 +6,17 @@ exports.questions = function () {
 		{
 			when: function (answers) {
 				return answers.taskRunner
-					&& answers.taskRunner.length
-					&& answers.taskRunner.indexOf('gulp') === -1;
+					&& answers.taskRunner.length;
 			},
 			type: 'list',
 			name: 'templateEngine',
 			message: 'Which Template Engine do you want to install?',
 			choices: [
-				{
-					name: 'Assemble',
-					value: 'assemble'
-				},
-				// {name: 'veams', value: 'veams'}
-				{
-					name: 'none',
-					value: ''
-				}
+				{name: 'Mangony', value: 'mangony'},
+				{name: 'Assemble (Only usable in Grunt!)', value: 'assemble'},
+				{name: 'none', value: ''}
 			],
-			default: 'assemble'
+			default: 'mangony'
 		},
 		{
 			when: function (answers) {
@@ -92,11 +85,24 @@ exports.scaffold = function () {
 		if (this.templateEngine.indexOf('assemble') !== -1) {
 			// Add Gruntfile-helper file
 			this.copy('helpers/_grunt/_assemble.js.ejs', 'helpers/_grunt/assemble.js');
+		} else {
+			delete this.pkgFile['devDependencies']['assemble'];
 		}
 
-		if (this.templateEngine.indexOf('veams') !== -1) {
+		if (this.templateEngine.indexOf('mangony') !== -1) {
 			// Add Gruntfile-helper file
-			// this.copy('helpers/_grunt/_veams.js.ejs', 'helpers/_grunt/veams.js');
+			if (this.taskRunner.indexOf('gulp') !== -1) {
+				delete this.pkgFile['devDependencies']['grunt-mangony'];
+			} else {
+				this.copy('helpers/_grunt/_mangony.js.ejs', 'helpers/_grunt/mangony.js');
+			}
+		} else {
+			delete this.pkgFile['devDependencies']['mangony'];
+			delete this.pkgFile['devDependencies']['grunt-mangony'];
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['assemble'];
+		delete this.pkgFile['devDependencies']['mangony'];
+		delete this.pkgFile['devDependencies']['grunt-mangony'];
 	}
 };

@@ -6,6 +6,7 @@ var yeoman = require('yeoman-generator');
 var helpers = require('../../lib/helpers');
 var configFile = require('../../lib/config');
 var taskRunnerGenerator = require('../../generator-files/taskrunner-generator');
+var cleanPackages = require('../../generator-files/clean-packages');
 var featuresGenerator = require('../../generator-files/features-generator');
 var jsGenerator = require('../../generator-files/js-generator');
 var cssGenerator = require('../../generator-files/css-generator');
@@ -22,6 +23,7 @@ module.exports = yeoman.generators.Base.extend({
 	// Initialize general settings and store some files
 	initializing: function () {
 		this.pkg = require('../../package.json');
+		this.pkgFile = this.src.readJSON('_package.json');
 		this.bowerFile = this.src.readJSON('_bower.json');
 
 		this.dotFiles = [
@@ -229,10 +231,10 @@ module.exports = yeoman.generators.Base.extend({
 			// Standard files
 			this.copy('gitignore', '.gitignore');
 			this.copy('bowerrc', '.bowerrc');
-			this.template('_package.json.ejs', 'package.json');
 			this.template('helpers/config.js.ejs', 'helpers/config.js');
 			this.template('README.md.ejs', 'README.md');
-			this.bowerFile['name'] = this.config.get('projectName');
+			this.bowerFile['name'] = this.config.get('projectName') || 'Minimal project';
+			this.pkgFile['name'] = this.config.get('projectName') || 'Minimal project';
 
 			this.mkdir('_output');
 
@@ -269,16 +271,17 @@ module.exports = yeoman.generators.Base.extend({
 			templatingGenerator.scaffold.call(this);
 			featuresGenerator.scaffold.call(this);
 			docsGenerator.scaffold.call(this);
-
-			if (this.taskRunner.indexOf('gulp') !== -1) gulpGenerator.scaffold.call(this);
-			if (this.taskRunner.indexOf('grunt') !== -1) gruntGenerator.scaffold.call(this);
+			gulpGenerator.scaffold.call(this);
+			gruntGenerator.scaffold.call(this);
+			cleanPackages.scaffold.call(this);
 		},
 
 		bower: function () {
-			if (this.cssLibs.length === 0 && this.jsLibs.length === 0 && this.veamsPackages.length === 0) {
-				this.bowerFile['dependencies'] = {};
-			}
 			this.dest.write('bower.json', JSON.stringify(this.bowerFile, null, 4));
+		},
+
+		pkg: function () {
+			this.dest.write('package.json', JSON.stringify(this.pkgFile, null, 4));
 		}
 	},
 
