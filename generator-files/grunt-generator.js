@@ -174,6 +174,7 @@ exports.scaffold = function (obj) {
 	} else {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-combine-mq'];
 	}
+
 	if (this.gruntModules.indexOf('grunt-dr-svg-sprites') != -1) {
 		this.mkdir(this.srcPath + 'scss/icons');
 		this.template(this.generatorGruntPath + '_dr-svg-sprites.js.ejs', this.gruntPath + 'dr-svg-sprites.js');
@@ -194,6 +195,7 @@ exports.scaffold = function (obj) {
 	} else {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-dr-svg-sprites'];
 	}
+
 	if (this.gruntModules.indexOf('grunt-grunticon') != -1) {
 		this.directory(this.generatorSrcPath + 'scss/icons', this.srcPath + 'scss/icons');
 		this.directory(this.generatorHelperPath + 'templates/grunticon', this.helperPath + '/templates/grunticon');

@@ -71,6 +71,8 @@ exports.scaffold = function () {
 		} else {
 			delete this.pkgFile['devDependencies']['grunt-jsdoc'];
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['grunt-jsdoc'];
 	}
 
 	if (this.docs && this.docs.indexOf(sassDocsId) !== -1) {
@@ -87,6 +89,8 @@ exports.scaffold = function () {
 		} else {
 			delete this.pkgFile['devDependencies']['grunt-sassdoc'];
 		}
+	} else {
+		delete this.pkgFile['devDependencies']['grunt-sassdoc'];
 	}
 
 	if (this.taskRunner.indexOf('gulp') !== -1 && this.docs && (this.docs.indexOf(sassDocsId) !== -1 || this.docs.indexOf(jsDocsId) !== -1)) {

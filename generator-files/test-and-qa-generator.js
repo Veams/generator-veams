@@ -75,9 +75,6 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-	if (!this.testAndQALibs && !this.testAndQALibs.length) return;
-
-
 	if (this.testAndQALibs.indexOf(jscsId) !== -1) {
 		this.copy(
 			this.generatorHelperPath + 'task-configs/jscs.airbnb.json',
@@ -138,11 +135,11 @@ exports.scaffold = function () {
 			);
 			delete this.pkgFile['devDependencies']['gulp-jshint'];
 		} else {
-			delete this.pkgFile['devDependencies']['grunt-jshint'];
+			delete this.pkgFile['devDependencies']['grunt-contrib-jshint'];
 		}
 	} else {
 		delete this.pkgFile['devDependencies']['gulp-jshint'];
-		delete this.pkgFile['devDependencies']['grunt-jshint'];
+		delete this.pkgFile['devDependencies']['grunt-contrib-jshint'];
 	}
 
 	if (this.testAndQALibs.indexOf(htmlHintId) !== -1 || this.testAndQALibs.indexOf(jsHintId) !== -1) {

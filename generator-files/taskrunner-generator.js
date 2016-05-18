@@ -42,18 +42,32 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['grunt-contrib-watch'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-cssmin'];
+		delete this.pkgFile['devDependencies']['grunt-combine-mq'];
 		delete this.pkgFile['devDependencies']['grunt-express-server'];
+		delete this.pkgFile['devDependencies']['grunt-newer'];
 		delete this.pkgFile['devDependencies']['grunt-sync'];
 		delete this.pkgFile['devDependencies']['grunt-sass-globber'];
 		delete this.pkgFile['devDependencies']['grunt-sass'];
-		delete this.pkgFile['devDependencies']['jit-grunt'];
-		delete this.pkgFile['devDependencies']['time-grunt'];
 		delete this.pkgFile['devDependencies']['gulp-grunt'];
+		delete this.pkgFile['devDependencies']['jit-grunt'];
+		delete this.pkgFile['devDependencies']['load-grunt-configs'];
+		delete this.pkgFile['devDependencies']['time-grunt'];
 	} else {
 		this.mkdir('helpers/_grunt');
 		this.template('Gruntfile.js.ejs', 'Gruntfile.js');
 
 		if (this.taskRunner.indexOf(gulpId) !== -1) {
+			delete this.pkgFile['devDependencies']['grunt-concurrent'];
+			delete this.pkgFile['devDependencies']['grunt-contrib-watch'];
+			delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
+			delete this.pkgFile['devDependencies']['grunt-contrib-cssmin'];
+			delete this.pkgFile['devDependencies']['grunt-combine-mq'];
+			delete this.pkgFile['devDependencies']['grunt-express-server'];
+			delete this.pkgFile['devDependencies']['grunt-newer'];
+			delete this.pkgFile['devDependencies']['grunt-sync'];
+			delete this.pkgFile['devDependencies']['grunt-sass-globber'];
+			delete this.pkgFile['devDependencies']['grunt-sass'];
+
 			this.pkgFile['scripts'] = {
 				"test": "gulp test",
 				"start": "gulp start",
