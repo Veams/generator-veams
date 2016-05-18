@@ -27,14 +27,14 @@ describe('Package.json', function () {
 				.on('end', done);
 		});
 
-		it('delete all packages dependenies for templating', function () {
+		it('delete all packages dependencies for gulp', function () {
 			var templateDeps = [
 				'grunt-mangony',
 				'mangony',
 				'assemble'
 			];
 
-			assert.noFileContent('package.json', /gulp/);
+			assert.noFileContent('package.json', /gulp|assemble|mangony/);
 		});
 
 	});
@@ -58,8 +58,8 @@ describe('Package.json', function () {
 				.on('end', done);
 		});
 
-		it('delete all packages dependenies for templating', function () {
-			assert.noFileContent('package.json', /grunt/);
+		it('delete all packages dependencies for grunt', function () {
+			assert.noFileContent('package.json', /grunt|assemble|mangony/);
 		});
 
 	});
@@ -83,7 +83,7 @@ describe('Package.json', function () {
 				.on('end', done);
 		});
 
-		it('delete all packages dependenies for templating', function () {
+		it('delete most packages dependencies for grunt', function () {
 			assert.noFileContent('package.json', /grunt-contrib-watch/);
 		});
 

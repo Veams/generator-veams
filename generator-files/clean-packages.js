@@ -1,5 +1,13 @@
 exports.scaffold = function () {
-	if (this.gulpModules.indexOf('gulp-autoprefixer') === -1 && this.gruntModules.indexOf('grunt-autoprefixer') === -1) delete this.pkgFile['devDependencies']['autoprefixer'];
+	// Gulp and Grunt packages
+	if (this.gulpModules.indexOf('gulp-autoprefixer') === -1 && this.gruntModules.indexOf('grunt-autoprefixer') === -1) {
+		delete this.pkgFile['devDependencies']['autoprefixer'];
+	}
+
+	// PostCSS
+	if (this.gruntModules.indexOf('grunt-autoprefixer') === -1 && this.cssLibs.indexOf('lost-grid') === -1) {
+		delete this.pkgFile['devDependencies']['grunt-postcss'];
+	}
 
 	// Bower handling of JS setup
 	if (this.gruntModules.indexOf('grunt-browserify') !== -1 ||

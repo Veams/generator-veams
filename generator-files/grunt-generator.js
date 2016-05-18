@@ -71,8 +71,6 @@ exports.scaffold = function (obj) {
 		if (object.installDeps) {
 			this.npmInstall(['grunt-postcss'], {'saveDev': true});
 		}
-	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-postcss'];
 	}
 
 	if (this.gruntModules.indexOf('grunt-bless') != -1) {
