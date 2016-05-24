@@ -105,14 +105,15 @@ module.exports = function(grunt) {
 		'browserify:vendor',
 		'browserify:dev',<% }} %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
 		'jscs',<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>
-		'newer:assemble',<% } %>
+		'newer:assemble',<% } %><% if(templateEngine.indexOf('mangony') != -1 && mangonyExpress === false){ %>
+		'mangony:dev',<% } %>
 		'concurrent:syncing',
 		'watchCSS'<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 		'sass:docs'<% } %><% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
 		'postcss:dev'<% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
-		'express:dev',
-		'browserSync',<% } else { %>,
-		'express:dev',<% } %>
+		'browserSync'<% } %>,
+		'express:dev',<% if(templateEngine.indexOf('mangony') != -1 && mangonyExpress === true){ %>
+		'open:dev',<% } %>
 		'watch'
 	]);
 	

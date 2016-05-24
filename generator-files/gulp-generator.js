@@ -33,7 +33,6 @@ exports.setup = function () {
 
 exports.scaffold = function () {
 	if (!this.gulpModules || !this.gulpModules.length) {
-		delete this.pkgFile['devDependencies']['gulp-postcss'];
 		delete this.pkgFile['devDependencies']['jshint-stylish'];
 	}
 
@@ -54,7 +53,7 @@ exports.scaffold = function () {
 
 	// Deletion in package.json
 	if (this.gulpModules.indexOf('browserify') === -1) delete this.pkgFile['devDependencies']['browserify'];
-	if (this.gulpModules.indexOf('gulp-autoprefixer') === -1 && this.cssLibs.indexOf('lost') === -1) delete this.pkgFile['devDependencies']['gulp-postcss'];
+	if (this.gulpModules.indexOf('gulp-autoprefixer') === -1 && this.cssLibs.indexOf('lost-grid') === -1) delete this.pkgFile['devDependencies']['gulp-postcss'];
 	if (this.gulpModules.indexOf('gulp-bless') === -1) delete this.pkgFile['devDependencies']['gulp-bless'];
 	if (this.gulpModules.indexOf('gulp-combine-mq') === -1) delete this.pkgFile['devDependencies']['gulp-combine-mq'];
 	if (this.gulpModules.indexOf('gulp-htmlmin') === -1) delete this.pkgFile['devDependencies']['gulp-htmlmin'];

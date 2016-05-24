@@ -36,9 +36,10 @@ config.options = {<% if (taskRunner.indexOf('grunt') != -1) {%>
 		utility: partialsPath + '/utilities',<% } %>
 		scss: srcPath + '/scss',
 		js: srcPath + '/js',
-		endpoints: [<% if(templateEngine) { %>
+		endpoints: [<% if (templateEngine) { %>
+			'resources/templating/layouts',
 			'resources/templating/pages',<% } %>
-			'resources/js/main.js',<% if(veamsPackages && veamsPackages.indexOf('veamsJS') != -1) { %>
+			'resources/js/main.js',<% if (veamsPackages && veamsPackages.indexOf('veamsJS') != -1) { %>
 			'resources/js/utils/events.js',<% } %>
 			'resources/scss/styles.scss'
 		]

@@ -190,10 +190,6 @@ describe('Sass Frameworks', function () {
 				.on('end', done);
 		});
 
-		it('adds the package to package.json', function () {
-			assert.fileContent('package.json', /gulp-postcss/);
-		});
-
 		it('adds the package to the task file', function () {
 			assert.fileContent('package.json', /gulp-postcss/);
 			assert.fileContent(helpersPath + '_gulp/styles.js', /lost/);

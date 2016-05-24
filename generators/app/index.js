@@ -84,7 +84,8 @@ module.exports = yeoman.generators.Base.extend({
 				this.taskRunner = this.config.set('taskRunner', [
 					'grunt'
 				]);
-				this.templateEngine = this.config.set('templateEngine', 'assemble');
+				this.templateEngine = this.config.set('templateEngine', 'mangony');
+				this.mangonyExpress = this.config.set('mangonyExpress', false);
 				this.installExtendedLayout = this.config.set('installExtendedLayout', true);
 				this.plugin = this.config.get('plugin');
 				this.gulpModules = this.config.get('gulpModules');
@@ -130,6 +131,7 @@ module.exports = yeoman.generators.Base.extend({
 			this.gulpModules = answers.gulpModules || this.config.get('gulpModules');
 			this.gruntModules = answers.gruntModules || this.config.get('gruntModules');
 			this.templateEngine = answers.templateEngine || this.config.get('templateEngine');
+			this.mangonyExpress = answers.mangonyExpress || this.config.get('mangonyExpress');
 			this.installExtendedLayout = answers.installExtendedLayout || this.config.get('installExtendedLayout');
 			this.plugin = answers.plugin;
 			this.features = answers.features;

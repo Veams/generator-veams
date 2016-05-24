@@ -68,7 +68,6 @@ exports.scaffold = function () {
 			delete this.pkgFile['devDependencies']['gulp-postcss'];
 		} else {
 			delete this.pkgFile['devDependencies']['grunt-postcss'];
-
 		}
 	} else {
 		delete this.pkgFile['devDependencies']['lost'];

@@ -22,28 +22,39 @@ exports.questions = function () {
 			when: function (answers) {
 				return answers.templateEngine
 					&& answers.templateEngine.length
-					&& answers.templateEngine.indexOf('assemble') !== -1;
+					&& answers.templateEngine.indexOf('mangony') !== -1;
 			},
 			type: 'confirm',
-			name: 'installPlugin',
-			message: 'Do you want to install Assemble-Plugins?',
-			default: this.config.get('installPlugin')
+			name: 'mangonyExpress',
+			message: 'Do you want to use Mangony with grunt-express or just as Grunt plugin?',
+			default: this.config.get('mangonyExpress')
 		},
-		{
-			when: function (answers) {
-				return answers.templateEngine
-					&& answers.templateEngine.length
-					&& answers.installPlugin;
-			},
-			name: 'plugin',
-			type: 'checkbox',
-			message: 'Which Assemble-Plugin do you want to use?',
-			choices: [
-				{name: 'assemble-contrib-permalinks'},
-				{name: 'assemble-contrib-sitemap'},
-				{name: 'assemble-related-pages'}
-			]
-		},
+		//{
+		//	when: function (answers) {
+		//		return answers.templateEngine
+		//			&& answers.templateEngine.length
+		//			&& answers.templateEngine.indexOf('assemble') !== -1;
+		//	},
+		//	type: 'confirm',
+		//	name: 'installPlugin',
+		//	message: 'Do you want to install Assemble-Plugins?',
+		//	default: this.config.get('installPlugin')
+		//},
+		//{
+		//	when: function (answers) {
+		//		return answers.templateEngine
+		//			&& answers.templateEngine.length
+		//			&& answers.installPlugin;
+		//	},
+		//	name: 'plugin',
+		//	type: 'checkbox',
+		//	message: 'Which Assemble-Plugin do you want to use?',
+		//	choices: [
+		//		{name: 'assemble-contrib-permalinks'},
+		//		{name: 'assemble-contrib-sitemap'},
+		//		{name: 'assemble-related-pages'}
+		//	]
+		//},
 		{
 			when: function (answers) {
 				return answers.templateEngine
@@ -93,16 +104,26 @@ exports.scaffold = function () {
 			// Add Gruntfile-helper file
 			if (this.taskRunner.indexOf('gulp') !== -1) {
 				delete this.pkgFile['devDependencies']['grunt-mangony'];
+				delete this.pkgFile['devDependencies']['grunt-open'];
 			} else {
 				this.copy('helpers/_grunt/_mangony.js.ejs', 'helpers/_grunt/mangony.js');
+
+				if (this.mangonyExpress === true) {
+					this.gruntModules.push('grunt-open');
+				} else {
+					delete this.pkgFile['devDependencies']['grunt-open'];
+					delete this.pkgFile['devDependencies']['mangony'];
+				}
 			}
 		} else {
 			delete this.pkgFile['devDependencies']['mangony'];
 			delete this.pkgFile['devDependencies']['grunt-mangony'];
+			delete this.pkgFile['devDependencies']['grunt-open'];
 		}
 	} else {
 		delete this.pkgFile['devDependencies']['assemble'];
 		delete this.pkgFile['devDependencies']['mangony'];
 		delete this.pkgFile['devDependencies']['grunt-mangony'];
+		delete this.pkgFile['devDependencies']['grunt-open'];
 	}
 };

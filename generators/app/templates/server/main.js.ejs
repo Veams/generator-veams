@@ -1,7 +1,8 @@
 var express = require('express');
 var request = require('request');
 var livereload = require('connect-livereload');
-var app = express();<% if (templateEngine.indexOf('mangony') !== -1) { %>
+var app = express();<% if (templateEngine.indexOf('mangony') !== -1 && mangonyExpress === true) { %>
+var config = require('../helpers/config');
 var deepExtend = require('deep-extend');
 var Mangony = require('mangony');
 var mangonyOptions = require('../helpers/_grunt/mangony');
@@ -34,14 +35,6 @@ Object.keys(apiServerHosts).forEach(function (route) {
 	apiServerHostRoutes.push('/' + route);
 	apiServerHostRoutes.push('/' + route + '.json');
 });
-<% if (templateEngine.indexOf('mangony') !== -1) { %>
-mangonyServer.render();
-<% } %>
-app.set('port', process.env.PORT || 3000);
-
-app.use(livereload({
-	port: args[3]
-}));
 
 app.use(apiServerHostRoutes, function (req, res) {
 	var key, url;
@@ -66,6 +59,12 @@ app.get('/test-express.json', function (req, res) {
 	};
 	res.send(JSON.stringify(responseObject, 4, null));
 });
+<% if (templateEngine.indexOf('mangony') !== -1 && mangonyExpress === true) { %>
+mangonyServer.render();
+<% } else { %>
+app.use(livereload({
+	port: config.options.ports.livereload
+}));
 
 /**
  * serves the static folders
@@ -75,5 +74,5 @@ app.use(express.static(args[2]));
 app.listen(app.get('port'), function () {
 	console.log('Express server started on port ' + app.get('port') + ' serving static files from ' + args[2] + ' folder.');
 });
-
+<% } %>
 module.exports = app;

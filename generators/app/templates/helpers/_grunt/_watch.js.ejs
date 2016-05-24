@@ -1,14 +1,14 @@
 module.exports = {
 	livereload: {
+		files: [
+			'<%%= paths.dev %>/**/*.html',<% if (templateEngine.indexOf('mangony') !== -1) { %>
+			'<%%= paths.src %>/templating/**/*',<% } %>
+			'<%%= paths.dev %>/css/**/*.css',
+			'<%%= paths.dev %>/js/**/*.js'
+		],
 		options: {
 			livereload: true
-		},
-		files: [
-			'<%%= paths.dev %>/{,*/}*.html',
-			'<%%= paths.dev %>/css/{,*/}*.css',
-			'<%%= paths.dev %>/js/{,*/}*.js',
-			'<%%= paths.dev %>/img/**/*.{jpg,png}'
-		]
+		}
 	},
 	express: {
 		files: [

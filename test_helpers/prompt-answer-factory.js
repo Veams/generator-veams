@@ -8,6 +8,7 @@ module.exports = function promptAnswerFactory(customAnswers) {
 			'grunt'
 		],
 		templateEngine: '',
+		mangonyExpress: false,
 		installExtendedLayout: true,
 		installPlugin: false,
 		gulpModules: [],
