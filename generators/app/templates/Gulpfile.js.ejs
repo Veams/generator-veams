@@ -14,7 +14,11 @@ gulp.task('default', function () {
 /**
  * Static Server
  */
-gulp.task('serve', ['sassGlobbing:dev', 'styles:dev'], function () {
+gulp.task('serve', [
+	'sassGlobbing:dev',
+	'styles:dev'<% if (templateEngine && templateEngine.indexOf('mangony') !== -1) { %>,
+	'mangony:dev'<% } %>
+	], function () {
 
 	config.server({
 		server: config.options.paths.dev
@@ -47,7 +51,8 @@ gulp.task('build', function(callback) {
 			'copy:assets',
 			'copy:ajax'
 		],
-		'sassGlobbing:dist',
+		'sassGlobbing:dist',<% if (templateEngine && templateEngine.indexOf('mangony') !== -1) { %>
+		'mangony:dist',<% } %>
 		[
 			'styles:dist'<% if (gulpModules && (gulpModules.indexOf('gulp-requirejs-optimize') !== -1 || gulpModules.indexOf('browserify') !== -1)) { %>,
 			'js:dist'<% } else { %>,

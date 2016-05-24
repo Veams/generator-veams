@@ -2,10 +2,74 @@ var config = require('../config');
 var path = config.options.paths;
 var gulp = require('gulp');
 var size = require('gulp-filesize');<% if (gulpModules && gulpModules.indexOf('gulp-htmlmin') !== -1) { %>
-var htmlmin = require('gulp-htmlmin');<% } %>
+var htmlmin = require('gulp-htmlmin');<% } %><% if (templateEngine && templateEngine.indexOf('mangony') !== -1) { %>
+var deepExtend = require('deep-extend');
+var Mangony = require('mangony');
+var mangonyOptions = {
+	cwd: paths.src + '/templates/',
+	dest: path.dev,
+	types: {
+		data: {
+			dir: '',
+			files: [
+				'data/**/*.json',
+				'data/**/*.hjson',
+				'partials/**/*.json',
+				'partials/**/*.hjson'
+			]
+		},
+		partials: {
+			dir: 'partials',
+			files: [
+				'**/*.hbs'
+			]
+		},
+		pages: {
+			dir: 'pages',
+			files: [
+				'**/*.hbs'
+			]
+		},
+		layouts: {
+			dir: 'layouts',
+			files: [
+				'**/*.hbs'
+			]
+		}
+	},
+	helpers: [
+		'helpers/*.js'
+	]
+};
+var mangonyDevOptions = deepExtend(mangonyOptions, {
+	compileStaticFiles: false,
+	devServer: {
+		start: true,
+		port: config.options.port.app
+	},
+	watch: true
+});
+var mangonyDistOptions = deepExtend(mangonyOptions, {
+	compileStaticFiles: true,
+	watch: false
+});
+var mangonyServer = new Mangony(mangonyDevOptions);
+var mangonyCompiler = new Mangony(mangonyDistOptions);
 
-// HTML Hinting Task
-gulp.task('html-build', function () {
+
+// Globbing task with watcher
+gulp.task('mangony:dev', function () {
+	mangonyServer.render();
+});
+
+// Globbing task without watcher
+gulp.task('mangony:dist', function () {
+	mangonyCompiler.render();
+});
+<% } %>
+
+// Minify HTML
+gulp.task('html:min', function () {
 	return gulp.src(path.dev + '/*.html')<% if (gulpModules && gulpModules.indexOf('gulp-htmlmin') !== -1) { %>
 		.pipe(htmlmin({
 			removeComments: false,

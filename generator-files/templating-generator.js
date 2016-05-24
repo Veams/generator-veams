@@ -22,7 +22,8 @@ exports.questions = function () {
 			when: function (answers) {
 				return answers.templateEngine
 					&& answers.templateEngine.length
-					&& answers.templateEngine.indexOf('mangony') !== -1;
+					&& answers.templateEngine.indexOf('mangony') !== -1
+					&& answers.taskRunner.indexOf('grunt') !== -1;
 			},
 			type: 'confirm',
 			name: 'mangonyExpress',
@@ -105,6 +106,8 @@ exports.scaffold = function () {
 			if (this.taskRunner.indexOf('gulp') !== -1) {
 				delete this.pkgFile['devDependencies']['grunt-mangony'];
 				delete this.pkgFile['devDependencies']['grunt-open'];
+
+
 			} else {
 				this.copy('helpers/_grunt/_mangony.js.ejs', 'helpers/_grunt/mangony.js');
 
