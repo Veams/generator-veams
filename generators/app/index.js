@@ -235,8 +235,8 @@ module.exports = yeoman.generators.Base.extend({
 			this.copy('bowerrc', '.bowerrc');
 			this.template('helpers/config.js.ejs', 'helpers/config.js');
 			this.template('README.md.ejs', 'README.md');
-			this.bowerFile['name'] = this.config.get('projectName') || 'Minimal project';
-			this.pkgFile['name'] = this.config.get('projectName') || 'Minimal project';
+			this.bowerFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'minimal-project';
+			this.pkgFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'minimal-project';
 
 			this.mkdir('_output');
 

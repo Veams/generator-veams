@@ -24,9 +24,7 @@
 
 <body class="{{bodyclass}}">
 	<% if (installExtendedLayout === true || templateEngine.indexOf('mangony') !== -1) { %>
-	{{#block "main"}}
-		{{> body }}
-	{{/block}}
+	{{#block "main"}}{{/block}}
 	<% } else { %>
 	{{> body }}
 	<% } %>

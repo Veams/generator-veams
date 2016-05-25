@@ -10,7 +10,7 @@ exports.construct = function () {
 		required: true
 	});
 
-	this.argument('configFile', {
+	this.argument('customFolder', {
 		type: String,
 		required: false,
 		optional: true
@@ -19,18 +19,11 @@ exports.construct = function () {
 	// This method adds support for flags
 	this.option('tmp');
 	this.option('component');
-
-
-	if (this.configFile) {
-		configFile = require(process.cwd() + '/' + this.configFile);
-	}
 };
 
 exports.questions = function () {
 	var prompts = [];
 	var _this = this;
-
-	console.log('type: ', this.options.custom);
 
 	if (!this.name) {
 		prompts = prompts.concat([
@@ -112,15 +105,6 @@ exports.questions = function () {
 			name: 'customType',
 			message: 'How do you want to prefix your custom type?',
 			default: ''
-		},
-		{
-			when: function (answers) {
-				return answers.customType;
-			},
-			type: 'input',
-			name: 'customFolder',
-			message: 'In which folder do you want to save your custom type?',
-			default: 'custom'
 		}
 	]);
 
@@ -136,7 +120,7 @@ exports.save = function (props) {
 	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
 	this.bpWithJs = props.bpWithJs || false;
 	this.customType = false;
-	this.customFolder = props.customFolder;
+	this.customFolder = this.customFolder || false;
 
 	if (this.options.component || this.options.block || this.options.utility || this.options.custom) {
 		if (this.options.component) {

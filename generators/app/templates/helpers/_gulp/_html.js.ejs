@@ -6,8 +6,11 @@ var htmlmin = require('gulp-htmlmin');<% } %><% if (templateEngine && templateEn
 var deepExtend = require('deep-extend');
 var Mangony = require('mangony');
 var mangonyOptions = {
-	cwd: paths.src + '/templates/',
+	collections: [],
+	compileStaticFiles: true,
+	cwd: path.src + '/templating/',
 	dest: path.dev,
+	devServer: false, // When you want to use the devServer just enable it for your development environment
 	types: {
 		data: {
 			dir: '',
@@ -41,40 +44,36 @@ var mangonyOptions = {
 		'helpers/*.js'
 	]
 };
-var mangonyDevOptions = deepExtend(mangonyOptions, {
-	compileStaticFiles: false,
-	devServer: {
-		start: true,
-		port: config.options.port.app
-	},
+var mangonyDevOptions = deepExtend({
 	watch: true
-});
-var mangonyDistOptions = deepExtend(mangonyOptions, {
-	compileStaticFiles: true,
+}, mangonyOptions);
+
+var mangonyDistOptions = deepExtend({
 	watch: false
-});
-var mangonyServer = new Mangony(mangonyDevOptions);
-var mangonyCompiler = new Mangony(mangonyDistOptions);
+}, mangonyOptions);
 
 
 // Globbing task with watcher
 gulp.task('mangony:dev', function () {
+	var mangonyServer = new Mangony(mangonyDevOptions);
 	mangonyServer.render();
 });
 
 // Globbing task without watcher
 gulp.task('mangony:dist', function () {
+	var mangonyCompiler = new Mangony(mangonyDistOptions);
 	mangonyCompiler.render();
 });
 <% } %>
-
+<% if (gulpModules && gulpModules.indexOf('gulp-htmlmin') !== -1) { %>
 // Minify HTML
 gulp.task('html:min', function () {
-	return gulp.src(path.dev + '/*.html')<% if (gulpModules && gulpModules.indexOf('gulp-htmlmin') !== -1) { %>
+	return gulp.src(path.dev + '/*.html')
 		.pipe(htmlmin({
 			removeComments: false,
 			collapseWhitespace: true
-		}))<% } %>
+		}))
 		.pipe(gulp.dest(path.dev))
 		.pipe(size());
 });
+<% } %>

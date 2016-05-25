@@ -116,6 +116,8 @@ exports.scaffold = function () {
 			delete this.pkgFile['devDependencies']['gulp-htmlhint'];
 		} else {
 			delete this.pkgFile['devDependencies']['grunt-htmlhint'];
+
+			this.template('helpers/_gulp/_hinting.js.ejs', 'helpers/_gulp/hinting.js');
 		}
 	} else {
 		delete this.pkgFile['devDependencies']['gulp-htmlhint'];

@@ -115,7 +115,6 @@ exports.scaffold = function () {
 		this.template('helpers/_gulp/_clean.js.ejs', 'helpers/_gulp/clean.js');
 		this.template('helpers/_gulp/_styles.js.ejs', 'helpers/_gulp/styles.js');
 		// if .gulpModules.indexOf('gulp-htmlhint') !== -1 || this.gulpModules.indexOf()
-		this.template('helpers/_gulp/_hinting.js.ejs', 'helpers/_gulp/hinting.js');
 		this.template('helpers/_gulp/_html.js.ejs', 'helpers/_gulp/html.js');
 		this.template('helpers/_gulp/_copy.js.ejs', 'helpers/_gulp/copy.js');
 	}
