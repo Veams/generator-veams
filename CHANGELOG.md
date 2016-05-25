@@ -1,5 +1,12 @@
+### v7.0.0
+- Added [Mangony](https://github.com/Sebastian-Fitzner/mangony) as new template engine for Gulp and Grunt
+- Updated all package versions
+- Added Grunt@1.0.1
+- Added further specs
+
 ### v6.7.4
 - added custom blueprint type support
+
 ### v6.7.3
 - added global module registry to js blueprint
 
