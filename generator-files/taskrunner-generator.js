@@ -36,7 +36,7 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-	if (this.taskRunner.indexOf(gruntId) == -1) {
+	if (this.taskRunner.indexOf(gruntId) === -1) {
 		delete this.pkgFile['devDependencies']['grunt'];
 		delete this.pkgFile['devDependencies']['grunt-concurrent'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-watch'];
@@ -52,6 +52,12 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['jit-grunt'];
 		delete this.pkgFile['devDependencies']['load-grunt-configs'];
 		delete this.pkgFile['devDependencies']['time-grunt'];
+
+		this.pkgFile['scripts'] = {
+			"test": "gulp test",
+			"start": "gulp serve",
+			"build": "gulp dist"
+		};
 	} else {
 		this.mkdir('helpers/_grunt');
 		this.template('Gruntfile.js.ejs', 'Gruntfile.js');
@@ -67,12 +73,6 @@ exports.scaffold = function () {
 			delete this.pkgFile['devDependencies']['grunt-sync'];
 			delete this.pkgFile['devDependencies']['grunt-sass-globber'];
 			delete this.pkgFile['devDependencies']['grunt-sass'];
-
-			this.pkgFile['scripts'] = {
-				"test": "gulp test",
-				"start": "gulp serve",
-				"build": "gulp dist"
-			};
 		} else {
 			this.pkgFile['scripts'] = {
 				"test": "grunt test",
@@ -91,7 +91,7 @@ exports.scaffold = function () {
 		}
 	}
 
-	if (this.taskRunner.indexOf(gulpId) == -1) {
+	if (this.taskRunner.indexOf(gulpId) === -1) {
 		delete this.pkgFile['devDependencies']['browser-sync'];
 		delete this.pkgFile['devDependencies']['del'];
 		delete this.pkgFile['devDependencies']['require-dir'];
