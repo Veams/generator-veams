@@ -57,6 +57,7 @@ exports.questions = function () {
 				done("Please choose only one of the MV frameworks.");
 				return;
 			}
+
 			done(true);
 		},
 		default: this.config.get('jsLibs')

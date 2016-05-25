@@ -92,7 +92,7 @@ exports.scaffold = function (obj) {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-browser-sync'];
 	}
 	if (this.gruntModules.indexOf('grunt-browserify') != -1 ||
-		this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
+		this.taskRunner.indexOf('grunt') !== -1 && this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
 		this.template(this.generatorGruntPath + '_browserify.js.ejs', this.gruntPath + 'browserify.js');
 
 		if (object.installDeps) {
@@ -120,7 +120,7 @@ exports.scaffold = function (obj) {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-csscomb'];
 	}
 	if (this.gruntModules.indexOf('grunt-contrib-handlebars') != -1 ||
-		this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
+		this.taskRunner.indexOf('grunt') !== -1 && this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
 		this.copy(this.generatorGruntPath + 'handlebars.js', this.gruntPath + 'handlebars.js');
 
 		if (object.installDeps) {
@@ -283,7 +283,7 @@ exports.scaffold = function (obj) {
 	if (this.gruntModules.indexOf('grunt-grunticon') != -1 ||
 		this.gruntModules.indexOf('grunt-dr-svg-sprites') != -1 ||
 		this.gruntModules.indexOf('grunt-contrib-handlebars') != -1 ||
-		this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
+		this.taskRunner.indexOf('grunt') !== -1 && this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
 		this.template(this.generatorGruntPath + '_replace.js.ejs', this.gruntPath + 'replace.js');
 
 		if (object.installDeps) {
