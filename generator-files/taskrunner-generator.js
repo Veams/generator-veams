@@ -70,14 +70,14 @@ exports.scaffold = function () {
 
 			this.pkgFile['scripts'] = {
 				"test": "gulp test",
-				"start": "gulp start",
-				"build": "gulp build"
+				"start": "gulp serve",
+				"build": "gulp dist"
 			};
 		} else {
 			this.pkgFile['scripts'] = {
 				"test": "grunt test",
-				"start": "grunt start",
-				"build": "grunt build"
+				"start": "grunt serve",
+				"build": "grunt dist"
 			};
 
 			this.template(this.generatorGruntPath + '_clean.js.ejs', this.gruntPath + 'clean.js');
