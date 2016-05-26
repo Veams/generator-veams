@@ -1,8 +1,8 @@
 {
   "name": "generator-veams",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "homepage": "http://veams.org/",
-  "description": "Scaffold modern frontend web apps or web pages with Assemble, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript (ES Harmony Support) with Backbone and Browserify or RequireJS.",
+  "description": "Scaffold modern frontend web apps or web pages with Assemble or Mangony, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript (ES Harmony Support) with Backbone and Browserify or RequireJS.",
   "keywords": [
     "yeoman-generator",
     "app",
