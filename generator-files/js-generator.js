@@ -7,7 +7,7 @@ var ampersandId = 'ampersand';
 var documentRegisterElementId = 'document-register-element';
 var handlebarsId = 'handlebars';
 var respimageId = 'respimage';
-var touchswipeId = 'touchswipe';
+var touchswipeId = 'jquery-touchswipe';
 
 var veamsJSPreset = [
 	handlebarsId,
