@@ -14,6 +14,18 @@
 
 <p align="center">Head to the <a href="http://veams.org/">site</a> for a detailed overview and further instructions.</p>
 
+**Here just a short overview:**
+
+1. You can use Grunt or Gulp as task runner
+2. You can choose of many plugins for your task runner
+3. You can use Assemble or Mangony as template engine
+4. You can add Bootstrap, Foundation, Bourbon and Lost to your project
+5. You can use RequireJS or Browserify (with Babelify) 
+6. You can add BackboneJS, ExoskeletonJS, AmpersandJS and jQuery 
+7. You can enable hinting and linting
+8. You can add WebdriverIO as test suite
+9. You can add the complete Veams stack to your project
+
 ## Installation
 
 I recommend to install [`veams-cli`](https://github.com/Veams/veams-cli).
@@ -34,6 +46,5 @@ yo veams
 see: [Changelog.md](CHANGELOG.md)
 
 ## TODO
-- Own template wrapper for handlebars
 - Update code base to match new yeoman-generator terms
 - Automated styleguide generation
