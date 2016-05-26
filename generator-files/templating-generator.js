@@ -107,12 +107,13 @@ exports.scaffold = function () {
 				delete this.pkgFile['devDependencies']['grunt-mangony'];
 				delete this.pkgFile['devDependencies']['grunt-open'];
 
-
 			} else {
 				this.copy('helpers/_grunt/_mangony.js.ejs', 'helpers/_grunt/mangony.js');
 
 				if (this.mangonyExpress === true) {
 					this.gruntModules.push('grunt-open');
+
+					this.copy(this.generatorGruntPath + 'open.js', this.gruntPath + 'open.js');
 				} else {
 					delete this.pkgFile['devDependencies']['grunt-open'];
 					delete this.pkgFile['devDependencies']['mangony'];

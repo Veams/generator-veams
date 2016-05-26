@@ -1,3 +1,6 @@
+### v7.0.2
+- Minor improvements for Babelify usage and Mangony in Grunt
+
 ### v7.0.0
 - Added [Mangony](https://github.com/Sebastian-Fitzner/mangony) as new template engine for Gulp and Grunt
 - Updated all package versions

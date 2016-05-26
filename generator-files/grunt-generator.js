@@ -100,6 +100,7 @@ exports.scaffold = function (obj) {
 		}
 	} else {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-browserify'];
+		if (this.pkgFile) delete this.pkgFile['devDependencies']['babel-preset-es2015'];
 	}
 	if (this.gruntModules.indexOf('grunt-postcss-separator') != -1) {
 		this.copy(this.generatorGruntPath + '_postcssSeparator.js.ejs', this.gruntPath + 'postcssSeparator.js');
