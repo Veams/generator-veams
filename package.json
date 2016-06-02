@@ -1,12 +1,13 @@
 {
   "name": "generator-veams",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "homepage": "http://veams.org/",
   "description": "Scaffold modern frontend web apps or web pages with Assemble or Mangony, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript (ES Harmony Support) with Backbone and Browserify or RequireJS.",
   "keywords": [
     "yeoman-generator",
     "app",
     "assemble",
+    "mangony",
     "veams",
     "veams-js",
     "veams-sass",
@@ -31,7 +32,7 @@
   ],
   "author": {
     "name": "Sebastian Fitzner",
-    "email": "sebastian@jci-werbeagentur.com"
+    "email": "sebastian@veams.org"
   },
   "main": "generators/app/index.js",
   "repository": {
