@@ -1,3 +1,6 @@
+### v7.0.4
+- Adjustment of standard styles
+
 ### v7.0.2
 - Minor improvements for Babelify usage and Mangony in Grunt
 
