@@ -1,5 +1,5 @@
 module.exports = {
 	dev: {
-		path: 'http://localhost:<%= ports.app %>'
+		path: 'http://localhost:<%= ports.app %>/index'
 	}
 };

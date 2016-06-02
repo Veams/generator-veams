@@ -1,7 +1,9 @@
+var config = require('../config');
+
 module.exports = {
 	options: {
-		cwd: '<%%= paths.src %>/templates/',
-		dest: '<%%= paths.dev %>',
+		cwd: config.options.paths.src + '/templating/',
+		dest: config.options.paths.dev,
 		types: {
 			data: {
 				dir: '',
@@ -35,7 +37,7 @@ module.exports = {
 			'helpers/*.js'
 		]
 	},
-	dev: { // IMPORTANT: Because we are using grunt-express the dev task will be executed in the server script
+	dev: { // IMPORTANT: When using Mangony in grunt-express the dev task will be executed in the server script
 		options: {
 			compileStaticFiles: false,
 			devServer: {
