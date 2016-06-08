@@ -1,3 +1,6 @@
+### v7.0.5
+- Fixed some issues with express server and browser-sync
+
 ### v7.0.4
 - Adjustment of standard styles
 

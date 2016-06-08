@@ -36,7 +36,7 @@ module.exports = {
 		helpers: [
 			'helpers/*.js'
 		]
-	},
+	}, <% if(mangonyExpress === true){ %>
 	dev: { // IMPORTANT: When using Mangony in grunt-express the dev task will be executed in the server script
 		options: {
 			compileStaticFiles: false,
@@ -45,7 +45,17 @@ module.exports = {
 			},
 			watch: true
 		}
-	},
+	},<% } else { %>
+	dev: {
+		options: { // If you want to speed up your development process set compileStaticFiles to false and activate devServer.start
+			compileStaticFiles: true,
+			devServer: {
+				start: false,
+				port: 3002
+			},
+			watch: true
+		}
+	}, <% } %>
 	dist: {
 		options: {
 			compileStaticFiles: true,

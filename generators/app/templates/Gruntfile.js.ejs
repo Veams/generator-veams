@@ -110,10 +110,10 @@ module.exports = function(grunt) {
 		'concurrent:syncing',
 		'watchCSS'<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 		'sass:docs'<% } %><% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
-		'postcss:dev'<% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
-		'browserSync'<% } %>,
-		'express:dev',<% if(templateEngine.indexOf('mangony') != -1 && mangonyExpress === true){ %>
-		'open:dev',<% } %>
+		'postcss:dev'<% } %>,
+		'express:dev'<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
+		'browserSync'<% } %><% if(templateEngine.indexOf('mangony') != -1 && mangonyExpress === true){ %>,
+		'open:dev'<% } %>,
 		'watch'
 	]);
 	

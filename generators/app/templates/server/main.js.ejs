@@ -1,8 +1,8 @@
 var express = require('express');
 var request = require('request');
 var livereload = require('connect-livereload');
-var app = express();<% if (templateEngine.indexOf('mangony') !== -1 && mangonyExpress === true) { %>
 var config = require('../helpers/config');
+var app = express();<% if (templateEngine.indexOf('mangony') !== -1 && mangonyExpress === true) { %>
 var deepExtend = require('deep-extend');
 var Mangony = require('mangony');
 var mangonyOptions = require('../helpers/_grunt/mangony');
@@ -65,6 +65,8 @@ mangonyServer.render();
 app.use(livereload({
 	port: config.options.ports.livereload
 }));
+
+app.set('port', process.env.PORT || 3000);
 
 /**
  * serves the static folders
