@@ -27,7 +27,7 @@ exports.questions = function () {
 			},
 			type: 'confirm',
 			name: 'mangonyExpress',
-			message: 'Do you want to use Mangony with grunt-express or just as Grunt plugin?',
+			message: 'Do you want to use Mangony with grunt-express?',
 			default: this.config.get('mangonyExpress')
 		},
 		//{
