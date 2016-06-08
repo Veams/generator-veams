@@ -87,6 +87,14 @@ describe('Mangony', function () {
 			helpers.assertFile(helperPath + '_grunt/mangony.js');
 		});
 
+		it('adds dependencies and functions to server/main.js', function () {
+			assert.noFileContent('server/main.js', /Mangony/);
+			assert.noFileContent('server/main.js', /'deep-extend'/);
+			assert.noFileContent('server/main.js', /mangonyServer.render()/);
+			assert.fileContent('server/main.js', /app.set/);
+			assert.fileContent('server/main.js', /app.listen/);
+		});
+
 		it('adds and deletes task to Gruntfile.js file', function () {
 			assert.fileContent('Gruntfile.js', /mangony:dev/);
 			assert.fileContent('Gruntfile.js', /mangony:dist/);
@@ -118,10 +126,12 @@ describe('Mangony', function () {
 
 		});
 
-		it('adds scripts to server/main.js', function () {
+		it('adds dependencies and functions to server/main.js', function () {
 			assert.fileContent('server/main.js', /Mangony/);
 			assert.fileContent('server/main.js', /'deep-extend'/);
 			assert.fileContent('server/main.js', /mangonyServer.render()/);
+			assert.noFileContent('server/main.js', /app.set/);
+			assert.noFileContent('server/main.js', /app.listen/);
 		});
 
 		it('adds task to Gruntfile.js file', function () {
