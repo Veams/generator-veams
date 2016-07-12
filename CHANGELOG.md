@@ -1,3 +1,9 @@
+### v7.0.7
+- add logger (console output element)
+
+### v7.0.6
+- update question in templating-generator.js
+
 ### v7.0.5
 - Fixed some issues with express server and browser-sync
 

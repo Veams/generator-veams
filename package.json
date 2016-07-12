@@ -1,62 +1,62 @@
 {
-  "name": "generator-veams",
-  "version": "7.0.6",
-  "homepage": "http://veams.org/",
-  "description": "Scaffold modern frontend web apps or web pages with Assemble or Mangony, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with ES Harmony support.",
-  "keywords": [
-    "yeoman-generator",
-    "app",
-    "assemble",
-    "mangony",
-    "veams",
-    "veams-js",
-    "veams-sass",
-    "veams-components",
-    "veams-generator",
-    "websites",
-    "homepage",
-    "gulp",
-    "web apps",
-    "prototype",
-    "prototypes",
-    "component",
-    "front-end",
-    "scaffold",
-    "boilerplate",
-    "templating",
-    "backbone",
-    "browserify",
-    "es harmony",
-    "javascript",
-    "grunt"
-  ],
-  "author": {
-    "name": "Sebastian Fitzner",
-    "email": "sebastian@veams.org"
-  },
-  "main": "generators/app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Sebastian-Fitzner/generator-veams"
-  },
-  "scripts": {
-    "test": "mocha --reporter spec"
-  },
-  "dependencies": {
-    "chalk": ">=0.3.0",
-    "fs-extra": "^0.26.5",
-    "lodash": "^3.10.0",
-    "yeoman-generator": "~0.17.0",
-    "yo": "~1.4.7"
-  },
-  "devDependencies": {
-    "mocha": ">=1.13.0"
-  },
-  "peerDependencies": {
-    "yo": ">=1.2.0"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "readmeFilename": "README.md"
+	"name": "generator-veams",
+	"version": "7.0.7",
+	"homepage": "http://veams.org/",
+	"description": "Scaffold modern frontend web apps or web pages with Assemble or Mangony, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with ES Harmony support.",
+	"keywords": [
+		"yeoman-generator",
+		"app",
+		"assemble",
+		"mangony",
+		"veams",
+		"veams-js",
+		"veams-sass",
+		"veams-components",
+		"veams-generator",
+		"websites",
+		"homepage",
+		"gulp",
+		"web apps",
+		"prototype",
+		"prototypes",
+		"component",
+		"front-end",
+		"scaffold",
+		"boilerplate",
+		"templating",
+		"backbone",
+		"browserify",
+		"es harmony",
+		"javascript",
+		"grunt"
+	],
+	"author": {
+		"name": "Sebastian Fitzner",
+		"email": "sebastian@veams.org"
+	},
+	"main": "generators/app/index.js",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/Sebastian-Fitzner/generator-veams"
+	},
+	"scripts": {
+		"test": "mocha --reporter spec"
+	},
+	"dependencies": {
+		"chalk": ">=0.3.0",
+		"fs-extra": "^0.26.5",
+		"lodash": "^3.10.0",
+		"yeoman-generator": "~0.17.0",
+		"yo": "~1.4.7"
+	},
+	"devDependencies": {
+		"mocha": ">=1.13.0"
+	},
+	"peerDependencies": {
+		"yo": ">=1.2.0"
+	},
+	"engines": {
+		"node": ">=0.10.0"
+	},
+	"readmeFilename": "README.md"
 }
