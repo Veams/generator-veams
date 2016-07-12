@@ -1,4 +1,4 @@
-### v7.0.7
+### v7.1.0
 - add logger (console output element)
 
 ### v7.0.6

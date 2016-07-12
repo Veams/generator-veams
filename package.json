@@ -1,6 +1,6 @@
 {
 	"name": "generator-veams",
-	"version": "7.0.7",
+	"version": "7.1.0",
 	"homepage": "http://veams.org/",
 	"description": "Scaffold modern frontend web apps or web pages with Assemble or Mangony, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with ES Harmony support.",
 	"keywords": [
