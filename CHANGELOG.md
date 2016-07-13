@@ -1,3 +1,6 @@
+### v7.1.1
+- wrap data-js-options with if statement in hbs blueprint
+
 ### v7.1.0
 - add logger (console output element)
 

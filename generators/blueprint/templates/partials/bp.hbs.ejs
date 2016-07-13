@@ -17,9 +17,9 @@ Important Notes:
 <div class="c-<%= filename %>{{#if <%= bpName %>ContextClass}}--{{<%= bpName %>ContextClass}}{{else}}--default{{/if}}{{#if <%= bpName %>Classes}} {{<%= bpName %>Classes}}{{/if}}"
      data-css="c-<%= filename %>"<% if(bpWithJs) { %>
      data-js-module="<%= filename %>"
-     data-js-options='{
+     {{#if <%= bpName %>JsOptions}} data-js-options='{
      	{{#each <%= bpName %>JsOptions}}"{{optionsKey}}": {{#unless optionsObject}}"{{/unless}}{{{optionsValue}}}{{#unless optionsObject}}"{{/unless}}{{#if @last}}{{else}}, {{/if}}{{/each}}
-     }'<% } %>>
+     }'{{/if}}<% } %>>
      <% if (bpWrapWith) { %>
      {{{yield}}}
      <% } %>
