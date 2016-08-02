@@ -1,3 +1,12 @@
+### v7.1.1
+- wrap data-js-options with if statement in hbs blueprint
+
+### v7.1.0
+- add logger (console output element)
+
+### v7.0.6
+- update question in templating-generator.js
+
 ### v7.0.5
 - Fixed some issues with express server and browser-sync
 
