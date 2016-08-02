@@ -18,13 +18,14 @@
 
 1. You can use Grunt or Gulp as task runner
 2. You can choose of many plugins for your task runner
-3. You can use Assemble or Mangony as template engine
+3. You can use a static site generator like Assemble or Mangony
 4. You can add Bootstrap, Foundation, Bourbon and Lost to your project
 5. You can use RequireJS or Browserify (with Babelify) 
 6. You can add BackboneJS, ExoskeletonJS, AmpersandJS and jQuery 
 7. You can enable hinting and linting
 8. You can add WebdriverIO as test suite
 9. You can add the complete Veams stack to your project
+10. You can build a technical HTML documentation
 
 ## Installation
 
@@ -47,4 +48,3 @@ see: [Changelog.md](CHANGELOG.md)
 
 ## TODO
 - Update code base to match new yeoman-generator terms
-- Automated styleguide generation

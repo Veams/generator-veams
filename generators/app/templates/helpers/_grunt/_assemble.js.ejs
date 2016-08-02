@@ -5,7 +5,10 @@ module.exports = {
 			'<%%= paths.src %>/templating/data/**/*.json',
 			'<%%= paths.src %>/templating/partials/**/*.json'
 		],
-		helpers: '<%%= paths.src %>/templating/helpers/**/*.js',
+		helpers: [
+			'<%%= paths.src %>/templating/helpers/**/*.js',
+			'node_modules/mangony-hbs-helpers/index.js
+		],
 		layoutdir: '<%%= paths.src %>/templating/layouts/',<% if (installExtendedLayout === true) { %>
 		layout: false, <% } else { %>
 		layout: 'lyt-default.hbs', <% } %>

@@ -39,15 +39,7 @@ describe('assemble', function () {
 			srcPath + "templating/data/config.json",
 			srcPath + "templating/helpers/alias.js",
 			srcPath + "templating/helpers/helper-wrapWith.js",
-			srcPath + "templating/helpers/helper-for.js",
 			srcPath + "templating/helpers/helper-ifBlock.js",
-			srcPath + "templating/helpers/helper-limit.js",
-			srcPath + "templating/helpers/helper-mergeData.js",
-			srcPath + "templating/helpers/helper-syntax.js",
-			srcPath + "templating/helpers/helper-xif.js",
-			srcPath + "templating/helpers/helper-concatPath.js",
-			srcPath + "templating/helpers/helper-markdown.js",
-			srcPath + "templating/helpers/helper-pictureData.js",
 			srcPath + "templating/layouts/lyt-default.hbs",
 			srcPath + "templating/pages/index.hbs",
 			srcPath + "templating/partials/_global/_scripts.hbs",
@@ -65,6 +57,12 @@ describe('assemble', function () {
 
 	it('adds task to watch.js file', function () {
 		helpers.assertFile(helperPath + "_grunt/watch.js", /templating/);
+	});
+	
+	
+	it('adds references to package.json', function () {
+		assert.fileContent('package.json', /mangony-hbs-helpers/);
+		assert.noFileContent('package.json', /grunt-mangony/);
 	});
 
 	it('adds task to Gruntfile.js file', function () {
