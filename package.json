@@ -1,6 +1,6 @@
 {
 	"name": "generator-veams",
-	"version": "7.1.1",
+	"version": "7.1.2",
 	"homepage": "http://veams.org/",
 	"description": "Scaffold modern frontend web apps or web pages with Assemble or Mangony, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with ES Harmony support.",
 	"keywords": [
@@ -40,7 +40,7 @@
 		"url": "git://github.com/Sebastian-Fitzner/generator-veams"
 	},
 	"scripts": {
-		"test": "mocha --reporter spec"
+		"test": "./node_modules/.bin/mocha --reporter spec"
 	},
 	"dependencies": {
 		"chalk": ">=0.3.0",

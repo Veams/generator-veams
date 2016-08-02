@@ -31,6 +31,17 @@ describe('Mangony', function () {
 		it('creates resources files', function () {
 			var expected = [
 				srcPath + 'templating/data/config.json',
+				srcPath + 'templating/layouts/lyt-default.hbs',
+				srcPath + 'templating/pages/index.hbs',
+				srcPath + 'templating/partials/_global/_scripts.hbs',
+				srcPath + 'templating/partials/_global/_metadata.hbs',
+				srcPath + 'templating/partials/_global/_styles.hbs'
+			];
+			helpers.assertFiles(expected);
+		});
+		
+		it('ignores helper files', function () {
+			var helperFiles = [
 				srcPath + 'templating/helpers/alias.js',
 				srcPath + 'templating/helpers/helper-wrapWith.js',
 				srcPath + 'templating/helpers/helper-for.js',
@@ -41,15 +52,10 @@ describe('Mangony', function () {
 				srcPath + 'templating/helpers/helper-xif.js',
 				srcPath + 'templating/helpers/helper-concatPath.js',
 				srcPath + 'templating/helpers/helper-markdown.js',
-				srcPath + 'templating/helpers/helper-pictureData.js',
-				srcPath + 'templating/layouts/lyt-default.hbs',
-				srcPath + 'templating/pages/index.hbs',
-				srcPath + 'templating/partials/_global/_scripts.hbs',
-				srcPath + 'templating/partials/_global/_metadata.hbs',
-				srcPath + 'templating/partials/_global/_styles.hbs'
+				srcPath + 'templating/helpers/helper-pictureData.js'
 			];
-			helpers.assertFiles(expected);
-
+			
+			assert.noFile(helperFiles);
 		});
 
 		it('adds paths to config.js', function () {

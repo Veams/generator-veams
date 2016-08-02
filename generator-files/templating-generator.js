@@ -80,7 +80,6 @@ exports.scaffold = function () {
 		this.mkdir('resources/templating');
 		this.copy('resources/templating/data/config.json');
 		this.directory('resources/templating/ajax', 'resources/templating/ajax');
-		this.directory('resources/templating/helpers', 'resources/templating/helpers');
 		this.template('resources/templating/layouts/lyt-default.hbs.ejs', 'resources/templating/layouts/lyt-default.hbs');
 		this.template('resources/templating/pages/index.hbs.ejs', 'resources/templating/pages/index.hbs');
 		this.template('resources/templating/pages/page-components.hbs.ejs', 'resources/templating/pages/page-components.hbs');
@@ -97,6 +96,7 @@ exports.scaffold = function () {
 		if (this.templateEngine.indexOf('assemble') !== -1) {
 			// Add Gruntfile-helper file
 			this.copy('helpers/_grunt/_assemble.js.ejs', 'helpers/_grunt/assemble.js');
+			this.directory('resources/templating/helpers', 'resources/templating/helpers');
 		} else {
 			delete this.pkgFile['devDependencies']['assemble'];
 		}
