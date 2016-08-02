@@ -40,7 +40,7 @@
 		"jshint-stylish": "^2.0.0",
 		"lodash": "*",
 		"lost": "^6.8.0",
-		"mangony": "^1.0.18",
+		"mangony": "^1.0.19",
 		"mangony-hbs-helpers": "^0.0.5",
 		"marked": "*",
 		"path": "*",

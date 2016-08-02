@@ -1,3 +1,6 @@
+### v7.1.2
+- delete unnecessary helpers when Mangony is selected
+
 ### v7.1.1
 - wrap data-js-options with if statement in hbs blueprint
 
