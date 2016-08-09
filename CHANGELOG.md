@@ -1,3 +1,6 @@
+### v7.1.4
+- Bugfix for #70
+
 ### v7.1.2
 - delete unnecessary helpers when Mangony is selected
 
