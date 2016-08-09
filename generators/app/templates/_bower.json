@@ -7,6 +7,7 @@
 		"requirejs-text": "~2.0.13",
 		"jquery": "~2.1.4",
 		"backbone": "~1.1.2",
+		"underscore": "~1.8.3",
 		"exoskeleton": "^0.7.0",
 		"bootstrap-sass": "~3.3.5",
 		"bourbon": "~4.2.4",

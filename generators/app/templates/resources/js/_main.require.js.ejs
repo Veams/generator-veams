@@ -8,6 +8,10 @@ require.config({
 		'backbone': {
 			deps: ['../bower-components/underscore/underscore', 'jquery'],
 			exports: 'Backbone'
+		}<% }  if (jsLibs.indexOf('exoskeleton') != -1) { %>
+		'exoskeleton': {
+			deps: ['../bower-components/underscore/underscore', 'jquery'],
+			exports: 'Exoskeleton'
 		}<% }} %>
 	}
 });

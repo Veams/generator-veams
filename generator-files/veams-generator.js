@@ -19,7 +19,7 @@ exports.questions = function () {
 				checked: true
 			},
 			{
-				name: 'Veams-JS (Bower Component)',
+				name: 'Veams-JS (Bower Component, only usable with Browserify) ',
 				value: veamsJSId,
 				checked: false
 			}

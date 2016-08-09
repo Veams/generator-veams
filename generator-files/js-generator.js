@@ -75,11 +75,16 @@ exports.setup = function () {
 exports.scaffold = function () {
 	if (this.jsLibs.indexOf(backboneId) == -1 ||
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['backbone'];
+		this.gulpModules.indexOf('browserify') !== -1) {
+		delete this.bowerFile['dependencies']['backbone'];
+	}
 
 	if (this.jsLibs.indexOf(exoskeletonId) == -1 ||
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['exoskeleton'];
+		this.gulpModules.indexOf('browserify') !== -1) {
+		delete this.bowerFile['dependencies']['exoskeleton'];
+		delete this.bowerFile['dependencies']['underscore'];
+	}
 
 	if (this.jsLibs.indexOf(jqueryId) == -1 ||
 		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
