@@ -47,9 +47,10 @@ config.options = {<% if (taskRunner.indexOf('grunt') != -1) {%>
 
 	// define your ports for livereload
 	ports: {
+		server: 2999,
 		app: 3000,
-		test: 3001,
-		livereload: 35731
+		test: 4000,
+		livereload: 35729
 	}
 };
 <% if (taskRunner.indexOf('gulp') != -1) {%>

@@ -3,6 +3,7 @@ var pg = require('./../lib/helpers.js');
 var jscsId = 'jscs';
 var htmlHintId = 'hintingHTML';
 var jsHintId = 'hintingJS';
+var sasslintId = 'sasslint';
 var webdriverId = 'webdriver';
 var karmaId = 'karma';
 
@@ -24,8 +25,13 @@ exports.questions = function () {
 			name: 'Hint your JavaScript (JSHint)',
 			value: jsHintId,
 			checked: true
-		}/*,
-		 {
+		}
+		// {
+		// 	name: 'Lint your Sass (Stylelint)',
+		// 	value: sasslintId,
+		// 	checked: true
+		// },
+		/*{
 		 name: 'Unit Testing (karma, mocha, sinon, chai)',
 		 value: karmaId,
 		 checked: false

@@ -36,7 +36,7 @@ gulp.task('serve', [
 	// Reload
 	gulp.watch([
 		config.options.paths.dev + "/*.html",
-		config.options.paths.dev + "/js/*.js",
+		config.options.paths.dev + "/js/**/*.js",
 		config.options.paths.dev + "/css/*.css"
 	]).on('change', config.server.reload);
 });

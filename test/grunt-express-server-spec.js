@@ -24,7 +24,6 @@ describe('grunt-express-server', function () {
 	it('adds references to package.json', function () {
 		helpers.assertFile('package.json', /"express":/);
 		helpers.assertFile('package.json', /"grunt-express-server":/);
-		helpers.assertFile('package.json', /"connect-livereload":/);
 	});
 
 	it('creates server path and server file', function () {

@@ -1,3 +1,6 @@
+### v7.2.0
+- Add mangony and browser-sync support with proxy and server port
+
 ### v7.1.4
 - Bugfix for #70
 

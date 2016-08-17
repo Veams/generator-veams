@@ -1,6 +1,5 @@
 var express = require('express');
 var request = require('request');
-var livereload = require('connect-livereload');
 var config = require('../helpers/config');
 var app = express();<% if (templateEngine.indexOf('mangony') !== -1 && mangonyExpress === true) { %>
 var deepExtend = require('deep-extend');
@@ -12,6 +11,13 @@ var mangonyDevOptions = deepExtend(mangonyOptions.dev.options, {
 	}
 });
 var mangonyServer = new Mangony(deepExtend(mangonyOptions.options, mangonyDevOptions));
+
+/**
+ * Register routes and start express server
+ *
+ */
+mangonyServer.render();
+
 <% } %>
 /**
  * parameter passing from grunt
@@ -59,13 +65,7 @@ app.get('/test-express.json', function (req, res) {
 	};
 	res.send(JSON.stringify(responseObject, 4, null));
 });
-<% if (templateEngine.indexOf('mangony') !== -1 && mangonyExpress === true) { %>
-mangonyServer.render();
-<% } else { %>
-app.use(livereload({
-	port: config.options.ports.livereload
-}));
-
+<% if (mangonyExpress !== true) { %>
 app.set('port', process.env.PORT || 3000);
 
 /**
