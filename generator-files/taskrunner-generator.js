@@ -104,6 +104,7 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['gulp-htmlhint'];
 		delete this.pkgFile['devDependencies']['gulp-minify-css'];
 		delete this.pkgFile['devDependencies']['gulp-minify-filesize'];
+		delete this.pkgFile['devDependencies']['gulp-rename'];
 		delete this.pkgFile['devDependencies']['gulp-notify'];
 		delete this.pkgFile['devDependencies']['gulp-sass'];
 		delete this.pkgFile['devDependencies']['gulp-sequence'];

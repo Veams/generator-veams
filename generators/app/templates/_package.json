@@ -65,6 +65,7 @@
 		"gulp-modulizr": "^0.0.2",
 		"gulp-notify": "^2.2.0",
 		"gulp-postcss": "^6.1.1",
+		"gulp-rename": "^1.2.2",
 		"gulp-requirejs-optimize": "^1.0.0",
 		"gulp-responsive": "^2.3.0",
 		"gulp-sass": "^2.3.1",

@@ -4,6 +4,7 @@ var server = config.server;
 var size = require('gulp-filesize');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-bless') != -1) { %>
@@ -38,7 +39,8 @@ gulp.task('sassGlobbing:dist', function () {
 gulp.task('styles:dev', function () {
 	return gulp.src(path.src + '/scss/styles.tmp.scss')
 		.pipe(sourcemaps.init())
-		.pipe(sass())<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1 || gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+		.pipe(sass())
+		.pipe(rename('styles.css'))<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1 || gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
 		.pipe(postcss([<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1) { %>
 			lost()<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>,<% } %><% } %><% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
 			autoprefixer()<% } %>
@@ -59,7 +61,8 @@ gulp.task('styles:dist', function () {
 	return gulp.src(path.src + '/scss/styles.tmp.scss')
 		.pipe(sass({
 			style: 'expanded'
-		}))<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1 || gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+		}))
+		.pipe(rename('styles.css'))<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1 || gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
 		.pipe(postcss([<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1) { %>
 			lost()<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>,<% } %><% } %><% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
 			autoprefixer()<% } %>

@@ -1,3 +1,9 @@
+### v7.2.2
+- Optimize gulp project scaffolds
+
+### v7.2.1
+- Fix bug with assemble installation in grunt
+
 ### v7.2.0
 - Add mangony and browser-sync support with proxy and server port
 
