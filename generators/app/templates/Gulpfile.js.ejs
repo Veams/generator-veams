@@ -25,7 +25,10 @@ gulp.task('serve', [
 	});
 
 	// SCSS
-	gulp.watch(config.options.paths.src + "/scss/**/*.scss", ['styles:dev']);
+	gulp.watch(config.options.paths.src + "/scss/**/*.scss", [
+		'styles:dev'<% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>,
+		'stylelint'<% } %>
+	]);
 	<% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') !== -1) { %>
 	// JS
 	gulp.watch([

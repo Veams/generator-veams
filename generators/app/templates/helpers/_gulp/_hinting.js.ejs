@@ -3,7 +3,8 @@ var path = config.options.paths;
 var gulp = require('gulp');
 var htmlhint = require('gulp-htmlhint');<% if (testAndQALibs && testAndQALibs.indexOf('hintingJS') !== -1) { %>
 var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');<% } %>
+var stylish = require('jshint-stylish');<% } %><% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>
+var stylelint = require('gulp-stylelint');<% } %>
 
 // HTML Hinting Task
 gulp.task('hint:html', function () {
@@ -17,4 +18,23 @@ gulp.task('hint:js', function () {
 	return gulp.src(path.src + '/js/**/*.js')
 		.pipe(jshint('../task-configs/.jshintrc'))
 		.pipe(jshint.reporter(stylish));
+});<% } %>
+<% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>
+// Stylelint Task
+gulp.task('stylelint', function () {
+	return gulp
+		.src([
+			'!' + path.src + '/scss/styles.tmp.scss',
+			path.src + '/scss/**/*.scss'
+		])
+		.pipe(stylelint({
+			configFile: path.helpers + '/task-configs/stylelint.config.js',
+			format: 'scss',
+			reporters: [
+				{
+					formatter: 'string',
+					console: true
+				}
+			]
+		}));
 });<% } %>

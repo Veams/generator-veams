@@ -1,9 +1,9 @@
-var pg = require('./../lib/helpers.js');
+var helpers = require('./../lib/helpers.js');
 
 var jscsId = 'jscs';
 var htmlHintId = 'hintingHTML';
 var jsHintId = 'hintingJS';
-var sasslintId = 'sasslint';
+var sasslintId = 'stylelint';
 var webdriverId = 'webdriver';
 var karmaId = 'karma';
 
@@ -14,7 +14,7 @@ exports.questions = function () {
 		{
 			name: 'JavaScript Code Style (jscs)',
 			value: jscsId,
-			checked: true
+			checked: false
 		},
 		{
 			name: 'Hint your HTML (HTMLHint)',
@@ -25,12 +25,12 @@ exports.questions = function () {
 			name: 'Hint your JavaScript (JSHint)',
 			value: jsHintId,
 			checked: true
+		},
+		{
+			name: 'Lint your Sass (Stylelint)',
+			value: sasslintId,
+			checked: true
 		}
-		// {
-		// 	name: 'Lint your Sass (Stylelint)',
-		// 	value: sasslintId,
-		// 	checked: true
-		// },
 		/*{
 		 name: 'Unit Testing (karma, mocha, sinon, chai)',
 		 value: karmaId,
@@ -77,7 +77,7 @@ exports.questions = function () {
 exports.setup = function () {
 	this.testAndQALibs = this.config.get('testAndQALibs') || [];
 
-	pg.definePaths.bind(this);
+	helpers.definePaths.bind(this);
 };
 
 exports.scaffold = function () {
@@ -151,6 +151,20 @@ exports.scaffold = function () {
 	}
 
 	if (this.testAndQALibs.indexOf(htmlHintId) !== -1 || this.testAndQALibs.indexOf(jsHintId) !== -1) {
+		if (this.taskRunner.indexOf('gulp') !== -1) {
+			this.copy(
+				this.generatorGulpPath + '_hinting.js.ejs',
+				this.gulpPath + 'hinting.js'
+			);
+		}
+	}
+
+	if (this.testAndQALibs.indexOf(sasslintId) !== -1) {
+		this.copy(
+			this.generatorHelperPath + 'task-configs/stylelint.config.js',
+			this.helperPath + 'task-configs/stylelint.config.js'
+		);
+
 		if (this.taskRunner.indexOf('gulp') !== -1) {
 			this.copy(
 				this.generatorGulpPath + '_hinting.js.ejs',

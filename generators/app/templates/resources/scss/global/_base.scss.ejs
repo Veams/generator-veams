@@ -1,7 +1,7 @@
 /* ===================================================
 BASE
 =================================================== */
-<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
+
 /* ---------------------------------------------------
 Global styles
 --------------------------------------------------- */
@@ -15,9 +15,9 @@ body {
 	font-size: 16px;
 	line-height: 1.4;
 }
-
+<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
 // styling of console output element (triggered by parameter 'devmode' and 'logger' in url)
-#logger {
+.js-logger {
 	position: fixed;
 	right: 20px;
 	bottom: 20px;
@@ -31,6 +31,4 @@ body {
 	z-index: 9999;
 	border-radius: 10px;
 	border: 10px solid red;
-}
-
-<% } %>
+}<% } %>
