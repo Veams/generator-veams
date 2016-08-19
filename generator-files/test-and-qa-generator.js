@@ -81,6 +81,10 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
+
+	/**
+	 * JSCS Lint
+	 */
 	if (this.testAndQALibs.indexOf(jscsId) !== -1) {
 		this.copy(
 			this.generatorHelperPath + 'task-configs/jscs.airbnb.json',
@@ -108,6 +112,9 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['gulp-jscs'];
 	}
 
+	/**
+	 * HTML Hint
+	 */
 	if (this.testAndQALibs.indexOf(htmlHintId) !== -1) {
 		this.copy(
 			this.generatorHelperPath + 'task-configs/.htmlhintrc',
@@ -130,6 +137,9 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['grunt-htmlhint'];
 	}
 
+	/**
+	 * JS Hint
+	 */
 	if (this.testAndQALibs.indexOf(jsHintId) != -1) {
 		this.copy(
 			this.generatorHelperPath + 'task-configs/.jshintrc',
@@ -150,6 +160,9 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['grunt-contrib-jshint'];
 	}
 
+	/**
+	 * JS Hint and HMTL Hint
+	 */
 	if (this.testAndQALibs.indexOf(htmlHintId) !== -1 || this.testAndQALibs.indexOf(jsHintId) !== -1) {
 		if (this.taskRunner.indexOf('gulp') !== -1) {
 			this.copy(
@@ -159,6 +172,9 @@ exports.scaffold = function () {
 		}
 	}
 
+	/**
+	 * Stylelint
+	 */
 	if (this.testAndQALibs.indexOf(sasslintId) !== -1) {
 		this.copy(
 			this.generatorHelperPath + 'task-configs/stylelint.config.js',
@@ -170,9 +186,27 @@ exports.scaffold = function () {
 				this.generatorGulpPath + '_hinting.js.ejs',
 				this.gulpPath + 'hinting.js'
 			);
+		} else {
+			delete this.pkgFile['devDependencies']['gulp-stylelint'];
 		}
+
+		if (this.taskRunner.indexOf('grunt') !== -1) {
+			this.copy(
+				this.generatorGruntPath + 'stylelint.js',
+				this.gruntPath + 'stylelint.js'
+			);
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-stylelint'];
+		}
+
+	} else {
+		delete this.pkgFile['devDependencies']['gulp-stylelint'];
+		delete this.pkgFile['devDependencies']['grunt-stylelint'];
 	}
 
+	/**
+	 * Webdriver
+	 */
 	if (this.testAndQALibs.indexOf(webdriverId) !== -1) {
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {
