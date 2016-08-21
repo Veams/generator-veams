@@ -10,8 +10,7 @@ Main File For Imports
 
 // Global Variables and Settings
 @import "global/_vars";<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
-@import "../bower-components/veams-sass/resources/scss/veams";<% } %>
-<% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('foundation') != -1) { %>
+@import "../bower-components/veams-sass/resources/scss/veams";<% } %><% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('foundation') != -1) { %>
 // Frameworks
 @import "../bower-components/foundation/scss/foundation"; // You can choose your specific components<% } %> <% if (cssLibs.indexOf('neat') != -1) { %>
 @import "../bower-components/neat/app/assets/stylesheets/neat";<% } %> <% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
@@ -28,8 +27,7 @@ Main File For Imports
 
 // Globals
 @import "global/_base";<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsJS') != -1) { %>
-// @INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false <% } %>
-<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsMethodology') != -1) { %>
+// @INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false <% } %><% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsMethodology') != -1) { %>
 // Regions in Layouts
 @import "layouts/**/*";
 

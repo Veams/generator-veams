@@ -13,7 +13,7 @@
 		"bourbon": "~4.2.4",
 		"neat": "~1.7.2",
 		"foundation": "~5.5.2",
-		"veams-js": "~3.0.0",
+		"veams-js": "^3.2.0",
 		"veams-sass": "~2.0.3"
 	}
 }
