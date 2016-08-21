@@ -111,6 +111,7 @@
 		"grunt-sass": "~1.2.0",
 		"grunt-sass-globber": "^2.0.2",
 		"grunt-sassdoc": "^2.0.2",
+		"grunt-stylelint": "^0.6.0",
 		"grunt-svgmin": "^3.2.0",
 		"grunt-sync": "~0.5.2",
 		"grunt-text-replace": "~0.4.0",
