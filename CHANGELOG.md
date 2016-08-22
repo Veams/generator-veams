@@ -1,3 +1,6 @@
+### v7.3.0
+- Add stylelint to generator
+
 ### v7.2.2
 - Optimize gulp project scaffolds
 
