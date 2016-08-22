@@ -108,8 +108,7 @@ module.exports = function(grunt) {
 		'newer:assemble',<% } %><% if(templateEngine.indexOf('mangony') != -1 && mangonyExpress === false){ %>
 		'mangony:dev',<% } %>
 		'concurrent:syncing',
-		'watchCSS'<% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>,
-		'stylelint:scss'<% } %><% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
+		'watchCSS'<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 		'sass:docs'<% } %><% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
 		'postcss:dev'<% } %>,
 		'express:dev'<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-browser-sync') != -1 && templateEngine.indexOf('mangony') == -1) { %>,
@@ -132,15 +131,16 @@ module.exports = function(grunt) {
 		'sassGlobber:dist',
 		'sass:dev',
 		'sass:universal',<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>
-		'sass:docs',<% } %><% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>,
-		'stylelint:scss'<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-combine-mq') != -1) { %>
+		'sass:docs',<% } %><% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>
+		'stylelint:scss',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf
+		('grunt-combine-mq') != -1) { %>
 		'combine_mq',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-postcss-separator') != -1) { %>
 		'postcssSeparator',<% }} %><% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-autoprefixer') != -1) || (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1)) { %>
 		'postcss:dist',<% } %>
 		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
 		'bless',<% }} %><% if(templateEngine.indexOf('assemble') != -1){ %>
-        'assemble',<% } %><% if(templateEngine.indexOf('mangony') != -1){ %>
-        'mangony:dist',<% } %>
+		'assemble',<% } %><% if(templateEngine.indexOf('mangony') != -1){ %>
+		'mangony:dist',<% } %>
 		'concurrent:hintAndDocs'
 	]);
 
