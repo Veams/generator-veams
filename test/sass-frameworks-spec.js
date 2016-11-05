@@ -161,7 +161,7 @@ describe('Sass Frameworks', function () {
 		it('adds the package to the task and watch file', function () {
 			assert.fileContent('package.json', /grunt-postcss/);
 			assert.fileContent(helpersPath + '_grunt/postcss.js', /lost/);
-			assert.fileContent(helpersPath + '_grunt/watch.js', /postcss:dev/);
+			assert.fileContent(helpersPath + '_grunt/chokidar.js', /postcss:dev/);
 		});
 
 		it('adds the task to the Gruntfile file', function () {

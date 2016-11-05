@@ -35,7 +35,7 @@ describe('grunt-includes', function () {
 	});
 
 	it('adds task to watch file', function () {
-		assert.fileContent(helperPath + "_grunt/watch.js", /includes\:js/);
+		assert.fileContent(helperPath + "_grunt/chokidar.js", /includes\:js/);
 	});
 
 	it('adds task to Gruntfile.js', function () {

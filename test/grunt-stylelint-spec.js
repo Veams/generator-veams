@@ -43,7 +43,7 @@ describe('grunt-stylelint', function () {
 		});
 
 		it('adds task to watch file', function () {
-			assert.fileContent(helperPath + '_grunt/watch.js', /stylelint:scss/);
+			assert.fileContent(helperPath + '_grunt/chokidar.js', /stylelint:scss/);
 		});
 
 		it('adds task to Gruntfile', function () {

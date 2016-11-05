@@ -84,7 +84,7 @@ describe('Package.json', function () {
 		});
 
 		it('delete most packages dependencies for grunt', function () {
-			assert.noFileContent('package.json', /grunt-contrib-watch/);
+			assert.noFileContent('package.json', /grunt-chokidar/);
 		});
 
 	});

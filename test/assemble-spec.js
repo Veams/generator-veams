@@ -55,8 +55,8 @@ describe('assemble', function () {
 		helpers.assertFile(helperPath + "config.js", /partials/);
 	});
 
-	it('adds task to watch.js file', function () {
-		helpers.assertFile(helperPath + "_grunt/watch.js", /templating/);
+	it('adds task to chokidar.js file', function () {
+		helpers.assertFile(helperPath + "_grunt/chokidar.js", /templating/);
 	});
 	
 	

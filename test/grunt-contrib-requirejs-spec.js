@@ -46,7 +46,7 @@ describe('grunt-contrib-requirejs', function () {
 		]);
 	});
 
-	it('adds task to watch file', function () {
-		assert.fileContent(helperPath + "_grunt/watch.js", /requirejs\:dev/);
+	it('adds task to chokidar file', function () {
+		assert.fileContent(helperPath + "_grunt/chokidar.js", /requirejs\:dev/);
 	});
 });

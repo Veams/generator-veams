@@ -1,3 +1,6 @@
+### v7.4.0
+- Replace grunt-contrib-watch with grunt-chokidar
+
 ### v7.3.0
 - Add stylelint to generator
 

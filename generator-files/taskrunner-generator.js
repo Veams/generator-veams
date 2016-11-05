@@ -38,8 +38,8 @@ exports.setup = function () {
 exports.scaffold = function () {
 	if (this.taskRunner.indexOf(gruntId) === -1) {
 		delete this.pkgFile['devDependencies']['grunt'];
+		delete this.pkgFile['devDependencies']['grunt-chokidar'];
 		delete this.pkgFile['devDependencies']['grunt-concurrent'];
-		delete this.pkgFile['devDependencies']['grunt-contrib-watch'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-cssmin'];
 		delete this.pkgFile['devDependencies']['grunt-combine-mq'];
@@ -63,8 +63,8 @@ exports.scaffold = function () {
 		this.template('Gruntfile.js.ejs', 'Gruntfile.js');
 
 		if (this.taskRunner.indexOf(gulpId) !== -1) {
+			delete this.pkgFile['devDependencies']['grunt-chokidar'];
 			delete this.pkgFile['devDependencies']['grunt-concurrent'];
-			delete this.pkgFile['devDependencies']['grunt-contrib-watch'];
 			delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
 			delete this.pkgFile['devDependencies']['grunt-contrib-cssmin'];
 			delete this.pkgFile['devDependencies']['grunt-combine-mq'];
@@ -87,7 +87,7 @@ exports.scaffold = function () {
 			this.template(this.generatorGruntPath + '_sync.js.ejs', this.gruntPath + 'sync.js');
 			this.template(this.generatorGruntPath + '_sassGlobber.js.ejs', this.gruntPath + 'sassGlobber.js');
 			this.template(this.generatorGruntPath + '_sass.js.ejs', this.gruntPath + 'sass.js');
-			this.template(this.generatorGruntPath + '_watch.js.ejs', this.gruntPath + 'watch.js');
+			this.template(this.generatorGruntPath + '_watch.js.ejs', this.gruntPath + 'chokidar.js');
 		}
 	}
 

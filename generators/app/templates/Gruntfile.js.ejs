@@ -114,7 +114,7 @@ module.exports = function(grunt) {
 		'express:dev'<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-browser-sync') != -1 && templateEngine.indexOf('mangony') == -1) { %>,
 		'browserSync'<% } %><% if(templateEngine.indexOf('mangony') != -1 && mangonyExpress === true){ %>,
 		'open:dev'<% } %>,
-		'watch'
+		'chokidar'
 	]);
 	
 	grunt.registerTask('build', [

@@ -42,18 +42,18 @@ describe('task runner is Grunt', function () {
 			helperPath + '_grunt/express.js',
 			helperPath + '_grunt/cssmin.js',
 			helperPath + '_grunt/sync.js',
-			helperPath + '_grunt/watch.js'
+			helperPath + '_grunt/chokidar.js'
 		];
 		assert.files(expected);
 	});
 
 	it('adds standard tasks to watch.js file', function () {
-		assert.fileContent(helperPath + '_grunt/watch.js', /ajax/);
-		assert.fileContent(helperPath + '_grunt/watch.js', /assets/);
-		assert.fileContent(helperPath + '_grunt/watch.js', /js/);
-		assert.fileContent(helperPath + '_grunt/watch.js', /\'sync\:js\'/);
-		assert.fileContent(helperPath + '_grunt/watch.js', /scss/);
-		assert.fileContent(helperPath + '_grunt/watch.js', /express/);
+		assert.fileContent(helperPath + '_grunt/chokidar.js', /ajax/);
+		assert.fileContent(helperPath + '_grunt/chokidar.js', /assets/);
+		assert.fileContent(helperPath + '_grunt/chokidar.js', /js/);
+		assert.fileContent(helperPath + '_grunt/chokidar.js', /\'sync\:js\'/);
+		assert.fileContent(helperPath + '_grunt/chokidar.js', /scss/);
+		assert.fileContent(helperPath + '_grunt/chokidar.js', /express/);
 	});
 
 	it('adds standard tasks to sync.js file', function () {
