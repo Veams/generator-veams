@@ -1,10 +1,15 @@
-{<% if (bpType === 'c-') { %>
-	"<%= bpName %>ContextClass": "default",<% } %>
-	"<%= bpName %>Classes": false <% if(bpWithJs) {%>,
-	"<%= bpName %>JsOptions": [
-		{
-			"optionsKey": "",
-			"optionsValue": ""
+{
+	"variations": {
+		"default": {
+			"docs": {
+				"variationName": "Default"
+			},
+			"settings": {<% if (bpType === 'c-') { %>
+				"<%= bpName %>ContextClass": "default",<% } %>
+				"<%= bpName %>Classes": false<% if(bpWithJs) {%>,
+				"<%= bpName %>JsOptions": {}<% } %>
+			},
+			"content": {}
 		}
-	]<% } %>
+	}
 }

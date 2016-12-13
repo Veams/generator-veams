@@ -4,6 +4,7 @@ module.exports = function promptAnswerFactory(customAnswers) {
 	var defaults = {
 		projectName: '',
 		projectAuthor: '',
+		selfContained: true,
 		taskRunner: [
 			'grunt'
 		],

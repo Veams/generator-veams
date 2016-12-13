@@ -3,6 +3,7 @@
 
 var path = require('path');
 var helpers = require('yeoman-generator').test;
+var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 var defaultPrompts = require('../test_helpers/prompt-answer-factory')();
 
@@ -24,10 +25,15 @@ describe('generator-veams', function () {
 			'Gruntfile.js',
 			'package.json',
 			'.gitignore',
+			'helpers/config.js',
 			'.bowerrc',
 			'bower.json',
 			'README.md'
 		];
 		helpers.assertFiles(expected);
+	});
+
+	it('adds folderStructure property to config.js', function () {
+		assert.fileContent('helpers/config.js', /folderStructure/);
 	});
 });

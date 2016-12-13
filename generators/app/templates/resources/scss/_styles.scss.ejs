@@ -20,22 +20,25 @@ Main File For Imports
 @import "icons/**/*";
 
 // Mixins
-@import "utils/mixins/**/*";
+@import "helpers/mixins/**/*";
 
 // Extends
-@import "utils/extends/**/*";
+@import "helpers/extends/**/*";
 
 // Globals
 @import "global/_base";<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsJS') != -1) { %>
 // @INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false <% } %><% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsMethodology') != -1) { %>
 // Regions in Layouts
 @import "layouts/**/*";
-
+<% if (!selfContained) { %>
 // Components
 @import "components/**/*";
 
 // Blocks
-@import "blocks/**/*";<% } %>
+@import "blocks/**/*";<% } %><% } %>
+
+<% if (selfContained) { %>
+// @INSERTPOINT :: @ref: scss-import-self-contained, @keep: true //<% } %>
 
 // Print
 @import "global/_print";

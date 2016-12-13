@@ -1,35 +1,23 @@
-{{! ---
-<% if (bpType === 'c-') { %>component<% } else if (bpType === 'b-') { %>block<% } else if (bpType === 'u-') { %>utility<% } else { %>general<% } %>: <%= bpType %><%= filename %>
-============================================
-
-Requirements:
-- (only hbs)
-
-Options:<% if (bpType === 'c-') { %>
-- <%= bpName %>ContextClass {String} [default] - Just pass a string<% } %>
-- <%= bpName %>Classes {String} - Modifier classes
-
-Important Notes:
-
---- }}
+---
+type: <% if (bpType === 'c-') { %>component<% } else if (bpType === 'b-') { %>block<% } else if (bpType === 'u-') { %>utility<% } else { %>general<% } %>
+contextData: "<%= filename %>-bp"
+layout: "lyt-docs"
+publish: false
+---
 
 <% if (bpType === 'c-') { %>
-<div class="c-<%= filename %>{{#if <%= bpName %>ContextClass}}--{{<%= bpName %>ContextClass}}{{else}}--default{{/if}}{{#if <%= bpName %>Classes}} {{<%= bpName %>Classes}}{{/if}}"
+<div class="c-<%= filename %>{{#if settings.<%= bpName %>ContextClass}}--{{settings.<%= bpName %>ContextClass}}{{else}}--default{{/if}}{{#if settings.<%= bpName %>Classes}} {{settings.<%= bpName %>Classes}}{{/if}}"
      data-css="c-<%= filename %>"<% if(bpWithJs) { %>
-     data-js-module="<%= filename %>"
-     {{#if <%= bpName %>JsOptions}} data-js-options='{
-     	{{#each <%= bpName %>JsOptions}}"{{optionsKey}}": {{#unless optionsObject}}"{{/unless}}{{{optionsValue}}}{{#unless optionsObject}}"{{/unless}}{{#if @last}}{{else}}, {{/if}}{{/each}}
-     }'{{/if}}<% } %>>
+     data-js-module="<%= filename %>"{{#if settings.<%= bpName %>JsOptions}}
+     data-js-options='{{stringify settings.<%= bpName %>JsOptions}}'{{/if}}<% } %>>
      <% if (bpWrapWith) { %>
      {{{yield}}}
      <% } %>
 </div>
 <% } else { %>
-<div class="<%= bpType %><%= filename %>{{#if <%= bpName %>Classes}} {{<%= bpName %>Classes}}{{/if}}"<% if(bpWithJs) { %>
-     data-js-module="<%= filename %>"
-     data-js-options='{
-     	{{#each <%= bpName %>JsOptions}}"{{optionsKey}}": {{#unless optionsObject}}"{{/unless}}{{{optionsValue}}}{{#unless optionsObject}}"{{/unless}}{{#if @last}}{{else}}, {{/if}}{{/each}}
-     }'<% } %>>
+<div class="<%= bpType %><%= filename %>{{#if settings.<%= bpName %>Classes}} {{settings.<%= bpName %>Classes}}{{/if}}"<% if(bpWithJs) { %>
+    data-js-module="<%= filename %>"{{#if settings.<%= bpName %>JsOptions}}
+    data-js-options='{{stringify settings.<%= bpName %>JsOptions}}'{{/if}}<% } %>>
      <% if (bpWrapWith) { %>
      {{{yield}}}
      <% } %>
