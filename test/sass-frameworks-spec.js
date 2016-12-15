@@ -196,4 +196,31 @@ describe('Sass Frameworks', function () {
 		});
 	});
 
+	describe('when Include-Media is selected', function () {
+		var answers = require('../test_helpers/prompt-answer-factory')({
+			"cssLibs": [
+				"include-media"
+			]
+		});
+
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../generators/app'))
+				.inDir(path.join(__dirname, 'tmp'))
+				.withOptions({
+					'skip-install': true,
+					'skip-welcome-message': true
+				})
+				.withPrompts(answers)
+				.on('end', done);
+		});
+
+		it('adds the package to bower.json', function () {
+			assert.fileContent('bower.json', /include-media/);
+		});
+
+		it('adds import state to styles.scss', function () {
+			assert.fileContent(srcPath + 'scss/styles.scss', /include-media/);
+		});
+	});
+
 });
