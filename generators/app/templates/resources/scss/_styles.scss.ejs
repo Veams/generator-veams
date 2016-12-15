@@ -28,12 +28,15 @@ Main File For Imports
 // @INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false <% } %><% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsMethodology') != -1) { %>
 // Regions in Layouts
 @import "layouts/**/*";
-
+<% if (!selfContained) { %>
 // Components
 @import "components/**/*";
 
 // Blocks
-@import "blocks/**/*";<% } %>
+@import "blocks/**/*";<% } %><% } %>
+
+<% if (selfContained) { %>
+// @INSERTPOINT :: @ref: scss-self-contained-import, @keep: true //<% } %>
 
 // Print
 @import "global/_print";

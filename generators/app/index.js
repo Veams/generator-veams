@@ -81,6 +81,7 @@ module.exports = yeoman.generators.Base.extend({
 				);
 				this.projectName = this.config.get('projectName');
 				this.authorName = this.config.get('projectAuthor');
+				this.selfContained = this.config.get('selfContained', true);
 				this.taskRunner = this.config.set('taskRunner', [
 					'grunt'
 				]);
@@ -127,6 +128,7 @@ module.exports = yeoman.generators.Base.extend({
 		this.prompt(this.questions, function (answers) {
 			this.authorName = answers.projectAuthor || this.config.get('projectAuthor');
 			this.projectName = answers.projectName || this.config.get('projectName');
+			this.selfContained = answers.selfContained || this.config.get('selfContained');
 			this.taskRunner = answers.taskRunner;
 			this.gulpModules = answers.gulpModules || this.config.get('gulpModules');
 			this.gruntModules = answers.gruntModules || this.config.get('gruntModules');
@@ -161,6 +163,13 @@ module.exports = yeoman.generators.Base.extend({
 			name: 'projectAuthor',
 			message: 'Would you mind telling me your name?',
 			default: this.config.get('projectAuthor')
+		});
+
+		(!this.config.get('selfContained') || this.force) && this.questions.push({
+			type: 'confirm',
+			name: 'selfContained',
+			message: 'Do you want to build your project with self-contained components?',
+			default: this.config.get('selfContained')
 		});
 
 		(!this.config.get('taskRunner') || this.force) && this.questions.push(

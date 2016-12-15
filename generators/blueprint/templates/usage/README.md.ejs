@@ -23,6 +23,9 @@ This blueprint is based on the blueprint of Veams-Components.
 // @INSERT :: START @tag: scss-import //
 @import "<% if (bpType === 'c-') { %>components<% } else if (bpType === 'b-') { %><% } else if (bpType === 'u-') { %>utilities<% } else if (customType === true) { %><%= customFolder %><% } else { %>globals<% } %>/_<%= bpType %><%= filename %>";
 // @INSERT :: END
+// @INSERT :: START @tag: scss-self-contained-import //
+@import "../templating/partials/<% if (bpType === 'c-') { %>components<% } else if (bpType === 'b-') { %>blocks<% } else if (bpType === 'u-') { %>utilities<% } else if (customType === true) { %><%= customFolder %><% } else { %>globals<% } %>/<%= filename %>/scss/_<%= bpType %><%= filename %>";
+// @INSERT :: END
 ```
 <% if(bpWithJs) {%>
 ### Include: JavaScript
@@ -31,6 +34,10 @@ This blueprint is based on the blueprint of Veams-Components.
 ``` js
 // @INSERT :: START @tag: js-import //
 import <%= bpJsName %> from './modules/<%= filename %>/<%= filename %>';
+// @INSERT :: END
+// @INSERT :: START @tag: js-self-contained-import //
+import <%= bpJsName %> from '../templating/partials/<% if (bpType === 'c-') { %>components<% } else if (bpType === 'b-') { %>blocks<% } else if (bpType === 'u-') { %>utilities<% } else if (customType === true) { %><%= customFolder %><% } else { %>globals<% } %>/<%= filename
+%>/js/<%= filename %>';
 // @INSERT :: END
 ```
 

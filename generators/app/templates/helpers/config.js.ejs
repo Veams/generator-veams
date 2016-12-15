@@ -10,13 +10,14 @@ var notify = require('gulp-notify');
 <% } %>
 var config = module.exports;
 
-config.options = {<% if (taskRunner.indexOf('grunt') != -1) {%>
+config.options = {<% if (selfContained) {%>
+    folderStructure: 'self-contained',<% } %><% if (taskRunner.indexOf('grunt') != -1) {%>
 	config: {
 		// in this directory you can find your grunt config tasks
 		src: helperPath + '/_grunt/*.js'
 	},<% } %>
 	paths: {
-		// tasks folder with gulp tasks<% if (taskRunner.indexOf('gulp') != -1) {%>
+		<% if (taskRunner.indexOf('gulp') != -1) {%>// tasks folder with gulp tasks
 		tasks: helperPath + '/_gulp',<% } %>
 		// helpers folder with tasks
 		helpers: helperPath,
