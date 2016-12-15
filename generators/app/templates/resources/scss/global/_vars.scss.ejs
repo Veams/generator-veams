@@ -3,29 +3,41 @@
 VEAMS SETTINGS
 =================================================== */
 $min-width: false; // This variable will be used in veams-sass
-<% } %>
-<% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('neat') != -1) { %>@import "../../bower-components/neat/app/assets/stylesheets/neat-helpers";
+<% } %><% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('neat') != -1) { %>
 /* ===================================================
 BOURBON NEAT SETTINGS
 =================================================== */
-$column: 73px;
-$gutter: 22px;
-$grid-columns: 12;
-$max-width: 1138px;
+$neat-grid: (
+	columns: 12,
+	gutter: 2%
+);
 
-// Define Your Breakpoints For Bourbon Neat
-$bp-tablet-l: new-breakpoint(max-width 1024px 12);
-$bp-tablet-p: new-breakpoint(max-width 768px 12);
-$bp-mobile-l: new-breakpoint(max-width 657px 12);
-$bp-mobile-p: new-breakpoint(max-width 480px 8);
-$bp-mobile-s: new-breakpoint(max-width 320px 8);
-<% } else { %>
-// Demo Variables
-$bp-tablet-l: 1024px;
-$bp-tablet-p: 768px;
-$bp-mobile-l: 657px;
+$max-width: calc(1404px + 4%) !default;
+<% }  %>
+/* ===================================================
+BREAKPOINT SETTINGS
+=================================================== */
+// Breakpoints
+$bp-mobile-s: 320px;
 $bp-mobile-p: 480px;
-<% } %>
+$bp-mobile-l: 600px;
+$bp-mobile-xl: 657px;
+$bp-tablet-p: 768px;
+$bp-tablet-l: 1024px;
+$bp-desktop-m: 1230px;
+$bp-desktop-l: 1404px;
+
+// Breakpoints Map
+$breakpoints: (
+	'mobile-s': $bp-mobile-s,
+	'mobile-p': $bp-mobile-p,
+	'mobile-l': $bp-mobile-l,
+	'mobile-xl': $bp-mobile-xl,
+	'tablet-p': $bp-tablet-p,
+	'tablet-l': $bp-tablet-l,
+	'desktop-m': $bp-desktop-m,
+	'desktop-l': $bp-desktop-l
+);
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('foundation') != -1) { %>
 /* ===================================================
 FOUNDATION SETTINGS

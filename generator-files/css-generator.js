@@ -3,6 +3,7 @@ var foundationId = 'foundation';
 var neatId = 'neat';
 var bootstrapId = 'bootstrap-sass';
 var lostGridId = 'lost-grid';
+var includeMediaId = 'include-media';
 var veamsSCSSId = 'veamsSCSS';
 
 var veamsSCSSPreset = [
@@ -21,7 +22,7 @@ exports.questions = function () {
 				checked: false
 			},
 			{
-				name: 'Bourbon Neat',
+				name: 'Bourbon Neat (Beta)',
 				value: neatId,
 				checked: false
 			},
@@ -34,6 +35,11 @@ exports.questions = function () {
 				name: 'Lost Grid (PostCSS)',
 				value: lostGridId,
 				checked: false
+			},
+			{
+				name: 'Include Media',
+				value: includeMediaId,
+				checked: true
 			}
 		],
 		default: this.config.get('cssLibs')
@@ -47,6 +53,7 @@ exports.setup = function () {
 exports.scaffold = function () {
 	// Delete CSS packages
 	if (this.cssLibs.indexOf(foundationId) == -1) delete this.bowerFile['dependencies']['foundation'];
+	if (this.cssLibs.indexOf(includeMediaId) == -1) delete this.bowerFile['dependencies']['include-media'];
 	if (this.cssLibs.indexOf(bootstrapId) == -1) delete this.bowerFile['dependencies']['bootstrap-sass'];
 	if (this.cssLibs.indexOf(neatId) == -1) {
 		delete this.bowerFile['dependencies']['bourbon'];

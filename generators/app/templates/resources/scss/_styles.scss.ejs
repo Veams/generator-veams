@@ -13,17 +13,15 @@ Main File For Imports
 @import "../bower-components/veams-sass/resources/scss/veams";<% } %><% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('foundation') != -1) { %>
 // Frameworks
 @import "../bower-components/foundation/scss/foundation"; // You can choose your specific components<% } %> <% if (cssLibs.indexOf('neat') != -1) { %>
-@import "../bower-components/neat/app/assets/stylesheets/neat";<% } %> <% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
+@import "../bower-components/neat/core/neat";<% } %> <% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
 @import "../bower-components/bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components<% }} %>
 
 // Icons
 @import "icons/**/*";
 
-// Mixins
-@import "utils/mixins/**/*";
-
-// Extends
-@import "utils/extends/**/*";
+// Helpers
+@import "helpers/functions/**/*";
+@import "helpers/mixins/**/*";
 
 // Globals
 @import "global/_base";<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsJS') != -1) { %>

@@ -253,8 +253,8 @@ module.exports = yeoman.generators.Base.extend({
 			this.mkdir('resources/assets/media');
 			this.mkdir('resources/js');
 			this.mkdir('resources/scss');
-			this.mkdir('resources/scss/utils/extends');
-			this.mkdir('resources/scss/utils/mixins');
+			this.mkdir('resources/scss/helpers/mixins');
+			this.mkdir('resources/scss/helpers/functions');
 			this.copy('resources/scss/global/_print.scss');
 			this.copy('resources/scss/universal.scss');
 
