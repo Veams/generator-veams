@@ -7,8 +7,6 @@ var assert = require('yeoman-generator').assert;
 var fs = require('fs');
 
 describe('bower', function () {
-	var srcPath = "resources/";
-
 	describe('when no frameworks are selected', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({});
 
@@ -24,7 +22,7 @@ describe('bower', function () {
 		});
 
 		it('delete all bower dependenies', function () {
-			assert.noFileContent('bower.json', /veams-components|veams-scss|veams-js|almond|requirejs|requirejs-text|underscore|backbone|jquery|foundation|sass-bootstrap|bourbon|neat/);
+			assert.noFileContent('bower.json', /veams-components|veams-scss|veams-query|veams-js|almond|include-media|requirejs|requirejs-text|underscore|backbone|jquery|foundation|sass-bootstrap|bourbon|neat/);
 		});
 
 	});

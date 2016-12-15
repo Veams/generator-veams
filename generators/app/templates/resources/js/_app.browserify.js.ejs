@@ -1,5 +1,6 @@
 // Global dependencies <%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
-var $ = require('jquery');<% } %><%if (jsLibs && jsLibs.indexOf('backbone') !== -1) { %>
+var $ = require('jquery');<% } %><%if (jsLibs && jsLibs.indexOf('veams-query') !== -1) { %>
+import { default as VeamsQuery } from 'veams-query';<% } %><%if (jsLibs && jsLibs.indexOf('backbone') !== -1) { %>
 var Backbone = require('backbone');<% } %><%if (jsLibs && jsLibs.indexOf('exoskeleton') !== -1) { %>
 var Exo = require('exoskeleton');<% } %>
 
@@ -11,6 +12,8 @@ export default (function(){
 	var App = root.App = window.App || {};
 <%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
 	App.$ = $;<% } %>
+<%if (jsLibs && jsLibs.indexOf('veams-query') !== -1) { %>
+	App.$$ = VeamsQuery;<% } %>
 
 	// Versioning
 	App.version = "0.0.1";

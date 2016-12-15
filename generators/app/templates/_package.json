@@ -22,8 +22,7 @@
 		"exoskeleton": "^0.7.0",
 		"ampersand": "*",
 		"respimage": "^1.4.0",
-		"handlebars": "^4.0.5",
-		"jquery-touchswipe": "^1.6.0"
+		"handlebars": "^4.0.5"
 	},
 	"devDependencies": {
 		"assemble": "~0.4.42",

@@ -1,18 +1,17 @@
 var _ = require('lodash');
+var veamsQueryId = 'veams-query';
 var jqueryId = 'jquery';
 var backboneId = 'backbone';
-var underscoreId = 'underscore';
 var exoskeletonId = 'exoskeleton';
 var ampersandId = 'ampersand';
-var documentRegisterElementId = 'document-register-element';
 var handlebarsId = 'handlebars';
-var respimageId = 'respimage';
-var touchswipeId = 'jquery-touchswipe';
+var picturefillId = 'picturefill';
+var lazysizesId = 'lazysizes';
 
 var veamsJSPreset = [
 	handlebarsId,
-	respimageId,
-	touchswipeId
+	picturefillId,
+	lazysizesId
 ];
 
 exports.questions = function () {
@@ -22,9 +21,14 @@ exports.questions = function () {
 		message: 'Do you want to use any JS Libraries?',
 		choices: [
 			{
+				name: 'Veams-Query',
+				value: veamsQueryId,
+				checked: false
+			},
+			{
 				name: 'jQuery (latest Version)',
 				value: jqueryId,
-				checked: true
+				checked: false
 			},
 			{
 				name: 'BackboneJS',
@@ -39,11 +43,6 @@ exports.questions = function () {
 			{
 				name: 'Ampersand (can only be used with CommonJS)',
 				value: ampersandId,
-				checked: false
-			},
-			{
-				name: 'document-register-element',
-				value: documentRegisterElementId,
 				checked: false
 			}
 		],
@@ -73,22 +72,27 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-	if (this.jsLibs.indexOf(backboneId) == -1 ||
-		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-		this.gulpModules.indexOf('browserify') !== -1) {
+	if (this.jsLibs.indexOf(backboneId) == -1) {
 		delete this.bowerFile['dependencies']['backbone'];
-	}
-
-	if (this.jsLibs.indexOf(exoskeletonId) == -1 ||
-		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-		this.gulpModules.indexOf('browserify') !== -1) {
-		delete this.bowerFile['dependencies']['exoskeleton'];
+		delete this.pkgFile['dependencies']['backbone'];
 		delete this.bowerFile['dependencies']['underscore'];
+		delete this.pkgFile['dependencies']['underscore'];
 	}
 
-	if (this.jsLibs.indexOf(jqueryId) == -1 ||
-		this.gruntModules.indexOf('grunt-browserify') !== -1 ||
-		this.gulpModules.indexOf('browserify') !== -1) delete this.bowerFile['dependencies']['jquery'];
+	if (this.jsLibs.indexOf(exoskeletonId) == -1) {
+		delete this.bowerFile['dependencies']['exoskeleton'];
+		delete this.pkgFile['dependencies']['exoskeleton'];
+	}
+
+	if (this.jsLibs.indexOf(jqueryId) == -1) {
+		delete this.bowerFile['dependencies']['jquery'];
+		delete this.pkgFile['dependencies']['jquery'];
+	}
+
+	if (this.jsLibs.indexOf(veamsQueryId) == -1) {
+		delete this.bowerFile['dependencies']['veams-query'];
+		delete this.pkgFile['dependencies']['veams-query'];
+	}
 
 	if (this.veamsPackages.indexOf('veamsJS') === -1) delete this.bowerFile['dependencies']['veams-js'];
 

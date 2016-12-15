@@ -15,6 +15,8 @@ exports.scaffold = function () {
 		this.taskRunner.indexOf('gulp') !== -1 && this.gulpModules.indexOf('gulp-requirejs-optimize') === -1 ||
 		this.taskRunner.indexOf('grunt') !== -1 && this.gruntModules.indexOf('grunt-contrib-requirejs') === -1) {
 		delete this.bowerFile['dependencies']['almond'];
+		delete this.bowerFile['dependencies']['backbone'];
+		delete this.bowerFile['dependencies']['exoskeleton'];
 		delete this.bowerFile['dependencies']['requirejs'];
 		delete this.bowerFile['dependencies']['requirejs-text'];
 	}
