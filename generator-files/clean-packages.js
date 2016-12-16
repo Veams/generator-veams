@@ -28,8 +28,11 @@ exports.scaffold = function () {
 	// Package handling of JS setup
 	if (this.taskRunner.indexOf('grunt') !== -1 && this.gruntModules.indexOf('grunt-browserify') === -1 ||
 		this.taskRunner.indexOf('gulp') !== -1 && this.gulpModules.indexOf('browserify') === -1) {
+		delete this.pkgFile['devDependencies']['aliasify'];
 		delete this.pkgFile['devDependencies']['babelify'];
 		delete this.pkgFile['devDependencies']['browserify'];
+		delete this.pkgFile['devDependencies']['babel-preset-es2015'];
+		delete this.pkgFile['devDependencies']['babel-preset-stage-0'];
 		this.pkgFile['dependencies'] = {};
 	}
 };

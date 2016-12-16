@@ -82,6 +82,8 @@ exports.scaffold = function () {
 	if (this.jsLibs.indexOf(exoskeletonId) == -1) {
 		delete this.bowerFile['dependencies']['exoskeleton'];
 		delete this.pkgFile['dependencies']['exoskeleton'];
+		delete this.pkgFile['dependencies']['backbone.nativeview'];
+		delete this.pkgFile['dependencies']['backbone.nativeajax'];
 	}
 
 	if (this.jsLibs.indexOf(jqueryId) == -1) {
