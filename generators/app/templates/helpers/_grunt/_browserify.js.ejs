@@ -1,15 +1,38 @@
-var libs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
+var externalLibs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
 	'<%= lib %>'<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% }); } %>
+];
+
+var internalLibs = [
+	'./resources/js/veams-js/js/app.js:app'<% if (veamsPackages && veamsPackages.length) { %><% if (veamsPackages.indexOf('veamsJS') !== -1) { %>,
+	'./resources/js/utils/events.js:events',
+	'./resources/js/veams-js/js/modules/_global/module.js:app-module'<% }} %>
 ];
 
 module.exports = {
 	options: {
 		transform: [
-			[
-				"babelify", {
-					"presets": ["es2015"]
+			['babelify',
+				{
+					compact: true,
+					// ignore: [
+					// 	'<%= paths.dev %>/js/vendor/'
+					// ],
+					presets: ['es2015', 'stage-0']
+				}
+			],
+			['aliasify',
+				{
+					aliases: {<% if(jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>
+						'backbone': 'exoskeleton'<% } %>
+					},
+				global: true,
+				verbose: true
 				}
 			]
+		],
+		ignore: [<% if(jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>
+			'jquery'<% if(jsLibs.indexOf('exoskeleton') !== -1) { %> ,<% }} %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>
+			'underscore'<% } %>
 		]
 	},
 	vendor: {
@@ -17,15 +40,13 @@ module.exports = {
 		dest: '<%%= paths.dev %>/js/vendor/libs.js',
 		options: {
 			debug: false,
-			alias: libs,
-			external: <% if (jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>[
-				'underscore'
-			]<% } else { %> null  // Reset this here because it's not needed <% } %>
+			alias: externalLibs
 		}
 	},
 	dev: {
 		options: {
-			external: libs,
+			alias: internalLibs,
+			external: externalLibs,
 			browserifyOptions: {
 				debug: true
 			},
@@ -36,6 +57,10 @@ module.exports = {
 		}
 	},
 	dist: {
+		options: {
+			alias: internalLibs,
+			external: externalLibs
+		},
 		files: {
 			'<%%= paths.dev %>/js/main.js': '<%%= paths.src %>/js/main.js'
 		}

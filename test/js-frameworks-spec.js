@@ -8,6 +8,7 @@ var fs = require('fs');
 
 describe('JavaScript Frameworks', function () {
 	var srcPath = "resources/";
+	var helperPath = "helpers/_grunt/";
 
 	describe('when Veams-Query is selected', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
@@ -36,6 +37,10 @@ describe('JavaScript Frameworks', function () {
 
 		it('adds import state to app.js', function () {
 			assert.fileContent(srcPath + 'js/app.js', /VeamsQuery/);
+		});
+
+		it('adds references in browserify task', function () {
+			assert.fileContent(helperPath + 'browserify.js', /veams-query/);
 		});
 	});
 
