@@ -1,14 +1,14 @@
 /**
  * Configuration file
  */
-var helperPath = 'helpers';
-var srcPath = 'resources';<% if(templateEngine) { %>
-var partialsPath = srcPath + '/templating/partials';<% } %>
+const helperPath = 'helpers';
+const srcPath = 'resources';<% if(templateEngine) { %>
+const partialsPath = srcPath + '/templating/partials';<% } %>
 <% if (taskRunner.indexOf('gulp') != -1) {%>
-var browserSync = require('browser-sync');
-var notify = require('gulp-notify');
+const browserSync = require('browser-sync');
+const notify = require('gulp-notify');
 <% } %>
-var config = module.exports;
+const config = module.exports;
 
 config.options = {<% if (selfContained) {%>
     folderStructure: 'self-contained',<% } %><% if (taskRunner.indexOf('grunt') != -1) {%>
@@ -21,6 +21,7 @@ config.options = {<% if (selfContained) {%>
 		tasks: helperPath + '/_gulp',<% } %>
 		// helpers folder with tasks
 		helpers: helperPath,
+		tmp: 'tmp',
 		// resources folder with working files
 		src: srcPath,<% if(templateEngine) { %>
 		// partials path for wrapWith hbs helper

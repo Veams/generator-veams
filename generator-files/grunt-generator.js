@@ -39,7 +39,8 @@ exports.questions = function (obj) {
 				{name: 'grunt-postcss-separator'},
 				{name: 'grunt-responsive-images'},
 				{name: 'grunt-svgmin'},
-				{name: 'grunt-version', checked: object.defaults}
+				{name: 'grunt-version', checked: object.defaults},
+				{name: 'grunt-webfont'}
 			],
 			default: this.config.get('gruntModules')
 		}
@@ -279,6 +280,20 @@ exports.scaffold = function (obj) {
 		}
 	} else {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-version'];
+	}
+	if (this.gruntModules.indexOf('grunt-webfont') != -1) {
+		this.copy(this.generatorGruntPath + 'webfont.js', this.gruntPath + 'webfont.js');
+		this.copy(this.generatorGruntPath + 'custom/iconbuilder.js', this.gruntPath + 'custom/iconbuilder.js');
+		this.directory(this.generatorHelperPath + 'templates/webfont', this.helperPath + '/templates/webfont');
+
+		if (object.installDeps) {
+			this.npmInstall(['grunt-webfont'], {'saveDev': true});
+		}
+	} else {
+		if (this.pkgFile) {
+			delete this.pkgFile['devDependencies']['grunt-webfont'];
+			delete this.pkgFile['devDependencies']['fs-extra'];
+		}
 	}
 
 	if (this.gruntModules.indexOf('grunt-grunticon') != -1 ||

@@ -52,10 +52,17 @@ module.exports = function(grunt) {
 		'grunticon',
 		'clean:grunticon',
 		'replace'
+	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-webfont') != -1) { %>
+
+	// Webfont Icons Task
+	require('./' + config.options.paths.helpers + '/_grunt/custom/iconbuilder')(grunt);
+	grunt.registerTask('webfont-icons', [
+		'webfont:icons',
+		'iconbuilder'
 	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>
 	
 	// Sprites Task
-	grunt.registerTask('icons', [
+	grunt.registerTask('sprites', [
 		'dr-svg-sprites',
 		'replace:spriteUrl'
 	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
