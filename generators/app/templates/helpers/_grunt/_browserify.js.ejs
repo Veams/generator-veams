@@ -1,5 +1,6 @@
-var externalLibs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
-	'<%= lib %>'<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% }); } %>
+var externalLibs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%> <% if (lib === 'veams-query') { %>
+	'./resources/bower-components/veams-query/veams-query.js:veams-query'<% } else { %>
+	'<%= lib %>'<% if(i < (jsLibs.length - 1 )) { %>,<% } %> <% } %>	<% }); } %>
 ];
 
 var internalLibs = [

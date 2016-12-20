@@ -6,6 +6,6 @@ module.exports = {<% if(features && features.length && features.indexOf('createD
 		'<%%= paths.dev %>/**/*'
 	] <% if(gruntModules && gruntModules.length){ %><% if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) { if(name == 'grunt-grunticon') { %>,
 	grunticon: [
-		'<%%= paths.src %>/scss/icons/*.{html,js,txt}'
+		'<%%= paths.src %>/scss/icons/*.{html,js,txt,css}'
 	]<% } %><%}); %><%} %><%} %>
 };
