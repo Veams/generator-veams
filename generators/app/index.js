@@ -81,7 +81,7 @@ module.exports = yeoman.generators.Base.extend({
 				);
 				this.projectName = this.config.get('projectName');
 				this.authorName = this.config.get('projectAuthor');
-				this.selfContained = this.config.get('selfContained', true);
+				this.selfContained = this.config.set('selfContained', true);
 				this.taskRunner = this.config.set('taskRunner', [
 					'grunt'
 				]);
@@ -169,7 +169,7 @@ module.exports = yeoman.generators.Base.extend({
 			type: 'confirm',
 			name: 'selfContained',
 			message: 'Do you want to build your project with self-contained components?',
-			default: this.config.get('selfContained')
+			default: true
 		});
 
 		(!this.config.get('taskRunner') || this.force) && this.questions.push(
