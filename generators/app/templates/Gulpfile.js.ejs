@@ -25,7 +25,10 @@ gulp.task('serve', [
 	});
 
 	// SCSS
-	gulp.watch(config.options.paths.src + "/scss/**/*.scss", [
+	gulp.watch([
+		config.options.paths.src + "/scss/**/*.scss"<% if (selfContained === true ) { %>,
+		config.options.paths.src + "/templating/partials/scss/**/*.scss"<% } %>
+		], [
 		'styles:dev'<% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>,
 		'stylelint'<% } %>
 	]);

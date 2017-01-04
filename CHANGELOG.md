@@ -1,3 +1,20 @@
+### v7.6.1
+- Fix self-contained paths in watch task
+
+### v7.6.0
+- Add new Veams-JS version 4
+- Bugfix for mangony and browsersync
+- Update packages
+- Update grunticon
+- Add icons webfont
+- Add new media mixin lib 
+- Add Veams-Query
+- Enhance libs scaffold
+
+### v7.5.0
+- Add self-contained option
+- Update blueprint templates 
+
 ### v7.4.0
 - Replace grunt-contrib-watch with grunt-chokidar
 
