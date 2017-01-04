@@ -31,8 +31,9 @@ describe('JavaScript Frameworks', function () {
 				.on('end', done);
 		});
 
-		it('adds the package to bower.json', function () {
-			assert.fileContent('bower.json', /veams-query/);
+		it('adds the package to package.json', function () {
+			assert.noFileContent('bower.json', /veams-query/);
+			assert.fileContent('package.json', /veams-query/);
 		});
 
 		it('adds import state to app.js', function () {

@@ -17,6 +17,7 @@
 	},
 	"dependencies": {
 		"jquery": "^2.1.4",
+		"veams-query": "^1.7.0",
 		"backbone": "^1.2.0",
 		"underscore": "^1.8.3",
 		"backbone.nativeajax": "^0.4.4",

@@ -35,7 +35,7 @@ describe('grunt-dr-svg-sprites', function () {
 	});
 
 	it('adds task and fallback to Gruntfile.js file', function () {
-		assert.fileContent("Gruntfile.js", /\'icons\'/);
+		assert.fileContent("Gruntfile.js", /\'sprites\'/);
 		assert.fileContent("Gruntfile.js", /\'dr-svg-sprites\'/);
 	});
 

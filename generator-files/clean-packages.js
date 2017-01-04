@@ -19,6 +19,7 @@ exports.scaffold = function () {
 		delete this.bowerFile['dependencies']['exoskeleton'];
 		delete this.bowerFile['dependencies']['requirejs'];
 		delete this.bowerFile['dependencies']['requirejs-text'];
+		delete this.bowerFile['dependencies']['veams-query'];
 	}
 
 	if (this.cssLibs.length === 0 && this.jsLibs.length === 0 && this.veamsPackages.length === 0) {

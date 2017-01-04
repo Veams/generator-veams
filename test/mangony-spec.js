@@ -59,7 +59,10 @@ describe('Mangony', function () {
 	describe('Grunt installation', function () {
 		var answers = require('../test_helpers/prompt-answer-factory')({
 			'templateEngine': 'mangony',
-			'mangonyExpress': false
+			'mangonyExpress': false,
+			'gruntModules': [
+				'grunt-browser-sync'
+			]
 		});
 
 		beforeEach(function (done) {
@@ -93,6 +96,7 @@ describe('Mangony', function () {
 		it('adds and deletes task to Gruntfile.js file', function () {
 			assert.fileContent('Gruntfile.js', /mangony:dev/);
 			assert.fileContent('Gruntfile.js', /mangony:dist/);
+			assert.fileContent('Gruntfile.js', /browserSync/);
 			assert.noFileContent('Gruntfile.js', /open:dev/);
 		});
 	});
@@ -131,6 +135,7 @@ describe('Mangony', function () {
 
 		it('adds task to Gruntfile.js file', function () {
 			assert.noFileContent('Gruntfile.js', /mangony:dev/);
+			assert.noFileContent('Gruntfile.js', /browserSync/);
 			assert.fileContent('Gruntfile.js', /mangony:dist/);
 			assert.fileContent('Gruntfile.js', /open:dev/);
 		});

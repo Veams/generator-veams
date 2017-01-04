@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 		'watchCSS'<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 		'sass:docs'<% } %><% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
 		'postcss:dev'<% } %>,
-		'express:dev'<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-browser-sync') != -1 && templateEngine.indexOf('mangony') == -1) { %>,
+		'express:dev'<% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-browser-sync') != -1) && mangonyExpress !== true) { %>,
 		'browserSync'<% } %><% if(templateEngine.indexOf('mangony') != -1 && mangonyExpress === true){ %>,
 		'open:dev'<% } %>,
 		'chokidar'
