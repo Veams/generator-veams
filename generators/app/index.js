@@ -121,16 +121,16 @@ module.exports = class extends Generator {
 			);
 		}
 
+		(!this.config.get('veamsPackages') || this.force) && this.questions.push(
+			veamsGenerator.questions.call(this)
+		);
+
 		(!this.config.get('cssLibs') || this.force) && this.questions.push(
 			cssGenerator.questions.call(this)
 		);
 
 		(!this.config.get('jsLibs') || this.force) && this.questions.push(
 			jsGenerator.questions.call(this)
-		);
-
-		(!this.config.get('veamsPackages') || this.force) && this.questions.push(
-			veamsGenerator.questions.call(this)
 		);
 
 		if (!this.config.get('testAndQA') || this.force) {
@@ -292,7 +292,7 @@ module.exports = class extends Generator {
 	bindEvents() {
 		let _this = this;
 
-		this.on(configFile.events.end, function () {
+		this.on(configFile.events.end, () => {
 			fs.rename(path.join(this.destinationRoot(), '.yo-rc.json'), path.join(this.destinationRoot(), 'setup.json'), function (err) {
 				if (err) _this.log('ERROR: ' + err);
 			});

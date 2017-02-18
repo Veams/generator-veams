@@ -1,10 +1,9 @@
-var path = require('path');
-var helpers = require('../lib/helpers');
-var config = require('../lib/config');
-var configFile = helpers.getProjectConfig();
+const path = require('path');
+const helpers = require('../lib/helpers');
+const config = require('../lib/config');
+const configFile = helpers.getProjectConfig();
 
 exports.construct = function () {
-
 	this.argument('name', {
 		type: String,
 		required: true
@@ -22,8 +21,8 @@ exports.construct = function () {
 };
 
 exports.questions = function () {
-	var prompts = [];
-	var _this = this;
+	let prompts = [];
+	let _this = this;
 
 	if (!this.name) {
 		prompts = prompts.concat([
@@ -146,7 +145,7 @@ exports.save = function (props) {
 };
 
 exports.setup = function () {
-	var checkConfig = function (type) {
+	let checkConfig = function (type) {
 		return configFile &&
 			configFile.options &&
 			configFile.options.paths &&
@@ -168,19 +167,37 @@ exports.setup = function () {
 
 	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.options.paths.blueprints.js : 'js/bp.js.ejs';
 	this.jsFileExtension = path.extname(helpers.deleteFileExtension(this.jsFile));
-
-
 };
 
 exports.scaffold = function () {
-	var path = this.options.tmp ? 'tmp/' : '';
+	let path = this.options.tmp ? 'tmp/' : '';
 
-	this.template(this.dataFile, path + this.filename + '/data/' + this.filename + '-bp' + this.dataFileExtension);
-	this.template(this.tplFile, path + this.filename + '/partials/' + this.bpType + this.filename + this.tplFileExtension);
-	this.template(this.styleFile, path + this.filename + '/scss/_' + this.bpType + this.filename + this.styleFileExtension);
-	this.template(this.usageFile, path + this.filename + '/usage/README' + this.usageFileExtension);
+	this.fs.copyTpl(
+		this.templatePath(this.dataFile),
+		path + this.filename + '/data/' + this.filename + '-bp' + this.dataFileExtension,
+		this
+	);
+	this.fs.copyTpl(
+		this.templatePath(this.tplFile),
+		path + this.filename + '/partials/' + this.bpType + this.filename + this.tplFileExtension,
+		this
+	);
+	this.fs.copyTpl(
+		this.templatePath(this.styleFile),
+		path + this.filename + '/scss/_' + this.bpType + this.filename + this.styleFileExtension,
+		this
+	);
+	this.fs.copyTpl(
+		this.templatePath(this.usageFile),
+		path + this.filename + '/README' + this.usageFileExtension,
+		this
+	);
 	if (this.bpWithJs) {
-		this.template(this.jsFile, path + this.filename + '/js/' + this.filename + this.jsFileExtension);
+		this.fs.copyTpl(
+			this.templatePath(this.jsFile),
+			path + this.filename + '/js/' + this.filename + this.jsFileExtension,
+			this
+		);
 	}
 };
 

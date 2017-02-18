@@ -7,12 +7,15 @@
  * @author your_name
  */
 
-import App from 'app';
-import AppModule from 'app-module';
-const $ = App.$;
-const Helpers = App.Helpers;
+// Imports
+import { Veams, App } from 'app';
+import VeamsComponent from 'veams/lib/common/component';
 
-class <%= bpJsName %> extends AppModule {
+// Variables
+const $ = Veams.$;
+const Helpers = Veams.Helpers;
+
+class <%= bpJsName %> extends VeamsComponent {
 	/**
 	 * Constructor for our class
 	 *
@@ -26,7 +29,6 @@ class <%= bpJsName %> extends AppModule {
 		let options = {};
 
 		super(obj, options);
-		App.registerModule && App.registerModule(<%= bpJsName %>.info, this.el);
 	}
 
 	/**
@@ -34,30 +36,34 @@ class <%= bpJsName %> extends AppModule {
 	 */
 	static get info() {
 		return {
-			name: '<%= bpJsName %>',
 			version: '0.0.0'
 		};
 	}
 
 	/**
-	 * Initialize the view and merge options
+	* Event handling
+	*/
+	get events() {
+		return {
+			// 'click': 'render'
+		}
+	}
+
+	/**
+	* Subscribe handling
+	*/
+	get subscribe() {
+		return {
+			// '{{Veams.EVENTS.resize}}': 'render'
+		}
+	}
+
+	/**
+	 * Initialize the view
 	 *
 	 */
 	initialize() {
 		console.log('init <%= bpJsName %>');
-
-		super.initialize();
-	}
-
-	/**
-	 * Bind events
-	 *
-	 * Listen to open and close events
-	 */
-	bindEvents() {
-		// Global events
-
-		// Local events
 	}
 
 	/**
