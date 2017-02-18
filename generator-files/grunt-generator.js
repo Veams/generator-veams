@@ -1,3 +1,5 @@
+'use strict';
+
 var chalk = require('chalk');
 var helpers = require('./../lib/helpers.js');
 

@@ -1,3 +1,5 @@
+'use strict';
+
 const _ = require('lodash');
 const foundationId = 'foundation';
 const neatId = 'neat';

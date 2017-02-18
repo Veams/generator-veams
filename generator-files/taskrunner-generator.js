@@ -1,3 +1,5 @@
+'use strict';
+
 let gruntId = 'grunt';
 let gulpId = 'gulp';
 

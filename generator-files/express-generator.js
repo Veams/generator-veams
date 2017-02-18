@@ -1,3 +1,5 @@
+'use strict';
+
 exports.questions = function () {
 	return {};
 };

@@ -1,3 +1,5 @@
+'use strict';
+
 const devFolderId = 'createDevFolder';
 
 exports.questions = function () {

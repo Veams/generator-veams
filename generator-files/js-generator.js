@@ -1,3 +1,5 @@
+'use strict';
+
 const _ = require('lodash');
 const veamsQueryId = 'veams-query';
 const jqueryId = 'jquery';

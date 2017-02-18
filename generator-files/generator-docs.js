@@ -1,3 +1,5 @@
+'use strict';
+
 var pg = require('./../lib/helpers.js');
 var jsDocsId = 'jsdoc';
 var sassDocsId = 'sassdoc';

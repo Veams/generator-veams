@@ -1,36 +1,37 @@
 'use strict';
-var path = require('path');
-var chalk = require('chalk');
-var yeoman = require('yeoman-generator');
-var gruntGenerator = require('../../generator-files/grunt-generator');
-var configFile = require('../../lib/config');
+const path = require('path');
+const chalk = require('chalk');
+const yeoman = require('yeoman-generator');
+const gruntGenerator = require('../../generator-files/grunt-generator');
+const configFile = require('../../lib/config');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = class extends Generator {
+	constructor(args, opts) {
+		super(args, opts);
+	};
 
 	// Initialize general settings and store some files
-	initializing: function () {
+	initializing() {
 		this.config.defaults(configFile.setup.empty);
 		this.bindEvents();
-	},
+	};
 
-	bindEvents: function () {
-		var _this = this;
-
-		this.on(configFile.events.end, function () {
-			gruntGenerator.postInstall.call(_this);
+	bindEvents() {
+		this.on(configFile.events.end, () => {
+			gruntGenerator.postInstall.call(this);
 		});
-	},
+	};
 
 	// Custom prompts routine
-	prompting: function () {
+	prompting() {
 		this.log(
 			('\n') + chalk.bgMagenta('Install your grunt modules') + ('\n') +
 			('\n') + chalk.magenta('* Be sure you know what you do') +
 			('\n') + chalk.magenta('Additional add your custom grunt task in your Gruntfile.js') + ('\n')
 		);
 
-		var questions = [];
-		var cb = this.async();
+		let questions = [];
+		let cb = this.async();
 
 		questions.push({
 			name: "helperPath",
@@ -86,29 +87,32 @@ module.exports = yeoman.generators.Base.extend({
 
 			cb();
 		}.bind(this));
-
-	},
+	};
 
 	/**
 	 * Grunt modules file generation
-	 *
 	 */
-	writing: {
-		setup: function () {
-			gruntGenerator.setup.call(this);
-		},
-		grunt: function () {
-			gruntGenerator.scaffold.call(this, {
-				defaults: false,
-				installDeps: true
-			});
-		}
-	},
+	writing() {
+		this.setup();
+		this.grunt();
 
-	install: function () {
+	};
+
+	setup() {
+		gruntGenerator.setup.call(this);
+	};
+
+	grunt() {
+		gruntGenerator.scaffold.call(this, {
+			defaults: false,
+			installDeps: true
+		});
+	};
+
+	install() {
 		this.installDependencies({
 			skipInstall: this.options['skip-install'] || this.options['s'],
 			skipMessage: this.options['skip-welcome-message'] || this.options['w']
 		});
-	}
-});
+	};
+};
