@@ -16,17 +16,17 @@
 		"configFile": "helpers/config.js"
 	},
 	"dependencies": {
-		"jquery": "^2.1.4",
+		"jquery": "^3.1.1",
+		"veams": "^5.0.0",
 		"veams-query": "^1.7.0",
 		"backbone": "^1.2.0",
 		"underscore": "^1.8.3",
 		"backbone.nativeajax": "^0.4.4",
 		"backbone.nativeview": "^0.3.3",
 		"exoskeleton": "^0.7.0",
-		"ampersand": "*",
 		"picturefill": "^3.0.2",
-		"lazysizes": "^3.0.0-rc2",
-		"handlebars": "^4.0.5"
+		"lazysizes": "^3.0.0-rc4",
+		"handlebars": "^4.0.6"
 	},
 	"devDependencies": {
 		"aliasify": "^2.1.0",

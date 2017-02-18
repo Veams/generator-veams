@@ -1,4 +1,4 @@
-var devFolderId = 'createDevFolder';
+const devFolderId = 'createDevFolder';
 
 exports.questions = function () {
 	return {
@@ -21,17 +21,15 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-
-	// Add Dev Folder
-	if (this.features.indexOf(devFolderId) != -1) {
-		this.mkdir('_dist');
-	}
-
 	// Grunt & Gulp
 	if (this.taskRunner.indexOf('grunt') !== -1) {
 		// Add copy task
 		if (this.features.indexOf('createDevFolder') != -1) {
-			this.copy('helpers/_grunt/_copy.js.ejs', 'helpers/_grunt/copy.js');
+			this.fs.copyTpl(
+				this.templatePath('helpers/_grunt/_copy.js.ejs'),
+				'helpers/_grunt/copy.js',
+				this
+			);
 		} else {
 			delete this.pkgFile['devDependencies']['grunt-contrib-copy'];
 		}

@@ -7,7 +7,7 @@ docs: true
 {{#extend "lyt-default"}}
 	{{#content "main"}}
 		<header>
-			<h1><%= _.slugify(projectName) %></h1>
+			<h1><%= projectName %></h1>
 		</header>
 
 		<p>
@@ -30,7 +30,7 @@ docs: true
 {{/extend}}
 <% } else { %>
 <header>
-	<h1><%= _.slugify(projectName) %></h1>
+	<h1><%= projectName %></h1>
 </header>
 
 <p>

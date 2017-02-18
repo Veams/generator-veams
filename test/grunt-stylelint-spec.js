@@ -1,18 +1,18 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
 
 describe('grunt-stylelint', function () {
-	var helperPath = 'helpers/';
-	var srcPath = 'resources/';
+	const helperPath = 'helpers/';
+	const srcPath = 'resources/';
 
 
 	describe('when selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			'taskRunner': [
 				'grunt'
 			],
@@ -52,7 +52,7 @@ describe('grunt-stylelint', function () {
 	});
 
 	describe('when disabled', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			'taskRunner': [
 				'grunt'
 			],

@@ -1,14 +1,12 @@
-var _ = require('lodash');
-var veamsQueryId = 'veams-query';
-var jqueryId = 'jquery';
-var backboneId = 'backbone';
-var exoskeletonId = 'exoskeleton';
-var ampersandId = 'ampersand';
-var handlebarsId = 'handlebars';
-var picturefillId = 'picturefill';
-var lazysizesId = 'lazysizes';
-
-var veamsJSPreset = [
+const _ = require('lodash');
+const veamsQueryId = 'veams-query';
+const jqueryId = 'jquery';
+const backboneId = 'backbone';
+const exoskeletonId = 'exoskeleton';
+const handlebarsId = 'handlebars';
+const picturefillId = 'picturefill';
+const lazysizesId = 'lazysizes';
+const veamsJSPreset = [
 	handlebarsId,
 	picturefillId,
 	lazysizesId
@@ -38,26 +36,18 @@ exports.questions = function () {
 			{
 				name: 'Exoskeleton',
 				value: exoskeletonId,
-				checked: true
-			},
-			{
-				name: 'Ampersand (can only be used with CommonJS)',
-				value: ampersandId,
 				checked: false
 			}
 		],
 		validate: function (answer) {
-			var done = this.async();
+			let done = this.async();
 
-			if ((answer.indexOf(backboneId) != -1 && answer.indexOf(exoskeletonId) != -1) ||
-				(answer.indexOf(backboneId) != -1 && answer.indexOf(ampersandId) != -1) ||
-				(answer.indexOf(exoskeletonId) != -1 && answer.indexOf(ampersandId) != -1)) {
+			if (answer.indexOf(backboneId) != -1 && answer.indexOf(exoskeletonId) != -1) {
 
-				done("Please choose only one of the MV frameworks.");
-				return;
+				done("Please choose only one of the MV frameworks.", false);
 			}
 
-			done(true);
+			done(null, true);
 		},
 		default: this.config.get('jsLibs')
 	};
@@ -65,7 +55,7 @@ exports.questions = function () {
 
 exports.setup = function () {
 	this.jsLibs = this.config.get('jsLibs') || [];
-	if (this.config.get('veamsPackages') && this.config.get('veamsPackages').indexOf('veamsJS') !== -1) {
+	if (this.config.get('veamsPackages')) {
 		// merge array and remove duplicates
 		this.jsLibs = _.union(this.config.get('jsLibs'), veamsJSPreset);
 	}
@@ -96,17 +86,39 @@ exports.scaffold = function () {
 		delete this.pkgFile['dependencies']['veams-query'];
 	}
 
-	if (this.veamsPackages.indexOf('veamsJS') === -1) delete this.bowerFile['dependencies']['veams-js'];
-
 	// Add JS files for libraries
 	if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || this.gulpModules.indexOf('gulp-requirejs-optimize') != -1) {
-		this.template('resources/js/_main.require.js.ejs', 'resources/js/main.js');
-		this.template('resources/js/_app.require.js.ejs', 'resources/js/app.js');
+		this.fs.copyTpl(
+			this.templatePath('resources/js/_main.require.js.ejs'),
+			'resources/js/main.js',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('resources/js/_app.require.js.ejs'),
+			'resources/js/app.js',
+			this
+		);
 	} else if (this.gruntModules.indexOf('grunt-browserify') !== -1 || this.gulpModules.indexOf('browserify') !== -1) {
-		this.template('resources/js/_main.browserify.js.ejs', 'resources/js/main.js');
-		this.template('resources/js/_app.browserify.js.ejs', 'resources/js/app.js');
+		this.fs.copyTpl(
+			this.templatePath('resources/js/_main.browserify.js.ejs'),
+			'resources/js/main.js',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('resources/js/_app.browserify.js.ejs'),
+			'resources/js/app.js',
+			this
+		);
 	} else if (this.gruntModules.indexOf('grunt-includes') !== -1) {
-		this.template('resources/js/_main.includes.js.ejs', 'resources/js/main.js');
-		this.template('resources/js/_app.includes.js.ejs', 'resources/js/app.js');
+		this.fs.copyTpl(
+			this.templatePath('resources/js/_main.includes.js.ejs'),
+			'resources/js/main.js',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('resources/js/_app.includes.js.ejs'),
+			'resources/js/app.js',
+			this
+		);
 	}
 };

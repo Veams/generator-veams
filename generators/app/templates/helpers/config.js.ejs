@@ -41,7 +41,7 @@ config.options = {<% if (selfContained) {%>
 		endpoints: [<% if (templateEngine) { %>
 			'resources/templating/layouts',
 			'resources/templating/pages',<% } %>
-			'resources/js/main.js',<% if (veamsPackages && veamsPackages.indexOf('veamsJS') != -1) { %>
+			'resources/js/main.js',<% if (veamsPackages) { %>
 			'resources/js/utils/events.js',<% } %>
 			'resources/scss/styles.scss'
 		]

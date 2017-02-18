@@ -1,19 +1,18 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
+const answers = require('../test_helpers/prompt-answer-factory')({
 	"gruntModules": [
 		"grunt-grunticon"
 	]
 });
 
-
 describe('grunt-grunticon', function () {
-	var srcPath = "resources/";
-	var helperPath = "helpers/";
+	const helperPath = "helpers/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -27,18 +26,18 @@ describe('grunt-grunticon', function () {
 	});
 
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /grunt-grunticon/);
-		helpers.assertFile('package.json', /grunt-text-replace/);
+		assert.fileContent('package.json', /grunt-grunticon/);
+		assert.fileContent('package.json', /grunt-text-replace/);
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + "_grunt/grunticon.js");
-		helpers.assertFile(helperPath + "_grunt/replace.js");
+		assert.file(helperPath + "_grunt/grunticon.js");
+		assert.file(helperPath + "_grunt/replace.js");
 	});
 
 	it('adds tasks to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'icons\'/);
-		helpers.assertFile("Gruntfile.js", /\'grunticon\'/);
-		helpers.assertFile("Gruntfile.js", /\'replace\'/);
+		assert.fileContent("Gruntfile.js", /\'icons\'/);
+		assert.fileContent("Gruntfile.js", /\'grunticon\'/);
+		assert.fileContent("Gruntfile.js", /\'replace\'/);
 	});
 });

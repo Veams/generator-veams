@@ -1,41 +1,20 @@
-var veamsMethId = 'veamsMethodology';
-var veamsSCSSId = 'veamsSCSS';
-var veamsJSId = 'veamsJS';
-
 exports.questions = function () {
 	return {
 		name: 'veamsPackages',
-		type: 'checkbox',
-		message: 'Do you want to use Veams Extensions?',
-		choices: [
-			{
-				name: 'Veams-Methodology',
-				value: veamsMethId,
-				checked: true
-			},
-			{
-				name: 'Veams-Sass (Bower Component)',
-				value: veamsSCSSId,
-				checked: true
-			},
-			{
-				name: 'Veams-JS (Bower Component, only usable with Browserify) ',
-				value: veamsJSId,
-				checked: false
-			}
-		],
+		type: 'confirm',
+		message: 'Do you want to use the Veams framework?',
 		default: this.config.get('veamsPackages')
 	};
 };
 
 exports.setup = function () {
-	this.veamsPackages = this.config.get('veamsPackages') || [];
+	this.veamsPackages = this.config.get('veamsPackages') || false;
 };
 
 exports.overwriteSetup = function () {
-	if (this.veamsPackages.indexOf(veamsJSId) !== -1) {
+	if (this.veamsPackages) {
 		if (this.taskRunner.indexOf('gulp') === -1) {
-			var gruntModules = this.config.get('gruntModules');
+			let gruntModules = this.config.get('gruntModules');
 
 			gruntModules.push('grunt-contrib-handlebars');
 			gruntModules.push('grunt-browserify');
@@ -47,41 +26,71 @@ exports.overwriteSetup = function () {
 };
 
 exports.scaffold = function () {
-	if (!this.veamsPackages && !this.veamsPackages.length) {
-		delete this.bowerFile['dependencies']['veams-js'];
-		delete this.bowerFile['dependencies']['veams-sass'];
+	if (!this.veamsPackages) {
+		delete this.pkgFile['dependencies']['veams'];
 
 		return;
 	}
 
-	if (this.veamsPackages.indexOf(veamsMethId) != -1) {
-
+	if (this.veamsPackages) {
 		if (this.templateEngine !== '') {
 			// Data
-			this.mkdir('resources/templating/data/blocks');
-			this.mkdir('resources/templating/data/pages');
-			this.mkdir('resources/templating/data/_global');
+			this.fs.copy(
+				this.templatePath('gitkeep'),
+				'resources/templating/data/blocks/.gitkeep'
+			);
+			this.fs.copy(
+				this.templatePath('gitkeep'),
+				'resources/templating/data/pages/.gitkeep'
+			);
+			this.fs.copy(
+				this.templatePath('gitkeep'),
+				'resources/templating/data/_global/.gitkeep'
+			);
 
 			// Layouts
-			this.copy('resources/templating/layouts/README.md');
+			this.fs.copy(
+				this.templatePath('resources/templating/layouts/README.md'),
+				'resources/templating/layouts/README.md'
+			);
 
 			// Blocks
-			this.copy('resources/templating/partials/blocks/README.md');
-			this.copy('resources/templating/partials/blocks/b-sitemap.hbs');
+			this.fs.copy(
+				this.templatePath('resources/templating/partials/blocks/README.md'),
+				'resources/templating/partials/blocks/README.md'
+			);
 
 			// Components
-			this.copy('resources/templating/partials/components/README.md');
+			this.fs.copy(
+				this.templatePath('resources/templating/partials/components/README.md'),
+				'resources/templating/partials/components/README.md'
+			);
 
 			// Utilities
-			this.copy('resources/templating/partials/utilities/README.md');
+			this.fs.copy(
+				this.templatePath('resources/templating/partials/utilities/README.md'),
+				'resources/templating/partials/utilities/README.md'
+			);
 		}
 
 		// SCSS
-		this.mkdir('resources/scss/blocks');
-		this.mkdir('resources/scss/utilities');
-		this.mkdir('resources/scss/components');
-		this.mkdir('resources/scss/layouts');
+		if (!this.selfContained) {
+			this.fs.copy(
+				this.templatePath('gitkeep'),
+				'resources/scss/blocks/.gitkeep'
+			);
+			this.fs.copy(
+				this.templatePath('gitkeep'),
+				'resources/scss/utilities/.gitkeep'
+			);
+			this.fs.copy(
+				this.templatePath('gitkeep'),
+				'resources/scss/components/.gitkeep'
+			);
+			this.fs.copy(
+				this.templatePath('gitkeep'),
+				'resources/scss/layouts/.gitkeep'
+			);
+		}
 	}
-	if (this.veamsPackages.indexOf(veamsJSId) === -1) delete this.bowerFile['dependencies']['veams-js'];
-	if (this.veamsPackages.indexOf(veamsSCSSId) === -1) delete this.bowerFile['dependencies']['veams-sass'];
 };

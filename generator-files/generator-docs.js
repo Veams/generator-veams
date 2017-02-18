@@ -36,36 +36,33 @@ exports.setup = function () {
 
 exports.scaffold = function () {
 	if (this.docs.indexOf(htmlDocsId) !== -1) {
-		this.directory(
-			this.generatorSrcPath + 'scss/docs',
-			this.srcPath + 'scss/docs'
-		);
-		this.copy(
-			this.generatorSrcPath + 'scss/docs.scss',
+		this.fs.copy(
+			this.templatePath(this.generatorSrcPath + 'scss/docs.scss'),
 			this.srcPath + 'scss/docs.scss'
 		);
 		if (this.templateEngine !== '') {
-			this.template(
-				this.generatorSrcPath + 'templating/docs/index.hbs.ejs',
-				this.srcPath + 'templating/docs/index.hbs'
+			this.fs.copyTpl(
+				this.templatePath(this.generatorSrcPath + 'templating/docs/index.hbs.ejs'),
+				this.srcPath + 'templating/docs/index.hbs',
+				this
 			);
 		}
 	}
 	if (this.docs.indexOf(htmlDocsId) === -1) delete this.bowerFile['dependencies']['highlightjs'];
 
 	if (this.docs && this.docs.indexOf(jsDocsId) !== -1) {
-		this.copy(
-			this.generatorHelperPath + 'task-configs/jsdoc.conf.json',
+		this.fs.copy(
+			this.templatePath(this.generatorHelperPath + 'task-configs/jsdoc.conf.json'),
 			this.helperPath + 'task-configs/jsdoc.conf.json'
 		);
-		this.copy(
-			this.generatorSrcPath + 'js/README.md',
+		this.fs.copy(
+			this.templatePath(this.generatorSrcPath + 'js/README.md'),
 			this.srcPath + 'js/README.md'
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {
-			this.copy(
-				this.generatorGruntPath + 'jsdoc.js',
+			this.fs.copy(
+				this.templatePath(this.generatorGruntPath + 'jsdoc.js'),
 				this.gruntPath + 'jsdoc.js'
 			);
 		} else {
@@ -76,14 +73,14 @@ exports.scaffold = function () {
 	}
 
 	if (this.docs && this.docs.indexOf(sassDocsId) !== -1) {
-		this.copy(
-			this.generatorHelperPath + 'task-configs/sassdoc.conf.json',
+		this.fs.copy(
+			this.templatePath(this.generatorHelperPath + 'task-configs/sassdoc.conf.json'),
 			this.helperPath + 'task-configs/sassdoc.conf.json'
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {
-			this.copy(
-				this.generatorGruntPath + 'sassdoc.js',
+			this.fs.copy(
+				this.templatePath(this.generatorGruntPath + 'sassdoc.js'),
 				this.gruntPath + 'sassdoc.js'
 			);
 		} else {
@@ -95,9 +92,10 @@ exports.scaffold = function () {
 
 	if (this.taskRunner.indexOf('gulp') !== -1 && this.docs && (this.docs.indexOf(sassDocsId) !== -1 || this.docs.indexOf(jsDocsId) !== -1)) {
 
-		this.template(
-			this.generatorGulpPath + '_docs.js.ejs',
-			this.gulpPath + 'docs.js'
+		this.fs.copyTpl(
+			this.templatePath(this.generatorGulpPath + '_docs.js.ejs'),
+			this.gulpPath + 'docs.js',
+			this
 		);
 	} else {
 		delete this.pkgFile['devDependencies']['gulp-jsdoc'];

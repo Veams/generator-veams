@@ -1,17 +1,17 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
 
 describe('Sass Frameworks', function () {
-	var srcPath = "resources/";
-	var helpersPath = "helpers/";
+	const srcPath = "resources/";
+	const helpersPath = "helpers/";
 
 	describe('when Bootstrap-Sass is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"cssLibs": [
 				"bootstrap-sass"
 			]
@@ -42,7 +42,7 @@ describe('Sass Frameworks', function () {
 	});
 
 	describe('when Foundation is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"cssLibs": [
 				"foundation"
 			]
@@ -73,7 +73,7 @@ describe('Sass Frameworks', function () {
 	});
 
 	describe('when Bourbon Neat is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"cssLibs": [
 				"neat"
 			]
@@ -106,7 +106,7 @@ describe('Sass Frameworks', function () {
 	});
 
 	describe('when Lost Grid is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"cssLibs": [
 				"lost-grid"
 			]
@@ -137,7 +137,7 @@ describe('Sass Frameworks', function () {
 	});
 
 	describe('when Lost Grid and Grunt is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"cssLibs": [
 				"lost-grid"
 			]
@@ -170,7 +170,7 @@ describe('Sass Frameworks', function () {
 	});
 
 	describe('when Lost Grid and Gulp is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			'taskRunner': [
 				'gulp'
 			],
@@ -197,7 +197,7 @@ describe('Sass Frameworks', function () {
 	});
 
 	describe('when Include-Media is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"cssLibs": [
 				"include-media"
 			]

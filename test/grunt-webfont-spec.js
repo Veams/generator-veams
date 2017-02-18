@@ -1,17 +1,17 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var answers = require('../test_helpers/prompt-answer-factory')({
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const answers = require('../test_helpers/prompt-answer-factory')({
 	'gruntModules': [
 		'grunt-webfont'
 	]
 });
 
 describe('grunt-webfont', function () {
-	var helperPath = 'helpers/';
+	const helperPath = 'helpers/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -30,8 +30,8 @@ describe('grunt-webfont', function () {
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + '_grunt/webfont.js');
-		helpers.assertFile(helperPath + '_grunt/custom/iconbuilder.js');
+		assert.file(helperPath + '_grunt/webfont.js');
+		assert.file(helperPath + '_grunt/custom/iconbuilder.js');
 	});
 
 	it('adds tasks to Gruntfile.js file', function () {

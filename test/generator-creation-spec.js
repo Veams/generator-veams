@@ -1,11 +1,10 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
-var defaultPrompts = require('../test_helpers/prompt-answer-factory')();
+const helpers = require('yeoman-test');
+const path = require('path');
+const assert = require('yeoman-assert');
+const defaultPrompts = require('../test_helpers/prompt-answer-factory')();
 
 describe('generator-veams', function () {
 	beforeEach(function (done) {
@@ -20,7 +19,7 @@ describe('generator-veams', function () {
 	});
 
 	it('creates expected files', function () {
-		var expected = [
+		const expected = [
 			// add files you expect to exist here.
 			'Gruntfile.js',
 			'package.json',
@@ -30,7 +29,7 @@ describe('generator-veams', function () {
 			'bower.json',
 			'README.md'
 		];
-		helpers.assertFiles(expected);
+		assert.file(expected);
 	});
 
 	it('adds folderStructure property to config.js', function () {

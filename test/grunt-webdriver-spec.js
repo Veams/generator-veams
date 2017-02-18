@@ -1,20 +1,20 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({
-	"testAndQALibs": [
-		"webdriver"
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
+let answers = require('../test_helpers/prompt-answer-factory')({
+	testAndQA: true,
+	testAndQALibs: [
+		'webdriver'
 	]
 });
 
-
 describe('grunt-webdriver', function () {
-	var helperPath = "helpers/";
-	var testPath = "test/";
+	const helperPath = "helpers/";
+	const testPath = "test/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -26,7 +26,6 @@ describe('grunt-webdriver', function () {
 			.withPrompts(answers)
 			.on('end', done);
 	});
-
 
 	it('adds references to package.json', function () {
 		assert.fileContent('package.json', /grunt-webdriver/);

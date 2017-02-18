@@ -1,18 +1,18 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
+const answers = require('../test_helpers/prompt-answer-factory')({
 	"gruntModules": [
 		"grunt-browser-sync"
 	]
 });
 
-
 describe('grunt-browser-sync', function () {
-	var helperPath = "helpers/";
+	const helperPath = "helpers/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -25,16 +25,15 @@ describe('grunt-browser-sync', function () {
 			.on('end', done);
 	});
 
-
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /grunt-browser-sync/);
+		assert.fileContent('package.json', /grunt-browser-sync/);
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + "_grunt/browserSync.js");
+		assert.file(helperPath + "_grunt/browserSync.js");
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'browserSync\'/);
+		assert.fileContent("Gruntfile.js", /\'browserSync\'/);
 	});
 });

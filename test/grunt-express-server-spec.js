@@ -1,14 +1,15 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
+const answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('grunt-express-server', function () {
-	var helperPath = "helpers/";
+	const helperPath = "helpers/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -22,27 +23,27 @@ describe('grunt-express-server', function () {
 	});
 
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /"express":/);
-		helpers.assertFile('package.json', /"grunt-express-server":/);
+		assert.fileContent('package.json', /"express":/);
+		assert.fileContent('package.json', /"grunt-express-server":/);
 	});
 
 	it('creates server path and server file', function () {
-		var expected = [
+		const expected = [
 			"server/main.js"
 		];
 
-		helpers.assertFiles(expected);
+		assert.file(expected);
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + "_grunt/express.js");
+		assert.file(helperPath + "_grunt/express.js");
 	});
 
 	it('adds shortcut to jit grunt', function () {
-		helpers.assertFile("Gruntfile.js", /\'express\':\s+\'grunt-express-server\'/);
+		assert.fileContent("Gruntfile.js", /\'express\':\s+\'grunt-express-server\'/);
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'express:dev\'/);
+		assert.fileContent("Gruntfile.js", /\'express:dev\'/);
 	});
 });

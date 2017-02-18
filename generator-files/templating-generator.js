@@ -1,6 +1,3 @@
-var gruntId = 'grunt';
-var gulpId = 'gulp';
-
 exports.questions = function () {
 	return [
 		{
@@ -30,32 +27,6 @@ exports.questions = function () {
 			message: 'Do you want to use Mangony with grunt-express?',
 			default: this.config.get('mangonyExpress')
 		},
-		//{
-		//	when: function (answers) {
-		//		return answers.templateEngine
-		//			&& answers.templateEngine.length
-		//			&& answers.templateEngine.indexOf('assemble') !== -1;
-		//	},
-		//	type: 'confirm',
-		//	name: 'installPlugin',
-		//	message: 'Do you want to install Assemble-Plugins?',
-		//	default: this.config.get('installPlugin')
-		//},
-		//{
-		//	when: function (answers) {
-		//		return answers.templateEngine
-		//			&& answers.templateEngine.length
-		//			&& answers.installPlugin;
-		//	},
-		//	name: 'plugin',
-		//	type: 'checkbox',
-		//	message: 'Which Assemble-Plugin do you want to use?',
-		//	choices: [
-		//		{name: 'assemble-contrib-permalinks'},
-		//		{name: 'assemble-contrib-sitemap'},
-		//		{name: 'assemble-related-pages'}
-		//	]
-		//},
 		{
 			when: function (answers) {
 				return answers.templateEngine
@@ -77,26 +48,72 @@ exports.setup = function () {
 exports.scaffold = function () {
 	// add global assemble files
 	if (this.templateEngine && this.templateEngine !== '') {
-		this.mkdir('resources/templating');
-		this.copy('resources/templating/data/config.json');
-		this.directory('resources/templating/ajax', 'resources/templating/ajax');
-		this.template('resources/templating/layouts/lyt-default.hbs.ejs', 'resources/templating/layouts/lyt-default.hbs');
-		this.template('resources/templating/pages/index.hbs.ejs', 'resources/templating/pages/index.hbs');
-		this.template('resources/templating/pages/page-components.hbs.ejs', 'resources/templating/pages/page-components.hbs');
+
+		this.fs.copy(
+			this.templatePath('gitkeep'),
+			'resources/templating/ajax/.gitkeep'
+		);
+		this.fs.copy(
+			this.templatePath('gitkeep'),
+			'resources/templating/helpers/.gitkeep'
+		);
+		this.fs.copy(
+			this.templatePath('resources/templating/data/config.json'),
+			'resources/templating/data/config.json'
+		);
+		this.fs.copyTpl(
+			this.templatePath('resources/templating/layouts/lyt-default.hbs.ejs'),
+			'resources/templating/layouts/lyt-default.hbs',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('resources/templating/pages/index.hbs.ejs'),
+			'resources/templating/pages/index.hbs',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('resources/templating/pages/page-components.hbs.ejs'),
+			'resources/templating/pages/page-components.hbs',
+			this
+		);
 
 		// Add global partials
-		this.mkdir('resources/templating/partials');
-		this.copy('resources/templating/partials/_global/_metadata.hbs');
-		this.template('resources/templating/partials/_global/_scripts.hbs.ejs', 'resources/templating/partials/_global/_scripts.hbs');
-		this.copy('resources/templating/partials/_global/_styles.hbs', 'resources/templating/partials/_global/_styles.hbs');
+		this.fs.copy(
+			this.templatePath('resources/templating/partials/_global/_metadata.hbs'),
+			'resources/templating/partials/_global/_metadata.hbs'
+		);
+		this.fs.copyTpl(
+			this.templatePath('resources/templating/partials/_global/_scripts.hbs.ejs'),
+			'resources/templating/partials/_global/_scripts.hbs',
+			this
+		);
+		this.fs.copy(
+			this.templatePath('resources/templating/partials/_global/_styles.hbs'),
+			'resources/templating/partials/_global/_styles.hbs'
+		);
 
 		// Add HTML build task for gulp
-		if (this.taskRunner.indexOf('gulp') !== -1) this.template('helpers/_gulp/_html.js.ejs', 'helpers/_gulp/html.js');
+		if (this.taskRunner.indexOf('gulp') !== -1) {
+			this.fs.copyTpl(
+				this.templatePath('helpers/_gulp/_html.js.ejs'),
+				'helpers/_gulp/html.js',
+				this
+			);
+		}
 
 		if (this.templateEngine.indexOf('assemble') !== -1) {
 			// Add Gruntfile-helper file
-			this.copy('helpers/_grunt/_assemble.js.ejs', 'helpers/_grunt/assemble.js');
-			this.directory('resources/templating/helpers', 'resources/templating/helpers');
+			this.fs.copyTpl(
+				this.templatePath('helpers/_grunt/_assemble.js.ejs'),
+				'helpers/_grunt/assemble.js',
+				this
+			);
+
+			// Add template helpers
+			this.fs.copy(
+				this.templatePath('resources/templating/helpers/**/*'),
+				'resources/templating/helpers'
+			);
 		} else {
 			delete this.pkgFile['devDependencies']['assemble'];
 			delete this.pkgFile['devDependencies']['mangony-hbs-helpers'];
@@ -109,12 +126,19 @@ exports.scaffold = function () {
 				delete this.pkgFile['devDependencies']['grunt-open'];
 
 			} else {
-				this.copy('helpers/_grunt/_mangony.js.ejs', 'helpers/_grunt/mangony.js');
+				this.fs.copyTpl(
+					this.templatePath('helpers/_grunt/_mangony.js.ejs'),
+					'helpers/_grunt/mangony.js',
+					this
+				);
 
 				if (this.mangonyExpress === true) {
 					this.gruntModules.push('grunt-open');
 
-					this.copy(this.generatorGruntPath + 'open.js', this.gruntPath + 'open.js');
+					this.fs.copy(
+						this.templatePath(this.generatorGruntPath + 'open.js'),
+						this.gruntPath + 'open.js'
+					);
 				} else {
 					delete this.pkgFile['devDependencies']['grunt-open'];
 					delete this.pkgFile['devDependencies']['mangony'];

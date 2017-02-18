@@ -1,6 +1,6 @@
 {
   "name": "generator-veams",
-  "version": "7.6.1",
+  "version": "8.0.0",
   "homepage": "http://veams.org/",
   "description": "Scaffold modern frontend web apps or web pages with a static site generator, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with ES Harmony support.",
   "keywords": [
@@ -43,20 +43,22 @@
     "test": "mocha --reporter spec"
   },
   "dependencies": {
-    "chalk": ">=0.3.0",
-    "fs-extra": "^0.26.5",
-    "lodash": "^3.10.0",
-    "yeoman-generator": "~0.17.0",
-    "yo": "~1.4.7"
+    "chalk": "~1.1.3",
+    "fs-extra": "^2.0.0",
+    "lodash": "^4.17.4",
+    "yeoman-generator": "~1.1.0",
+    "yo": "~1.8.5"
   },
   "devDependencies": {
-    "mocha": ">=1.13.0"
+    "mocha": ">=1.13.0",
+    "yeoman-assert": "^3.0.0",
+    "yeoman-test": "^1.6.0"
   },
   "peerDependencies": {
-    "yo": ">=1.2.0"
+    "yo": ">=1.8.5"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.4.5"
   },
   "readmeFilename": "README.md"
 }

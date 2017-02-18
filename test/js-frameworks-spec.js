@@ -1,22 +1,22 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
 
 describe('JavaScript Frameworks', function () {
-	var srcPath = "resources/";
-	var helperPath = "helpers/_grunt/";
+	const srcPath = 'resources/';
+	const helperPath = 'helpers/_grunt/';
 
 	describe('when Veams-Query is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
-			"gruntModules": [
-				"grunt-browserify"
+		let answers = require('../test_helpers/prompt-answer-factory')({
+			'gruntModules': [
+				'grunt-browserify'
 			],
-			"jsLibs": [
-				"veams-query"
+			'jsLibs': [
+				'veams-query'
 			]
 		});
 
@@ -46,12 +46,12 @@ describe('JavaScript Frameworks', function () {
 	});
 
 	describe('when jQuery is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
-			"gruntModules": [
-				"grunt-browserify"
+		const answers = require('../test_helpers/prompt-answer-factory')({
+			'gruntModules': [
+				'grunt-browserify'
 			],
-			"jsLibs": [
-				"jquery"
+			'jsLibs': [
+				'jquery'
 			]
 		});
 
@@ -76,13 +76,44 @@ describe('JavaScript Frameworks', function () {
 		});
 	});
 
-	describe('when Exoskeleton is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
-			"gruntModules": [
-				"grunt-browserify"
+	describe('when Veams-Query is selected', function () {
+		const answers = require('../test_helpers/prompt-answer-factory')({
+			'gruntModules': [
+				'grunt-browserify'
 			],
-			"jsLibs": [
-				"exoskeleton"
+			'jsLibs': [
+				'veams-query'
+			]
+		});
+
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../generators/app'))
+				.inDir(path.join(__dirname, 'tmp'))
+				.withOptions({
+					'skip-install': true,
+					'skip-welcome-message': true
+				})
+				.withPrompts(answers)
+				.on('end', done);
+		});
+
+		it('adds the package to bower.json and package.json', function () {
+			assert.noFileContent('bower.json', /veams-query/);
+			assert.fileContent('package.json', /veams-query/);
+		});
+
+		it('adds import state to app.js', function () {
+			assert.fileContent(srcPath + 'js/app.js', /veams-query/);
+		});
+	});
+
+	describe('when Exoskeleton is selected', function () {
+		const answers = require('../test_helpers/prompt-answer-factory')({
+			'gruntModules': [
+				'grunt-browserify'
+			],
+			'jsLibs': [
+				'exoskeleton'
 			]
 		});
 
@@ -107,12 +138,12 @@ describe('JavaScript Frameworks', function () {
 		});
 	});
 	describe('when Backbone is selected', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
-			"gruntModules": [
-				"grunt-browserify"
+		const answers = require('../test_helpers/prompt-answer-factory')({
+			'gruntModules': [
+				'grunt-browserify'
 			],
-			"jsLibs": [
-				"backbone"
+			'jsLibs': [
+				'backbone'
 			]
 		});
 

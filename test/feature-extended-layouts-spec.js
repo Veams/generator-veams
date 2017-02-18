@@ -1,17 +1,17 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
 
 describe('feature extended layouts', function () {
-	var helperPath = "helpers/";
-	var srcPath = "resources/";
+	const helperPath = "helpers/";
+	const srcPath = "resources/";
 
 	describe('assemble files', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"templateEngine": "assemble"
 		});
 
@@ -32,7 +32,7 @@ describe('feature extended layouts', function () {
 	});
 
 	describe('when extended layouts will be installed', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"templateEngine": "assemble",
 			"installExtendedLayout": true
 		});
@@ -54,7 +54,7 @@ describe('feature extended layouts', function () {
 	});
 
 	describe('when extended layouts will not be installed', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"templateEngine": "assemble",
 			"installExtendedLayout": false
 		});

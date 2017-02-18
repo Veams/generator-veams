@@ -1,15 +1,15 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var srcPath = 'resources/';
-var helperPath = 'helpers/';
+const fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const srcPath = 'resources/';
+const helperPath = 'helpers/';
 
 describe('Self contained project structure with Grunt', function () {
-	var answers = require('../test_helpers/prompt-answer-factory')({
+	const answers = require('../test_helpers/prompt-answer-factory')({
 		'selfContained': true,
 		'taskRunner': [
 			'grunt'
@@ -37,7 +37,7 @@ describe('Self contained project structure with Grunt', function () {
 });
 
 describe('Self contained project structure with Gulp', function () {
-	var answers = require('../test_helpers/prompt-answer-factory')({
+	const answers = require('../test_helpers/prompt-answer-factory')({
 		'selfContained': true,
 		'taskRunner': [
 			'gulp'

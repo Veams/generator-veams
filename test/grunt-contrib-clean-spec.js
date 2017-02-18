@@ -1,14 +1,15 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
+const answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('grunt-contrib-clean', function () {
-	var helperPath = "helpers/";
+	const helperPath = "helpers/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -22,14 +23,14 @@ describe('grunt-contrib-clean', function () {
 	});
 
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /grunt-contrib-clean/);
+		assert.fileContent('package.json', /grunt-contrib-clean/);
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + "_grunt/clean.js");
+		assert.file(helperPath + "_grunt/clean.js");
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /\'clean:dev\'/);
+		assert.fileContent("Gruntfile.js", /\'clean:dev\'/);
 	});
 });

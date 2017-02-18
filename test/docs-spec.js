@@ -1,17 +1,17 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
 
 describe('Documenation', function () {
-	var helperPath = "helpers/";
-	var srcPath = "resources/";
+	const helperPath = "helpers/";
+	const srcPath = "resources/";
 
 	describe('when JavaScript Documenation will be installed in Grunt', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"taskRunner": "grunt",
 			"docs": [
 				"jsdoc"
@@ -30,7 +30,7 @@ describe('Documenation', function () {
 		});
 
 		it('creates all doc files', function () {
-			var expected = [
+			const expected = [
 				helperPath + "_grunt/jsdoc.js",
 				helperPath + "task-configs/jsdoc.conf.json",
 				srcPath + "js/README.md"
@@ -39,20 +39,20 @@ describe('Documenation', function () {
 		});
 
 		it('adds references to package.json', function () {
-			helpers.assertFile('package.json', /grunt-jsdoc/);
+			assert.fileContent('package.json', /grunt-jsdoc/);
 		});
 
 		it('creates helper files', function () {
-			helpers.assertFile(helperPath + "_grunt/jsdoc.js");
+			assert.file(helperPath + "_grunt/jsdoc.js");
 		});
 
 		it('adds task to concurrent.js file', function () {
-			helpers.assertFile(helperPath + "_grunt/concurrent.js", /\'jsdoc\'/);
+			assert.fileContent(helperPath + "_grunt/concurrent.js", /\'jsdoc\'/);
 		});
 	});
 
 	describe('When Sass Documenation will be installed in Grunt', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"taskRunner": "grunt",
 			"docs": [
 				"sassdoc"
@@ -71,7 +71,7 @@ describe('Documenation', function () {
 		});
 
 		it('creates all doc files', function () {
-			var expected = [
+			const expected = [
 				helperPath + "_grunt/sassdoc.js",
 				helperPath + "task-configs/sassdoc.conf.json"
 			];
@@ -79,19 +79,19 @@ describe('Documenation', function () {
 		});
 
 		it('adds references to package.json', function () {
-			helpers.assertFile('package.json', /grunt-sassdoc/);
+			assert.fileContent('package.json', /grunt-sassdoc/);
 		});
 
 		it('creates helper files', function () {
-			helpers.assertFile(helperPath + "_grunt/sassdoc.js");
+			assert.file(helperPath + "_grunt/sassdoc.js");
 		});
 
 		it('adds task to concurrent.js file', function () {
-			helpers.assertFile(helperPath + "_grunt/concurrent.js", /\'sassdoc\'/);
+			assert.fileContent(helperPath + "_grunt/concurrent.js", /\'sassdoc\'/);
 		});
 	});
 	describe('When HTML Documenation will be installed in Grunt', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"taskRunner": "grunt",
 			"templateEngine": "assemble",
 			"docs": [
@@ -111,7 +111,7 @@ describe('Documenation', function () {
 		});
 
 		it('creates all doc files', function () {
-			var expected = [
+			const expected = [
 				helperPath + "_grunt/assemble.js",
 				srcPath + "scss/docs.scss"
 			];
@@ -120,7 +120,7 @@ describe('Documenation', function () {
 	});
 
 	describe('When JavaScript Documenation will be installed in Gulp', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"taskRunner": "gulp",
 			"docs": [
 				"jsdoc"
@@ -139,7 +139,7 @@ describe('Documenation', function () {
 		});
 
 		it('creates all doc files', function () {
-			var expected = [
+			const expected = [
 				helperPath + "_gulp/docs.js",
 				helperPath + "task-configs/jsdoc.conf.json",
 				srcPath + "js/README.md"
@@ -148,12 +148,12 @@ describe('Documenation', function () {
 		});
 
 		it('adds references to package.json', function () {
-			helpers.assertFile('package.json', /gulp-jsdoc/);
+			assert.fileContent('package.json', /gulp-jsdoc/);
 		});
 	});
 
 	describe('When Sass Documenation will be installed in Gulp', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			"taskRunner": "gulp",
 			"docs": [
 				"sassdoc"
@@ -172,7 +172,7 @@ describe('Documenation', function () {
 		});
 
 		it('creates all doc files', function () {
-			var expected = [
+			const expected = [
 				helperPath + "_gulp/docs.js",
 				helperPath + "task-configs/sassdoc.conf.json"
 			];
@@ -180,7 +180,7 @@ describe('Documenation', function () {
 		});
 
 		it('adds references to package.json', function () {
-			helpers.assertFile('package.json', /sassdoc/);
+			assert.fileContent('package.json', /sassdoc/);
 		});
 	});
 });

@@ -3,9 +3,7 @@ var externalLibs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(funct
 ];
 
 var internalLibs = [
-	'./resources/js/app.js:app'<% if (veamsPackages && veamsPackages.length) { %><% if (veamsPackages.indexOf('veamsJS') !== -1) { %>,
-	'./resources/js/utils/events.js:events',
-	'./resources/js/modules/_global/module.js:app-module'<% }} %>
+	'./resources/js/app.js:app'
 ];
 
 module.exports = {

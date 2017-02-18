@@ -1,19 +1,19 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
+const answers = require('../test_helpers/prompt-answer-factory')({
 	"gruntModules": [
 		"grunt-contrib-requirejs"
 	]
 });
 
 describe('grunt-contrib-requirejs', function () {
-	var helperPath = "helpers/";
-	var srcPath = "resources/";
+	const helperPath = "helpers/";
+	const srcPath = "resources/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))

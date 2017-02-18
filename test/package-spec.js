@@ -1,16 +1,16 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
 
 describe('Package.json', function () {
-	var srcPath = "resources/";
+	const srcPath = "resources/";
 
 	describe('when Grunt is selected and no plugins are used', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			taskRunner: ['grunt'],
 			gruntModules: [],
 			templateEngine: false
@@ -28,7 +28,7 @@ describe('Package.json', function () {
 		});
 
 		it('delete all packages dependencies for gulp', function () {
-			var templateDeps = [
+			const templateDeps = [
 				'grunt-mangony',
 				'mangony',
 				'assemble'
@@ -40,7 +40,7 @@ describe('Package.json', function () {
 	});
 
 	describe('when Gulp is selected and no plugins are used', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			taskRunner: ['gulp'],
 			gruntModules: [],
 			gulpModules: [],
@@ -65,7 +65,7 @@ describe('Package.json', function () {
 	});
 
 	describe('when Gulp and Grunt are selected and no plugins are used', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			taskRunner: ['gulp', 'grunt'],
 			gruntModules: [],
 			gulpModules: [],

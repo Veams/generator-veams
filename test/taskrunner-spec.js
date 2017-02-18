@@ -1,17 +1,17 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var srcPath = "resources/";
-var helperPath = "helpers/";
+const fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const srcPath = 'resources/';
+const helperPath = 'helpers/';
 
 describe('task runner is Grunt', function () {
-	var answers = require('../test_helpers/prompt-answer-factory')({
-		"taskRunner": [
-			"grunt"
+	const answers = require('../test_helpers/prompt-answer-factory')({
+		'taskRunner': [
+			'grunt'
 		]
 	});
 
@@ -35,7 +35,7 @@ describe('task runner is Grunt', function () {
 	});
 
 	it('creates default files', function () {
-		var expected = [
+		const expected = [
 			// add files you expect to exist here.
 			helperPath + '_grunt/clean.js',
 			helperPath + '_grunt/concurrent.js',
@@ -44,7 +44,7 @@ describe('task runner is Grunt', function () {
 			helperPath + '_grunt/sync.js',
 			helperPath + '_grunt/chokidar.js'
 		];
-		assert.files(expected);
+		assert.file(expected);
 	});
 
 	it('adds standard tasks to watch.js file', function () {
@@ -65,9 +65,9 @@ describe('task runner is Grunt', function () {
 });
 
 describe('task runner is Gulp', function () {
-	var answers = require('../test_helpers/prompt-answer-factory')({
-		"taskRunner": [
-			"gulp"
+	const answers = require('../test_helpers/prompt-answer-factory')({
+		'taskRunner': [
+			'gulp'
 		]
 	});
 

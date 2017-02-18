@@ -1,4 +1,4 @@
-# <%= _.slugify(projectName) %>
+# <%= projectName %>
 
 Current version="0.0.1"
 
@@ -11,8 +11,8 @@ Current version="0.0.1"
 We use Libsass as standard SCSS compiler.
 
 ## Frontend Methodology
-<% if(veamsPackages.indexOf('veamsMethodology') != -1) { %>
-We build <%= _.slugify(projectName) %> with the Veams Methodology:
+<% if(veamsPackages) { %>
+We build <%= projectName %> with the Veams Methodology:
 * http://veams.org/methodology/
 <% } %>
 

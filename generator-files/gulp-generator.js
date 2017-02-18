@@ -40,15 +40,27 @@ exports.scaffold = function () {
 	if (this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 ||
 		this.gulpModules.indexOf('gulp-uglify') !== -1 && this.gulpModules.indexOf('browserify') === -1 ||
 		this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 && this.gulpModules.indexOf('gulp-uglify') !== -1) {
-		this.template('helpers/_gulp/_scripts.require.js.ejs', 'helpers/_gulp/scripts.js');
+		this.fs.copyTpl(
+			this.templatePath('helpers/_gulp/_scripts.require.js.ejs'),
+			'helpers/_gulp/scripts.js',
+			this
+		);
 	} else if (this.gulpModules.indexOf('browserify') !== -1 ||
 		this.gulpModules.indexOf('browserify') !== -1 && this.gulpModules.indexOf('gulp-uglify') !== -1) {
-		this.template('helpers/_gulp/_scripts.browserify.js.ejs', 'helpers/_gulp/scripts.js');
+		this.fs.copyTpl(
+			this.templatePath('helpers/_gulp/_scripts.browserify.js.ejs'),
+			'helpers/_gulp/scripts.js',
+			this
+		);
 	}
 
 	// Gulp modules are splitted up in separate files and modules
 	if (this.gulpModules.indexOf('gulp-iconify') != -1 || this.gulpModules.indexOf('gulp-svg-sprite') != -1) {
-		this.template('helpers/_gulp/_icons.js.ejs', 'helpers/_gulp/icons.js');
+		this.fs.copyTpl(
+			this.templatePath('helpers/_gulp/_icons.js.ejs'),
+			'helpers/_gulp/icons.js',
+			this
+		);
 	}
 
 	// Deletion in package.json

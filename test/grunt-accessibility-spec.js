@@ -1,10 +1,11 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
+const answers = require('../test_helpers/prompt-answer-factory')({
 	"gruntModules": [
 		"grunt-accessibility"
 	]
@@ -12,7 +13,7 @@ var answers = require('../test_helpers/prompt-answer-factory')({
 
 
 describe('grunt-accessibility', function () {
-	var helperPath = "helpers/";
+	const helperPath = "helpers/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -26,10 +27,10 @@ describe('grunt-accessibility', function () {
 	});
 
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /grunt-accessibility/);
+		assert.fileContent('package.json', /grunt-accessibility/);
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + "_grunt/accessibility.js");
+		assert.file(helperPath + "_grunt/accessibility.js");
 	});
 });

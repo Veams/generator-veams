@@ -1,15 +1,15 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({});
-var config = require('../lib/config');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
+const answers = require('../test_helpers/prompt-answer-factory')({});
+const config = require('../lib/config');
 
 describe('grunt-sass', function () {
-	var helperPath = config.paths.helperPath;
+	const helperPath = config.paths.helperPath;
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))

@@ -1,22 +1,22 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
 
 describe('Blueprints generator', function () {
 
 	describe('when name is slider', function () {
-		var answers = {
+		const answers = {
 			bpName: 'slider',
 			bpWithWrapWith: false,
 			bpWithJs: true,
 			bpType: 'c-'
 		};
 
-		var tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = 'tmp/' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
@@ -32,7 +32,7 @@ describe('Blueprints generator', function () {
 		});
 
 		it('creates files', function () {
-			var expected = [
+			const expected = [
 				tmpPath + '/usage/README.md',
 				tmpPath + '/data/' + answers.bpName + '-bp.json',
 				tmpPath + '/partials/c-' + answers.bpName + '.hbs',
@@ -55,13 +55,13 @@ describe('Blueprints generator', function () {
 	});
 
 	describe('when blueprints type is component', function () {
-		var answers = {
+		const answers = {
 			bpName: 'slider',
 			bpWithWrapWith: false,
 			bpWithJs: false
 		};
 
-		var tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = 'tmp/' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
@@ -78,7 +78,7 @@ describe('Blueprints generator', function () {
 		});
 
 		it('adds prefix to files', function () {
-			var expected = [
+			const expected = [
 				tmpPath + '/partials/c-' + answers.bpName + '.hbs',
 				tmpPath + '/scss/_c-' + answers.bpName + '.scss'
 			];
@@ -96,13 +96,13 @@ describe('Blueprints generator', function () {
 	});
 
 	describe('when blueprints type is block', function () {
-		var answers = {
+		const answers = {
 			bpName: 'test-block',
 			bpWithWrapWith: false,
 			bpWithJs: false
 		};
 
-		var tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = 'tmp/' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
@@ -119,7 +119,7 @@ describe('Blueprints generator', function () {
 		});
 
 		it('adds prefix to files', function () {
-			var expected = [
+			const expected = [
 				tmpPath + '/partials/b-' + answers.bpName + '.hbs',
 				tmpPath + '/scss/_b-' + answers.bpName + '.scss'
 			];
@@ -137,13 +137,13 @@ describe('Blueprints generator', function () {
 	});
 
 	describe('when blueprints type is utility', function () {
-		var answers = {
+		const answers = {
 			bpName: 'test-util',
 			bpWithWrapWith: false,
 			bpWithJs: false
 		};
 
-		var tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = 'tmp/' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
@@ -160,7 +160,7 @@ describe('Blueprints generator', function () {
 		});
 
 		it('adds prefix to files', function () {
-			var expected = [
+			const expected = [
 				tmpPath + '/partials/u-' + answers.bpName + '.hbs',
 				tmpPath + '/scss/_u-' + answers.bpName + '.scss'
 			];
@@ -178,7 +178,7 @@ describe('Blueprints generator', function () {
 	});
 
 	describe('when blueprints type is custom', function () {
-		var answers = {
+		const answers = {
 			bpName: 'test-custom',
 			bpWithWrapWith: false,
 			bpWithJs: false,
@@ -186,7 +186,7 @@ describe('Blueprints generator', function () {
 			customFolder: 'custom'
 		};
 
-		var tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = 'tmp/' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
@@ -203,7 +203,7 @@ describe('Blueprints generator', function () {
 		});
 
 		it('adds prefix to files', function () {
-			var expected = [
+			const expected = [
 				tmpPath + '/partials/k-' + answers.bpName + '.hbs',
 				tmpPath + '/scss/_k-' + answers.bpName + '.scss'
 			];
@@ -221,13 +221,13 @@ describe('Blueprints generator', function () {
 	});
 
 	describe('when blueprints is wrap with template', function () {
-		var answers = {
+		const answers = {
 			bpName: 'test-util',
 			bpWithWrapWith: true,
 			bpWithJs: false
 		};
 
-		var tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = 'tmp/' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
@@ -257,13 +257,13 @@ describe('Blueprints generator', function () {
 	});
 
 	describe('when blueprints a JavaScript module', function () {
-		var answers = {
+		const answers = {
 			bpName: 'test-module',
 			bpWithWrapWith: false,
 			bpWithJs: true
 		};
 
-		var tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = 'tmp/' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))

@@ -1,16 +1,15 @@
-var helpers = require('./../lib/helpers.js');
-
-var jscsId = 'jscs';
-var htmlHintId = 'hintingHTML';
-var jsHintId = 'hintingJS';
-var sasslintId = 'stylelint';
-var webdriverId = 'webdriver';
-var karmaId = 'karma';
+const helpers = require('./../lib/helpers.js');
+const jscsId = 'jscs';
+const htmlHintId = 'hintingHTML';
+const jsHintId = 'hintingJS';
+const sasslintId = 'stylelint';
+const webdriverId = 'webdriver';
+const karmaId = 'karma';
 
 exports.questions = function () {
-	var qaLibsId = 'testAndQALibs';
-	var qaLibsQuestion = 'Which Testing and QA Tools do you want add?';
-	var choices = [
+	const qaLibsId = 'testAndQALibs';
+	const qaLibsQuestion = 'Which Testing and QA Tools do you want add?';
+	const choices = [
 		{
 			name: 'JavaScript Code Style (jscs)',
 			value: jscsId,
@@ -86,14 +85,14 @@ exports.scaffold = function () {
 	 * JSCS Lint
 	 */
 	if (this.testAndQALibs.indexOf(jscsId) !== -1) {
-		this.copy(
-			this.generatorHelperPath + 'task-configs/jscs.airbnb.json',
+		this.fs.copy(
+			this.templatePath(this.generatorHelperPath + 'task-configs/jscs.airbnb.json'),
 			this.helperPath + 'task-configs/jscs.airbnb.json'
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1 && this.taskRunner.indexOf('gulp') === -1) {
-			this.copy(
-				this.generatorHelperPath + '_grunt/jscs.js',
+			this.fs.copy(
+				this.templatePath(this.generatorHelperPath + '_grunt/jscs.js'),
 				this.helperPath + '_grunt/jscs.js'
 			);
 			delete this.pkgFile['devDependencies']['gulp-jscs'];
@@ -102,9 +101,10 @@ exports.scaffold = function () {
 		}
 
 		if (this.taskRunner.indexOf('gulp') !== -1) {
-			this.copy(
-				this.generatorGulpPath + '_testing.js.ejs',
-				this.gulpPath + 'testing.js'
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGulpPath + '_testing.js.ejs'),
+				this.gulpPath + 'testing.js',
+				this
 			);
 		}
 	} else {
@@ -116,21 +116,25 @@ exports.scaffold = function () {
 	 * HTML Hint
 	 */
 	if (this.testAndQALibs.indexOf(htmlHintId) !== -1) {
-		this.copy(
-			this.generatorHelperPath + 'task-configs/.htmlhintrc',
+		this.fs.copy(
+			this.templatePath(this.generatorHelperPath + 'task-configs/.htmlhintrc'),
 			this.helperPath + 'task-configs/.htmlhintrc'
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1 && this.taskRunner.indexOf('gulp') === -1) {
-			this.copy(
-				this.generatorGruntPath + 'htmlhint.js',
+			this.fs.copy(
+				this.templatePath(this.generatorGruntPath + 'htmlhint.js'),
 				this.gruntPath + 'htmlhint.js'
 			);
 			delete this.pkgFile['devDependencies']['gulp-htmlhint'];
 		} else {
 			delete this.pkgFile['devDependencies']['grunt-htmlhint'];
 
-			this.template('helpers/_gulp/_hinting.js.ejs', 'helpers/_gulp/hinting.js');
+			this.fs.copyTpl(
+				this.templatePath('helpers/_gulp/_hinting.js.ejs'),
+				'helpers/_gulp/hinting.js',
+				this
+			);
 		}
 	} else {
 		delete this.pkgFile['devDependencies']['gulp-htmlhint'];
@@ -141,14 +145,14 @@ exports.scaffold = function () {
 	 * JS Hint
 	 */
 	if (this.testAndQALibs.indexOf(jsHintId) != -1) {
-		this.copy(
-			this.generatorHelperPath + 'task-configs/.jshintrc',
+		this.fs.copy(
+			this.templatePath(this.generatorHelperPath + 'task-configs/.jshintrc'),
 			this.helperPath + 'task-configs/.jshintrc'
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1 && this.taskRunner.indexOf('gulp') === -1) {
-			this.copy(
-				this.generatorGruntPath + 'jshint.js',
+			this.fs.copy(
+				this.templatePath(this.generatorGruntPath + 'jshint.js'),
 				this.gruntPath + 'jshint.js'
 			);
 			delete this.pkgFile['devDependencies']['gulp-jshint'];
@@ -165,8 +169,8 @@ exports.scaffold = function () {
 	 */
 	if (this.testAndQALibs.indexOf(htmlHintId) !== -1 || this.testAndQALibs.indexOf(jsHintId) !== -1) {
 		if (this.taskRunner.indexOf('gulp') !== -1) {
-			this.copy(
-				this.generatorGulpPath + '_hinting.js.ejs',
+			this.fs.copy(
+				this.templatePath(this.generatorGulpPath + '_hinting.js.ejs'),
 				this.gulpPath + 'hinting.js'
 			);
 		}
@@ -176,23 +180,24 @@ exports.scaffold = function () {
 	 * Stylelint
 	 */
 	if (this.testAndQALibs.indexOf(sasslintId) !== -1) {
-		this.copy(
-			this.generatorHelperPath + 'task-configs/stylelint.config.js',
+		this.fs.copy(
+			this.templatePath(this.generatorHelperPath + 'task-configs/stylelint.config.js'),
 			this.helperPath + 'task-configs/stylelint.config.js'
 		);
 
 		if (this.taskRunner.indexOf('gulp') !== -1) {
-			this.copy(
-				this.generatorGulpPath + '_hinting.js.ejs',
-				this.gulpPath + 'hinting.js'
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGulpPath + '_hinting.js.ejs'),
+				this.gulpPath + 'hinting.js',
+				this
 			);
 		} else {
 			delete this.pkgFile['devDependencies']['gulp-stylelint'];
 		}
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {
-			this.copy(
-				this.generatorGruntPath + 'stylelint.js',
+			this.fs.copy(
+				this.templatePath(this.generatorGruntPath + 'stylelint.js'),
 				this.gruntPath + 'stylelint.js'
 			);
 		} else {
@@ -208,18 +213,28 @@ exports.scaffold = function () {
 	 * Webdriver
 	 */
 	if (this.testAndQALibs.indexOf(webdriverId) !== -1) {
-
 		if (this.taskRunner.indexOf('grunt') !== -1) {
-			this.copy(
-				this.generatorHelperPath + '_grunt/webdriver.js',
+
+			this.fs.copy(
+				this.templatePath(this.generatorHelperPath + '_grunt/webdriver.js'),
 				this.helperPath + '_grunt/webdriver.js'
 			);
 			// create demo document
-			this.template('test/webdriver.html.ejs', 'test/helpers/html/test.html');
+			this.fs.copyTpl(
+				this.templatePath('test/webdriver.html.ejs'),
+				'test/helpers/html/test.html',
+				this
+			);
 			// create demo document
-			this.copy('test/demo.test.js', 'test/helpers/html/demo.test.js');
+			this.fs.copy(
+				this.templatePath('test/demo.test.js'),
+				'test/helpers/html/demo.test.js'
+			);
 			// create demo spec
-			this.copy('test/demo.spec.js', 'test/spec/e2e/demo.spec.js');
+			this.fs.copy(
+				this.templatePath('test/demo.spec.js'),
+				'test/spec/e2e/demo.spec.js'
+			);
 		} else {
 			delete this.pkgFile['devDependencies']['grunt-webdriver'];
 		}

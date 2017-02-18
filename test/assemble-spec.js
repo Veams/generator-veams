@@ -1,18 +1,18 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
+const answers = require('../test_helpers/prompt-answer-factory')({
 	"templateEngine": "assemble"
 });
 
 
 describe('assemble', function () {
-	var srcPath = "resources/";
-	var helperPath = "helpers/";
+	const srcPath = "resources/";
+	const helperPath = "helpers/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -26,16 +26,16 @@ describe('assemble', function () {
 	});
 
 	it('adds references to package.json', function () {
-		helpers.assertFile('package.json', /assemble/);
+		assert.fileContent('package.json', /assemble/);
 
 	});
 
 	it('creates helper files', function () {
-		helpers.assertFile(helperPath + "_grunt/assemble.js");
+		assert.file(helperPath + "_grunt/assemble.js");
 	});
 
 	it('creates resources files', function () {
-		var expected = [
+		const expected = [
 			srcPath + "templating/data/config.json",
 			srcPath + "templating/helpers/alias.js",
 			srcPath + "templating/helpers/helper-wrapWith.js",
@@ -46,17 +46,17 @@ describe('assemble', function () {
 			srcPath + "templating/partials/_global/_metadata.hbs",
 			srcPath + "templating/partials/_global/_styles.hbs"
 		];
-		helpers.assertFiles(expected);
+		assert.file(expected);
 
 	});
 
 	it('adds paths to config.js', function () {
-		helpers.assertFile(helperPath + "config.js", /'resources\/templating\/pages'/);
-		helpers.assertFile(helperPath + "config.js", /partials/);
+		assert.fileContent(helperPath + "config.js", /'resources\/templating\/pages'/);
+		assert.fileContent(helperPath + "config.js", /partials/);
 	});
 
 	it('adds task to chokidar.js file', function () {
-		helpers.assertFile(helperPath + "_grunt/chokidar.js", /templating/);
+		assert.fileContent(helperPath + "_grunt/chokidar.js", /templating/);
 	});
 	
 	
@@ -66,7 +66,7 @@ describe('assemble', function () {
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		helpers.assertFile("Gruntfile.js", /assemble/);
+		assert.fileContent("Gruntfile.js", /assemble/);
 	});
 })
 ;

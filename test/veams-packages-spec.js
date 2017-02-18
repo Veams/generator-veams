@@ -1,21 +1,19 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
 
-describe('veams extensions', function () {
-	var helperPath = "helpers/";
-	var srcPath = "resources/";
+describe('Veams Framework', function () {
+	const helperPath = 'helpers/';
+	const srcPath = 'resources/';
 
-	describe('when veams methodology is installed', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
-			"templateEngine": "assemble",
-			"veamsPackages": [
-				"veamsMethodology"
-			]
+	describe('when it is installed', function () {
+		const answers = require('../test_helpers/prompt-answer-factory')({
+			'templateEngine': 'assemble',
+			'veamsPackages': true
 		});
 
 		beforeEach(function (done) {
@@ -30,72 +28,27 @@ describe('veams extensions', function () {
 		});
 
 		it('creates READMEs', function () {
-			var expected = [
-				srcPath + "templating/layouts/README.md",
-				srcPath + "templating/partials/blocks/README.md",
-				srcPath + "templating/partials/components/README.md",
-				srcPath + "templating/partials/utilities/README.md"
+			const expected = [
+				srcPath + 'templating/layouts/README.md',
+				srcPath + 'templating/partials/blocks/README.md',
+				srcPath + 'templating/partials/components/README.md',
+				srcPath + 'templating/partials/utilities/README.md'
 			];
 			assert.file(expected);
 		});
 
-	});
-
-	describe('when veams-sass is installed', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
-			"templateEngine": "assemble",
-			"veamsPackages": [
-				"veamsSCSS"
-			]
+		it('package.json contains reference', function () {
+			assert.fileContent('package.json', /veams/);
 		});
 
-		beforeEach(function (done) {
-			helpers.run(path.join(__dirname, '../generators/app'))
-					.inDir(path.join(__dirname, 'tmp'))
-					.withOptions({
-						'skip-install': true,
-						'skip-welcome-message': true
-					})
-					.withPrompts(answers)
-					.on('end', done);
-		});
-
-		it('bower.json contains reference', function () {
-			assert.fileContent('bower.json', /veams-sass/);
-		});
-	});
-
-	describe('when veams-js is installed', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
-			"templateEngine": "assemble",
-			"veamsPackages": [
-				"veamsJS"
-			]
-		});
-
-		beforeEach(function (done) {
-			helpers.run(path.join(__dirname, '../generators/app'))
-					.inDir(path.join(__dirname, 'tmp'))
-					.withOptions({
-						'skip-install': true,
-						'skip-welcome-message': true
-					})
-					.withPrompts(answers)
-					.on('end', done);
-		});
-
-		it('contains reference in bower.json', function () {
-			assert.fileContent('bower.json', /veams-js/);
-		});
-
-		it('adds references to package.json', function () {
+		it('adds references to dependencies in package.json', function () {
 			assert.fileContent('package.json', /grunt-browserify/);
 			assert.fileContent('package.json', /grunt-contrib-handlebars/);
 		});
 
 		it('creates helper files', function () {
 			assert.file(helperPath + '_grunt/browserify.js');
-			assert.file(helperPath + "_grunt/handlebars.js");
+			assert.file(helperPath + '_grunt/handlebars.js');
 		});
 
 		it('adds task to Gruntfile.js file', function () {
@@ -116,32 +69,10 @@ describe('veams extensions', function () {
 			]);
 		});
 
-		it('adds INSERPOINT to sass file', function () {
+		it('adds INSERTPOINT to sass file', function () {
 			assert.fileContent(srcPath + 'scss/styles.scss', /@INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false/);
 		});
+
 	});
-
-	describe('when veams is not installed', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
-			"templateEngine": "assemble",
-			"veamsPackages": []
-		});
-
-		beforeEach(function (done) {
-			helpers.run(path.join(__dirname, '../generators/app'))
-					.inDir(path.join(__dirname, 'tmp'))
-					.withOptions({
-						'skip-install': true,
-						'skip-welcome-message': true
-					})
-					.withPrompts(answers)
-					.on('end', done);
-		});
-
-		it('bower.json contains no references', function () {
-			assert.noFileContent('bower.json', /veams-sass|veams-js/);
-		});
-	});
-
 
 });

@@ -1,14 +1,9 @@
-var _ = require('lodash');
-var foundationId = 'foundation';
-var neatId = 'neat';
-var bootstrapId = 'bootstrap-sass';
-var lostGridId = 'lost-grid';
-var includeMediaId = 'include-media';
-var veamsSCSSId = 'veamsSCSS';
-
-var veamsSCSSPreset = [
-	veamsSCSSId
-];
+const _ = require('lodash');
+const foundationId = 'foundation';
+const neatId = 'neat';
+const bootstrapId = 'bootstrap-sass';
+const lostGridId = 'lost-grid';
+const includeMediaId = 'include-media';
 
 exports.questions = function () {
 	return {
@@ -60,18 +55,14 @@ exports.scaffold = function () {
 		delete this.bowerFile['dependencies']['neat'];
 	}
 
-	if (this.config.get('veamsPackages') && this.config.get('veamsPackages').indexOf(veamsSCSSId) !== -1) {
-		// merge array and remove duplicates
-		this.cssLibs = _.union(this.config.get('cssLibs'), veamsSCSSPreset);
-	}
-
-	// Bower handling
-	if (this.config.get('veamsPackages').indexOf(veamsSCSSId) === -1) delete this.bowerFile['dependencies']['veams-scss'];
-
 	// Grunt handling
 	if (this.cssLibs.indexOf(lostGridId) != -1) {
 		if (this.taskRunner.indexOf('grunt') !== -1) {
-			this.copy(this.generatorGruntPath + 'postcss.js.ejs', this.gruntPath + 'postcss.js');
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGruntPath + 'postcss.js.ejs'),
+				this.gruntPath + 'postcss.js',
+				this
+			);
 			delete this.pkgFile['devDependencies']['gulp-postcss'];
 		} else {
 			delete this.pkgFile['devDependencies']['grunt-postcss'];

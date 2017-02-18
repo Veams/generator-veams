@@ -1,18 +1,18 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
 
 describe('Mangony', function () {
-	var srcPath = 'resources/';
-	var helperPath = 'helpers/';
+	const srcPath = 'resources/';
+	const helperPath = 'helpers/';
 
 
 	describe('adds standard files and configs to project', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			'templateEngine': 'mangony',
 			'mangonyExpress': false
 		});
@@ -29,7 +29,7 @@ describe('Mangony', function () {
 		});
 
 		it('creates resources files', function () {
-			var expected = [
+			const expected = [
 				srcPath + 'templating/data/config.json',
 				srcPath + 'templating/layouts/lyt-default.hbs',
 				srcPath + 'templating/pages/index.hbs',
@@ -37,12 +37,12 @@ describe('Mangony', function () {
 				srcPath + 'templating/partials/_global/_metadata.hbs',
 				srcPath + 'templating/partials/_global/_styles.hbs'
 			];
-			var notExpected = [
+			const notExpected = [
 				srcPath + 'templating/helpers/alias.js',
 				srcPath + 'templating/helpers/helper-wrapWith.js',
 				srcPath + 'templating/helpers/helper-ifBlock.js'
 			];
-			helpers.assertFiles(expected);
+			assert.file(expected);
 			assert.noFile(notExpected);
 
 		});
@@ -57,7 +57,7 @@ describe('Mangony', function () {
 		});
 	});
 	describe('Grunt installation', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			'templateEngine': 'mangony',
 			'mangonyExpress': false,
 			'gruntModules': [
@@ -82,7 +82,7 @@ describe('Mangony', function () {
 		});
 
 		it('creates helper files', function () {
-			helpers.assertFile(helperPath + '_grunt/mangony.js');
+			assert.file(helperPath + '_grunt/mangony.js');
 		});
 
 		it('adds dependencies and functions to server/main.js', function () {
@@ -101,7 +101,7 @@ describe('Mangony', function () {
 		});
 	});
 	describe('Grunt-express installation', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			'templateEngine': 'mangony',
 			'mangonyExpress': true
 		});
@@ -118,10 +118,10 @@ describe('Mangony', function () {
 		});
 
 		it('adds references to package.json', function () {
-			helpers.assertFile('package.json', /grunt-mangony/);
-			helpers.assertFile('package.json', /mangony/);
-			helpers.assertFile('package.json', /deep-extend/);
-			helpers.assertFile('package.json', /grunt-open/);
+			assert.fileContent('package.json', /grunt-mangony/);
+			assert.fileContent('package.json', /mangony/);
+			assert.fileContent('package.json', /deep-extend/);
+			assert.fileContent('package.json', /grunt-open/);
 
 		});
 
@@ -142,7 +142,7 @@ describe('Mangony', function () {
 	});
 
 	describe('Gulp installation', function () {
-		var answers = require('../test_helpers/prompt-answer-factory')({
+		const answers = require('../test_helpers/prompt-answer-factory')({
 			'taskRunner': ['gulp'],
 			'gruntModules': [],
 			'templateEngine': 'mangony'
@@ -166,7 +166,7 @@ describe('Mangony', function () {
 		});
 
 		it('creates helper files', function () {
-			helpers.assertFile(helperPath + '_gulp/html.js');
+			assert.file(helperPath + '_gulp/html.js');
 		});
 
 		it('adds and deletes task to Gulpfile.js file', function () {

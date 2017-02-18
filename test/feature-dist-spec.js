@@ -1,11 +1,11 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var fs = require('fs');
-var answers = require('../test_helpers/prompt-answer-factory')({
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const fs = require('fs');
+const answers = require('../test_helpers/prompt-answer-factory')({
 	"templateEngine": "assemble",
 	"features": [
 		"createDevFolder"
@@ -13,7 +13,7 @@ var answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('feature dist folder', function () {
-	var helperPath = "helpers/";
+	const helperPath = "helpers/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -27,7 +27,7 @@ describe('feature dist folder', function () {
 	});
 
 	it('creates copy task', function () {
-		var expected = [
+		const expected = [
 			helperPath + "_grunt/copy.js"
 		];
 		assert.file(expected);

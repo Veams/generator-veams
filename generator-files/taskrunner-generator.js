@@ -1,8 +1,8 @@
-var gruntId = 'grunt';
-var gulpId = 'gulp';
+let gruntId = 'grunt';
+let gulpId = 'gulp';
 
 exports.questions = function (obj) {
-	var object = obj || {};
+	let object = obj || {};
 	object.defaults = object.defaults !== false;
 
 	return {
@@ -59,8 +59,11 @@ exports.scaffold = function () {
 			"build": "gulp dist"
 		};
 	} else {
-		this.mkdir('helpers/_grunt');
-		this.template('Gruntfile.js.ejs', 'Gruntfile.js');
+		this.fs.copyTpl(
+			this.templatePath('Gruntfile.js.ejs'),
+			'Gruntfile.js',
+			this
+		);
 
 		if (this.taskRunner.indexOf(gulpId) !== -1) {
 			delete this.pkgFile['devDependencies']['grunt-chokidar'];
@@ -80,14 +83,45 @@ exports.scaffold = function () {
 				"build": "grunt dist"
 			};
 
-			this.template(this.generatorGruntPath + '_clean.js.ejs', this.gruntPath + 'clean.js');
-			this.template(this.generatorGruntPath + '_concurrent.js.ejs', this.gruntPath + 'concurrent.js');
-			this.copy(this.generatorGruntPath + 'cssmin.js', this.gruntPath + 'cssmin.js');
-			this.template(this.generatorGruntPath + 'express.js', this.gruntPath + 'express.js');
-			this.template(this.generatorGruntPath + '_sync.js.ejs', this.gruntPath + 'sync.js');
-			this.template(this.generatorGruntPath + '_sassGlobber.js.ejs', this.gruntPath + 'sassGlobber.js');
-			this.template(this.generatorGruntPath + '_sass.js.ejs', this.gruntPath + 'sass.js');
-			this.template(this.generatorGruntPath + '_watch.js.ejs', this.gruntPath + 'chokidar.js');
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGruntPath + '_clean.js.ejs'),
+				this.gruntPath + 'clean.js',
+				this
+			);
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGruntPath + '_concurrent.js.ejs'),
+				this.gruntPath + 'concurrent.js',
+				this
+			);
+			this.fs.copy(
+				this.templatePath(this.generatorGruntPath + 'cssmin.js'),
+				this.gruntPath + 'cssmin.js'
+			);
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGruntPath + 'express.js'),
+				this.gruntPath + 'express.js',
+				this
+			);
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGruntPath + '_sync.js.ejs'),
+				this.gruntPath + 'sync.js',
+				this
+			);
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGruntPath + '_sassGlobber.js.ejs'),
+				this.gruntPath + 'sassGlobber.js',
+				this
+			);
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGruntPath + '_sass.js.ejs'),
+				this.gruntPath + 'sass.js',
+				this
+			);
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGruntPath + '_watch.js.ejs'),
+				this.gruntPath + 'chokidar.js',
+				this
+			);
 		}
 	}
 
@@ -111,12 +145,30 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['gulp-sourcemaps'];
 	} else {
 		// Copy standard files
-		this.template('Gulpfile.js.ejs', 'Gulpfile.js');
-		this.mkdir('helpers/_gulp');
-		this.template('helpers/_gulp/_clean.js.ejs', 'helpers/_gulp/clean.js');
-		this.template('helpers/_gulp/_styles.js.ejs', 'helpers/_gulp/styles.js');
-		// if .gulpModules.indexOf('gulp-htmlhint') !== -1 || this.gulpModules.indexOf()
-		this.template('helpers/_gulp/_html.js.ejs', 'helpers/_gulp/html.js');
-		this.template('helpers/_gulp/_copy.js.ejs', 'helpers/_gulp/copy.js');
+		this.fs.copyTpl(
+			this.templatePath('Gulpfile.js.ejs'),
+			'Gulpfile.js',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('helpers/_gulp/_clean.js.ejs'),
+			'helpers/_gulp/clean.js',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('helpers/_gulp/_styles.js.ejs'),
+			'helpers/_gulp/styles.js',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('helpers/_gulp/_html.js.ejs'),
+			'helpers/_gulp/html.js',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('helpers/_gulp/_copy.js.ejs'),
+			'helpers/_gulp/copy.js',
+			this
+		);
 	}
 };

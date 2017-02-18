@@ -1,19 +1,19 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
-var answers = require('../test_helpers/prompt-answer-factory')({
+const fs = require('fs');
+const path = require('path');
+const helpers = require('yeoman-test');
+const assert = require('yeoman-assert');
+const answers = require('../test_helpers/prompt-answer-factory')({
 	"gruntModules": [
 		"grunt-image-size-export"
 	]
 });
 
 describe('grunt-image-size-export', function () {
-	var srcPath = "resources/";
-	var helperPath = "helpers/";
+	const srcPath = "resources/";
+	const helperPath = "helpers/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))

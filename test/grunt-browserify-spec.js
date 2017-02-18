@@ -2,8 +2,8 @@
 'use strict';
 
 var path = require('path');
-var helpers = require('yeoman-generator').test;
-var assert = require('yeoman-generator').assert;
+var helpers = require('yeoman-test');
+var assert = require('yeoman-assert');
 var fs = require('fs');
 var answers = require('../test_helpers/prompt-answer-factory')({
 	'gruntModules': [

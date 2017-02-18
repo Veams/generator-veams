@@ -1,7 +1,7 @@
-var config = require('../lib/config');
+let config = require('../lib/config');
 
 module.exports = function promptAnswerFactory(customAnswers) {
-	var defaults = {
+	let defaults = {
 		projectName: '',
 		projectAuthor: '',
 		selfContained: true,
@@ -22,12 +22,12 @@ module.exports = function promptAnswerFactory(customAnswers) {
 		cssLibs: [],
 		testAndQA: false,
 		testAndQALibs: [],
-		veamsPackages: [],
+		veamsPackages: false,
 		docs: []
 	};
 
-	var custom = defaults;
-	var val;
+	let custom = defaults;
+	let val;
 
 	for (val in customAnswers) {
 		if (customAnswers.hasOwnProperty(val)) {

@@ -4,12 +4,12 @@ Main File For Imports
 <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('neat') != -1) { %>
 // Helpers
 @import "../bower-components/bourbon/app/assets/stylesheets/bourbon";<% }} %>
-<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
+<% if (veamsPackages) { %>
 // Reset (veams-reset or veams-normalize)
 @import "../bower-components/veams-sass/resources/scss/veams-reset";<% } %>
 
 // Global Variables and Settings
-@import "global/_vars";<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsSCSS') != -1) { %>
+@import "global/_vars";<% if (veamsPackages) { %>
 @import "../bower-components/veams-sass/resources/scss/veams";<% } %><% if (cssLibs && cssLibs.length) { %>
 
 // Frameworks <% if (cssLibs.indexOf('include-media') != -1) { %>
@@ -26,8 +26,8 @@ Main File For Imports
 @import "helpers/mixins/**/*";
 
 // Globals
-@import "global/_base";<% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsJS') != -1) { %>
-// @INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false <% } %><% if (veamsPackages && veamsPackages.length && veamsPackages.indexOf('veamsMethodology') != -1) { %>
+@import "global/_base";<% if (veamsPackages) { %>
+// @INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false <% } %><% if (veamsPackages) { %>
 // Regions in Layouts
 @import "layouts/**/*";
 <% if (!selfContained) { %>
@@ -35,7 +35,10 @@ Main File For Imports
 @import "components/**/*";
 
 // Blocks
-@import "blocks/**/*";<% } %><% } %>
+@import "blocks/**/*";
+
+// Utilities
+@import "utilities/**/*";<% } %><% } %>
 
 <% if (selfContained) { %>
 // @INSERTPOINT :: @ref: scss-self-contained-import, @keep: true //<% } %>

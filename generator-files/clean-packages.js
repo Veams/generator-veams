@@ -22,7 +22,7 @@ exports.scaffold = function () {
 		delete this.bowerFile['dependencies']['veams-query'];
 	}
 
-	if (this.cssLibs.length === 0 && this.jsLibs.length === 0 && this.veamsPackages.length === 0) {
+	if (this.cssLibs.length === 0 && this.jsLibs.length === 0) {
 		this.bowerFile['dependencies'] = {};
 	}
 
