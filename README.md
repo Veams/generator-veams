@@ -45,6 +45,3 @@ yo veams
 
 ## Release History
 see: [Changelog.md](CHANGELOG.md)
-
-## TODO
-- Update code base to match new yeoman-generator terms

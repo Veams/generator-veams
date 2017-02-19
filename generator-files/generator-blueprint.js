@@ -149,7 +149,7 @@ exports.questions = function () {
 
 exports.save = function (props) {
 	const prefixer = (str) => {
-		return str.charAt(0) + '-';
+		return str ? str.charAt(0) + '-' : '';
 	};
 
 	this.name = this.options.name ? this.options.name : props.bpName;

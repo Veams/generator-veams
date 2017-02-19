@@ -55,7 +55,7 @@
     "yeoman-test": "^1.6.0"
   },
   "peerDependencies": {
-    "yo": ">=1.8.5"
+    "yo": "~1.8.5"
   },
   "engines": {
     "node": ">=4.4.5"
