@@ -4,7 +4,7 @@
 			"docs": {
 				"variationName": "Default"
 			},
-			"settings": {<% if (bpType === 'c-') { %>
+			"settings": {<% if (bpTypeName === 'component') { %>
 				"<%= bpName %>ContextClass": "default",<% } %>
 				"<%= bpName %>Classes": false<% if(bpWithJs) {%>,
 				"<%= bpName %>JsOptions": {}<% } %>

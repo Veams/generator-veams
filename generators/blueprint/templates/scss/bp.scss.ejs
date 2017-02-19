@@ -1,7 +1,7 @@
 /* ===================================================
-<% if (bpType === 'c-') { %>Component<% } else if (bpType === 'b-') { %>Block<% } else if (bpType === 'u-') { %>Utility<% } else if (customType === true) { %>Custom<% } else { %>Global<% } %>: <%= filename %>
+<%= bpTypeName %>: <%= filename %>
 =================================================== */
-<% if (bpType === 'c-') { %>
+<% if (bpTypeName === 'component') { %>
 /* ---------------------------------------------------
 Global Styles
 --------------------------------------------------- */
@@ -11,5 +11,5 @@ Global Styles
 /* ---------------------------------------------------
 Context: Default
 --------------------------------------------------- */<% } %>
-.<%= bpType %><%= filename %><% if (bpType === 'c-') { %>--default<% } %> {
+.<%= bpTypePrefix %><%= filename %><% if (bpTypeName === 'component') { %>--default<% } %> {
 }

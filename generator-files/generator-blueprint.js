@@ -26,7 +26,7 @@ exports.questions = function () {
 	let prompts = [];
 	let _this = this;
 
-	if (!this.name) {
+	if (!this.options.name) {
 		prompts = prompts.concat([
 			{
 				type: 'input',
@@ -57,29 +57,54 @@ exports.questions = function () {
 			name: 'bpWithJs',
 			message: 'Do you want to add JavaScript to this blueprint?',
 			default: true
-		}
+		} //,
+		// {
+		// 	when: function (answers) {
+		// 		return answers.bpWithJs === true;
+		// 	},
+		// 	name: 'bpAdditionalFiles',
+		// 	message: 'Do you want to scaffold further files for your blueprint?',
+		// 	type: 'checkbox',
+		// 	choices: [
+		// 		{
+		// 			name: 'Service File',
+		// 			value: 'bpWithService',
+		// 			checked: false
+		// 		},
+		// 		{
+		// 			name: 'Test Specs File',
+		// 			value: 'bpWithTest',
+		// 			checked: false
+		// 		},
+		// 		{
+		// 			name: 'Usage File',
+		// 			value: 'bpWithUsage',
+		// 			checked: false
+		// 		}
+		// 	]
+		// }
 	]);
 
 	if (!this.options.component && !this.options.block && !this.options.utility && !this.options.custom) {
 		prompts = prompts.concat([
 			{
-				name: 'bpType',
+				name: 'bpTypeName',
 				type: 'list',
 				message: 'What type is your blueprint?',
 				choices: [
 					{
 						name: 'block',
-						value: 'b-',
+						value: 'block',
 						checked: false
 					},
 					{
 						name: 'component',
-						value: 'c-',
+						value: 'component',
 						checked: true
 					},
 					{
 						name: 'utility',
-						value: 'u-',
+						value: 'utility',
 						checked: false
 					},
 					{
@@ -100,10 +125,19 @@ exports.questions = function () {
 	prompts = prompts.concat([
 		{
 			when: function (answers) {
-				return _this.options.custom || answers.bpType === 'custom';
+				return _this.options.custom || answers.bpTypeName === 'custom';
 			},
 			type: 'input',
-			name: 'customType',
+			name: 'customTypeName',
+			message: 'How do you call your custom type?',
+			default: ''
+		},
+		{
+			when: function (answers) {
+				return answers.customTypeName;
+			},
+			type: 'input',
+			name: 'customTypePrefix',
 			message: 'How do you want to prefix your custom type?',
 			default: ''
 		}
@@ -114,36 +148,38 @@ exports.questions = function () {
 
 
 exports.save = function (props) {
-	this.name = this.name ? this.name : props.bpName;
-	this.filename = helpers.hyphenate(this.name);
-	this.bpName = helpers.toCamelCase(this.name);
+	const prefixer = (str) => {
+		return str.charAt(0) + '-';
+	};
+
+	this.name = this.options.name ? this.options.name : props.bpName;
+	this.filename = helpers.hyphenate(this.options.name);
+	this.bpName = helpers.toCamelCase(this.options.name);
+	this.bpTypeName = props.bpTypeName === 'global' ? '' : props.bpTypeName;
+	this.bpTypePrefix = this.bpTypeName ? prefixer(this.bpTypeName) : '';
+	this.customTypeName = props.customTypeName || false;
+	this.customTypePrefix = props.customTypePrefix || false;
 	this.bpWrapWith = props.bpWithWrapWith;
 	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
 	this.bpWithJs = props.bpWithJs || false;
-	this.customType = false;
-	this.customFolder = this.customFolder || false;
+	this.bpAdditionalFiles = props.bpAdditionalFiles || [];
+	this.customFolder = this.customTypeName || false;
 
 	if (this.options.component || this.options.block || this.options.utility || this.options.custom) {
 		if (this.options.component) {
-			this.bpType = 'c-';
+			this.bpTypeName = 'component';
+			this.bpTypePrefix = 'c-';
 		} else if (this.options.block) {
-			this.bpType = 'b-';
+			this.bpTypeName = 'block';
+			this.bpTypePrefix = 'b-';
 		} else if (this.options.utility) {
-			this.bpType = 'u-';
+			this.bpTypeName = 'utility';
+			this.bpTypePrefix = 'u-';
 		} else if (this.options.custom) {
-			this.bpType = 'custom';
-		} else {
-			this.bpType = '';
+			this.bpTypeName = this.customTypeName;
+			this.bpTypePrefix = prefixer(this.customTypePrefix);
 		}
-	} else {
-		this.bpType = props.bpType === 'global' ? '' : props.bpType;
 	}
-
-	if (this.bpType === 'custom') {
-		this.bpType = props.customType + '-';
-		this.customType = true;
-	}
-
 };
 
 exports.setup = function () {
@@ -167,6 +203,9 @@ exports.setup = function () {
 	this.usageFile = checkConfig('readme') ? process.cwd() + '/' + configFile.options.paths.blueprints.readme : 'usage/README.md.ejs';
 	this.usageFileExtension = path.extname(helpers.deleteFileExtension(this.usageFile));
 
+	this.insertpointsFile = checkConfig('insertpoints') ? process.cwd() + '/' + configFile.options.paths.blueprints.insertpoints : 'usage/INSERTPOINTS.md.ejs';
+	this.insertpointsFileExtension = path.extname(helpers.deleteFileExtension(this.usageFile));
+
 	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.options.paths.blueprints.js : 'js/bp.js.ejs';
 	this.jsFileExtension = path.extname(helpers.deleteFileExtension(this.jsFile));
 };
@@ -181,17 +220,22 @@ exports.scaffold = function () {
 	);
 	this.fs.copyTpl(
 		this.templatePath(this.tplFile),
-		path + this.filename + '/partials/' + this.bpType + this.filename + this.tplFileExtension,
+		path + this.filename + '/partials/' + this.bpTypePrefix + this.filename + this.tplFileExtension,
 		this
 	);
 	this.fs.copyTpl(
 		this.templatePath(this.styleFile),
-		path + this.filename + '/scss/_' + this.bpType + this.filename + this.styleFileExtension,
+		path + this.filename + '/scss/_' + this.bpTypePrefix + this.filename + this.styleFileExtension,
 		this
 	);
 	this.fs.copyTpl(
 		this.templatePath(this.usageFile),
 		path + this.filename + '/README' + this.usageFileExtension,
+		this
+	);
+	this.fs.copyTpl(
+		this.templatePath(this.insertpointsFile),
+		path + this.filename + '/INSERTPOINTS' + this.insertpointsFileExtension,
 		this
 	);
 	if (this.bpWithJs) {

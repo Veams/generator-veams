@@ -1,0 +1,90 @@
+
+## INSERTPOINTS
+
+### Include: Page
+
+``` hbs
+{{! @INSERT :: START @id: <%= filename %>, @tag: <%= bpTypeName %>-partial }}
+{{#with <%= filename %>-bp}}<% if (bpWrapWith) { %>
+	{{#wrapWith "<%= bpTypePrefix %><%= filename %>"}}
+		Wrapped with markup from <%= filename %>.
+	{{/wrapWith}}<% } else { %>
+	{{> <%= bpTypePrefix %><%= filename %>}}<% } %>
+{{/with}}
+{{! @INSERT :: END }}
+```
+
+### Include: SCSS
+
+``` scss
+// @INSERT :: START @tag: scss-import //
+@import "<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %><% } %>/_<%= bpTypePrefix %><%= filename %>";
+// @INSERT :: END
+// @INSERT :: START @tag: scss-self-contained-import //
+@import "../templating/partials/<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %>s<% } %>/<%= filename %>/scss/_<%= bpTypePrefix %><%= filename %>";
+// @INSERT :: END
+```
+<% if(bpWithJs) {%>
+### Include: JavaScript
+
+#### Import
+``` js
+// @INSERT :: START @tag: js-import //
+import <%= bpJsName %> from './modules/<%= filename %>/<%= filename %>';
+// @INSERT :: END
+// @INSERT :: START @tag: js-self-contained-import //
+import <%= bpJsName %> from '../templating/partials/<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %>s<% } %>/<%= filename %>/<%= filename %>';
+// @INSERT :: END
+```
+
+#### Initializing in Veams V2
+``` js
+// @INSERT :: START @tag: js-init-v2 //
+/**
+ * Init <%= bpJsName %>
+ */
+Helpers.loadModule({
+	el: '[data-js-module="<%= filename %>"]',
+	module: <%= bpJsName %>,
+	context: context
+});
+// @INSERT :: END
+```
+
+#### Initializing in Veams V3
+``` js
+// @INSERT :: START @tag: js-init-v3 //
+/**
+ * Init <%= bpJsName %>
+ */
+Helpers.loadModule({
+	domName: '<%= filename %>',
+	module: <%= bpJsName %>,
+	context: context
+});
+// @INSERT :: END
+```
+
+#### Initializing in Veams V5
+``` js
+// @INSERT :: START @tag: js-init-v5 //
+// Init <%= bpJsName %>
+{
+	domName: '<%= filename %>',
+	module: <%= bpJsName %>
+}
+// @INSERT :: END
+```
+
+#### Custom Events
+``` js
+// @INSERT :: START @tag: js-events //
+/**
+ * Events for <%= bpJsName %>
+ */
+EVENTS.<%= bpName %> = {
+	eventName: '<%= bpName %>:eventName'
+};
+// @INSERT :: END
+```
+<% } %>
