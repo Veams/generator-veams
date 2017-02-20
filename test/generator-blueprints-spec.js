@@ -17,13 +17,12 @@ describe('Blueprints generator', function () {
 			bpTypePrefix: 'c'
 		};
 
-		const tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = './' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
 				.inDir(path.join(__dirname, 'tmp'))
 				.withOptions({
-					'tmp': true,
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
@@ -63,14 +62,13 @@ describe('Blueprints generator', function () {
 			bpWithJs: false
 		};
 
-		const tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = './' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
 				.inDir(path.join(__dirname, 'tmp'))
 				.withOptions({
 					'component': true,
-					'tmp': true,
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
@@ -104,14 +102,13 @@ describe('Blueprints generator', function () {
 			bpWithJs: false
 		};
 
-		const tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = './' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
 				.inDir(path.join(__dirname, 'tmp'))
 				.withOptions({
 					'block': true,
-					'tmp': true,
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
@@ -145,14 +142,13 @@ describe('Blueprints generator', function () {
 			bpWithJs: false
 		};
 
-		const tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = './' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
 				.inDir(path.join(__dirname, 'tmp'))
 				.withOptions({
 					'utility': true,
-					'tmp': true,
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
@@ -188,14 +184,13 @@ describe('Blueprints generator', function () {
 			customTypePrefix: 'k'
 		};
 
-		const tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = './' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
 				.inDir(path.join(__dirname, 'tmp'))
 				.withOptions({
 					'custom': true,
-					'tmp': true,
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
@@ -229,14 +224,13 @@ describe('Blueprints generator', function () {
 			bpWithJs: false
 		};
 
-		const tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = './' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
 				.inDir(path.join(__dirname, 'tmp'))
 				.withOptions({
 					'utility': true,
-					'tmp': true,
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
@@ -265,14 +259,13 @@ describe('Blueprints generator', function () {
 			bpWithJs: true
 		};
 
-		const tmpPath = 'tmp/' + answers.bpName;
+		const tmpPath = './' + answers.bpName;
 
 		beforeEach(function (done) {
 			helpers.run(path.join(__dirname, '../generators/blueprint'))
 				.inDir(path.join(__dirname, 'tmp'))
 				.withOptions({
 					'component': true,
-					'tmp': true,
 					'skip-install': true,
 					'skip-welcome-message': true
 				})

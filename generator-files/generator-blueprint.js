@@ -4,6 +4,11 @@ const path = require('path');
 const helpers = require('../lib/helpers');
 const config = require('../lib/config');
 const configFile = helpers.getProjectConfig();
+const types = [
+	'block',
+	'component',
+	'utility'
+];
 
 exports.construct = function () {
 	this.argument('name', {
@@ -18,7 +23,7 @@ exports.construct = function () {
 	});
 
 	// This method adds support for flags
-	this.option('tmp');
+	this.option('config');
 	this.option('component');
 };
 
@@ -108,11 +113,6 @@ exports.questions = function () {
 						checked: false
 					},
 					{
-						name: 'general',
-						value: 'global',
-						checked: false
-					},
-					{
 						name: 'custom',
 						value: 'custom',
 						checked: false
@@ -191,6 +191,41 @@ exports.setup = function () {
 			configFile.options.paths.blueprints[type]
 	};
 
+	this.folderStructure = 'self-contained';
+	this.path = '.';
+	this.jsPath = this.path + '/' + this.filename + '/js/';
+	this.scssPath = this.path + '/' + this.filename + '/scss/';
+	this.partialsPath = this.path + '/' + this.filename + '/partials/';
+	this.dataPath = this.path + '/' + this.filename + '/data/';
+	this.rootFolderPath = this.path + '/' + this.filename + '/';
+
+	if (this.options.config) {
+		this.configFile = this.configFile.options;
+		this.folderStructure = configFile.folderStructure || this.folderStructure;
+		this.keepScaffoldStructure = configFile.blueprints && configFile.blueprints.keepScaffoldStructure;
+		this.path = types.indexOf(this.bpTypeName) !== -1 ? configFile.paths[this.bpTypeName] : configFile.paths['partials'] + '/' + this.bpTypeName + 's';
+
+		if (this.folderStructure !== 'self-contained') {
+			if (this.bpTypeName === 'utility') {
+				this.scssFolder = 'utilitie'
+			} else {
+				this.scssFolder = this.bpTypeName
+			}
+
+			this.rootFolderPath = this.path + '/' + this.filename + '/';
+			this.jsPath = configFile.paths.js + '/' + 'modules/' + this.filename + '/';
+			this.scssPath = configFile.paths.scss + '/' + this.scssFolder + 's/';
+			this.partialsPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/partials/' : this.rootFolderPath;
+			this.dataPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/data/' : this.rootFolderPath;
+		} else {
+			this.rootFolderPath = this.path + '/' + this.filename + '/';
+			this.jsPath = this.path + '/' + this.filename + '/js/';
+			this.scssPath = this.path + '/' + this.filename + '/scss/';
+			this.partialsPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/partials/' : this.rootFolderPath;
+			this.dataPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/data/': this.rootFolderPath;
+		}
+	}
+
 	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.options.paths.blueprints.data : 'data/bp.json.ejs';
 	this.dataFileExtension = path.extname(helpers.deleteFileExtension(this.dataFile));
 
@@ -211,37 +246,35 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-	let path = this.options.tmp ? 'tmp/' : '';
-
 	this.fs.copyTpl(
 		this.templatePath(this.dataFile),
-		path + this.filename + '/data/' + this.filename + '-bp' + this.dataFileExtension,
+		this.dataPath + this.filename + '-bp' + this.dataFileExtension,
 		this
 	);
 	this.fs.copyTpl(
 		this.templatePath(this.tplFile),
-		path + this.filename + '/partials/' + this.bpTypePrefix + this.filename + this.tplFileExtension,
+		this.partialsPath + this.bpTypePrefix + this.filename + this.tplFileExtension,
 		this
 	);
 	this.fs.copyTpl(
 		this.templatePath(this.styleFile),
-		path + this.filename + '/scss/_' + this.bpTypePrefix + this.filename + this.styleFileExtension,
+		this.scssPath + '/_' + this.bpTypePrefix + this.filename + this.styleFileExtension,
 		this
 	);
 	this.fs.copyTpl(
 		this.templatePath(this.usageFile),
-		path + this.filename + '/README' + this.usageFileExtension,
+		this.rootFolderPath + '/README' + this.usageFileExtension,
 		this
 	);
 	this.fs.copyTpl(
 		this.templatePath(this.insertpointsFile),
-		path + this.filename + '/INSERTPOINTS' + this.insertpointsFileExtension,
+		this.rootFolderPath + '/INSERTPOINTS' + this.insertpointsFileExtension,
 		this
 	);
 	if (this.bpWithJs) {
 		this.fs.copyTpl(
 			this.templatePath(this.jsFile),
-			path + this.filename + '/js/' + this.filename + this.jsFileExtension,
+			this.jsPath + this.filename + this.jsFileExtension,
 			this
 		);
 	}
