@@ -217,6 +217,39 @@ describe('Blueprints generator', function () {
 
 	});
 
+	describe('when blueprint should create a tmp file', function () {
+		const answers = {
+			bpName: 'test-custom',
+			bpWithWrapWith: false,
+			bpWithJs: false,
+			customTypeName: 'collection',
+			customTypePrefix: 'k'
+		};
+
+		const tmpPath = './tmp/' + answers.bpName;
+
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../generators/blueprint'))
+				.inDir(path.join(__dirname, 'tmp'))
+				.withOptions({
+					'custom': true,
+					'tmp': true,
+					'skip-install': true,
+					'skip-welcome-message': true
+				})
+				.withArguments(answers.bpName)
+				.withPrompts(answers)
+				.on('end', done);
+		});
+
+		it('adds insertpoint file', function () {
+			const expected = [
+				tmpPath + '/INSERTPOINTS.md'
+			];
+			assert.file(expected);
+		});
+	});
+
 	describe('when blueprints is wrap with template', function () {
 		const answers = {
 			bpName: 'test-util',

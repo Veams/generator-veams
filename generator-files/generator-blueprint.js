@@ -25,6 +25,7 @@ exports.construct = function () {
 	// This method adds support for flags
 	this.option('config');
 	this.option('component');
+	this.option('tmp');
 };
 
 exports.questions = function () {
@@ -148,15 +149,18 @@ exports.questions = function () {
 
 
 exports.save = function (props) {
+	const cutter = (str) => {
+		return str ? str.charAt(0) : '';
+	};
 	const prefixer = (str) => {
-		return str ? str.charAt(0) + '-' : '';
+		return str ? str + '-' : '';
 	};
 
 	this.name = this.options.name ? this.options.name : props.bpName;
 	this.filename = helpers.hyphenate(this.options.name);
 	this.bpName = helpers.toCamelCase(this.options.name);
 	this.bpTypeName = props.bpTypeName === 'global' ? '' : props.bpTypeName;
-	this.bpTypePrefix = this.bpTypeName ? prefixer(this.bpTypeName) : '';
+	this.bpTypePrefix = this.bpTypeName ? prefixer(cutter(this.bpTypeName)) : '';
 	this.customTypeName = props.customTypeName || false;
 	this.customTypePrefix = props.customTypePrefix || false;
 	this.bpWrapWith = props.bpWithWrapWith;
@@ -165,7 +169,11 @@ exports.save = function (props) {
 	this.bpAdditionalFiles = props.bpAdditionalFiles || [];
 	this.customFolder = this.customTypeName || false;
 
-	if (this.options.component || this.options.block || this.options.utility || this.options.custom) {
+	if (this.options.component ||
+		this.options.block ||
+		this.options.utility ||
+		this.options.custom ||
+		this.bpTypeName === 'custom') {
 		if (this.options.component) {
 			this.bpTypeName = 'component';
 			this.bpTypePrefix = 'c-';
@@ -175,7 +183,7 @@ exports.save = function (props) {
 		} else if (this.options.utility) {
 			this.bpTypeName = 'utility';
 			this.bpTypePrefix = 'u-';
-		} else if (this.options.custom) {
+		} else if (this.options.custom || this.bpTypeName === 'custom') {
 			this.bpTypeName = this.customTypeName;
 			this.bpTypePrefix = prefixer(this.customTypePrefix);
 		}
@@ -222,7 +230,7 @@ exports.setup = function () {
 			this.jsPath = this.path + '/' + this.filename + '/js/';
 			this.scssPath = this.path + '/' + this.filename + '/scss/';
 			this.partialsPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/partials/' : this.rootFolderPath;
-			this.dataPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/data/': this.rootFolderPath;
+			this.dataPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/data/' : this.rootFolderPath;
 		}
 	}
 
@@ -244,6 +252,7 @@ exports.setup = function () {
 	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.options.paths.blueprints.js : 'js/bp.js.ejs';
 	this.jsFileExtension = path.extname(helpers.deleteFileExtension(this.jsFile));
 };
+
 
 exports.scaffold = function () {
 	this.fs.copyTpl(
@@ -275,6 +284,14 @@ exports.scaffold = function () {
 		this.fs.copyTpl(
 			this.templatePath(this.jsFile),
 			this.jsPath + this.filename + this.jsFileExtension,
+			this
+		);
+	}
+
+	if (this.options.tmp) {
+		this.fs.copyTpl(
+			this.templatePath(this.insertpointsFile),
+			'tmp/' + this.filename + '/INSERTPOINTS.md',
 			this
 		);
 	}
