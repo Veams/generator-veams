@@ -21,7 +21,7 @@
 3. You can use a static site generator like Assemble or Mangony
 4. You can add Bootstrap, Foundation, Bourbon and Lost to your project
 5. You can use RequireJS or Browserify (with Babelify) 
-6. You can add BackboneJS, ExoskeletonJS, AmpersandJS and jQuery 
+6. You can add BackboneJS, ExoskeletonJS, Veams and jQuery
 7. You can enable hinting and linting
 8. You can add WebdriverIO as test suite
 9. You can add the complete Veams stack to your project

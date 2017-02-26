@@ -1,3 +1,12 @@
+### v8.0.0
+- Add compatibility for newest yo version (^v1.8)
+- Add framework Veams 5
+- Update packages
+- Clean up all test cases
+- Bugfixes
+- Update blueprint generator to allow scaffolds of custom blueprints
+- Delete templating generator
+
 ### v7.6.1
 - Fix self-contained paths in watch task
 
