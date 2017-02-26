@@ -17,7 +17,7 @@
 	},
 	"dependencies": {
 		"jquery": "^3.1.1",
-		"veams": "^5.0.0",
+		"veams": "^5.0.0-rc2",
 		"veams-query": "^1.7.0",
 		"backbone": "^1.2.0",
 		"underscore": "^1.8.3",

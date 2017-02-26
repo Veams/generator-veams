@@ -27,7 +27,7 @@ exports.questions = function () {
 			type: 'confirm',
 			name: 'mangonyExpress',
 			message: 'Do you want to use Mangony with grunt-express?',
-			default: this.config.get('mangonyExpress')
+			default: true
 		},
 		{
 			when: function (answers) {
@@ -89,9 +89,10 @@ exports.scaffold = function () {
 			'resources/templating/partials/_global/_scripts.hbs',
 			this
 		);
-		this.fs.copy(
-			this.templatePath('resources/templating/partials/_global/_styles.hbs'),
-			'resources/templating/partials/_global/_styles.hbs'
+		this.fs.copyTpl(
+			this.templatePath('resources/templating/partials/_global/_styles.hbs.ejs'),
+			'resources/templating/partials/_global/_styles.hbs',
+			this
 		);
 
 		// Add HTML build task for gulp

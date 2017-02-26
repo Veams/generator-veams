@@ -33,6 +33,7 @@ exports.questions = function () {
 
 exports.setup = function () {
 	this.docs = this.config.get('docs') || [];
+
 	pg.definePaths.call(this);
 };
 

@@ -18,10 +18,8 @@ let App = {};
 	// Save a reference to the global object
 	const root = window;
     App = root.App = window.App || {};
-<%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
-	App.$ = $;<% } %>
-<%if (jsLibs && jsLibs.indexOf('veams-query') !== -1) { %>
-	App.$$ = VeamsQuery;<% } %><% if (veamsPackages) { %>
+<%if (jsLibs && (jsLibs.indexOf('jquery') !== -1 || jsLibs.indexOf('veams-query') !== -1)) { %>
+	App.$ = $;<% } %><% if (veamsPackages) { %>
 
 	// Intialize core of Veams
 	Veams.core.initialize();

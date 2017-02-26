@@ -6,11 +6,11 @@ Main File For Imports
 @import "../bower-components/bourbon/app/assets/stylesheets/bourbon";<% }} %>
 <% if (veamsPackages) { %>
 // Reset (veams-reset or veams-normalize)
-@import "../bower-components/veams-sass/resources/scss/veams-reset";<% } %>
+@import "../../node_modules/veams/src/scss/veams-reset";<% } %>
 
 // Global Variables and Settings
 @import "global/_vars";<% if (veamsPackages) { %>
-@import "../bower-components/veams-sass/resources/scss/veams";<% } %><% if (cssLibs && cssLibs.length) { %>
+@import "../../node_modules/veams/src/scss/veams";<% } %><% if (cssLibs && cssLibs.length) { %>
 
 // Frameworks <% if (cssLibs.indexOf('include-media') != -1) { %>
 @import "../bower-components/include-media/dist/include-media";<% } %><% if (cssLibs.indexOf('foundation') != -1) { %>
@@ -27,7 +27,8 @@ Main File For Imports
 
 // Globals
 @import "global/_base";<% if (veamsPackages) { %>
-// @INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false <% } %><% if (veamsPackages) { %>
+@import "global/_get-media";
+
 // Regions in Layouts
 @import "layouts/**/*";
 <% if (!selfContained) { %>

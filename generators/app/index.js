@@ -139,9 +139,9 @@ module.exports = class extends Generator {
 			);
 		}
 
-		(!this.config.get('docs') || this.force) && this.questions.push(
-			docsGenerator.questions.call(this)
-		);
+		// (!this.config.get('docs') || this.force) && this.questions.push(
+		// 	docsGenerator.questions.call(this)
+		// );
 
 		(!this.config.get('features') || this.force) && this.questions.push(
 			featuresGenerator.questions.call(this)

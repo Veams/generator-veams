@@ -5,7 +5,7 @@ exports.questions = function () {
 		name: 'veamsPackages',
 		type: 'confirm',
 		message: 'Do you want to use the Veams framework?',
-		default: this.config.get('veamsPackages')
+		default: true
 	};
 };
 
@@ -35,6 +35,11 @@ exports.scaffold = function () {
 	}
 
 	if (this.veamsPackages) {
+		this.fs.copy(
+			this.templatePath('resources/scss/global/_get-media.scss'),
+			'resources/scss/global/_get-media.scss'
+		);
+
 		if (this.templateEngine !== '') {
 			// Data
 			this.fs.copy(

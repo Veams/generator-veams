@@ -74,8 +74,9 @@ describe('Veams Framework', function () {
 			assert.fileContent(srcPath + 'js/main.js', /import \{App, Veams\} from/);
 		});
 
-		it('adds INSERTPOINT to sass file', function () {
-			assert.fileContent(srcPath + 'scss/styles.scss', /@INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false/);
+		it('adds _get-media.scss and import state to sass file', function () {
+			assert.file(srcPath + 'scss/global/_get-media.scss');
+			assert.fileContent(srcPath + 'scss/styles.scss', /@import \"global\/_get-media\"/);
 		});
 
 	});

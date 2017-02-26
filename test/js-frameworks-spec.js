@@ -37,7 +37,7 @@ describe('JavaScript Frameworks', function () {
 		});
 
 		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'js/app.js', /VeamsQuery/);
+			assert.fileContent(srcPath + 'js/app.js', /veams-query/);
 		});
 
 		it('adds references in browserify task', function () {

@@ -1,0 +1,23 @@
+head {
+	font-family: desktop;
+
+	@include bp(1024px) {
+		font-family: tablet-l;
+	}
+
+	@include bp(768px) {
+		font-family: tablet-p;
+	}
+
+	@include bp(657px) {
+		font-family: mobile-l;
+	}
+
+	@include bp(480px) {
+		font-family: mobile-p;
+	}
+
+	@include bp(360px) {
+		font-family: mobile-s;
+	}
+}
