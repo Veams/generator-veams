@@ -69,6 +69,11 @@ describe('Veams Framework', function () {
 			]);
 		});
 
+		it('adds references to app.js, main.js in js folder', function () {
+			assert.fileContent(srcPath + 'js/app.js', /import Veams from/);
+			assert.fileContent(srcPath + 'js/main.js', /import \{App, Veams\} from/);
+		});
+
 		it('adds INSERTPOINT to sass file', function () {
 			assert.fileContent(srcPath + 'scss/styles.scss', /@INSERTPOINT :: @ref: veamsJS-scss-import, @keep: false/);
 		});

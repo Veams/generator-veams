@@ -1,4 +1,13 @@
-// Global dependencies
-import App from './app';
+// Global dependencies<% if (veamsPackages) { %>
+import {App, Veams} from './app';<% } else { %>
+import App from './app';<% } %>
 
-console.log('JS initialized in version:', App.version);
+console.log('JS initialized in version:', App.version);<% if (veamsPackages) { %>
+
+// Initialize modules with Veams
+// Veams.modules.register([
+// 	{
+// 		domName: 'test-comp',
+// 		module: TestComp
+// 	}
+// ]);<% } %>

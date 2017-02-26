@@ -1,27 +1,59 @@
 // Global dependencies <%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
-var $ = require('jquery');<% } %><%if (jsLibs && jsLibs.indexOf('veams-query') !== -1) { %>
-import { default as VeamsQuery } from 'veams-query';<% } %><%if (jsLibs && jsLibs.indexOf('backbone') !== -1) { %>
+import $ from 'jquery';<% } %><%if (jsLibs && jsLibs.indexOf('veams-query') !== -1) { %>
+import { default as $ } from 'veams-query';<% } %><% if (veamsPackages) { %>
+import Veams from 'veams';
+import VeamsLogger from 'veams/src/js/plugins/logger';
+import VeamsDOM from 'veams/src/js/plugins/dom';
+import VeamsVent from 'veams/src/js/plugins/vent';
+import VeamsModules from 'veams/src/js/plugins/modules';
+import VeamsMediaQueryHandler from 'veams/src/js/plugins/media-query-handler';<% } %><%if (jsLibs && jsLibs.indexOf('backbone') !== -1) { %>
 var Backbone = require('backbone');<% } %><%if (jsLibs && jsLibs.indexOf('exoskeleton') !== -1) { %>
 var Exo = require('exoskeleton');<% } %>
 
-export default (function(){
+let App = {};
+
+(function(){
 	'use strict';
 
 	// Save a reference to the global object
-	var root = window;
-	var App = root.App = window.App || {};
+	const root = window;
+    App = root.App = window.App || {};
 <%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
 	App.$ = $;<% } %>
 <%if (jsLibs && jsLibs.indexOf('veams-query') !== -1) { %>
-	App.$$ = VeamsQuery;<% } %>
+	App.$$ = VeamsQuery;<% } %><% if (veamsPackages) { %>
+
+	// Intialize core of Veams
+	Veams.core.initialize();
+
+    /**
+     * Veams Plugins
+     */
+
+	// Dom Plugin
+	Veams.use(VeamsDOM, {
+	    DOM: $
+	});
+
+    // Vent Plugin
+	Veams.use(VeamsVent);
+
+    // Logger Plugin for devmode and logger
+	Veams.use(VeamsLogger);
+
+    // Module System Plugin
+	Veams.use(VeamsModules, {
+	    useMutationObserver: true
+	});
+
+    // Media Query Handler Plugin
+	Veams.use(VeamsMediaQueryHandler);<% } %>
 
 	// Versioning
 	App.version = "0.0.1";
 
-	// Feature detection
-	App.support = App.support || {};
-	App.support.touch = 'ontouchstart' in window;
-
 	return App;
 
 }).call(this);
+
+export {App, Veams};
