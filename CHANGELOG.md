@@ -1,3 +1,7 @@
+### v8.0.1
+- Update Veams-Query in deps
+
+
 ### v8.0.0
 - Add compatibility for newest yo version (^v1.8)
 - Add framework Veams 5
