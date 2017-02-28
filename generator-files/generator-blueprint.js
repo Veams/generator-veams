@@ -208,10 +208,10 @@ exports.setup = function () {
 	this.rootFolderPath = this.path + '/' + this.filename + '/';
 
 	if (this.options.config) {
-		this.configFile = this.configFile.options;
+		this.configFile = configFile.options;
 		this.folderStructure = configFile.folderStructure || this.folderStructure;
 		this.keepScaffoldStructure = configFile.blueprints && configFile.blueprints.keepScaffoldStructure;
-		this.path = types.indexOf(this.bpTypeName) !== -1 ? configFile.paths[this.bpTypeName] : configFile.paths['partials'] + '/' + this.bpTypeName + 's';
+		this.path = types.indexOf(this.bpTypeName) !== -1 ? this.configFile.paths[this.bpTypeName] : this.configFile.paths['partials'] + '/' + this.bpTypeName + 's';
 
 		if (this.folderStructure !== 'self-contained') {
 			if (this.bpTypeName === 'utility') {
