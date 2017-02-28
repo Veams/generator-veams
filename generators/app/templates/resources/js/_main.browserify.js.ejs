@@ -4,10 +4,14 @@ import App from './app';<% } %>
 
 console.log('JS initialized in version:', App.version);<% if (veamsPackages) { %>
 
+// Imports
+// @INSERTPOINT :: @ref: js-self-contained-import, @keep: true //
+
 // Initialize modules with Veams
 // Veams.modules.register([
 // 	{
 // 		domName: 'test-comp',
 // 		module: TestComp
 // 	}
+    // @INSERTPOINT :: @ref: js-init-v5, @keep: true //
 // ]);<% } %>
