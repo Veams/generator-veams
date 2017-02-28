@@ -33,7 +33,7 @@
 import <%= bpJsName %> from './modules/<%= filename %>/<%= filename %>';
 // @INSERT :: END
 // @INSERT :: START @tag: js-self-contained-import //
-import <%= bpJsName %> from '../templating/partials/<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %>s<% } %>/<%= filename %>/<%= filename %>';
+import <%= bpJsName %> from '../templating/partials/<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %>s<% } %>/<%= filename %>/js/<%= filename %>';
 // @INSERT :: END
 ```
 
