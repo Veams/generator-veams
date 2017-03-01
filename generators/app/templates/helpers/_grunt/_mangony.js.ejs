@@ -2,6 +2,11 @@ var config = require('../config');
 
 module.exports = {
 	options: {
+		allow: {
+			YFMContextData: false,
+			YFMLayout: false
+		},
+		collections: [],
 		cwd: config.options.paths.src + '/templating/',
 		dest: config.options.paths.dev,
 		types: {

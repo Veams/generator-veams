@@ -122,7 +122,6 @@ exports.scaffold = function (obj) {
 		}
 	} else {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-browserify'];
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['babel-preset-es2015'];
 	}
 	if (this.gruntModules.indexOf('grunt-postcss-separator') != -1) {
 		this.fs.copyTpl(

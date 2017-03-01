@@ -10,6 +10,7 @@ publish: false
      data-css="c-<%= filename %>"<% if(bpWithJs) { %>
      data-js-module="<%= filename %>"{{#if settings.<%= bpName %>JsOptions}}
      data-js-options='{{stringify settings.<%= bpName %>JsOptions}}'{{/if}}<% } %>>
+     <%= filename %>
      <% if (bpWrapWith) { %>
      {{{yield}}}
      <% } %>
@@ -18,6 +19,7 @@ publish: false
 <div class="<%= bpTypePrefix %><%= filename %>{{#if settings.<%= bpName %>Classes}} {{settings.<%= bpName %>Classes}}{{/if}}"<% if(bpWithJs) { %>
     data-js-module="<%= filename %>"{{#if settings.<%= bpName %>JsOptions}}
     data-js-options='{{stringify settings.<%= bpName %>JsOptions}}'{{/if}}<% } %>>
+     <%= filename %>
      <% if (bpWrapWith) { %>
      {{{yield}}}
      <% } %>

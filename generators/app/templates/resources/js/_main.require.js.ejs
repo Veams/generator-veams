@@ -18,8 +18,7 @@ require.config({
 });
 
 require([
-	'app'<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
-	'<%= lib %>'<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% }); } %>
+	'app'
 	], function (
 		app
 	) {

@@ -1,0 +1,92 @@
+const config = require('../config');
+const path = config.options.paths;
+const gulp = require('gulp');
+const browserify = require('browserify');
+const watchify = require('watchify');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const merge = require('utils-merge');
+const rename = require('gulp-rename');<% if (gulpModules && gulpModules.indexOf('gulp-uglify') != -1) { %>
+var uglify = require('gulp-uglify');<% } %>
+const sourcemaps = require('gulp-sourcemaps');
+
+/* nicer browserify errors */
+const gutil = require('gulp-util');
+const chalk = require('chalk');
+
+const babelifyOpts = {
+	presets: ['es2015', 'stage-0']
+};
+
+gulp.task('js:watch', function () {
+	let args = merge(watchify.args, {debug: true});
+	let bundler = watchify(browserify(path.src + '/js/main.js', args)).transform(babelify, babelifyOpts);
+
+	bundle_js(bundler);
+
+	bundler.on('update', function () {
+		bundle_js(bundler)
+	})
+});
+
+// Without watchify
+gulp.task('js:dev', function () {
+	let bundler = browserify(path.src + '/js/main.js', {
+		debug: true
+	}).transform(babelify, babelifyOpts);
+
+	return bundle_js(bundler)
+});
+
+// Without sourcemaps
+gulp.task('js:dist', function () {
+	let bundler = browserify(path.src + '/js/main.js').transform(babelify, babelifyOpts);
+
+	return bundler
+		.require('./' + path.src + '/js/app.js', {expose: 'app'})
+		.bundle()
+		.on('error', map_error)
+		.pipe(source('main.js'))
+		.pipe(buffer())<% if (gulpModules && gulpModules.indexOf('gulp-uglify') != -1) { %>
+		.pipe(uglify())<% } %>
+		.pipe(gulp.dest(path.dev + '/js'))
+});
+
+function bundle_js(bundler) {
+	return bundler
+		.require('./' + path.src + '/js/app.js', {expose: 'app'})
+		.bundle()
+		.on('error', map_error)
+		.pipe(source('main.js'))
+		.pipe(buffer())
+		.pipe(gulp.dest(path.dev + '/js'))
+		.pipe(sourcemaps.init({loadMaps: true}))<% if (gulpModules && gulpModules.indexOf('gulp-uglify') != -1) { %>
+		.pipe(uglify())<% } %>
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest(path.dev + '/js'))
+}
+
+function map_error(err) {
+	if (err.fileName) {
+		// regular error
+		gutil.log(chalk.red(err.name)
+			+ ': '
+			+ chalk.yellow(err.fileName.replace(path.src + '/js', ''))
+			+ ': '
+			+ 'Line '
+			+ chalk.magenta(err.lineNumber)
+			+ ' & '
+			+ 'Column '
+			+ chalk.magenta(err.columnNumber || err.column)
+			+ ': '
+			+ chalk.blue(err.description))
+	} else {
+		// browserify error..
+		gutil.log(chalk.red(err.name)
+			+ ': '
+			+ chalk.yellow(err.message))
+	}
+
+	this.emit('end');
+}

@@ -8,10 +8,6 @@ console.log('JS initialized in version:', App.version);<% if (veamsPackages) { %
 // @INSERTPOINT :: @ref: js-self-contained-import, @keep: true //
 
 // Initialize modules with Veams
-// Veams.modules.register([
-// 	{
-// 		domName: 'test-comp',
-// 		module: TestComp
-// 	}
+Veams.modules.register([
     // @INSERTPOINT :: @ref: js-init-v5, @keep: true //
-// ]);<% } %>
+]);<% } %>

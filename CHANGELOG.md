@@ -1,6 +1,15 @@
+### v8.1.0
+- Add browserify support to Gulp
+- Add express mangony server to Gulp
+- Optimize bp generator
+- Optimize scaffold of js files
+
+### v8.0.2 - v8.0.4
+- Fix minor bugs with generator blueprint
+- Optimize main.js
+
 ### v8.0.1
 - Update Veams-Query in deps
-
 
 ### v8.0.0
 - Add compatibility for newest yo version (^v1.8)

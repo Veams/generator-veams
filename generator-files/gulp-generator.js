@@ -12,7 +12,7 @@ exports.questions = function () {
 		message: 'Which Gulp-Plugins do you want to use?',
 		choices: [
 			// {name: 'gulp-arialinter'},
-			// {name: 'browserify'},
+			{name: 'browserify'},
 			{name: 'gulp-autoprefixer', checked: true},
 			{name: 'gulp-bless'},
 			{name: 'gulp-combine-mq', checked: true},
@@ -47,8 +47,7 @@ exports.scaffold = function () {
 			'helpers/_gulp/scripts.js',
 			this
 		);
-	} else if (this.gulpModules.indexOf('browserify') !== -1 ||
-		this.gulpModules.indexOf('browserify') !== -1 && this.gulpModules.indexOf('gulp-uglify') !== -1) {
+	} else if (this.gulpModules.indexOf('browserify') !== -1) {
 		this.fs.copyTpl(
 			this.templatePath('helpers/_gulp/_scripts.browserify.js.ejs'),
 			'helpers/_gulp/scripts.js',
@@ -66,7 +65,16 @@ exports.scaffold = function () {
 	}
 
 	// Deletion in package.json
-	if (this.gulpModules.indexOf('browserify') === -1) delete this.pkgFile['devDependencies']['browserify'];
+	if (this.gulpModules.indexOf('browserify') === -1) {
+		delete this.pkgFile['devDependencies']['browserify'];
+		delete this.pkgFile['devDependencies']['babelify'];
+		delete this.pkgFile['devDependencies']['babel-plugin-add-module-exports'];
+		delete this.pkgFile['devDependencies']['babel-preset-es2015'];
+		delete this.pkgFile['devDependencies']['babel-preset-stage-0'];
+		delete this.pkgFile['devDependencies']['vinyl-buffer'];
+		delete this.pkgFile['devDependencies']['vinyl-source-stream'];
+		delete this.pkgFile['devDependencies']['watchify'];
+	}
 	if (this.gulpModules.indexOf('gulp-autoprefixer') === -1 && this.cssLibs.indexOf('lost-grid') === -1) delete this.pkgFile['devDependencies']['gulp-postcss'];
 	if (this.gulpModules.indexOf('gulp-bless') === -1) delete this.pkgFile['devDependencies']['gulp-bless'];
 	if (this.gulpModules.indexOf('gulp-combine-mq') === -1) delete this.pkgFile['devDependencies']['gulp-combine-mq'];

@@ -32,7 +32,7 @@ describe('Self contained project structure with Grunt', function () {
 	});
 
 	it('adds further paths to watch.js file', function () {
-		assert.fileContent(helperPath + '_grunt/chokidar.js', /templating\/partials\/scss\/\*\*\/\*\.scss/);
+		assert.fileContent(helperPath + '_grunt/chokidar.js', /templating\/partials\/\*\*\/scss\/\*\*\/\*\.scss/);
 	});
 });
 
@@ -60,6 +60,6 @@ describe('Self contained project structure with Gulp', function () {
 	});
 
 	it('adds further paths to watch task in Gulpfile.js file', function () {
-		assert.fileContent('Gulpfile.js', /templating\/partials\/scss\/\*\*\/\*\.scss/);
+		assert.fileContent('Gulpfile.js', /templating\/partials\/\*\*\/scss\/\*\*\/\*\.scss/);
 	});
 });

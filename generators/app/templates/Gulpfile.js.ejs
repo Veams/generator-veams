@@ -17,17 +17,19 @@ gulp.task('default', function () {
 gulp.task('serve', [
 	'sassGlobbing:dev',
 	'styles:dev'<% if (templateEngine && templateEngine.indexOf('mangony') !== -1) { %>,
-	'mangony:dev'<% } %>
+	'mangony:dev'<% } %><% if (gulpModules && gulpModules.indexOf('browserify') !== -1) { %>,
+	'js:dev',
+	'js:watch'<% } %>
 	], function () {
-
+	<% if (templateEngine && templateEngine.indexOf('mangony') === -1) { %>
 	config.server({
 		server: config.options.paths.dev
 	});
-
+	<% } %>
 	// SCSS
 	gulp.watch([
 		config.options.paths.src + "/scss/**/*.scss"<% if (selfContained === true ) { %>,
-		config.options.paths.src + "/templating/partials/scss/**/*.scss"<% } %>
+		config.options.paths.src + "/templating/partials/**/scss/**/*.scss"<% } %>
 		], [
 		'styles:dev'<% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>,
 		'stylelint'<% } %>

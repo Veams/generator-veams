@@ -6,6 +6,10 @@ var htmlmin = require('gulp-htmlmin');<% } %><% if (templateEngine && templateEn
 var deepExtend = require('deep-extend');
 var Mangony = require('mangony');
 var mangonyOptions = {
+	allow: {
+		YFMContextData: false,
+		YFMLayout: false
+	},
 	collections: [],
 	compileStaticFiles: true,
 	cwd: path.src + '/templating/',
@@ -44,13 +48,28 @@ var mangonyOptions = {
 		'helpers/*.js'
 	]
 };
-var mangonyDevOptions = deepExtend({
+var mangonyDevOptions = deepExtend(Object.assign({}, mangonyOptions), {
+	compileStaticFiles: false,
+	devServer: {
+		start: true,
+		injectScript: false,
+		port: config.options.ports.server,
+		bsOptions: {
+			proxy: 'localhost:' + config.options.ports.server,
+			port: config.options.ports.app,
+			files: [
+				config.options.paths.dev + '/**/*.html',
+				config.options.paths.dev + '/css/**/*.css',
+				config.options.paths.dev + '/js/**/*.js'
+			]
+		}
+	},
 	watch: true
-}, mangonyOptions);
+});
 
-var mangonyDistOptions = deepExtend({
+var mangonyDistOptions = deepExtend(Object.assign({}, mangonyOptions), {
 	watch: false
-}, mangonyOptions);
+});
 
 
 // Globbing task with watcher

@@ -33,7 +33,7 @@ module.exports = {
 	scss: {
 		files: [
 			'<%%= paths.src %>/scss/**/*.scss'<% if (selfContained === true ) { %>,
-			'<%%= paths.src %>/templating/partials/scss/**/*.scss'<% } %>
+			'<%%= paths.src %>/templating/partials/**/scss/**/*.scss'<% } %>
 		],
 		tasks: [
 			'sass:dev'<% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
