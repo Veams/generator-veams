@@ -1,7 +1,9 @@
-var config = require('../config');
-var path = config.options.paths;
-var gulp = require('gulp');
-var jscs = require('gulp-jscs');
+'use strict';
+
+const config = require('../config');
+const path = config.options.paths;
+const gulp = require('gulp');
+const jscs = require('gulp-jscs');
 
 // JS Code Style Check
 gulp.task('js:jscs', function () {

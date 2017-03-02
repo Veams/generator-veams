@@ -1,4 +1,8 @@
 ### v8.1.0
+- Bugfixes to support => node v4.x
+- Bugfix for babelify
+
+### v8.1.0
 - Add browserify support to Gulp
 - Add express mangony server to Gulp
 - Optimize bp generator

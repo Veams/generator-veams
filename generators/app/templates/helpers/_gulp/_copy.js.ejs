@@ -1,6 +1,8 @@
-var config = require('../config');
-var path = config.options.paths;
-var gulp = require('gulp');
+'use strict';
+
+const config = require('../config');
+const path = config.options.paths;
+const gulp = require('gulp');
 <% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') == -1 || gulpModules && gulpModules.indexOf('browserify') == -1) { %>
 // Copy js files
 gulp.task('copy:js', function (cb) {

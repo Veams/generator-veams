@@ -1,6 +1,6 @@
 {
   "name": "generator-veams",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "homepage": "http://veams.org/",
   "description": "Scaffold modern frontend web apps or web pages with a static site generator, Grunt and/or Gulp, Sass and Bower. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with ES Harmony support.",
   "keywords": [

@@ -1,8 +1,10 @@
-var config = require('../config');
-var path = config.options.paths;
-var gulp = require('gulp'); <% if (gulpModules && gulpModules.indexOf('gulp-uglify') != -1) { %>
-var uglify = require('gulp-uglify');<% } %> <% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') != -1) { %>
-var requirejsOptimize = require('gulp-requirejs-optimize');<% } %>
+'use strict';
+
+const config = require('../config');
+const path = config.options.paths;
+const gulp = require('gulp'); <% if (gulpModules && gulpModules.indexOf('gulp-uglify') != -1) { %>
+const uglify = require('gulp-uglify');<% } %> <% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') != -1) { %>
+const requirejsOptimize = require('gulp-requirejs-optimize');<% } %>
 
 gulp.task('js:dev', function () {<% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') != -1 || gulpModules && gulpModules.indexOf('browserify') != -1) { %>
 	return gulp.src(path.src + '/js/main.js')<% } else { %>return gulp.src(path.src + '/js/**/*.js')<% } %><% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') != -1) { %>

@@ -1,11 +1,13 @@
-var config = require('../config');
-var path = config.options.paths;
-var gulp = require('gulp');
-var size = require('gulp-filesize');<% if (gulpModules && gulpModules.indexOf('gulp-htmlmin') !== -1) { %>
-var htmlmin = require('gulp-htmlmin');<% } %><% if (templateEngine && templateEngine.indexOf('mangony') !== -1) { %>
-var deepExtend = require('deep-extend');
-var Mangony = require('mangony');
-var mangonyOptions = {
+'use strict';
+
+const config = require('../config');
+const path = config.options.paths;
+const gulp = require('gulp');
+const size = require('gulp-filesize');<% if (gulpModules && gulpModules.indexOf('gulp-htmlmin') !== -1) { %>
+const htmlmin = require('gulp-htmlmin');<% } %><% if (templateEngine && templateEngine.indexOf('mangony') !== -1) { %>
+const deepExtend = require('deep-extend');
+const Mangony = require('mangony');
+let mangonyOptions = {
 	allow: {
 		YFMContextData: false,
 		YFMLayout: false
@@ -48,7 +50,7 @@ var mangonyOptions = {
 		'helpers/*.js'
 	]
 };
-var mangonyDevOptions = deepExtend(Object.assign({}, mangonyOptions), {
+let mangonyDevOptions = deepExtend(Object.assign({}, mangonyOptions), {
 	compileStaticFiles: false,
 	devServer: {
 		start: true,
@@ -67,7 +69,7 @@ var mangonyDevOptions = deepExtend(Object.assign({}, mangonyOptions), {
 	watch: true
 });
 
-var mangonyDistOptions = deepExtend(Object.assign({}, mangonyOptions), {
+let mangonyDistOptions = deepExtend(Object.assign({}, mangonyOptions), {
 	watch: false
 });
 

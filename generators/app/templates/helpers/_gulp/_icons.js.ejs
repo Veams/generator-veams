@@ -1,8 +1,10 @@
-var config = require('../config');
-var path = config.options.paths;
-var gulp = require('gulp');<% if (gulpModules && gulpModules.indexOf('gulp-iconify') !== -1) { %>
-var icons = require('gulp-iconify'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-svg-sprite') !== -1) { %>
-var sprite = require('gulp-svg-sprite'); <% } %>
+'use strict';
+
+const config = require('../config');
+const path = config.options.paths;
+const gulp = require('gulp');<% if (gulpModules && gulpModules.indexOf('gulp-iconify') !== -1) { %>
+const icons = require('gulp-iconify'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-svg-sprite') !== -1) { %>
+const sprite = require('gulp-svg-sprite'); <% } %>
 
 // Basic configuration
 var options = {<% if (gulpModules && gulpModules.indexOf('gulp-svg-sprite') !== -1) { %>

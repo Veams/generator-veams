@@ -1,18 +1,20 @@
-var config = require('../config');
-var path = config.options.paths;
-var server = config.server;
-var size = require('gulp-filesize');
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var rename = require('gulp-rename');
-var sourcemaps = require('gulp-sourcemaps');<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-bless') != -1) { %>
-var bless = require('gulp-bless'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-combine-mq') != -1) { %>
-var combineMq = require('gulp-combine-mq'); <% } %>
-var minifycss = require('gulp-minify-css');
-var sassGlobbing = require('sass-globber');<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1) { %>
-var lost = require('lost');<% } %>
+'use strict';
+
+const config = require('../config');
+const path = config.options.paths;
+const server = config.server;
+const size = require('gulp-filesize');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const rename = require('gulp-rename');
+const sourcemaps = require('gulp-sourcemaps');<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-bless') != -1) { %>
+const bless = require('gulp-bless'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-combine-mq') != -1) { %>
+const combineMq = require('gulp-combine-mq'); <% } %>
+const minifycss = require('gulp-minify-css');
+const sassGlobbing = require('sass-globber');<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1) { %>
+const lost = require('lost');<% } %>
 
 
 // Sass globbing module

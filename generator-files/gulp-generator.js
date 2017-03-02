@@ -67,10 +67,6 @@ exports.scaffold = function () {
 	// Deletion in package.json
 	if (this.gulpModules.indexOf('browserify') === -1) {
 		delete this.pkgFile['devDependencies']['browserify'];
-		delete this.pkgFile['devDependencies']['babelify'];
-		delete this.pkgFile['devDependencies']['babel-plugin-add-module-exports'];
-		delete this.pkgFile['devDependencies']['babel-preset-es2015'];
-		delete this.pkgFile['devDependencies']['babel-preset-stage-0'];
 		delete this.pkgFile['devDependencies']['vinyl-buffer'];
 		delete this.pkgFile['devDependencies']['vinyl-source-stream'];
 		delete this.pkgFile['devDependencies']['watchify'];

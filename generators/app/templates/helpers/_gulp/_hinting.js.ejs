@@ -1,10 +1,12 @@
-var config = require('../config');
-var path = config.options.paths;
-var gulp = require('gulp');
-var htmlhint = require('gulp-htmlhint');<% if (testAndQALibs && testAndQALibs.indexOf('hintingJS') !== -1) { %>
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');<% } %><% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>
-var stylelint = require('gulp-stylelint');<% } %>
+'use strict';
+
+const config = require('../config');
+const path = config.options.paths;
+const gulp = require('gulp');
+const htmlhint = require('gulp-htmlhint');<% if (testAndQALibs && testAndQALibs.indexOf('hintingJS') !== -1) { %>
+const jshint = require('gulp-jshint');
+const stylish = require('jshint-stylish');<% } %><% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>
+const stylelint = require('gulp-stylelint');<% } %>
 
 // HTML Hinting Task
 gulp.task('hint:html', function () {

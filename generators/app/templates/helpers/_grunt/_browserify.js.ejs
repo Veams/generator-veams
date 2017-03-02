@@ -1,8 +1,10 @@
-var externalLibs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
+'use strict';
+
+const externalLibs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
 	'<%= lib %>'<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% }); } %>
 ];
 
-var internalLibs = [
+const internalLibs = [
 	'./resources/js/app.js:app'
 ];
 
