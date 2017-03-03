@@ -1,10 +1,27 @@
+/*
+* Generated on <%= (new Date).toISOString().split('T')[0] %>
+* <%= pkg.name %> v<%= pkg.version %>
+* <%= pkg.homepage %>
+*
+* Copyright (c) <%= (new Date).getFullYear() %> <%= pkg.author.name %>
+* Licensed under the MIT license.
+*/
+
 'use strict';
 
-var config = require('./helpers/config');
-var gulp = require('gulp');
-var runSequence = require('gulp-sequence');
-var requireDir = require('require-dir');
-var dir = requireDir(config.options.paths.tasks);
+/*
+* PERFORMANCE
+*
+* 1. For performance reasons you should only matching one level down, if possible.
+* 2. Try to keep your watch task clean. Do NOT watch everything (like icons).
+*
+*/
+
+const config = require('./helpers/config');
+const gulp = require('gulp');
+const runSequence = require('gulp-sequence');
+const requireDir = require('require-dir');
+const dir = requireDir(config.options.paths.tasks);
 
 <% if (taskRunner && taskRunner.indexOf('grunt') !== -1) { %>
 require('gulp-grunt')(gulp); // add all the gruntfile tasks to gulp<% } %>

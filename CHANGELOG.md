@@ -1,3 +1,7 @@
+### v8.1.3
+- Fix minor typo issues in bp.js.ejss
+- Clean up of task runner files
+
 ### v8.1.2
 - Fix issue in bp javascript file with const Helpers
 - Update bp templates
