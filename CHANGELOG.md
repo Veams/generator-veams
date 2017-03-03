@@ -1,4 +1,8 @@
-### v8.1.0
+### v8.1.2
+- Fix issue in bp javascript file with const Helpers
+- Update bp templates
+
+### v8.1.1
 - Bugfixes to support => node v4.x
 - Bugfix for babelify
 

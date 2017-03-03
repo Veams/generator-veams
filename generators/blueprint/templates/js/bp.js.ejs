@@ -9,11 +9,12 @@
 
 // Imports
 import { Veams, App } from 'app';
-import VeamsComponent from 'veams/lib/common/component';
+import VeamsComponent from 'veams/src/js/common/component'; // Only use that in combination with browserify
+// import VeamsComponent from 'veams/lib/common/component'; // Can be used in general
 
 // Variables
 const $ = Veams.$;
-const Helpers = Veams.Helpers;
+const Helpers = Veams.helpers;
 
 class <%= bpJsName %> extends VeamsComponent {
 	/**
@@ -70,6 +71,7 @@ class <%= bpJsName %> extends VeamsComponent {
 	 * Render class
 	 */
 	render() {
+		return this;
 	}
 }
 
