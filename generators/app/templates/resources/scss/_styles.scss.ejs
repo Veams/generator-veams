@@ -42,7 +42,8 @@ Main File For Imports
 @import "utilities/**/*";<% } %><% } %>
 
 <% if (selfContained) { %>
-// @INSERTPOINT :: @ref: scss-self-contained-import, @keep: true //<% } %>
+// @INSERTPOINT :: @ref: scss-self-contained-import, @keep: true //<% } else { %>
+// @INSERTPOINT :: @ref: scss-import, @keep: true //<% } %>
 
 // Print
 @import "global/_print";

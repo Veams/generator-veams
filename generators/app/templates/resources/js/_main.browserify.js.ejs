@@ -5,7 +5,9 @@ import App from './app';<% } %>
 console.log('JS initialized in version:', App.version);<% if (veamsPackages) { %>
 
 // Imports
-// @INSERTPOINT :: @ref: js-self-contained-import, @keep: true //
+<% if (selfContained) { %>
+// @INSERTPOINT :: @ref: js-self-contained-import, @keep: true //<% } else { %>
+// @INSERTPOINT :: @ref: js-import, @keep: true //<% } %>
 
 // Initialize modules with Veams
 Veams.modules.register([

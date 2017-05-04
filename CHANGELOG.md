@@ -1,5 +1,11 @@
+### v8.1.4
+- Update bp INSERTPOINTS
+- Add events.js to src
+- Add standard scaffold back to bp generator
+- Add standard imports back to project
+
 ### v8.1.3
-- Fix minor typo issues in bp.js.ejss
+- Fix minor typo issues in bp.js.ejs
 - Clean up of task runner files
 
 ### v8.1.2

@@ -209,7 +209,7 @@ exports.setup = function () {
 
 	if (this.options.config) {
 		this.configFile = configFile.options;
-		this.folderStructure = configFile.folderStructure || this.folderStructure;
+		this.folderStructure = configFile.options.folderStructure || this.folderStructure;
 		this.keepScaffoldStructure = configFile.blueprints && configFile.blueprints.keepScaffoldStructure;
 		this.path = types.indexOf(this.bpTypeName) !== -1 ? this.configFile.paths[this.bpTypeName] : this.configFile.paths['partials'] + '/' + this.bpTypeName + 's';
 
@@ -221,8 +221,8 @@ exports.setup = function () {
 			}
 
 			this.rootFolderPath = this.path + '/' + this.filename + '/';
-			this.jsPath = configFile.paths.js + '/' + 'modules/' + this.filename + '/';
-			this.scssPath = configFile.paths.scss + '/' + this.scssFolder + 's/';
+			this.jsPath = this.configFile.paths.js + '/' + 'modules/' + this.filename + '/';
+			this.scssPath = this.configFile.paths.scss + '/' + this.scssFolder + 's/';
 			this.partialsPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/partials/' : this.rootFolderPath;
 			this.dataPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/data/' : this.rootFolderPath;
 		} else {
