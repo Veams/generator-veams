@@ -1,3 +1,6 @@
+### v8.1.5
+- Update Insertpoints in blueprint to print out right folder in standard project setup
+
 ### v8.1.4
 - Update bp INSERTPOINTS
 - Add events.js to src

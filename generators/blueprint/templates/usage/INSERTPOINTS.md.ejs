@@ -18,7 +18,7 @@
 
 ``` scss
 // @INSERT :: START @tag: scss-import //
-@import "<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %><% } %>/_<%= bpTypePrefix %><%= filename %>";
+@import "<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %>s<% } %>/_<%= bpTypePrefix %><%= filename %>";
 // @INSERT :: END
 // @INSERT :: START @tag: scss-self-contained-import //
 @import "../templating/partials/<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %>s<% } %>/<%= filename %>/scss/_<%= bpTypePrefix %><%= filename %>";
