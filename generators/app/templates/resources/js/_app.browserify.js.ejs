@@ -10,48 +10,37 @@ import VeamsMediaQueryHandler from 'veams/src/js/plugins/media-query-handler';<%
 var Backbone = require('backbone');<% } %><%if (jsLibs && jsLibs.indexOf('exoskeleton') !== -1) { %>
 var Exo = require('exoskeleton');<% } %>
 
-let App = {};
+let App = {};<%if (jsLibs && (jsLibs.indexOf('jquery') !== -1 || jsLibs.indexOf('veams-query') !== -1)) { %>
+App.$ = $;<% } %>
 
-(function(){
-	'use strict';
-
-	// Save a reference to the global object
-	const root = window;
-    App = root.App = window.App || {};
-<%if (jsLibs && (jsLibs.indexOf('jquery') !== -1 || jsLibs.indexOf('veams-query') !== -1)) { %>
-	App.$ = $;<% } %><% if (veamsPackages) { %>
-
-	// Intialize core of Veams
-	Veams.core.initialize();
-
-    /**
-     * Veams Plugins
-     */
+// Versioning
+App.version = "0.0.1";
+<% if (veamsPackages) { %>
+// Veams
+Veams.onInitialize(() => {
+	/**
+	* Veams Plugins
+	*/
 
 	// Dom Plugin
 	Veams.use(VeamsDOM, {
-	    DOM: $
+		DOM: $
 	});
 
-    // Vent Plugin
+	// Vent Plugin
 	Veams.use(VeamsVent);
 
-    // Logger Plugin for devmode and logger
+	// Logger Plugin for devmode and logger
 	Veams.use(VeamsLogger);
 
-    // Module System Plugin
+	// Module System Plugin
 	Veams.use(VeamsModules, {
-	    useMutationObserver: true
+		useMutationObserver: true,
+		internalCacheOnly: false
 	});
 
-    // Media Query Handler Plugin
-	Veams.use(VeamsMediaQueryHandler);<% } %>
-
-	// Versioning
-	App.version = "0.0.1";
-
-	return App;
-
-}).call(this);
+	// Media Query Handler Plugin
+	Veams.use(VeamsMediaQueryHandler);
+});<% } %>
 
 export {App<% if (veamsPackages) { %>, Veams<% } %>};

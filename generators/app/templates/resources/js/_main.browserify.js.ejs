@@ -3,6 +3,7 @@ import {App, Veams} from './app';<% } else { %>
 import App from './app';<% } %>
 
 console.log('JS initialized in version:', App.version);<% if (veamsPackages) { %>
+console.log('Veams initialized in version:', Veams.base.version);
 
 // Imports
 <% if (selfContained) { %>
