@@ -6,7 +6,9 @@ import VeamsLogger from 'veams/src/js/plugins/logger';
 import VeamsDOM from 'veams/src/js/plugins/dom';
 import VeamsVent from 'veams/src/js/plugins/vent';
 import VeamsModules from 'veams/src/js/plugins/modules';
-import VeamsMediaQueryHandler from 'veams/src/js/plugins/media-query-handler';<% } %><%if (jsLibs && jsLibs.indexOf('backbone') !== -1) { %>
+import VeamsMediaQueryHandler from 'veams/src/js/plugins/media-query-handler';
+import EVENTS from './events';
+<% } %><%if (jsLibs && jsLibs.indexOf('backbone') !== -1) { %>
 var Backbone = require('backbone');<% } %><%if (jsLibs && jsLibs.indexOf('exoskeleton') !== -1) { %>
 var Exo = require('exoskeleton');<% } %>
 
@@ -28,7 +30,9 @@ Veams.onInitialize(() => {
 	});
 
 	// Vent Plugin
-	Veams.use(VeamsVent);
+	Veams.use(VeamsVent, {
+		furtherEvents: EVENTS
+	});
 
 	// Logger Plugin for devmode and logger
 	Veams.use(VeamsLogger);

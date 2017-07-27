@@ -59,12 +59,13 @@ describe('Veams Framework', function () {
 		});
 
 		it('adds event endpoint to config.js file', function () {
-			assert.fileContent('helpers/config.js', /'resources\/js\/utils\/events.js'/);
+			assert.fileContent('helpers/config.js', /'resources\/js\/events.js'/);
 		});
 
 		it('adds app.js, main.js and config.js to js folder', function () {
 			assert.file([
 				srcPath + 'js/app.js',
+				srcPath + 'js/events.js',
 				srcPath + 'js/main.js'
 			]);
 		});

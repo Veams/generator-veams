@@ -36,6 +36,10 @@ exports.scaffold = function () {
 
 	if (this.veamsPackages) {
 		this.fs.copy(
+			this.templatePath('resources/js/utils/events.js'),
+			'resources/js/events.js'
+		);
+		this.fs.copy(
 			this.templatePath('resources/scss/global/_get-media.scss'),
 			'resources/scss/global/_get-media.scss'
 		);
