@@ -1,3 +1,6 @@
+### v8.2.1
+- Fix events.js copy issue and add improvements to app.js if veams 5 is selected
+
 ### v8.1.5
 - Update Insertpoints in blueprint to print out right folder in standard project setup
 
