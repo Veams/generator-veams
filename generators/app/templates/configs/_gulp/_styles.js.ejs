@@ -20,7 +20,7 @@ const lost = require('lost');<% } %>
 // Sass globbing module
 function globSassFiles(mode) {
 	sassGlobbing.compiled({
-		sassRoot: path.src + 'shared/styles',
+		sassRoot: path.src + '/shared/styles',
 		source: "styles.scss",
 		output: 'styles.tmp.scss',
 		watch: mode
@@ -39,7 +39,7 @@ gulp.task('sassGlobbing:dist', function () {
 
 // Dev Styles Task
 gulp.task('styles:dev', function () {
-	return gulp.src(path.src + 'shared/styles/styles.tmp.scss')
+	return gulp.src(path.src + '/shared/styles/styles.tmp.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass())
 		.pipe(rename('styles.css'))<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1 || gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
@@ -60,7 +60,7 @@ gulp.task('styles:dev', function () {
 
 // Dist Styles Task
 gulp.task('styles:dist', function () {
-	return gulp.src(path.src + 'shared/styles/styles.tmp.scss')
+	return gulp.src(path.src + '/shared/styles/styles.tmp.scss')
 		.pipe(sass({
 			style: 'expanded'
 		}))
