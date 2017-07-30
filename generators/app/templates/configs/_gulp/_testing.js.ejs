@@ -1,0 +1,14 @@
+'use strict';
+
+const config = require('../config');
+const path = config.options.paths;
+const gulp = require('gulp');
+const jscs = require('gulp-jscs');
+
+// JS Code Style Check
+gulp.task('js:jscs', function () {
+	return gulp.src(path.src + '/shared/scripts/**/*.js')
+		.pipe(jscs({
+			configPath: path.helpers + '/task-configs/jscs.airbnb.json'
+		}));
+});

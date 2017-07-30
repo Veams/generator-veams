@@ -43,14 +43,14 @@ exports.scaffold = function () {
 		this.gulpModules.indexOf('gulp-uglify') !== -1 && this.gulpModules.indexOf('browserify') === -1 ||
 		this.gulpModules.indexOf('gulp-requirejs-optimize') !== -1 && this.gulpModules.indexOf('gulp-uglify') !== -1) {
 		this.fs.copyTpl(
-			this.templatePath('helpers/_gulp/_scripts.require.js.ejs'),
-			'helpers/_gulp/scripts.js',
+			this.templatePath('configs/_gulp/_scripts.require.js.ejs'),
+			'configs/_gulp/scripts.js',
 			this
 		);
 	} else if (this.gulpModules.indexOf('browserify') !== -1) {
 		this.fs.copyTpl(
-			this.templatePath('helpers/_gulp/_scripts.browserify.js.ejs'),
-			'helpers/_gulp/scripts.js',
+			this.templatePath('configs/_gulp/_scripts.browserify.js.ejs'),
+			'configs/_gulp/scripts.js',
 			this
 		);
 	}
@@ -58,8 +58,8 @@ exports.scaffold = function () {
 	// Gulp modules are splitted up in separate files and modules
 	if (this.gulpModules.indexOf('gulp-iconify') != -1 || this.gulpModules.indexOf('gulp-svg-sprite') != -1) {
 		this.fs.copyTpl(
-			this.templatePath('helpers/_gulp/_icons.js.ejs'),
-			'helpers/_gulp/icons.js',
+			this.templatePath('configs/_gulp/_icons.js.ejs'),
+			'configs/_gulp/icons.js',
 			this
 		);
 	}

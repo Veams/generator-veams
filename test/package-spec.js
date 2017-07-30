@@ -7,7 +7,7 @@ const assert = require('yeoman-assert');
 const fs = require('fs');
 
 describe('Package.json', function () {
-	const srcPath = "resources/";
+	const srcPath = 'src/';
 
 	describe('when Grunt is selected and no plugins are used', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({

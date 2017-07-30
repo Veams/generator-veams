@@ -24,7 +24,7 @@ describe('generator-veams', function () {
 			'Gruntfile.js',
 			'package.json',
 			'.gitignore',
-			'helpers/config.js',
+			'configs/config.js',
 			'.bowerrc',
 			'bower.json',
 			'README.md'
@@ -33,6 +33,6 @@ describe('generator-veams', function () {
 	});
 
 	it('adds folderStructure property to config.js', function () {
-		assert.fileContent('helpers/config.js', /folderStructure/);
+		assert.fileContent('configs/config.js', /folderStructure/);
 	});
 });

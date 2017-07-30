@@ -13,7 +13,7 @@ let answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('grunt-webdriver', function () {
-	const helperPath = "helpers/";
+	const helperPath = 'configs/';
 	const testPath = "test/";
 
 	beforeEach(function (done) {

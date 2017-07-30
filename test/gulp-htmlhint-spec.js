@@ -16,8 +16,8 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('gulp-htmlhint', function () {
-	const helperPath = 'helpers/';
-	const srcPath = 'resources/';
+	const helperPath = 'configs/';
+	const srcPath = 'src/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))

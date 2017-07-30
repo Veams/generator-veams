@@ -153,23 +153,23 @@ exports.scaffold = function () {
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('helpers/_gulp/_clean.js.ejs'),
-			'helpers/_gulp/clean.js',
+			this.templatePath('configs/_gulp/_clean.js.ejs'),
+			'configs/_gulp/clean.js',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('helpers/_gulp/_styles.js.ejs'),
-			'helpers/_gulp/styles.js',
+			this.templatePath('configs/_gulp/_styles.js.ejs'),
+			'configs/_gulp/styles.js',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('helpers/_gulp/_html.js.ejs'),
-			'helpers/_gulp/html.js',
+			this.templatePath('configs/_gulp/_html.js.ejs'),
+			'configs/_gulp/html.js',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('helpers/_gulp/_copy.js.ejs'),
-			'helpers/_gulp/copy.js',
+			this.templatePath('configs/_gulp/_copy.js.ejs'),
+			'configs/_gulp/copy.js',
 			this
 		);
 	}

@@ -5,8 +5,8 @@ const fs = require('fs');
 const path = require('path');
 const helpers = require('yeoman-test');
 const assert = require('yeoman-assert');
-const srcPath = 'resources/';
-const helperPath = 'helpers/';
+const srcPath = 'src/';
+const helperPath = 'configs/';
 
 describe('Self contained project structure with Grunt', function () {
 	const answers = require('../test_helpers/prompt-answer-factory')({
@@ -28,11 +28,11 @@ describe('Self contained project structure with Grunt', function () {
 	});
 
 	it('adds setting in config.js', function () {
-		assert.fileContent('helpers/config.js', /self-contained/);
+		assert.fileContent('configs/config.js', /self-contained/);
 	});
 
 	it('adds further paths to watch.js file', function () {
-		assert.fileContent(helperPath + '_grunt/chokidar.js', /templating\/partials\/\*\*\/scss\/\*\*\/\*\.scss/);
+		assert.fileContent(helperPath + '_grunt/chokidar.js', /shared\/components\/\*\*\/scss\/\*\*\/\*\.scss/);
 	});
 });
 
@@ -56,10 +56,6 @@ describe('Self contained project structure with Gulp', function () {
 	});
 
 	it('adds setting in config.js', function () {
-		assert.fileContent('helpers/config.js', /self-contained/);
-	});
-
-	it('adds further paths to watch task in Gulpfile.js file', function () {
-		assert.fileContent('Gulpfile.js', /templating\/partials\/\*\*\/scss\/\*\*\/\*\.scss/);
+		assert.fileContent('configs/config.js', /self-contained/);
 	});
 });

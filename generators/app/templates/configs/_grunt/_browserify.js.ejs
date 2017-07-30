@@ -1,0 +1,68 @@
+'use strict';
+
+const externalLibs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
+	'<%= lib %>'<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% }); } %>
+];
+
+const internalLibs = [
+	'./src/shared/scripts/app.js:app'
+];
+
+module.exports = {
+	options: {
+		transform: [
+			['babelify',
+				{
+					compact: true,
+					// ignore: [
+					// 	'<%%= paths.dev %>/scripts/vendor/'
+					// ],
+					presets: ['es2015', 'stage-0']
+				}
+			],
+			['aliasify',
+				{
+					aliases: {<% if(jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>
+						'backbone': 'exoskeleton'<% } %>
+					},
+				global: true,
+				verbose: true
+				}
+			]
+		],
+		ignore: [<% if(jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>
+			'jquery'<% if(jsLibs.indexOf('exoskeleton') !== -1) { %> ,<% }} %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>
+			'underscore'<% } %>
+		]
+	},
+	vendor: {
+		src: ['.'],
+		dest: '<%%= paths.dev %>/scripts/libs.js',
+		options: {
+			debug: false,
+			alias: externalLibs
+		}
+	},
+	dev: {
+		options: {
+			alias: internalLibs,
+			external: externalLibs,
+			browserifyOptions: {
+				debug: true
+			},
+			watch: true
+		},
+		files: {
+			'<%%= paths.dev %>/scripts/main.js': '<%%= paths.src %>/shared/scripts/main.js'
+		}
+	},
+	dist: {
+		options: {
+			alias: internalLibs,
+			external: externalLibs
+		},
+		files: {
+			'<%%= paths.dev %>/scripts/main.js': '<%%= paths.src %>/shared/scripts/main.js'
+		}
+	}
+};

@@ -9,7 +9,7 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('grunt-express-server', function () {
-	const helperPath = "helpers/";
+	const helperPath = 'configs/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -29,7 +29,7 @@ describe('grunt-express-server', function () {
 
 	it('creates server path and server file', function () {
 		const expected = [
-			"server/main.js"
+			"server/index.js"
 		];
 
 		assert.file(expected);

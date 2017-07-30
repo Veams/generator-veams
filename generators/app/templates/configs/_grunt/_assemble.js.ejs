@@ -1,0 +1,56 @@
+module.exports = {
+	options: {
+		assets: '<%%= paths.dev %>',
+		data: [
+			'<%%= paths.src %>/store/**/*.json',
+			'<%%= paths.src %>/shared/components/**/*.json',
+			'<%%= paths.src %>/shared/utilities/**/*.json',
+			'<%%= paths.src %>/containers/**/*.json'
+		],
+		helpers: [
+			'<%%= paths.src %>/shared/utilities/template-helpers/**/*.js',
+			'node_modules/mangony-hbs-helpers/index.js'
+		],
+		layoutdir: '<%%= paths.src %>/shared/layouts/',<% if (installExtendedLayout === true) { %>
+		layout: false, <% } else { %>
+		layout: 'lyt-default.hbs', <% } %>
+		partials: [
+			'<%%= paths.src %>/shared/components/**/*.hbs',
+			'<%%= paths.src %>/containers/**/*.hbs'<% if (installExtendedLayout === true) { %>,
+			'<%%= paths.src %>/shared/layouts/*.hbs'<% } %>
+		],
+		collections: [
+			'sitemap'
+		]
+	},
+	pages: {
+		options: {<% if(plugin && plugin.length){ %>
+		plugins: [<% if(typeof plugin === 'object'){ _.each(plugin, function(name, i) { %>'<%= name %>'<% if(i < (plugin.length - 1)) { %>,<% } }); } else { %>'<%= name %>'<%} %>],<%}
+_.each(plugin, function(name, i) { if(name == 'permalinks') { %>
+			permalinks: {
+				preset: 'pretty'
+			},<% } if(name == 'assemble-contrib-contextual') { %>
+			contextual: {
+				dest: 'tmp/'
+			},<% } }); %>
+		},
+		files: [{
+			cwd: '<%%= paths.src %>/containers/pages/',
+			dest: '<%%= paths.dev %>/',
+			expand: true,
+			flatten: true,
+			src: ['**/*.hbs']
+		}]
+	}<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
+	docs: {
+		files: [
+		{
+			cwd: 'docs/',
+			dest: '<%%= paths.dev %>/docs',
+			expand: true,
+			flatten: false,
+			src: ['**/*.hbs']
+			}
+		]
+	}<% } %>
+};

@@ -8,8 +8,8 @@ exports.setup = function () {};
 
 exports.scaffold = function () {
 	this.fs.copyTpl(
-		this.templatePath('server/main.js.ejs'),
-		'server/main.js',
+		this.templatePath('server/index.js.ejs'),
+		'server/index.js',
 		this
 	);
 };

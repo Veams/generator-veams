@@ -1,0 +1,60 @@
+/**
+ * Configuration file
+ */
+const helperPath = 'configs';
+const srcPath = 'src';<% if(templateEngine) { %>
+const partialsPath = srcPath + '/shared';<% } %>
+<% if (taskRunner.indexOf('gulp') != -1) {%>
+const browserSync = require('browser-sync');
+const notify = require('gulp-notify');
+<% } %>
+const config = module.exports;
+
+config.options = {<% if (selfContained) {%>
+    folderStructure: 'self-contained',<% } %><% if (taskRunner.indexOf('grunt') != -1) {%>
+	config: {
+		// in this directory you can find your grunt config tasks
+		src: helperPath + '/_grunt/*.js'
+	},<% } %>
+	paths: {
+		<% if (taskRunner.indexOf('gulp') != -1) {%>// tasks folder with gulp tasks
+		tasks: helperPath + '/_gulp',<% } %>
+		// helpers folder with tasks
+		helpers: helperPath,
+		tmp: 'tmp',
+		// resources folder with working files
+		src: srcPath,<% if(templateEngine) { %>
+		// partials path for wrapWith hbs helper
+		partials: partialsPath,<% } %>
+		// dev/working folder
+		dev: 'app'<% if (features.indexOf('createDevFolder') != -1) { %>,
+		// dist folder with minified and optimized files
+		dist: 'dist'<% } %>,
+		// Veams config paths<% if(templateEngine) { %>
+		page: srcPath + '/containers/pages',
+		global: partialsPath + '/components/globals',
+		component: partialsPath + '/components',
+		utility: partialsPath + '/utilities',<% } %>
+		scss: srcPath + '/shared/styles',
+		js: srcPath + '/shared/scripts',
+		endpoints: [<% if (templateEngine) { %>
+			'shared/layouts',
+			'containers/pages',<% } %>
+			'shared/scripts/main.js',<% if (veamsPackages) { %>
+			'shared/scripts/events.js',<% } %>
+			'shared/styles/styles.scss'
+		]
+	},
+
+	// define your ports for livereload
+	ports: {
+		server: 2999,
+		app: 3000,
+		test: 4000,
+		livereload: 35729
+	}
+};
+<% if (taskRunner.indexOf('gulp') != -1) {%>
+config.server = browserSync;
+config.notify = notify;
+<% } %>

@@ -91,35 +91,35 @@ exports.scaffold = function () {
 	// Add JS files for libraries
 	if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || this.gulpModules.indexOf('gulp-requirejs-optimize') != -1) {
 		this.fs.copyTpl(
-			this.templatePath('resources/js/_main.require.js.ejs'),
-			'resources/js/main.js',
+			this.templatePath('src/shared/scripts/_main.require.js.ejs'),
+			'src/shared/scripts/main.js',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/js/_app.require.js.ejs'),
-			'resources/js/app.js',
+			this.templatePath('src/shared/scripts/_app.require.js.ejs'),
+			'src/shared/scripts/app.js',
 			this
 		);
 	} else if (this.gruntModules.indexOf('grunt-browserify') !== -1 || this.gulpModules.indexOf('browserify') !== -1) {
 		this.fs.copyTpl(
-			this.templatePath('resources/js/_main.browserify.js.ejs'),
-			'resources/js/main.js',
+			this.templatePath('src/shared/scripts/_main.browserify.js.ejs'),
+			'src/shared/scripts/main.js',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/js/_app.browserify.js.ejs'),
-			'resources/js/app.js',
+			this.templatePath('src/shared/scripts/_app.browserify.js.ejs'),
+			'src/shared/scripts/app.js',
 			this
 		);
 	} else if (this.gruntModules.indexOf('grunt-includes') !== -1) {
 		this.fs.copyTpl(
-			this.templatePath('resources/js/_main.includes.js.ejs'),
-			'resources/js/main.js',
+			this.templatePath('src/shared/scripts/_main.includes.js.ejs'),
+			'src/shared/scripts/main.js',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/js/_app.includes.js.ejs'),
-			'resources/js/app.js',
+			this.templatePath('src/shared/scripts/_app.includes.js.ejs'),
+			'src/shared/scripts/app.js',
 			this
 		);
 	}

@@ -7,8 +7,8 @@ const assert = require('yeoman-assert');
 const fs = require('fs');
 
 describe('Mangony', function () {
-	const srcPath = 'resources/';
-	const helperPath = 'helpers/';
+	const srcPath = 'src/';
+	const helperPath = 'configs/';
 
 
 	describe('adds standard files and configs to project', function () {
@@ -30,17 +30,17 @@ describe('Mangony', function () {
 
 		it('creates resources files', function () {
 			const expected = [
-				srcPath + 'templating/data/config.json',
-				srcPath + 'templating/layouts/lyt-default.hbs',
-				srcPath + 'templating/pages/index.hbs',
-				srcPath + 'templating/partials/_global/_scripts.hbs',
-				srcPath + 'templating/partials/_global/_metadata.hbs',
-				srcPath + 'templating/partials/_global/_styles.hbs'
+				srcPath + 'store/config.json',
+				srcPath + 'shared/layouts/lyt-default.hbs',
+				srcPath + 'containers/pages/index/index.hbs',
+				srcPath + 'shared/components/globals/_scripts.hbs',
+				srcPath + 'shared/components/globals/_metadata.hbs',
+				srcPath + 'shared/components/globals/_styles.hbs'
 			];
 			const notExpected = [
-				srcPath + 'templating/helpers/alias.js',
-				srcPath + 'templating/helpers/helper-wrapWith.js',
-				srcPath + 'templating/helpers/helper-ifBlock.js'
+				srcPath + 'shared/utilities/template-helpers/alias.js',
+				srcPath + 'shared/utilities/template-helpers/helper-wrapWith.js',
+				srcPath + 'shared/utilities/template-helpers/helper-ifBlock.js'
 			];
 			assert.file(expected);
 			assert.noFile(notExpected);
@@ -48,12 +48,12 @@ describe('Mangony', function () {
 		});
 
 		it('adds paths to config.js', function () {
-			assert.fileContent(helperPath + 'config.js', /'resources\/templating\/pages'/);
-			assert.fileContent(helperPath + 'config.js', /partials/);
+			assert.fileContent(helperPath + 'config.js', /'containers\/pages'/);
+			assert.fileContent(helperPath + 'config.js', /shared/);
 		});
 
 		it('the index.hbs contains extend syntax', function () {
-			assert.fileContent(srcPath + 'templating/pages/index.hbs', /{{#extend/);
+			assert.fileContent(srcPath + 'containers/pages/index/index.hbs', /{{#extend/);
 		});
 	});
 	describe('Grunt installation', function () {
@@ -85,12 +85,12 @@ describe('Mangony', function () {
 			assert.file(helperPath + '_grunt/mangony.js');
 		});
 
-		it('adds dependencies and functions to server/main.js', function () {
-			assert.noFileContent('server/main.js', /Mangony/);
-			assert.noFileContent('server/main.js', /'deep-extend'/);
-			assert.noFileContent('server/main.js', /mangonyServer.render()/);
-			assert.fileContent('server/main.js', /app.set/);
-			assert.fileContent('server/main.js', /app.listen/);
+		it('adds dependencies and functions to server/index.js', function () {
+			assert.noFileContent('server/index.js', /Mangony/);
+			assert.noFileContent('server/index.js', /'deep-extend'/);
+			assert.noFileContent('server/index.js', /mangonyServer.render()/);
+			assert.fileContent('server/index.js', /app.set/);
+			assert.fileContent('server/index.js', /app.listen/);
 		});
 
 		it('adds and deletes task to Gruntfile.js file', function () {
@@ -125,12 +125,12 @@ describe('Mangony', function () {
 
 		});
 
-		it('adds dependencies and functions to server/main.js', function () {
-			assert.fileContent('server/main.js', /Mangony/);
-			assert.fileContent('server/main.js', /'deep-extend'/);
-			assert.fileContent('server/main.js', /mangonyServer.render()/);
-			assert.noFileContent('server/main.js', /app.set/);
-			assert.noFileContent('server/main.js', /app.listen/);
+		it('adds dependencies and functions to server/index.js', function () {
+			assert.fileContent('server/index.js', /Mangony/);
+			assert.fileContent('server/index.js', /'deep-extend'/);
+			assert.fileContent('server/index.js', /mangonyServer.render()/);
+			assert.noFileContent('server/index.js', /app.set/);
+			assert.noFileContent('server/index.js', /app.listen/);
 		});
 
 		it('adds task to Gruntfile.js file', function () {

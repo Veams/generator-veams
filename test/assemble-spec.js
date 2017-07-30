@@ -11,8 +11,8 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 
 
 describe('assemble', function () {
-	const srcPath = "resources/";
-	const helperPath = "helpers/";
+	const srcPath = "src/";
+	const helperPath = "configs/";
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -36,23 +36,22 @@ describe('assemble', function () {
 
 	it('creates resources files', function () {
 		const expected = [
-			srcPath + "templating/data/config.json",
-			srcPath + "templating/helpers/alias.js",
-			srcPath + "templating/helpers/helper-wrapWith.js",
-			srcPath + "templating/helpers/helper-ifBlock.js",
-			srcPath + "templating/layouts/lyt-default.hbs",
-			srcPath + "templating/pages/index.hbs",
-			srcPath + "templating/partials/_global/_scripts.hbs",
-			srcPath + "templating/partials/_global/_metadata.hbs",
-			srcPath + "templating/partials/_global/_styles.hbs"
+			srcPath + "store/config.json",
+			srcPath + "shared/utilities/template-helpers/alias.js",
+			srcPath + "shared/utilities/template-helpers/helper-wrapWith.js",
+			srcPath + "shared/utilities/template-helpers/helper-ifBlock.js",
+			srcPath + "shared/layouts/lyt-default.hbs",
+			srcPath + "containers/pages/index/index.hbs",
+			srcPath + "shared/components/globals/_scripts.hbs",
+			srcPath + "shared/components/globals/_metadata.hbs",
+			srcPath + "shared/components/globals/_styles.hbs"
 		];
 		assert.file(expected);
 
 	});
 
 	it('adds paths to config.js', function () {
-		assert.fileContent(helperPath + "config.js", /'resources\/templating\/pages'/);
-		assert.fileContent(helperPath + "config.js", /partials/);
+		assert.fileContent(helperPath + "config.js", /'containers\/pages'/);
 	});
 
 	it('adds task to chokidar.js file', function () {

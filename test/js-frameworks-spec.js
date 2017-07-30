@@ -7,8 +7,8 @@ const assert = require('yeoman-assert');
 const fs = require('fs');
 
 describe('JavaScript Frameworks', function () {
-	const srcPath = 'resources/';
-	const helperPath = 'helpers/_grunt/';
+	const srcPath = 'src/';
+	const helperPath = 'configs/_grunt/';
 
 	describe('when Veams-Query is selected', function () {
 		let answers = require('../test_helpers/prompt-answer-factory')({
@@ -37,7 +37,7 @@ describe('JavaScript Frameworks', function () {
 		});
 
 		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'js/app.js', /veams-query/);
+			assert.fileContent(srcPath + 'shared/scripts/app.js', /veams-query/);
 		});
 
 		it('adds references in browserify task', function () {
@@ -72,7 +72,7 @@ describe('JavaScript Frameworks', function () {
 		});
 
 		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'js/app.js', /jquery/);
+			assert.fileContent(srcPath + 'shared/scripts/app.js', /jquery/);
 		});
 	});
 
@@ -103,7 +103,7 @@ describe('JavaScript Frameworks', function () {
 		});
 
 		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'js/app.js', /veams-query/);
+			assert.fileContent(srcPath + 'shared/scripts/app.js', /veams-query/);
 		});
 	});
 
@@ -134,7 +134,7 @@ describe('JavaScript Frameworks', function () {
 		});
 
 		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'js/app.js', /exoskeleton/);
+			assert.fileContent(srcPath + 'shared/scripts/app.js', /exoskeleton/);
 		});
 	});
 	describe('when Backbone is selected', function () {
@@ -164,7 +164,7 @@ describe('JavaScript Frameworks', function () {
 		});
 
 		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'js/app.js', /backbone/);
+			assert.fileContent(srcPath + 'shared/scripts/app.js', /backbone/);
 		});
 	});
 

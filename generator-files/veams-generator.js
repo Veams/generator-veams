@@ -36,71 +36,37 @@ exports.scaffold = function () {
 
 	if (this.veamsPackages) {
 		this.fs.copy(
-			this.templatePath('resources/js/utils/events.js'),
-			'resources/js/events.js'
+			this.templatePath('src/shared/scripts/events.js'),
+			'src/shared/scripts/events.js'
 		);
 		this.fs.copy(
-			this.templatePath('resources/scss/global/_get-media.scss'),
-			'resources/scss/global/_get-media.scss'
+			this.templatePath('src/shared/styles/global/_get-media.scss'),
+			'src/shared/styles/global/_get-media.scss'
 		);
 
 		if (this.templateEngine !== '') {
 			// Data
 			this.fs.copy(
 				this.templatePath('gitkeep'),
-				'resources/templating/data/blocks/.gitkeep'
-			);
-			this.fs.copy(
-				this.templatePath('gitkeep'),
-				'resources/templating/data/pages/.gitkeep'
-			);
-			this.fs.copy(
-				this.templatePath('gitkeep'),
-				'resources/templating/data/_global/.gitkeep'
+				'src/shared/components/.gitkeep'
 			);
 
 			// Layouts
 			this.fs.copy(
-				this.templatePath('resources/templating/layouts/README.md'),
-				'resources/templating/layouts/README.md'
-			);
-
-			// Blocks
-			this.fs.copy(
-				this.templatePath('resources/templating/partials/blocks/README.md'),
-				'resources/templating/partials/blocks/README.md'
+				this.templatePath('src/shared/layouts/README.md'),
+				'src/shared/layouts/README.md'
 			);
 
 			// Components
 			this.fs.copy(
-				this.templatePath('resources/templating/partials/components/README.md'),
-				'resources/templating/partials/components/README.md'
+				this.templatePath('src/shared/components/README.md'),
+				'src/shared/components/README.md'
 			);
 
 			// Utilities
 			this.fs.copy(
-				this.templatePath('resources/templating/partials/utilities/README.md'),
-				'resources/templating/partials/utilities/README.md'
-			);
-		}
-
-		// SCSS
-		if (!this.selfContained) {
-			this.fs.copy(
-				this.templatePath('gitkeep'),
-				'resources/scss/blocks/.gitkeep'
-			);
-			this.fs.copy(
-				this.templatePath('gitkeep'),
-				'resources/scss/utilities/.gitkeep'
-			);
-			this.fs.copy(
-				this.templatePath('gitkeep'),
-				'resources/scss/components/.gitkeep'
-			);
-			this.fs.copy(
-				this.templatePath('gitkeep'),
-				'resources/scss/layouts/.gitkeep'
+				this.templatePath('src/shared/utilities/README.md'),
+				'src/shared/utilities/README.md'
 			);
 		}
 	}

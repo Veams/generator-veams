@@ -11,8 +11,9 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 	]
 });
 
-describe('grunt-dr-svg-sprites', function () {
-	const helperPath = "helpers/";
+describe('grunt-dr-svg-sprites as icons task', function () {
+	const srcPath = 'src/shared/';
+	const helperPath = 'configs/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -32,6 +33,10 @@ describe('grunt-dr-svg-sprites', function () {
 	it('creates helper files', function () {
 		assert.file(helperPath + "_grunt/dr-svg-sprites.js");
 		assert.file(helperPath + "templates/svg-sprites/stylesheet.hbs");
+	});
+
+	it('creates icons folder in styles folder', function () {
+		assert.file(srcPath + "styles/icons/.gitkeep");
 	});
 
 	it('adds task and fallback to Gruntfile.js file', function () {
