@@ -11,8 +11,9 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 	]
 });
 
-describe('grunt-grunticon', function () {
-	const helperPath = "helpers/";
+describe('grunt-grunticon as icons task', function () {
+	const helperPath = 'configs/';
+	const srcPath = 'src/shared/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -33,6 +34,10 @@ describe('grunt-grunticon', function () {
 	it('creates helper files', function () {
 		assert.file(helperPath + "_grunt/grunticon.js");
 		assert.file(helperPath + "_grunt/replace.js");
+	});
+
+	it('creates icons folder in styles folder', function () {
+		assert.file(srcPath + "styles/icons/.gitkeep");
 	});
 
 	it('adds tasks to Gruntfile.js file', function () {

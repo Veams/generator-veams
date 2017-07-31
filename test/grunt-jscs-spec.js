@@ -14,7 +14,7 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 
 
 describe('grunt-jscs', function () {
-	const helperPath = "helpers/";
+	const helperPath = 'configs/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -42,7 +42,7 @@ describe('grunt-jscs', function () {
 
 	//it('adds README.md to js folder and adds jsdoc.conf.json', function () {
 	//	assert.file([
-	//		'resources/js/README.md',
+	//		''src/js/README.md',
 	//		helperPath + 'task-configs/jsdoc.conf.json'
 	//	]);
 	//});

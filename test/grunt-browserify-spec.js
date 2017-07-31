@@ -12,8 +12,8 @@ var answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('grunt-browserify', function () {
-	var helperPath = 'helpers/';
-	var srcPath = 'resources/';
+	var helperPath = 'configs/';
+	var srcPath = 'src/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -43,8 +43,8 @@ describe('grunt-browserify', function () {
 
 	it('adds app.js, main.js to js folder', function () {
 		assert.file([
-			srcPath + 'js/app.js',
-			srcPath + 'js/main.js'
+			srcPath + 'shared/scripts/app.js',
+			srcPath + 'shared/scripts/main.js'
 		]);
 	});
 });

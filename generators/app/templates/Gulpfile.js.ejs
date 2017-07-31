@@ -17,7 +17,7 @@
 *
 */
 
-const config = require('./helpers/config');
+const config = require('./configs/config');
 const gulp = require('gulp');
 const runSequence = require('gulp-sequence');
 const requireDir = require('require-dir');
@@ -47,8 +47,7 @@ gulp.task('serve', [
 	<% } %>
 	// SCSS
 	gulp.watch([
-		config.options.paths.src + "/scss/**/*.scss"<% if (selfContained === true ) { %>,
-		config.options.paths.src + "/templating/partials/**/scss/**/*.scss"<% } %>
+			config.options.paths.src + "/shared/**/*.scss"
 		], [
 		'styles:dev'<% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>,
 		'stylelint'<% } %>
@@ -56,14 +55,14 @@ gulp.task('serve', [
 	<% if (gulpModules && gulpModules.indexOf('gulp-requirejs-optimize') !== -1) { %>
 	// JS
 	gulp.watch([
-		config.options.paths.src + "/js/**/*.js",
-		config.options.paths.src + "/js/**/*.html"
+		config.options.paths.src + "/shared/scripts/**/*.js",
+		config.options.paths.src + "/shared/scripts/**/*.html"
 	], ['js:dev']);
 	<% } %>
 	// Reload
 	gulp.watch([
 		config.options.paths.dev + "/*.html",
-		config.options.paths.dev + "/js/**/*.js",
+		config.options.paths.dev + "/scripts/**/*.js",
 		config.options.paths.dev + "/css/*.css"
 	]).on('change', config.server.reload);
 });

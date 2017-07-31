@@ -50,56 +50,51 @@ exports.setup = function () {
 exports.scaffold = function () {
 	// add global assemble files
 	if (this.templateEngine && this.templateEngine !== '') {
-
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'resources/templating/ajax/.gitkeep'
+			'src/shared/utilities/template-helpers/.gitkeep'
 		);
 		this.fs.copy(
-			this.templatePath('gitkeep'),
-			'resources/templating/helpers/.gitkeep'
-		);
-		this.fs.copy(
-			this.templatePath('resources/templating/data/config.json'),
-			'resources/templating/data/config.json'
+			this.templatePath('src/store/config.json'),
+			'src/store/config.json'
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/templating/layouts/lyt-default.hbs.ejs'),
-			'resources/templating/layouts/lyt-default.hbs',
+			this.templatePath('src/shared/layouts/lyt-default.hbs.ejs'),
+			'src/shared/layouts/lyt-default.hbs',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/templating/pages/index.hbs.ejs'),
-			'resources/templating/pages/index.hbs',
+			this.templatePath('src/containers/pages/index/index.hbs.ejs'),
+			'src/containers/pages/index/index.hbs',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/templating/pages/page-components.hbs.ejs'),
-			'resources/templating/pages/page-components.hbs',
+			this.templatePath('src/containers/pages/components/components.hbs.ejs'),
+			'src/containers/pages/components/components.hbs',
 			this
 		);
 
 		// Add global partials
 		this.fs.copy(
-			this.templatePath('resources/templating/partials/_global/_metadata.hbs'),
-			'resources/templating/partials/_global/_metadata.hbs'
+			this.templatePath('src/shared/components/globals/_metadata.hbs'),
+			'src/shared/components/globals/_metadata.hbs'
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/templating/partials/_global/_scripts.hbs.ejs'),
-			'resources/templating/partials/_global/_scripts.hbs',
+			this.templatePath('src/shared/components/globals/_scripts.hbs.ejs'),
+			'src/shared/components/globals/_scripts.hbs',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/templating/partials/_global/_styles.hbs.ejs'),
-			'resources/templating/partials/_global/_styles.hbs',
+			this.templatePath('src/shared/components/globals/_styles.hbs.ejs'),
+			'src/shared/components/globals/_styles.hbs',
 			this
 		);
 
 		// Add HTML build task for gulp
 		if (this.taskRunner.indexOf('gulp') !== -1) {
 			this.fs.copyTpl(
-				this.templatePath('helpers/_gulp/_html.js.ejs'),
-				'helpers/_gulp/html.js',
+				this.templatePath(this.generatorGulpPath + '_html.js.ejs'),
+				this.gulpPath + 'html.js',
 				this
 			);
 		}
@@ -107,15 +102,15 @@ exports.scaffold = function () {
 		if (this.templateEngine.indexOf('assemble') !== -1) {
 			// Add Gruntfile-helper file
 			this.fs.copyTpl(
-				this.templatePath('helpers/_grunt/_assemble.js.ejs'),
-				'helpers/_grunt/assemble.js',
+				this.templatePath(this.generatorGruntPath + '_assemble.js.ejs'),
+				this.gruntPath + 'assemble.js',
 				this
 			);
 
 			// Add template helpers
 			this.fs.copy(
-				this.templatePath('resources/templating/helpers/**/*'),
-				'resources/templating/helpers'
+				this.templatePath('src/shared/utilities/template-helpers/**/*'),
+				'src/shared/utilities/template-helpers'
 			);
 		} else {
 			delete this.pkgFile['devDependencies']['assemble'];
@@ -130,8 +125,8 @@ exports.scaffold = function () {
 
 			} else {
 				this.fs.copyTpl(
-					this.templatePath('helpers/_grunt/_mangony.js.ejs'),
-					'helpers/_grunt/mangony.js',
+					this.templatePath(this.generatorGruntPath + '_mangony.js.ejs'),
+					this.gruntPath + 'mangony.js',
 					this
 				);
 

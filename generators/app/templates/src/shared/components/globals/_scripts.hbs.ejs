@@ -1,0 +1,11 @@
+<% if (gruntModules && gruntModules.length || gulpModules && gulpModules.length) { if (gruntModules.indexOf('grunt-contrib-requirejs') != -1 || gulpModules.indexOf('gulp-requirejs-optimize') != -1 || gruntModules.indexOf('grunt-includes') != -1) { %>
+<script src="scripts/main.js"></script><% } %><% if (gruntModules.indexOf('grunt-browserify') != -1 || gulpModules.indexOf('browserify') != -1) { %>
+<% if (taskRunner.indexOf('gulp') === -1 ) { %><script src="scripts/libs.js"></script><% } %>
+<script src="scripts/main.js"></script><% } %>
+<% } %>
+<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-postcss-separator') != -1 && gruntModules.indexOf('grunt-grunticon') != -1) { %>
+<script src="scripts/vendor/loadCSS.js"></script>
+<script>
+	loadCSS("css/styles.icons.css");
+</script>
+<% } %>

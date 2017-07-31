@@ -15,8 +15,8 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('grunt-version', function () {
-	const helperPath = "helpers/";
-	const srcPath = "resources/";
+	const helperPath = 'configs/';
+	const srcPath = 'src/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -35,10 +35,6 @@ describe('grunt-version', function () {
 
 	it('creates helper files', function () {
 		assert.file(helperPath + "_grunt/version.js");
-	});
-
-	it('creates partial file', function () {
-		assert.file(srcPath + "templating/partials/blocks/b-version.hbs");
 	});
 
 	it('adds task to Gruntfile.js file', function () {

@@ -12,8 +12,8 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('grunt-image-size-export', function () {
-	const srcPath = "resources/";
-	const helperPath = "helpers/";
+	const srcPath = 'src/';
+	const helperPath = 'configs/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))

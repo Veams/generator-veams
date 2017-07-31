@@ -7,8 +7,8 @@ const assert = require('yeoman-assert');
 const fs = require('fs');
 
 describe('gulp-stylelint', function () {
-	const helperPath = 'helpers/';
-	const srcPath = 'resources/';
+	const helperPath = 'configs/';
+	const srcPath = 'src/';
 
 
 	describe('when selected', function () {

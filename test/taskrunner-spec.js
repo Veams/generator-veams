@@ -5,8 +5,8 @@ const fs = require('fs');
 const path = require('path');
 const helpers = require('yeoman-test');
 const assert = require('yeoman-assert');
-const srcPath = 'resources/';
-const helperPath = 'helpers/';
+const srcPath = 'src/';
+const helperPath = 'configs/';
 
 describe('task runner is Grunt', function () {
 	const answers = require('../test_helpers/prompt-answer-factory')({

@@ -1,0 +1,36 @@
+module.exports = {
+	ajax: {
+		files: [
+			// includes files within path and its sub-directories
+			{
+				cwd: '<%%= paths.src %>/ajax',
+				src: '**/*.{json,html}',
+				dest: '<%%= paths.dev %>/ajax'
+			}
+		]
+	},
+	assets: {
+		files: [
+			// includes files within path and its sub-directories
+			{
+				cwd: '<%%= paths.src %>/assets',
+				src: [
+					'**/{,*/}*'<% if (gruntModules && gruntModules.length > 0) { if (gruntModules.indexOf('grunt-svgmin') != -1) { %>,
+					'!img/svg/**/{,*/}*'<% if (gruntModules && gruntModules.length > 0) { if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
+					'!img/svgmin/**/{,*/}*'<% }} %><% }} %>
+				],
+				dest: '<%%= paths.dev %>'
+			}
+		]
+	}<% if(gruntModules.indexOf('grunt-browserify') == -1 && gruntModules.indexOf('grunt-includes') == -1 && gruntModules.indexOf('grunt-contrib-requirejs') == -1){ %>,
+	js: {
+		files: [
+			// includes files within path and its sub-directories
+			{
+				cwd: '<%%= paths.src %>/shared/scripts',
+				src: '**/*',
+				dest: '<%%= paths.dev %>/shared/scripts'
+			}
+		]
+	}<% } %>
+};

@@ -1,0 +1,21 @@
+module.exports = {
+	options: {
+		outputStyle: 'nested',
+		sourceMap: true
+	},
+	dev: {
+		files: {
+			'<%%= paths.dev %>/css/styles.css': '<%%= paths.src %>/shared/styles/styles.tmp.scss'
+		}
+	},
+	universal: {
+		files: {
+			'<%%= paths.dev %>/css/universal.css': '<%%= paths.src %>/shared/styles/universal.scss'
+		}
+	}<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
+	docs: {
+		files: {
+			'<%%= paths.dev %>/css/docs.css': '<%%= paths.src %>/shared/styles/docs.scss'
+		}
+	}<% } %>
+};

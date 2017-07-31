@@ -11,7 +11,7 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('grunt-webfont', function () {
-	const helperPath = 'helpers/';
+	const helperPath = 'configs/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))

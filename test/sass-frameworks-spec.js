@@ -7,8 +7,8 @@ const assert = require('yeoman-assert');
 const fs = require('fs');
 
 describe('Sass Frameworks', function () {
-	const srcPath = "resources/";
-	const helpersPath = "helpers/";
+	const srcPath = "src/";
+	const helpersPath = "configs/";
 
 	describe('when Bootstrap-Sass is selected', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
@@ -33,11 +33,11 @@ describe('Sass Frameworks', function () {
 		});
 
 		it('adds import state to styles.scss', function () {
-			assert.fileContent(srcPath + 'scss/styles.scss', /bootstrap/);
+			assert.fileContent(srcPath + 'shared/styles/styles.scss', /bootstrap/);
 		});
 
 		it('adds comment to _vars.scss', function () {
-			assert.fileContent(srcPath + 'scss/global/_vars.scss', /BOOTSTRAP/);
+			assert.fileContent(srcPath + 'shared/styles/global/_vars.scss', /BOOTSTRAP/);
 		});
 	});
 
@@ -64,11 +64,11 @@ describe('Sass Frameworks', function () {
 		});
 
 		it('adds import state to styles.scss', function () {
-			assert.fileContent(srcPath + 'scss/styles.scss', /foundation/);
+			assert.fileContent(srcPath + 'shared/styles/styles.scss', /foundation/);
 		});
 
 		it('adds comment to _vars.scss', function () {
-			assert.fileContent(srcPath + 'scss/global/_vars.scss', /FOUNDATION/);
+			assert.fileContent(srcPath + 'shared/styles/global/_vars.scss', /FOUNDATION/);
 		});
 	});
 
@@ -96,12 +96,12 @@ describe('Sass Frameworks', function () {
 		});
 
 		it('adds import state to styles.scss', function () {
-			assert.fileContent(srcPath + 'scss/styles.scss', /bourbon/);
-			assert.fileContent(srcPath + 'scss/styles.scss', /neat/);
+			assert.fileContent(srcPath + 'shared/styles/styles.scss', /bourbon/);
+			assert.fileContent(srcPath + 'shared/styles/styles.scss', /neat/);
 		});
 
 		it('adds comment to _vars.scss', function () {
-			assert.fileContent(srcPath + 'scss/global/_vars.scss', /BOURBON/);
+			assert.fileContent(srcPath + 'shared/styles/global/_vars.scss', /BOURBON/);
 		});
 	});
 
@@ -132,7 +132,7 @@ describe('Sass Frameworks', function () {
 		});
 
 		it('adds comment to _vars.scss', function () {
-			assert.fileContent(srcPath + 'scss/global/_vars.scss', /LOST/);
+			assert.fileContent(srcPath + 'shared/styles/global/_vars.scss', /LOST/);
 		});
 	});
 
@@ -219,7 +219,7 @@ describe('Sass Frameworks', function () {
 		});
 
 		it('adds import state to styles.scss', function () {
-			assert.fileContent(srcPath + 'scss/styles.scss', /include-media/);
+			assert.fileContent(srcPath + 'shared/styles/styles.scss', /include-media/);
 		});
 	});
 

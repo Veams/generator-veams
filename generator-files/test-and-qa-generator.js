@@ -95,7 +95,7 @@ exports.scaffold = function () {
 		if (this.taskRunner.indexOf('grunt') !== -1 && this.taskRunner.indexOf('gulp') === -1) {
 			this.fs.copy(
 				this.templatePath(this.generatorHelperPath + '_grunt/jscs.js'),
-				this.helperPath + '_grunt/jscs.js'
+				this.gruntPath + 'jscs.js'
 			);
 			delete this.pkgFile['devDependencies']['gulp-jscs'];
 		} else {
@@ -133,8 +133,8 @@ exports.scaffold = function () {
 			delete this.pkgFile['devDependencies']['grunt-htmlhint'];
 
 			this.fs.copyTpl(
-				this.templatePath('helpers/_gulp/_hinting.js.ejs'),
-				'helpers/_gulp/hinting.js',
+				this.templatePath(this.generatorGulpPath + '_hinting.js.ejs'),
+				this.gulpPath + 'hinting.js',
 				this
 			);
 		}

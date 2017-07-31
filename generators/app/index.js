@@ -181,8 +181,8 @@ module.exports = class extends Generator {
 		this.fs.copyTpl(this.templatePath('gitignore'), '.gitignore');
 		this.fs.copyTpl(this.templatePath('bowerrc'), '.bowerrc');
 		this.fs.copyTpl(
-			this.templatePath('helpers/config.js.ejs'),
-			'helpers/config.js',
+			this.templatePath('configs/config.js.ejs'),
+			'configs/config.js',
 			this
 		);
 		this.fs.copyTpl(this.templatePath('README.md.ejs'), 'README.md', this);
@@ -194,60 +194,60 @@ module.exports = class extends Generator {
 		// Ajax area
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'resources/ajax/.gitkeep'
+			'server/ajax/.gitkeep'
 		);
 
 		// Assets area
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'resources/assets/media/.gitkeep'
+			'src/assets/media/.gitkeep'
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'resources/assets/fonts/.gitkeep'
+			'src/assets/fonts/.gitkeep'
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'resources/assets/img/svg/icons/.gitkeep'
+			'src/assets/img/svg/icons/.gitkeep'
 		);
 
 		// JS area
 		this.fs.copy(
-			this.templatePath('resources/js/README.md'),
-			'resources/js/README.md'
+			this.templatePath('src/shared/scripts/README.md'),
+			'src/shared/scripts/README.md'
 		);
 
 		// SCSS area
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'resources/scss/helpers/functions/.gitkeep'
+			'src/shared/styles/helpers/functions/.gitkeep'
 		);
 
 		this.fs.copyTpl(
-			this.templatePath('resources/scss/global/_print.scss'),
-			'resources/scss/global/_print.scss',
+			this.templatePath('src/shared/styles/global/_print.scss'),
+			'src/shared/styles/global/_print.scss',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/scss/universal.scss'),
-			'resources/scss/universal.scss',
+			this.templatePath('src/shared/styles/universal.scss'),
+			'src/shared/styles/universal.scss',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/scss/global/_base.scss.ejs'),
-			'resources/scss/global/_base.scss',
+			this.templatePath('src/shared/styles/global/_base.scss.ejs'),
+			'src/shared/styles/global/_base.scss',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/scss/global/_vars.scss.ejs'),
-			'resources/scss/global/_vars.scss',
+			this.templatePath('src/shared/styles/global/_vars.scss.ejs'),
+			'src/shared/styles/global/_vars.scss',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('resources/scss/_styles.scss.ejs'),
-			'resources/scss/styles.scss',
+			this.templatePath('src/shared/styles/_styles.scss.ejs'),
+			'src/shared/styles/styles.scss',
 			this
 		);
 	}

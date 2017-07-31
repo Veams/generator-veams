@@ -12,8 +12,8 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 });
 
 describe('grunt-includes', function () {
-	const helperPath = 'helpers/';
-	const srcPath = 'resources/';
+	const helperPath = 'configs/';
+	const srcPath = 'src/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -44,8 +44,8 @@ describe('grunt-includes', function () {
 
 	it('adds app.js, main.js to js folder', function () {
 		assert.file([
-			srcPath + 'js/app.js',
-			srcPath + 'js/main.js'
+			srcPath + 'shared/scripts/app.js',
+			srcPath + 'shared/scripts/main.js'
 		]);
 	});
 });

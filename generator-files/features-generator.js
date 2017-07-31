@@ -28,8 +28,8 @@ exports.scaffold = function () {
 		// Add copy task
 		if (this.features.indexOf('createDevFolder') != -1) {
 			this.fs.copyTpl(
-				this.templatePath('helpers/_grunt/_copy.js.ejs'),
-				'helpers/_grunt/copy.js',
+				this.templatePath(this.generatorGruntPath + '_copy.js.ejs'),
+				this.gruntPath + 'copy.js',
 				this
 			);
 		} else {

@@ -1,0 +1,81 @@
+'use strict';
+
+const config = require('../config');
+const path = config.options.paths;
+const server = config.server;
+const size = require('gulp-filesize');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const rename = require('gulp-rename');
+const sourcemaps = require('gulp-sourcemaps');<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-bless') != -1) { %>
+const bless = require('gulp-bless'); <% } %><% if (gulpModules && gulpModules.indexOf('gulp-combine-mq') != -1) { %>
+const combineMq = require('gulp-combine-mq'); <% } %>
+const minifycss = require('gulp-minify-css');
+const sassGlobbing = require('sass-globber');<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1) { %>
+const lost = require('lost');<% } %>
+
+
+// Sass globbing module
+function globSassFiles(mode) {
+	sassGlobbing.compiled({
+		sassRoot: path.src + '/shared/styles',
+		source: "styles.scss",
+		output: 'styles.tmp.scss',
+		watch: mode
+	});
+}
+
+// Globbing task with watcher
+gulp.task('sassGlobbing:dev', function () {
+	globSassFiles(true);
+});
+
+// Globbing task without watcher
+gulp.task('sassGlobbing:dist', function () {
+	globSassFiles(false);
+});
+
+// Dev Styles Task
+gulp.task('styles:dev', function () {
+	return gulp.src(path.src + '/shared/styles/styles.tmp.scss')
+		.pipe(sourcemaps.init())
+		.pipe(sass())
+		.pipe(rename('styles.css'))<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1 || gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+		.pipe(postcss([<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1) { %>
+			lost()<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>,<% } %><% } %><% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+			autoprefixer()<% } %>
+        ]))<% } %>
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(path.dev + '/css'))
+		.pipe(server.reload({
+			stream: true
+		}))
+		.pipe(config.notify({
+			message: 'Styles compiled'
+		}))
+		.pipe(size());
+});
+
+// Dist Styles Task
+gulp.task('styles:dist', function () {
+	return gulp.src(path.src + '/shared/styles/styles.tmp.scss')
+		.pipe(sass({
+			style: 'expanded'
+		}))
+		.pipe(rename('styles.css'))<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1 || gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+		.pipe(postcss([<% if (cssLibs && cssLibs.indexOf('lost-grid') != -1) { %>
+			lost()<% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>,<% } %><% } %><% if (gulpModules && gulpModules.indexOf('gulp-autoprefixer') != -1) { %>
+			autoprefixer()<% } %>
+        ]))<% } %><% if (gulpModules && gulpModules.indexOf('gulp-combine-mq') != -1) { %>
+		.pipe(combineMq({
+			beautify: false
+		}))<% } %>
+		.pipe(minifycss())<% if (gulpModules && gulpModules.indexOf('gulp-bless') != -1) { %>
+		.pipe(bless())<% } %>
+		.pipe(gulp.dest(path.dev + '/css'))
+		.pipe(config.notify({
+			message: 'Compiling, minification and autoprefixing of styles completed'
+		}));
+});

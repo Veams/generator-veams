@@ -224,7 +224,7 @@ exports.scaffold = function (obj) {
 	if (this.gruntModules.indexOf('grunt-dr-svg-sprites') != -1) {
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			this.srcPath + 'scss/icons/.gitkeep'
+			this.srcPath + 'shared/styles/icons/.gitkeep'
 		);
 		this.fs.copyTpl(
 			this.templatePath(this.generatorGruntPath + '_dr-svg-sprites.js.ejs'),
@@ -254,7 +254,7 @@ exports.scaffold = function (obj) {
 	if (this.gruntModules.indexOf('grunt-grunticon') != -1) {
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			this.srcPath + 'scss/icons/.gitkeep'
+			this.srcPath + 'shared/styles/icons/.gitkeep'
 		);
 		this.fs.copy(
 			this.templatePath(this.generatorHelperPath + 'templates/grunticon/stylesheet.hbs'),
@@ -361,10 +361,6 @@ exports.scaffold = function (obj) {
 			this.templatePath(this.generatorGruntPath + 'version.js'),
 			this.gruntPath + 'version.js'
 		);
-		this.fs.copy(
-			this.templatePath(this.generatorSrcPath + 'templating/partials/blocks/b-version.hbs'),
-			this.srcPath + 'templating/partials/blocks/b-version.hbs'
-		);
 
 		if (object.installDeps) {
 			this.npmInstall(['grunt-version'], {'saveDev': true});
@@ -415,8 +411,8 @@ exports.scaffold = function (obj) {
 
 	if (this.gruntModules.indexOf('grunt-grunticon') != -1 && this.gruntModules.indexOf('grunt-postcss-separator') != -1) {
 		this.fs.copy(
-			this.templatePath(this.generatorSrcPath + 'js/vendor/loadCSS.js'),
-			this.srcPath + 'js/vendor/loadCSS.js'
+			this.templatePath(this.generatorSrcPath + 'shared/scripts/vendor/loadCSS.js'),
+			this.srcPath + 'shared/scripts/vendor/loadCSS.js'
 		);
 	}
 };

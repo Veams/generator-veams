@@ -7,8 +7,8 @@ const assert = require('yeoman-assert');
 const fs = require('fs');
 
 describe('feature extended layouts', function () {
-	const helperPath = "helpers/";
-	const srcPath = "resources/";
+	const helperPath = "configs/";
+	const srcPath = "src/";
 
 	describe('assemble files', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
@@ -27,7 +27,7 @@ describe('feature extended layouts', function () {
 		});
 
 		it('creates page', function () {
-			assert.file(srcPath + "templating/pages/index.hbs");
+			assert.file(srcPath + "containers/pages/index/index.hbs");
 		});
 	});
 
@@ -49,7 +49,7 @@ describe('feature extended layouts', function () {
 		});
 
 		it('the index.hbs contains extend syntax', function () {
-			assert.fileContent(srcPath + "templating/pages/index.hbs", /{{#extend/);
+			assert.fileContent(srcPath + "containers/pages/index/index.hbs", /{{#extend/);
 		});
 	});
 
@@ -71,7 +71,7 @@ describe('feature extended layouts', function () {
 		});
 
 		it('the index.hbs contains simple syntax', function () {
-			assert.noFileContent(srcPath + "templating/pages/index.hbs", /{{#extend/);
+			assert.noFileContent(srcPath + "containers/pages/index/index.hbs", /{{#extend/);
 		});
 	});
 });
