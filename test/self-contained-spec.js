@@ -36,6 +36,30 @@ describe('Self contained project structure with Grunt', function () {
 	});
 });
 
+describe('No self contained project structure', function () {
+	const answers = require('../test_helpers/prompt-answer-factory')({
+		'selfContained': false,
+		'taskRunner': [
+			'grunt'
+		]
+	});
+
+	beforeEach(function (done) {
+		helpers.run(path.join(__dirname, '../generators/app'))
+			.inDir(path.join(__dirname, 'tmp'))
+			.withOptions({
+				'skip-install': true,
+				'skip-welcome-message': true
+			})
+			.withPrompts(answers)
+			.on('end', done);
+	});
+
+	it('adds setting in config.js', function () {
+		assert.fileContent('helpers/config.js', /standard/);
+	});
+});
+
 describe('Self contained project structure with Gulp', function () {
 	const answers = require('../test_helpers/prompt-answer-factory')({
 		'selfContained': true,

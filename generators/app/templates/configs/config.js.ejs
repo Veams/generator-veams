@@ -11,7 +11,7 @@ const notify = require('gulp-notify');
 const config = module.exports;
 
 config.options = {<% if (selfContained) {%>
-    folderStructure: 'self-contained',<% } %><% if (taskRunner.indexOf('grunt') != -1) {%>
+    folderStructure: 'self-contained',<% } else { %>'standard',<% } %><% if (taskRunner.indexOf('grunt') != -1) {%>
 	config: {
 		// in this directory you can find your grunt config tasks
 		src: helperPath + '/_grunt/*.js'
