@@ -285,7 +285,7 @@ describe('Blueprints generator', function () {
 		});
 	});
 
-	describe('when blueprints a JavaScript module', function () {
+	describe('when blueprints is a JavaScript module', function () {
 		const answers = {
 			bpName: 'test-module',
 			bpWithWrapWith: false,

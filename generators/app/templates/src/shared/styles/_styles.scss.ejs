@@ -31,19 +31,9 @@ Main File For Imports
 
 // Regions in Layouts
 @import "layouts/**/*";
-<% if (!selfContained) { %>
-// Components
-@import "components/**/*";
+<% } %>
 
-// Blocks
-@import "blocks/**/*";
-
-// Utilities
-@import "utilities/**/*";<% } %><% } %>
-
-<% if (selfContained) { %>
-// @INSERTPOINT :: @ref: scss-self-contained-import, @keep: true //<% } else { %>
-// @INSERTPOINT :: @ref: scss-import, @keep: true //<% } %>
+// @INSERTPOINT :: @ref: scss-import, @keep: true //
 
 // Print
 @import "global/_print";
