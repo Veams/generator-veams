@@ -45,11 +45,6 @@ exports.scaffold = function () {
 		);
 
 		if (this.templateEngine !== '') {
-			// Data
-			this.fs.copy(
-				this.templatePath('gitkeep'),
-				'src/shared/components/.gitkeep'
-			);
 
 			// Layouts
 			this.fs.copy(

@@ -183,6 +183,32 @@ module.exports = class extends Generator {
 
 		// add specific resources to make it possible to split up some directories
 
+		// General structure
+		this.fs.copy(
+			this.templatePath('gitkeep'),
+			'src/shared/components/.gitkeep'
+		);
+
+		this.fs.copy(
+			this.templatePath('gitkeep'),
+			'src/shared/utilities/.gitkeep'
+		);
+
+		this.fs.copy(
+			this.templatePath('gitkeep'),
+			'src/shared/layouts/.gitkeep'
+		);
+
+		this.fs.copy(
+			this.templatePath('gitkeep'),
+			'src/store/.gitkeep'
+		);
+
+		this.fs.copy(
+			this.templatePath('gitkeep'),
+			'src/containers/.gitkeep'
+		);
+
 		// Ajax area
 		this.fs.copy(
 			this.templatePath('gitkeep'),
@@ -202,7 +228,7 @@ module.exports = class extends Generator {
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/assets/img/svg/icons/.gitkeep'
+			'src/assets/icons/.gitkeep'
 		);
 
 		// JS area
