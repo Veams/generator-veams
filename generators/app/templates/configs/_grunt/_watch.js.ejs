@@ -32,10 +32,10 @@ module.exports = {
 	},<% } %>
 	scss: {
 		files: [
-			'<%%= paths.src %>/shared/styles/**/*.scss'<% if (selfContained === true ) { %>,
+			'<%%= paths.src %>/shared/styles/**/*.scss',
 			'<%%= paths.src %>/shared/components/**/scss/**/*.scss',
 			'<%%= paths.src %>/shared/utilities/**/scss/**/*.scss',
-			'<%%= paths.src %>/shared/layouts/**/scss/**/*.scss'<% } %>
+			'<%%= paths.src %>/shared/layouts/**/scss/**/*.scss'
 		],
 		tasks: [
 			'sass:dev'<% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
