@@ -30,6 +30,14 @@ exports.overwriteSetup = function () {
 exports.scaffold = function () {
 	if (!this.veamsPackages) {
 		delete this.pkgFile['dependencies']['veams'];
+		delete this.pkgFile['dependencies']['veams-plugin-dom'];
+		delete this.pkgFile['dependencies']['veams-plugin-logger'];
+		delete this.pkgFile['dependencies']['veams-plugin-media-query-handler'];
+		delete this.pkgFile['dependencies']['veams-plugin-mixins'];
+		delete this.pkgFile['dependencies']['veams-plugin-modules'];
+		delete this.pkgFile['dependencies']['veams-plugin-store'];
+		delete this.pkgFile['dependencies']['veams-plugin-templater'];
+		delete this.pkgFile['dependencies']['veams-plugin-vent'];
 
 		return;
 	}

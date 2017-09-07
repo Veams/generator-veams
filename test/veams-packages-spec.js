@@ -38,6 +38,7 @@ describe('Veams Framework', function () {
 
 		it('package.json contains reference', function () {
 			assert.fileContent('package.json', /veams/);
+			assert.fileContent('package.json', /veams-plugin/);
 		});
 
 		it('adds references to dependencies in package.json', function () {

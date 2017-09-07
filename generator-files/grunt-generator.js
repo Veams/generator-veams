@@ -265,7 +265,6 @@ exports.scaffold = function (obj) {
 			this.gruntPath + 'grunticon.js', this);
 
 		if (object.installDeps) {
-			this.bowerInstall(['veams-sass'], {'save': true});
 			this.npmInstall(['grunt-grunticon'], {'saveDev': true});
 		}
 	} else {
