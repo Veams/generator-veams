@@ -2,11 +2,13 @@
 import $ from 'jquery';<% } %><%if (jsLibs && jsLibs.indexOf('veams-query') !== -1) { %>
 import { default as $ } from 'veams-query';<% } %><% if (veamsPackages) { %>
 import Veams from 'veams';
-import VeamsLogger from 'veams/src/js/plugins/logger';
-import VeamsDOM from 'veams/src/js/plugins/dom';
-import VeamsVent from 'veams/src/js/plugins/vent';
-import VeamsModules from 'veams/src/js/plugins/modules';
-import VeamsMediaQueryHandler from 'veams/src/js/plugins/media-query-handler';
+import VeamsLogger from 'veams-plugin-logger';
+import VeamsDOM from 'veams-plugin-dom';
+import VeamsVent from 'veams-plugin-vent';
+import VeamsModules from 'veams-plugin-modules';
+import VeamsMediaQueryHandler from 'veams-plugin-media-query-handler';
+// import VeamsStore from 'veams-plugin-store';
+// import VeamsTemplater from 'veams-plugin-templater';
 import EVENTS from './events';
 <% } %><%if (jsLibs && jsLibs.indexOf('backbone') !== -1) { %>
 var Backbone = require('backbone');<% } %><%if (jsLibs && jsLibs.indexOf('exoskeleton') !== -1) { %>
@@ -42,6 +44,13 @@ Veams.onInitialize(() => {
 		useMutationObserver: true,
 		internalCacheOnly: false
 	});
+
+	// Store Plugin
+	// Veams.use(VeamsStore, {
+	// 	reducer: rootReducer,
+	// 	state: INITIAL_STATE,
+	// 	subjects: subjects
+	// });
 
 	// Media Query Handler Plugin
 	Veams.use(VeamsMediaQueryHandler);

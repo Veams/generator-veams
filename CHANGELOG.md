@@ -1,3 +1,10 @@
+### v8.3.0
+- Add veams v5.0.1
+- Add veams plugins (vent, store, mixins, modules, templater, dom, media-query-handler, logger)
+
+### v8.2.2
+- Bugfix
+
 ### v8.2.1
 - Fix events.js copy issue and add improvements to app.js if veams 5 is selected
 
