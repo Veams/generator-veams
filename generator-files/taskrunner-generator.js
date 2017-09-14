@@ -8,7 +8,7 @@ exports.questions = function (obj) {
 	object.defaults = object.defaults !== false;
 
 	return {
-		type: 'checkbox',
+		type: 'list',
 		name: 'taskRunner',
 		message: 'Which task runner do you want to use?',
 		choices: [
@@ -16,15 +16,13 @@ exports.questions = function (obj) {
 				name: 'Grunt',
 				value: gruntId,
 				checked: object.defaults
+			},
+			{
+				name: 'Webpack',
+				value: webpackId,
+				checked: object.defaults
 			}
 		],
-		validate: function (answer) {
-			if (answer.length === 0) {
-				return false;
-			} else {
-				return true;
-			}
-		},
 		default: this.config.get('taskRunner')
 	};
 };

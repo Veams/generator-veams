@@ -30,7 +30,7 @@ config.options = {<% if (taskRunner.indexOf('grunt') != -1) {%>
 		// dist folder with minified and optimized files
 		dist: 'dist'<% } %>,
 		// Veams config paths<% if(templateEngine) { %>
-		page: srcPath + '/containers/pages',
+		page: srcPath + '/core/pages',
 		global: partialsPath + '/components/globals',
 		component: partialsPath + '/components',
 		utility: partialsPath + '/utilities',<% } %>
@@ -38,7 +38,7 @@ config.options = {<% if (taskRunner.indexOf('grunt') != -1) {%>
 		js: srcPath + '/shared/scripts',
 		endpoints: [<% if (templateEngine) { %>
 			'shared/layouts',
-			'containers/pages',<% } %>
+			'core/pages',<% } %>
 			'shared/scripts/main.js',<% if (veamsPackages) { %>
 			'shared/scripts/events.js',<% } %>
 			'shared/styles/styles.scss'

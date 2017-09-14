@@ -12,33 +12,9 @@ exports.questions = function () {
 			message: 'Which Template Engine do you want to install?',
 			choices: [
 				{name: 'Mangony', value: 'mangony'},
-				{name: 'Assemble (Only usable in Grunt!)', value: 'assemble'},
 				{name: 'none', value: ''}
 			],
 			default: 'mangony'
-		},
-		{
-			when: function (answers) {
-				return answers.templateEngine
-					&& answers.templateEngine.length
-					&& answers.templateEngine.indexOf('mangony') !== -1
-					&& answers.taskRunner.indexOf('grunt') !== -1;
-			},
-			type: 'confirm',
-			name: 'mangonyExpress',
-			message: 'Do you want to use Mangony with grunt-express?',
-			default: true
-		},
-		{
-			when: function (answers) {
-				return answers.templateEngine
-					&& answers.templateEngine.length
-					&& answers.templateEngine.indexOf('assemble') !== -1;
-			},
-			type: 'confirm',
-			message: 'Do you want to use Extended Layouts in Assemble?',
-			name: 'installExtendedLayout',
-			default: true
 		}
 	];
 };
@@ -64,13 +40,13 @@ exports.scaffold = function () {
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('src/containers/pages/index/index.hbs.ejs'),
-			'src/containers/pages/index/index.hbs',
+			this.templatePath('src/core/pages/index/index.hbs.ejs'),
+			'src/core/pages/index/index.hbs',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('src/containers/pages/components/components.hbs.ejs'),
-			'src/containers/pages/components/components.hbs',
+			this.templatePath('src/core/pages/components/components.hbs.ejs'),
+			'src/core/pages/components/components.hbs',
 			this
 		);
 
@@ -89,33 +65,6 @@ exports.scaffold = function () {
 			'src/shared/components/globals/_styles.hbs',
 			this
 		);
-
-		// Add HTML build task for gulp
-		if (this.taskRunner.indexOf('gulp') !== -1) {
-			this.fs.copyTpl(
-				this.templatePath(this.generatorGulpPath + '_html.js.ejs'),
-				this.gulpPath + 'html.js',
-				this
-			);
-		}
-
-		if (this.templateEngine.indexOf('assemble') !== -1) {
-			// Add Gruntfile-helper file
-			this.fs.copyTpl(
-				this.templatePath(this.generatorGruntPath + '_assemble.js.ejs'),
-				this.gruntPath + 'assemble.js',
-				this
-			);
-
-			// Add template helpers
-			this.fs.copy(
-				this.templatePath('src/shared/utilities/template-helpers/**/*'),
-				'src/shared/utilities/template-helpers'
-			);
-		} else {
-			delete this.pkgFile['devDependencies']['assemble'];
-			delete this.pkgFile['devDependencies']['mangony-hbs-helpers'];
-		}
 
 		if (this.templateEngine.indexOf('mangony') !== -1) {
 			// Add Gruntfile-helper file
@@ -148,7 +97,6 @@ exports.scaffold = function () {
 			delete this.pkgFile['devDependencies']['grunt-open'];
 		}
 	} else {
-		delete this.pkgFile['devDependencies']['assemble'];
 		delete this.pkgFile['devDependencies']['mangony'];
 		delete this.pkgFile['devDependencies']['mangony-hbs-helpers'];
 		delete this.pkgFile['devDependencies']['grunt-mangony'];

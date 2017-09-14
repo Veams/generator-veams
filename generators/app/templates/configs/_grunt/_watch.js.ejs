@@ -53,26 +53,5 @@ module.exports = {
 	scssDocs: {
 		files: '<%%= paths.src %>/shared/styles/docs/*',
 		tasks: 'sass:docs'
-	}<% } %><% if(templateEngine.indexOf('assemble') != -1){ %>,
-	templating: {
-		files: ['<%%= paths.src %>/{shared/data,shared/layouts,shared/components,shared/utilities,containers}/**/{,*/}*.{md,hbs,json}'],
-	    tasks: ['newer:assemble']<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
-	    options: {
-			spawn: false
-		}<% }} %>
-	},
-	pages: {
-		files: ['<%%= paths.src %>/shared/containers/pages/**/{,*/}*.hbs'],
-		tasks: ['newer:assemble:pages']<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
-		options: {
-			spawn: false
-		}<% }} %>
-	}<% if (templateEngine.indexOf('assemble') != -1 && docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
-	docs: {
-		files: ['docs/**/{,*/}*.hbs'],
-		tasks: ['newer:assemble:docs']<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browser-sync') != -1) { %>,
-		options: {
-			spawn: false
-		}<% }} %>
-	}<% } %><% } %>
+	}<% } %>
 };
