@@ -1,7 +1,7 @@
 'use strict';
 
 let gruntId = 'grunt';
-let gulpId = 'gulp';
+let webpackId = 'webpack';
 
 exports.questions = function (obj) {
 	let object = obj || {};
@@ -16,10 +16,6 @@ exports.questions = function (obj) {
 				name: 'Grunt',
 				value: gruntId,
 				checked: object.defaults
-			},
-			{
-				name: 'Gulp',
-				value: gulpId
 			}
 		],
 		validate: function (answer) {
@@ -55,11 +51,6 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['load-grunt-configs'];
 		delete this.pkgFile['devDependencies']['time-grunt'];
 
-		this.pkgFile['scripts'] = {
-			"test": "gulp test",
-			"start": "gulp serve",
-			"build": "gulp dist"
-		};
 	} else {
 		this.fs.copyTpl(
 			this.templatePath('Gruntfile.js.ejs'),
@@ -67,7 +58,7 @@ exports.scaffold = function () {
 			this
 		);
 
-		if (this.taskRunner.indexOf(gulpId) !== -1) {
+		if (this.taskRunner.indexOf(webpackId) !== -1) {
 			delete this.pkgFile['devDependencies']['grunt-chokidar'];
 			delete this.pkgFile['devDependencies']['grunt-concurrent'];
 			delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
@@ -125,52 +116,5 @@ exports.scaffold = function () {
 				this
 			);
 		}
-	}
-
-	if (this.taskRunner.indexOf(gulpId) === -1) {
-		delete this.pkgFile['devDependencies']['browser-sync'];
-		delete this.pkgFile['devDependencies']['del'];
-		delete this.pkgFile['devDependencies']['require-dir'];
-		delete this.pkgFile['devDependencies']['sass-globber'];
-		delete this.pkgFile['devDependencies']['gulp'];
-		delete this.pkgFile['devDependencies']['gulp-load'];
-		delete this.pkgFile['devDependencies']['gulp-load-plugins'];
-		delete this.pkgFile['devDependencies']['gulp-filesize'];
-		delete this.pkgFile['devDependencies']['gulp-grunt'];
-		delete this.pkgFile['devDependencies']['gulp-htmlhint'];
-		delete this.pkgFile['devDependencies']['gulp-minify-css'];
-		delete this.pkgFile['devDependencies']['gulp-minify-filesize'];
-		delete this.pkgFile['devDependencies']['gulp-rename'];
-		delete this.pkgFile['devDependencies']['gulp-notify'];
-		delete this.pkgFile['devDependencies']['gulp-sass'];
-		delete this.pkgFile['devDependencies']['gulp-sequence'];
-		delete this.pkgFile['devDependencies']['gulp-sourcemaps'];
-	} else {
-		// Copy standard files
-		this.fs.copyTpl(
-			this.templatePath('Gulpfile.js.ejs'),
-			'Gulpfile.js',
-			this
-		);
-		this.fs.copyTpl(
-			this.templatePath('configs/_gulp/_clean.js.ejs'),
-			'configs/_gulp/clean.js',
-			this
-		);
-		this.fs.copyTpl(
-			this.templatePath('configs/_gulp/_styles.js.ejs'),
-			'configs/_gulp/styles.js',
-			this
-		);
-		this.fs.copyTpl(
-			this.templatePath('configs/_gulp/_html.js.ejs'),
-			'configs/_gulp/html.js',
-			this
-		);
-		this.fs.copyTpl(
-			this.templatePath('configs/_gulp/_copy.js.ejs'),
-			'configs/_gulp/copy.js',
-			this
-		);
 	}
 };
