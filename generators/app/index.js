@@ -14,7 +14,6 @@ const cssGenerator = require('../../generator-files/css-generator');
 const expressGenerator = require('../../generator-files/express-generator');
 const testAndQAGenerator = require('../../generator-files/test-and-qa-generator');
 const gruntGenerator = require('../../generator-files/grunt-generator');
-const gulpGenerator = require('../../generator-files/gulp-generator');
 const veamsGenerator = require('../../generator-files/veams-generator');
 const docsGenerator = require('../../generator-files/generator-docs');
 const templatingGenerator = require('../../generator-files/templating-generator');
@@ -26,12 +25,10 @@ module.exports = class extends Generator {
 		this._ = _;
 		this.pkg = require('../../package.json');
 		this.pkgFile = this.fs.readJSON(this.templatePath('_package.json'));
-		this.bowerFile = this.fs.readJSON(this.templatePath('_bower.json'));
 		this.dotFiles = [
 			'gitignore',
 			'gitattributes',
 			'editorconfig',
-			'bowerrc',
 			'jshintrc'
 		];
 
@@ -103,10 +100,6 @@ module.exports = class extends Generator {
 			);
 		}
 
-		(!this.config.get('gulpModules') || this.force) && this.questions.push(
-			gulpGenerator.questions.call(this)
-		);
-
 		if (!this.config.get('templateEngine') || this.force) {
 			this.questions = this.questions.concat(
 				templatingGenerator.questions.call(this)
@@ -145,14 +138,12 @@ module.exports = class extends Generator {
 		this._overwriteSetup();
 		this._defaults();
 		this._scaffold();
-		this._bower();
 		this._pkg();
 	}
 
 	_setup() {
 		taskRunnerGenerator.setup.call(this);
 		gruntGenerator.setup.call(this);
-		gulpGenerator.setup.call(this);
 		templatingGenerator.setup.call(this);
 		cssGenerator.setup.call(this);
 		expressGenerator.setup.call(this);
@@ -171,14 +162,12 @@ module.exports = class extends Generator {
 		// Standard files
 
 		this.fs.copyTpl(this.templatePath('gitignore'), '.gitignore');
-		this.fs.copyTpl(this.templatePath('bowerrc'), '.bowerrc');
 		this.fs.copyTpl(
 			this.templatePath('configs/config.js.ejs'),
 			'configs/config.js',
 			this
 		);
 		this.fs.copyTpl(this.templatePath('README.md.ejs'), 'README.md', this);
-		this.bowerFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'minimal-project';
 		this.pkgFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'minimal-project';
 
 		// add specific resources to make it possible to split up some directories
@@ -289,20 +278,13 @@ module.exports = class extends Generator {
 		templatingGenerator.scaffold.call(this);
 		featuresGenerator.scaffold.call(this);
 		docsGenerator.scaffold.call(this);
-		gulpGenerator.scaffold.call(this);
 		taskRunnerGenerator.scaffold.call(this);
 		cleanPackages.scaffold.call(this);
 	}
 
-	_bower() {
-		this.fs.write(this.destinationPath('bower.json'), JSON.stringify(this.bowerFile, null, 4));
-	}
-
 	_pkg() {
-
 		this.fs.write(this.destinationPath('package.json'), JSON.stringify(this.pkgFile, null, 4));
 	}
-
 
 	install() {
 		this.installDependencies({

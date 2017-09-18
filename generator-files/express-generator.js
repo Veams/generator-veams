@@ -12,4 +12,9 @@ exports.scaffold = function () {
 		'server/index.js',
 		this
 	);
+
+	this.fs.copyTpl(
+		this.templatePath(this.generatorHelperPath + 'tasks/nodemon.config.json'),
+		this.helperPath + 'tasks/nodemon.config.json'
+	);
 };

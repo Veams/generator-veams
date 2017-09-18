@@ -31,8 +31,8 @@ exports.scaffold = function () {
 			'src/shared/utilities/template-helpers/.gitkeep'
 		);
 		this.fs.copy(
-			this.templatePath('src/store/config.json'),
-			'src/store/config.json'
+			this.templatePath('src/core/store/config.json'),
+			'src/core/store/config.json'
 		);
 		this.fs.copyTpl(
 			this.templatePath('src/shared/layouts/lyt-default.hbs.ejs'),
@@ -68,29 +68,25 @@ exports.scaffold = function () {
 
 		if (this.templateEngine.indexOf('mangony') !== -1) {
 			// Add Gruntfile-helper file
-			if (this.taskRunner.indexOf('gulp') !== -1) {
-				delete this.pkgFile['devDependencies']['grunt-mangony'];
-				delete this.pkgFile['devDependencies']['grunt-open'];
+			this.fs.copyTpl(
+				this.templatePath(this.generatorGruntPath + '_mangony.js.ejs'),
+				this.gruntPath + 'mangony.js',
+				this
+			);
 
-			} else {
-				this.fs.copyTpl(
-					this.templatePath(this.generatorGruntPath + '_mangony.js.ejs'),
-					this.gruntPath + 'mangony.js',
-					this
-				);
+			this.fs.copy(
+				this.templatePath(this.generatorGruntPath + 'open.js'),
+				this.gruntPath + 'open.js'
+			);
+			this.fs.copy(
+				this.templatePath(this.generatorHelperPath + 'tasks/mangony.config.js'),
+				this.helperPath + 'tasks/mangony.config.js'
+			);
 
-				if (this.mangonyExpress === true) {
-					this.gruntModules.push('grunt-open');
+			this.gruntModules.push('grunt-open');
 
-					this.fs.copy(
-						this.templatePath(this.generatorGruntPath + 'open.js'),
-						this.gruntPath + 'open.js'
-					);
-				} else {
-					delete this.pkgFile['devDependencies']['grunt-open'];
-					delete this.pkgFile['devDependencies']['mangony'];
-				}
-			}
+
+
 		} else {
 			delete this.pkgFile['devDependencies']['mangony'];
 			delete this.pkgFile['devDependencies']['grunt-mangony'];

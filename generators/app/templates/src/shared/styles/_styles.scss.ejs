@@ -3,7 +3,7 @@ Main File For Imports
 =================================================== */
 <% if (cssLibs && cssLibs.length) { if (cssLibs.indexOf('neat') != -1) { %>
 // Helpers
-@import "../../../bower_components/bourbon/app/assets/stylesheets/bourbon";<% }} %>
+@import "../../../node_modules/bourbon/app/assets/stylesheets/bourbon";<% }} %>
 <% if (veamsPackages) { %>
 // Reset (veams-reset or veams-normalize)
 @import "../../../node_modules/veams/src/scss/veams-reset";<% } %>
@@ -13,10 +13,10 @@ Main File For Imports
 @import "../../../node_modules/veams/src/scss/veams";<% } %><% if (cssLibs && cssLibs.length) { %>
 
 // Frameworks <% if (cssLibs.indexOf('include-media') != -1) { %>
-@import "../../../bower_components/include-media/dist/include-media";<% } %><% if (cssLibs.indexOf('foundation') != -1) { %>
-@import "../../../bower_components/foundation/scss/foundation"; // You can choose your specific components<% } %><% if (cssLibs.indexOf('neat') != -1) { %>
-@import "../../../bower_components/neat/core/neat";<% } %> <% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
-@import "../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components<% }} %>
+@import "../../../node_modules/include-media/dist/include-media";<% } %><% if (cssLibs.indexOf('foundation') != -1) { %>
+@import "../../../node_modules/foundation-sites/scss/foundation"; // You can choose your specific components<% } %><% if (cssLibs.indexOf('neat') != -1) { %>
+@import "../../../node_modules/neat/core/neat";<% } %> <% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components<% }} %>
 
 // Icons
 @import "icons/**/*";

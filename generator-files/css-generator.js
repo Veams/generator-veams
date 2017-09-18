@@ -1,8 +1,8 @@
 'use strict';
 
 const _ = require('lodash');
-const foundationId = 'foundation';
-const neatId = 'neat';
+const foundationId = 'foundation-sites';
+const neatId = 'bourbon-neat';
 const bootstrapId = 'bootstrap-sass';
 const lostGridId = 'lost-grid';
 const includeMediaId = 'include-media';
@@ -19,7 +19,7 @@ exports.questions = function () {
 				checked: false
 			},
 			{
-				name: 'Bourbon Neat (Beta)',
+				name: 'Bourbon Neat',
 				value: neatId,
 				checked: false
 			},
@@ -49,11 +49,11 @@ exports.setup = function () {
 
 exports.scaffold = function () {
 	// Delete CSS packages
-	if (this.cssLibs.indexOf(foundationId) == -1) delete this.pkgFile['dependencies']['foundation'];
+	if (this.cssLibs.indexOf(foundationId) == -1) delete this.pkgFile['dependencies']['foundation-sites'];
 	if (this.cssLibs.indexOf(includeMediaId) == -1) delete this.pkgFile['dependencies']['include-media'];
 	if (this.cssLibs.indexOf(bootstrapId) == -1) delete this.pkgFile['dependencies']['bootstrap-sass'];
 	if (this.cssLibs.indexOf(neatId) == -1) {
-		delete this.pkgFile['dependencies']['bourbon'];
+		delete this.pkgFile['dependencies']['bourbon-neat'];
 		delete this.pkgFile['dependencies']['neat'];
 	}
 

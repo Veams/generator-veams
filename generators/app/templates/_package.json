@@ -5,7 +5,7 @@
 	"author": {
 	},
 	"engines": {
-		"node": ">=0.12.0"
+		"node": ">=6.0.0"
 	},
 	"scripts": {
 		"test": "grunt test",
@@ -13,9 +13,6 @@
 		"start-dev": "grunt serve",
 		"start": "npm-run-all --parallel server start-dev",
 		"server": "node_modules/.bin/nodemon server/index.js --config ./configs/tasks/nodemon.config.json"
-	},
-	"veams": {
-		"configFile": "helpers/config.js"
 	},
 	"dependencies": {
 		"jquery": "^3.2.1",
@@ -31,7 +28,11 @@
 		"veams-query": "^2.2.1",
 		"picturefill": "^3.0.2",
 		"lazysizes": "^3.0.0",
-		"handlebars": "^4.0.10"
+		"handlebars": "^4.0.10",
+		"include-media": "^1.4.8",
+		"bourbon": "~4.2.7",
+		"bourbon-neat": "^2.0.1",
+		"foundation-sites": "~6.0.0"
 	},
 	"devDependencies": {
 		"aliasify": "^2.1.0",
@@ -97,7 +98,6 @@
 		"grunt-svgmin": "^4.0.0",
 		"grunt-sync": "~0.6.2",
 		"grunt-text-replace": "~0.4.0",
-		"grunt-version": "^1.1.1",
 		"grunt-webfont": "^1.6.0",
 		"jit-grunt": "^0.10.0",
 		"load-grunt-configs": "~1.0.0",

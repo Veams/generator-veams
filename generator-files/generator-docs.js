@@ -51,12 +51,11 @@ exports.scaffold = function () {
 			);
 		}
 	}
-	if (this.docs.indexOf(htmlDocsId) === -1) delete this.bowerFile['dependencies']['highlightjs'];
 
 	if (this.docs && this.docs.indexOf(jsDocsId) !== -1) {
 		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'task-configs/jsdoc.conf.json'),
-			this.helperPath + 'task-configs/jsdoc.conf.json'
+			this.templatePath(this.generatorHelperPath + 'tasks/jsdoc.config.json'),
+			this.helperPath + 'tasks/jsdoc.config.json'
 		);
 		this.fs.copy(
 			this.templatePath(this.generatorSrcPath + 'js/README.md'),
@@ -77,8 +76,8 @@ exports.scaffold = function () {
 
 	if (this.docs && this.docs.indexOf(sassDocsId) !== -1) {
 		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'task-configs/sassdoc.conf.json'),
-			this.helperPath + 'task-configs/sassdoc.conf.json'
+			this.templatePath(this.generatorHelperPath + 'tasks/sassdoc.config.json'),
+			this.helperPath + 'tasks/sassdoc.config.json'
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {
@@ -86,8 +85,6 @@ exports.scaffold = function () {
 				this.templatePath(this.generatorGruntPath + 'sassdoc.js'),
 				this.gruntPath + 'sassdoc.js'
 			);
-		} else {
-			delete this.pkgFile['devDependencies']['grunt-sassdoc'];
 		}
 	} else {
 		delete this.pkgFile['devDependencies']['grunt-sassdoc'];
@@ -100,8 +97,5 @@ exports.scaffold = function () {
 			this.gulpPath + 'docs.js',
 			this
 		);
-	} else {
-		delete this.pkgFile['devDependencies']['gulp-jsdoc'];
-		delete this.pkgFile['devDependencies']['sassdoc'];
 	}
 };

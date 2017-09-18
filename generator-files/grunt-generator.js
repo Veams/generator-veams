@@ -41,7 +41,6 @@ exports.questions = function (obj) {
 				{name: 'grunt-postcss-separator'},
 				{name: 'grunt-responsive-images'},
 				{name: 'grunt-svgmin'},
-				{name: 'grunt-version', checked: object.defaults},
 				{name: 'grunt-webfont'}
 			],
 			default: this.config.get('gruntModules')
@@ -141,8 +140,8 @@ exports.scaffold = function (obj) {
 			this.gruntPath + 'csscomb.js'
 		);
 		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'task-configs/csscomb.json'),
-			this.helperPath + 'task-configs/csscomb.json'
+			this.templatePath(this.generatorHelperPath + 'tasks/csscomb.config.json'),
+			this.helperPath + 'tasks/csscomb.config.json'
 		);
 
 		if (object.installDeps) {
@@ -355,18 +354,7 @@ exports.scaffold = function (obj) {
 	} else {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-svgmin'];
 	}
-	if (this.gruntModules.indexOf('grunt-version') != -1) {
-		this.fs.copy(
-			this.templatePath(this.generatorGruntPath + 'version.js'),
-			this.gruntPath + 'version.js'
-		);
 
-		if (object.installDeps) {
-			this.npmInstall(['grunt-version'], {'saveDev': true});
-		}
-	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-version'];
-	}
 	if (this.gruntModules.indexOf('grunt-webfont') != -1) {
 		this.fs.copy(
 			this.templatePath(this.generatorGruntPath + 'webfont.js'),

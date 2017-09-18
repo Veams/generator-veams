@@ -11,10 +11,6 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['grunt-postcss'];
 	}
 
-	if (this.cssLibs.length === 0 && this.jsLibs.length === 0) {
-		this.bowerFile['dependencies'] = {};
-	}
-
 	// Package handling of JS setup
 	if (this.gruntModules.indexOf('grunt-browserify') === -1) {
 		delete this.pkgFile['devDependencies']['aliasify'];
