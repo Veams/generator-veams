@@ -5,7 +5,7 @@ module.exports = {
 			{
 				cwd: '<%%= paths.src %>/ajax',
 				src: '**/*.{json,html}',
-				dest: '<%%= paths.dev %>/ajax'
+				dest: '<%%= paths.app %>/ajax'
 			}
 		]
 	},
@@ -19,7 +19,7 @@ module.exports = {
 					'!img/svg/**/{,*/}*'<% if (gruntModules && gruntModules.length > 0) { if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
 					'!img/svgmin/**/{,*/}*'<% }} %><% }} %>
 				],
-				dest: '<%%= paths.dev %>'
+				dest: '<%%= paths.app %>'
 			}
 		]
 	}<% if(gruntModules.indexOf('grunt-browserify') == -1 && gruntModules.indexOf('grunt-includes') == -1 && gruntModules.indexOf('grunt-contrib-requirejs') == -1){ %>,
@@ -29,7 +29,7 @@ module.exports = {
 			{
 				cwd: '<%%= paths.src %>/shared/scripts',
 				src: '**/*',
-				dest: '<%%= paths.dev %>/shared/scripts'
+				dest: '<%%= paths.app %>/shared/scripts'
 			}
 		]
 	}<% } %>

@@ -1,4 +1,7 @@
 {
+	"config": {
+		"src": "configs/_grunt/*.js"
+	},
 	"paths": {
 		"config": "configs",
 		"server": "server",
@@ -11,8 +14,8 @@
 	},
 	"insertpointsFiles": [
 		"shared/layouts",
-		"containers/pages",
-		"shared/scripts/main.js",
+		"core/pages",
+		"core/app/main.js",
 		"shared/scripts/events.js",
 		"shared/styles/styles.scss"
 	]

@@ -4,6 +4,6 @@ module.exports = {
 			htmlhintrc: '<%= paths.helpers %>/tasks/.htmlhintrc',
 			force: true
 		},
-		src: ['<%= paths.dev %>/*.html']
+		src: ['<%= paths.app %>/*.html']
 	}
 };

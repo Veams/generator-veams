@@ -7,9 +7,9 @@ module.exports = {
 		files: [
 			{
 				expand: true,
-				cwd: '<%= paths.dev %>/',
+				cwd: '<%= paths.app %>/',
 				src: '**/*.html',
-				dest: '<%= paths.dev %>/'
+				dest: '<%= paths.app %>/'
 			}
 		]
 	}

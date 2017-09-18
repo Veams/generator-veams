@@ -160,24 +160,17 @@ module.exports = class extends Generator {
 
 	_defaults() {
 		// Standard files
-
-		this.fs.copyTpl(this.templatePath('gitignore'), '.gitignore');
-		this.fs.copyTpl(
-			this.templatePath('configs/config.js.ejs'),
-			'configs/config.js',
-			this
+		this.fs.copy(
+			this.templatePath('veams-cli.json'),
+			'veams-cli.json'
 		);
+		this.fs.copyTpl(this.templatePath('gitignore'), '.gitignore');
 		this.fs.copyTpl(this.templatePath('README.md.ejs'), 'README.md', this);
 		this.pkgFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'minimal-project';
 
 		// add specific resources to make it possible to split up some directories
 
 		// General structure
-		this.fs.copy(
-			this.templatePath('veams-cli.json'),
-			'veams-cli.json'
-		);
-
 		this.fs.copy(
 			this.templatePath('gitkeep'),
 			'src/shared/components/.gitkeep'

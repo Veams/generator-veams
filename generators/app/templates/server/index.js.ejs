@@ -1,7 +1,6 @@
 const express = require('express');
 const request = require('request');
-const config = require('../configs/config');
-const app = express();<% if (templateEngine.indexOf('mangony') !== -1 && mangonyExpress === true) { %>
+const app = express();<% if (templateEngine.indexOf('mangony') !== -1) { %>
 const deepExtend = require('deep-extend');
 const Mangony = require('mangony');
 const mangonyOptions = require('../configs/tasks/mangony.config');

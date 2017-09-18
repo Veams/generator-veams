@@ -1,6 +1,6 @@
 module.exports = { <% if (features && features.length) { %><% if (features.indexOf('createDevFolder') != -1){ %>
 	dist: {
-		cwd: '<%%= paths.dev %>/',
+		cwd: '<%%= paths.app %>/',
 		dest: '<%%= paths.dist %>',
 		expand: true,
 		src: ['**']

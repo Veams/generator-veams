@@ -66,12 +66,6 @@ exports.scaffold = function () {
 			delete this.pkgFile['devDependencies']['grunt-sass-globber'];
 			delete this.pkgFile['devDependencies']['grunt-sass'];
 		} else {
-			this.pkgFile['scripts'] = {
-				"test": "grunt test",
-				"start": "grunt serve",
-				"build": "grunt dist"
-			};
-
 			this.fs.copyTpl(
 				this.templatePath(this.generatorGruntPath + '_clean.js.ejs'),
 				this.gruntPath + 'clean.js',

@@ -4,7 +4,7 @@ module.exports = {
 			force: true
 		},
 		files: {
-			'<%= paths.dev %>/css/styles.css': ['<%= paths.dev %>/css/styles.css']
+			'<%= paths.app %>/css/styles.css': ['<%= paths.app %>/css/styles.css']
 		}
 	}
 };

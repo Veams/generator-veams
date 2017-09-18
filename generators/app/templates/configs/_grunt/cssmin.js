@@ -4,8 +4,8 @@ module.exports = {
 	},
 	minify: {
 		expand: true,
-		cwd: '<%= paths.dev %>/css/',
+		cwd: '<%= paths.app %>/css/',
 		src: ['*.css'],
-		dest: '<%= paths.dev %>/css/'
+		dest: '<%= paths.app %>/css/'
 	}
 };

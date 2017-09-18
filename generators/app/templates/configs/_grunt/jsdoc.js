@@ -1,7 +1,7 @@
 module.exports = {
 	dist: {
 		options: {
-			destination: '<%= paths.dev %>/jsdocs',
+			destination: '<%= paths.app %>/jsdocs',
 			template: "node_modules/grunt-jsdoc/node_modules/ink-docstrap/template",
 			configure: "<%= paths.helpers %>/tasks/jsdoc.config.json"
 		},

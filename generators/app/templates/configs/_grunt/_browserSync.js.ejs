@@ -12,10 +12,10 @@ module.exports = {
 	},
 	bsFiles: {
 		src: [
-			'<%%= paths.dev %>/css/styles.css', <% if (docs && docs.length > 0 && docs.indexOf('htmldoc') != -1) { %>
-			'<%%= paths.dev %>/css/docs.css', <% } %>
-			'<%%= paths.dev %>/scripts/**/*.js',
-			'<%%= paths.dev %>/**/*.html'
+			'<%%= paths.app %>/css/styles.css', <% if (docs && docs.length > 0 && docs.indexOf('htmldoc') != -1) { %>
+			'<%%= paths.app %>/css/docs.css', <% } %>
+			'<%%= paths.app %>/scripts/**/*.js',
+			'<%%= paths.app %>/**/*.html'
 		]
 	}
 };

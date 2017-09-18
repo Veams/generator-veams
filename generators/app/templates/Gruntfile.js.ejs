@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 	require('time-grunt')(grunt);
 
 	// Load grunt configurations automatically
-	var configs = require('load-grunt-configs')(grunt, config.options);
+	var configs = require('load-grunt-configs')(grunt, config);
 
 	// Define the configuration for all the tasks
 	grunt.initConfig(configs);
