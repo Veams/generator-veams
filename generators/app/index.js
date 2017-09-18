@@ -166,6 +166,10 @@ module.exports = class extends Generator {
 		);
 		this.fs.copyTpl(this.templatePath('gitignore'), '.gitignore');
 		this.fs.copyTpl(this.templatePath('README.md.ejs'), 'README.md', this);
+		this.fs.copy(
+			this.templatePath(this.generatorHelperPath + 'environments'),
+			this.destinationPath(this.helperPath + 'environments')
+		);
 		this.pkgFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'minimal-project';
 
 		// add specific resources to make it possible to split up some directories

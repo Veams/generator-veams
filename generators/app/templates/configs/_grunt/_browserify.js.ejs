@@ -9,7 +9,7 @@ const externalLibs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(fun
 const internalLibs = [
 	`./${config.paths.src}/core/app/app.js:app`,
 	// `./${config.paths.src}/core/store/store.js:store`,
-	`./${config.paths.configs}/environments/environment.${process.env.NODE_ENV}.js:env`,
+	`./${config.paths.config}/environments/environment.${process.env.NODE_ENV}.js:env`,
 ];
 
 module.exports = {

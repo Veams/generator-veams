@@ -9,9 +9,9 @@
 	},
 	"scripts": {
 		"test": "grunt test",
-		"build": "grunt build",
+		"build": "NODE_ENV=production grunt build",
 		"start-dev": "grunt serve",
-		"start": "npm-run-all --parallel server start-dev",
+		"start": "NODE_ENV=local npm-run-all --parallel server start-dev",
 		"server": "node_modules/.bin/nodemon server/index.js --config ./configs/tasks/nodemon.config.json"
 	},
 	"dependencies": {

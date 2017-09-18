@@ -70,7 +70,7 @@ app.set('port', process.env.PORT || 3000);
 /**
  * serves the static folders
  */
-app.use(express.static(args[2]));
+app.use(express.static('app'));
 
 app.listen(app.get('port'), function () {
 	console.log('Express server started on port ' + app.get('port') + ' serving static files from ' + args[2] + ' folder.');
