@@ -1,4 +1,6 @@
-// Global dependencies <%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
+// Global dependencies
+import { environment } from 'env';
+<%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
 import $ from 'jquery';<% } %><%if (jsLibs && jsLibs.indexOf('veams-query') !== -1) { %>
 import { default as $ } from 'veams-query';<% } %><% if (veamsPackages) { %>
 import Veams from 'veams';
@@ -10,9 +12,7 @@ import VeamsMediaQueryHandler from 'veams-plugin-media-query-handler';
 // import VeamsStore from 'veams-plugin-store';
 // import VeamsTemplater from 'veams-plugin-templater';
 import EVENTS from './events';
-<% } %><%if (jsLibs && jsLibs.indexOf('backbone') !== -1) { %>
-var Backbone = require('backbone');<% } %><%if (jsLibs && jsLibs.indexOf('exoskeleton') !== -1) { %>
-var Exo = require('exoskeleton');<% } %>
+<% } %>
 
 let App = {};<%if (jsLibs && (jsLibs.indexOf('jquery') !== -1 || jsLibs.indexOf('veams-query') !== -1)) { %>
 App.$ = $;<% } %>

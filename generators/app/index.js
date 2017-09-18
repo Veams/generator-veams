@@ -185,6 +185,11 @@ module.exports = class extends Generator {
 
 		// General structure
 		this.fs.copy(
+			this.templatePath('veams-cli.json'),
+			'veams-cli.json'
+		);
+
+		this.fs.copy(
 			this.templatePath('gitkeep'),
 			'src/shared/components/.gitkeep'
 		);
@@ -201,12 +206,16 @@ module.exports = class extends Generator {
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/store/.gitkeep'
+			'src/core/.gitkeep'
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/core/.gitkeep'
+			'src/core/store/.gitkeep'
+		);
+		this.fs.copy(
+			this.templatePath('gitkeep'),
+			'src/core/app/.gitkeep'
 		);
 
 		// Ajax area

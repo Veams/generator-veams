@@ -1,11 +1,15 @@
 'use strict';
 
+const config = require('../../veams-cli');
+
 const externalLibs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(function(lib, i) {%>
 	'<%= lib %>'<% if(i < (jsLibs.length - 1 )) { %>,<% } %><% }); } %>
 ];
 
 const internalLibs = [
-	'./src/shared/scripts/app.js:app'
+	`./${config.paths.src}/core/app/app.js:app`,
+	// `./${config.paths.src}/core/store/store.js:store`,
+	`./${config.paths.configs}/environments/environment.${process.env.NODE_ENV}.js:env`,
 ];
 
 module.exports = {
@@ -27,18 +31,13 @@ module.exports = {
 			],
 			['aliasify',
 				{
-					aliases: {<% if(jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>
-						'backbone': 'exoskeleton'<% } %>
-					},
-				global: true,
-				verbose: true
+					aliases: {},
+					global: true,
+					verbose: true
 				}
 			]
 		],
-		ignore: [<% if(jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>
-			'jquery'<% if(jsLibs.indexOf('exoskeleton') !== -1) { %> ,<% }} %><% if(jsLibs && jsLibs.length && jsLibs.indexOf('exoskeleton') !== -1) { %>
-			'underscore'<% } %>
-		]
+		ignore: []
 	},
 	vendor: {
 		src: ['.'],

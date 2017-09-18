@@ -49,12 +49,12 @@ exports.setup = function () {
 
 exports.scaffold = function () {
 	// Delete CSS packages
-	if (this.cssLibs.indexOf(foundationId) == -1) delete this.bowerFile['dependencies']['foundation'];
-	if (this.cssLibs.indexOf(includeMediaId) == -1) delete this.bowerFile['dependencies']['include-media'];
-	if (this.cssLibs.indexOf(bootstrapId) == -1) delete this.bowerFile['dependencies']['bootstrap-sass'];
+	if (this.cssLibs.indexOf(foundationId) == -1) delete this.pkgFile['dependencies']['foundation'];
+	if (this.cssLibs.indexOf(includeMediaId) == -1) delete this.pkgFile['dependencies']['include-media'];
+	if (this.cssLibs.indexOf(bootstrapId) == -1) delete this.pkgFile['dependencies']['bootstrap-sass'];
 	if (this.cssLibs.indexOf(neatId) == -1) {
-		delete this.bowerFile['dependencies']['bourbon'];
-		delete this.bowerFile['dependencies']['neat'];
+		delete this.pkgFile['dependencies']['bourbon'];
+		delete this.pkgFile['dependencies']['neat'];
 	}
 
 	// Grunt handling
@@ -65,7 +65,6 @@ exports.scaffold = function () {
 				this.gruntPath + 'postcss.js',
 				this
 			);
-			delete this.pkgFile['devDependencies']['gulp-postcss'];
 		} else {
 			delete this.pkgFile['devDependencies']['grunt-postcss'];
 		}

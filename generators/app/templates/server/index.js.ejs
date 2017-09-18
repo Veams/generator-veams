@@ -1,16 +1,16 @@
-var express = require('express');
-var request = require('request');
-var config = require('../configs/config');
-var app = express();<% if (templateEngine.indexOf('mangony') !== -1 && mangonyExpress === true) { %>
-var deepExtend = require('deep-extend');
-var Mangony = require('mangony');
-var mangonyOptions = require('../configs/_grunt/mangony');
-var mangonyDevOptions = deepExtend(mangonyOptions.dev.options, {
+const express = require('express');
+const request = require('request');
+const config = require('../configs/config');
+const app = express();<% if (templateEngine.indexOf('mangony') !== -1 && mangonyExpress === true) { %>
+const deepExtend = require('deep-extend');
+const Mangony = require('mangony');
+const mangonyOptions = require('../configs/tasks/mangony.config');
+const mangonyDevOptions = deepExtend(mangonyOptions.dev.options, {
 	devServer: {
 		express: app
 	}
 });
-var mangonyServer = new Mangony(deepExtend(mangonyOptions.options, mangonyDevOptions));
+const mangonyServer = new Mangony(deepExtend(mangonyOptions.options, mangonyDevOptions));
 
 /**
  * Register routes and start express server
@@ -23,7 +23,7 @@ mangonyServer.render();
  * parameter passing from grunt
  * @type {Array}
  */
-var args = process.argv;
+const args = process.argv;
 /**
  * the keys of apiServerHosts are
  * used to implement the routing
@@ -31,11 +31,11 @@ var args = process.argv;
  * to https://github.com/Veams
  * @type {Object}
  */
-var apiServerHosts = {
+const apiServerHosts = {
 	'veams': 'https://github.com/Veams'
 };
 
-var apiServerHostRoutes = [];
+const apiServerHostRoutes = [];
 
 Object.keys(apiServerHosts).forEach(function (route) {
 	apiServerHostRoutes.push('/' + route);
@@ -43,8 +43,8 @@ Object.keys(apiServerHosts).forEach(function (route) {
 });
 
 app.use(apiServerHostRoutes, function (req, res) {
-	var key, url;
-	var format = '';
+	let key, url;
+	let format = '';
 
 	key = req.originalUrl.substring(1, req.originalUrl.length);
 
@@ -60,7 +60,7 @@ app.use(apiServerHostRoutes, function (req, res) {
 
 // an example route for an API
 app.get('/test-express.json', function (req, res) {
-	var responseObject = {
+	const responseObject = {
 		works: true
 	};
 	res.send(JSON.stringify(responseObject, 4, null));

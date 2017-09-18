@@ -3,8 +3,8 @@
 const _ = require('lodash');
 const veamsQueryId = 'veams-query';
 const jqueryId = 'jquery';
-const backboneId = 'backbone';
-const exoskeletonId = 'exoskeleton';
+const reactId = 'react';
+const preactId = 'preact';
 const handlebarsId = 'handlebars';
 const picturefillId = 'picturefill';
 const lazysizesId = 'lazysizes';
@@ -31,22 +31,22 @@ exports.questions = function () {
 				checked: false
 			},
 			{
-				name: 'BackboneJS',
-				value: backboneId,
+				name: 'React',
+				value: reactId,
 				checked: false
 			},
 			{
-				name: 'Exoskeleton',
-				value: exoskeletonId,
+				name: 'Preact',
+				value: preactId,
 				checked: false
 			}
 		],
 		validate: function (answer) {
 			let done = this.async();
 
-			if (answer.indexOf(backboneId) != -1 && answer.indexOf(exoskeletonId) != -1) {
+			if (answer.indexOf(reactId) != -1 && answer.indexOf(preactId) != -1) {
 
-				done("Please choose only one of the MV frameworks.", false);
+				done("Please choose only one of the two.", false);
 			}
 
 			done(null, true);
@@ -64,62 +64,32 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-	if (this.jsLibs.indexOf(backboneId) == -1) {
-		delete this.bowerFile['dependencies']['backbone'];
-		delete this.pkgFile['dependencies']['backbone'];
-		delete this.bowerFile['dependencies']['underscore'];
-		delete this.pkgFile['dependencies']['underscore'];
+	if (this.jsLibs.indexOf(preactId) == -1) {
+		delete this.pkgFile['dependencies']['preact'];
 	}
 
-	if (this.jsLibs.indexOf(exoskeletonId) == -1) {
-		delete this.bowerFile['dependencies']['exoskeleton'];
-		delete this.pkgFile['dependencies']['exoskeleton'];
-		delete this.pkgFile['dependencies']['backbone.nativeview'];
-		delete this.pkgFile['dependencies']['backbone.nativeajax'];
+	if (this.jsLibs.indexOf(reactId) == -1) {
+		delete this.pkgFile['dependencies']['react'];
 	}
 
 	if (this.jsLibs.indexOf(jqueryId) == -1) {
-		delete this.bowerFile['dependencies']['jquery'];
 		delete this.pkgFile['dependencies']['jquery'];
 	}
 
 	if (this.jsLibs.indexOf(veamsQueryId) == -1) {
-		delete this.bowerFile['dependencies']['veams-query'];
 		delete this.pkgFile['dependencies']['veams-query'];
 	}
 
 	// Add JS files for libraries
-	if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1 || this.gulpModules.indexOf('gulp-requirejs-optimize') != -1) {
+	if (this.gruntModules.indexOf('grunt-browserify') !== -1) {
 		this.fs.copyTpl(
-			this.templatePath('src/shared/scripts/_main.require.js.ejs'),
-			'src/shared/scripts/main.js',
+			this.templatePath('src/core/app/_main.browserify.js.ejs'),
+			'src/core/app/main.js',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('src/shared/scripts/_app.require.js.ejs'),
-			'src/shared/scripts/app.js',
-			this
-		);
-	} else if (this.gruntModules.indexOf('grunt-browserify') !== -1 || this.gulpModules.indexOf('browserify') !== -1) {
-		this.fs.copyTpl(
-			this.templatePath('src/shared/scripts/_main.browserify.js.ejs'),
-			'src/shared/scripts/main.js',
-			this
-		);
-		this.fs.copyTpl(
-			this.templatePath('src/shared/scripts/_app.browserify.js.ejs'),
-			'src/shared/scripts/app.js',
-			this
-		);
-	} else if (this.gruntModules.indexOf('grunt-includes') !== -1) {
-		this.fs.copyTpl(
-			this.templatePath('src/shared/scripts/_main.includes.js.ejs'),
-			'src/shared/scripts/main.js',
-			this
-		);
-		this.fs.copyTpl(
-			this.templatePath('src/shared/scripts/_app.includes.js.ejs'),
-			'src/shared/scripts/app.js',
+			this.templatePath('src/core/app/_app.browserify.js.ejs'),
+			'src/core/app/app.js',
 			this
 		);
 	}

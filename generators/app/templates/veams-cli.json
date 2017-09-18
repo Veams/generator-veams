@@ -1,0 +1,19 @@
+{
+	"paths": {
+		"config": "configs",
+		"server": "server",
+		"src": "src",
+		"app": "app"
+	},
+	"ports": {
+		"app": 3000,
+		"server": 2999
+	},
+	"insertpointsFiles": [
+		"shared/layouts",
+		"containers/pages",
+		"shared/scripts/main.js",
+		"shared/scripts/events.js",
+		"shared/styles/styles.scss"
+	]
+}

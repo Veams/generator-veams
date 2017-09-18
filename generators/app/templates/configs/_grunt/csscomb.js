@@ -1,7 +1,7 @@
 module.exports = {
 	dist: {
 		options: {
-			config: '<%= paths.helpers %>/task-configs/csscomb.json'
+			config: '<%= paths.helpers %>/tasks/csscomb.config.json'
 		},
 		expand: true,
 		cwd: '<%= paths.src %>/scss/',

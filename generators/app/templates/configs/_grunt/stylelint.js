@@ -1,7 +1,7 @@
 module.exports = {
 	scss: {
 		options: {
-			configFile: '<%= paths.helpers %>/task-configs/stylelint.config.js',
+			configFile: '<%= paths.helpers %>/tasks/stylelint.config.js',
 			format: 'scss'
 		},
 		src: [

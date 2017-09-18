@@ -17,11 +17,11 @@ exports.questions = function (obj) {
 				value: gruntId,
 				checked: object.defaults
 			},
-			{
-				name: 'Webpack',
-				value: webpackId,
-				checked: object.defaults
-			}
+			// {
+			// 	name: 'Webpack',
+			// 	value: webpackId,
+			// 	checked: object.defaults
+			// }
 		],
 		default: this.config.get('taskRunner')
 	};
@@ -39,7 +39,6 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-cssmin'];
 		delete this.pkgFile['devDependencies']['grunt-combine-mq'];
-		delete this.pkgFile['devDependencies']['grunt-express-server'];
 		delete this.pkgFile['devDependencies']['grunt-newer'];
 		delete this.pkgFile['devDependencies']['grunt-sync'];
 		delete this.pkgFile['devDependencies']['grunt-sass-globber'];
@@ -62,7 +61,6 @@ exports.scaffold = function () {
 			delete this.pkgFile['devDependencies']['grunt-contrib-clean'];
 			delete this.pkgFile['devDependencies']['grunt-contrib-cssmin'];
 			delete this.pkgFile['devDependencies']['grunt-combine-mq'];
-			delete this.pkgFile['devDependencies']['grunt-express-server'];
 			delete this.pkgFile['devDependencies']['grunt-newer'];
 			delete this.pkgFile['devDependencies']['grunt-sync'];
 			delete this.pkgFile['devDependencies']['grunt-sass-globber'];
@@ -87,11 +85,6 @@ exports.scaffold = function () {
 			this.fs.copy(
 				this.templatePath(this.generatorGruntPath + 'cssmin.js'),
 				this.gruntPath + 'cssmin.js'
-			);
-			this.fs.copyTpl(
-				this.templatePath(this.generatorGruntPath + 'express.js'),
-				this.gruntPath + 'express.js',
-				this
 			);
 			this.fs.copyTpl(
 				this.templatePath(this.generatorGruntPath + '_sync.js.ejs'),

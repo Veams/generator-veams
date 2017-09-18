@@ -1,7 +1,7 @@
 module.exports = {
 	dist: {
 		options: {
-			config: '<%= paths.helpers %>/task-configs/jscs.airbnb.json',
+			config: '<%= paths.helpers %>/tasks/jscs.config.json',
 			force: false
 		},
 		src: [

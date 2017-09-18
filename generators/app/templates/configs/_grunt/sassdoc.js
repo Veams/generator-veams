@@ -1,6 +1,6 @@
 module.exports = {
 	options: {
-		config: '<%= paths.helpers %>/task-configs/sassdoc.conf.json'
+		config: '<%= paths.helpers %>/tasks/sassdoc.config.json'
 	},
 	dist: {
 		src: [

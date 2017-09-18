@@ -1,6 +1,6 @@
 module.exports = {
 	options: {
-		jshintrc: '<%= paths.helpers %>/task-configs/.jshintrc',
+		jshintrc: '<%= paths.helpers %>/tasks/.jshintrc',
 		force: true
 	},
 	all: [

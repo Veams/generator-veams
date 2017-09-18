@@ -1,80 +1,8 @@
 'use strict';
 
-const config = require('../config');
+const mangonyOpts = require('../tasks/mangony.config');
 
 module.exports = {
-	options: {
-		allow: {
-			YFMContextData: true,
-			YFMLayout: true
-		},
-		collections: [
-			'sitemap',
-			'type'
-		],
-		cwd: config.options.paths.src + '/',
-		dest: config.options.paths.dev,
-		exportData: false,
-		flatten: true,
-		types: {
-			data: {
-				dir: '',
-				files: [
-					'store/**/*.json',
-					'shared/components/**/*.hjson',
-					'shared/utilities/**/*.hjson',
-					'core/**/*.hjson'
-				]
-			},
-			partials: {
-				dir: '',
-				files: [
-					'shared/components/**/*.hbs',
-					'shared/utilities/**/*.hbs',
-					'core/**/*.hbs'
-				]
-			},
-			pages: {
-				dir: '',
-				files: [
-					'core/pages/**/*.hbs'
-				]
-			},
-			layouts: {
-				dir: 'shared/layouts',
-				files: [
-					'**/*.hbs'
-				]
-			}
-		},
-		helpers: [
-			'shared/utilities/template-helpers/*.js'
-		]
-	},
-	dev: { // IMPORTANT: When using Mangony in grunt-express the dev task will be executed in the server script
-		options: { // If you want to speed up your development process set compileStaticFiles to false and activate devServer.start
-			compileStaticFiles: <% if(mangonyExpress === true){ %>false<% } else { %>true<% } %>,
-			devServer: {
-				start: <% if(mangonyExpress === true){ %>true<% } else { %>false<% } %>,
-				injectScript: false,
-				port: config.options.ports.server,
-				bsOptions: {
-					proxy: 'localhost:' + config.options.ports.server,
-					port: config.options.ports.app,
-					files: [
-						config.options.paths.dev + '/**/*.html',
-						config.options.paths.dev + '/css/**/*.css',
-						config.options.paths.dev + '/scripts/**/*.js'
-					]
-				}
-			},
-			watch: true
-		}
-	},
-	dist: {
-		options: {
-			compileStaticFiles: true,
-			watch: false
-		}
-	}
+	options: mangonyOpts.options,
+	dist: mangonyOpts.dist
 };

@@ -15,7 +15,7 @@ exports.setup = function () {
 
 exports.overwriteSetup = function () {
 	if (this.veamsPackages) {
-		if (this.taskRunner.indexOf('gulp') === -1) {
+		if (this.taskRunner.indexOf('grunt') !== -1) {
 			let gruntModules = this.config.get('gruntModules');
 
 			gruntModules.push('grunt-contrib-handlebars');

@@ -8,9 +8,11 @@
 		"node": ">=0.12.0"
 	},
 	"scripts": {
-		"test": "<%= taskRunner %> test",
-		"start": "<%= taskRunner %> start",
-		"build": "<%= taskRunner %> build"
+		"test": "grunt test",
+		"build": "grunt build",
+		"start-dev": "grunt serve",
+		"start": "npm-run-all --parallel server start-dev",
+		"server": "node_modules/.bin/nodemon server/index.js --config ./configs/tasks/nodemon.config.json"
 	},
 	"veams": {
 		"configFile": "helpers/config.js"
@@ -49,6 +51,8 @@
 		"lost": "^8.2.0",
 		"mangony": "~1.1.14",
 		"mangony-hbs-helpers": "^0.2.0",
+		"nodemon": "^1.11.0",
+		"npm-run-all": "^4.1.1",
 		"path": "^0.12.7",
 		"request": "^2.81.0",
 		"sassdoc": "^2.3.0",
