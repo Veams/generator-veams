@@ -13,8 +13,10 @@ Main File For Imports
 @import "../../../node_modules/veams/src/scss/veams";<% } %><% if (cssLibs && cssLibs.length) { %>
 
 // Frameworks <% if (cssLibs.indexOf('include-media') != -1) { %>
-@import "../../../node_modules/include-media/dist/include-media";<% } %><% if (cssLibs.indexOf('foundation') != -1) { %>
-@import "../../../node_modules/foundation-sites/scss/foundation"; // You can choose your specific components<% } %><% if (cssLibs.indexOf('neat') != -1) { %>
+@import "../../../node_modules/include-media/dist/include-media";<% } %><% if (cssLibs.indexOf('foundation-sites') != -1) { %>
+@import "../../../node_modules/foundation-sites/scss/foundation"; // You can choose your specific components // You can choose your specific components
+@include foundation-everything;<% } %>
+<% if (cssLibs.indexOf('neat') != -1) { %>
 @import "../../../node_modules/neat/core/neat";<% } %> <% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
 @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components<% }} %>
 
