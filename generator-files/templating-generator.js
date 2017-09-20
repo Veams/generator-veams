@@ -75,27 +75,17 @@ exports.scaffold = function () {
 			);
 
 			this.fs.copy(
-				this.templatePath(this.generatorGruntPath + 'open.js'),
-				this.gruntPath + 'open.js'
-			);
-			this.fs.copy(
 				this.templatePath(this.generatorHelperPath + 'tasks/mangony.config.js'),
 				this.helperPath + 'tasks/mangony.config.js'
 			);
 
-			this.gruntModules.push('grunt-open');
-
-
-
 		} else {
 			delete this.pkgFile['devDependencies']['mangony'];
 			delete this.pkgFile['devDependencies']['grunt-mangony'];
-			delete this.pkgFile['devDependencies']['grunt-open'];
 		}
 	} else {
 		delete this.pkgFile['devDependencies']['mangony'];
 		delete this.pkgFile['devDependencies']['mangony-hbs-helpers'];
 		delete this.pkgFile['devDependencies']['grunt-mangony'];
-		delete this.pkgFile['devDependencies']['grunt-open'];
 	}
 };

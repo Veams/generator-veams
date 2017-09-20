@@ -98,7 +98,8 @@ module.exports = function(grunt) {
 	/*
 	 * ADVANCED TASKS
 	 */
-	grunt.registerTask('server', [<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
+	grunt.registerTask('server', [
+		'clean:dev',<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
 		'jsTemplates',<% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
 		'requirejs:dev',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-includes') != -1) { %>
 		'includes:js',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
@@ -108,17 +109,13 @@ module.exports = function(grunt) {
 		'concurrent:syncing',
 		'watchCSS'<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
 		'sass:docs'<% } %><% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
-		'postcss:dev'<% } %><% if(templateEngine.indexOf('mangony') != -1){ %>,
-		'open:dev'<% } %>,
+		'postcss:dev'<% } %>,
 		'chokidar'
 	]);
 	
 	grunt.registerTask('build', [
-		'clean:dev',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-modernizr') != -1) { %>
-		'modernizr',<% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
-		'jsTemplates',<% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
-		'requirejs:prod',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-includes') != -1) { %>
-		'includes:js',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
+		'clean:dev',<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
+		'jsTemplates',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
 		'browserify:vendor',
 		'browserify:dist',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-uglify') != -1) { %>
 		'uglify',<% }} %>
@@ -146,14 +143,14 @@ module.exports = function(grunt) {
 	// alias serve by grunt convention
 	grunt.registerTask('serve', [
 		'server'
-	]);<% if (features && features.length && features.indexOf('createDevFolder') != -1) { %>
+	]);
 	
 	grunt.registerTask('dist', [
 		'clean',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-version') != -1) { %>
 		'version:patch',<% }} %>
 		'build',
 		'copy:dist'
-	]); <% } %>
+	]);
 	<% if(testAndQALibs && (testAndQALibs.indexOf('webdriver') != -1 || testAndQALibs.indexOf('karma') != -1)){ %>
 	grunt.registerTask('e2e', [
 	<% if(testAndQALibs.indexOf('webdriver') != -1) { %>'webdriver:e2e'<% } %>

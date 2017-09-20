@@ -8,7 +8,6 @@ const helpers = require('../../lib/helpers');
 const configFile = require('../../lib/config');
 const taskRunnerGenerator = require('../../generator-files/taskrunner-generator');
 const cleanPackages = require('../../generator-files/clean-packages');
-const featuresGenerator = require('../../generator-files/features-generator');
 const jsGenerator = require('../../generator-files/js-generator');
 const cssGenerator = require('../../generator-files/css-generator');
 const expressGenerator = require('../../generator-files/express-generator');
@@ -127,10 +126,6 @@ module.exports = class extends Generator {
 		// (!this.config.get('docs') || this.force) && this.questions.push(
 		// 	docsGenerator.questions.call(this)
 		// );
-
-		(!this.config.get('features') || this.force) && this.questions.push(
-			featuresGenerator.questions.call(this)
-		);
 	}
 
 	writing() {
@@ -150,7 +145,6 @@ module.exports = class extends Generator {
 		jsGenerator.setup.call(this);
 		testAndQAGenerator.setup.call(this);
 		docsGenerator.setup.call(this);
-		featuresGenerator.setup.call(this);
 		veamsGenerator.setup.call(this);
 	}
 
@@ -273,7 +267,6 @@ module.exports = class extends Generator {
 		expressGenerator.scaffold.call(this);
 		testAndQAGenerator.scaffold.call(this);
 		templatingGenerator.scaffold.call(this);
-		featuresGenerator.scaffold.call(this);
 		docsGenerator.scaffold.call(this);
 		taskRunnerGenerator.scaffold.call(this);
 		cleanPackages.scaffold.call(this);
