@@ -14,7 +14,7 @@ const createMangony = (express) => {
 	return new Mangony(deepExtend(mangonyOptions.options, mangonyDevOptions));
 };
 <% } %>
-module.exports = (routes) => {
+module.exports = (routes, apiRoutes) => {
 	const app = express();<% if (templateEngine.indexOf('mangony') !== -1) { %>
 	const mangony = createMangony(app);<% } %>
 
@@ -27,6 +27,7 @@ module.exports = (routes) => {
 	 */<% if (templateEngine.indexOf('mangony') !== -1) { %>
 	mangony.render();<% } %>
 	app.use(routes);
+	app.use(apiRoutes);
 
 	return app;
 };

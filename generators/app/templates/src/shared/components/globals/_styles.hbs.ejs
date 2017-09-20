@@ -1,8 +1,1 @@
-<link rel="stylesheet" href="{{assets}}<% if (templateEngine.indexOf('assemble') != -1) { %>/<% }%>css/styles.css"/>
-<% if (docs && docs.length > 0 && docs.indexOf('htmldoc') != -1) { %>
-{{#if docs}}
-	<link rel="stylesheet" href="{{assets}}<% if (templateEngine.indexOf('assemble') != -1) { %>/<% }%>css/docs.css"/>
-	<script src="{{assets}}<% if (templateEngine.indexOf('assemble') != -1) { %>/<% }%>bower-components/highlight.pack.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-{{/if}}
-<% } %>
+<link rel="stylesheet" href="{{@root.assets}}css/styles.css"/>

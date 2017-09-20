@@ -61,7 +61,6 @@ module.exports = {
 				useExt: true,
 				port: config.ports.server,
 				bsOptions: {
-					open: 'local',
 					proxy: 'localhost:' + config.ports.server,
 					port: config.ports.app,
 					files: [

@@ -1,10 +1,10 @@
 <% if (gruntModules.indexOf('grunt-browserify') != -1) { %>
-<script src="scripts/libs.js"></script>
-<script src="scripts/main.bundle.js"></script>
+<script src="{{@root.assets}}scripts/libs.js"></script>
+<script src="{{@root.assets}}scripts/main.bundle.js"></script>
 <% } %>
 <% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-postcss-separator') != -1 && gruntModules.indexOf('grunt-grunticon') != -1) { %>
-<script src="scripts/vendor/loadCSS.js"></script>
+<script src="{{@root.assets}}scripts/vendor/loadCSS.js"></script>
 <script>
-	loadCSS("css/styles.icons.css");
+	loadCSS("{{@root.assets}}css/styles.icons.css");
 </script>
 <% } %>

@@ -11,14 +11,35 @@ exports.scaffold = function () {
 	/**
 	 * Server
 	 */
+
+	this.fs.copy(
+		this.templatePath('server/api'),
+		'server/api'
+	);
+
 	this.fs.copy(
 		this.templatePath('server/configs'),
 		'server/configs'
 	);
 
 	this.fs.copy(
-		this.templatePath('server/routes'),
-		'server/routes'
+		this.templatePath('server/content'),
+		'server/content'
+	);
+
+	this.fs.copy(
+		this.templatePath('server/models'),
+		'server/models'
+	);
+
+	this.fs.copy(
+		this.templatePath('server/services'),
+		'server/services'
+	);
+
+	this.fs.copy(
+		this.templatePath('server/utils'),
+		'server/utils'
 	);
 
 	this.fs.copy(

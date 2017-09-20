@@ -1,3 +1,3 @@
 export const environment = {
-	name: 'local'
+	env: 'local'
 };

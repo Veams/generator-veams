@@ -1,17 +1,17 @@
 import { Router } from 'express';
 
 // // Routes
-import home from './home';
-import apiServerHosts from './api-server-hosts';
+import index from './home';
+import serverHosts from './server-hosts';
 
 const router = new Router();
 
 // Basic routes
-router.get('/', home);
+router.get('/', index);
 
 
 // Additional routes
-router.use([apiServerHosts]);
+router.use([serverHosts]);
 
 
 module.exports = router;

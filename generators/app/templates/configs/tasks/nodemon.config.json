@@ -2,7 +2,8 @@
 	"restartable": "rs",
 	"ignore": [
 		".git",
-		"node_modules/**/node_modules"
+		"node_modules/**/node_modules",
+		"server/mocks/**/*.json"
 	],
 	"verbose": true,
 	"execMap": {

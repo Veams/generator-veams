@@ -107,6 +107,7 @@
 		"grunt-webfont": "^1.6.0",
 		"jit-grunt": "^0.10.0",
 		"load-grunt-configs": "~1.0.0",
+		"mkdirp": "^0.5.1",
 		"time-grunt": "~1.4.0",
 		"winston": "^2.3.1"
 	},

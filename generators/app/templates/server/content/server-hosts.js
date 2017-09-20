@@ -4,24 +4,24 @@ const express = require('express');
 const router = express.Router();
 
 /**
- * the keys of apiServerHosts are
+ * the keys of serverHosts are
  * used to implement the routing
  * localhost:[port]/veams is proxied
  * to https://github.com/Veams
  * @type {Object}
  */
-const apiServerHosts = {
+const serverHosts = {
 	'veams': 'https://github.com/Veams'
 };
 
-const apiServerHostRoutes = [];
+const serverHostRoutes = [];
 
-Object.keys(apiServerHosts).forEach(function (route) {
-	apiServerHostRoutes.push('/' + route);
-	apiServerHostRoutes.push('/' + route + '.json');
+Object.keys(serverHosts).forEach(function (route) {
+	serverHostRoutes.push('/' + route);
+	serverHostRoutes.push('/' + route + '.json');
 });
 
-router.get(apiServerHostRoutes, (req, res) => {
+router.get(serverHostRoutes, (req, res) => {
 	let key, url;
 	let format = '';
 
@@ -32,7 +32,7 @@ router.get(apiServerHostRoutes, (req, res) => {
 		format = '.json';
 	}
 
-	url = apiServerHosts[key] + req.url + format;
+	url = serverHosts[key] + req.url + format;
 
 	req.pipe(request(url)).pipe(res);
 });
