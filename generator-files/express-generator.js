@@ -11,12 +11,6 @@ exports.scaffold = function () {
 	/**
 	 * Server
 	 */
-	this.fs.copyTpl(
-		this.templatePath('server/index.js.ejs'),
-		'server/index.js',
-		this
-	);
-
 	this.fs.copy(
 		this.templatePath('server/configs'),
 		'server/configs'
@@ -34,7 +28,8 @@ exports.scaffold = function () {
 
 	this.fs.copyTpl(
 		this.templatePath('server/modules/express.js.ejs'),
-		'server/modules/express.js'
+		'server/modules/express.js',
+		this
 	);
 
 	if (this.templateEngine.indexOf('mangony') !== -1) {
@@ -47,7 +42,12 @@ exports.scaffold = function () {
 	/**
 	 * Config files
 	 */
-	this.fs.copyTpl(
+	this.fs.copy(
+		this.templatePath('babelrc'),
+		'.babelrc'
+	);
+
+	this.fs.copy(
 		this.templatePath(this.generatorHelperPath + 'tasks/nodemon.config.json'),
 		this.helperPath + 'tasks/nodemon.config.json'
 	);

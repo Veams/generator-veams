@@ -58,7 +58,7 @@ module.exports = {
 			devServer: {
 				start: true,
 				injectScript: false,
-				srcExt: true,
+				useExt: true,
 				port: config.ports.server,
 				bsOptions: {
 					open: 'local',
