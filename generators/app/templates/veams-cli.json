@@ -12,6 +12,7 @@
 		"app": 3000,
 		"server": 2999
 	},
+	"startPath": "pages/index.html",
 	"insertpointsFiles": [
 		"shared/layouts",
 		"core/pages",

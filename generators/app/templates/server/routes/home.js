@@ -1,3 +1,5 @@
+const config = require('../configs/config');
+
 export default (req, res, next) => {
-	res.redirect('/index.html');
+	res.redirect(`/${config.startPath}`);
 };

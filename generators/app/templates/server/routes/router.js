@@ -1,13 +1,13 @@
 import { Router } from 'express';
 
 // // Routes
-import index from './home';
+import home from './home';
 import apiServerHosts from './api-server-hosts';
 
 const router = new Router();
 
 // Basic routes
-router.get('/', index);
+router.get('/', home);
 
 
 // Additional routes
