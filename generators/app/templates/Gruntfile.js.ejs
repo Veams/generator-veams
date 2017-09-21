@@ -105,8 +105,8 @@ module.exports = function(grunt) {
 		'browserify:dev',<% }} %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
 		'jscs',<% } %>
 		'concurrent:syncing',
-		'watchCSS'<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
-		'sass:docs'<% } %><% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
+		'watchCSS',
+		'sass:docs'<% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
 		'postcss:dev'<% } %>,
 		'chokidar'
 	]);
@@ -121,8 +121,8 @@ module.exports = function(grunt) {
 		'beauty-scss',<% }} %>
 		'sassGlobber:dist',
 		'sass:dev',
-		'sass:universal',<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>
-		'sass:docs',<% } %><% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>
+		'sass:universal',
+		'sass:docs',<% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>
 		'stylelint:scss',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf
 		('grunt-combine-mq') != -1) { %>
 		'combine_mq',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-postcss-separator') != -1) { %>

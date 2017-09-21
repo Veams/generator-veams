@@ -2,7 +2,7 @@
 
 exports.scaffold = function () {
 	// Gulp and Grunt packages
-	if (this.gulpModules.indexOf('gulp-autoprefixer') === -1 && this.gruntModules.indexOf('grunt-autoprefixer') === -1) {
+	if (this.gruntModules.indexOf('grunt-autoprefixer') === -1) {
 		delete this.pkgFile['devDependencies']['autoprefixer'];
 	}
 

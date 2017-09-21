@@ -6,32 +6,20 @@
 <html lang="en" class="no-js"> <!--<![endif]-->
 
 <head>
-	<% if (installExtendedLayout === true || templateEngine.indexOf('mangony') !== -1) { %>
 	{{#block "metadata"}}
 		{{> _metadata }}
 	{{/block}}
 	{{#block "styles"}}
 		{{> _styles }}
 	{{/block}}
-	<% } else { %>
-	{{> _metadata }}
-	{{> _styles }}
-	<% } %>
 </head>
 
 <body class="{{bodyclass}}">
-	<% if (installExtendedLayout === true || templateEngine.indexOf('mangony') !== -1) { %>
 	{{#block "main"}}{{/block}}
-	<% } else { %>
-	{{> body }}
-	<% } %>
 	<!-- Scripts
-	================================================== --> <% if (installExtendedLayout === true || templateEngine.indexOf('mangony') !== -1) { %>
+	================================================== -->
 	{{#block "scripts"}}
 		{{> _scripts }}
 	{{/block}}
-	<% } else { %>
-	{{> _scripts }}
-	<% } %>
 </body>
 </html>
