@@ -54,11 +54,9 @@ module.exports = class extends Generator {
 		return this.prompt(this.questions).then((answers) => {
 			this.projectName = answers.projectName || this.config.get('projectName');
 			this.taskRunner = answers.taskRunner;
-			this.gulpModules = answers.gulpModules || this.config.get('gulpModules');
 			this.gruntModules = answers.gruntModules || this.config.get('gruntModules');
 			this.templateEngine = answers.templateEngine || this.config.get('templateEngine');
 			this.mangonyExpress = answers.mangonyExpress || this.config.get('mangonyExpress');
-			this.installExtendedLayout = answers.installExtendedLayout || this.config.get('installExtendedLayout');
 			this.plugin = answers.plugin;
 			this.features = answers.features;
 			this.jsLibs = answers.jsLibs;
@@ -146,11 +144,9 @@ module.exports = class extends Generator {
 
 	_defaults() {
 		// Standard files
-		this.fs.copy(
-			this.templatePath('veams-cli.json'),
-			'veams-cli.json'
-		);
+		this.fs.copy(this.templatePath('veams-cli.json'), 'veams-cli.json');
 		this.fs.copyTpl(this.templatePath('gitignore'), '.gitignore');
+		this.fs.copyTpl(this.templatePath('editorconfig'), '.editorconfig');
 		this.fs.copyTpl(this.templatePath('README.md.ejs'), 'README.md', this);
 		this.fs.copy(
 			this.templatePath(this.generatorHelperPath + 'environments'),
