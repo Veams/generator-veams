@@ -38,7 +38,9 @@ module.exports = {
 			pages: {
 				dir: '',
 				files: [
-					'core/pages/**/*.hbs'
+					'core/pages/**/*.hbs',
+					'shared/components/**/*.hbs',
+					'shared/utilities/**/*.hbs'
 				]
 			},
 			layouts: {
