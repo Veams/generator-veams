@@ -1,6 +1,6 @@
 ---
 title: Components Overview
-sitemap: Components
+type: pages
 ---
 {{#extend "lyt-default"}}
 	{{#content "main"}}
@@ -9,6 +9,9 @@ sitemap: Components
 			<h1 style="font-size: 2.5rem; margin-top: 2rem">Welcome to your custom Veams project!</h1>
 			<p style="margin-top: 2rem">Your components will automatically be placed here:</p>
 			{{! @INSERTPOINT :: @ref: component-partial }}
+		</div>
+		<div style="position: fixed; left: 0; top: 0; height: 100%; background-color: #d3d3d3; padding: 30px;">
+			{{> c-sitemap }}
 		</div>
 	{{/content}}
 {{/extend}}

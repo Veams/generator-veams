@@ -65,6 +65,10 @@ exports.scaffold = function () {
 			'src/shared/components/globals/_styles.hbs',
 			this
 		);
+		this.fs.copy(
+			this.templatePath('src/shared/components/sitemap'),
+			'src/shared/components/sitemap'
+		);
 
 		if (this.templateEngine.indexOf('mangony') !== -1) {
 			// Add Gruntfile-helper file

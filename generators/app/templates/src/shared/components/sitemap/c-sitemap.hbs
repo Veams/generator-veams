@@ -1,24 +1,24 @@
-{{! ---
-component: sitemap
-============================================
+---
+type: Components
+---
 
+{{! ---
 Important Notes:
 Be sure you use collections to categorize your sitemap.
 If you do not want to use collections, just delete this `sitemap` partial
 --- }}
 
-
 <nav class="c-sitemap--default">
-	<h2 class="sitemap__header">Sitemap</h2>
+	<!--<h2 class="sitemap__header">Sitemap</h2>-->
 	{{#each collections.type}}
 		<div class="sitemap__overview">
-			<h3 class="sitemap__headline">{{name}}</h3>
+			<h3 class="sitemap__headline">{{uppercase name}}</h3>
 			<ol class="sitemap__list">
 				{{#each ../pages}}
 					{{#is parsed.data.type ../name}}
 						{{#isnt parsed.data.publish false}}
 							<li class="sitemap__list-item">
-								<a href="{{#if @root.servermode}}/{{serverFile}}{{else}}/{{destFile}}{{/if}}"
+								<a href="/{{destFile}}"
 								   class="sitemap__list-item-link">
 									{{this.filename}}
 								</a>
