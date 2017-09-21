@@ -9,9 +9,9 @@
 	},
 	"scripts": {
 		"test": "grunt test",
-		"build": "NODE_ENV=production grunt build",
+		"build": "cross-env NODE_ENV=production grunt build",
 		"start-dev": "grunt serve",
-		"start": "NODE_ENV=local npm-run-all --parallel server start-dev",
+		"start": "cross-env NODE_ENV=local npm-run-all --parallel server start-dev",
 		"server": "node_modules/.bin/nodemon server/index.js --config ./configs/tasks/nodemon.config.json"
 	},
 	"dependencies": {
@@ -49,6 +49,7 @@
 		"babelify": "^7.3.0",
 		"body-parser": "^1.18.1",
 		"chalk": "^2.0.1",
+		"cross-env": "^5.0.5",
 		"deep-extend": "~0.5.0",
 		"express": "^4.15.3",
 		"fs-extra": "^4.0.0",
