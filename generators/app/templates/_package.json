@@ -2,8 +2,6 @@
 	"name": "",
 	"description": "Custom project description",
 	"version": "0.0.1",
-	"author": {
-	},
 	"engines": {
 		"node": ">=6.0.0"
 	},
@@ -57,8 +55,8 @@
 		"jshint-stylish": "^2.0.0",
 		"lodash": "^4.17.4",
 		"lost": "^8.2.0",
-		"mangony": "~1.1.14",
-		"mangony-hbs-helpers": "^0.2.0",
+		"mangony": "~1.1.15",
+		"mangony-hbs-helpers": "^0.3.0",
 		"nodemon": "^1.11.0",
 		"npm-run-all": "^4.1.1",
 		"path": "^0.12.7",

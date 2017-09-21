@@ -49,9 +49,9 @@ module.exports = {
 	universal: {
 		files: '<%%= paths.src %>/shared/styles/universal.scss',
 		tasks: 'sass:universal'
-	}<% if (docs && docs.length && docs.indexOf('htmldoc') != -1) { %>,
+	},
 	scssDocs: {
-		files: '<%%= paths.src %>/shared/styles/docs/*',
+		files: '<%%= paths.src %>/shared/layouts/docs/*',
 		tasks: 'sass:docs'
-	}<% } %>
+	}
 };

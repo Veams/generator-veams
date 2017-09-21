@@ -9,7 +9,8 @@ Main File For Imports
 @import "../../../node_modules/veams/src/scss/veams-reset";<% } %>
 
 // Global Variables and Settings
-@import "global/_vars";<% if (veamsPackages) { %>
+@import "global/_vars";
+@import "helpers/helpers";<% if (veamsPackages) { %>
 @import "../../../node_modules/veams/src/scss/veams";<% } %><% if (cssLibs && cssLibs.length) { %>
 
 // Frameworks <% if (cssLibs.indexOf('include-media') != -1) { %>
@@ -22,10 +23,6 @@ Main File For Imports
 
 // Icons
 @import "icons/**/*";
-
-// Helpers
-@import "helpers/functions/**/*";
-@import "helpers/mixins/**/*";
 
 // Globals
 @import "global/_base";<% if (veamsPackages) { %>

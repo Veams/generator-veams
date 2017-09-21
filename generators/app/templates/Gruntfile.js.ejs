@@ -3,7 +3,7 @@
  * <%= pkg.name %> v<%= pkg.version %>
  * <%= pkg.homepage %>
  *
- * Copyright (c) <%= (new Date).getFullYear() %> <%= pkg.author.name %>
+ * Copyright (c) <%= (new Date).getFullYear() %>
  * Licensed under the MIT license.
  */
 
@@ -100,9 +100,7 @@ module.exports = function(grunt) {
 	 */
 	grunt.registerTask('server', [
 		'clean:dev',<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
-		'jsTemplates',<% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
-		'requirejs:dev',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-includes') != -1) { %>
-		'includes:js',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
+		'jsTemplates',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
 		'browserify:vendor',
 		'browserify:dev',<% }} %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
 		'jscs',<% } %>

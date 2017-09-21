@@ -1,0 +1,165 @@
+{{#extend "lyt-default"}}
+	{{#content "styles" mode="append"}}
+		<link rel="stylesheet" href="{{@root.assets}}css/docs.css"/>
+	{{/content}}
+	{{#content "main"}}
+		<div class="docs">
+
+			<div class="docs__sidebar">
+				<img src="https://www.veams.org/img/svg/icons/veams-std-invert.svg">
+				{{> c-sitemap }}
+			</div>
+
+			<div class="docs__main">
+				<div class="docs__main-inner">
+					<div class="is-inner">
+						<h1 class="docs__headline">{{uppercase @root.currentPage.filename}} <span>(Type Of {{this.type}})</span></h1>
+					</div>
+					<div class="docs__section is-bg-default">
+						<div class="is-inner">
+							<div class="docs__section-header">
+								<h2 class="docs__section-headline">Demo Section</h2>
+								<p class="docs__section-description">Each variation will be presented in the following section.</p>
+							</div>
+
+							<div class="docs__section-content">
+								{{#if variations}}
+									{{#each variations}}
+										<h3>{{this.docs.variationName}}</h3>
+										{{{yield}}}
+									{{/each}}
+								{{else}}
+									{{{yield}}}
+								{{/if}}
+							</div>
+						</div>
+
+					</div>
+
+					{{#ifExists (buildPath @root.currentPage.dirname "README.md")}}
+						<div class="docs__section is-bg-invert">
+							<div class="is-inner">
+								<div class="docs__section-header">
+									<h2 class="docs__section-headline">Readme</h2>
+								</div>
+								<div class="docs__section-content">
+									{{{markdown (buildPath @root.currentPage.dirname "README.md") }}}
+								</div>
+							</div>
+
+						</div>
+					{{else}}
+						<div class="docs__section is-bg-invert">
+							<div class="is-inner">
+								<div class="docs__section-header">
+									<h2 class="docs__section-error">Currently there is no README file!</h2>
+								</div>
+							</div>
+						</div>
+					{{/ifExists}}
+
+					<div class="docs__section">
+						<div class="is-inner">
+							<div class="docs__section-header">
+								<h2 class="docs__section-headline">Templates</h2>
+							</div>
+
+							<h3 class="docs__section-hl-small">{{@root.currentPage.filename}}</h3>
+
+							<div class="docs__section-content">
+								{{#getData from=@root.currentPage.filename typeof="partial"}}
+									{{#highlight "hbs"}}
+										{{{this.parsed.content}}}
+									{{/highlight}}
+								{{/getData}}
+
+								{{#if this.subTemplates}}
+									{{#each this.subTemplates}}
+										<h3>{{this}}</h3>
+										{{#highlight "hbs"}}
+											{{{embeding (buildPath @root.currentPage.dirname this) }}}
+										{{/highlight}}
+									{{/each}}
+								{{/if}}
+							</div>
+						</div>
+					</div>
+
+					{{#if this.contextData}}
+						<div class="docs__section is-bg-invert">
+							<div class="is-inner">
+								<div class="docs__section-header">
+									<h2 class="docs__section-headline">Data File</h2>
+								</div>
+								<div class="docs__section-content">
+									{{#ifExists
+											(buildPath @root.currentPage.dirname (concat this.contextData ".json"))}}
+										{{#highlight "json"}}
+											{{{embeding
+													(buildPath @root.currentPage.dirname (concat this.contextData ".json")) }}}
+										{{/highlight}}
+									{{/ifExists}}
+								</div>
+							</div>
+						</div>
+					{{else}}
+						<div class="docs__section is-bg-invert">
+							<div class="is-inner">
+								<div class="docs__section-header">
+									<h2 class="docs__section-error">Currently there is no Data file!</h2>
+								</div>
+							</div>
+						</div>
+					{{/if}}
+
+					{{#if this.scssFiles}}
+						<div class="docs__section">
+							<div class="is-inner">
+								<div class="docs__section-header">
+									<h2 class="docs__section-headline">Styles</h2>
+								</div>
+								<div class="docs__section-content">
+									{{#each this.scssFiles}}
+										<h3>{{this}}</h3>
+										{{#highlight "scss"}}
+											{{{embeding (buildPath @root.config.stylesDir this) }}}
+										{{/highlight}}
+									{{/each}}
+								</div>
+							</div>
+						</div>
+
+					{{/if}}
+					<div class="docs__section">
+						<div class="is-inner">
+							<div class="docs__section-header">
+								<h2 class="docs__section-headline">HTML Output</h2>
+							</div>
+							<div class="docs__section-content">
+								{{#if variations}}
+									{{#each variations}}
+										{{#highlight "html"}}
+											{{#beautifyHTML}}
+												{{{yield}}}
+											{{/beautifyHTML}}
+										{{/highlight}}
+									{{/each}}
+								{{else}}
+									{{#highlight "html"}}
+										{{#beautifyHTML}}
+											{{{yield}}}
+										{{/beautifyHTML}}
+									{{/highlight}}
+								{{/if}}
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	{{/content}}
+{{/extend}}

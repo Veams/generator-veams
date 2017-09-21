@@ -39,6 +39,11 @@ exports.scaffold = function () {
 			'src/shared/layouts/lyt-default.hbs',
 			this
 		);
+		this.fs.copy(
+			this.templatePath('src/shared/layouts/docs'),
+			'src/shared/layouts/docs',
+			this
+		);
 		this.fs.copyTpl(
 			this.templatePath('src/core/pages/index/index.hbs.ejs'),
 			'src/core/pages/index/index.hbs',

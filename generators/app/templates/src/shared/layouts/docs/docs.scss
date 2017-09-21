@@ -1,0 +1,162 @@
+/* ===================================================
+Documentation Styles
+=================================================== */
+/* ---------------------------------------------------
+Global Imports
+--------------------------------------------------- */
+@import "highlight";
+@import "monokai";
+@import "../../styles/global/vars";
+@import "../../styles/helpers/helpers";
+
+/* ---------------------------------------------------
+General styles
+--------------------------------------------------- */
+.docs {
+	box-sizing: border-box;
+
+
+	/*
+	Standard elements for markdown
+	----------------------- */
+	img {
+		max-width: 100%;
+	}
+
+	code {
+		// font-family: "Courier New", sans-serif;
+	}
+
+	a {
+		color: #4a9ea3;
+
+		&:visited {
+			color: #4a9ea3;
+		}
+	}
+
+	hr {
+		background-color: transparent;
+		border-top: 1px solid #f4f4f4;
+		border-bottom: 2px solid #fff;
+		border-right: none 0;
+		border-left: none 0;
+	}
+
+	/*
+	Sidebar
+	----------------------- */
+	.docs__sidebar {
+		width: 300px;
+		float: left;
+		background-color: #23241f;
+		height: 100%;
+		padding: 2rem;
+		box-sizing: border-box;
+		color: #fff;
+		position: fixed;
+
+		h3 {
+			margin: 2rem 0 1rem;
+		}
+
+		a {
+			color: lighten(#4a9ea3, 10);
+			text-decoration: none;
+
+			&:hover {
+				color: lighten(#4a9ea3, 30);
+			}
+		}
+	}
+
+	/*
+	Main
+	----------------------- */
+	.docs__main {
+		box-sizing: border-box;
+		float: right;
+		width: calc(100% - 300px);
+	}
+
+	.docs__headline {
+		font-size: 3.4rem;
+		margin: 2rem 0;
+		color: #444;
+
+		span {
+			font-style: italic;
+			font-size: 2rem;
+			color: lighten(#4a9ea3, 10);
+		}
+	}
+
+	/*
+	Section
+	----------------------- */
+	.docs__section {
+		position: relative;
+		padding: 2rem;
+		border-bottom: 1px solid rgba(#4a9ea3, .7);
+		border-top: 2px solid #fff;
+		background-color: darken(#fff, 2);
+
+		&.is-bg-invert {
+			background-color: rgba(#4a9ea3, .3);
+			border-top: 1px solid #fff;
+			border-bottom: 1px solid darken(#fff, 10);
+
+			.docs__section-headline {
+				color: #fff;
+			}
+		}
+	}
+
+	.docs__section-headline {
+		clear: both;
+		font-size: 2.4rem;
+		font-weight: 700;
+		z-index: 1;
+		min-width: 150px;
+		opacity: 1;
+		background-color: transparent;
+		color: #ddd;
+		text-align: left;
+		text-transform: uppercase;
+		margin-bottom: 1rem;
+	}
+
+	.docs__section-content {
+		margin-top: 2rem;
+		padding: 1rem 0;
+	}
+	.docs__section-error {
+		font-style: italic;
+		text-align: left;
+	}
+
+	.docs__section-description {
+		font-size: 1.8rem;
+		text-align: left;
+		margin-bottom: 2rem;
+		font-style: italic;
+		color: #b4b4b4;
+		border-bottom: 1px solid lighten(#b4b4b4, 15);
+		padding-bottom: .5rem;
+
+	}
+
+	.docs__section-hl-small {
+		font-size: 2rem;
+		text-align: left;
+		margin-bottom: 1rem;
+	}
+
+	/*
+	Modifiers
+	----------------------- */
+	.is-inner {
+		max-width: 950px;
+		margin: 0 auto;
+	}
+}

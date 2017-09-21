@@ -1,13 +1,11 @@
 /*
-
 Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
-
 */
 
 .hljs {
 	display: block;
-	padding: 0.5em;
-	background: #F0F0F0;
+	padding: .5em;
+	background: #f0f0f0;
 }
 
 .hljs,
@@ -108,7 +106,7 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 .lasso .hljs-attribute,
 .coffeescript .hljs-property,
 .hljs-phony {
-	color: #8888ff;
+	color: #88f;
 }
 
 .hljs-keyword,
@@ -150,5 +148,5 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 .xml .vbscript,
 .xml .css,
 .xml .hljs-cdata {
-	opacity: 0.5;
+	opacity: .5;
 }

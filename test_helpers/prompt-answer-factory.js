@@ -5,8 +5,6 @@ let config = require('../lib/config');
 module.exports = function promptAnswerFactory(customAnswers) {
 	let defaults = {
 		projectName: '',
-		projectAuthor: '',
-		selfContained: true,
 		taskRunner: [
 			'grunt'
 		],

@@ -52,7 +52,6 @@ module.exports = class extends Generator {
 		this._prompts();
 
 		return this.prompt(this.questions).then((answers) => {
-			this.authorName = answers.projectAuthor || this.config.get('projectAuthor');
 			this.projectName = answers.projectName || this.config.get('projectName');
 			this.taskRunner = answers.taskRunner;
 			this.gulpModules = answers.gulpModules || this.config.get('gulpModules');
@@ -80,13 +79,6 @@ module.exports = class extends Generator {
 			name: 'projectName',
 			message: 'Your project name',
 			default: this.appname
-		});
-
-		(!this.config.get('projectAuthor') || this.force) && this.questions.push({
-			type: 'input',
-			name: 'projectAuthor',
-			message: 'Would you mind telling me your name?',
-			default: this.config.get('projectAuthor')
 		});
 
 		(!this.config.get('taskRunner') || this.force) && this.questions.push(
@@ -227,6 +219,11 @@ module.exports = class extends Generator {
 		);
 
 		// SCSS area
+		this.fs.copy(
+			this.templatePath('src/shared/styles/helpers/_helpers.scss'),
+			'src/shared/styles/helpers/_helpers.scss'
+		);
+
 		this.fs.copy(
 			this.templatePath('gitkeep'),
 			'src/shared/styles/helpers/functions/.gitkeep'
