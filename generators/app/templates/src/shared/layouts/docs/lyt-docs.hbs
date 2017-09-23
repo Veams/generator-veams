@@ -1,6 +1,7 @@
 {{#extend "lyt-default"}}
 	{{#content "styles" mode="append"}}
 		<link rel="stylesheet" href="{{@root.assets}}css/docs.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 	{{/content}}
 	{{#content "main"}}
 		<div class="docs">
@@ -12,13 +13,22 @@
 
 			<div class="docs__main">
 				<div class="docs__main-inner">
-					<div class="is-inner">
+					<div class="docs__header is-inner">
 						<h1 class="docs__headline">{{uppercase @root.currentPage.filename}} <span>(Type Of {{this.type}})</span></h1>
+						<h3 class="docs__subline">
+							<i class="is-docs-icon fa fa-file"></i>
+							<span>
+								{{@root.currentPage.dirname}}
+							</span>
+						</h3>
 					</div>
 					<div class="docs__section is-bg-default">
 						<div class="is-inner">
 							<div class="docs__section-header">
-								<h2 class="docs__section-headline">Demo Section</h2>
+								<h2 class="docs__section-headline">
+									<i class="fa fa-desktop" aria-hidden="true"></i>
+									Demo Section
+								</h2>
 								<p class="docs__section-description">Each variation will be presented in the following section.</p>
 							</div>
 
@@ -40,7 +50,10 @@
 						<div class="docs__section is-bg-invert">
 							<div class="is-inner">
 								<div class="docs__section-header">
-									<h2 class="docs__section-headline">Readme</h2>
+									<h2 class="docs__section-headline">
+										<i class="is-docs-icon fa fa-file-text-o"></i>
+										Readme
+									</h2>
 								</div>
 								<div class="docs__section-content">
 									{{{markdown (buildPath @root.currentPage.dirname "README.md") }}}
@@ -61,7 +74,10 @@
 					<div class="docs__section">
 						<div class="is-inner">
 							<div class="docs__section-header">
-								<h2 class="docs__section-headline">Templates</h2>
+								<h2 class="docs__section-headline">
+									<i class="is-docs-icon fa fa-file-text-o"></i>
+									Templates
+								</h2>
 							</div>
 
 							<h3 class="docs__section-hl-small">{{@root.currentPage.filename}}</h3>
@@ -89,7 +105,10 @@
 						<div class="docs__section is-bg-invert">
 							<div class="is-inner">
 								<div class="docs__section-header">
-									<h2 class="docs__section-headline">Data File</h2>
+									<h2 class="docs__section-headline">
+										<i class="is-docs-icon fa fa-file-text-o"></i>
+										Data File
+									</h2>
 								</div>
 								<div class="docs__section-content">
 									{{#ifExists
@@ -116,7 +135,9 @@
 						<div class="docs__section">
 							<div class="is-inner">
 								<div class="docs__section-header">
-									<h2 class="docs__section-headline">Styles</h2>
+									<h2 class="docs__section-headline"><i class="is-docs-icon fa fa-file-text-o"></i>
+										Styles
+									</h2>
 								</div>
 								<div class="docs__section-content">
 									{{#each this.scssFiles}}
@@ -133,7 +154,10 @@
 					<div class="docs__section">
 						<div class="is-inner">
 							<div class="docs__section-header">
-								<h2 class="docs__section-headline">HTML Output</h2>
+								<h2 class="docs__section-headline">
+									<i class="is-docs-icon fa fa-file-text-o"></i>
+									HTML Output
+								</h2>
 							</div>
 							<div class="docs__section-content">
 								{{#if variations}}
@@ -153,13 +177,9 @@
 								{{/if}}
 							</div>
 						</div>
-
 					</div>
 				</div>
-
 			</div>
-
 		</div>
-
 	{{/content}}
 {{/extend}}

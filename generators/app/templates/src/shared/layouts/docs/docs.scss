@@ -15,7 +15,6 @@ General styles
 .docs {
 	box-sizing: border-box;
 
-
 	/*
 	Standard elements for markdown
 	----------------------- */
@@ -79,15 +78,27 @@ General styles
 		width: calc(100% - 300px);
 	}
 
+	.docs__header {
+		padding: 2rem;
+	}
+
 	.docs__headline {
 		font-size: 3.4rem;
-		margin: 2rem 0;
 		color: #444;
 
 		span {
 			font-style: italic;
 			font-size: 2rem;
 			color: lighten(#4a9ea3, 10);
+		}
+	}
+
+	.docs__subline {
+		color: lighten(#444, 35);
+		margin-left: .5rem;
+
+		span {
+			font-style: italic;
 		}
 	}
 
@@ -158,5 +169,9 @@ General styles
 	.is-inner {
 		max-width: 950px;
 		margin: 0 auto;
+	}
+
+	.is-docs-icon {
+		margin-right: .5rem;
 	}
 }

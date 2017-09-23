@@ -1,5 +1,5 @@
 ---
-type: Components
+type: component
 layout: "lyt-docs"
 ---
 
@@ -13,7 +13,7 @@ If you do not want to use collections, just delete this `sitemap` partial
 	<!--<h2 class="sitemap__header">Sitemap</h2>-->
 	{{#each collections.type}}
 		<div class="sitemap__overview">
-			<h3 class="sitemap__headline">{{uppercase name}}</h3>
+			<h3 class="sitemap__headline">{{uppercase name}}S</h3>
 			<ol class="sitemap__list">
 				{{#each ../pages}}
 					{{#is parsed.data.type ../name}}
