@@ -45,13 +45,13 @@ exports.scaffold = function () {
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('src/core/pages/index/index.hbs.ejs'),
-			'src/core/pages/index/index.hbs',
+			this.templatePath('src/pages/index/index.hbs.ejs'),
+			'src/pages/index/index.hbs',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('src/core/pages/components/components.hbs.ejs'),
-			'src/core/pages/components/components.hbs',
+			this.templatePath('src/pages/components/components.hbs.ejs'),
+			'src/pages/components/components.hbs',
 			this
 		);
 
