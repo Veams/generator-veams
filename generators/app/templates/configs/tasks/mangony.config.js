@@ -38,7 +38,7 @@ module.exports = {
 			pages: {
 				dir: '',
 				files: [
-					'core/pages/**/*.hbs',
+					'pages/**/*.hbs',
 					'shared/components/**/*.hbs',
 					'shared/utilities/**/*.hbs'
 				]
@@ -54,8 +54,8 @@ module.exports = {
 			'shared/utilities/template-helpers/*.js'
 		]
 	},
-	dev: { // IMPORTANT: When using Mangony in grunt-express the dev task will be executed in the server script
-		options: { // If you want to speed up your development process set compileStaticFiles to false and activate devServer.start
+	dev: {
+		options: {
 			compileStaticFiles: false,
 			devServer: {
 				start: true,
