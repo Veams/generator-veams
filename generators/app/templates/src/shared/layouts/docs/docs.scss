@@ -95,7 +95,9 @@ General styles
 
 	.docs__subline {
 		color: lighten(#444, 35);
+		margin-top: 0;
 		margin-left: .5rem;
+		font-size: 1.6rem;
 
 		span {
 			font-style: italic;
@@ -144,6 +146,8 @@ General styles
 	.docs__section-error {
 		font-style: italic;
 		text-align: left;
+		font-size: 1.8rem;
+		margin: 0;
 	}
 
 	.docs__section-description {
