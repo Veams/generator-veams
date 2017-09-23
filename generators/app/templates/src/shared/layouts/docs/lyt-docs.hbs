@@ -13,14 +13,16 @@
 
 			<div class="docs__main">
 				<div class="docs__main-inner">
-					<div class="docs__header is-inner">
-						<h1 class="docs__headline">{{uppercase @root.currentPage.filename}} <span>({{this.type}})</span></h1>
-						<h3 class="docs__subline">
-							<i class="is-docs-icon fa fa-file"></i>
-							<span>
-								{{@root.currentPage.dirname}}
-							</span>
-						</h3>
+					<div class="docs__header">
+						<div class="is-inner">
+							<h1 class="docs__headline">{{uppercase @root.currentPage.filename}} <span>({{this.type}})</span></h1>
+							<h3 class="docs__subline">
+								<i class="is-docs-icon fa fa-file"></i>
+								<span>
+									{{@root.currentPage.dirname}}
+								</span>
+							</h3>
+						</div>
 					</div>
 					<div class="docs__section is-bg-default">
 						<div class="is-inner">
@@ -66,7 +68,7 @@
 							<div class="is-inner">
 								<div class="docs__section-header">
 									<h2 class="docs__section-error">
-										<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+										<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
 										Currently there is no README file!
 									</h2>
 								</div>
@@ -129,7 +131,7 @@
 							<div class="is-inner">
 								<div class="docs__section-header">
 									<h2 class="docs__section-error">
-										<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+										<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
 										Currently there is no Data file!
 									</h2>
 								</div>
