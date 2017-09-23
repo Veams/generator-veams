@@ -7,7 +7,7 @@ import serverHosts from './server-hosts';
 const router = new Router();
 
 // Basic routes
-router.get('/', index);
+router.get(['/', '/home', '/index'], index);
 
 
 // Additional routes

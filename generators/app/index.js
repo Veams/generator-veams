@@ -271,10 +271,18 @@ module.exports = class extends Generator {
 
 	install() {
 		this.installDependencies({
+			yarn: true,
+			bower: false,
+			npm: false,
 			skipInstall: this.options['skip-install'] || this.options['s'],
 			skipMessage: this.options['skip-welcome-message'] || this.options['w'],
 			// minInstall: this.options['minimal'] || this.options['min'],
-			callback: function () {
+			callback: function (error) {
+				if (error) {
+					this.log(`… or alternatively run ${chalk.yellow('npm install')} instead.`);
+				} else {
+					this.log(`That’s it. Start your project with ${chalk.green('npm run start')} or ${chalk.green('yarn start')}!`);
+				}
 				// Emit an event that all dependencies are installed
 				this.emit(configFile.events.depsIntalled);
 			}.bind(this)
