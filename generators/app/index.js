@@ -184,12 +184,6 @@ module.exports = class extends Generator {
 			'src/core/app/.gitkeep'
 		);
 
-		// Ajax area
-		this.fs.copy(
-			this.templatePath('gitkeep'),
-			'server/ajax/.gitkeep'
-		);
-
 		// Assets area
 		this.fs.copy(
 			this.templatePath('gitkeep'),
