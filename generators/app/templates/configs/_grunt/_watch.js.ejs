@@ -32,6 +32,7 @@ module.exports = {
 	},<% } %>
 	scss: {
 		files: [
+			'<%%= paths.src %>/core/app/**/*.scss',
 			'<%%= paths.src %>/shared/styles/**/*.scss',
 			'<%%= paths.src %>/shared/components/**/scss/**/*.scss',
 			'<%%= paths.src %>/shared/utilities/**/scss/**/*.scss',
@@ -47,7 +48,7 @@ module.exports = {
 		}<% }} %>
 	},
 	universal: {
-		files: '<%%= paths.src %>/shared/styles/universal.scss',
+		files: '<%%= paths.src %>/core/app/universal.scss',
 		tasks: 'sass:universal'
 	},
 	scssDocs: {

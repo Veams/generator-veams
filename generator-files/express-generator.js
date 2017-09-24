@@ -7,11 +7,22 @@ exports.questions = function () {
 exports.setup = function () {};
 
 exports.scaffold = function () {
+	/**
+	 * Config files
+	 */
+	this.fs.copy(
+		this.templatePath('babelrc'),
+		'.babelrc'
+	);
+
+	this.fs.copy(
+		this.templatePath(this.generatorHelperPath + 'tasks/nodemon.config.json'),
+		this.helperPath + 'tasks/nodemon.config.json'
+	);
 
 	/**
 	 * Server
 	 */
-
 	this.fs.copy(
 		this.templatePath('server/api'),
 		'server/api'
@@ -59,17 +70,4 @@ exports.scaffold = function () {
 			'server/modules/mangony.js'
 		);
 	}
-
-	/**
-	 * Config files
-	 */
-	this.fs.copy(
-		this.templatePath('babelrc'),
-		'.babelrc'
-	);
-
-	this.fs.copy(
-		this.templatePath(this.generatorHelperPath + 'tasks/nodemon.config.json'),
-		this.helperPath + 'tasks/nodemon.config.json'
-	);
 };

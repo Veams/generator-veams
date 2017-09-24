@@ -53,7 +53,6 @@ exports.scaffold = function () {
 		);
 
 		if (this.templateEngine !== '') {
-
 			// Layouts
 			this.fs.copy(
 				this.templatePath('src/shared/layouts/README.md'),

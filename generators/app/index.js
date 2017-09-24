@@ -56,8 +56,6 @@ module.exports = class extends Generator {
 			this.taskRunner = answers.taskRunner;
 			this.gruntModules = answers.gruntModules || this.config.get('gruntModules');
 			this.templateEngine = answers.templateEngine || this.config.get('templateEngine');
-			this.mangonyExpress = answers.mangonyExpress || this.config.get('mangonyExpress');
-			this.plugin = answers.plugin;
 			this.features = answers.features;
 			this.jsLibs = answers.jsLibs;
 			this.cssLibs = answers.cssLibs;
@@ -214,10 +212,15 @@ module.exports = class extends Generator {
 			'src/shared/scripts/README.md'
 		);
 
-		// SCSS area
-		this.fs.copy(
-			this.templatePath('src/shared/styles/helpers/_helpers.scss'),
-			'src/shared/styles/helpers/_helpers.scss'
+		/**
+		 * SCSS Area
+		 */
+
+		// Shared
+		this.fs.copyTpl(
+			this.templatePath('src/shared/styles/helpers/_helpers.scss.ejs'),
+			'src/shared/styles/helpers/_helpers.scss',
+			this
 		);
 
 		this.fs.copy(
@@ -226,28 +229,36 @@ module.exports = class extends Generator {
 		);
 
 		this.fs.copyTpl(
-			this.templatePath('src/shared/styles/global/_print.scss'),
-			'src/shared/styles/global/_print.scss',
-			this
-		);
-		this.fs.copyTpl(
-			this.templatePath('src/shared/styles/universal.scss'),
-			'src/shared/styles/universal.scss',
-			this
-		);
-		this.fs.copyTpl(
-			this.templatePath('src/shared/styles/global/_base.scss.ejs'),
-			'src/shared/styles/global/_base.scss',
-			this
-		);
-		this.fs.copyTpl(
 			this.templatePath('src/shared/styles/global/_vars.scss.ejs'),
 			'src/shared/styles/global/_vars.scss',
 			this
 		);
+
 		this.fs.copyTpl(
-			this.templatePath('src/shared/styles/_styles.scss.ejs'),
-			'src/shared/styles/styles.scss',
+			this.templatePath('src/shared/styles/_shared.scss'),
+			'src/shared/styles/_shared.scss',
+			this
+		);
+
+		// App
+		this.fs.copyTpl(
+			this.templatePath('src/core/app/_print.scss'),
+			'src/core/app/_print.scss',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('src/core/app/universal.scss'),
+			'src/core/app/universal.scss',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('src/core/app/_app.scss.ejs'),
+			'src/core/app/_app.scss',
+			this
+		);
+		this.fs.copyTpl(
+			this.templatePath('src/core/app/_main.scss.ejs'),
+			'src/core/app/main.scss',
 			this
 		);
 	}
