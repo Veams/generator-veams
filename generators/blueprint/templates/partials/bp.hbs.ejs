@@ -1,10 +1,3 @@
----
-type: <%= bpTypeName %>
-contextData: "<%= filename %>-bp"
-layout: "lyt-docs"
-publish: false
----
-
 <% if (bpTypeName === 'component') { %>
 <div class="c-<%= filename %>{{#if settings.<%= bpName %>ContextClass}}--{{settings.<%= bpName %>ContextClass}}{{else}}--default{{/if}}{{#if settings.<%= bpName %>Classes}} {{settings.<%= bpName %>Classes}}{{/if}}"
      data-css="c-<%= filename %>"<% if(bpWithJs) { %>

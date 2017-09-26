@@ -1,8 +1,4 @@
-
 ## INSERTPOINTS
-
-### Folder Path:
-<%= path %>/<%= filename %>
 
 ### Include: Page
 
@@ -16,29 +12,8 @@
 {{/with}}
 {{! @INSERT :: END }}
 ```
-
-### Include: SCSS
-
-``` scss
-// @INSERT :: START @tag: scss-import //
-@import "<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %>s<% } %>/_<%= bpTypePrefix %><%= filename %>";
-// @INSERT :: END
-// @INSERT :: START @tag: scss-self-contained-import //
-@import "../templating/partials/<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %>s<% } %>/<%= filename %>/scss/_<%= bpTypePrefix %><%= filename %>";
-// @INSERT :: END
-```
 <% if(bpWithJs) {%>
 ### Include: JavaScript
-
-#### Import
-``` js
-// @INSERT :: START @tag: js-import //
-import <%= bpJsName %> from './modules/<%= filename %>/<%= filename %>';
-// @INSERT :: END
-// @INSERT :: START @tag: js-self-contained-import //
-import <%= bpJsName %> from '../templating/partials/<% if (bpTypeName === 'utility') { %>utilities<% } else { %><%= bpTypeName %>s<% } %>/<%= filename %>/js/<%= filename %>';
-// @INSERT :: END
-```
 
 #### Initializing in Veams V2
 ``` js
