@@ -153,22 +153,27 @@ exports.save = function (props) {
 	this.name = this.options.name ? this.options.name : props.bpName;
 	this.scaffoldPath = helpers.getPath(this.name);
 	this.scaffoldSrcPath = this.options.config ? configFile.paths.src : 'src';
-
-	if (this.scaffoldPath.length > 1) {
-		this.name = path.basename(this.name);
-		this.scaffoldPath = path.join(this.scaffoldSrcPath, this.scaffoldPath);
-	} else {
-		this.scaffoldPath = this.scaffoldSrcPath + '/'
-	}
-
-
-	this.filename = helpers.hyphenate(this.name);
-	this.bpName = helpers.toCamelCase(this.name);
 	this.bpTypeName = props.bpTypeName === 'global' ? '' : props.bpTypeName;
 	this.bpTypePrefix = this.bpTypeName ? prefixer(cutter(this.bpTypeName)) : '';
 	this.customTypeName = props.customTypeName || false;
 	this.customTypePrefix = props.customTypePrefix || false;
 	this.bpWrapWith = props.bpWithWrapWith;
+
+	if (this.scaffoldPath.length > 1) {
+		this.name = path.basename(this.name);
+		this.scaffoldPath = path.join(this.scaffoldSrcPath, this.scaffoldPath);
+	} else {
+		let currentPath = 'src';
+
+		if (this.options.config) {
+			currentPath = this.options.config.paths[this.bpTypeName] || this.options.config.paths[this.customTypeName] || currentPath;
+		}
+
+		this.scaffoldPath = `${this.scaffoldSrcPath}/${currentPath}`;
+	}
+
+	this.filename = helpers.hyphenate(this.name);
+	this.bpName = helpers.toCamelCase(this.name);
 	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
 	this.bpWithJs = props.bpWithJs || false;
 	this.bpAdditionalFiles = props.bpAdditionalFiles || [];
@@ -211,7 +216,6 @@ exports.setup = function () {
 	this.rootFolderPath = this.path + '/' + this.filename + '/';
 
 
-
 	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.options.paths.blueprints.data : 'data/bp.json.ejs';
 	this.dataFileExtension = path.extname(helpers.deleteFileExtension(this.dataFile));
 
@@ -233,6 +237,12 @@ exports.setup = function () {
 
 
 exports.scaffold = function () {
+	this.fs.copyTpl(
+		this.templatePath('usage/settings.json.ejs'),
+		this.rootFolderPath + `${this.filename}.settings.json`,
+		this
+	);
+
 	this.fs.copyTpl(
 		this.templatePath(this.dataFile),
 		this.dataPath + this.filename + '-bp' + this.dataFileExtension,
