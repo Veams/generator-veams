@@ -5,7 +5,6 @@ const helpers = require('../lib/helpers');
 const config = require('../lib/config');
 const configFile = helpers.getProjectConfig();
 const types = [
-	'block',
 	'component',
 	'utility'
 ];
@@ -91,18 +90,13 @@ exports.questions = function () {
 		// }
 	]);
 
-	if (!this.options.component && !this.options.block && !this.options.utility && !this.options.custom) {
+	if (!this.options.component && !this.options.utility && !this.options.custom) {
 		prompts = prompts.concat([
 			{
 				name: 'bpTypeName',
 				type: 'list',
 				message: 'What type is your blueprint?',
 				choices: [
-					{
-						name: 'block',
-						value: 'block',
-						checked: false
-					},
 					{
 						name: 'component',
 						value: 'component',
@@ -157,8 +151,19 @@ exports.save = function (props) {
 	};
 
 	this.name = this.options.name ? this.options.name : props.bpName;
-	this.filename = helpers.hyphenate(this.options.name);
-	this.bpName = helpers.toCamelCase(this.options.name);
+	this.scaffoldPath = helpers.getPath(this.name);
+	this.scaffoldSrcPath = this.options.config ? configFile.paths.src : 'src';
+
+	if (this.scaffoldPath.length > 1) {
+		this.name = path.basename(this.name);
+		this.scaffoldPath = path.join(this.scaffoldSrcPath, this.scaffoldPath);
+	} else {
+		this.scaffoldPath = this.scaffoldSrcPath + '/'
+	}
+
+
+	this.filename = helpers.hyphenate(this.name);
+	this.bpName = helpers.toCamelCase(this.name);
 	this.bpTypeName = props.bpTypeName === 'global' ? '' : props.bpTypeName;
 	this.bpTypePrefix = this.bpTypeName ? prefixer(cutter(this.bpTypeName)) : '';
 	this.customTypeName = props.customTypeName || false;
@@ -168,18 +173,16 @@ exports.save = function (props) {
 	this.bpWithJs = props.bpWithJs || false;
 	this.bpAdditionalFiles = props.bpAdditionalFiles || [];
 	this.customFolder = this.customTypeName || false;
+	this.cleanPathType = this.bpTypeName === 'utility' ? 'utilitie' : this.bpTypeName;
+
 
 	if (this.options.component ||
-		this.options.block ||
 		this.options.utility ||
 		this.options.custom ||
 		this.bpTypeName === 'custom') {
 		if (this.options.component) {
 			this.bpTypeName = 'component';
 			this.bpTypePrefix = 'c-';
-		} else if (this.options.block) {
-			this.bpTypeName = 'block';
-			this.bpTypePrefix = 'b-';
 		} else if (this.options.utility) {
 			this.bpTypeName = 'utility';
 			this.bpTypePrefix = 'u-';
@@ -188,6 +191,7 @@ exports.save = function (props) {
 			this.bpTypePrefix = prefixer(this.customTypePrefix);
 		}
 	}
+
 };
 
 exports.setup = function () {
@@ -199,40 +203,14 @@ exports.setup = function () {
 			configFile.options.paths.blueprints[type]
 	};
 
-	this.folderStructure = 'self-contained';
-	this.path = '.';
-	this.jsPath = this.path + '/' + this.filename + '/js/';
-	this.scssPath = this.path + '/' + this.filename + '/scss/';
-	this.partialsPath = this.path + '/' + this.filename + '/partials/';
-	this.dataPath = this.path + '/' + this.filename + '/data/';
+	this.path = this.scaffoldPath;
+	this.jsPath = this.path + '/' + this.filename + '/';
+	this.scssPath = this.path + '/' + this.filename + '/';
+	this.partialsPath = this.path + '/' + this.filename + '/';
+	this.dataPath = this.path + '/' + this.filename + '/';
 	this.rootFolderPath = this.path + '/' + this.filename + '/';
 
-	if (this.options.config) {
-		this.configFile = configFile.options;
-		this.folderStructure = configFile.options.folderStructure || this.folderStructure;
-		this.keepScaffoldStructure = configFile.blueprints && configFile.blueprints.keepScaffoldStructure;
-		this.path = types.indexOf(this.bpTypeName) !== -1 ? this.configFile.paths[this.bpTypeName] : this.configFile.paths['partials'] + '/' + this.bpTypeName + 's';
 
-		if (this.folderStructure !== 'self-contained') {
-			if (this.bpTypeName === 'utility') {
-				this.scssFolder = 'utilitie'
-			} else {
-				this.scssFolder = this.bpTypeName
-			}
-
-			this.rootFolderPath = this.path + '/' + this.filename + '/';
-			this.jsPath = this.configFile.paths.js + '/' + 'modules/' + this.filename + '/';
-			this.scssPath = this.configFile.paths.scss + '/' + this.scssFolder + 's/';
-			this.partialsPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/partials/' : this.rootFolderPath;
-			this.dataPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/data/' : this.rootFolderPath;
-		} else {
-			this.rootFolderPath = this.path + '/' + this.filename + '/';
-			this.jsPath = this.path + '/' + this.filename + '/js/';
-			this.scssPath = this.path + '/' + this.filename + '/scss/';
-			this.partialsPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/partials/' : this.rootFolderPath;
-			this.dataPath = this.keepScaffoldStructure ? this.path + '/' + this.filename + '/data/' : this.rootFolderPath;
-		}
-	}
 
 	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.options.paths.blueprints.data : 'data/bp.json.ejs';
 	this.dataFileExtension = path.extname(helpers.deleteFileExtension(this.dataFile));

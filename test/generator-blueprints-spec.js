@@ -37,8 +37,55 @@ describe('Blueprints generator', function () {
 				tmpPath + '/INSERTPOINTS.md',
 				tmpPath + '/data/' + answers.bpName + '-bp.json',
 				tmpPath + '/partials/c-' + answers.bpName + '.hbs',
-				tmpPath + '/scss/_c-' + answers.bpName + '.scss',
-				tmpPath + '/js/' + answers.bpName + '.js'
+				tmpPath + '/_c-' + answers.bpName + '.scss',
+				tmpPath + '/' + answers.bpName + '.js'
+			];
+			assert.file(expected);
+		});
+
+		it('adds its namespace to all files', function () {
+			assert.fileContent([
+				[tmpPath + '/README.md', /# slider/],
+				[tmpPath + '/data/' + answers.bpName + '-bp.json', /\"sliderContextClass\"/],
+				[tmpPath + '/partials/c-' + answers.bpName + '.hbs', /c-slider/],
+				[tmpPath + '/scss/_c-' + answers.bpName + '.scss', /slider/],
+				[tmpPath + '/js/' + answers.bpName + '.js', /Slider/]
+			]);
+		});
+
+	});
+
+	describe('when name includes path', function () {
+		const answers = {
+			bpName: 'src/shared/components/slider',
+			bpWithWrapWith: false,
+			bpWithJs: true,
+			bpTypeName: 'component',
+			bpTypePrefix: 'c'
+		};
+
+		const tmpPath = './src/shared/components/' + answers.bpName;
+
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../generators/blueprint'))
+				.inDir(path.join(__dirname, 'tmp'))
+				.withOptions({
+					'skip-install': true,
+					'skip-welcome-message': true
+				})
+				.withArguments(answers.bpName)
+				.withPrompts(answers)
+				.on('end', done);
+		});
+
+		it('creates files', function () {
+			const expected = [
+				tmpPath + '/README.md',
+				tmpPath + '/INSERTPOINTS.md',
+				tmpPath + '/data/' + answers.bpName + '-bp.json',
+				tmpPath + '/partials/c-' + answers.bpName + '.hbs',
+				tmpPath + '/_c-' + answers.bpName + '.scss',
+				tmpPath + '/' + answers.bpName + '.js'
 			];
 			assert.file(expected);
 		});
@@ -80,7 +127,7 @@ describe('Blueprints generator', function () {
 		it('adds prefix to files', function () {
 			const expected = [
 				tmpPath + '/partials/c-' + answers.bpName + '.hbs',
-				tmpPath + '/scss/_c-' + answers.bpName + '.scss'
+				tmpPath + '/_c-' + answers.bpName + '.scss'
 			];
 			assert.file(expected);
 		});
@@ -90,46 +137,6 @@ describe('Blueprints generator', function () {
 				[tmpPath + '/INSERTPOINTS.md', /component/],
 				[tmpPath + '/partials/c-' + answers.bpName + '.hbs', /c-slider/],
 				[tmpPath + '/scss/_c-' + answers.bpName + '.scss', /component/]
-			]);
-		});
-
-	});
-
-	describe('when blueprints type is block', function () {
-		const answers = {
-			bpName: 'test-block',
-			bpWithWrapWith: false,
-			bpWithJs: false
-		};
-
-		const tmpPath = './' + answers.bpName;
-
-		beforeEach(function (done) {
-			helpers.run(path.join(__dirname, '../generators/blueprint'))
-				.inDir(path.join(__dirname, 'tmp'))
-				.withOptions({
-					'block': true,
-					'skip-install': true,
-					'skip-welcome-message': true
-				})
-				.withArguments(answers.bpName)
-				.withPrompts(answers)
-				.on('end', done);
-		});
-
-		it('adds prefix to files', function () {
-			const expected = [
-				tmpPath + '/partials/b-' + answers.bpName + '.hbs',
-				tmpPath + '/scss/_b-' + answers.bpName + '.scss'
-			];
-			assert.file(expected);
-		});
-
-		it('adds its type to all files', function () {
-			assert.fileContent([
-				[tmpPath + '/INSERTPOINTS.md', /block/],
-				[tmpPath + '/partials/b-' + answers.bpName + '.hbs', /b-test-block/],
-				[tmpPath + '/scss/_b-' + answers.bpName + '.scss', /block/]
 			]);
 		});
 
@@ -160,7 +167,7 @@ describe('Blueprints generator', function () {
 		it('adds prefix to files', function () {
 			const expected = [
 				tmpPath + '/partials/u-' + answers.bpName + '.hbs',
-				tmpPath + '/scss/_u-' + answers.bpName + '.scss'
+				tmpPath + '/_u-' + answers.bpName + '.scss'
 			];
 			assert.file(expected);
 		});
@@ -169,7 +176,7 @@ describe('Blueprints generator', function () {
 			assert.fileContent([
 				[tmpPath + '/INSERTPOINTS.md', /utility/],
 				[tmpPath + '/partials/u-' + answers.bpName + '.hbs', /u-test-util/],
-				[tmpPath + '/scss/_u-' + answers.bpName + '.scss', /utility/]
+				[tmpPath + '/_u-' + answers.bpName + '.scss', /utility/]
 			]);
 		});
 
@@ -202,7 +209,7 @@ describe('Blueprints generator', function () {
 		it('adds prefix to files', function () {
 			const expected = [
 				tmpPath + '/partials/k-' + answers.bpName + '.hbs',
-				tmpPath + '/scss/_k-' + answers.bpName + '.scss'
+				tmpPath + '/_k-' + answers.bpName + '.scss'
 			];
 			assert.file(expected);
 		});
@@ -211,7 +218,7 @@ describe('Blueprints generator', function () {
 			assert.fileContent([
 				[tmpPath + '/INSERTPOINTS.md', /custom/],
 				[tmpPath + '/partials/k-' + answers.bpName + '.hbs', /k-test-custom/],
-				[tmpPath + '/scss/_k-' + answers.bpName + '.scss', /collection/]
+				[tmpPath + '/_k-' + answers.bpName + '.scss', /collection/]
 			]);
 		});
 
@@ -309,7 +316,7 @@ describe('Blueprints generator', function () {
 
 		it('adds upper camel case name', function () {
 			assert.fileContent([
-				[tmpPath + '/js/' + answers.bpName + '.js', /TestModule/]
+				[tmpPath + '/' + answers.bpName + '.js', /TestModule/]
 			]);
 		});
 
