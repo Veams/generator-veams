@@ -38,7 +38,7 @@ exports.questions = function () {
 				name: 'bpName',
 				message: 'Define a blueprint name:',
 				validate: function (answer) {
-					var done = this.async();
+					const done = this.async();
 
 					if (!answer) {
 						done("Please add a blueprint name!");
@@ -158,28 +158,10 @@ exports.save = function (props) {
 	this.customTypeName = props.customTypeName || false;
 	this.customTypePrefix = props.customTypePrefix || false;
 	this.bpWrapWith = props.bpWithWrapWith;
-
-	if (this.scaffoldPath.length > 1) {
-		this.name = path.basename(this.name);
-		this.scaffoldPath = path.join(this.scaffoldSrcPath, this.scaffoldPath);
-	} else {
-		let currentPath = 'src';
-
-		if (this.options.config) {
-			currentPath = this.options.config.paths[this.bpTypeName] || this.options.config.paths[this.customTypeName] || currentPath;
-		}
-
-		this.scaffoldPath = `${this.scaffoldSrcPath}/${currentPath}`;
-	}
-
-	this.filename = helpers.hyphenate(this.name);
-	this.bpName = helpers.toCamelCase(this.name);
-	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
 	this.bpWithJs = props.bpWithJs || false;
 	this.bpAdditionalFiles = props.bpAdditionalFiles || [];
 	this.customFolder = this.customTypeName || false;
 	this.cleanPathType = this.bpTypeName === 'utility' ? 'utilitie' : this.bpTypeName;
-
 
 	if (this.options.component ||
 		this.options.utility ||
@@ -197,15 +179,32 @@ exports.save = function (props) {
 		}
 	}
 
+	if (this.scaffoldPath.length > 1) {
+		this.name = path.basename(this.name);
+		this.scaffoldPath = path.join(this.scaffoldSrcPath, this.scaffoldPath);
+	} else {
+		let currentPath = this.scaffoldSrcPath;
+
+		if (this.options.config) {
+			console.log('type: ', this.bpTypeName);
+			currentPath = configFile.paths[this.bpTypeName] || configFile.paths[this.customTypeName] || currentPath;
+		}
+
+		this.scaffoldPath = `${currentPath}`;
+	}
+
+	this.filename = helpers.hyphenate(this.name);
+	this.bpName = helpers.toCamelCase(this.name);
+	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
 };
 
 exports.setup = function () {
 	let checkConfig = function (type) {
 		return configFile &&
-			configFile.options &&
-			configFile.options.paths &&
-			configFile.options.paths.blueprints &&
-			configFile.options.paths.blueprints[type]
+			configFile &&
+			configFile.paths &&
+			configFile.paths.blueprints &&
+			configFile.paths.blueprints[type]
 	};
 
 	this.path = this.scaffoldPath;
@@ -216,22 +215,22 @@ exports.setup = function () {
 	this.rootFolderPath = this.path + '/' + this.filename + '/';
 
 
-	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.options.paths.blueprints.data : 'data/bp.json.ejs';
+	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.paths.blueprints.data : 'data/bp.json.ejs';
 	this.dataFileExtension = path.extname(helpers.deleteFileExtension(this.dataFile));
 
-	this.tplFile = checkConfig('partial') ? process.cwd() + '/' + configFile.options.paths.blueprints.partial : 'partials/bp.hbs.ejs';
+	this.tplFile = checkConfig('partial') ? process.cwd() + '/' + configFile.paths.blueprints.partial : 'partials/bp.hbs.ejs';
 	this.tplFileExtension = path.extname(helpers.deleteFileExtension(this.tplFile));
 
-	this.styleFile = checkConfig('style') ? process.cwd() + '/' + configFile.options.paths.blueprints.style : 'scss/bp.scss.ejs';
+	this.styleFile = checkConfig('style') ? process.cwd() + '/' + configFile.paths.blueprints.style : 'scss/bp.scss.ejs';
 	this.styleFileExtension = path.extname(helpers.deleteFileExtension(this.styleFile));
 
-	this.usageFile = checkConfig('readme') ? process.cwd() + '/' + configFile.options.paths.blueprints.readme : 'usage/README.md.ejs';
+	this.usageFile = checkConfig('readme') ? process.cwd() + '/' + configFile.paths.blueprints.readme : 'usage/README.md.ejs';
 	this.usageFileExtension = path.extname(helpers.deleteFileExtension(this.usageFile));
 
-	this.insertpointsFile = checkConfig('insertpoints') ? process.cwd() + '/' + configFile.options.paths.blueprints.insertpoints : 'usage/INSERTPOINTS.md.ejs';
+	this.insertpointsFile = checkConfig('insertpoints') ? process.cwd() + '/' + configFile.paths.blueprints.insertpoints : 'usage/INSERTPOINTS.md.ejs';
 	this.insertpointsFileExtension = path.extname(helpers.deleteFileExtension(this.usageFile));
 
-	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.options.paths.blueprints.js : 'js/bp.js.ejs';
+	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.paths.blueprints.js : 'js/bp.js.ejs';
 	this.jsFileExtension = path.extname(helpers.deleteFileExtension(this.jsFile));
 };
 
