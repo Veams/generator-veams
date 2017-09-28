@@ -141,7 +141,6 @@ exports.questions = function () {
 	return prompts;
 };
 
-
 exports.save = function (props) {
 	const cutter = (str) => {
 		return str ? str.charAt(0) : '';
@@ -208,10 +207,10 @@ exports.setup = function () {
 	};
 
 	this.path = this.scaffoldPath;
-	this.jsPath = this.path + '/' + this.filename + '/';
-	this.scssPath = this.path + '/' + this.filename + '/';
-	this.partialsPath = this.path + '/' + this.filename + '/';
-	this.dataPath = this.path + '/' + this.filename + '/';
+	this.jsPath = this.path + '/' + this.filename + '/scripts/';
+	this.scssPath = this.path + '/' + this.filename + '/styles/';
+	this.partialsPath = this.path + '/' + this.filename + '/templates/';
+	this.dataPath = this.path + '/' + this.filename + '/data/';
 	this.rootFolderPath = this.path + '/' + this.filename + '/';
 
 
