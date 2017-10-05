@@ -2,22 +2,27 @@
 	"config": {
 		"src": "configs/_grunt/*.js"
 	},
+	"importFiles": [
+		"core/app/main.js",
+		"core/apm/_main.scss"
+	],
+	"insertpoints": [
+		"core/app/main.js",
+		"shared/layouts",
+		"core/pages",
+		"shared/scripts/events.js"
+	],
 	"paths": {
 		"config": "configs",
 		"server": "server",
 		"src": "src",
-		"app": "app"
+		"app": "app",
+		"component": "src/shared/components",
+		"utility": "src/shared/utilities"
 	},
 	"ports": {
 		"app": 3000,
 		"server": 2999
 	},
-	"startPath": "index.html",
-	"insertpointsFiles": [
-		"shared/layouts",
-		"core/pages",
-		"core/app/main.js",
-		"shared/scripts/events.js",
-		"shared/styles/styles.scss"
-	]
+	"startPath": "index.html"
 }

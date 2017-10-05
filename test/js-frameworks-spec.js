@@ -37,7 +37,7 @@ describe('JavaScript Frameworks', function () {
 		});
 
 		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'shared/scripts/app.js', /veams-query/);
+			assert.fileContent(srcPath + 'core/app/scripts/app.js', /veams-query/);
 		});
 
 		it('adds references in browserify task', function () {
@@ -72,7 +72,7 @@ describe('JavaScript Frameworks', function () {
 		});
 
 		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'shared/scripts/app.js', /jquery/);
+			assert.fileContent(srcPath + 'core/app/scripts/app.js', /jquery/);
 		});
 	});
 
@@ -97,75 +97,12 @@ describe('JavaScript Frameworks', function () {
 				.on('end', done);
 		});
 
-		it('adds the package to bower.json and package.json', function () {
-			assert.noFileContent('bower.json', /veams-query/);
+		it('adds the package to package.json', function () {
 			assert.fileContent('package.json', /veams-query/);
 		});
 
 		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'shared/scripts/app.js', /veams-query/);
+			assert.fileContent(srcPath + 'core/app/scripts/app.js', /veams-query/);
 		});
 	});
-
-	describe('when Exoskeleton is selected', function () {
-		const answers = require('../test_helpers/prompt-answer-factory')({
-			'gruntModules': [
-				'grunt-browserify'
-			],
-			'jsLibs': [
-				'exoskeleton'
-			]
-		});
-
-		beforeEach(function (done) {
-			helpers.run(path.join(__dirname, '../generators/app'))
-				.inDir(path.join(__dirname, 'tmp'))
-				.withOptions({
-					'skip-install': true,
-					'skip-welcome-message': true
-				})
-				.withPrompts(answers)
-				.on('end', done);
-		});
-
-		it('adds the package to bower.json and package.json', function () {
-			assert.noFileContent('bower.json', /exoskeleton/);
-			assert.fileContent('package.json', /exoskeleton/);
-		});
-
-		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'shared/scripts/app.js', /exoskeleton/);
-		});
-	});
-	describe('when Backbone is selected', function () {
-		const answers = require('../test_helpers/prompt-answer-factory')({
-			'gruntModules': [
-				'grunt-browserify'
-			],
-			'jsLibs': [
-				'backbone'
-			]
-		});
-
-		beforeEach(function (done) {
-			helpers.run(path.join(__dirname, '../generators/app'))
-				.inDir(path.join(__dirname, 'tmp'))
-				.withOptions({
-					'skip-install': true,
-					'skip-welcome-message': true
-				})
-				.withPrompts(answers)
-				.on('end', done);
-		});
-
-		it('adds the package to bower.json and package.json', function () {
-			assert.noFileContent('bower.json', /backbone/);
-			assert.fileContent('package.json', /backbone/);
-		});
-
-		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'shared/scripts/app.js', /backbone/);
-		});
-	});
-
 });

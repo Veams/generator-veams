@@ -15,16 +15,14 @@ exports.construct = function () {
 		required: true
 	});
 
-	this.argument('customFolder', {
+	this.argument('path', {
 		type: String,
-		required: false,
-		optional: true
+		required: true
 	});
 
 	// This method adds support for flags
 	this.option('config');
 	this.option('component');
-	this.option('tmp');
 };
 
 exports.questions = function () {
@@ -149,9 +147,8 @@ exports.save = function (props) {
 		return str ? str + '-' : '';
 	};
 
+	this.path = this.options.path;
 	this.name = this.options.name ? this.options.name : props.bpName;
-	this.scaffoldPath = helpers.getPath(this.name);
-	this.scaffoldSrcPath = this.options.config ? configFile.paths.src : 'src';
 	this.bpTypeName = props.bpTypeName === 'global' ? '' : props.bpTypeName;
 	this.bpTypePrefix = this.bpTypeName ? prefixer(cutter(this.bpTypeName)) : '';
 	this.customTypeName = props.customTypeName || false;
@@ -159,7 +156,6 @@ exports.save = function (props) {
 	this.bpWrapWith = props.bpWithWrapWith;
 	this.bpWithJs = props.bpWithJs || false;
 	this.bpAdditionalFiles = props.bpAdditionalFiles || [];
-	this.customFolder = this.customTypeName || false;
 	this.cleanPathType = this.bpTypeName === 'utility' ? 'utilitie' : this.bpTypeName;
 
 	if (this.options.component ||
@@ -178,20 +174,6 @@ exports.save = function (props) {
 		}
 	}
 
-	if (this.scaffoldPath.length > 1) {
-		this.name = path.basename(this.name);
-		this.scaffoldPath = path.join(this.scaffoldSrcPath, this.scaffoldPath);
-	} else {
-		let currentPath = this.scaffoldSrcPath;
-
-		if (this.options.config) {
-			console.log('type: ', this.bpTypeName);
-			currentPath = configFile.paths[this.bpTypeName] || configFile.paths[this.customTypeName] || currentPath;
-		}
-
-		this.scaffoldPath = `${currentPath}`;
-	}
-
 	this.filename = helpers.hyphenate(this.name);
 	this.bpName = helpers.toCamelCase(this.name);
 	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
@@ -206,7 +188,6 @@ exports.setup = function () {
 			configFile.paths.blueprints[type]
 	};
 
-	this.path = this.scaffoldPath;
 	this.jsPath = this.path + '/' + this.filename + '/scripts/';
 	this.scssPath = this.path + '/' + this.filename + '/styles/';
 	this.partialsPath = this.path + '/' + this.filename + '/templates/';
@@ -217,10 +198,10 @@ exports.setup = function () {
 	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.paths.blueprints.data : 'data/bp.json.ejs';
 	this.dataFileExtension = path.extname(helpers.deleteFileExtension(this.dataFile));
 
-	this.tplFile = checkConfig('partial') ? process.cwd() + '/' + configFile.paths.blueprints.partial : 'partials/bp.hbs.ejs';
+	this.tplFile = checkConfig('partial') ? process.cwd() + '/' + configFile.paths.blueprints.partial : 'templates/bp.hbs.ejs';
 	this.tplFileExtension = path.extname(helpers.deleteFileExtension(this.tplFile));
 
-	this.styleFile = checkConfig('style') ? process.cwd() + '/' + configFile.paths.blueprints.style : 'scss/bp.scss.ejs';
+	this.styleFile = checkConfig('style') ? process.cwd() + '/' + configFile.paths.blueprints.style : 'styles/bp.scss.ejs';
 	this.styleFileExtension = path.extname(helpers.deleteFileExtension(this.styleFile));
 
 	this.usageFile = checkConfig('readme') ? process.cwd() + '/' + configFile.paths.blueprints.readme : 'usage/README.md.ejs';
@@ -229,7 +210,7 @@ exports.setup = function () {
 	this.insertpointsFile = checkConfig('insertpoints') ? process.cwd() + '/' + configFile.paths.blueprints.insertpoints : 'usage/INSERTPOINTS.md.ejs';
 	this.insertpointsFileExtension = path.extname(helpers.deleteFileExtension(this.usageFile));
 
-	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.paths.blueprints.js : 'js/bp.js.ejs';
+	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.paths.blueprints.js : 'scripts/bp.js.ejs';
 	this.jsFileExtension = path.extname(helpers.deleteFileExtension(this.jsFile));
 };
 

@@ -12,7 +12,6 @@ describe('Veams Framework', function () {
 
 	describe('when it is installed', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			'templateEngine': 'assemble',
 			'veamsPackages': true
 		});
 
@@ -62,22 +61,22 @@ describe('Veams Framework', function () {
 			assert.fileContent('configs/config.js', /'shared\/scripts\/events.js'/);
 		});
 
-		it('adds app.js, main.js and config.js to js folder', function () {
+		it('adds app.js, main.js and events.js to specific folders', function () {
 			assert.file([
-				srcPath + 'shared/scripts/app.js',
+				srcPath + 'core/app/scripts/app.js',
 				srcPath + 'shared/scripts/events.js',
-				srcPath + 'shared/scripts/main.js'
+				srcPath + 'core/app/scripts/main.js'
 			]);
 		});
 
 		it('adds references to app.js, main.js in js folder', function () {
-			assert.fileContent(srcPath + 'shared/scripts/app.js', /import Veams from/);
-			assert.fileContent(srcPath + 'shared/scripts/main.js', /import \{App, Veams\} from/);
+			assert.fileContent(srcPath + 'core/app/scripts/app.js', /import Veams from/);
+			assert.fileContent(srcPath + 'core/app/scripts/main.js', /import \{App, Veams\} from/);
 		});
 
 		it('adds _get-media.scss and import state to sass file', function () {
 			assert.file(srcPath + 'shared/styles/global/_get-media.scss');
-			assert.fileContent(srcPath + 'shared/styles/styles.scss', /@import \"global\/_get-media\"/);
+			assert.fileContent(srcPath + 'core/app/styles/main.scss', /@import \"..\/..\/shared\/styles\/global\/_get-media\"/);
 		});
 
 	});

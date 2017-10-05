@@ -236,23 +236,23 @@ module.exports = class extends Generator {
 
 		// App
 		this.fs.copyTpl(
-			this.templatePath('src/core/app/_print.scss'),
-			'src/core/app/_print.scss',
+			this.templatePath('src/core/app/styles/_print.scss'),
+			'src/core/app/styles/_print.scss',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('src/core/app/universal.scss'),
-			'src/core/app/universal.scss',
+			this.templatePath('src/core/app/styles/universal.scss'),
+			'src/core/app/styles/universal.scss',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('src/core/app/_app.scss.ejs'),
-			'src/core/app/_app.scss',
+			this.templatePath('src/core/app/styles/_app.scss.ejs'),
+			'src/core/app/styles/_app.scss',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('src/core/app/_main.scss.ejs'),
-			'src/core/app/main.scss',
+			this.templatePath('src/core/app/styles/_main.scss.ejs'),
+			'src/core/app/styles/main.scss',
 			this
 		);
 	}
