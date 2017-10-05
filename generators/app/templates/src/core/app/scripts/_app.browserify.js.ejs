@@ -56,7 +56,7 @@ Veams.onInitialize(() => {
 	Veams.use(VeamsMediaQueryHandler);
 
 
-	// Trigger global resize event
+	// Trigger global scroll event
 	window.onscroll = Veams.helpers.throttle((e) => {
 		Veams.Vent.trigger(Veams.EVENTS.scroll, e);
 	}, 200);
