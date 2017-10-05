@@ -9,8 +9,9 @@ describe('icons-workflow', function () {
 	const helperPath = 'configs/';
 
 	describe('when "Webfont" was chosen', function () {
+
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			'icons': [
+			icons: [
 				'webfont'
 			]
 		});

@@ -27,6 +27,7 @@ const templatingGenerator = require('../../generator-files/templating-generator'
 
 const taskRunnerPrompt = require('../../prompt-files/taskrunner');
 const iconsPrompt = require('../../prompt-files/icons');
+const cssPostProcessorsPrompt = require('../../prompt-files/css-post-processors');
 
 module.exports = class extends Generator {
 
@@ -74,6 +75,7 @@ module.exports = class extends Generator {
 			this.testAndQALibs = answers.testAndQALibs;
 			this.veamsPackages = answers.veamsPackages;
 			this.icons = answers.icons;
+			this.cssPostProcessors = answers.cssPostProcessors;
 
 			//save config to .yo-rc.json
 			this.config.set(answers);
@@ -101,6 +103,10 @@ module.exports = class extends Generator {
 
 		(!this.config.get('icons') || this.force) && this.questions.push(
 			iconsPrompt.questions.call(this)
+		);
+
+		(!this.config.get('cssPostProcessors') || this.force) && this.questions.push(
+			cssPostProcessorsPrompt.questions.call(this)
 		);
 
 		if (!this.config.get('templateEngine') || this.force) {
@@ -143,6 +149,7 @@ module.exports = class extends Generator {
 	_setup() {
 		taskRunnerPrompt.setup.call(this);
 		iconsPrompt.setup.call(this);
+		cssPostProcessorsPrompt.setup.call(this);
 		gruntGenerator.setup.call(this);
 		templatingGenerator.setup.call(this);
 		cssGenerator.setup.call(this);

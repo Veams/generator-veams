@@ -20,7 +20,9 @@ module.exports = function promptAnswerFactory(customAnswers) {
 		testAndQA: false,
 		testAndQALibs: [],
 		veamsPackages: false,
-		docs: []
+		docs: [],
+		icons: [],
+		cssPostProcessors: []
 	};
 
 	let custom = defaults;
