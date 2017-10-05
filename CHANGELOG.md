@@ -1,3 +1,6 @@
+### v8.3.1
+- Trigger global resize event from app.js
+
 ### v8.3.0
 - Add veams v5.0.1
 - Add veams plugins (vent, store, mixins, modules, templater, dom, media-query-handler, logger)
