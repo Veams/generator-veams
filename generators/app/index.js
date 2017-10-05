@@ -25,6 +25,7 @@ const templatingGenerator = require('../../generator-files/templating-generator'
  * Prompt files
  */
 
+const projectTypePrompt = require('../../prompt-files/project-type');
 const taskRunnerPrompt = require('../../prompt-files/taskrunner');
 const iconsPrompt = require('../../prompt-files/icons');
 const cssPostProcessorsPrompt = require('../../prompt-files/css-post-processors');
@@ -65,6 +66,7 @@ module.exports = class extends Generator {
 
 		return this.prompt(this.questions).then((answers) => {
 			this.projectName = answers.projectName || this.config.get('projectName');
+			this.projectType = answers.projectType;
 			this.taskRunner = answers.taskRunner;
 			this.gruntModules = answers.gruntModules || this.config.get('gruntModules');
 			this.templateEngine = answers.templateEngine || this.config.get('templateEngine');
@@ -90,6 +92,10 @@ module.exports = class extends Generator {
 			message: 'Your project name',
 			default: this.appname
 		});
+
+		(!this.config.get('projectType') || this.force) && this.questions.push(
+			projectTypePrompt.questions.call(this)
+		);
 
 		(!this.config.get('taskRunner') || this.force) && this.questions.push(
 			taskRunnerPrompt.questions.call(this)
@@ -147,6 +153,7 @@ module.exports = class extends Generator {
 	}
 
 	_setup() {
+		projectTypePrompt.setup.call(this);
 		taskRunnerPrompt.setup.call(this);
 		iconsPrompt.setup.call(this);
 		cssPostProcessorsPrompt.setup.call(this);
