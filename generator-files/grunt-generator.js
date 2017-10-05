@@ -31,7 +31,7 @@ exports.questions = function (obj) {
 				{name: 'grunt-contrib-requirejs'},
 				{name: 'grunt-contrib-uglify', checked: object.defaults},
 				{name: 'grunt-csscomb'},
-				{name: 'grunt-dr-svg-sprites', checked: object.defaults},
+				{name: 'grunt-dr-svg-sprites'},
 				{name: 'grunt-grunticon'},
 				{name: 'grunt-image-size-export'},
 				{name: 'grunt-includes'},

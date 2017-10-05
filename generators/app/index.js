@@ -6,6 +6,10 @@ const _ = require('lodash');
 const Generator = require('yeoman-generator');
 const helpers = require('../../lib/helpers');
 const configFile = require('../../lib/config');
+
+/**
+ * Scaffold files
+ */
 const taskRunnerGenerator = require('../../generator-files/taskrunner-generator');
 const cleanPackages = require('../../generator-files/clean-packages');
 const jsGenerator = require('../../generator-files/js-generator');
@@ -16,6 +20,13 @@ const gruntGenerator = require('../../generator-files/grunt-generator');
 const veamsGenerator = require('../../generator-files/veams-generator');
 const docsGenerator = require('../../generator-files/generator-docs');
 const templatingGenerator = require('../../generator-files/templating-generator');
+
+/**
+ * Prompt files
+ */
+
+const taskRunnerPrompt = require('../../prompt-files/taskrunner');
+const iconsPrompt = require('../../prompt-files/icons');
 
 module.exports = class extends Generator {
 
@@ -62,6 +73,7 @@ module.exports = class extends Generator {
 			this.testAndQA = answers.testAndQA;
 			this.testAndQALibs = answers.testAndQALibs;
 			this.veamsPackages = answers.veamsPackages;
+			this.icons = answers.icons;
 
 			//save config to .yo-rc.json
 			this.config.set(answers);
@@ -78,14 +90,18 @@ module.exports = class extends Generator {
 		});
 
 		(!this.config.get('taskRunner') || this.force) && this.questions.push(
-			taskRunnerGenerator.questions.call(this)
+			taskRunnerPrompt.questions.call(this)
 		);
 
-		if (!this.config.get('gruntModules') || this.force) {
-			this.questions = this.questions.concat(
-				gruntGenerator.questions.call(this)
-			);
-		}
+		/*if (!this.config.get('gruntModules') || this.force) {
+		 this.questions = this.questions.concat(
+		 gruntGenerator.questions.call(this)
+		 );
+		 }*/
+
+		(!this.config.get('icons') || this.force) && this.questions.push(
+			iconsPrompt.questions.call(this)
+		);
 
 		if (!this.config.get('templateEngine') || this.force) {
 			this.questions = this.questions.concat(
@@ -125,7 +141,8 @@ module.exports = class extends Generator {
 	}
 
 	_setup() {
-		taskRunnerGenerator.setup.call(this);
+		taskRunnerPrompt.setup.call(this);
+		iconsPrompt.setup.call(this);
 		gruntGenerator.setup.call(this);
 		templatingGenerator.setup.call(this);
 		cssGenerator.setup.call(this);
@@ -286,7 +303,8 @@ module.exports = class extends Generator {
 				if (error) {
 					this.log(`… or alternatively run ${chalk.yellow('npm install')} instead.`);
 				} else {
-					this.log(`That’s it. Start your project with ${chalk.green('npm run start')} or ${chalk.green('yarn start')}!`);
+					this.log(`That’s it. Start your project with ${chalk.green('npm run start')} or ${chalk.green(
+						'yarn start')}!`);
 				}
 				// Emit an event that all dependencies are installed
 				this.emit(configFile.events.depsIntalled);
@@ -298,9 +316,12 @@ module.exports = class extends Generator {
 		let _this = this;
 
 		this.on(configFile.events.end, () => {
-			fs.rename(path.join(this.destinationRoot(), '.yo-rc.json'), path.join(this.destinationRoot(), 'setup.json'), function (err) {
-				if (err) _this.log('ERROR: ' + err);
-			});
+			fs.rename(path.join(this.destinationRoot(), '.yo-rc.json'), path.join(this.destinationRoot(), 'setup.json'),
+				function (err) {
+					if (err) {
+						_this.log('ERROR: ' + err);
+					}
+				});
 		});
 	}
 };
