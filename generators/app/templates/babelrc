@@ -1,9 +1,19 @@
 {
-  "presets": [
-    "es2015",
-    "stage-1"
-  ],
-  "plugins": [
-    "transform-runtime"
-  ]
+	"env": {
+		"client": {
+			"presets": [
+				"es2015",
+				"stage-1"
+			],
+		},
+		"server": {
+			"presets": [
+				"es2015",
+				"stage-1"
+			],
+			"plugins": [
+				"transform-runtime"
+			]
+		}
+	}
 }

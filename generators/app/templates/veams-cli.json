@@ -1,16 +1,19 @@
 {
+	"blueprints": {
+		"prompts": "configs/blueprints/mpa-mixins.js"
+	},
 	"config": {
 		"src": "configs/_grunt/*.js"
 	},
-	"importFiles": [
-		"core/app/main.js",
-		"core/apm/_main.scss"
-	],
+	"importFiles": {
+		"style": "src/app.scss",
+		"script": "src/app.js"
+	},
 	"insertpoints": [
-		"core/app/main.js",
-		"shared/layouts",
-		"core/pages",
-		"shared/scripts/events.js"
+		"src/app.js",
+		"src/shared/layouts",
+		"src/core/pages",
+		"src/shared/scripts/events.js"
 	],
 	"paths": {
 		"config": "configs",

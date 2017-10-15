@@ -18,8 +18,9 @@ Main File For Imports
 @import "../../shared/styles/icons/**/*";
 
 // Globals
-@import "app";<% if (veamsPackages) { %>
-@import "../../shared/styles/global/_get-media";
+@import "core/styles/core";
+@import "core/styles/print";<% if (veamsPackages) { %>
+@import "shared/styles/global/_get-media";
 
 // Regions in Layouts
 @import "layouts/**/*";

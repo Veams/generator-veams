@@ -183,9 +183,9 @@ exports.setup = function () {
 	let checkConfig = function (type) {
 		return configFile &&
 			configFile &&
-			configFile.paths &&
-			configFile.paths.blueprints &&
-			configFile.paths.blueprints[type]
+			configFile &&
+			configFile.blueprints &&
+			configFile.blueprints[type]
 	};
 
 	this.jsPath = this.path + '/' + this.filename + '/scripts/';
@@ -195,22 +195,22 @@ exports.setup = function () {
 	this.rootFolderPath = this.path + '/' + this.filename + '/';
 
 
-	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.paths.blueprints.data : 'data/bp.json.ejs';
+	this.dataFile = checkConfig('data') ? process.cwd() + '/' + configFile.blueprints.data : 'data/bp.json.ejs';
 	this.dataFileExtension = path.extname(helpers.deleteFileExtension(this.dataFile));
 
-	this.tplFile = checkConfig('partial') ? process.cwd() + '/' + configFile.paths.blueprints.partial : 'templates/bp.hbs.ejs';
+	this.tplFile = checkConfig('partial') ? process.cwd() + '/' + configFile.blueprints.partial : 'templates/bp.hbs.ejs';
 	this.tplFileExtension = path.extname(helpers.deleteFileExtension(this.tplFile));
 
-	this.styleFile = checkConfig('style') ? process.cwd() + '/' + configFile.paths.blueprints.style : 'styles/bp.scss.ejs';
+	this.styleFile = checkConfig('style') ? process.cwd() + '/' + configFile.blueprints.style : 'styles/bp.scss.ejs';
 	this.styleFileExtension = path.extname(helpers.deleteFileExtension(this.styleFile));
 
-	this.usageFile = checkConfig('readme') ? process.cwd() + '/' + configFile.paths.blueprints.readme : 'usage/README.md.ejs';
+	this.usageFile = checkConfig('readme') ? process.cwd() + '/' + configFile.blueprints.readme : 'usage/README.md.ejs';
 	this.usageFileExtension = path.extname(helpers.deleteFileExtension(this.usageFile));
 
-	this.insertpointsFile = checkConfig('insertpoints') ? process.cwd() + '/' + configFile.paths.blueprints.insertpoints : 'usage/INSERTPOINTS.md.ejs';
+	this.insertpointsFile = checkConfig('insertpoints') ? process.cwd() + '/' + configFile.blueprints.insertpoints : 'usage/INSERTPOINTS.md.ejs';
 	this.insertpointsFileExtension = path.extname(helpers.deleteFileExtension(this.usageFile));
 
-	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.paths.blueprints.js : 'scripts/bp.js.ejs';
+	this.jsFile = checkConfig('js') ? process.cwd() + '/' + configFile.blueprints.js : 'scripts/bp.js.ejs';
 	this.jsFileExtension = path.extname(helpers.deleteFileExtension(this.jsFile));
 };
 

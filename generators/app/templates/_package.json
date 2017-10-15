@@ -7,10 +7,10 @@
 	},
 	"scripts": {
 		"test": "grunt test",
-		"build": "cross-env NODE_ENV=production grunt build",
-		"start-dev": "grunt serve",
+		"build": "cross-env NODE_ENV=production BABEL_ENV=client grunt build",
+		"start-dev": "BABEL_ENV=client grunt serve",
 		"start": "cross-env NODE_ENV=local npm-run-all --parallel server start-dev",
-		"server": "node_modules/.bin/nodemon server/index.js --config ./configs/tasks/nodemon.config.json"
+		"server": "cross-env BABEL_ENV=server node_modules/.bin/nodemon server/index.js --config ./configs/tasks/nodemon.config.json"
 	},
 	"dependencies": {
 		"jquery": "^3.2.1",

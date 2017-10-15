@@ -15,44 +15,12 @@
 <% if(bpWithJs) {%>
 ### Include: JavaScript
 
-#### Initializing in Veams V2
-``` js
-// @INSERT :: START @tag: js-init-v2 //
-/**
- * Init <%= bpJsName %>
- */
-Helpers.loadModule({
-	el: '[data-js-module="<%= filename %>"]',
-	module: <%= bpJsName %>,
-	context: context
-});
-// @INSERT :: END
-```
-
-#### Initializing in Veams V3
-``` js
-// @INSERT :: START @tag: js-init-v3 //
-/**
- * Init <%= bpJsName %>
- */
-Helpers.loadModule({
-	domName: '<%= filename %>',
-	module: <%= bpJsName %>,
-	context: context
-});
-// @INSERT :: END
-```
-
 #### Initializing in Veams V5
 ``` js
 // @INSERT :: START @tag: js-init-v5 //
-	,
-	{
 // Init <%= bpJsName %>
-		namespace: '<%= filename %>',
-		module: <%= bpJsName %>
-	}
-	// @INSERT :: END
+Veams.modules.add('<%= filename %>', <%= bpJsName %>);
+// @INSERT :: END
 ```
 
 #### Custom Events
