@@ -6,6 +6,10 @@ const _ = require('lodash');
 const Generator = require('yeoman-generator');
 const helpers = require('../../lib/helpers');
 const configFile = require('../../lib/config');
+
+/**
+ * Scaffold files
+ */
 const taskRunnerGenerator = require('../../generator-files/taskrunner-generator');
 const cleanPackages = require('../../generator-files/clean-packages');
 const jsGenerator = require('../../generator-files/js-generator');
@@ -16,6 +20,15 @@ const gruntGenerator = require('../../generator-files/grunt-generator');
 const veamsGenerator = require('../../generator-files/veams-generator');
 const docsGenerator = require('../../generator-files/generator-docs');
 const templatingGenerator = require('../../generator-files/templating-generator');
+
+/**
+ * Prompt files
+ */
+
+const projectTypePrompt = require('../../prompt-files/project-type');
+const taskRunnerPrompt = require('../../prompt-files/taskrunner');
+const iconsPrompt = require('../../prompt-files/icons');
+const cssPostProcessorsPrompt = require('../../prompt-files/css-post-processors');
 
 module.exports = class extends Generator {
 
@@ -53,6 +66,7 @@ module.exports = class extends Generator {
 
 		return this.prompt(this.questions).then((answers) => {
 			this.projectName = answers.projectName || this.config.get('projectName');
+			this.projectType = answers.projectType;
 			this.taskRunner = answers.taskRunner;
 			this.gruntModules = answers.gruntModules || this.config.get('gruntModules');
 			this.templateEngine = answers.templateEngine || this.config.get('templateEngine');
@@ -62,6 +76,8 @@ module.exports = class extends Generator {
 			this.testAndQA = answers.testAndQA;
 			this.testAndQALibs = answers.testAndQALibs;
 			this.veamsPackages = answers.veamsPackages;
+			this.icons = answers.icons;
+			this.cssPostProcessors = answers.cssPostProcessors;
 
 			//save config to .yo-rc.json
 			this.config.set(answers);
@@ -77,15 +93,27 @@ module.exports = class extends Generator {
 			default: this.appname
 		});
 
-		(!this.config.get('taskRunner') || this.force) && this.questions.push(
-			taskRunnerGenerator.questions.call(this)
+		(!this.config.get('projectType') || this.force) && this.questions.push(
+			projectTypePrompt.questions.call(this)
 		);
 
-		if (!this.config.get('gruntModules') || this.force) {
-			this.questions = this.questions.concat(
-				gruntGenerator.questions.call(this)
-			);
-		}
+		(!this.config.get('taskRunner') || this.force) && this.questions.push(
+			taskRunnerPrompt.questions.call(this)
+		);
+
+		/*if (!this.config.get('gruntModules') || this.force) {
+		 this.questions = this.questions.concat(
+		 gruntGenerator.questions.call(this)
+		 );
+		 }*/
+
+		(!this.config.get('icons') || this.force) && this.questions.push(
+			iconsPrompt.questions.call(this)
+		);
+
+		(!this.config.get('cssPostProcessors') || this.force) && this.questions.push(
+			cssPostProcessorsPrompt.questions.call(this)
+		);
 
 		if (!this.config.get('templateEngine') || this.force) {
 			this.questions = this.questions.concat(
@@ -125,7 +153,10 @@ module.exports = class extends Generator {
 	}
 
 	_setup() {
-		taskRunnerGenerator.setup.call(this);
+		projectTypePrompt.setup.call(this);
+		taskRunnerPrompt.setup.call(this);
+		iconsPrompt.setup.call(this);
+		cssPostProcessorsPrompt.setup.call(this);
 		gruntGenerator.setup.call(this);
 		templatingGenerator.setup.call(this);
 		cssGenerator.setup.call(this);
@@ -281,7 +312,8 @@ module.exports = class extends Generator {
 				if (error) {
 					this.log(`… or alternatively run ${chalk.yellow('npm install')} instead.`);
 				} else {
-					this.log(`That’s it. Start your project with ${chalk.green('npm run start')} or ${chalk.green('yarn start')}!`);
+					this.log(`That’s it. Start your project with ${chalk.green('npm run start')} or ${chalk.green(
+						'yarn start')}!`);
 				}
 				// Emit an event that all dependencies are installed
 				this.emit(configFile.events.depsIntalled);
@@ -293,9 +325,12 @@ module.exports = class extends Generator {
 		let _this = this;
 
 		this.on(configFile.events.end, () => {
-			fs.rename(path.join(this.destinationRoot(), '.yo-rc.json'), path.join(this.destinationRoot(), 'setup.json'), function (err) {
-				if (err) _this.log('ERROR: ' + err);
-			});
+			fs.rename(path.join(this.destinationRoot(), '.yo-rc.json'), path.join(this.destinationRoot(), 'setup.json'),
+				function (err) {
+					if (err) {
+						_this.log('ERROR: ' + err);
+					}
+				});
 		});
 	}
 };

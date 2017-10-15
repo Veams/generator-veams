@@ -8,7 +8,7 @@ module.exports = function promptAnswerFactory(customAnswers) {
 		taskRunner: [
 			'grunt'
 		],
-		templateEngine: '',
+		templateEngine: [],
 		gulpModules: [],
 		gruntModules: [
 			'grunt-combine-mq',
@@ -20,7 +20,10 @@ module.exports = function promptAnswerFactory(customAnswers) {
 		testAndQA: false,
 		testAndQALibs: [],
 		veamsPackages: false,
-		docs: []
+		docs: [],
+		icons: [],
+		cssPostProcessors: [],
+		projectType: []
 	};
 
 	let custom = defaults;
