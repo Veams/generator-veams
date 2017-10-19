@@ -1,36 +1,5 @@
-'use strict';
-
-exports.questions = function () {
-	return [
-		{
-			when: function (answers) {
-				return answers.taskRunner
-					&& answers.taskRunner.length;
-			},
-			type: 'list',
-			name: 'templateEngine',
-			message: 'Which Template Engine do you want to use?',
-			choices: [
-				{
-					name: 'Mangony with Handlebars',
-					value: 'mangonyHbs'
-				},
-				{
-					name: 'Mangony with React',
-					value: 'mangonyReact'
-				}
-			],
-			default: 'mangonyHbs'
-		}
-	];
-};
-
-exports.setup = function () {
-	this.templateEngine = this.config.get('templateEngine') || 'mangonyHbs';
-};
-
-exports.scaffold = function () {
-	// add global assemble files
+module.exports = function scaffold() {
+	// add global template files
 	if (this.templateEngine && this.templateEngine !== '') {
 
 		if (this.templateEngine === 'mangonyHbs') {

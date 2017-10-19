@@ -15,7 +15,6 @@ const testAndQAGenerator = require('../../mini-generators/test-and-qa-generator'
 const gruntGenerator = require('../../mini-generators/grunt-generator');
 const veamsGenerator = require('../../mini-generators/veams-generator');
 const docsGenerator = require('../../mini-generators/generator-docs');
-const templatingGenerator = require('../../mini-generators/templating/templating-generator');
 
 /**
  * Prompt files
@@ -26,6 +25,7 @@ const iconsPrompt = require('../../mini-generators/icons/prompts');
 const cssPostProcessorsPrompt = require('../../mini-generators/css-post-processors/prompts');
 const cssFrameworksPrompt = require('../../mini-generators/css-frameworks/prompts');
 const jsPrompt = require('../../mini-generators/js/prompts');
+const templatingPrompt = require('../../mini-generators/templating/prompts');
 
 /**
  * Setup Files
@@ -36,6 +36,7 @@ const iconsSetup = require('../../mini-generators/icons/setup');
 const cssPostProcessorsSetup = require('../../mini-generators/css-post-processors/setup');
 const cssFrameworksSetup = require('../../mini-generators/css-frameworks/setup');
 const jsSetup = require('../../mini-generators/js/setup');
+const templatingSetup = require('../../mini-generators/templating/setup');
 
 /**
  * Scaffold Files
@@ -45,6 +46,7 @@ const cssFrameworksScaffold = require('../../mini-generators/css-frameworks/scaf
 const expressScaffold = require('../../mini-generators/express/scaffold');
 const taskRunnerScaffold = require('../../mini-generators/taskrunner/scaffold');
 const jsScaffold = require('../../mini-generators/js/scaffold');
+const templatingScaffold = require('../../mini-generators/templating/scaffold');
 
 
 module.exports = class extends Generator {
@@ -143,7 +145,7 @@ module.exports = class extends Generator {
 
 		if (!this.config.get('templateEngine') || this.force) {
 			this.questions = this.questions.concat(
-				templatingGenerator.questions.call(this)
+				templatingPrompt.call(this)
 			);
 		}
 
@@ -174,8 +176,8 @@ module.exports = class extends Generator {
 		cssFrameworksSetup.call(this);
 		cssPostProcessorsSetup.call(this);
 		jsSetup.call(this);
+		templatingSetup.call(this);
 		gruntGenerator.setup.call(this);
-		templatingGenerator.setup.call(this);
 		testAndQAGenerator.setup.call(this);
 		docsGenerator.setup.call(this);
 		veamsGenerator.setup.call(this);
@@ -304,8 +306,8 @@ module.exports = class extends Generator {
 		veamsGenerator.scaffold.call(this);
 		gruntGenerator.scaffold.call(this);
 		expressScaffold.call(this);
+		templatingScaffold.call(this);
 		testAndQAGenerator.scaffold.call(this);
-		templatingGenerator.scaffold.call(this);
 		docsGenerator.scaffold.call(this);
 		taskRunnerScaffold.call(this);
 		cleanPackages.scaffold.call(this);
