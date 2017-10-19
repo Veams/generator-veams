@@ -1,4 +1,4 @@
-export default function setup() {
+module.exports = function setup() {
 	this.cssPostProcessors = this.config.get('cssPostProcessors');
 	this.gruntModules = this.config.get('gruntModules') || [];
 

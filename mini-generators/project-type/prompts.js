@@ -1,4 +1,4 @@
-export default function questions(obj) {
+module.exports = function questions(obj) {
 	let object = obj || {};
 	object.defaults = object.defaults !== false;
 

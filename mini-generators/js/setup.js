@@ -1,13 +1,13 @@
-import {handlebarsId, veamsJSPreset} from './config';
 const _ = require('lodash');
+const config = require('./config');
 
-export default function setup() {
+module.exports = function setup() {
 	this.jsLibs = this.config.get('jsLibs') || [];
 	if (this.config.get('veamsPackages')) {
-		if (this.config.get('projectType') === 'staticPageApp') {
-			this.jsLibs.push(handlebarsId);
+		if (this.config.get('projectType') === 'static-page-app') {
+			this.jsLibs.push(config.handlebarsId);
 		}
 		// merge array and remove duplicates
-		this.jsLibs = _.union(this.config.get('jsLibs'), veamsJSPreset);
+		this.jsLibs = _.union(this.config.get('jsLibs'), config.veamsJSPreset);
 	}
 };

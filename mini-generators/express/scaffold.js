@@ -1,4 +1,4 @@
-export default function scaffold() {
+module.exports = function scaffold() {
 	/**
 	 * Config files
 	 */

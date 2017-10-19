@@ -1,6 +1,6 @@
-import {reactId, jqueryId, veamsQueryId} from './config';
+const config = require('./config');
 
-export default function questions() {
+module.exports = function prompts() {
 	return {
 		name: 'jsLibs',
 		type: 'checkbox',
@@ -8,24 +8,24 @@ export default function questions() {
 		choices: [
 			{
 				name: 'Veams-Query',
-				value: veamsQueryId,
+				value: config.veamsQueryId,
 				checked: false
 			},
 			{
 				name: 'jQuery (latest Version)',
-				value: jqueryId,
+				value: config.jqueryId,
 				checked: false
 			},
 			{
 				name: 'React',
-				value: reactId,
+				value: config.reactId,
 				checked: false
 			}
 		],
 		validate: function (answer) {
 			let done = this.async();
 
-			if (answer.indexOf(jqueryId) != -1 && answer.indexOf(veamsQueryId) != -1) {
+			if (answer.indexOf(config.jqueryId) != -1 && answer.indexOf(config.veamsQueryId) != -1) {
 
 				done("Please choose only one of the two DOM handler libraries.", false);
 			}

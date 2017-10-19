@@ -1,2 +1,4 @@
-export const gruntId = 'grunt';
-export const webpackId = 'webpack';
+module.exports = {
+	gruntId: 'grunt',
+	webpackId: 'webpack'
+};

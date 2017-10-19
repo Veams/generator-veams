@@ -23,7 +23,7 @@ exports.scaffold = function () {
 	// delete this.pkgFile['dependencies']['veams-plugin-mixins'];
 	// delete this.pkgFile['dependencies']['veams-plugin-vent'];
 
-	if (this.projectType === 'singlePageApp') {
+	if (this.projectType === 'single-page-app') {
 		delete this.pkgFile['dependencies']['veams-plugin-dom'];
 		delete this.pkgFile['dependencies']['veams-plugin-modules'];
 		delete this.pkgFile['dependencies']['veams-plugin-store'];

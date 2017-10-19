@@ -1,10 +1,13 @@
-export const veamsQueryId = 'veams-query';
-export const jqueryId = 'jquery';
-export const reactId = 'react';
-export const handlebarsId = 'handlebars';
-export const picturefillId = 'picturefill';
-export const lazysizesId = 'lazysizes';
-export const veamsJSPreset = [
-	picturefillId,
-	lazysizesId
+module.exports = config = {
+	veamsQueryId: 'veams-query',
+	jqueryId: 'jquery',
+	reactId: 'react',
+	handlebarsId: 'handlebars',
+	picturefillId: 'picturefill',
+	lazysizesId: 'lazysizes',
+};
+
+module.exports.veamsJSPreset = [
+	config.picturefillId,
+	config.lazysizesId
 ];

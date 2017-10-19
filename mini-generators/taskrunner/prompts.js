@@ -1,6 +1,6 @@
-import {gruntId, webpackId} from './config';
+const config = require('./config');
 
-export default function questions(obj) {
+module.exports = function questions(obj) {
 	let object = obj || {};
 	object.defaults = object.defaults !== false;
 
@@ -11,15 +11,15 @@ export default function questions(obj) {
 		choices: [
 			{
 				name: 'Grunt',
-				value: gruntId,
+				value: config.gruntId,
 				checked: object.defaults
 			},
 			// {
 			// 	name: 'Webpack',
-			// 	value: webpackId,
+			// 	value: config.webpackId,
 			// 	checked: object.defaults
 			// }
 		],
-		default: gruntId
+		default: config.gruntId
 	};
 };
