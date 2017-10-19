@@ -1,9 +1,6 @@
-'use strict';
+import {gruntId, webpackId} from './config';
 
-let gruntId = 'grunt';
-let webpackId = 'webpack';
-
-exports.scaffold = function () {
+export default function () {
 	if (this.taskRunner.indexOf(gruntId) === -1) {
 		delete this.pkgFile['devDependencies']['grunt'];
 		delete this.pkgFile['devDependencies']['grunt-chokidar'];

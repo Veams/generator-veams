@@ -10,25 +10,42 @@ const configFile = require('../../lib/config');
 /**
  * Scaffold files
  */
-const taskRunnerGenerator = require('../../generator-files/taskrunner-generator');
-const cleanPackages = require('../../generator-files/clean-packages');
-const jsGenerator = require('../../generator-files/js-generator');
-const cssGenerator = require('../../generator-files/css-generator');
-const expressGenerator = require('../../generator-files/express-generator');
-const testAndQAGenerator = require('../../generator-files/test-and-qa-generator');
-const gruntGenerator = require('../../generator-files/grunt-generator');
-const veamsGenerator = require('../../generator-files/veams-generator');
-const docsGenerator = require('../../generator-files/generator-docs');
-const templatingGenerator = require('../../generator-files/templating-generator');
+const cleanPackages = require('../../mini-generators/clean-packages');
+const testAndQAGenerator = require('../../mini-generators/test-and-qa-generator');
+const gruntGenerator = require('../../mini-generators/grunt-generator');
+const veamsGenerator = require('../../mini-generators/veams-generator');
+const docsGenerator = require('../../mini-generators/generator-docs');
+const templatingGenerator = require('../../mini-generators/templating/templating-generator');
 
 /**
  * Prompt files
  */
+const projectTypePrompt = require('../../mini-generators/project-type/prompts');
+const taskRunnerPrompt = require('../../mini-generators/taskrunner/prompts');
+const iconsPrompt = require('../../mini-generators/icons/prompts');
+const cssPostProcessorsPrompt = require('../../mini-generators/css-post-processors/prompts');
+const cssFrameworksPrompt = require('../../mini-generators/css-frameworks/prompts');
+const jsPrompt = require('../../mini-generators/js/prompts');
 
-const projectTypePrompt = require('../../prompt-files/project-type');
-const taskRunnerPrompt = require('../../prompt-files/taskrunner');
-const iconsPrompt = require('../../prompt-files/icons');
-const cssPostProcessorsPrompt = require('../../prompt-files/css-post-processors');
+/**
+ * Setup Files
+ */
+const projectTypeSetup = require('../../mini-generators/project-type/setup');
+const taskRunnerSetup = require('../../mini-generators/taskrunner/setup');
+const iconsSetup = require('../../mini-generators/icons/setup');
+const cssPostProcessorsSetup = require('../../mini-generators/css-post-processors/setup');
+const cssFrameworksSetup = require('../../mini-generators/css-frameworks/setup');
+const jsSetup = require('../../mini-generators/js/setup');
+
+/**
+ * Scaffold Files
+ */
+const projectTypeScaffold = require('../../mini-generators/project-type/scaffold');
+const cssFrameworksScaffold = require('../../mini-generators/css-frameworks/scaffold');
+const expressScaffold = require('../../mini-generators/express/scaffold');
+const taskRunnerScaffold = require('../../mini-generators/taskrunner/scaffold');
+const jsScaffold = require('../../mini-generators/js/scaffold');
+
 
 module.exports = class extends Generator {
 
@@ -37,6 +54,7 @@ module.exports = class extends Generator {
 		this._ = _;
 		this.pkg = require('../../package.json');
 		this.pkgFile = this.fs.readJSON(this.templatePath('_package.json'));
+		this.veamsFile = this.fs.readJSON(this.templatePath('veams-cli.json'));
 		this.dotFiles = [
 			'gitignore',
 			'gitattributes',
@@ -68,7 +86,7 @@ module.exports = class extends Generator {
 			this.projectName = answers.projectName || this.config.get('projectName');
 			this.projectType = answers.projectType;
 			this.taskRunner = answers.taskRunner;
-			this.gruntModules = answers.gruntModules || this.config.get('gruntModules');
+			this.gruntModules = this.config.get('gruntModules');
 			this.templateEngine = answers.templateEngine || this.config.get('templateEngine');
 			this.features = answers.features;
 			this.jsLibs = answers.jsLibs;
@@ -94,11 +112,11 @@ module.exports = class extends Generator {
 		});
 
 		(!this.config.get('projectType') || this.force) && this.questions.push(
-			projectTypePrompt.questions.call(this)
+			projectTypePrompt.call(this)
 		);
 
 		(!this.config.get('taskRunner') || this.force) && this.questions.push(
-			taskRunnerPrompt.questions.call(this)
+			taskRunnerPrompt.call(this)
 		);
 
 		/*if (!this.config.get('gruntModules') || this.force) {
@@ -108,11 +126,19 @@ module.exports = class extends Generator {
 		 }*/
 
 		(!this.config.get('icons') || this.force) && this.questions.push(
-			iconsPrompt.questions.call(this)
+			iconsPrompt.call(this)
+		);
+
+		(!this.config.get('cssLibs') || this.force) && this.questions.push(
+			cssFrameworksPrompt.call(this)
 		);
 
 		(!this.config.get('cssPostProcessors') || this.force) && this.questions.push(
-			cssPostProcessorsPrompt.questions.call(this)
+			cssPostProcessorsPrompt.call(this)
+		);
+
+		(!this.config.get('jsLibs') || this.force) && this.questions.push(
+			jsPrompt.call(this)
 		);
 
 		if (!this.config.get('templateEngine') || this.force) {
@@ -121,17 +147,6 @@ module.exports = class extends Generator {
 			);
 		}
 
-		(!this.config.get('veamsPackages') || this.force) && this.questions.push(
-			veamsGenerator.questions.call(this)
-		);
-
-		(!this.config.get('cssLibs') || this.force) && this.questions.push(
-			cssGenerator.questions.call(this)
-		);
-
-		(!this.config.get('jsLibs') || this.force) && this.questions.push(
-			jsGenerator.questions.call(this)
-		);
 
 		if (!this.config.get('testAndQA') || this.force) {
 			this.questions = this.questions.concat(
@@ -153,15 +168,14 @@ module.exports = class extends Generator {
 	}
 
 	_setup() {
-		projectTypePrompt.setup.call(this);
-		taskRunnerPrompt.setup.call(this);
-		iconsPrompt.setup.call(this);
-		cssPostProcessorsPrompt.setup.call(this);
+		projectTypeSetup.call(this);
+		taskRunnerSetup.call(this);
+		iconsSetup.call(this);
+		cssFrameworksSetup.call(this);
+		cssPostProcessorsSetup.call(this);
+		jsSetup.call(this);
 		gruntGenerator.setup.call(this);
 		templatingGenerator.setup.call(this);
-		cssGenerator.setup.call(this);
-		expressGenerator.setup.call(this);
-		jsGenerator.setup.call(this);
 		testAndQAGenerator.setup.call(this);
 		docsGenerator.setup.call(this);
 		veamsGenerator.setup.call(this);
@@ -173,7 +187,7 @@ module.exports = class extends Generator {
 
 	_defaults() {
 		// Standard files
-		this.fs.copy(this.templatePath('veams-cli.json'), 'veams-cli.json');
+		this.fs.copy(this.templatePath('babelrc'), '.babelrc');
 		this.fs.copyTpl(this.templatePath('gitignore'), '.gitignore');
 		this.fs.copyTpl(this.templatePath('editorconfig'), '.editorconfig');
 		this.fs.copyTpl(this.templatePath('README.md.ejs'), 'README.md', this);
@@ -181,7 +195,7 @@ module.exports = class extends Generator {
 			this.templatePath(this.generatorHelperPath + 'environments'),
 			this.destinationPath(this.helperPath + 'environments')
 		);
-		this.pkgFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'minimal-project';
+		this.pkgFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'veams-project';
 
 		// add specific resources to make it possible to split up some directories
 
@@ -198,7 +212,7 @@ module.exports = class extends Generator {
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/shared/layouts/.gitkeep'
+			'src/core/layouts/.gitkeep'
 		);
 
 		this.fs.copy(
@@ -284,20 +298,22 @@ module.exports = class extends Generator {
 	}
 
 	_scaffold() {
+		projectTypeScaffold.call(this);
+		cssFrameworksScaffold.call(this);
+		jsScaffold.call(this);
 		veamsGenerator.scaffold.call(this);
 		gruntGenerator.scaffold.call(this);
-		jsGenerator.scaffold.call(this);
-		cssGenerator.scaffold.call(this);
-		expressGenerator.scaffold.call(this);
+		expressScaffold.call(this);
 		testAndQAGenerator.scaffold.call(this);
 		templatingGenerator.scaffold.call(this);
 		docsGenerator.scaffold.call(this);
-		taskRunnerGenerator.scaffold.call(this);
+		taskRunnerScaffold.call(this);
 		cleanPackages.scaffold.call(this);
 	}
 
 	_pkg() {
 		this.fs.write(this.destinationPath('package.json'), JSON.stringify(this.pkgFile, null, 4));
+		this.fs.write(this.destinationPath('veams-cli.json'), JSON.stringify(this.veamsFile, null, 4));
 	}
 
 	install() {

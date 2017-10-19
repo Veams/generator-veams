@@ -4,17 +4,15 @@ Current version="0.0.1"
 
 ## Requirements For Frontend Development
 
-* NodeJS (>= 0.12.0)
+* NodeJS (>= 6.0.0)
 * Grunt
 
 ### Libsass
 We use Libsass as standard SCSS compiler.
 
 ## Frontend Methodology
-<% if(veamsPackages) { %>
 We build <%= projectName %> with the Veams Methodology:
 * http://veams.org/methodology/
-<% } %>
 
 ## Setup
 
@@ -23,8 +21,7 @@ This project builds on following setup (please read requirements and getting sta
 - Veams Overview: https://github.com/Sebastian-Fitzner/Veams
 - Veams Website: http://veams.org/
 
-- We use <% if(taskRunner.indexOf('grunt') != -1) { %>[Grunt](http://gruntjs.com/)<% } %><% if(taskRunner.indexOf('grunt') != -1 && taskRunner.indexOf('gulp') != -1) { %> and <% } %><% if(taskRunner.indexOf('gulp') != -1) { %>[Gulp](http://gulpjs.com/)<% } %> as our task runner<% if(templateEngine && templateEngine.indexOf('assemble') != -1) { %>
-- We use [Assemble](http://assemble.io/) as our static site generator.<% } %>
+- We use <% if(taskRunner.indexOf('grunt') != -1) { %>[Grunt](http://gruntjs.com/)<% } %>
 - We use [Git](#).
 - The folder __node_modules__ won't be comitted into GIT. Use ```.gitignore``` to ignore folders or files.
 - Git-commit-messages in english please.

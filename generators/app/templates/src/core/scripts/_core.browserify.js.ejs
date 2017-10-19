@@ -2,42 +2,32 @@
 import { environment } from 'env';
 <%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
 import $ from 'jquery';<% } %><%if (jsLibs && jsLibs.indexOf('veams-query') !== -1) { %>
-import { default as $ } from 'veams-query';<% } %><% if (veamsPackages) { %>
+import { default as $ } from 'veams-query';<% } %>
 import Veams from 'veams';
 import VeamsLogger from 'veams-plugin-logger';
-import VeamsDOM from 'veams-plugin-dom';
 import VeamsVent from 'veams-plugin-vent';
+import VeamsMediaQueryHandler from 'veams-plugin-media-query-handler';<% if (projectType === 'static-page-app') { %>
+import VeamsDOM from 'veams-plugin-dom';
 import VeamsModules from 'veams-plugin-modules';
-import VeamsMediaQueryHandler from 'veams-plugin-media-query-handler';
 // import VeamsStore from 'veams-plugin-store';
-// import VeamsTemplater from 'veams-plugin-templater';
+// import VeamsTemplater from 'veams-plugin-templater';<% } %>
 import EVENTS from '@@shared/scripts/events';
-<% } %>
 
-let App = {};<%if (jsLibs && (jsLibs.indexOf('jquery') !== -1 || jsLibs.indexOf('veams-query') !== -1)) { %>
-App.$ = $;<% } %>
+let Core = {};<%if (jsLibs && (jsLibs.indexOf('jquery') !== -1 || jsLibs.indexOf('veams-query') !== -1)) { %>
+Core.$ = $;<% } %>
 
 // Versioning
-App.version = "0.0.1";
-<% if (veamsPackages) { %>
+Core.version = "0.0.1";
 // Veams
 Veams.onInitialize(() => {
 	/**
 	* Veams Plugins
 	*/
-
+	<% if (projectType === 'static-page-app') { %>
 	// Dom Plugin
 	Veams.use(VeamsDOM, {
 		DOM: $
 	});
-
-	// Vent Plugin
-	Veams.use(VeamsVent, {
-		furtherEvents: EVENTS
-	});
-
-	// Logger Plugin for devmode and logger
-	Veams.use(VeamsLogger);
 
 	// Module System Plugin
 	Veams.use(VeamsModules, {
@@ -51,6 +41,14 @@ Veams.onInitialize(() => {
 	// 	state: INITIAL_STATE,
 	// 	subjects: subjects
 	// });
+	<% } %>
+	// Vent Plugin
+	Veams.use(VeamsVent, {
+		furtherEvents: EVENTS
+	});
+
+	// Logger Plugin for devmode and logger
+	Veams.use(VeamsLogger);
 
 	// Media Query Handler Plugin
 	Veams.use(VeamsMediaQueryHandler);
@@ -61,6 +59,6 @@ Veams.onInitialize(() => {
 		Veams.Vent.trigger(Veams.EVENTS.scroll, e);
 	}, 200);
 
-});<% } %>
+});
 
-export {App<% if (veamsPackages) { %>, Veams<% } %>};
+export {Core, Veams};

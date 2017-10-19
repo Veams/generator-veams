@@ -1,7 +1,6 @@
-let gruntId = 'grunt';
-let webpackId = 'webpack';
+import {gruntId, webpackId} from './config';
 
-exports.questions = function (obj) {
+export default function questions(obj) {
 	let object = obj || {};
 	object.defaults = object.defaults !== false;
 
@@ -21,10 +20,6 @@ exports.questions = function (obj) {
 			// 	checked: object.defaults
 			// }
 		],
-		default: this.config.get('taskRunner')
+		default: gruntId
 	};
-};
-
-exports.setup = function () {
-	this.taskRunner = this.config.get('taskRunner') || [];
 };

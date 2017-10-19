@@ -1,6 +1,13 @@
 {
+	"projectType": "static-page-app",
 	"blueprints": {
-		"prompts": "configs/blueprints/mpa-mixins.js"
+		"prompts": "configs/blueprints/mpa-mixins.js",
+		"templates": {
+			"custom": {
+				"file": "my-custom-path/file.js",
+				"path": "scripts/"
+			}
+		}
 	},
 	"config": {
 		"src": "configs/_grunt/*.js"

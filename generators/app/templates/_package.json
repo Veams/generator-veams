@@ -15,6 +15,7 @@
 	"dependencies": {
 		"jquery": "^3.2.1",
 		"veams": "^5.0.1",
+		"veams-query": "^2.2.1",
 		"veams-plugin-dom": "^1.0.0",
 		"veams-plugin-logger": "^1.0.0",
 		"veams-plugin-media-query-handler": "^1.0.0",
@@ -23,17 +24,16 @@
 		"veams-plugin-store": "^0.0.1",
 		"veams-plugin-templater": "^1.0.0",
 		"veams-plugin-vent": "^1.0.0",
-		"veams-query": "^2.2.1",
 		"picturefill": "^3.0.2",
 		"lazysizes": "^3.0.0",
 		"handlebars": "^4.0.10",
-		"include-media": "^1.4.8",
-		"bourbon": "~4.2.7",
-		"bourbon-neat": "^2.0.1",
 		"bootstrap-sass": "^3.3.7",
 		"foundation-sites": "^6.0.0"
 	},
 	"devDependencies": {
+		"bourbon": "~4.2.7",
+		"bourbon-neat": "^2.0.1",
+		"include-media": "^1.4.8",
 		"aliasify": "^2.1.0",
 		"autoprefixer": "^6.7.3",
 		"babel-core": "^6.26.0",

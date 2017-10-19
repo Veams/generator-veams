@@ -1,20 +1,7 @@
-'use strict';
-
-exports.questions = function () {
-	return {};
-};
-
-exports.setup = function () {};
-
-exports.scaffold = function () {
+export default function scaffold() {
 	/**
 	 * Config files
 	 */
-	this.fs.copy(
-		this.templatePath('babelrc'),
-		'.babelrc'
-	);
-
 	this.fs.copy(
 		this.templatePath(this.generatorHelperPath + 'tasks/nodemon.config.json'),
 		this.helperPath + 'tasks/nodemon.config.json'
@@ -64,7 +51,7 @@ exports.scaffold = function () {
 		this
 	);
 
-	if (this.templateEngine.indexOf('mangony') !== -1) {
+	if (this.templateEngine) {
 		this.fs.copy(
 			this.templatePath('server/modules/mangony.js'),
 			'server/modules/mangony.js'

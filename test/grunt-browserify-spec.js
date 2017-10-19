@@ -43,8 +43,8 @@ describe('grunt-browserify', function () {
 
 	it('adds app.js, main.js to js folder', function () {
 		assert.file([
-			srcPath + 'shared/scripts/app.js',
-			srcPath + 'shared/scripts/main.js'
+			srcPath + '/app.js',
+			srcPath + 'core/scripts/core.js'
 		]);
 	});
 });

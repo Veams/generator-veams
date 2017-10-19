@@ -26,7 +26,7 @@ describe('Blueprints generator', function () {
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
-				.withArguments(answers.bpName)
+				.withArguments(`${answers.bpName} ./src`)
 				.withPrompts(answers)
 				.on('end', done);
 		});
@@ -59,7 +59,7 @@ describe('Blueprints generator', function () {
 	describe('when name includes path', function () {
 		const name = 'slider';
 		const answers = {
-			bpName: 'shared/components/' + name,
+			bpName: name,
 			bpWithWrapWith: false,
 			bpWithJs: true,
 			bpTypeName: 'component',
@@ -75,7 +75,7 @@ describe('Blueprints generator', function () {
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
-				.withArguments(answers.bpName)
+				.withArguments(`${answers.bpName} ./src/shared/components/`)
 				.withPrompts(answers)
 				.on('end', done);
 		});
@@ -123,7 +123,7 @@ describe('Blueprints generator', function () {
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
-				.withArguments(answers.bpName)
+				.withArguments(`${answers.bpName} ./src`)
 				.withPrompts(answers)
 				.on('end', done);
 		});
@@ -163,7 +163,7 @@ describe('Blueprints generator', function () {
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
-				.withArguments(answers.bpName)
+				.withArguments(`${answers.bpName} ./src`)
 				.withPrompts(answers)
 				.on('end', done);
 		});
@@ -205,7 +205,7 @@ describe('Blueprints generator', function () {
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
-				.withArguments(answers.bpName)
+				.withArguments(`${answers.bpName} ./src`)
 				.withPrompts(answers)
 				.on('end', done);
 		});
@@ -245,7 +245,7 @@ describe('Blueprints generator', function () {
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
-				.withArguments(answers.bpName)
+				.withArguments(`${answers.bpName} ./src`)
 				.withPrompts(answers)
 				.on('end', done);
 		});
@@ -280,7 +280,7 @@ describe('Blueprints generator', function () {
 					'skip-install': true,
 					'skip-welcome-message': true
 				})
-				.withArguments(answers.bpName)
+				.withArguments(`${answers.bpName} ./src`)
 				.withPrompts(answers)
 				.on('end', done);
 		});

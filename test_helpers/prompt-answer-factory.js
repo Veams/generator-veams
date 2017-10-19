@@ -5,11 +5,11 @@ let config = require('../lib/config');
 module.exports = function promptAnswerFactory(customAnswers) {
 	let defaults = {
 		projectName: '',
+		projectType: [],
 		taskRunner: [
 			'grunt'
 		],
 		templateEngine: [],
-		gulpModules: [],
 		gruntModules: [
 			'grunt-combine-mq',
 			'grunt-dr-svg-sprites'
@@ -22,8 +22,7 @@ module.exports = function promptAnswerFactory(customAnswers) {
 		veamsPackages: false,
 		docs: [],
 		icons: [],
-		cssPostProcessors: [],
-		projectType: []
+		cssPostProcessors: []
 	};
 
 	let custom = defaults;

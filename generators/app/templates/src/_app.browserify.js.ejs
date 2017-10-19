@@ -1,10 +1,9 @@
-// Global dependencies<% if (veamsPackages) { %>
-import {App, Veams} from './app';<% } else { %>
-import App from './app';<% } %>
+// Global dependencies
+import {Core, Veams} from './core/scripts/core';
 
-console.log('JS initialized in version:', App.version);<% if (veamsPackages) { %>
+console.log('JS initialized in version:', Core.version);
 console.log('Veams initialized in version:', Veams.base.version);
-
+<% if (projectType === 'static-page-app') { %>
 // Imports
 // @INSERTPOINT :: @ref: js-import, @keep: true //
 

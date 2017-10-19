@@ -1,9 +1,8 @@
 /* ===================================================
 Main File For Imports
 =================================================== */
-<% if (veamsPackages) { %>
 // Reset (veams-reset or veams-normalize)
-@import "../../../node_modules/veams/src/scss/veams-reset";<% } %>
+@import "../../../node_modules/veams/src/scss/veams-reset";
 
 // Global Variables and Settings
 @import "../../shared/styles/shared";<% if (cssLibs && cssLibs.length) { %>
@@ -17,16 +16,10 @@ Main File For Imports
 // Icons
 @import "../../shared/styles/icons/**/*";
 
-// Globals
+// Core
 @import "core/styles/core";
-@import "core/styles/print";<% if (veamsPackages) { %>
-@import "shared/styles/global/_get-media";
+@import "core/styles/print";
+@import "core/styles/get-media";
 
-// Regions in Layouts
-@import "layouts/**/*";
-<% } %>
-
-// @INSERTPOINT :: @ref: scss-import, @keep: true //
-
-// Print
-@import "print";
+// Components
+@import "shared/components/sitemap/styles/_c-sitemap"; // For initial demo purpose

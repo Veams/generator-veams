@@ -36,8 +36,8 @@ describe('JavaScript Frameworks', function () {
 			assert.fileContent('package.json', /veams-query/);
 		});
 
-		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'core/app/scripts/app.js', /veams-query/);
+		it('adds import state to core.js', function () {
+			assert.fileContent(srcPath + 'core/scripts/core.js', /veams-query/);
 		});
 
 		it('adds references in browserify task', function () {
@@ -71,8 +71,8 @@ describe('JavaScript Frameworks', function () {
 			assert.fileContent('package.json', /jquery/);
 		});
 
-		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'core/app/scripts/app.js', /jquery/);
+		it('adds import state to core.js', function () {
+			assert.fileContent(srcPath + 'core/scripts/core.js', /jquery/);
 		});
 	});
 
@@ -101,8 +101,8 @@ describe('JavaScript Frameworks', function () {
 			assert.fileContent('package.json', /veams-query/);
 		});
 
-		it('adds import state to app.js', function () {
-			assert.fileContent(srcPath + 'core/app/scripts/app.js', /veams-query/);
+		it('adds import state to core.js', function () {
+			assert.fileContent(srcPath + 'core/scripts/core.js', /veams-query/);
 		});
 	});
 });

@@ -24,15 +24,15 @@ describe('generator-veams', function () {
 			'Gruntfile.js',
 			'package.json',
 			'.gitignore',
-			'configs/config.js',
-			'.bowerrc',
-			'bower.json',
-			'README.md'
+			'.babelrc',
+			'.editorconfig',
+			'configs/environments/environment.local.js',
+			'configs/environments/environment.dev.js',
+			'configs/environments/environment.prod.js',
+			'configs/environments/environment.qa.js',
+			'README.md',
+			'veams-cli.json'
 		];
 		assert.file(expected);
-	});
-
-	it('adds folderStructure property to config.js', function () {
-		assert.fileContent('configs/config.js', /folderStructure/);
 	});
 });

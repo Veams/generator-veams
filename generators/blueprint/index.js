@@ -2,7 +2,12 @@
 const chalk = require('chalk');
 const Generator = require('yeoman-generator');
 const helpers = require('../../lib/helpers');
-const generatorBlueprint = require('../../generator-files/generator-blueprint.js');
+const blueprintConstruct = require('../../mini-generators/blueprints/construct');
+const blueprintPrompts = require('../../mini-generators/blueprints/prompts');
+const blueprintSave = require('../../mini-generators/blueprints/save');
+const blueprintSetup = require('../../mini-generators/blueprints/setup');
+const blueprintScaffold = require('../../mini-generators/blueprints/scaffold');
+const blueprintPostInstall = require('../../mini-generators/blueprints/post-install');
 const configFile = require('../../lib/config');
 
 module.exports = class extends Generator {
@@ -11,7 +16,7 @@ module.exports = class extends Generator {
 	constructor(args, opts) {
 		super(args, opts);
 
-		generatorBlueprint.construct.call(this);
+		blueprintConstruct.call(this);
 	};
 
 	// Initialize general settings and store some files
@@ -22,7 +27,7 @@ module.exports = class extends Generator {
 
 	bindEvents() {
 		this.on(configFile.events.end, () => {
-			generatorBlueprint.postInstall.call(this);
+			blueprintPostInstall.call(this);
 		});
 	};
 
@@ -36,11 +41,11 @@ module.exports = class extends Generator {
 		);
 
 		prompts = prompts.concat(
-			generatorBlueprint.questions.call(this)
+			blueprintPrompts.call(this)
 		);
 
 		return this.prompt(prompts).then((props) => {
-			generatorBlueprint.save.call(this, props);
+			blueprintSave.call(this, props);
 
 			//save config to .yo-rc.json
 			this.config.set(props);
@@ -58,10 +63,10 @@ module.exports = class extends Generator {
 	};
 
 	setup() {
-		generatorBlueprint.setup.call(this);
+		blueprintSetup.call(this);
 	};
 
 	scaffold() {
-		generatorBlueprint.scaffold.call(this);
+		blueprintScaffold.call(this);
 	}
 };
