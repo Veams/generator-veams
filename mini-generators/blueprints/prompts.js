@@ -1,8 +1,16 @@
-/**
- * TODO: Mixin support
- */
+const fsx = require('fs-extra');
+const helpers = require('../../lib/helpers');
+const config = require('../../lib/config');
+const configFile = helpers.getProjectConfig();
+let customPromptMixins = [];
 
-module.exports = function prompts() {
+if (configFile.blueprints && configFile.blueprints.prompts) {
+	customPromptMixins = require(`${process.cwd()}/${configFile.blueprints.prompts}`);
+} else {
+	customPromptMixins = require(`./mixins/${configFile.projectType}`);
+}
+
+module.exports = function questions() {
 	let prompts = [];
 	let _this = this;
 
@@ -24,22 +32,6 @@ module.exports = function prompts() {
 			}
 		])
 	}
-
-	prompts = prompts.concat([
-		{
-			type: 'confirm',
-			name: 'bpWithWrapWith',
-			message: 'Do you want to use this blueprint as wrap-writh template?',
-			default: false
-		},
-		{
-			type: 'confirm',
-			name: 'bpWithJs',
-			message: 'Do you want to add JavaScript to this blueprint?',
-			default: true
-		}
-	]);
-
 	if (!this.options.component && !this.options.utility && !this.options.custom) {
 		prompts = prompts.concat([
 			{
@@ -83,10 +75,12 @@ module.exports = function prompts() {
 			},
 			type: 'input',
 			name: 'customTypePrefix',
-			message: 'How do you want to prefix your custom type?',
+			message: 'You can now add a custom prefix, if you like.',
 			default: ''
 		}
 	]);
+
+	prompts = prompts.concat(customPromptMixins);
 
 	return prompts;
 };

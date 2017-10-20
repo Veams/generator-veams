@@ -1,7 +1,6 @@
 /**
  * TODO: Generic props expose for custom mixins
  */
-
 const helpers = require('../../lib/helpers');
 
 module.exports = function save(props) {

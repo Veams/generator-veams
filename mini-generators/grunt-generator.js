@@ -1,10 +1,10 @@
 'use strict';
 
-var chalk = require('chalk');
-var helpers = require('./../lib/helpers.js');
+const chalk = require('chalk');
+const helpers = require('./../lib/helpers.js');
 
 exports.questions = function (obj) {
-	var object = obj || {};
+	let object = obj || {};
 	object.defaults = object.defaults !== false;
 
 	return [
@@ -109,7 +109,7 @@ exports.scaffold = function (obj) {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-browser-sync'];
 	}
 	if (this.gruntModules.indexOf('grunt-browserify') != -1 ||
-		this.taskRunner.indexOf('grunt') !== -1 && this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
+		this.taskRunner.indexOf('grunt') !== -1 && this.veamsPackages) {
 		this.fs.copyTpl(
 			this.templatePath(this.generatorGruntPath + '_browserify.js.ejs'),
 			this.gruntPath + 'browserify.js',
@@ -151,7 +151,7 @@ exports.scaffold = function (obj) {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-csscomb'];
 	}
 	if (this.gruntModules.indexOf('grunt-contrib-handlebars') != -1 ||
-		this.taskRunner.indexOf('grunt') !== -1 && this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
+		this.taskRunner.indexOf('grunt') !== -1 && this.projectType === 'static-page-app') {
 		this.fs.copy(
 			this.templatePath(this.generatorGruntPath + 'handlebars.js'),
 			this.gruntPath + 'handlebars.js'
@@ -160,7 +160,7 @@ exports.scaffold = function (obj) {
 		if (object.installDeps) {
 			this.npmInstall(['grunt-contrib-handlebars'], {'saveDev': true});
 
-			this.log(('\n') + chalk.bgRed('lease add the following lines to your Gruntfile.js to your custom tasks: ') + ('\n') +
+			this.log(('\n') + chalk.bgRed('Please add the following lines to your Gruntfile.js to your custom tasks: ') + ('\n') +
 				chalk.yellow('\n grunt.registerTask(\'jsTemplates\', [') +
 				chalk.yellow('\n    \'handlebars\',') +
 				chalk.yellow('\n    \'replace:jsTemplates\'' +
@@ -382,7 +382,7 @@ exports.scaffold = function (obj) {
 	if (this.gruntModules.indexOf('grunt-grunticon') != -1 ||
 		this.gruntModules.indexOf('grunt-dr-svg-sprites') != -1 ||
 		this.gruntModules.indexOf('grunt-contrib-handlebars') != -1 ||
-		this.taskRunner.indexOf('grunt') !== -1 && this.veamsPackages && this.veamsPackages.length && this.veamsPackages.indexOf('veamsJS') !== -1) {
+		this.taskRunner.indexOf('grunt') !== -1 && this.projectType === 'static-page-app') {
 		this.fs.copyTpl(
 			this.templatePath(this.generatorGruntPath + '_replace.js.ejs'),
 			this.gruntPath + 'replace.js',

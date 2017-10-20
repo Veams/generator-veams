@@ -30,7 +30,6 @@ exports.scaffold = function () {
 		delete this.pkgFile['dependencies']['veams-plugin-templater'];
 	}
 
-
 	this.fs.copy(
 		this.templatePath('src/shared/scripts/events.js'),
 		'src/shared/scripts/events.js'

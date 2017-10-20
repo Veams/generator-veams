@@ -9,10 +9,10 @@ exports.questions = function () {
 	return {
 		name: 'docs',
 		type: 'checkbox',
-		message: 'Do you want to add documentation?',
+		message: 'Do you want to add a documentation?',
 		choices: [
 			{
-				name: 'JavaScript Documentation with JSDoc',
+				name: 'JavaScript Documentation with ESDoc',
 				value: jsDocsId,
 				checked: false
 			},
