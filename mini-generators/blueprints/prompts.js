@@ -1,19 +1,12 @@
 const fsx = require('fs-extra');
+const path = require('path');
 const helpers = require('../../lib/helpers');
 const config = require('../../lib/config');
-const configFile = helpers.getProjectConfig();
-let customPromptMixins = [];
-
-if (configFile.blueprints && configFile.blueprints.prompts) {
-	customPromptMixins = require(`${process.cwd()}/${configFile.blueprints.prompts}`);
-} else {
-	customPromptMixins = require(`./mixins/${configFile.projectType}`);
-}
+const bpConfig = require('./config');
+const bpHelpers = require('./helpers/bp-helpers');
+let prompts = [];
 
 module.exports = function questions() {
-	let prompts = [];
-	let _this = this;
-
 	if (!this.options.name) {
 		prompts = prompts.concat([
 			{
@@ -32,7 +25,7 @@ module.exports = function questions() {
 			}
 		])
 	}
-	if (!this.options.component && !this.options.utility && !this.options.custom) {
+	if (!this.options.type) {
 		prompts = prompts.concat([
 			{
 				name: 'bpTypeName',
@@ -62,16 +55,16 @@ module.exports = function questions() {
 	prompts = prompts.concat([
 		{
 			when: function (answers) {
-				return _this.options.custom || answers.bpTypeName === 'custom';
+				return answers.bpTypeName === 'custom';
 			},
 			type: 'input',
 			name: 'customTypeName',
 			message: 'How do you call your custom type?',
-			default: ''
+			default: this.options.type
 		},
 		{
-			when: function (answers) {
-				return answers.customTypeName;
+			when: () => {
+				return bpConfig.types.indexOf(this.options.type) === -1;
 			},
 			type: 'input',
 			name: 'customTypePrefix',
@@ -80,7 +73,15 @@ module.exports = function questions() {
 		}
 	]);
 
-	prompts = prompts.concat(customPromptMixins);
+	prompts = prompts.concat(this.customPromptMixins);
+	prompts = prompts.concat([
+		{
+			type: 'checkbox',
+			name: 'skipFiles',
+			message: 'Which files do you want to skip?',
+			choices: bpHelpers.prepareFilesForPrompt(this.bpFiles, this.options.name)
+		}
+	]);
 
 	return prompts;
 };

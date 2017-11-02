@@ -1,4 +1,6 @@
-module.exports = types = [
-	'component',
-	'utility'
-];
+module.exports = {
+	types: [
+		'component',
+		'utility'
+	]
+};

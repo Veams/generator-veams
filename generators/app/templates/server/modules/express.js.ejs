@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');<% if (templateEngine) { %>
+const morgan = require('morgan');<% if (templateEngine === 'ssr-mangony-hbs') { %>
 const deepExtend = require('deep-extend');
 const Mangony = require('mangony');
 const config = require('../configs/config');
@@ -16,7 +16,7 @@ const createMangony = (express) => {
 };
 <% } %>
 module.exports = (routes, apiRoutes) => {
-	const app = express();<% if (templateEngine) { %>
+	const app = express();<% if (templateEngine === 'ssr-mangony-hbs') { %>
 	const mangony = createMangony(app);<% } %>
 
 	app.use(express.static('app'));
@@ -27,7 +27,7 @@ module.exports = (routes, apiRoutes) => {
 	/**
 	 * Register routes and start express server
 	 *
-	 */<% if (templateEngine) { %>
+	 */<% if (templateEngine === 'ssr-mangony-hbs') { %>
 	mangony.render();<% } %>
 	app.use(routes);
 	app.use(apiRoutes);

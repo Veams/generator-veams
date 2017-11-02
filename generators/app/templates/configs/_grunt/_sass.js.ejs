@@ -5,14 +5,10 @@ module.exports = {
 	},
 	dev: {
 		files: {
-			'<%%= paths.app %>/css/styles.css': '<%%= paths.src %>/core/app/main.tmp.scss'
+			'<%%= paths.app %>/css/app.css': '<%%= paths.src %>/app.tmp.scss'
 		}
 	},
-	universal: {
-		files: {
-			'<%%= paths.app %>/css/universal.css': '<%%= paths.src %>/core/main/universal.scss'
-		}
-	},
+
 	docs: {
 		files: {
 			'<%%= paths.app %>/css/docs.css': '<%%= paths.src %>/shared/layouts/docs/docs.scss'

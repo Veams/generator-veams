@@ -10,15 +10,15 @@ module.exports = function prompts() {
 			message: 'Which Template Engine do you want to use?',
 			choices: [
 				{
-					name: 'Mangony with Handlebars',
-					value: 'mangonyHbs'
+					name: 'Server-Side-Rendering with Mangony (Handlebars)',
+					value: 'ssr-mangony-hbs'
 				},
 				{
-					name: 'Mangony with React',
-					value: 'mangonyReact'
+					name: 'Server-Side-Rendering with React',
+					value: 'ssr-react'
 				}
 			],
-			default: 'mangonyHbs'
+			default: 'ssr-mangony-hbs'
 		}
 	];
 };

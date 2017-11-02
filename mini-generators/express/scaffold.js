@@ -51,7 +51,7 @@ module.exports = function scaffold() {
 		this
 	);
 
-	if (this.templateEngine) {
+	if (this.templateEngine === 'ssr-mangony-hbs') {
 		this.fs.copy(
 			this.templatePath('server/modules/mangony.js'),
 			'server/modules/mangony.js'

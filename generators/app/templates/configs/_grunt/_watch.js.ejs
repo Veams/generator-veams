@@ -1,13 +1,4 @@
 module.exports = {
-	express: {
-		files: [
-			'./server/**/*.js'
-		],
-		tasks: ['express:dev'],
-		options: {
-			spawn: false
-		}
-	},
 	ajax: {
 		files: 'server/ajax/**/*.{json,html}',
 		tasks: 'sync:ajax'
@@ -19,21 +10,12 @@ module.exports = {
 			'!<%%= paths.src %>/assets/img/svgmin/**/*'<% }} %><% }} %>
 			],
 		tasks: 'sync:assets'
-	},<% if(gruntModules.indexOf('grunt-browserify') == -1) { %>
-	js: {
-		files: [
-			'<%%= paths.src %>/shared/scripts/**/*.js'
-		],
-		tasks: [<% if(gruntModules.indexOf('grunt-contrib-requirejs') != -1) { %>
-			'requirejs:dev'<% if(gruntModules.indexOf('grunt-includes') != -1) { %>,<% } %><% } %><% if(gruntModules.indexOf('grunt-includes') != -1) { %>
-			'includes:js'<% } %><% if(gruntModules.indexOf('grunt-contrib-requirejs') == -1 && gruntModules.indexOf('grunt-includes') == -1) { %>
-			'sync:js'<% } %>
-		]
-	},<% } %>
+	},
 	scss: {
 		files: [
-			'<%%= paths.src %>/core/app/**/styles/**/*.scss',
-			'<%%= paths.src %>/shared/styles/**/styles/**/*.scss',
+			'<%%= paths.src %>/app.tmp.scss',
+			'<%%= paths.src %>/core/styles/**/*.scss',
+			'<%%= paths.src %>/shared/styles/**/*.scss',
 			'<%%= paths.src %>/shared/components/**/styles/**/*.scss',
 			'<%%= paths.src %>/shared/utilities/**/styles/**/*.scss',
 			'<%%= paths.src %>/shared/layouts/**/styles/**/*.scss'
@@ -46,13 +28,5 @@ module.exports = {
 	    options: {
 			spawn: false
 		}<% }} %>
-	},
-	universal: {
-		files: '<%%= paths.src %>/core/app/universal.scss',
-		tasks: 'sass:universal'
-	},
-	scssDocs: {
-		files: '<%%= paths.src %>/shared/layouts/docs/*',
-		tasks: 'sass:docs'
 	}
 };

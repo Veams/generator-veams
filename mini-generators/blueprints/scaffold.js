@@ -1,47 +1,59 @@
-module.exports = function scaffold() {
-	this.fs.copyTpl(
-		this.templatePath('usage/settings.json.ejs'),
-		this.rootFolderPath + `${this.filename}.settings.json`,
-		this
-	);
+const path = require('path');
+const fs = require('fs');
+const helpers = require('../../lib/helpers');
+const configFile = helpers.getProjectConfig();
 
-	this.fs.copyTpl(
-		this.templatePath(this.dataFile),
-		this.dataPath + this.filename + '-bp' + this.dataFileExtension,
-		this
-	);
-	this.fs.copyTpl(
-		this.templatePath(this.tplFile),
-		this.partialsPath + this.bpTypePrefix + this.filename + this.tplFileExtension,
-		this
-	);
-	this.fs.copyTpl(
-		this.templatePath(this.styleFile),
-		this.scssPath + '/_' + this.bpTypePrefix + this.filename + this.styleFileExtension,
-		this
-	);
-	this.fs.copyTpl(
-		this.templatePath(this.usageFile),
-		this.rootFolderPath + '/README' + this.usageFileExtension,
-		this
-	);
-	this.fs.copyTpl(
-		this.templatePath(this.insertpointsFile),
-		this.rootFolderPath + '/INSERTPOINTS' + this.insertpointsFileExtension,
-		this
-	);
-	if (this.bpWithJs) {
-		this.fs.copyTpl(
-			this.templatePath(this.jsFile),
-			this.jsPath + this.filename + this.jsFileExtension,
-			this
-		);
+module.exports = function scaffold() {
+	helpers.definePaths.bind(this);
+	let cwd = process.cwd();
+	let pkgFile = require(`${cwd}/package.json`);
+	let currentDefaultsPath = `${this.templatePath()}/defaults`;
+
+	for (let objName in this.bpFiles) {
+		if (this.bpFiles.hasOwnProperty(objName)) {
+			let file = this.bpFiles[objName];
+
+			if (this.skipFiles.indexOf(file.absolutePath) === -1) {
+				let cleanedFile = helpers.deleteFileExtension(file.absolutePath);
+				let tplFileExtension = path.extname(cleanedFile);
+
+				cleanedFile = cleanedFile.replace(path.basename('bp'), `${this.filename}`);
+
+				this.fs.copyTpl(
+					`${file.relativePath}`,
+					`${this.rootFolderPath}${cleanedFile}`,
+					Object.assign({}, this, {
+						namespace: pkgFile.name || 'my-project',
+						tplFileExtension
+					})
+				);
+			}
+		}
 	}
 
-	if (this.options.tmp) {
+	if (configFile.blueprints &&
+		configFile.blueprints[this.bpTypeName] &&
+		configFile.blueprints[this.bpTypeName].defaults
+	) {
+		currentDefaultsPath = `${cwd}/${configFile.blueprints[this.bpTypeName].defaults}`;
+	}
+
+	if (!this.options.skipDefaults && !this.skipByConfig) {
 		this.fs.copyTpl(
-			this.templatePath(this.insertpointsFile),
-			'tmp/' + this.filename + '/INSERTPOINTS.md',
+			`${currentDefaultsPath}/INSERTPOINTS.md.ejs`,
+			this.rootFolderPath + '/INSERTPOINTS.md',
+			this
+		);
+
+		this.fs.copyTpl(
+			`${currentDefaultsPath}/README.md.ejs`,
+			this.rootFolderPath + '/README.md',
+			this
+		);
+
+		this.fs.copyTpl(
+			`${currentDefaultsPath}/settings.json.ejs`,
+			`${this.rootFolderPath}/${this.filename}.settings.json`,
 			this
 		);
 	}

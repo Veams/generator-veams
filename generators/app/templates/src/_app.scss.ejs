@@ -2,24 +2,25 @@
 Main File For Imports
 =================================================== */
 // Reset (veams-reset or veams-normalize)
-@import "../../../node_modules/veams/src/scss/veams-reset";
+@import "../node_modules/veams/src/scss/veams-reset";
 
 // Global Variables and Settings
-@import "../../shared/styles/shared";<% if (cssLibs && cssLibs.length) { %>
+@import "shared/styles/shared";<% if (cssLibs && cssLibs.length) { %>
 
 // Frameworks<% if (cssLibs.indexOf('foundation-sites') != -1) { %>
-@import "../../../node_modules/foundation-sites/scss/foundation"; // You can choose your specific components // You can choose your specific components
+@import "../node_modules/foundation-sites/scss/foundation"; // You can choose your specific components // You can choose your specific components
 @include foundation-everything;<% } %>
 <% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
-@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components<% }} %>
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components<% }} %>
 
 // Icons
-@import "../../shared/styles/icons/**/*";
+@import "shared/styles/icons/**/*";
 
 // Core
 @import "core/styles/core";
 @import "core/styles/print";
 @import "core/styles/get-media";
-
+<% if (projectType === 'static-page-app') { %>
 // Components
 @import "shared/components/sitemap/styles/_c-sitemap"; // For initial demo purpose
+<% } %>

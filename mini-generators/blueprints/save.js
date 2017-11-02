@@ -1,7 +1,7 @@
 /**
- * TODO: Generic props expose for custom mixins
  */
 const helpers = require('../../lib/helpers');
+const config = require('../../lib/config');
 
 module.exports = function save(props) {
 	const cutter = (str) => {
@@ -11,34 +11,27 @@ module.exports = function save(props) {
 		return str ? str + '-' : '';
 	};
 
+	this.props = props;
+	this.skipFiles = props.skipFiles;
 	this.path = this.options.path;
 	this.name = this.options.name ? this.options.name : props.bpName;
 	this.bpTypeName = props.bpTypeName === 'global' ? '' : props.bpTypeName;
 	this.bpTypePrefix = this.bpTypeName ? prefixer(cutter(this.bpTypeName)) : '';
-	this.customTypeName = props.customTypeName || false;
+	this.customTypeName = props.customTypeName || this.options.type;
 	this.customTypePrefix = props.customTypePrefix || false;
-	this.bpWrapWith = props.bpWithWrapWith;
-	this.bpWithJs = props.bpWithJs || false;
-	this.bpAdditionalFiles = props.bpAdditionalFiles || [];
 	this.cleanPathType = this.bpTypeName === 'utility' ? 'utilitie' : this.bpTypeName;
 
-	if (this.options.component ||
-		this.options.utility ||
-		this.options.custom ||
-		this.bpTypeName === 'custom') {
-		if (this.options.component) {
-			this.bpTypeName = 'component';
-			this.bpTypePrefix = 'c-';
-		} else if (this.options.utility) {
-			this.bpTypeName = 'utility';
-			this.bpTypePrefix = 'u-';
-		} else if (this.options.custom || this.bpTypeName === 'custom') {
-			this.bpTypeName = this.customTypeName;
-			this.bpTypePrefix = prefixer(this.customTypePrefix);
-		}
+	if (this.options.type === 'component') {
+		this.bpTypePrefix = 'c-';
+	} else if (this.options.type === 'utility') {
+		this.bpTypePrefix = 'u-';
+	} else {
+		this.bpTypeName = this.customTypeName;
+		this.bpTypePrefix = prefixer(this.customTypePrefix);
 	}
 
 	this.filename = helpers.hyphenate(this.name);
 	this.bpName = helpers.toCamelCase(this.name);
+	this.bpNameUppercase = this.bpName.toUpperCase();
 	this.bpJsName = helpers.capitalizeFirstLetter(this.bpName);
 };

@@ -4,21 +4,20 @@
 
 ``` hbs
 {{! @INSERT :: START @id: <%= filename %>, @tag: <%= bpTypeName %>-partial }}
-{{#with <%= filename %>-bp}}<% if (bpWrapWith) { %>
-	{{#wrapWith "<%= bpTypePrefix %><%= filename %>"}}
+{{#with <%= filename %>}}<% if (props.bpWrapWith) { %>
+	{{#wrapWith "<%= filename %>"}}
 		Wrapped with markup from <%= filename %>.
 	{{/wrapWith}}<% } else { %>
-	{{> <%= bpTypePrefix %><%= filename %>}}<% } %>
+	{{> <%= filename %>}}<% } %>
 {{/with}}
 {{! @INSERT :: END }}
 ```
-<% if(bpWithJs) {%>
+<% if(props.bpWithJs) {%>
 ### Include: JavaScript
 
 #### Initializing in Veams V5
 ``` js
 // @INSERT :: START @tag: js-init-v5 //
-// Init <%= bpJsName %>
 Veams.modules.add('<%= filename %>', <%= bpJsName %>);
 // @INSERT :: END
 ```

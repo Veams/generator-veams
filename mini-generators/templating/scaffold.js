@@ -2,7 +2,7 @@ module.exports = function scaffold() {
 	// add global template files
 	if (this.templateEngine && this.templateEngine !== '') {
 
-		if (this.templateEngine === 'mangonyHbs') {
+		if (this.templateEngine === 'ssr-mangony-hbs') {
 			this.fs.copy(
 				this.templatePath('gitkeep'),
 				'src/shared/utilities/template-helpers/.gitkeep'
@@ -51,23 +51,35 @@ module.exports = function scaffold() {
 				this.templatePath('src/shared/components/sitemap'),
 				'src/shared/components/sitemap'
 			);
-		}
 
-		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'tasks/mangony.config.js'),
-			this.helperPath + 'tasks/mangony.config.js'
-		);
-
-		if (this.taskRunner === 'grunt') {
-			// Add Gruntfile-helper file
-			this.fs.copyTpl(
-				this.templatePath(this.generatorGruntPath + '_mangony.js.ejs'),
-				this.gruntPath + 'mangony.js',
-				this
+			this.fs.copy(
+				this.templatePath(this.generatorHelperPath + 'tasks/mangony.config.js'),
+				this.helperPath + 'tasks/mangony.config.js'
 			);
 
-		} else {
-			delete this.pkgFile['devDependencies']['grunt-mangony'];
+			if (this.taskRunner === 'grunt') {
+				// Add Gruntfile-helper file
+				this.fs.copyTpl(
+					this.templatePath(this.generatorGruntPath + '_mangony.js.ejs'),
+					this.gruntPath + 'mangony.js',
+					this
+				);
+
+			} else {
+				delete this.pkgFile['devDependencies']['grunt-mangony'];
+			}
+		}
+
+		if (this.templateEngine === 'ssr-react') {
+			this.fs.copy(
+				this.templatePath('gitignore'),
+				'src/pages/.gitignore'
+			);
+
+			this.fs.copy(
+				this.templatePath('gitignore'),
+				'src/features/.gitignore'
+			);
 		}
 	} else {
 		delete this.pkgFile['devDependencies']['mangony'];

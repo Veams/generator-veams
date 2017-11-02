@@ -7,7 +7,7 @@ const externalLibs = [<% if (jsLibs && jsLibs.length) { %> <% jsLibs.forEach(fun
 ];
 
 const internalLibs = [
-	`./${config.paths.src}/core/app/app.js:app`,
+	`./${config.paths.src}/app.js:app`,
 	// `./${config.paths.src}/core/store/store.js:store`,
 	`./${config.paths.config}/environments/environment.${process.env.NODE_ENV}.js:env`,
 ];
@@ -57,7 +57,7 @@ module.exports = {
 			watch: true
 		},
 		files: {
-			'<%%= paths.app %>/scripts/main.bundle.js': '<%%= paths.src %>/core/app/main.js'
+			'<%%= paths.app %>/scripts/app.bundle.js': '<%%= paths.src %>/app.js'
 		}
 	},
 	dist: {
@@ -66,7 +66,7 @@ module.exports = {
 			external: externalLibs
 		},
 		files: {
-			'<%%= paths.app %>/scripts/main.bundle.js': '<%%= paths.src %>/core/app/main.js'
+			'<%%= paths.app %>/scripts/app.bundle.js': '<%%= paths.src %>/app.js'
 		}
 	}
 };

@@ -226,10 +226,6 @@ module.exports = class extends Generator {
 			this.templatePath('gitkeep'),
 			'src/core/store/.gitkeep'
 		);
-		this.fs.copy(
-			this.templatePath('gitkeep'),
-			'src/core/app/.gitkeep'
-		);
 
 		// Assets area
 		this.fs.copy(
@@ -281,10 +277,10 @@ module.exports = class extends Generator {
 			this
 		);
 
-		// App
+		// Core
 		this.fs.copyTpl(
 			this.templatePath('src/core/styles/_print.scss'),
-			'src/core/app/styles/_print.scss',
+			'src/core/styles/_print.scss',
 			this
 		);
 		this.fs.copyTpl(
@@ -292,9 +288,17 @@ module.exports = class extends Generator {
 			'src/core/styles/_core.scss',
 			this
 		);
+
+		//  App
 		this.fs.copyTpl(
 			this.templatePath('src/_app.scss.ejs'),
 			'src/app.scss',
+			this
+		);
+
+		this.fs.copyTpl(
+			this.templatePath('src/_app.browserify.js.ejs'),
+			'src/app.js',
 			this
 		);
 	}
@@ -302,8 +306,8 @@ module.exports = class extends Generator {
 	_scaffold() {
 		projectTypeScaffold.call(this);
 		cssFrameworksScaffold.call(this);
-		jsScaffold.call(this);
 		veamsGenerator.scaffold.call(this);
+		jsScaffold.call(this);
 		gruntGenerator.scaffold.call(this);
 		expressScaffold.call(this);
 		templatingScaffold.call(this);

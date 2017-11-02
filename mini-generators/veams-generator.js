@@ -8,9 +8,12 @@ exports.overwriteSetup = function () {
 	if (this.taskRunner.indexOf('grunt') !== -1) {
 		let gruntModules = this.config.get('gruntModules');
 
-		gruntModules.push('grunt-contrib-handlebars');
 		gruntModules.push('grunt-browserify');
 		gruntModules.push('grunt-contrib-uglify');
+
+		if (this.projectType === 'static-page-app') {
+			gruntModules.push('grunt-contrib-handlebars');
+		}
 
 		this.config.set('gruntModules', gruntModules);
 	}
@@ -20,7 +23,6 @@ exports.scaffold = function () {
 	// delete this.pkgFile['dependencies']['veams'];
 	// delete this.pkgFile['dependencies']['veams-plugin-logger'];
 	// delete this.pkgFile['dependencies']['veams-plugin-media-query-handler'];
-	// delete this.pkgFile['dependencies']['veams-plugin-mixins'];
 	// delete this.pkgFile['dependencies']['veams-plugin-vent'];
 
 	if (this.projectType === 'single-page-app') {
@@ -28,6 +30,7 @@ exports.scaffold = function () {
 		delete this.pkgFile['dependencies']['veams-plugin-modules'];
 		delete this.pkgFile['dependencies']['veams-plugin-store'];
 		delete this.pkgFile['dependencies']['veams-plugin-templater'];
+		delete this.pkgFile['dependencies']['veams-plugin-mixins'];
 	}
 
 	this.fs.copy(

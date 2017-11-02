@@ -129,7 +129,7 @@ module.exports = function(grunt) {
 		'postcssSeparator',<% }} %><% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-autoprefixer') != -1) || (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1)) { %>
 		'postcss:dist',<% } %>
 		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
-		'bless',<% }} %><% if(templateEngine === 'mangonyHbs'){ %>
+		'bless',<% }} %><% if(templateEngine === 'ssr-mangony-hbs'){ %>
 		'mangony:dist',<% } %>
 		'concurrent:hintAndDocs'
 	]);
