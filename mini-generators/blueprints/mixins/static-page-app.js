@@ -1,3 +1,5 @@
+const bpConfig = require('../config');
+
 module.exports = [
 	{
 		type: 'confirm',
@@ -10,5 +12,12 @@ module.exports = [
 		name: 'bpWithJs',
 		message: 'Do you want to add JavaScript to this blueprint?',
 		default: true
+	},
+	{
+		when: () => bpConfig.types.indexOf(this.options.type) === -1,
+		type: 'input',
+		name: 'customTypePrefix',
+		message: 'You can now add a custom prefix, if you like.',
+		default: ''
 	}
 ];

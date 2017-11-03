@@ -2,7 +2,6 @@ const fsx = require('fs-extra');
 const path = require('path');
 const helpers = require('../../lib/helpers');
 const config = require('../../lib/config');
-const bpConfig = require('./config');
 const bpHelpers = require('./helpers/bp-helpers');
 let prompts = [];
 
@@ -61,15 +60,6 @@ module.exports = function questions() {
 			name: 'customTypeName',
 			message: 'How do you call your custom type?',
 			default: this.options.type
-		},
-		{
-			when: () => {
-				return bpConfig.types.indexOf(this.options.type) === -1;
-			},
-			type: 'input',
-			name: 'customTypePrefix',
-			message: 'You can now add a custom prefix, if you like.',
-			default: ''
 		}
 	]);
 
