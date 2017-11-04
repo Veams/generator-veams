@@ -5,7 +5,6 @@ const jscsId = 'jscs';
 const htmlHintId = 'hintingHTML';
 const jsHintId = 'hintingJS';
 const sasslintId = 'stylelint';
-const webdriverId = 'webdriver';
 const karmaId = 'karma';
 
 exports.questions = function () {
@@ -54,22 +53,6 @@ exports.questions = function () {
 			type: 'checkbox',
 			message: qaLibsQuestion,
 			choices: choices,
-			default: this.config.get(qaLibsId)
-		},
-		{
-			when: function (answers) {
-				return answers.testAndQA && answers.taskRunner.indexOf('grunt') !== -1;
-			},
-			name: qaLibsId,
-			type: 'checkbox',
-			message: qaLibsQuestion,
-			choices: choices.concat([
-				{
-					name: 'E2E - End to End (webdriver)',
-					value: webdriverId,
-					checked: true
-				}
-			]),
 			default: this.config.get(qaLibsId)
 		}
 	];

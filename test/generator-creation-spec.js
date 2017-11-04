@@ -28,7 +28,7 @@ describe('generator-veams', function () {
 			'.editorconfig',
 			'configs/environments/environment.local.js',
 			'configs/environments/environment.dev.js',
-			'configs/environments/environment.prod.js',
+			'configs/environments/environment.production.js',
 			'configs/environments/environment.qa.js',
 			'README.md',
 			'veams-cli.json'

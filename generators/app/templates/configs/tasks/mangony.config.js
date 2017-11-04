@@ -32,6 +32,7 @@ module.exports = {
 				dir: '',
 				files: [
 					'shared/components/**/*.hbs',
+					'core/components/**/*.hbs',
 					'shared/utilities/**/*.hbs'
 				]
 			},
@@ -44,7 +45,7 @@ module.exports = {
 				]
 			},
 			layouts: {
-				dir: 'shared/layouts',
+				dir: 'core/layouts',
 				files: [
 					'**/*.hbs'
 				]
