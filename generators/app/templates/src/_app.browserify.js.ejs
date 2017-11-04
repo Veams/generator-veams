@@ -10,8 +10,15 @@ import VeamsMediaQueryHandler from 'veams-plugin-media-query-handler';<% if (pro
 import VeamsDOM from 'veams-plugin-dom';
 import VeamsModules from 'veams-plugin-modules';
 // import VeamsStore from 'veams-plugin-store';
-// import VeamsTemplater from 'veams-plugin-templater';<% } %>
-import EVENTS from '@@shared/scripts/events';
+// import VeamsTemplater from 'veams-plugin-templater';<% } %><% if (projectType === 'single-page-app') { %>
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';<% if (jsLibs.indexOf('redux') !== -1) { %>
+import { Provider } from 'react-redux';<% } %>
+import routes from './app.routes';<% if (jsLibs.indexOf('redux') !== -1) { %>
+import store from './app.store';<% } %><% } %>
+import EVENTS from './app.events';
 
 let Core = {};<%if (jsLibs && (jsLibs.indexOf('jquery') !== -1 || jsLibs.indexOf('veams-query') !== -1)) { %>
 Core.$ = $;<% } %>
@@ -20,45 +27,56 @@ Core.$ = $;<% } %>
 Core.version = "0.0.1";
 // Veams
 Veams.onInitialize(() => {
-/**
-* Veams Plugins
-*/
-<% if (projectType === 'static-page-app') { %>
-// Dom Plugin
-Veams.use(VeamsDOM, {
-DOM: $
-});
+    /**
+    * Veams Plugins
+    */
+    <% if (projectType === 'static-page-app') { %>
+    // Dom Plugin
+    Veams.use(VeamsDOM, {
+     DOM: $
+    });
 
-// Module System Plugin
-Veams.use(VeamsModules, {
-useMutationObserver: true,
-internalCacheOnly: false
-});
+    // Module System Plugin
+    Veams.use(VeamsModules, {
+        useMutationObserver: true,
+        internalCacheOnly: false
+    });
 
-// Store Plugin
-// Veams.use(VeamsStore, {
-// 	reducer: rootReducer,
-// 	state: INITIAL_STATE,
-// 	subjects: subjects
-// });
-<% } %>
-// Vent Plugin
-Veams.use(VeamsVent, {
-furtherEvents: EVENTS
-});
+    // Store Plugin
+    // Veams.use(VeamsStore, {
+    // 	reducer: rootReducer,
+    // 	state: INITIAL_STATE,
+    // 	subjects: subjects
+    // });
+    <% } %>
+    // Vent Plugin
+    Veams.use(VeamsVent, {
+        furtherEvents: EVENTS
+    });
 
-// Logger Plugin for devmode and logger
-Veams.use(VeamsLogger);
+    // Logger Plugin for devmode and logger
+    Veams.use(VeamsLogger);
 
-// Media Query Handler Plugin
-Veams.use(VeamsMediaQueryHandler);
+    // Media Query Handler Plugin
+    Veams.use(VeamsMediaQueryHandler);
 
-
-// Trigger global scroll event
-window.onscroll = Veams.helpers.throttle((e) => {
-Veams.Vent.trigger(Veams.EVENTS.scroll, e);
-}, 200);
-
+    // Trigger global scroll event
+    window.onscroll = Veams.helpers.throttle((e) => {
+        Veams.Vent.trigger(Veams.EVENTS.scroll, e);
+    }, 200);
+    <% if (projectType === 'single-page-app') { %>
+    /**
+    * Init app
+    */
+    ReactDOM.render(<% if (jsLibs.indexOf('redux') !== -1) { %>
+        <Provider store={store}><% } %>
+            <BrowserRouter>
+                <div className="app">{renderRoutes(routes)}</div>
+            </BrowserRouter><% if (jsLibs.indexOf('redux') !== -1) { %>
+        </Provider>% } %>,
+        document.querySelector('#root')
+    );
+    <% } %>
 });
 
 <% if (projectType === 'static-page-app') { %>

@@ -24,28 +24,14 @@ exports.scaffold = function () {
 	// delete this.pkgFile['dependencies']['veams-plugin-logger'];
 	// delete this.pkgFile['dependencies']['veams-plugin-media-query-handler'];
 	// delete this.pkgFile['dependencies']['veams-plugin-vent'];
-
-	if (this.projectType === 'single-page-app') {
-		delete this.pkgFile['dependencies']['veams-plugin-dom'];
-		delete this.pkgFile['dependencies']['veams-plugin-modules'];
-		delete this.pkgFile['dependencies']['veams-plugin-store'];
-		delete this.pkgFile['dependencies']['veams-plugin-templater'];
-		delete this.pkgFile['dependencies']['veams-plugin-mixins'];
-	}
-
 	this.fs.copy(
-		this.templatePath('src/shared/scripts/events.js'),
-		'src/shared/scripts/events.js'
+		this.templatePath('src/app.events.js'),
+		'src/app.events.js'
 	);
+
 	this.fs.copy(
 		this.templatePath('src/core/styles/_get-media.scss'),
 		'src/core/styles/_get-media.scss'
-	);
-
-	// Layouts
-	this.fs.copy(
-		this.templatePath('src/core/layouts/README.md'),
-		'src/core/layouts/README.md'
 	);
 
 	// Components
@@ -59,4 +45,13 @@ exports.scaffold = function () {
 		this.templatePath('src/shared/utilities/README.md'),
 		'src/shared/utilities/README.md'
 	);
+
+
+	if (this.projectType === 'single-page-app') {
+		delete this.pkgFile['dependencies']['veams-plugin-dom'];
+		delete this.pkgFile['dependencies']['veams-plugin-modules'];
+		delete this.pkgFile['dependencies']['veams-plugin-store'];
+		delete this.pkgFile['dependencies']['veams-plugin-templater'];
+		delete this.pkgFile['dependencies']['veams-plugin-mixins'];
+	}
 };
