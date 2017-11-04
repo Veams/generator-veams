@@ -29,8 +29,8 @@ module.exports = (routes, apiRoutes) => {
 	 *
 	 */<% if (templateEngine === 'ssr-mangony-hbs') { %>
 	mangony.render();<% } %>
-	app.use(routes);
 	app.use(apiRoutes);
+	app.use(routes);
 
 	return app;
 };

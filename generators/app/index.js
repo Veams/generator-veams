@@ -139,9 +139,11 @@ module.exports = class extends Generator {
 			cssPostProcessorsPrompt.call(this)
 		);
 
-		(!this.config.get('jsLibs') || this.force) && this.questions.push(
-			jsPrompt.call(this)
-		);
+		if (!this.config.get('jsLibs') || this.force) {
+			this.questions = this.questions.concat(
+				jsPrompt.call(this)
+			);
+		}
 
 		if (!this.config.get('templateEngine') || this.force) {
 			this.questions = this.questions.concat(

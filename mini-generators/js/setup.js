@@ -8,6 +8,6 @@ module.exports = function setup() {
 	this.jsLibs = _.union(this.config.get('jsLibs'), config.veamsJSPreset);
 
 	if (this.projectType === 'single-page-app') {
-		this.jsLibs = _.union(this.config.get('jsLibs'), config.reactId);
+		this.jsLibs.push(config.reactId);
 	}
 };

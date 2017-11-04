@@ -5,11 +5,11 @@ import index from './home';
 import serverHosts from './server-hosts';
 
 const router = new Router();
-
+<% if (projectType === 'single-page-app') { %>
+router.get(['*'], index);<% } else { %>
 // Basic routes
 router.get(['/', '/home', '/index'], index);
-
-
+<% } %>
 // Additional routes
 router.use([serverHosts]);
 

@@ -73,7 +73,7 @@ Veams.onInitialize(() => {
             <BrowserRouter>
                 <div className="app">{renderRoutes(routes)}</div>
             </BrowserRouter><% if (jsLibs.indexOf('redux') !== -1) { %>
-        </Provider>% } %>,
+        </Provider><% } %>,
         document.querySelector('#root')
     );
     <% } %>

@@ -1,6 +1,7 @@
 module.exports = function prompts() {
 	return [
 		{
+			when: answers => answers.projectType === 'static-page-app',
 			type: 'list',
 			name: 'templateEngine',
 			message: 'Which Template Engine do you want to use?',

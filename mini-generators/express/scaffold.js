@@ -21,11 +21,6 @@ module.exports = function scaffold() {
 	);
 
 	this.fs.copy(
-		this.templatePath('server/content'),
-		'server/content'
-	);
-
-	this.fs.copy(
 		this.templatePath('server/models'),
 		'server/models'
 	);
@@ -49,6 +44,23 @@ module.exports = function scaffold() {
 		this.templatePath('server/modules/express.js.ejs'),
 		'server/modules/express.js',
 		this
+	);
+
+	this.fs.copyTpl(
+		this.templatePath('server/content/home.js.ejs'),
+		'server/content/home.js',
+		this
+	);
+
+	this.fs.copyTpl(
+		this.templatePath('server/content/index.js.ejs'),
+		'server/content/index.js',
+		this
+	);
+
+	this.fs.copy(
+		this.templatePath('server/content/server-hosts.js'),
+		'server/content/server-hosts.js'
 	);
 
 	if (this.templateEngine === 'ssr-mangony-hbs') {

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
 class AppCore extends Component {
@@ -8,6 +9,16 @@ class AppCore extends Component {
 		return (
 			<div>
 				<h1>App successfully started and created with Veams!</h1>
+				<nav>
+					<ul>
+						<li>
+							<Link to="/">Home Route</Link>
+						</li>
+						<li>
+							<Link to="/test">Test Route</Link>
+						</li>
+					</ul>
+				</nav>
 				<div className="main">
 					{renderRoutes(this.routes)}
 				</div>

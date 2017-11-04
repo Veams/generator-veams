@@ -52,8 +52,7 @@ module.exports = {
 	},
 	dist: {
 		options: {
-			alias: internalLibs,
-			external: externalLibs
+			alias: internalLibs
 		},
 		files: {
 			'<%%= paths.app %>/scripts/app.bundle.js': '<%%= paths.src %>/app.js'

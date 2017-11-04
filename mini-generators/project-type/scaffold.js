@@ -17,6 +17,11 @@ module.exports = function scaffold() {
 			this.templatePath('src/app.routes.js'),
 			'src/app.routes.js'
 		);
+
+		this.fs.copy(
+			this.templatePath('src/static/index.html'),
+			'src/static/index.html'
+		);
 	}
 
 	if (this.projectType === 'static-page-app') {

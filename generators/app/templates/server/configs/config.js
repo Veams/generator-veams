@@ -3,6 +3,7 @@ const envConfig = require('../../configs/environments/environment.' + process.en
 const veamsConfig = require('../../veams-cli');
 
 const config = {
+	veams: veamsConfig,
 	env: process.env.NODE_ENV || 'development',
 	ip: process.env.IP || '0.0.0.0',
 	mockPath: 'mocks',

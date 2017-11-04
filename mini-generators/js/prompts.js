@@ -1,9 +1,9 @@
 const config = require('./config');
+const id = 'jsLibs';
+const type = 'checkbox';
+const message = 'Do you want to use any further JavaScript libraries?';
 
 module.exports = function prompts() {
-	const id = 'jsLibs';
-	const type = 'checkbox';
-	const message = 'Do you want to use any further JavaScript libraries?';
 	return [
 		{
 			when: answers => answers.projectType === 'static-page-app',
