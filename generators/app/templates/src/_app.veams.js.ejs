@@ -24,12 +24,6 @@ Veams.onInitialize(() => {
      DOM: $
     });
 
-    // Module System Plugin
-    Veams.use(VeamsModules, {
-        useMutationObserver: true,
-        internalCacheOnly: false
-    });
-
     // Store Plugin
     // Veams.use(VeamsStore, {
     // 	reducer: rootReducer,
@@ -47,6 +41,12 @@ Veams.onInitialize(() => {
 
     // Media Query Handler Plugin
     Veams.use(VeamsMediaQueryHandler);
+
+    // Module System Plugin
+    Veams.use(VeamsModules, {
+        useMutationObserver: true,
+        internalCacheOnly: false
+    });
 
     // Trigger global scroll event
     window.onscroll = Veams.helpers.throttle((e) => {
