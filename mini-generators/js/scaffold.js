@@ -18,9 +18,15 @@ module.exports = function scaffold() {
 			this.templatePath('src/app.store.js'),
 			'src/app.store.js'
 		);
+
+		if (this.projectType === 'static-page-app') {
+			delete this.pkgFile['dependencies']['react-redux'];
+			delete this.pkgFile['dependencies']['react-router-redux'];
+		}
 	} else {
 		delete this.pkgFile['dependencies'][config.reduxId];
 		delete this.pkgFile['dependencies']['react-redux'];
+		delete this.pkgFile['dependencies']['react-router-redux'];
 		delete this.pkgFile['dependencies']['redux-devtools-extension'];
 		delete this.pkgFile['dependencies']['redux-immutable-state-invariant'];
 		delete this.pkgFile['dependencies']['redux-observable'];
