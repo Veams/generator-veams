@@ -1,10 +1,10 @@
 {
-    "paths": {
-        "scripts": "<%= path %>/<%= filename %>/scripts/<%= filename %>",
+    "paths": {<% if(props.bpWithJs) {%>
+        "scripts": "<%= path %>/<%= filename %>/scripts/<%= filename %>",<% } %>
         "styles": "<%= path %>/<%= filename %>/styles/<%= filename %>"
     },
-    "type": "<%= bpTypeName %>",
+    "type": "<%= customTypeName %>",
     "contextData": "<%= filename %>",
     "layout": "lyt-docs",
-    "publish": false
+    "publish": true
 }
