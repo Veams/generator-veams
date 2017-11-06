@@ -24,5 +24,6 @@ module.exports = function scaffold() {
 		delete this.pkgFile['dependencies']['redux-devtools-extension'];
 		delete this.pkgFile['dependencies']['redux-immutable-state-invariant'];
 		delete this.pkgFile['dependencies']['redux-observable'];
+		delete this.pkgFile['dependencies']['reselect'];
 	}
 };

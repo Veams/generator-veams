@@ -29,6 +29,7 @@
 		"redux-devtools-extension": "^2.13.2",
 		"redux-immutable-state-invariant": "^2.1.0",
 		"redux-observable": "^0.17.0",
+		"reselect": "^3.0.1",
 		"rxjs": "^5.5.2",
 		"veams": "^5.0.1",
 		"veams-query": "^2.2.1",
