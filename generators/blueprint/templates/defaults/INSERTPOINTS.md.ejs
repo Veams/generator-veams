@@ -3,7 +3,7 @@
 ### Include: Page
 
 ``` hbs
-{{! @INSERT :: START @id: <%= filename %>, @tag: <%= bpTypeName %>-partial }}
+{{! @INSERT :: START @id: <%= filename %>, @tag: <%= customTypeName %>-partial }}
 {{#with <%= filename %>}}<% if (props.bpWrapWith) { %>
 	{{#wrapWith "<%= filename %>"}}
 		Wrapped with markup from <%= filename %>.
