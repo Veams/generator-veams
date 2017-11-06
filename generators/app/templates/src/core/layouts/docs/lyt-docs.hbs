@@ -1,13 +1,14 @@
 {{#extend "lyt-default"}}
 	{{#content "styles" mode="append"}}
 		<link rel="stylesheet" href="{{@root.assets}}css/docs.css"/>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet"
+		      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 	{{/content}}
 	{{#content "main"}}
 		<div class="docs">
 
 			<div class="docs__sidebar">
-				<img src="https://www.veams.org/img/svg/icons/veams-std-invert.svg">
+				<img src="http://www.veams.org/img/svg/icons/veams-std-invert.svg">
 				{{> c-sitemap }}
 			</div>
 
@@ -15,7 +16,8 @@
 				<div class="docs__main-inner">
 					<div class="docs__header">
 						<div class="is-inner">
-							<h1 class="docs__headline">{{uppercase @root.currentPage.filename}} <span>({{this.type}})</span></h1>
+							<h1 class="docs__headline">{{uppercase @root.currentPage.filename}} <span>({{this.type}}
+								)</span></h1>
 							<h3 class="docs__subline">
 								<i class="is-docs-icon fa fa-file"></i>
 								<span>
@@ -31,7 +33,8 @@
 									<i class="fa fa-desktop" aria-hidden="true"></i>
 									Demo Section
 								</h2>
-								<p class="docs__section-description">Each variation will be presented in the following section.</p>
+								<p class="docs__section-description">Each variation will be presented in the following
+									section.</p>
 							</div>
 
 							<div class="docs__section-content">
@@ -48,7 +51,10 @@
 
 					</div>
 
-					{{#ifExists (buildPath @root.currentPage.dirname "README.md")}}
+
+					{{#ifExists (buildPath @root.currentPage.dirname "README.md" goUp=1)}}
+
+						{{debug (buildPath @root.currentPage.dirname "README.md" goUp=1)}}
 						<div class="docs__section is-bg-invert">
 							<div class="is-inner">
 								<div class="docs__section-header">
@@ -58,7 +64,7 @@
 									</h2>
 								</div>
 								<div class="docs__section-content">
-									{{{markdown (buildPath @root.currentPage.dirname "README.md") }}}
+									{{{markdown (buildPath @root.currentPage.dirname "README.md" goUp=1) }}}
 								</div>
 							</div>
 
@@ -117,10 +123,10 @@
 								</div>
 								<div class="docs__section-content">
 									{{#ifExists
-											(buildPath @root.currentPage.dirname (concat this.contextData ".json"))}}
+											(buildPath @root.currentPage.dirname (concat (concat 'data/' this.contextData) ".json") goUp=1)}}
 										{{#highlight "json"}}
 											{{{embeding
-													(buildPath @root.currentPage.dirname (concat this.contextData ".json")) }}}
+													(buildPath @root.currentPage.dirname (concat (concat 'data/' this.contextData) ".json") goUp=1) }}}
 										{{/highlight}}
 									{{/ifExists}}
 								</div>
@@ -151,7 +157,7 @@
 									{{#each this.scssFiles}}
 										<h3>{{this}}</h3>
 										{{#highlight "scss"}}
-											{{{embeding (buildPath @root.config.stylesDir this) }}}
+											{{{embeding (buildPath @root.currentPage.dirname (concat 'styles/' this) goUp=1) }}}
 										{{/highlight}}
 									{{/each}}
 								</div>

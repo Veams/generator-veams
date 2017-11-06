@@ -6,8 +6,8 @@ Global Imports
 --------------------------------------------------- */
 @import "highlight";
 @import "monokai";
-@import "../../styles/global/vars";
-@import "../../styles/helpers/helpers";
+@import "../../../shared/styles/global/vars";
+@import "../../../shared/styles/helpers/helpers";
 
 /* ---------------------------------------------------
 General styles
@@ -141,6 +141,48 @@ General styles
 	.docs__section-content {
 		margin-top: 2rem;
 		padding: 1rem 0;
+
+		h1 {
+			font-size: 2.3rem;
+			margin: 2rem 0;
+		}
+
+		h2 {
+			font-size: 1.9rem;
+			margin: 2rem 0;
+		}
+
+		h3 {
+			font-size: 1.6rem;
+			margin: 1rem 0;
+		}
+
+		h4 {
+			font-size: 1.5rem;
+			font-weight: 900;
+			margin: 1rem 0;
+		}
+
+		ul {
+			margin-top: 1rem;
+			margin-left: 3rem;
+			list-style: circle;
+		}
+
+		ol {
+			margin-top: 1rem;
+			margin-left: 3rem;
+			list-style-type: decimal;
+		}
+
+		pre, code {
+			font-family: 'Courier', Monospaced, monospace;
+		}
+
+		hr {
+			margin: 3rem 0;
+			border-width: 1px;
+		}
 	}
 	.docs__section-error {
 		font-style: italic;

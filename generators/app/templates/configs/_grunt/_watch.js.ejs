@@ -10,10 +10,19 @@ module.exports = {
 			'!<%%= paths.src %>/assets/img/svgmin/**/*'<% }} %><% }} %>
 			],
 		tasks: 'sync:assets'
-	},
+	}<% if (projectType === 'static-page-app') { %>,
+	scssDocs: {
+		files: [
+			'<%%= paths.src %>/core/layouts/docs/**/*.scss'
+		],
+		tasks: [
+			'sass:docs
+		]
+	}<% } %>,
 	scss: {
 		files: [
 			'<%%= paths.src %>/app.tmp.scss',
+			'<%%= paths.src %>/core/components/**/*.scss',
 			'<%%= paths.src %>/core/styles/**/*.scss',
 			'<%%= paths.src %>/shared/styles/**/*.scss',
 			'<%%= paths.src %>/shared/components/**/styles/**/*.scss',
