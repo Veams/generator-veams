@@ -63,7 +63,7 @@ module.exports = function questions() {
 		}
 	]);
 
-	prompts = prompts.concat(this.customPromptMixins);
+	prompts = prompts.concat(this.customPromptMixins(this));
 	prompts = prompts.concat([
 		{
 			type: 'checkbox',

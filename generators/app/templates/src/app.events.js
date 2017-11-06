@@ -7,9 +7,7 @@
 /**
  * Events Global
  */
-
 const EVENTS = {};
-
 
 // @INSERTPOINT :: @ref: js-events
 

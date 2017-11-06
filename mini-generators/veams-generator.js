@@ -25,6 +25,11 @@ exports.scaffold = function () {
 	// delete this.pkgFile['dependencies']['veams-plugin-media-query-handler'];
 	// delete this.pkgFile['dependencies']['veams-plugin-vent'];
 	this.fs.copy(
+		this.templatePath('src/app.veams.js.ejs'),
+		'src/app.veams.js'
+	);
+
+	this.fs.copy(
 		this.templatePath('src/app.events.js'),
 		'src/app.events.js'
 	);

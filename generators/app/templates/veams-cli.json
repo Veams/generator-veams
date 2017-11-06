@@ -1,7 +1,6 @@
 {
 	"projectType": "static-page-app",
-	"blueprints": {
-	},
+	"blueprints": {},
 	"config": {
 		"src": "configs/_grunt/*.js"
 	},
@@ -13,6 +12,7 @@
 		"src/app.js",
 		"src/shared/layouts",
 		"src/core/pages",
+		"src/features/containers",
 		"src/app.events.js"
 	],
 	"paths": {

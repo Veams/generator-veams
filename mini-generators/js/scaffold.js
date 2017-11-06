@@ -3,6 +3,9 @@ const config = require('./config');
 module.exports = function scaffold() {
 	if (this.jsLibs.indexOf(config.reactId) == -1) {
 		delete this.pkgFile['dependencies'][config.reactId];
+		delete this.pkgFile['dependencies']['react-dom'];
+		delete this.pkgFile['dependencies']['react-router-dom'];
+		delete this.pkgFile['dependencies']['react-router-config'];
 		delete this.pkgFile['devDependencies']['babel-preset-react'];
 	}
 	if (this.jsLibs.indexOf(config.jqueryId) == -1) delete this.pkgFile['dependencies'][config.jqueryId];
@@ -18,5 +21,8 @@ module.exports = function scaffold() {
 	} else {
 		delete this.pkgFile['dependencies'][config.reduxId];
 		delete this.pkgFile['dependencies']['react-redux'];
+		delete this.pkgFile['dependencies']['redux-devtools-extension'];
+		delete this.pkgFile['dependencies']['redux-immutable-state-invariant'];
+		delete this.pkgFile['dependencies']['redux-observable'];
 	}
 };

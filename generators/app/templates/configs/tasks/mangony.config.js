@@ -22,6 +22,8 @@ module.exports = {
 				files: [
 					'core/**/*.hjson',
 					'core/**/*.json',
+					'features/**/*.hjson',
+					'features/**/*.json',
 					'shared/components/**/*.hjson',
 					'shared/components/**/*.json',
 					'shared/utilities/**/*.hjson',
@@ -33,6 +35,7 @@ module.exports = {
 				files: [
 					'shared/components/**/*.hbs',
 					'core/components/**/*.hbs',
+					'features/**/*.hbs',
 					'shared/utilities/**/*.hbs'
 				]
 			},
@@ -41,6 +44,7 @@ module.exports = {
 				files: [
 					'pages/**/*.hbs',
 					'shared/components/**/*.hbs',
+					'features/**/*.hbs',
 					'shared/utilities/**/*.hbs'
 				]
 			},
