@@ -22,6 +22,11 @@ module.exports = function scaffold() {
 			this.templatePath('src/static/index.html'),
 			'src/static/index.html'
 		);
+
+		this.fs.copy(
+			this.templatePath('gitkeep'),
+			'src/features/.gitkeep'
+		)
 	}
 
 	if (this.projectType === 'static-page-app') {

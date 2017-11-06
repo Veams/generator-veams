@@ -6,11 +6,11 @@
 		"node": ">=6.0.0"
 	},
 	"scripts": {
-		"test": "grunt test",
 		"build": "cross-env NODE_ENV=production BABEL_ENV=client grunt build",
 		"dev:start": "BABEL_ENV=client grunt serve",
+		"dev:server": "cross-env BABEL_ENV=server node_modules/.bin/nodemon server/index.js --config ./configs/tasks/nodemon.config.json",
 		"start": "cross-env NODE_ENV=local npm-run-all --parallel dev:*",
-		"dev:server": "cross-env BABEL_ENV=server node_modules/.bin/nodemon server/index.js --config ./configs/tasks/nodemon.config.json"
+		"test": "grunt test"
 	},
 	"dependencies": {
 		"bootstrap-sass": "^3.3.7",

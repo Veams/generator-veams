@@ -1,6 +1,8 @@
 {
 	"projectType": "static-page-app",
-	"blueprints": {},
+	"blueprints": {
+		"filePrefix": false
+	},
 	"config": {
 		"src": "configs/_grunt/*.js"
 	},
