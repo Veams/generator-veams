@@ -9,12 +9,6 @@ module.exports = (context) => {
 			default: false
 		},
 		{
-			type: 'confirm',
-			name: 'bpWithJs',
-			message: 'Do you want to add JavaScript to this blueprint?',
-			default: true
-		},
-		{
 			when: () => bpConfig.types.indexOf(context.options.type) === -1,
 			type: 'input',
 			name: 'customTypePrefix',

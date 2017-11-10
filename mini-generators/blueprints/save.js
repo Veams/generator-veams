@@ -12,12 +12,12 @@ module.exports = function save(props) {
 	};
 
 	this.props = props;
-	this.skipFiles = props.skipFiles;
+	this.blueprints = props.blueprints;
 	this.path = this.options.path;
 	this.name = this.options.name ? this.options.name : props.bpName;
 	this.bpTypeName = props.bpTypeName === 'global' ? '' : props.bpTypeName;
 	this.bpTypePrefix = this.bpTypeName ? prefixer(cutter(this.bpTypeName)) : '';
-	this.customTypeName = props.customTypeName || this.options.type;
+	this.customTypeName = this.bpTypeName = props.customTypeName || this.options.type;
 	this.customTypePrefix = props.customTypePrefix || false;
 	this.cleanPathType = this.bpTypeName === 'utility' ? 'utilitie' : this.bpTypeName;
 

@@ -1,3 +1,6 @@
+<%
+let bpWithJs = props.blueprints.indexOf('/scripts/bp.js.ejs') !== -1;
+%>
 {
 	"variations": {
 		"default": {
@@ -6,7 +9,7 @@
 			},
 			"settings": {<% if (bpTypeName === 'component') { %>
 				"<%= bpName %>ContextClass": "default",<% } %>
-				"<%= bpName %>Classes": false<% if(props.bpWithJs) {%>,
+				"<%= bpName %>Classes": false<% if(bpWithJs) {%>,
 				"<%= bpName %>JsOptions": {}<% } %>
 			},
 			"content": {}

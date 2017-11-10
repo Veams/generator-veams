@@ -1,6 +1,9 @@
+<%
+let bpWithJs = props.blueprints.indexOf('/scripts/bp.js.ejs') !== -1;
+%>
 <% if (bpTypeName === 'component') { %>
 <div class="c-<%= filename %>{{#if settings.<%= bpName %>ContextClass}}--{{settings.<%= bpName %>ContextClass}}{{else}}--default{{/if}}{{#if settings.<%= bpName %>Classes}} {{settings.<%= bpName %>Classes}}{{/if}}"
-     data-css="c-<%= filename %>"<% if(props.bpWithJs) { %>
+     data-css="c-<%= filename %>"<% if(bpWithJs) { %>
      data-js-module="<%= filename %>"{{#if settings.<%= bpName %>JsOptions}}
      data-js-options='{{stringify settings.<%= bpName %>JsOptions}}'{{/if}}<% } %>>
      <%= filename %>
@@ -9,7 +12,7 @@
      <% } %>
 </div>
 <% } else { %>
-<div class="<%= bpTypePrefix %><%= filename %>{{#if settings.<%= bpName %>Classes}} {{settings.<%= bpName %>Classes}}{{/if}}"<% if(props.bpWithJs) { %>
+<div class="<%= bpTypePrefix %><%= filename %>{{#if settings.<%= bpName %>Classes}} {{settings.<%= bpName %>Classes}}{{/if}}"<% if(bpWithJs) { %>
     data-js-module="<%= filename %>"{{#if settings.<%= bpName %>JsOptions}}
     data-js-options='{{stringify settings.<%= bpName %>JsOptions}}'{{/if}}<% } %>>
      <%= filename %>

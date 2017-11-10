@@ -27,7 +27,10 @@ class <%= bpJsName %> extends VeamsComponent {
 	 * @param {Object} obj.options - options which will be passed in as JSON object
 	 */
 	constructor(obj) {
-		let options = {};
+		let options = {
+			selectors: {},
+			classes: {}
+		};
 
 		super(obj, options);
 	}

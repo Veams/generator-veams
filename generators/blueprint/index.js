@@ -1,6 +1,7 @@
 'use strict';
 const chalk = require('chalk');
 const Generator = require('yeoman-generator');
+const autocomplete = require('inquirer-autocomplete-prompt');
 const helpers = require('../../lib/helpers');
 const blueprintConstruct = require('../../mini-generators/blueprints/construct');
 const blueprintPrompts = require('../../mini-generators/blueprints/prompts');

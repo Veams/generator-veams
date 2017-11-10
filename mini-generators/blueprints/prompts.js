@@ -6,6 +6,9 @@ const bpHelpers = require('./helpers/bp-helpers');
 let prompts = [];
 
 module.exports = function questions() {
+	let fileChoices = bpHelpers.prepareFilesForPrompt(this.bpFiles, this.options.name);
+	let defaultFileChoices = fileChoices.map(item => item.value);
+
 	if (!this.options.name) {
 		prompts = prompts.concat([
 			{
@@ -63,15 +66,17 @@ module.exports = function questions() {
 		}
 	]);
 
-	prompts = prompts.concat(this.customPromptMixins(this));
 	prompts = prompts.concat([
 		{
 			type: 'checkbox',
-			name: 'skipFiles',
-			message: 'Which files do you want to skip?',
-			choices: bpHelpers.prepareFilesForPrompt(this.bpFiles, this.options.name)
+			name: 'blueprints',
+			message: 'Which files do you want to add?',
+			choices: fileChoices,
+			default: defaultFileChoices
 		}
 	]);
+
+	prompts = prompts.concat(this.customPromptMixins(this));
 
 	return prompts;
 };

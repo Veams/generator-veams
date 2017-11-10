@@ -13,7 +13,7 @@ module.exports = function scaffold() {
 		if (this.bpFiles.hasOwnProperty(objName)) {
 			let file = this.bpFiles[objName];
 
-			if (this.skipFiles.indexOf(file.absolutePath) === -1) {
+			if (this.blueprints.indexOf(file.absolutePath) !== -1) {
 				let cleanedFile = helpers.deleteFileExtension(file.absolutePath);
 				let tplFileExtension = path.extname(cleanedFile);
 
