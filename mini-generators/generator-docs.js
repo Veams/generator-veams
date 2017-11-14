@@ -15,17 +15,12 @@ exports.questions = function () {
 				name: 'JavaScript Documentation with ESDoc',
 				value: jsDocsId,
 				checked: false
-			},
+			}
 			//{
 			//	name: 'Sass Documentation with SassDoc',
 			//	value: sassDocsId,
 			//	checked: false
 			//},
-			{
-				name: 'HTML Documentation with Assemble',
-				value: htmlDocsId,
-				checked: false
-			}
 		],
 		default: this.config.get('docs')
 	};

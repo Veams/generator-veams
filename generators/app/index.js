@@ -22,6 +22,7 @@ const docsGenerator = require('../../mini-generators/generator-docs');
 const projectTypePrompt = require('../../mini-generators/project-type/prompts');
 const taskRunnerPrompt = require('../../mini-generators/taskrunner/prompts');
 const iconsPrompt = require('../../mini-generators/icons/prompts');
+const imagesPrompt = require('../../mini-generators/images/prompts');
 const cssPostProcessorsPrompt = require('../../mini-generators/css-post-processors/prompts');
 const cssFrameworksPrompt = require('../../mini-generators/css-frameworks/prompts');
 const jsPrompt = require('../../mini-generators/js/prompts');
@@ -35,6 +36,7 @@ const taskRunnerSetup = require('../../mini-generators/taskrunner/setup');
 const iconsSetup = require('../../mini-generators/icons/setup');
 const cssPostProcessorsSetup = require('../../mini-generators/css-post-processors/setup');
 const cssFrameworksSetup = require('../../mini-generators/css-frameworks/setup');
+const imagesSetup = require('../../mini-generators/images/setup');
 const jsSetup = require('../../mini-generators/js/setup');
 const templatingSetup = require('../../mini-generators/templating/setup');
 
@@ -43,6 +45,7 @@ const templatingSetup = require('../../mini-generators/templating/setup');
  */
 const projectTypeScaffold = require('../../mini-generators/project-type/scaffold');
 const cssFrameworksScaffold = require('../../mini-generators/css-frameworks/scaffold');
+const imagesScaffold = require('../../mini-generators/images/scaffold');
 const expressScaffold = require('../../mini-generators/express/scaffold');
 const taskRunnerScaffold = require('../../mini-generators/taskrunner/scaffold');
 const jsScaffold = require('../../mini-generators/js/scaffold');
@@ -131,6 +134,12 @@ module.exports = class extends Generator {
 			iconsPrompt.call(this)
 		);
 
+		if (!this.config.get('images') || this.force) {
+			this.questions = this.questions.concat(
+				imagesPrompt.call(this)
+			);
+		}
+
 		(!this.config.get('cssLibs') || this.force) && this.questions.push(
 			cssFrameworksPrompt.call(this)
 		);
@@ -175,6 +184,7 @@ module.exports = class extends Generator {
 		projectTypeSetup.call(this);
 		taskRunnerSetup.call(this);
 		iconsSetup.call(this);
+		imagesSetup.call(this);
 		cssFrameworksSetup.call(this);
 		cssPostProcessorsSetup.call(this);
 		jsSetup.call(this);
@@ -187,6 +197,21 @@ module.exports = class extends Generator {
 
 	_overwriteSetup() {
 		veamsGenerator.overwriteSetup.call(this);
+	}
+
+	_scaffold() {
+		projectTypeScaffold.call(this);
+		cssFrameworksScaffold.call(this);
+		veamsGenerator.scaffold.call(this);
+		jsScaffold.call(this);
+		gruntGenerator.scaffold.call(this);
+		imagesScaffold.call(this);
+		expressScaffold.call(this);
+		templatingScaffold.call(this);
+		testAndQAGenerator.scaffold.call(this);
+		docsGenerator.scaffold.call(this);
+		taskRunnerScaffold.call(this);
+		cleanPackages.scaffold.call(this);
 	}
 
 	_defaults() {
@@ -303,20 +328,6 @@ module.exports = class extends Generator {
 			'src/app.js',
 			this
 		);
-	}
-
-	_scaffold() {
-		projectTypeScaffold.call(this);
-		cssFrameworksScaffold.call(this);
-		veamsGenerator.scaffold.call(this);
-		jsScaffold.call(this);
-		gruntGenerator.scaffold.call(this);
-		expressScaffold.call(this);
-		templatingScaffold.call(this);
-		testAndQAGenerator.scaffold.call(this);
-		docsGenerator.scaffold.call(this);
-		taskRunnerScaffold.call(this);
-		cleanPackages.scaffold.call(this);
 	}
 
 	_pkg() {

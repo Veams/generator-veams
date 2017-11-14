@@ -19,7 +19,7 @@ exports.questions = function () {
 		{
 			name: 'Hint your HTML (HTMLHint)',
 			value: htmlHintId,
-			checked: true
+			checked: false
 		},
 		{
 			name: 'Hint your JavaScript (JSHint)',
