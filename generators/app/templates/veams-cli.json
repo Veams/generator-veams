@@ -1,7 +1,16 @@
 {
 	"projectType": "static-page-app",
 	"blueprints": {
-		"filePrefix": false
+		"container": {
+			"skipImports": true,
+			"prompts": "node_modules/veams-bp-react-container/prompts",
+			"templates": "node_modules/veams-bp-react-container/templates"
+		},
+		"store": {
+			"skipImports": true,
+			"prompts": "node_modules/veams-bp-redux/prompts",
+			"templates": "node_modules/veams-bp-redux/templates"
+		}
 	},
 	"config": {
 		"src": "configs/tasks/_grunt/*.js"
