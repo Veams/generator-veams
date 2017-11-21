@@ -221,8 +221,8 @@ module.exports = class extends Generator {
 		this.fs.copyTpl(this.templatePath('editorconfig'), '.editorconfig');
 		this.fs.copyTpl(this.templatePath('README.md.ejs'), 'README.md', this);
 		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'environments'),
-			this.destinationPath(this.helperPath + 'environments')
+			this.templatePath('environments'),
+			this.destinationPath('environments')
 		);
 		this.pkgFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'veams-project';
 
