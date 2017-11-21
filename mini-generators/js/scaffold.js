@@ -27,7 +27,7 @@ module.exports = function scaffold() {
 			/**
 			 * Blueprints
 			 */
-			delete this.pkgFile['blueprints']['container'];
+			delete this.veamsFile['blueprints']['container'];
 		}
 	} else {
 		delete this.pkgFile['dependencies'][config.reduxId];
@@ -42,6 +42,6 @@ module.exports = function scaffold() {
 		/**
 		 * Blueprints
 		 */
-		delete this.pkgFile['blueprints']['store'];
+		delete this.veamsFile['blueprints']['store'];
 	}
 };
