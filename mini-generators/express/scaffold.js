@@ -11,62 +11,62 @@ module.exports = function scaffold() {
 	 * Server
 	 */
 	this.fs.copy(
-		this.templatePath('server/api'),
-		'server/api'
+		this.templatePath('src/server/api'),
+		'src/server/api'
 	);
 
 	this.fs.copy(
-		this.templatePath('server/configs'),
-		'server/configs'
+		this.templatePath('src/server/configs'),
+		'src/server/configs'
 	);
 
 	this.fs.copy(
-		this.templatePath('server/models'),
-		'server/models'
+		this.templatePath('src/server/models'),
+		'src/server/models'
 	);
 
 	this.fs.copy(
-		this.templatePath('server/services'),
-		'server/services'
+		this.templatePath('src/server/services'),
+		'src/server/services'
 	);
 
 	this.fs.copy(
-		this.templatePath('server/utils'),
-		'server/utils'
+		this.templatePath('src/server/utils'),
+		'src/server/utils'
 	);
 
 	this.fs.copy(
-		this.templatePath('server/index.js'),
-		'server/index.js'
+		this.templatePath('src/server/index.js'),
+		'src/server/index.js'
 	);
 
 	this.fs.copyTpl(
-		this.templatePath('server/modules/express.js.ejs'),
-		'server/modules/express.js',
+		this.templatePath('src/server/modules/express.js.ejs'),
+		'src/server/modules/express.js',
 		this
 	);
 
 	this.fs.copyTpl(
-		this.templatePath('server/content/home.js.ejs'),
-		'server/content/home.js',
+		this.templatePath('src/server/content/home.js.ejs'),
+		'src/server/content/home.js',
 		this
 	);
 
 	this.fs.copyTpl(
-		this.templatePath('server/content/index.js.ejs'),
-		'server/content/index.js',
+		this.templatePath('src/server/content/index.js.ejs'),
+		'src/server/content/index.js',
 		this
 	);
 
 	this.fs.copy(
-		this.templatePath('server/content/server-hosts.js'),
-		'server/content/server-hosts.js'
+		this.templatePath('src/server/content/server-hosts.js'),
+		'src/server/content/server-hosts.js'
 	);
 
 	if (this.templateEngine === 'ssr-mangony-hbs') {
 		this.fs.copy(
-			this.templatePath('server/modules/mangony.js'),
-			'server/modules/mangony.js'
+			this.templatePath('src/server/modules/mangony.js'),
+			'src/server/modules/mangony.js'
 		);
 	}
 };
