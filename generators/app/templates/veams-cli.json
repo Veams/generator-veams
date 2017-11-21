@@ -4,26 +4,26 @@
 		"filePrefix": false
 	},
 	"config": {
-		"src": "configs/_grunt/*.js"
+		"src": "configs/tasks/_grunt/*.js"
 	},
 	"importFiles": {
-		"style": "src/app.scss",
-		"script": "src/app.js"
+		"style": "src/app/app.scss",
+		"script": "src/app/app.js"
 	},
 	"insertpoints": [
-		"src/app.js",
-		"src/shared/layouts",
-		"src/core/pages",
-		"src/features/containers",
-		"src/app.events.js"
+		"src/app/app.js",
+		"src/app/core/layouts",
+		"src/app/pages",
+		"src/app/features",
+		"src/app/app.events.js"
 	],
 	"paths": {
 		"config": "configs",
-		"server": "server",
-		"src": "src",
+		"server": "src/server",
+		"src": "src/app",
 		"app": "app",
-		"component": "src/shared/components",
-		"utility": "src/shared/utilities"
+		"component": "src/app/shared/components",
+		"utility": "src/app/shared/utilities"
 	},
 	"ports": {
 		"app": 3000,

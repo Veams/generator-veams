@@ -27,16 +27,6 @@ describe('Package.json', function () {
 				.on('end', done);
 		});
 
-		it('delete all packages dependencies for gulp', function () {
-			const templateDeps = [
-				'grunt-mangony',
-				'mangony',
-				'assemble'
-			];
-
-			assert.noFileContent('package.json', /gulp|assemble|mangony/);
-		});
-
 	});
 
 	describe('when Gulp is selected and no plugins are used', function () {

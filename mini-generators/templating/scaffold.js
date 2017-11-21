@@ -5,51 +5,51 @@ module.exports = function scaffold() {
 		if (this.templateEngine === 'ssr-mangony-hbs') {
 			this.fs.copy(
 				this.templatePath('gitkeep'),
-				'src/shared/utilities/template-helpers/.gitkeep'
+				'src/app/shared/utilities/template-helpers/.gitkeep'
 			);
 			this.fs.copy(
-				this.templatePath('src/core/store/core.json'),
-				'src/core/store/core.json'
+				this.templatePath('src/app/core/store/core.json'),
+				'src/app/core/store/core.json'
 			);
 			this.fs.copyTpl(
-				this.templatePath('src/core/layouts/lyt-default.hbs.ejs'),
-				'src/core/layouts/lyt-default.hbs',
+				this.templatePath('src/app/core/layouts/lyt-default.hbs.ejs'),
+				'src/app/core/layouts/lyt-default.hbs',
 				this
 			);
 			this.fs.copy(
-				this.templatePath('src/core/layouts/docs'),
-				'src/core/layouts/docs',
+				this.templatePath('src/app/core/layouts/docs'),
+				'src/app/core/layouts/docs',
 				this
 			);
 			this.fs.copyTpl(
-				this.templatePath('src/pages/index/index.hbs.ejs'),
-				'src/pages/index/index.hbs',
+				this.templatePath('src/app/pages/index/index.hbs.ejs'),
+				'src/app/pages/index/index.hbs',
 				this
 			);
 			this.fs.copyTpl(
-				this.templatePath('src/pages/components/components.hbs.ejs'),
-				'src/pages/components/components.hbs',
+				this.templatePath('src/app/pages/components/components.hbs.ejs'),
+				'src/app/pages/components/components.hbs',
 				this
 			);
 
 			// Add global partials
 			this.fs.copy(
-				this.templatePath('src/core/components/_metadata.hbs'),
-				'src/core/components/_metadata.hbs'
+				this.templatePath('src/app/core/components/_metadata.hbs'),
+				'src/app/core/components/_metadata.hbs'
 			);
 			this.fs.copyTpl(
-				this.templatePath('src/core/components/_scripts.hbs.ejs'),
-				'src/core/components/_scripts.hbs',
+				this.templatePath('src/app/core/components/_scripts.hbs.ejs'),
+				'src/app/core/components/_scripts.hbs',
 				this
 			);
 			this.fs.copyTpl(
-				this.templatePath('src/core/components/_styles.hbs.ejs'),
-				'src/core/components/_styles.hbs',
+				this.templatePath('src/app/core/components/_styles.hbs.ejs'),
+				'src/app/core/components/_styles.hbs',
 				this
 			);
 			this.fs.copy(
-				this.templatePath('src/shared/components/sitemap'),
-				'src/shared/components/sitemap'
+				this.templatePath('src/app/shared/components/sitemap'),
+				'src/app/shared/components/sitemap'
 			);
 
 			this.fs.copy(
@@ -73,12 +73,12 @@ module.exports = function scaffold() {
 		if (this.templateEngine === 'ssr-react') {
 			this.fs.copy(
 				this.templatePath('gitignore'),
-				'src/pages/.gitignore'
+				'src/app/pages/.gitignore'
 			);
 
 			this.fs.copy(
 				this.templatePath('gitignore'),
-				'src/features/.gitignore'
+				'src/app/features/.gitignore'
 			);
 		}
 	} else {

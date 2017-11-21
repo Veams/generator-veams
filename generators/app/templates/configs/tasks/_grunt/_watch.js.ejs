@@ -24,10 +24,10 @@ module.exports = {
 			'<%%= paths.src %>/app.tmp.scss',
 			'<%%= paths.src %>/core/components/**/*.scss',
 			'<%%= paths.src %>/core/styles/**/*.scss',
+			'<%%= paths.src %>/core/layouts/**/styles/**/*.scss',
 			'<%%= paths.src %>/shared/styles/**/*.scss',
 			'<%%= paths.src %>/shared/components/**/styles/**/*.scss',
-			'<%%= paths.src %>/shared/utilities/**/styles/**/*.scss',
-			'<%%= paths.src %>/shared/layouts/**/styles/**/*.scss'
+			'<%%= paths.src %>/shared/utilities/**/styles/**/*.scss'
 		],
 		tasks: [
 			'sass:dev'<% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,

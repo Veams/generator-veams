@@ -9,7 +9,7 @@ module.exports = function scaffold() {
 			'configs/tasks/image-resizer/presets/default-preset.js'
 		);
 
-		this.pkgFile['scripts']['images'] = 'node configs/tasks/image-resizer/image-resizer.js';
+		this.pkgFile['scripts']['images:generate'] = 'node configs/tasks/image-resizer/image-resizer.js';
 
 	} else {
 		delete this.pkgFile['devDependencies']['responsive-images-generator'];

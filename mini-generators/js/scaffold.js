@@ -15,13 +15,19 @@ module.exports = function scaffold() {
 
 	if (this.jsLibs.indexOf(config.reduxId) !== -1) {
 		this.fs.copy(
-			this.templatePath('src/app.store.js'),
-			'src/app.store.js'
+			this.templatePath('src/app/app.store.js'),
+			'src/app/app.store.js'
 		);
 
 		if (this.projectType === 'static-page-app') {
 			delete this.pkgFile['dependencies']['react-redux'];
 			delete this.pkgFile['dependencies']['react-router-redux'];
+			delete this.pkgFile['devDependencies']['veams-bp-react-container'];
+
+			/**
+			 * Blueprints
+			 */
+			delete this.pkgFile['blueprints']['container'];
 		}
 	} else {
 		delete this.pkgFile['dependencies'][config.reduxId];
@@ -31,5 +37,11 @@ module.exports = function scaffold() {
 		delete this.pkgFile['dependencies']['redux-immutable-state-invariant'];
 		delete this.pkgFile['dependencies']['redux-observable'];
 		delete this.pkgFile['dependencies']['reselect'];
+		delete this.pkgFile['devDependencies']['veams-bp-redux'];
+
+		/**
+		 * Blueprints
+		 */
+		delete this.pkgFile['blueprints']['store'];
 	}
 };

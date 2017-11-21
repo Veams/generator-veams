@@ -1,11 +1,11 @@
 'use strict';
 
-const config = require('../../veams-cli');
+const config = require('../../../veams-cli');
 
 const internalLibs = [
 	`./${config.paths.src}/app.veams.js:app.veams`,
 	// `./${config.paths.src}/app.store.js:store`,
-	`./${config.paths.config}/environments/environment.${process.env.NODE_ENV}.js:env`,
+	`./environments/environment.${process.env.NODE_ENV}.js:env`,
 ];
 
 module.exports = {

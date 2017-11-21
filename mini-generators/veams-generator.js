@@ -21,31 +21,31 @@ exports.overwriteSetup = function () {
 
 exports.scaffold = function () {
 	this.fs.copyTpl(
-		this.templatePath('src/_app.veams.js.ejs'),
-		'src/app.veams.js',
+		this.templatePath('src/app/_app.veams.js.ejs'),
+		'src/app/app.veams.js',
 		this
 	);
 
 	this.fs.copy(
-		this.templatePath('src/app.events.js'),
-		'src/app.events.js'
+		this.templatePath('src/app/app.events.js'),
+		'src/app/app.events.js'
 	);
 
 	this.fs.copy(
-		this.templatePath('src/core/styles/_get-media.scss'),
-		'src/core/styles/_get-media.scss'
+		this.templatePath('src/app/core/styles/_get-media.scss'),
+		'src/app/core/styles/_get-media.scss'
 	);
 
 	// Components
 	this.fs.copy(
-		this.templatePath('src/shared/components/README.md'),
-		'src/shared/components/README.md'
+		this.templatePath('src/app/shared/components/README.md'),
+		'src/app/shared/components/README.md'
 	);
 
 	// Utilities
 	this.fs.copy(
-		this.templatePath('src/shared/utilities/README.md'),
-		'src/shared/utilities/README.md'
+		this.templatePath('src/app/shared/utilities/README.md'),
+		'src/app/shared/utilities/README.md'
 	);
 
 

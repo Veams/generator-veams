@@ -231,49 +231,49 @@ module.exports = class extends Generator {
 		// General structure
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/shared/components/.gitkeep'
+			'src/app/shared/components/.gitkeep'
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/shared/utilities/.gitkeep'
+			'src/app/shared/utilities/.gitkeep'
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/core/layouts/.gitkeep'
+			'src/app/core/layouts/.gitkeep'
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/core/.gitkeep'
+			'src/app/core/.gitkeep'
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/core/store/.gitkeep'
+			'src/app/core/store/.gitkeep'
 		);
 
 		// Assets area
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/assets/media/.gitkeep'
+			'src/app/assets/media/.gitkeep'
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/assets/fonts/.gitkeep'
+			'src/app/assets/fonts/.gitkeep'
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/assets/icons/.gitkeep'
+			'src/app/assets/icons/.gitkeep'
 		);
 
 		// JS area
 		this.fs.copy(
-			this.templatePath('src/shared/scripts/README.md'),
-			'src/shared/scripts/README.md'
+			this.templatePath('src/app/shared/scripts/README.md'),
+			'src/app/shared/scripts/README.md'
 		);
 
 		/**
@@ -282,50 +282,50 @@ module.exports = class extends Generator {
 
 		// Shared
 		this.fs.copyTpl(
-			this.templatePath('src/shared/styles/helpers/_helpers.scss.ejs'),
-			'src/shared/styles/helpers/_helpers.scss',
+			this.templatePath('src/app/shared/styles/helpers/_helpers.scss.ejs'),
+			'src/app/shared/styles/helpers/_helpers.scss',
 			this
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/shared/styles/helpers/functions/.gitkeep'
+			'src/app/shared/styles/helpers/functions/.gitkeep'
 		);
 
 		this.fs.copyTpl(
-			this.templatePath('src/shared/styles/global/_vars.scss.ejs'),
-			'src/shared/styles/global/_vars.scss',
+			this.templatePath('src/app/shared/styles/global/_vars.scss.ejs'),
+			'src/app/shared/styles/global/_vars.scss',
 			this
 		);
 
 		this.fs.copyTpl(
-			this.templatePath('src/shared/styles/_shared.scss'),
-			'src/shared/styles/_shared.scss',
+			this.templatePath('src/app/shared/styles/_shared.scss'),
+			'src/app/shared/styles/_shared.scss',
 			this
 		);
 
 		// Core
 		this.fs.copyTpl(
-			this.templatePath('src/core/styles/_print.scss'),
-			'src/core/styles/_print.scss',
+			this.templatePath('src/app/core/styles/_print.scss'),
+			'src/app/core/styles/_print.scss',
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('src/core/styles/_core.scss.ejs'),
-			'src/core/styles/_core.scss',
+			this.templatePath('src/app/core/styles/_core.scss.ejs'),
+			'src/app/core/styles/_core.scss',
 			this
 		);
 
 		//  App
 		this.fs.copyTpl(
-			this.templatePath('src/_app.scss.ejs'),
-			'src/app.scss',
+			this.templatePath('src/app/_app.scss.ejs'),
+			'src/app/app.scss',
 			this
 		);
 
 		this.fs.copyTpl(
-			this.templatePath('src/_app.browserify.js.ejs'),
-			'src/app.js',
+			this.templatePath('src/app/_app.browserify.js.ejs'),
+			'src/app/app.js',
 			this
 		);
 	}
