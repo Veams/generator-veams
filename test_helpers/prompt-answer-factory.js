@@ -5,11 +5,9 @@ let config = require('../lib/config');
 module.exports = function promptAnswerFactory(customAnswers) {
 	let defaults = {
 		projectName: '',
-		projectType: [],
-		taskRunner: [
-			'grunt'
-		],
-		templateEngine: [],
+		projectType: 'static-page-app',
+		taskRunner: 'grunt',
+		templateEngine: '',
 		gruntModules: [
 			'grunt-combine-mq',
 			'grunt-dr-svg-sprites'

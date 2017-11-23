@@ -47,7 +47,7 @@ exports.questions = function () {
 		},
 		{
 			when: function (answers) {
-				return answers.testAndQA && answers.taskRunner.indexOf('grunt') === -1;
+				return answers.testAndQA && answers.taskRunner === 'grunt';
 			},
 			name: qaLibsId,
 			type: 'checkbox',

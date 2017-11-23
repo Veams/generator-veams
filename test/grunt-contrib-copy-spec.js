@@ -5,15 +5,10 @@ const path = require('path');
 const helpers = require('yeoman-test');
 const assert = require('yeoman-assert');
 const fs = require('fs');
-const answers = require('../test_helpers/prompt-answer-factory')({
-	"features": [
-		"installDocs",
-		"createDevFolder"
-	]
-});
+const answers = require('../test_helpers/prompt-answer-factory')({});
 
 describe('grunt-contrib-copy', function () {
-	const helperPath = 'configs/';
+	const helperPath = 'configs/tasks/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))

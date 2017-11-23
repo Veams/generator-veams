@@ -4,9 +4,11 @@
 const path = require('path');
 const helpers = require('yeoman-test');
 const assert = require('yeoman-assert');
+const srcPath = 'src/app/shared/';
+const helperPath = 'configs/tasks/';
+
 
 describe('icons-workflow', function () {
-	const helperPath = 'configs/';
 
 	describe('when "Webfont" was chosen', function () {
 
@@ -46,9 +48,6 @@ describe('icons-workflow', function () {
 
 
 	describe('when "CSS Sprites" was chosen', function () {
-		const srcPath = 'src/shared/';
-		const helperPath = 'configs/';
-
 		const answers = require('../test_helpers/prompt-answer-factory')({
 			"icons": [
 				"sprites"
@@ -72,7 +71,7 @@ describe('icons-workflow', function () {
 
 		it('creates helper files', function () {
 			assert.file(helperPath + "_grunt/dr-svg-sprites.js");
-			assert.file(helperPath + "templates/svg-sprites/stylesheet.hbs");
+			assert.file("configs/templates/svg-sprites/stylesheet.hbs");
 		});
 
 		it('creates icons folder in styles folder', function () {
@@ -90,9 +89,6 @@ describe('icons-workflow', function () {
 	});
 
 	describe('when "Inline SVGs (Grunticon)" was chosen', function () {
-		const helperPath = 'configs/';
-		const srcPath = 'src/shared/';
-
 		const answers = require('../test_helpers/prompt-answer-factory')({
 			"icons": [
 				"grunticon"

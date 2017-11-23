@@ -127,7 +127,7 @@ module.exports = function(grunt) {
 		'postcssSeparator',<% }} %><% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-autoprefixer') != -1) || (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1)) { %>
 		'postcss:dist',<% } %>
 		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
-		'bless',<% }} %><% if(templateEngine === 'ssr-mangony-hbs'){ %>
+		'bless',<% }} %><% if (templateEngine === 'ssr-mangony-hbs'){ %>
 		'mangony:dist',<% } %>
 		'concurrent:hintAndDocs'
 	]);
@@ -142,8 +142,7 @@ module.exports = function(grunt) {
 	]);
 	
 	grunt.registerTask('dist', [
-		'clean',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-version') != -1) { %>
-		'version:patch',<% }} %>
+		'clean',
 		'build',
 		'copy:dist'
 	]);

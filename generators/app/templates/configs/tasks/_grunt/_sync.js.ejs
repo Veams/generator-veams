@@ -22,15 +22,5 @@ module.exports = {
 				dest: '<%%= paths.app %>'
 			}
 		]
-	}<% if(gruntModules.indexOf('grunt-browserify') == -1 && gruntModules.indexOf('grunt-includes') == -1 && gruntModules.indexOf('grunt-contrib-requirejs') == -1){ %>,
-	js: {
-		files: [
-			// includes files within path and its sub-directories
-			{
-				cwd: '<%%= paths.src %>/shared/scripts',
-				src: '**/*',
-				dest: '<%%= paths.app %>/shared/scripts'
-			}
-		]
-	}<% } %>
+	}
 };

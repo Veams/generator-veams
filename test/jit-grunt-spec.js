@@ -10,8 +10,6 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 
 
 describe('jit-grunt', function () {
-	const helperPath = 'configs/';
-
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
 			.inDir(path.join(__dirname, 'tmp'))

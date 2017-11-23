@@ -5,8 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const helpers = require('yeoman-test');
 const assert = require('yeoman-assert');
-const srcPath = 'src/';
-const helperPath = 'configs/';
+const helperPath = 'configs/tasks/';
 
 describe('task runner is Grunt', function () {
 	const answers = require('../test_helpers/prompt-answer-factory')({
@@ -39,7 +38,6 @@ describe('task runner is Grunt', function () {
 			// add files you expect to exist here.
 			helperPath + '_grunt/clean.js',
 			helperPath + '_grunt/concurrent.js',
-			helperPath + '_grunt/express.js',
 			helperPath + '_grunt/cssmin.js',
 			helperPath + '_grunt/sync.js',
 			helperPath + '_grunt/chokidar.js'
@@ -50,16 +48,13 @@ describe('task runner is Grunt', function () {
 	it('adds standard tasks to watch.js file', function () {
 		assert.fileContent(helperPath + '_grunt/chokidar.js', /ajax/);
 		assert.fileContent(helperPath + '_grunt/chokidar.js', /assets/);
-		assert.fileContent(helperPath + '_grunt/chokidar.js', /js/);
-		assert.fileContent(helperPath + '_grunt/chokidar.js', /\'sync\:js\'/);
 		assert.fileContent(helperPath + '_grunt/chokidar.js', /scss/);
-		assert.fileContent(helperPath + '_grunt/chokidar.js', /express/);
+		assert.fileContent(helperPath + '_grunt/chokidar.js', /scssDocs/);
 	});
 
 	it('adds standard tasks to sync.js file', function () {
 		assert.fileContent(helperPath + '_grunt/sync.js', /assets/);
 		assert.fileContent(helperPath + '_grunt/sync.js', /ajax/);
-		assert.fileContent(helperPath + '_grunt/sync.js', /js/);
 	});
 
 });

@@ -14,8 +14,7 @@ const answers = require('../test_helpers/prompt-answer-factory')({
 
 
 describe('grunt-contrib-jshint', function () {
-	const srcPath = 'src/';
-	const helperPath = 'configs/';
+	const helperPath = 'configs/tasks/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))

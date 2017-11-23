@@ -1,6 +1,6 @@
 module.exports = function setup() {
 	this.icons = this.config.get('icons').toString();
-	this.gruntModules = this.config.get('gruntModules') || [];
+	this.gruntModules = this.config.get('gruntModules');
 
 	switch (this.icons) {
 		case 'webfont':

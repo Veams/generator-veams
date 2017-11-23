@@ -12,9 +12,7 @@ exports.questions = function (obj) {
 			when: function (answers) {
 				let taskRunner = answers.taskRunner || obj.taskRunner;
 
-				return taskRunner
-					&& taskRunner.length > 0
-					&& taskRunner.indexOf('grunt') !== -1;
+				return taskRunner === 'grunt';
 			},
 			name: 'gruntModules',
 			type: 'checkbox',
@@ -23,7 +21,6 @@ exports.questions = function (obj) {
 				{name: 'grunt-accessibility'},
 				{name: 'grunt-autoprefixer', checked: object.defaults},
 				{name: 'grunt-bless'},
-				{name: 'grunt-browser-sync', checked: object.defaults},
 				{name: 'grunt-browserify', checked: object.defaults},
 				{name: 'grunt-combine-mq', checked: object.defaults},
 				{name: 'grunt-contrib-handlebars'},
@@ -47,12 +44,14 @@ exports.questions = function (obj) {
 
 exports.setup = function () {
 	helpers.definePaths.call(this);
+	this.gruntModules = this.config.get('gruntModules') || [];
+
 };
 
 exports.scaffold = function (obj) {
 	let object = obj || {};
 	object.defaults = object.defaults !== false;
-	this.gruntModules = this.config.get('gruntModules');
+
 
 	// Grunt modules are splitted up in separate files and modules
 	if (this.gruntModules.indexOf('grunt-accessibility') != -1) {

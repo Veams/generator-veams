@@ -26,10 +26,10 @@ describe('generator-veams', function () {
 			'.gitignore',
 			'.babelrc',
 			'.editorconfig',
-			'configs/environments/environment.local.js',
-			'configs/environments/environment.dev.js',
-			'configs/environments/environment.production.js',
-			'configs/environments/environment.qa.js',
+			'environments/environment.local.js',
+			'environments/environment.dev.js',
+			'environments/environment.production.js',
+			'environments/environment.qa.js',
 			'README.md',
 			'veams-cli.json'
 		];

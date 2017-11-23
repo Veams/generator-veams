@@ -91,7 +91,7 @@ module.exports = class extends Generator {
 			this.projectName = answers.projectName || this.config.get('projectName');
 			this.projectType = answers.projectType;
 			this.taskRunner = answers.taskRunner;
-			this.gruntModules = this.config.get('gruntModules');
+			this.gruntModules = answers.gruntModules || this.config.get('gruntModules');
 			this.templateEngine = answers.templateEngine || this.config.get('templateEngine');
 			this.features = answers.features;
 			this.jsLibs = answers.jsLibs;
@@ -124,11 +124,11 @@ module.exports = class extends Generator {
 			taskRunnerPrompt.call(this)
 		);
 
-		/*if (!this.config.get('gruntModules') || this.force) {
-		 this.questions = this.questions.concat(
-		 gruntGenerator.questions.call(this)
-		 );
-		 }*/
+		// if (!this.config.get('gruntModules') || this.force) {
+		// 	this.questions = this.questions.concat(
+		// 		gruntGenerator.questions.call(this)
+		// 	);
+		// }
 
 		(!this.config.get('icons') || this.force) && this.questions.push(
 			iconsPrompt.call(this)

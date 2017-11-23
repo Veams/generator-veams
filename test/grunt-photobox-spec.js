@@ -6,13 +6,14 @@ const helpers = require('yeoman-test');
 const assert = require('yeoman-assert');
 const fs = require('fs');
 const answers = require('../test_helpers/prompt-answer-factory')({
-	"gruntModules":[
-		"grunt-photobox"
+	taskRunner: 'grunt',
+	gruntModules: [
+		'grunt-photobox'
 	]
 });
 
 describe('grunt-photobox', function () {
-	const helperPath = 'configs/';
+	const helperPath = 'configs/tasks/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -30,11 +31,11 @@ describe('grunt-photobox', function () {
 	});
 
 	it('creates helper files', function () {
-		assert.file(helperPath + "_grunt/photobox.js");
+		assert.file(helperPath + '_grunt/photobox.js');
 	});
 
 	it('adds task to Gruntfile.js file', function () {
-		assert.fileContent("Gruntfile.js", /photobox/);
+		assert.fileContent('Gruntfile.js', /photobox/);
 	});
 
 });

@@ -8,7 +8,7 @@ const fs = require('fs');
 
 
 describe('css-post-processors', function () {
-	const helperPath = 'configs/';
+	const helperPath = 'configs/tasks/';
 
 	describe('when "Autoprefixer (PostCSS)" was chosen', function () {
 
@@ -48,7 +48,7 @@ describe('css-post-processors', function () {
 	});
 
 	describe('when "CSS Separator (PostCSS)" was chosen', function () {
-		const helperPath = 'configs/';
+		const helperPath = 'configs/tasks/';
 
 		const answers = require('../test_helpers/prompt-answer-factory')({
 			cssPostProcessors: [
@@ -81,7 +81,7 @@ describe('css-post-processors', function () {
 	});
 
 	describe('when "Coding style formatter (CSScomb)" was chosen', function () {
-		const helperPath = 'configs/';
+		const helperPath = 'configs/tasks/';
 
 		const answers = require('../test_helpers/prompt-answer-factory')({
 			cssPostProcessors: [

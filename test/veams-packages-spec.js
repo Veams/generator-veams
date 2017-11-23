@@ -7,11 +7,12 @@ const assert = require('yeoman-assert');
 const fs = require('fs');
 
 describe('Veams Framework', function () {
-	const helperPath = 'configs/';
-	const srcPath = 'src/';
+	const helperPath = 'configs/tasks/';
+	const srcPath = 'src/app/';
 
 	describe('when it is installed', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
+			'projectType': 'static-page-app',
 			'veamsPackages': true
 		});
 
@@ -28,7 +29,6 @@ describe('Veams Framework', function () {
 
 		it('creates READMEs', function () {
 			const expected = [
-				srcPath + 'shared/layouts/README.md',
 				srcPath + 'shared/components/README.md',
 				srcPath + 'shared/utilities/README.md'
 			];
@@ -52,31 +52,30 @@ describe('Veams Framework', function () {
 
 		it('adds task to Gruntfile.js file', function () {
 			assert.fileContent('Gruntfile.js', /'browserify\:dev'/);
-			assert.fileContent('Gruntfile.js', /'browserify\:vendor'/);
 			assert.fileContent('Gruntfile.js', /'browserify\:dist'/);
 			assert.fileContent('Gruntfile.js', /handlebars/);
 		});
 
-		it('adds event endpoint to config.js file', function () {
-			assert.fileContent('configs/config.js', /'shared\/scripts\/events.js'/);
+		it('adds event endpoint to veams-cli file', function () {
+			assert.fileContent('veams-cli.json', /"src\/app\/app.events.js"/);
 		});
 
-		it('adds app.js, main.js and events.js to specific folders', function () {
+		it('adds app.js, app.veams.js and app.events.js to specific folders', function () {
 			assert.file([
-				srcPath + 'core/app/scripts/app.js',
-				srcPath + 'shared/scripts/events.js',
-				srcPath + 'core/app/scripts/main.js'
+				srcPath + 'app.js',
+				srcPath + 'app.events.js',
+				srcPath + 'app.veams.js'
 			]);
 		});
 
 		it('adds references to app.js, main.js in js folder', function () {
-			assert.fileContent(srcPath + 'core/app/scripts/app.js', /import Veams from/);
-			assert.fileContent(srcPath + 'core/app/scripts/main.js', /import \{App, Veams\} from/);
+			assert.fileContent(srcPath + 'app.veams.js', /import Veams from/);
+			assert.fileContent(srcPath + 'app.js', /import \{ Veams \} from/);
 		});
 
 		it('adds _get-media.scss and import state to sass file', function () {
-			assert.file(srcPath + 'shared/styles/global/_get-media.scss');
-			assert.fileContent(srcPath + 'core/app/styles/main.scss', /@import \"..\/..\/shared\/styles\/global\/_get-media\"/);
+			assert.file(srcPath + 'core/styles/_get-media.scss');
+			assert.fileContent(srcPath + 'app.scss', /@import \"core\/styles\/get-media\"/);
 		});
 
 	});

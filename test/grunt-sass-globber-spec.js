@@ -8,7 +8,7 @@ const assert = require('yeoman-assert');
 const answers = require('../test_helpers/prompt-answer-factory')({});
 
 describe('grunt-sass-globber', function () {
-	const helperPath = 'configs/';
+	const helperPath = 'configs/tasks/';
 
 	beforeEach(function (done) {
 		helpers.run(path.join(__dirname, '../generators/app'))
@@ -34,6 +34,6 @@ describe('grunt-sass-globber', function () {
 	});
 
 	it('refers to styles.scss in task file', function () {
-		assert.fileContent(helperPath + "_grunt/sassGlobber.js", /source: \'styles\.scss\'/);
+		assert.fileContent(helperPath + "_grunt/sassGlobber.js", /source: \'app\.scss\'/);
 	});
 });

@@ -10,7 +10,7 @@ describe('Project Type', function () {
 
 	describe('when static page app is chosen', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			projectType: 'staticPageApp'
+			projectType: 'static-page-app'
 		});
 
 		beforeEach(function (done) {
@@ -24,7 +24,7 @@ describe('Project Type', function () {
 				.on('end', done);
 		});
 
-		it('adds handlebars to package.sjon', function () {
+		it('adds handlebars to package.json', function () {
 			assert.fileContent('package.json', /handlebars/);
 		});
 

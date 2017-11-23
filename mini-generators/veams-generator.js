@@ -5,7 +5,7 @@ exports.setup = function () {
 };
 
 exports.overwriteSetup = function () {
-	if (this.taskRunner.indexOf('grunt') !== -1) {
+	if (this.taskRunner === 'grunt') {
 		let gruntModules = this.config.get('gruntModules');
 
 		gruntModules.push('grunt-browserify');
@@ -14,6 +14,8 @@ exports.overwriteSetup = function () {
 		if (this.projectType === 'static-page-app') {
 			gruntModules.push('grunt-contrib-handlebars');
 		}
+
+		console.log('grunt: ', gruntModules);
 
 		this.config.set('gruntModules', gruntModules);
 	}

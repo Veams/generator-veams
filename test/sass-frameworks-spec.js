@@ -7,13 +7,13 @@ const assert = require('yeoman-assert');
 const fs = require('fs');
 
 describe('Sass Frameworks', function () {
-	const srcPath = "src/";
-	const helpersPath = "configs/";
+	const srcPath = 'src/app/';
+	const helpersPath = 'configs/tasks/';
 
 	describe('when Bootstrap-Sass is selected', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			"cssLibs": [
-				"bootstrap-sass"
+			'cssLibs': [
+				'bootstrap-sass'
 			]
 		});
 
@@ -28,12 +28,13 @@ describe('Sass Frameworks', function () {
 				.on('end', done);
 		});
 
-		it('adds the package to bower.json', function () {
-			assert.fileContent('bower.json', /bootstrap-sass/);
+
+		it('adds the package to package.json', function () {
+			assert.fileContent('package.json', /bootstrap-sass/);
 		});
 
 		it('adds import state to styles.scss', function () {
-			assert.fileContent(srcPath + 'shared/styles/styles.scss', /bootstrap/);
+			assert.fileContent(srcPath + 'app.scss', /bootstrap/);
 		});
 
 		it('adds comment to _vars.scss', function () {
@@ -43,8 +44,8 @@ describe('Sass Frameworks', function () {
 
 	describe('when Foundation is selected', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			"cssLibs": [
-				"foundation"
+			'cssLibs': [
+				'foundation-sites'
 			]
 		});
 
@@ -59,23 +60,19 @@ describe('Sass Frameworks', function () {
 				.on('end', done);
 		});
 
-		it('adds the package to bower.json', function () {
-			assert.fileContent('bower.json', /foundation/);
+		it('adds the package to package.json', function () {
+			assert.fileContent('package.json', /foundation/);
 		});
 
 		it('adds import state to styles.scss', function () {
-			assert.fileContent(srcPath + 'shared/styles/styles.scss', /foundation/);
-		});
-
-		it('adds comment to _vars.scss', function () {
-			assert.fileContent(srcPath + 'shared/styles/global/_vars.scss', /FOUNDATION/);
+			assert.fileContent(srcPath + 'app.scss', /foundation/);
 		});
 	});
 
 	describe('when Bourbon Neat is selected', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			"cssLibs": [
-				"neat"
+			'cssLibs': [
+				'bourbon-neat'
 			]
 		});
 
@@ -90,25 +87,21 @@ describe('Sass Frameworks', function () {
 				.on('end', done);
 		});
 
-		it('adds the package to bower.json', function () {
-			assert.fileContent('bower.json', /bourbon/);
-			assert.fileContent('bower.json', /neat/);
+		it('adds the package to package.json', function () {
+			assert.fileContent('package.json', /bourbon/);
+			assert.fileContent('package.json', /bourbon-neat/);
 		});
 
 		it('adds import state to styles.scss', function () {
-			assert.fileContent(srcPath + 'shared/styles/styles.scss', /bourbon/);
-			assert.fileContent(srcPath + 'shared/styles/styles.scss', /neat/);
-		});
-
-		it('adds comment to _vars.scss', function () {
-			assert.fileContent(srcPath + 'shared/styles/global/_vars.scss', /BOURBON/);
+			assert.fileContent(srcPath + 'shared/styles/helpers/_helpers.scss', /bourbon/);
+			assert.fileContent(srcPath + 'shared/styles/helpers/_helpers.scss', /neat/);
 		});
 	});
 
 	describe('when Lost Grid is selected', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			"cssLibs": [
-				"lost-grid"
+			'cssLibs': [
+				'lost-grid'
 			]
 		});
 
@@ -138,8 +131,8 @@ describe('Sass Frameworks', function () {
 
 	describe('when Lost Grid and Grunt is selected', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			"cssLibs": [
-				"lost-grid"
+			'cssLibs': [
+				'lost-grid'
 			]
 		});
 
@@ -169,37 +162,10 @@ describe('Sass Frameworks', function () {
 		});
 	});
 
-	describe('when Lost Grid and Gulp is selected', function () {
-		const answers = require('../test_helpers/prompt-answer-factory')({
-			'taskRunner': [
-				'gulp'
-			],
-			"cssLibs": [
-				"lost-grid"
-			]
-		});
-
-		beforeEach(function (done) {
-			helpers.run(path.join(__dirname, '../generators/app'))
-				.inDir(path.join(__dirname, 'tmp'))
-				.withOptions({
-					'skip-install': true,
-					'skip-welcome-message': true
-				})
-				.withPrompts(answers)
-				.on('end', done);
-		});
-
-		it('adds the package to the task file', function () {
-			assert.fileContent('package.json', /gulp-postcss/);
-			assert.fileContent(helpersPath + '_gulp/styles.js', /lost/);
-		});
-	});
-
 	describe('when Include-Media is selected', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			"cssLibs": [
-				"include-media"
+			'cssLibs': [
+				'include-media'
 			]
 		});
 
@@ -214,12 +180,12 @@ describe('Sass Frameworks', function () {
 				.on('end', done);
 		});
 
-		it('adds the package to bower.json', function () {
-			assert.fileContent('bower.json', /include-media/);
+		it('adds the package to package.json', function () {
+			assert.fileContent('package.json', /include-media/);
 		});
 
 		it('adds import state to styles.scss', function () {
-			assert.fileContent(srcPath + 'shared/styles/styles.scss', /include-media/);
+			assert.fileContent(srcPath + 'shared/styles/helpers/_helpers.scss', /include-media/);
 		});
 	});
 
