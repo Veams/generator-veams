@@ -24,8 +24,7 @@ module.exports = function(grunt) {
 	
 	// load only used tasks and add fallbacks for those which cannot be find
 	require('jit-grunt')(grunt, {<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-grunticon') != -1 || gruntModules.indexOf('grunt-dr-svg-sprites') != -1 || gruntModules.indexOf('grunt-contrib-handlebars') != -1)) { %>
-		'replace': 'grunt-text-replace',<% } %>
-		'express': 'grunt-express-server'
+		'replace': 'grunt-text-replace'<% } %>
 	});
 	// measures the time each task takes
 	require('time-grunt')(grunt);
@@ -71,13 +70,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('jsTemplates', [
 		'handlebars',
 		'replace:jsTemplates'
-	]); <% } %><% if (gruntModules && gruntModules.length) { %>
-	<% if (gruntModules.indexOf('grunt-responsive-images') != -1 || gruntModules.indexOf('grunt-image-size-export') != -1) {%>
-	// Picture Task (This task creates an additional JSON file with the path to your picture)
-	grunt.registerTask('pictures', [<% if (gruntModules.indexOf('grunt-responsive-images') != -1) { %>
-		'responsive_images'<% if (gruntModules.indexOf('grunt-image-size-export') != -1) { %>,<% }} %><% if (gruntModules.indexOf('grunt-image-size-export') != -1) { %>
-		'imageSizeExport'<% } %>
-	]); <% }} %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-photobox') != -1) { %>
+	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-photobox') != -1) { %>
 	
 	// Screenshot Tasks (Take screenshots from your environments)
 	grunt.registerTask('photoLocal', [

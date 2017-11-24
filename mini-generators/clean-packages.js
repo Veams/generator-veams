@@ -19,6 +19,5 @@ exports.scaffold = function () {
 		delete this.pkgFile['devDependencies']['babel-preset-es2015'];
 		delete this.pkgFile['devDependencies']['babel-preset-stage-0'];
 		delete this.pkgFile['devDependencies']['babel-plugin-add-module-exports'];
-		this.pkgFile['dependencies'] = {};
 	}
 };

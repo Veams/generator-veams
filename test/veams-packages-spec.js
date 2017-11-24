@@ -12,7 +12,6 @@ describe('Veams Framework', function () {
 
 	describe('when it is installed', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			'projectType': 'static-page-app',
 			'veamsPackages': true
 		});
 

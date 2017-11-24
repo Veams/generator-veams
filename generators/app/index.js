@@ -203,6 +203,7 @@ module.exports = class extends Generator {
 		projectTypeScaffold.call(this);
 		cssFrameworksScaffold.call(this);
 		veamsGenerator.scaffold.call(this);
+
 		jsScaffold.call(this);
 		gruntGenerator.scaffold.call(this);
 		imagesScaffold.call(this);
@@ -210,8 +211,8 @@ module.exports = class extends Generator {
 		templatingScaffold.call(this);
 		testAndQAGenerator.scaffold.call(this);
 		docsGenerator.scaffold.call(this);
-		taskRunnerScaffold.call(this);
 		cleanPackages.scaffold.call(this);
+		taskRunnerScaffold.call(this);
 	}
 
 	_defaults() {

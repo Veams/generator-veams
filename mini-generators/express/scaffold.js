@@ -16,6 +16,11 @@ module.exports = function scaffold() {
 	);
 
 	this.fs.copy(
+		this.templatePath('gitkeep'),
+		'src/server/mocks/.gitkeep'
+	);
+
+	this.fs.copy(
 		this.templatePath('src/server/configs'),
 		'src/server/configs'
 	);

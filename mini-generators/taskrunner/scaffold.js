@@ -3,7 +3,7 @@
 const config = require('./config');
 
 module.exports = function scaffold() {
-	if (this.taskRunner.indexOf(config.gruntId) === -1) {
+	if (this.taskRunner !== config.gruntId) {
 		delete this.pkgFile['devDependencies']['grunt'];
 		delete this.pkgFile['devDependencies']['grunt-chokidar'];
 		delete this.pkgFile['devDependencies']['grunt-concurrent'];

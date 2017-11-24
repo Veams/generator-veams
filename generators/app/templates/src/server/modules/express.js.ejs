@@ -4,7 +4,7 @@ const morgan = require('morgan');<% if (templateEngine === 'ssr-mangony-hbs') { 
 const deepExtend = require('deep-extend');
 const Mangony = require('mangony');
 const config = require('../configs/config');
-const mangonyOptions = require('../../configs/tasks/mangony.config');
+const mangonyOptions = require('../../../configs/tasks/mangony.config');
 const createMangony = (express) => {
 	const mangonyDevOptions = deepExtend(mangonyOptions.dev.options, {
 		devServer: {

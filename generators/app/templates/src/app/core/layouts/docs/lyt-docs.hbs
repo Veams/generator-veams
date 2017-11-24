@@ -15,7 +15,7 @@
 			<div class="docs__main">
 				<div class="docs__main-inner">
 					<div class="docs__header">
-						<div class="is-inner">
+						<div class="is-docs-inner">
 							<h1 class="docs__headline">{{uppercase @root.currentPage.filename}} <span>({{this.type}}
 								)</span></h1>
 							<h3 class="docs__subline">
@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div class="docs__section is-bg-default">
-						<div class="is-inner">
+						<div class="is-docs-inner">
 							<div class="docs__section-header">
 								<h2 class="docs__section-headline">
 									<i class="fa fa-desktop" aria-hidden="true"></i>
@@ -54,14 +54,14 @@
 
 					{{#ifExists (buildPath @root.currentPage.dirname "README.md" goUp=1)}}
 						<div class="docs__section is-bg-invert">
-							<div class="is-inner">
+							<div class="is-docs-inner">
 								<div class="docs__section-header">
 									<h2 class="docs__section-headline">
 										<i class="is-docs-icon fa fa-file-text-o"></i>
 										Readme
 									</h2>
 								</div>
-								<div class="docs__section-content">
+								<div class="docs__section-content is-docs-rte">
 									{{{markdown (buildPath @root.currentPage.dirname "README.md" goUp=1) }}}
 								</div>
 							</div>
@@ -69,7 +69,7 @@
 						</div>
 					{{else}}
 						<div class="docs__section is-bg-invert">
-							<div class="is-inner">
+							<div class="is-docs-inner">
 								<div class="docs__section-header">
 									<h2 class="docs__section-error">
 										<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -81,7 +81,7 @@
 					{{/ifExists}}
 
 					<div class="docs__section">
-						<div class="is-inner">
+						<div class="is-docs-inner">
 							<div class="docs__section-header">
 								<h2 class="docs__section-headline">
 									<i class="is-docs-icon fa fa-file-text-o"></i>
@@ -91,7 +91,7 @@
 
 							<h3 class="docs__section-hl-small">{{@root.currentPage.filename}}</h3>
 
-							<div class="docs__section-content">
+							<div class="docs__section-content is-docs-rte">
 								{{#getData from=@root.currentPage.filename typeof="partial"}}
 									{{#highlight "hbs"}}
 										{{{this.parsed.content}}}
@@ -112,14 +112,14 @@
 
 					{{#if this.contextData}}
 						<div class="docs__section is-bg-invert">
-							<div class="is-inner">
+							<div class="is-docs-inner">
 								<div class="docs__section-header">
 									<h2 class="docs__section-headline">
 										<i class="is-docs-icon fa fa-file-text-o"></i>
 										Data File
 									</h2>
 								</div>
-								<div class="docs__section-content">
+								<div class="docs__section-content is-docs-rte">
 									{{#ifExists
 											(buildPath @root.currentPage.dirname (concat (concat 'data/' this.contextData) ".json") goUp=1)}}
 										{{#highlight "json"}}
@@ -132,7 +132,7 @@
 						</div>
 					{{else}}
 						<div class="docs__section is-bg-invert">
-							<div class="is-inner">
+							<div class="is-docs-inner">
 								<div class="docs__section-header">
 									<h2 class="docs__section-error">
 										<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -145,13 +145,13 @@
 
 					{{#if this.scssFiles}}
 						<div class="docs__section">
-							<div class="is-inner">
+							<div class="is-docs-inner">
 								<div class="docs__section-header">
 									<h2 class="docs__section-headline"><i class="is-docs-icon fa fa-file-text-o"></i>
 										Styles
 									</h2>
 								</div>
-								<div class="docs__section-content">
+								<div class="docs__section-content is-docs-rte">
 									{{#each this.scssFiles}}
 										<h3>{{this}}</h3>
 										{{#highlight "scss"}}
@@ -164,14 +164,14 @@
 
 					{{/if}}
 					<div class="docs__section">
-						<div class="is-inner">
+						<div class="is-docs-inner">
 							<div class="docs__section-header">
 								<h2 class="docs__section-headline">
 									<i class="is-docs-icon fa fa-file-text-o"></i>
 									HTML Output
 								</h2>
 							</div>
-							<div class="docs__section-content">
+							<div class="docs__section-content is-docs-rte">
 								{{#if variations}}
 									{{#each variations}}
 										{{#highlight "html"}}

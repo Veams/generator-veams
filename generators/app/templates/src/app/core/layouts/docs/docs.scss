@@ -16,33 +16,6 @@ General styles
 	box-sizing: border-box;
 
 	/*
-	Standard elements for markdown
-	----------------------- */
-	img {
-		max-width: 100%;
-	}
-
-	code {
-		// font-family: "Courier New", sans-serif;
-	}
-
-	a {
-		color: #4a9ea3;
-
-		&:visited {
-			color: #4a9ea3;
-		}
-	}
-
-	hr {
-		background-color: transparent;
-		border-top: 1px solid #f4f4f4;
-		border-bottom: 2px solid #fff;
-		border-right: none 0;
-		border-left: none 0;
-	}
-
-	/*
 	Sidebar
 	----------------------- */
 	.docs__sidebar {
@@ -141,7 +114,33 @@ General styles
 	.docs__section-content {
 		margin-top: 2rem;
 		padding: 1rem 0;
+	}
+	.docs__section-error {
+		font-style: italic;
+		text-align: left;
+		font-size: 1.8rem;
+		margin: 0;
+	}
 
+	.docs__section-description {
+		font-size: 1.8rem;
+		text-align: left;
+		margin-bottom: 2rem;
+		font-style: italic;
+		color: #b4b4b4;
+		border-bottom: 1px solid lighten(#b4b4b4, 15);
+		padding-bottom: .5rem;
+
+	}
+
+	.docs__section-hl-small {
+		font-size: 2rem;
+		text-align: left;
+		margin-bottom: 1rem;
+	}
+
+	.docs__rte,
+	.is-docs-rte {
 		h1 {
 			display: none;
 		}
@@ -182,35 +181,39 @@ General styles
 			margin: 3rem 0;
 			border-width: 1px;
 		}
-	}
-	.docs__section-error {
-		font-style: italic;
-		text-align: left;
-		font-size: 1.8rem;
-		margin: 0;
-	}
 
-	.docs__section-description {
-		font-size: 1.8rem;
-		text-align: left;
-		margin-bottom: 2rem;
-		font-style: italic;
-		color: #b4b4b4;
-		border-bottom: 1px solid lighten(#b4b4b4, 15);
-		padding-bottom: .5rem;
+		/*
+		Standard elements for markdown
+		----------------------- */
+		img {
+			max-width: 100%;
+		}
 
-	}
+		code {
+			// font-family: "Courier New", sans-serif;
+		}
 
-	.docs__section-hl-small {
-		font-size: 2rem;
-		text-align: left;
-		margin-bottom: 1rem;
+		a {
+			color: #4a9ea3;
+
+			&:visited {
+				color: #4a9ea3;
+			}
+		}
+
+		hr {
+			background-color: transparent;
+			border-top: 1px solid #f4f4f4;
+			border-bottom: 2px solid #fff;
+			border-right: none 0;
+			border-left: none 0;
+		}
 	}
 
 	/*
 	Modifiers
 	----------------------- */
-	.is-inner {
+	.is-docs-inner {
 		max-width: 950px;
 		margin: 0 auto;
 	}

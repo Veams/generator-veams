@@ -17,7 +17,7 @@ module.exports = function promptAnswerFactory(customAnswers) {
 		cssLibs: [],
 		testAndQA: false,
 		testAndQALibs: [],
-		veamsPackages: false,
+		veamsPackages: true,
 		docs: [],
 		icons: [],
 		cssPostProcessors: []

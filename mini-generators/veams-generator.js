@@ -15,8 +15,6 @@ exports.overwriteSetup = function () {
 			gruntModules.push('grunt-contrib-handlebars');
 		}
 
-		console.log('grunt: ', gruntModules);
-
 		this.config.set('gruntModules', gruntModules);
 	}
 };
