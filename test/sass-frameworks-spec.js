@@ -28,7 +28,6 @@ describe('Sass Frameworks', function () {
 				.on('end', done);
 		});
 
-
 		it('adds the package to package.json', function () {
 			assert.fileContent('package.json', /bootstrap-sass/);
 		});
