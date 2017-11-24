@@ -155,4 +155,28 @@ describe('JavaScript Frameworks', function () {
 			assert.fileContent('package.json', /rxjs/);
 		});
 	});
+
+	describe('when no JS framework is selected', function () {
+		const answers = require('../test_helpers/prompt-answer-factory')({
+			'jsLibs': []
+		});
+
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../generators/app'))
+				.inDir(path.join(__dirname, 'tmp'))
+				.withOptions({
+					'skip-install': true,
+					'skip-welcome-message': true
+				})
+				.withPrompts(answers)
+				.on('end', done);
+		});
+
+		it('removes all packages from package.json', function () {
+			assert.noFileContent('package.json', /redux|redux|react|jquery|veams-query/);
+		});
+		it('removes blueprints from veams-cli.json', function () {
+			assert.noFileContent('veams-cli.json', /store|container|api/);
+		});
+	});
 });
