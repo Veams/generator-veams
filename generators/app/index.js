@@ -225,6 +225,10 @@ module.exports = class extends Generator {
 			this.templatePath('environments'),
 			this.destinationPath('environments')
 		);
+		this.fs.copy(
+			this.templatePath('configs/utils'),
+			this.destinationPath('configs/utils')
+		);
 		this.pkgFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'veams-project';
 
 		// add specific resources to make it possible to split up some directories

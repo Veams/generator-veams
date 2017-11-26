@@ -27,11 +27,12 @@
 		"src/app/app.events.js"
 	],
 	"paths": {
+		"app": "app",
+		"assets": "src/app/assets",
+		"component": "src/app/shared/components",
 		"config": "configs",
 		"server": "src/server",
 		"src": "src/app",
-		"app": "app",
-		"component": "src/app/shared/components",
 		"utility": "src/app/shared/utilities"
 	},
 	"ports": {

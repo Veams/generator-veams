@@ -1,18 +1,12 @@
 # <%= projectName %>
 
-Current version="0.0.1"
+------------------
 
 ## Requirements For Frontend Development
 
 * NodeJS (>= 6.0.0)
-* Grunt
 
-### Libsass
-We use Libsass as standard SCSS compiler.
-
-## Frontend Methodology
-We build <%= projectName %> with the Veams Methodology:
-* http://veams.org/methodology/
+------------------
 
 ## Setup
 
@@ -21,46 +15,41 @@ This project builds on following setup (please read requirements and getting sta
 - Veams Overview: https://github.com/Sebastian-Fitzner/Veams
 - Veams Website: http://veams.org/
 
-- We use <% if(taskRunner.indexOf('grunt') != -1) { %>[Grunt](http://gruntjs.com/)<% } %>
-- We use [Git](#).
-- The folder __node_modules__ won't be comitted into GIT. Use ```.gitignore``` to ignore folders or files.
-- Git-commit-messages in english please.
-- All issues are recorded in [Jira](#).
-- Jira-Issues are commented in german/english.
+------------------
 
-## Browser-Support
+## Tasks
+<% if(images.indexOf('imgResponsive') !== -1) { %>
+------------------
 
-- all modern desktop browsers: Firefox, Chrome, IE and Safari/Mac latest version
-- also: IE 11
-- all modern mobile browsers: iOS and Android latest two versions
+### Image Generation (`configs/tasks/images/`)
 
-## Responsive-Webdesign-Support
+To generate images you can use the following commands which are defined in `package.json`:
 
-- Desktop
-- Tablet
-- Phone
-<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-responsive-images') != -1) { %>
-### Responsive Images
+1. `npm run images:generate "**/*.jpg"` => Simple globbing support.
+1. `npm run images:generate "test/*.jpg"` => Globbing in a specific folder.
+1. `npm run images:generate "test.jpg"` => Generate only one image.
+1. `npm run images:generate "test.jpg" preset=default` => Generate one image with another preset.
 
-If you want to use an automated task to create responsive images you need to make sure that you have installed GraphicsMagick. You can download and install GraphicsMagick here:
+**Customization**
 
-- http://www.graphicsmagick.org/download.html
-- Windows (http://sourceforge.net/projects/graphicsmagick/files/graphicsmagick-binaries/)
+__Paths__
 
-You can use `grunt-responsive-images` to build all pictures with predefined presets. To build responsive images just start the task `pictures`.
+All commands have a reference to the images in your `assets/img/` folder. The `assets` folder can be change in `veams-cli.json`.
 
-To export image data you can use `grunt-image-size-export`.
+__Presets__
+
+Custom presets can easily be added by you. Take a look at the `preset` folder in the configuration path.
+
+__Options__
+
+You can change the `suffix` definition in the provided `config.js` file. Furthermore you can easily add options for your presets, just take a look at https://github.com/felixrieseberg/responsive-images-generator#configuration.
+<% } %><% if(images.indexOf('imgSizeExport') !== -1) { %>
+-------------------
+
+### Image Data Export (`configs/tasks/images/`)
+
+To export further images information to a JSON file you can use the following commands which are defined in `package.json`:
+
+1. `npm run images:export` => Export meta data information to `images.json` in `assets` folder.
 <% } %>
-### Breakpoints
-- $bp-mobile-s: (max 320px);
-- $bp-mobile-m: (max 480px);
-- $bp-mobile-l: (max 640px);
-- $bp-tablet-p: (max 768px);
-- $bp-tablet-l: (max 1024px);
-- $bp-desktop: (min 1025px);
-
-## Team
-
-- TPM/PM:
-- Frontend:
-- Backend:
+-------------------

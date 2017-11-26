@@ -100,6 +100,7 @@
 		"grunt-sync": "~0.6.2",
 		"grunt-text-replace": "~0.4.0",
 		"grunt-webfont": "^1.6.0",
+		"image-size-export": "^0.1.0",
 		"jit-grunt": "^0.10.0",
 		"jshint-stylish": "^2.0.0",
 		"lodash": "^4.17.4",
