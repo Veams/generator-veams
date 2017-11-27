@@ -32,7 +32,7 @@ describe('Images Processing', function () {
 			const expected = [
 				helperPath + 'images/images-resizer.js',
 				helperPath + 'images/presets/default-preset.js',
-				helperPath + 'images/config.js',
+				helperPath + 'images/images.config.js',
 			];
 			assert.file(expected);
 		});
@@ -67,7 +67,7 @@ describe('Images Processing', function () {
 		it('creates task files', function () {
 			const expected = [
 				helperPath + 'images/images-export.js',
-				helperPath + 'images/config.js',
+				helperPath + 'images/images.config.js',
 			];
 			assert.file(expected);
 
