@@ -1,3 +1,5 @@
+const config = require('./config');
+
 module.exports = function questions(obj) {
 	let object = obj || {};
 	object.defaults = object.defaults !== false;
@@ -9,17 +11,17 @@ module.exports = function questions(obj) {
 		choices: [
 			{
 				name: 'CSS Sprites',
-				value: 'sprites'
+				value: config.spriteId
 			},
 			{
 				name: 'Webfont',
-				value: 'webfont'
+				value: config.webfontId
 			},
 			{
 				name: 'Inline SVGs (Grunticon)',
-				value: 'grunticon'
+				value: config.svgIconsId
 			}
 		],
-		default: 'sprites'
+		default: config.spriteId
 	};
 };

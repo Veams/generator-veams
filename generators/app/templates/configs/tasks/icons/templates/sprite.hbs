@@ -1,0 +1,85 @@
+{{#if config/cssPngPrefix}}
+@mixin sprites-bg-svg() {
+	background-image: url("{{url svgPath cssPath}}");
+}
+%sprites-bg-svg {
+	@include sprites-bg-svg();
+}
+{{else}}
+{{#if config/cssSvgPrefix}}
+@mixin sprites-bg-svg() {
+	background-image: url("{{url svgPath ../cssPath}}");
+}
+%sprites-bg-svg {
+	@include sprites-bg-svg();
+}
+{{/if}}
+{{/if}}
+{{#sizes}}
+{{#if ../config/cssPngPrefix}}
+@mixin sprites-bg-size() {
+	background-size: {{unit width ../../config/cssUnit ../../config/cssBaseFontSize}} {{unit height ../../config/cssUnit ../../config/cssBaseFontSize}};
+}
+%sprites-bg-size {
+	@include sprites-bg-size();
+}
+
+@mixin sprites-bg-png() {
+	background-image: url("{{url pngPath ../../cssPath}}");
+}
+%sprites-bg-png {
+	@include sprites-bg-png();
+}
+{{else}}
+@mixin {{{selector}}}() {
+	background-size: {{unit width ../../config/cssUnit ../../config/cssBaseFontSize}} {{unit height ../../config/cssUnit ../../config/cssBaseFontSize}};
+	background-repeat: no-repeat;
+	background-image: url("{{url pngPath ../../cssPath}}");
+	{{#unless ../../config/cssSvgPrefix}}
+	background-image: url("{{url ../../../svgPath ../../../cssPath}}"), none;
+	{{/unless}}
+}
+%{{{selector}}} {
+	@include {{{selector}}}();
+}
+{{/if}}
+{{#items}}
+@mixin {{{selector}}}() {
+	@include sprites-bg-size;
+	@include sprites-bg-svg;
+{{#if ../../config/cssIncludeElementSizes}}
+	width: {{unit width ../../../config/cssUnit ../../../config/cssBaseFontSize}};
+	height: {{unit height ../../../config/cssUnit ../../../config/cssBaseFontSize}};
+{{/if}}
+	background-position: {{unit x ../../config/cssUnit ../../config/cssBaseFontSize -1}} {{unit y ../../config/cssUnit ../../config/cssBaseFontSize -1}};
+	@at-root .no-svg & {
+		@include sprites-bg-png;
+	}
+}
+
+%{{{selector}}} {
+	@include {{{selector}}}();
+}
+
+{{/items}}
+
+{{#breakpoints}}
+{{query}} {
+	{{#items}}
+@mixin {{{selector}}}() {
+	@include sprites-bg-size;
+	@include sprites-bg-svg;
+	{{#if ../../../config/cssIncludeElementSizes}}
+		width: {{unit width ../../../../config/cssUnit ../../../../config/cssBaseFontSize}};
+		height: {{unit height ../../../../config/cssUnit ../../../../config/cssBaseFontSize}};
+	{{/if}}
+		background-position: {{unit x ../../../config/cssUnit ../../../config/cssBaseFontSize -1}} {{unit y ../../../config/cssUnit ../../../config/cssBaseFontSize -1}};
+	}
+	{{/items}}
+
+	{{{prefix items ""}}} {
+		background-size: {{unit width ../../config/cssUnit ../../config/cssBaseFontSize}} {{unit height ../../config/cssUnit ../../config/cssBaseFontSize}};
+	}
+}
+{{/breakpoints}}
+{{/sizes}}

@@ -34,10 +34,10 @@ const templatingPrompt = require('../../mini-generators/templating/prompts');
 const projectTypeSetup = require('../../mini-generators/project-type/setup');
 const taskRunnerSetup = require('../../mini-generators/taskrunner/setup');
 const iconsSetup = require('../../mini-generators/icons/setup');
+const jsSetup = require('../../mini-generators/js/setup');
 const cssPostProcessorsSetup = require('../../mini-generators/css-post-processors/setup');
 const cssFrameworksSetup = require('../../mini-generators/css-frameworks/setup');
 const imagesSetup = require('../../mini-generators/images/setup');
-const jsSetup = require('../../mini-generators/js/setup');
 const templatingSetup = require('../../mini-generators/templating/setup');
 
 /**
@@ -45,6 +45,7 @@ const templatingSetup = require('../../mini-generators/templating/setup');
  */
 const projectTypeScaffold = require('../../mini-generators/project-type/scaffold');
 const cssFrameworksScaffold = require('../../mini-generators/css-frameworks/scaffold');
+const iconsScaffold = require('../../mini-generators/icons/scaffold');
 const imagesScaffold = require('../../mini-generators/images/scaffold');
 const expressScaffold = require('../../mini-generators/express/scaffold');
 const taskRunnerScaffold = require('../../mini-generators/taskrunner/scaffold');
@@ -203,7 +204,7 @@ module.exports = class extends Generator {
 		projectTypeScaffold.call(this);
 		cssFrameworksScaffold.call(this);
 		veamsGenerator.scaffold.call(this);
-
+		iconsScaffold.call(this);
 		jsScaffold.call(this);
 		gruntGenerator.scaffold.call(this);
 		imagesScaffold.call(this);

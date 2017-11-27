@@ -6,15 +6,16 @@ const helpers = require('yeoman-test');
 const assert = require('yeoman-assert');
 const srcPath = 'src/app/shared/';
 const helperPath = 'configs/tasks/';
+const iconsConfig = require('../mini-generators/icons/config');
 
 
-describe('icons-workflow', function () {
+describe('Icons', function () {
 
 	describe('when "Webfont" was chosen', function () {
 
 		const answers = require('../test_helpers/prompt-answer-factory')({
 			icons: [
-				'webfont'
+				iconsConfig.webfontId
 			]
 		});
 
@@ -30,27 +31,29 @@ describe('icons-workflow', function () {
 		});
 
 		it('adds references to package.json', function () {
-			assert.fileContent('package.json', /grunt-webfont/);
-			assert.fileContent('package.json', /fs-extra/);
+			assert.fileContent('package.json', /webfonts-generator/);
 		});
 
 		it('creates helper files', function () {
-			assert.file(helperPath + '_grunt/webfont.js');
-			assert.file(helperPath + '_grunt/custom/iconbuilder.js');
+			assert.file(helperPath + '/icons/webfont.js');
+			assert.file(helperPath + '/icons/icons.config.js');
 		});
 
-		it('adds tasks to Gruntfile.js file', function () {
-			assert.fileContent('Gruntfile.js', /\'webfont-icons\'/);
-			assert.fileContent('Gruntfile.js', /\'iconbuilder\'/);
+		it('creates custom template file', function () {
+			assert.file(helperPath + '/icons/templates/webfont-scss.hbs');
+		});
+
+		it('adds tasks to package.json file', function () {
+			assert.fileContent('package.json', /webfont:generate/);
 		});
 
 	});
 
+	describe('when "Sprites" was chosen', function () {
 
-	describe('when "CSS Sprites" was chosen', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			"icons": [
-				"sprites"
+			icons: [
+				iconsConfig.spriteId
 			]
 		});
 
@@ -66,32 +69,28 @@ describe('icons-workflow', function () {
 		});
 
 		it('adds references to package.json', function () {
-			assert.fileContent('package.json', /grunt-dr-svg-sprites/);
+			assert.fileContent('package.json', /dr-svg-sprites/);
 		});
 
 		it('creates helper files', function () {
-			assert.file(helperPath + "_grunt/dr-svg-sprites.js");
-			assert.file("configs/templates/svg-sprites/stylesheet.hbs");
+			assert.file(helperPath + '/icons/sprite.js');
+			assert.file(helperPath + '/icons/icons.config.js');
 		});
 
-		it('creates icons folder in styles folder', function () {
-			assert.file(srcPath + "styles/icons/.gitkeep");
+		it('creates custom template file', function () {
+			assert.file(helperPath + '/icons/templates/sprite.hbs');
 		});
 
-		it('adds task and fallback to Gruntfile.js file', function () {
-			assert.fileContent("Gruntfile.js", /\'sprites\'/);
-			assert.fileContent("Gruntfile.js", /\'dr-svg-sprites\'/);
+		it('adds tasks to package.json file', function () {
+			assert.fileContent('package.json', /\"sprite:generate\"/);
 		});
 
-		it('adds sub-task to replace.js', function () {
-			assert.fileContent(helperPath + "_grunt/replace.js", /spriteUrl/);
-		});
 	});
 
-	describe('when "Inline SVGs (Grunticon)" was chosen', function () {
+	describe('when no icon workflow is chosen', function () {
+
 		const answers = require('../test_helpers/prompt-answer-factory')({
-			"icons": [
-				"grunticon"
+			icons: [
 			]
 		});
 
@@ -106,24 +105,13 @@ describe('icons-workflow', function () {
 				.on('end', done);
 		});
 
-		it('adds references to package.json', function () {
-			assert.fileContent('package.json', /grunt-grunticon/);
-			assert.fileContent('package.json', /grunt-text-replace/);
+		it('removes packages to package.json', function () {
+			assert.noFileContent('package.json', /dr-svg-sprites|webfonts-generator/);
 		});
 
-		it('creates helper files', function () {
-			assert.file(helperPath + "_grunt/grunticon.js");
-			assert.file(helperPath + "_grunt/replace.js");
+		it('does not contain tasks in package.json file', function () {
+			assert.noFileContent('package.json', /\"sprite:generate\"|webfont:generate/);
 		});
 
-		it('creates icons folder in styles folder', function () {
-			assert.file(srcPath + "styles/icons/.gitkeep");
-		});
-
-		it('adds tasks to Gruntfile.js file', function () {
-			assert.fileContent("Gruntfile.js", /\'icons\'/);
-			assert.fileContent("Gruntfile.js", /\'grunticon\'/);
-			assert.fileContent("Gruntfile.js", /\'replace\'/);
-		});
 	});
 });

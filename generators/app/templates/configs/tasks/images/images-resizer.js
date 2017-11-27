@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const veamsConfig = require('../../../veams-cli.json');
 const helpers = require('../../utils/helpers');
 const defaultPreset = require('./presets/default-preset');
-const imageConfig = require('./config');
+const imageConfig = require('./images.config');
 
 /**
  * Arguments
