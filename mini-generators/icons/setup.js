@@ -1,3 +1,3 @@
 module.exports = function setup() {
-	this.icons = this.config.get('icons').toString();
+	this.icons = this.config.get('icons') || [];
 };

@@ -5,8 +5,8 @@ module.exports = function scaffold() {
 	/**
 	 * General Config
 	 */
-	if (this.icons === iconConfig.spriteId ||
-		this.icons === iconConfig.webfontId
+	if (this.icons.indexOf(iconConfig.spriteId) !== -1 ||
+		this.icons.indexOf(iconConfig.webfontId) !== -1
 	) {
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/icons.config.js`),
@@ -16,7 +16,7 @@ module.exports = function scaffold() {
 	/**
 	 * Sprite Generation
 	 */
-	if (this.icons === iconConfig.spriteId) {
+	if (this.icons.indexOf(iconConfig.spriteId) !== -1) {
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/sprite.js`),
 			`${config.paths.helperPath}/tasks/icons/sprite.js`
@@ -35,7 +35,7 @@ module.exports = function scaffold() {
 	/**
 	 * Webfont Generation
 	 */
-	if (this.icons === iconConfig.webfontId) {
+	if (this.icons.indexOf(iconConfig.webfontId) !== -1) {
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/webfont.js`),
 			`${config.paths.helperPath}/tasks/icons/webfont.js`

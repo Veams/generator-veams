@@ -5,7 +5,7 @@ module.exports = function questions(obj) {
 	object.defaults = object.defaults !== false;
 
 	return {
-		type: 'list',
+		type: 'checkbox',
 		name: 'icons',
 		message: 'Which icon workflow do you want to use?',
 		choices: [
@@ -22,6 +22,6 @@ module.exports = function questions(obj) {
 				value: config.svgIconsId
 			}
 		],
-		default: config.spriteId
+		default: [config.spriteId]
 	};
 };
