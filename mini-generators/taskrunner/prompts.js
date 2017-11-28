@@ -22,6 +22,6 @@ module.exports = function questions(obj) {
 			// 	checked: object.defaults
 			// }
 		],
-		default: config.gruntId
+		default: [config.gruntId]
 	};
 };

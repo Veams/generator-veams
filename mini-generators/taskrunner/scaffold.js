@@ -5,6 +5,7 @@ const config = require('./config');
 module.exports = function scaffold() {
 	if (this.taskRunner !== config.gruntId) {
 		delete this.pkgFile['devDependencies']['grunt'];
+		delete this.pkgFile['devDependencies']['grunt-browserify'];
 		delete this.pkgFile['devDependencies']['grunt-chokidar'];
 		delete this.pkgFile['devDependencies']['grunt-concurrent'];
 		delete this.pkgFile['devDependencies']['grunt-contrib-clean'];

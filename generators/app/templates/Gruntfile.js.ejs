@@ -23,7 +23,7 @@ const config = require('./veams-cli');
 module.exports = function(grunt) {
 	
 	// load only used tasks and add fallbacks for those which cannot be find
-	require('jit-grunt')(grunt, {<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-grunticon') != -1 || gruntModules.indexOf('grunt-dr-svg-sprites') != -1 || gruntModules.indexOf('grunt-contrib-handlebars') != -1)) { %>
+	require('jit-grunt')(grunt, {<% if (gruntModules && gruntModules.length && (gruntModules.indexOf('grunt-grunticon') != -1 || gruntModules.indexOf('grunt-contrib-handlebars') != -1)) { %>
 		'replace': 'grunt-text-replace'<% } %>
 	});
 	// measures the time each task takes
@@ -43,28 +43,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('watchCSS', [
 		'sassGlobber:dev',
 		'sass:dev'
-	]);<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-grunticon') != -1) { %>
-	
-	// Icons Task
-	grunt.registerTask('icons', [<% if (gruntModules && gruntModules.indexOf('grunt-svgmin') != -1) { %>
-		'svgmin',<% } %>
-		'grunticon',
-		'clean:grunticon',
-		'replace'
-	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-webfont') != -1) { %>
-
-	// Webfont Icons Task
-	require('./' + config.options.paths.helpers + '/_grunt/custom/iconbuilder')(grunt);
-	grunt.registerTask('webfont-icons', [
-		'webfont:icons',
-		'iconbuilder'
-	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>
-	
-	// Sprites Task
-	grunt.registerTask('sprites', [
-		'dr-svg-sprites',
-		'replace:spriteUrl'
-	]); <% } %><% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
+	]);<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
 
 	// FE Templates Task
 	grunt.registerTask('jsTemplates', [
@@ -93,8 +72,8 @@ module.exports = function(grunt) {
 	 */
 	grunt.registerTask('server', [
 		'clean:dev',<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
-		'jsTemplates',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
-		'browserify:dev',<% }} %><% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
+		'jsTemplates',<% } %>
+		'browserify:dev',<% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
 		'jscs',<% } %>
 		'concurrent:syncing',
 		'watchCSS',
@@ -105,9 +84,9 @@ module.exports = function(grunt) {
 	
 	grunt.registerTask('build', [
 		'clean:dev',<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
-		'jsTemplates',<% } %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-browserify') != -1) { %>
-		'browserify:dist',<% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-contrib-uglify') != -1) { %>
-		'uglify',<% }} %>
+		'jsTemplates',<% } %>
+		'browserify:dist',
+		'uglify',
 		'concurrent:syncing', <% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-csscomb') != -1) { %>
 		'beauty-scss',<% }} %>
 		'sassGlobber:dist',

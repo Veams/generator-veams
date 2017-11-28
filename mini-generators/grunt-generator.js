@@ -21,11 +21,9 @@ exports.questions = function (obj) {
 				{name: 'grunt-accessibility'},
 				{name: 'grunt-autoprefixer', checked: object.defaults},
 				{name: 'grunt-bless'},
-				{name: 'grunt-browserify', checked: object.defaults},
 				{name: 'grunt-combine-mq', checked: object.defaults},
 				{name: 'grunt-contrib-handlebars'},
 				{name: 'grunt-contrib-htmlmin'},
-				{name: 'grunt-contrib-uglify', checked: object.defaults},
 				{name: 'grunt-csscomb'},
 				{name: 'grunt-dr-svg-sprites'},
 				{name: 'grunt-grunticon'},
@@ -52,6 +50,17 @@ exports.scaffold = function (obj) {
 	let object = obj || {};
 	object.defaults = object.defaults !== false;
 
+	this.fs.copyTpl(
+		this.templatePath(this.generatorGruntPath + '_browserify.js.ejs'),
+		this.gruntPath + 'browserify.js',
+		this
+	);
+
+	this.fs.copyTpl(
+		this.templatePath(this.generatorGruntPath + '_uglify.js.ejs'),
+		this.gruntPath + 'uglify.js',
+		this
+	);
 
 	// Grunt modules are splitted up in separate files and modules
 	if (this.gruntModules.indexOf('grunt-accessibility') != -1) {
@@ -104,20 +113,7 @@ exports.scaffold = function (obj) {
 	} else {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-browser-sync'];
 	}
-	if (this.gruntModules.indexOf('grunt-browserify') != -1 ||
-		this.taskRunner.indexOf('grunt') !== -1 && this.veamsPackages) {
-		this.fs.copyTpl(
-			this.templatePath(this.generatorGruntPath + '_browserify.js.ejs'),
-			this.gruntPath + 'browserify.js',
-			this
-		);
 
-		if (object.installDeps) {
-			this.npmInstall(['grunt-browserify'], {'saveDev': true});
-		}
-	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-browserify'];
-	}
 	if (this.gruntModules.indexOf('grunt-postcss-separator') != -1) {
 		this.fs.copyTpl(
 			this.templatePath(this.generatorGruntPath + '_postcssSeparator.js.ejs'),
@@ -190,19 +186,7 @@ exports.scaffold = function (obj) {
 	} else {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-contrib-requirejs'];
 	}
-	if (this.gruntModules.indexOf('grunt-contrib-uglify') != -1) {
-		this.fs.copyTpl(
-			this.templatePath(this.generatorGruntPath + '_uglify.js.ejs'),
-			this.gruntPath + 'uglify.js',
-			this
-		);
 
-		if (object.installDeps) {
-			this.npmInstall(['grunt-contrib-uglify'], {'saveDev': true});
-		}
-	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-contrib-uglify'];
-	}
 	if (this.gruntModules.indexOf('grunt-combine-mq') != -1) {
 		this.fs.copy(
 			this.templatePath(this.generatorGruntPath + 'combine_mq.js'),

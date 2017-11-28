@@ -12,12 +12,9 @@ exports.scaffold = function () {
 	}
 
 	// Package handling of JS setup
-	if (this.gruntModules.indexOf('grunt-browserify') === -1) {
+	if (this.taskRunner !== 'grunt') {
 		delete this.pkgFile['devDependencies']['aliasify'];
 		delete this.pkgFile['devDependencies']['babelify'];
 		delete this.pkgFile['devDependencies']['browserify'];
-		delete this.pkgFile['devDependencies']['babel-preset-es2015'];
-		delete this.pkgFile['devDependencies']['babel-preset-stage-0'];
-		delete this.pkgFile['devDependencies']['babel-plugin-add-module-exports'];
 	}
 };

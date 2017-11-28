@@ -8,9 +8,6 @@ exports.overwriteSetup = function () {
 	if (this.taskRunner === 'grunt') {
 		let gruntModules = this.config.get('gruntModules');
 
-		gruntModules.push('grunt-browserify');
-		gruntModules.push('grunt-contrib-uglify');
-
 		if (this.projectType === 'static-page-app') {
 			gruntModules.push('grunt-contrib-handlebars');
 		}
