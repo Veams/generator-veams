@@ -5,10 +5,8 @@ module.exports = {
 	},
 	assets: {
 		files: [
-			'<%%= paths.src %>/assets/**/*'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-svgmin') != -1) { %>,
-			'!<%%= paths.src %>/assets/img/svg/**/*'<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
-			'!<%%= paths.src %>/assets/img/svgmin/**/*'<% }} %><% }} %>
-			],
+			'<%%= paths.src %>/assets/**/*'
+		],
 		tasks: 'sync:assets'
 	}<% if (projectType === 'static-page-app') { %>,
 	scssDocs: {

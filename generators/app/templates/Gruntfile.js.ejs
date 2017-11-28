@@ -17,8 +17,7 @@
  * 3. Add "spawn: false" to your watch task when you need to speed up your build.
  *
  */
-
-const config = require('./veams-cli');
+const config = require('./veams-cli.json');
 
 module.exports = function(grunt) {
 	
@@ -30,7 +29,7 @@ module.exports = function(grunt) {
 	require('time-grunt')(grunt);
 
 	// Load grunt configurations automatically
-	var configs = require('load-grunt-configs')(grunt, config);
+	const configs = require('load-grunt-configs')(grunt, config);
 
 	// Define the configuration for all the tasks
 	grunt.initConfig(configs);

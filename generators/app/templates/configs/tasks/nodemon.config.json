@@ -3,7 +3,7 @@
 	"ignore": [
 		".git",
 		"node_modules/**/node_modules",
-		"server/mocks/**/*.json"
+		"src/server/mocks/**/*.json"
 	],
 	"verbose": true,
 	"execMap": {
@@ -12,7 +12,7 @@
 	"events": {
 	},
 	"watch": [
-		"server/"
+		"src/server/"
 	],
 	"ext": "js json"
 }

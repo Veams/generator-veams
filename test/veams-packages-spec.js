@@ -34,25 +34,9 @@ describe('Veams Framework', function () {
 			assert.file(expected);
 		});
 
-		it('package.json contains reference', function () {
+		it('contains veams and plugins in package.json', function () {
 			assert.fileContent('package.json', /veams/);
 			assert.fileContent('package.json', /veams-plugin/);
-		});
-
-		it('adds references to dependencies in package.json', function () {
-			assert.fileContent('package.json', /grunt-browserify/);
-			assert.fileContent('package.json', /grunt-contrib-handlebars/);
-		});
-
-		it('creates helper files', function () {
-			assert.file(helperPath + '_grunt/browserify.js');
-			assert.file(helperPath + '_grunt/handlebars.js');
-		});
-
-		it('adds task to Gruntfile.js file', function () {
-			assert.fileContent('Gruntfile.js', /'browserify\:dev'/);
-			assert.fileContent('Gruntfile.js', /'browserify\:dist'/);
-			assert.fileContent('Gruntfile.js', /handlebars/);
 		});
 
 		it('adds event endpoint to veams-cli file', function () {
