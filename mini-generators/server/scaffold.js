@@ -87,6 +87,8 @@ module.exports = function scaffold() {
 		);
 
 		this.pkgFile[ 'scripts' ][ 'faker' ] = 'node configs/tasks/faker/faker.js';
+	} else {
+		delete this.pkgFile['devDependencies']['faker'];
 	}
 
 	/**

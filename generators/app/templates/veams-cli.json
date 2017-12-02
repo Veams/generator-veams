@@ -10,6 +10,11 @@
 			"skipImports": true,
 			"prompts": "node_modules/veams-bp-redux/prompts",
 			"templates": "node_modules/veams-bp-redux/templates"
+		},
+		"api": {
+			"skipImports": true,
+			"prompts": "node_modules/veams-bp-mock-api-endpoint/prompts",
+			"templates": "node_modules/veams-bp-mock-api-endpoint/templates"
 		}
 	},
 	"config": {
@@ -27,10 +32,12 @@
 		"src/app/app.events.js"
 	],
 	"paths": {
+		"api": "src/server/api",
 		"app": "app",
 		"assets": "src/app/assets",
 		"component": "src/app/shared/components",
 		"config": "configs",
+		"mocks": "src/server/mocks",
 		"server": "src/server",
 		"src": "src/app",
 		"utility": "src/app/shared/utilities"

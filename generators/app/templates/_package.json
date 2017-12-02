@@ -67,6 +67,7 @@
 		"deep-extend": "^0.5.0",
 		"dr-svg-sprites": "^1.0.0",
 		"express": "^4.15.3",
+		"faker": "^4.1.0",
 		"fs-extra": "^4.0.0",
 		"globby": "^6.1.0",
 		"grunt": "^1.0.0",

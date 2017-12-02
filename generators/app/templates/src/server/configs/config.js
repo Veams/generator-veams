@@ -1,5 +1,5 @@
 import * as path from 'path';
-const envConfig = require('../../../configs/environments/environment.' + process.env.NODE_ENV);
+const envConfig = require('../../../environments/environment.' + process.env.NODE_ENV);
 const veamsConfig = require('../../../veams-cli');
 
 const config = {

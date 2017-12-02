@@ -1,4 +1,4 @@
-const imageConfig = require('../config');
+const imageConfig = require('../images.config');
 
 const defaultPreset = [
 	{

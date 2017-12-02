@@ -284,6 +284,10 @@ module.exports = class extends Generator {
 			this.templatePath('gitkeep'),
 			'src/app/assets/icons/.gitkeep'
 		);
+		this.fs.copy(
+			this.templatePath('src/app/assets/img/favicon.ico'),
+			'src/app/assets/img/favicon.ico'
+		);
 
 		// JS area
 		this.fs.copy(
