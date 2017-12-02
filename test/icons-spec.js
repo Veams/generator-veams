@@ -47,6 +47,10 @@ describe('Icons', function () {
 			assert.fileContent('package.json', /webfont:generate/);
 		});
 
+		it('adds description to README.md file', function () {
+			assert.fileContent('README.md', /Icons Webfont/);
+		});
+
 	});
 
 	describe('when "Sprites" was chosen', function () {
@@ -85,6 +89,10 @@ describe('Icons', function () {
 			assert.fileContent('package.json', /\"sprite:generate\"/);
 		});
 
+		it('adds description to README.md file', function () {
+			assert.fileContent('README.md', /Icons Sprite/);
+		});
+
 	});
 	describe('when "Grunticon" was chosen', function () {
 
@@ -118,6 +126,10 @@ describe('Icons', function () {
 			assert.fileContent('package.json', /\"grunticon:generate\"/);
 		});
 
+		it('adds description to README.md file', function () {
+			assert.fileContent('README.md', /Icons Grunticon/);
+		});
+
 	});
 
 	describe('when no icon workflow is chosen', function () {
@@ -146,5 +158,8 @@ describe('Icons', function () {
 			assert.noFileContent('package.json', /\"sprite:generate\"|webfont:generate|grunticon:generate/);
 		});
 
+		it('removes description to README.md file', function () {
+			assert.noFileContent('README.md', /### Icons/);
+		});
 	});
 });

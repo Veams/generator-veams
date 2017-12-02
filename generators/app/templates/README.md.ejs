@@ -1,26 +1,64 @@
 # <%= projectName %>
 
-------------------
+The project is build with `veams-cli`. You can add or modify settings in the provided `veams-cli.json`.
 
-## Requirements For Frontend Development
+`Veams-cli` is responsible for the initial setup as well as for the scaffolding process of blueprints.
+Every task and configuration files are exposed in the `configs` folder.
 
-* NodeJS (>= 6.0.0)
-
-------------------
-
-## Setup
-
-This project builds on following setup (please read requirements and getting started):
-
+For more information take a look at the Veams documentation.
 - Veams Overview: https://github.com/Sebastian-Fitzner/Veams
 - Veams Website: http://veams.org/
 
 ------------------
 
 ## Tasks
-<% if(images.indexOf('imgResponsive') !== -1) { %>
+<% if(icons.length) { %>
+------------------
 
-### Image Generation (`configs/tasks/images/`)
+### Icons (`configs/tasks/icons/`)
+
+Icons have to be saved in your assets folder. The default location for your icons is `assets/icons`.
+<% } %><% if(icons.indexOf('webfont') !== -1) { %>
+#### Icons Webfont (`configs/tasks/icons/webfont.js`)
+
+To build the webfont from your icons you only need to execute:
+
+``` bash
+npm run wefont:generate
+```
+
+This creates a new `webfont.scss` in your `shared/styles/icons` folder. The new file gets imported automatically.
+Next to that it creates the font called `iconfont` in `assets/fonts`.
+<% } %><% if(icons.indexOf('sprite') !== -1) { %>
+#### Icons Sprite (`configs/tasks/icons/sprite.js`)
+
+To build a sprite from your icons which will be used as background image in your CSS you only need to execute:
+
+``` bash
+npm run sprite:generate
+```
+
+This creates a new `sprite.scss` in your `shared/styles/icons` folder. The new file gets imported automatically.
+Next to that it creates the sprite files called `sprite.svg` in `assets/img/`.
+<% } %><% if(icons.indexOf('grunticon') !== -1) { %>
+#### Icons Grunticon (`configs/tasks/icons/grunticon.js`)
+
+Grunticon takes a folder of SVG files and outputs them to (S)CSS in 2 custom formats. For that you only need to execute:
+
+``` bash
+npm run grunticon:generate
+```
+
+This creates two files (`icons-data-png.scss`, `icons-data-svg.scss`) in your `shared/styles/icons` folder. The new file gets imported automatically.
+Next to that it creates PNG fallbacks in `assets/icons/png-fallbacks/`.
+<% } %><% if(images.length) { %>
+------------------
+
+### Images (`configs/tasks/images/`)
+
+Images have to be saved in your assets folder. The default location for your icons is `assets/img`.
+<% } %><% if(images.indexOf('imgResponsive') !== -1) { %>
+#### Image Generation (`configs/tasks/images/images-resizer.js`)
 
 To generate images you can use the following commands which are defined in `package.json`:
 
@@ -50,7 +88,7 @@ __Options__
 You can change the `suffix` definition in the provided `config.js` file. Furthermore you can easily add options for your presets, just take a look at https://github.com/felixrieseberg/responsive-images-generator#configuration.
 <% } %><% if(images.indexOf('imgSizeExport') !== -1) { %>
 
-### Image Data Export (`configs/tasks/images/`)
+#### Image Data Export (`configs/tasks/images/images-export.js`)
 
 To export further images information to a JSON file you can use the following commands which are defined in `package.json`:
 

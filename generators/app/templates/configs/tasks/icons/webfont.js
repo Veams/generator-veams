@@ -1,6 +1,13 @@
+/**
+ * Generic task to generate a webfont out of icons.
+ */
+
+// Standard libs
 const webfontsGenerator = require('webfonts-generator');
 const globby = require('globby');
 const chalk = require('chalk');
+
+// Configs & Helpers
 const veamsConfig = require('../../../veams-cli.json');
 const helpers = require('../../utils/helpers');
 const { types, dest } = require('./icons.config');
@@ -16,7 +23,7 @@ function generateWebfont(iconFiles) {
 		cssDest: dest,
 		cssTemplate: `${__dirname}/templates/webfont-scss.hbs`,
 		cssFontsUrl: `../fonts/`,
-		dest: `${veamsConfig.paths.src}/shared/styles/icons/`,
+		dest: `${dest}`,
 		writeFiles: false
 	}, (error, results) => {
 		if (error) {
@@ -38,7 +45,7 @@ function handleOutputFiles(result) {
 		helpers.write(`${veamsConfig.paths.assets}/fonts/iconfont.${types[ i ]}`, result[ types[ i ] ]);
 	}
 
-	helpers.write(`${veamsConfig.paths.src}/shared/styles/icons/webfont.scss`, result.generateCss());
+	return helpers.write(`${dest}/webfont.scss`, result.generateCss());
 }
 
 /**
