@@ -26,6 +26,7 @@ const imagesPrompt = require('../../mini-generators/images/prompts');
 const cssPostProcessorsPrompt = require('../../mini-generators/css-post-processors/prompts');
 const cssFrameworksPrompt = require('../../mini-generators/css-frameworks/prompts');
 const jsPrompt = require('../../mini-generators/js/prompts');
+const serverPrompts = require('../../mini-generators/server/prompts');
 const templatingPrompt = require('../../mini-generators/templating/prompts');
 
 /**
@@ -38,6 +39,7 @@ const jsSetup = require('../../mini-generators/js/setup');
 const cssPostProcessorsSetup = require('../../mini-generators/css-post-processors/setup');
 const cssFrameworksSetup = require('../../mini-generators/css-frameworks/setup');
 const imagesSetup = require('../../mini-generators/images/setup');
+const serverSetup = require('../../mini-generators/server/setup');
 const templatingSetup = require('../../mini-generators/templating/setup');
 
 /**
@@ -47,9 +49,9 @@ const projectTypeScaffold = require('../../mini-generators/project-type/scaffold
 const cssFrameworksScaffold = require('../../mini-generators/css-frameworks/scaffold');
 const iconsScaffold = require('../../mini-generators/icons/scaffold');
 const imagesScaffold = require('../../mini-generators/images/scaffold');
-const expressScaffold = require('../../mini-generators/express/scaffold');
-const taskRunnerScaffold = require('../../mini-generators/taskrunner/scaffold');
 const jsScaffold = require('../../mini-generators/js/scaffold');
+const serverScaffold = require('../../mini-generators/server/scaffold');
+const taskRunnerScaffold = require('../../mini-generators/taskrunner/scaffold');
 const templatingScaffold = require('../../mini-generators/templating/scaffold');
 
 
@@ -161,6 +163,12 @@ module.exports = class extends Generator {
 			);
 		}
 
+		if (!this.config.get('server') || this.force) {
+			this.questions = this.questions.concat(
+				serverPrompts.call(this)
+			);
+		}
+
 
 		if (!this.config.get('testAndQA') || this.force) {
 			this.questions = this.questions.concat(
@@ -190,6 +198,7 @@ module.exports = class extends Generator {
 		cssPostProcessorsSetup.call(this);
 		jsSetup.call(this);
 		templatingSetup.call(this);
+		serverSetup.call(this);
 		gruntGenerator.setup.call(this);
 		testAndQAGenerator.setup.call(this);
 		docsGenerator.setup.call(this);
@@ -208,7 +217,7 @@ module.exports = class extends Generator {
 		jsScaffold.call(this);
 		gruntGenerator.scaffold.call(this);
 		imagesScaffold.call(this);
-		expressScaffold.call(this);
+		serverScaffold.call(this);
 		templatingScaffold.call(this);
 		testAndQAGenerator.scaffold.call(this);
 		docsGenerator.scaffold.call(this);

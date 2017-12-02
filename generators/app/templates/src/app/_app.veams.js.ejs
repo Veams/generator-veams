@@ -41,13 +41,13 @@ Veams.onInitialize(() => {
 
     // Media Query Handler Plugin
     Veams.use(VeamsMediaQueryHandler);
-
+    <% if (projectType === 'static-page-app') { %>
     // Module System Plugin
     Veams.use(VeamsModules, {
         useMutationObserver: true,
         internalCacheOnly: false
     });
-
+    <% } %>
     // Trigger global scroll event
     window.onscroll = Veams.helpers.throttle((e) => {
         Veams.Vent.trigger(Veams.EVENTS.scroll, e);

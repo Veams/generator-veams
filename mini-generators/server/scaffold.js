@@ -1,3 +1,7 @@
+'use strict';
+
+const serverConfig = require('./config');
+
 module.exports = function scaffold() {
 	/**
 	 * Config files
@@ -68,6 +72,26 @@ module.exports = function scaffold() {
 		'src/server/content/server-hosts.js'
 	);
 
+	/**
+	 * Server features
+	 */
+	if (this.server.indexOf(serverConfig.serverFakeId) !== -1) {
+		this.fs.copy(
+			this.templatePath(`${this.generatorHelperPath}tasks/faker/faker.js`),
+			this.helperPath + 'tasks/faker/faker.js'
+		);
+
+		this.fs.copy(
+			this.templatePath(`${this.generatorHelperPath}tasks/faker/presets/example.preset.js`),
+			this.helperPath + 'tasks/faker/presets/example.preset.js'
+		);
+
+		this.pkgFile[ 'scripts' ][ 'faker' ] = 'node configs/tasks/faker/faker.js';
+	}
+
+	/**
+	 * Server Templating Module
+	 */
 	if (this.templateEngine === 'ssr-mangony-hbs') {
 		this.fs.copy(
 			this.templatePath('src/server/modules/mangony.js'),

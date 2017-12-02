@@ -19,11 +19,16 @@ This project builds on following setup (please read requirements and getting sta
 
 ## Tasks
 <% if(images.indexOf('imgResponsive') !== -1) { %>
-------------------
 
 ### Image Generation (`configs/tasks/images/`)
 
 To generate images you can use the following commands which are defined in `package.json`:
+
+``` bash
+`npm run images:generate [files]`
+```
+
+__Examples__
 
 1. `npm run images:generate "**/*.jpg"` => Simple globbing support.
 1. `npm run images:generate "test/*.jpg"` => Globbing in a specific folder.
@@ -44,12 +49,25 @@ __Options__
 
 You can change the `suffix` definition in the provided `config.js` file. Furthermore you can easily add options for your presets, just take a look at https://github.com/felixrieseberg/responsive-images-generator#configuration.
 <% } %><% if(images.indexOf('imgSizeExport') !== -1) { %>
--------------------
 
 ### Image Data Export (`configs/tasks/images/`)
 
 To export further images information to a JSON file you can use the following commands which are defined in `package.json`:
 
 1. `npm run images:export` => Export meta data information to `images.json` in `assets` folder.
-<% } %>
--------------------
+<% } %><% if(server.indexOf('serverFakeData') !== -1) { %>
+
+### Fake Data Generation (`configs/tasks/faker/`)
+
+You can generate fake data files by using the provided task. Therefore you need to create a preset file and save it in the presets folder of the task.
+
+To generate fake data execute the following commands:
+
+``` bash
+npm run faker [presetName] [length]
+```
+
+__Examples__
+
+1. `npm run faker example` => Generate 10 fake data files by using example preset.
+1. `npm run faker example 100` => Generate 100 fake data files by using example preset.<% } %>
