@@ -18,8 +18,8 @@ module.exports = function questions(obj) {
 				value: config.webfontId
 			},
 			{
-				name: 'Inline SVGs (Grunticon)',
-				value: config.svgIconsId
+				name: 'Data-URI SVGs (Grunticon)',
+				value: config.iconGrunticonId
 			}
 		],
 		default: [config.spriteId]

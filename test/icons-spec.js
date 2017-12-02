@@ -86,6 +86,39 @@ describe('Icons', function () {
 		});
 
 	});
+	describe('when "Grunticon" was chosen', function () {
+
+		const answers = require('../test_helpers/prompt-answer-factory')({
+			icons: [
+				iconsConfig.iconGrunticonId
+			]
+		});
+
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../generators/app'))
+				.inDir(path.join(__dirname, 'tmp'))
+				.withOptions({
+					'skip-install': true,
+					'skip-welcome-message': true
+				})
+				.withPrompts(answers)
+				.on('end', done);
+		});
+
+		it('adds references to package.json', function () {
+			assert.fileContent('package.json', /grunticon-lib/);
+		});
+
+		it('creates helper files', function () {
+			assert.file(helperPath + '/icons/grunticon.js');
+			assert.file(helperPath + '/icons/icons.config.js');
+		});
+
+		it('adds tasks to package.json file', function () {
+			assert.fileContent('package.json', /\"grunticon:generate\"/);
+		});
+
+	});
 
 	describe('when no icon workflow is chosen', function () {
 
@@ -106,11 +139,11 @@ describe('Icons', function () {
 		});
 
 		it('removes packages to package.json', function () {
-			assert.noFileContent('package.json', /dr-svg-sprites|webfonts-generator/);
+			assert.noFileContent('package.json', /dr-svg-sprites|webfonts-generator|grunticon-lib/);
 		});
 
 		it('does not contain tasks in package.json file', function () {
-			assert.noFileContent('package.json', /\"sprite:generate\"|webfont:generate/);
+			assert.noFileContent('package.json', /\"sprite:generate\"|webfont:generate|grunticon:generate/);
 		});
 
 	});

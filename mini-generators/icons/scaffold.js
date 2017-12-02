@@ -6,7 +6,8 @@ module.exports = function scaffold() {
 	 * General Config
 	 */
 	if (this.icons.indexOf(iconConfig.spriteId) !== -1 ||
-		this.icons.indexOf(iconConfig.webfontId) !== -1
+		this.icons.indexOf(iconConfig.webfontId) !== -1 ||
+		this.icons.indexOf(iconConfig.iconGrunticonId) !== -1
 	) {
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/icons.config.js`),
@@ -49,6 +50,20 @@ module.exports = function scaffold() {
 
 	} else {
 		delete this.pkgFile[ 'devDependencies' ][ 'webfonts-generator' ];
+	}
+
+	/**
+	 * Grunticon Generation
+	 */
+	if (this.icons.indexOf(iconConfig.iconGrunticonId) !== -1) {
+		this.fs.copy(
+			this.templatePath(`${config.paths.helperPath}/tasks/icons/grunticon.js`),
+			`${config.paths.helperPath}/tasks/icons/grunticon.js`
+		);
+		this.pkgFile[ 'scripts' ][ 'grunticon:generate' ] = 'node configs/tasks/icons/grunticon.js';
+
+	} else {
+		delete this.pkgFile[ 'devDependencies' ][ 'grunticon-lib' ];
 	}
 
 };

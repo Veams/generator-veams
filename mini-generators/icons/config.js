@@ -2,6 +2,6 @@
 
 module.exports = {
 	spriteId: 'sprite',
-	svgIconsId: 'grunticon',
+	iconGrunticonId: 'grunticon',
 	webfontId: 'webfont'
 };
