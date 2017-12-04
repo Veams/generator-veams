@@ -63,7 +63,7 @@ Images have to be saved in your assets folder. The default location for your ico
 To generate images you can use the following commands which are defined in `package.json`:
 
 ``` bash
-`npm run images:generate [files]`
+`npm run images:generate ${files}`
 ```
 
 __Examples__
@@ -93,18 +93,43 @@ You can change the `suffix` definition in the provided `config.js` file. Further
 To export further images information to a JSON file you can use the following commands which are defined in `package.json`:
 
 1. `npm run images:export` => Export meta data information to `images.json` in `assets` folder.
+<% } %><% if(server.length) { %>
+------------------
+
+### Server
+
+The provided express server instance exposes an API which you can use to work with your file system.
+
+The API Server is a mock server which can be used in a really simple way.
+
+Just add your JSON mocks to `src/server/mocks/${endpoint}` and
+make sure that you already have a endpoint available in `src/server/api/${endpoint}`.
+
+After that you can reach that endpoint at the following location:
+
+- `/api/${endpoint}` => You will get all mocks in an array.
+- `/api/${endpoint}/${filename}` => You will get a specific mock by using the filename as Id.
+
+#### Add endpoint to API ([`veams-bp-mock-api-endpoint`]())
+
+You can easily add a new endpoint by using `veams-cli`.
+
+Just execute the following command `veams add api [name]`.
+
+This will create a new folder in `server/routes/`.
+The only thing you have to do is referencing the file in `server/routes/index.js` by adding the snippets from `USAGE.md`.
 <% } %><% if(server.indexOf('serverFakeData') !== -1) { %>
 
-### Fake Data Generation (`configs/tasks/faker/`)
+#### Fake Data Generation (`configs/tasks/faker/faker.js`)
 
 You can generate fake data files by using the provided task. Therefore you need to create a preset file and save it in the presets folder of the task.
 
-The output is saved in the `mocks` folder of your server.
+The output is saved in the `mocks` folder of your server. You can configure the destination path in `veams-cli.json`.
 
 To generate fake data execute the following commands:
 
 ``` bash
-npm run faker [presetName] [length]
+npm run faker ${presetName} ${length}
 ```
 
 __Examples__
