@@ -9,6 +9,28 @@ const assert = require('yeoman-assert');
 describe('Server Features', function () {
 	const helperPath = 'configs/tasks/';
 
+	describe('when general setup is scaffolded', function () {
+		const answers = require('../test_helpers/prompt-answer-factory')({
+			'server': [
+			]
+		});
+
+		beforeEach(function (done) {
+			helpers.run(path.join(__dirname, '../generators/app'))
+				.inDir(path.join(__dirname, 'tmp'))
+				.withOptions({
+					'skip-install': true,
+					'skip-welcome-message': true
+				})
+				.withPrompts(answers)
+				.on('end', done);
+		});
+
+		it('adds description to README.md', function () {
+			assert.fileContent('README.md', /### Server/);
+		});
+	});
+
 	describe('when fake data generation is selected', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
 			'server': [

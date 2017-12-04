@@ -85,7 +85,8 @@ Custom presets can easily be added by you. Take a look at the `preset` folder in
 
 __Options__
 
-You can change the `suffix` definition in the provided `config.js` file. Furthermore you can easily add options for your presets, just take a look at https://github.com/felixrieseberg/responsive-images-generator#configuration.
+You can change the `suffix` definition in the provided `config.js` file.
+Furthermore you can easily add options for your presets, just take a look at https://github.com/felixrieseberg/responsive-images-generator#configuration.
 <% } %><% if(images.indexOf('imgSizeExport') !== -1) { %>
 
 #### Image Data Export (`configs/tasks/images/images-export.js`)
@@ -93,7 +94,7 @@ You can change the `suffix` definition in the provided `config.js` file. Further
 To export further images information to a JSON file you can use the following commands which are defined in `package.json`:
 
 1. `npm run images:export` => Export meta data information to `images.json` in `assets` folder.
-<% } %><% if(server.length) { %>
+<% } %>
 ------------------
 
 ### Server
@@ -110,7 +111,7 @@ After that you can reach that endpoint at the following location:
 - `/api/${endpoint}` => You will get all mocks in an array.
 - `/api/${endpoint}/${filename}` => You will get a specific mock by using the filename as Id.
 
-#### Add endpoint to API ([`veams-bp-mock-api-endpoint`]())
+#### Add endpoint to API ([`veams-bp-mock-api-endpoint`](https://github.com/Veams/veams-bp-mock-api-endpoint))
 
 You can easily add a new endpoint by using `veams-cli`.
 
@@ -118,13 +119,15 @@ Just execute the following command `veams add api [name]`.
 
 This will create a new folder in `server/routes/`.
 The only thing you have to do is referencing the file in `server/routes/index.js` by adding the snippets from `USAGE.md`.
-<% } %><% if(server.indexOf('serverFakeData') !== -1) { %>
+<% if(server.indexOf('serverFakeData') !== -1) { %>
 
 #### Fake Data Generation (`configs/tasks/faker/faker.js`)
 
-You can generate fake data files by using the provided task. Therefore you need to create a preset file and save it in the presets folder of the task.
+You can generate fake data files by using the provided task.
+Therefore you need to create a preset file and save it in the presets folder of the task.
 
-The output is saved in the `mocks` folder of your server. You can configure the destination path in `veams-cli.json`.
+The output is saved in the `mocks` folder of your server.
+You can configure the destination path in `veams-cli.json`.
 
 To generate fake data execute the following commands:
 
@@ -139,5 +142,6 @@ __Examples__
 
 __Presets__
 
-Custom presets are easy to create. Just take a look add the preset files in the task folder and use the [API from `faker.js`](http://marak.github.io/faker.js/faker.html).
+Custom presets are easy to create.
+Just take a look add the preset files in the task folder and use the [API from `faker.js`](http://marak.github.io/faker.js/faker.html).
 <% } %>
