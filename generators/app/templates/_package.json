@@ -36,7 +36,7 @@
 		"veams-plugin-logger": "^1.0.0",
 		"veams-plugin-media-query-handler": "^1.0.0",
 		"veams-plugin-mixins": "^1.0.0",
-		"veams-plugin-modules": "^1.0.0",
+		"veams-plugin-modules": "^1.0.3",
 		"veams-plugin-store": "^0.0.1",
 		"veams-plugin-templater": "^1.0.0",
 		"veams-plugin-vent": "^1.0.0"
