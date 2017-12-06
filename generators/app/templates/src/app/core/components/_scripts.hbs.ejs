@@ -1,6 +1,1 @@
-<% if (gruntModules.indexOf('grunt-browserify') != -1) { %><script src="{{@root.assets}}scripts/app.bundle.js"></script><% } %>
-<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-postcss-separator') != -1 && gruntModules.indexOf('grunt-grunticon') != -1) { %>
-<script src="{{@root.assets}}scripts/vendor/loadCSS.js"></script>
-<script>
-	loadCSS("{{@root.assets}}css/styles.icons.css");
-</script><% } %>
+<script src="{{@root.assets}}scripts/app.bundle.js"></script>
