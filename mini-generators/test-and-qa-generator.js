@@ -31,11 +31,6 @@ exports.questions = function () {
 			value: sasslintId,
 			checked: true
 		}
-		/*{
-		 name: 'Unit Testing (karma, mocha, sinon, chai)',
-		 value: karmaId,
-		 checked: false
-		 }*/
 	];
 
 	return [
@@ -71,13 +66,13 @@ exports.scaffold = function () {
 	 */
 	if (this.testAndQALibs.indexOf(jscsId) !== -1) {
 		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'tasks/jscs.config.json'),
-			this.helperPath + 'tasks/jscs.config.json'
+			this.templatePath(this.generatorHelperPath + 'tasks/linting/jscs.config.json'),
+			this.helperPath + 'tasks/linting/jscs.config.json'
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {
 			this.fs.copy(
-				this.templatePath(this.generatorHelperPath + '_grunt/jscs.js'),
+				this.templatePath(this.generatorGruntPath + 'jscs.js'),
 				this.gruntPath + 'jscs.js'
 			);
 		}
@@ -90,8 +85,8 @@ exports.scaffold = function () {
 	 */
 	if (this.testAndQALibs.indexOf(htmlHintId) !== -1) {
 		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'tasks/.htmlhintrc'),
-			this.helperPath + 'tasks/.htmlhintrc'
+			this.templatePath(this.generatorHelperPath + 'tasks/linting/.htmlhintrc'),
+			this.helperPath + 'tasks/linting/.htmlhintrc'
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {
@@ -109,8 +104,8 @@ exports.scaffold = function () {
 	 */
 	if (this.testAndQALibs.indexOf(jsHintId) != -1) {
 		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'tasks/.jshintrc'),
-			this.helperPath + 'tasks/.jshintrc'
+			this.templatePath(this.generatorHelperPath + 'tasks/linting/.jshintrc'),
+			this.helperPath + 'tasks/linting/.jshintrc'
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {
@@ -128,8 +123,8 @@ exports.scaffold = function () {
 	 */
 	if (this.testAndQALibs.indexOf(sasslintId) !== -1) {
 		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'tasks/stylelint.config.js'),
-			this.helperPath + 'tasks/stylelint.config.js'
+			this.templatePath(this.generatorHelperPath + 'tasks/linting/stylelint.config.js'),
+			this.helperPath + 'tasks/linting/stylelint.config.js'
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {

@@ -176,7 +176,7 @@ describe('JavaScript Frameworks', function () {
 			assert.noFileContent('package.json', /redux|redux|react|jquery|veams-query/);
 		});
 		it('removes blueprints from veams-cli.json', function () {
-			assert.noFileContent('veams-cli.json', /store|container|api/);
+			assert.noFileContent('veams-cli.json', /store|container/);
 		});
 	});
 });
