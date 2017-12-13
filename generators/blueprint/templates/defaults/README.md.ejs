@@ -27,7 +27,6 @@ This blueprint is based on the blueprint of Veams.
 When published on npm you can install the <%= bpTypeName %> by executing:
 
 1. `veams install veams-<%= bpTypeName %> <%= filename %>`
-2. `bower install veams-<%= bpTypeName %>-<%= filename %> --save`
 
 -----------
 
@@ -35,7 +34,8 @@ When published on npm you can install the <%= bpTypeName %> by executing:
 
 ### `<%= bpTypePrefix %><%= filename %>`
 <% if (props.bpWithWrapWith) { %>
-The partial is a `wrapWith` partial.
+The partial is a `wrapWith` partial. This means that you can access all properties and hashes via `props`.
+See [Mangony Handlebars Helper - wrapWith](https://www.npmjs.com/package/mangony-hbs-helper-wrap-with) for detailed instructions.
 <% } %>
 #### Settings
 - settings.<%= bpName %>Classes {`String`} - _Modifier classes for <%= bpTypeName %>._<% if (bpTypeName === 'component') { %>
