@@ -1,4 +1,7 @@
 module.exports = {<% if(features && features.length && features.indexOf('createDevFolder') != -1) { %>
+	options: {
+		force: true
+	},
 	dist: [
 		'<%%= paths.dist %>/**/*'
 	],<% } %>

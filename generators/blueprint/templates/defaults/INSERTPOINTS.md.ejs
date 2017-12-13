@@ -7,7 +7,7 @@ let bpWithJs = props.blueprints.indexOf('/scripts/bp.js.ejs') !== -1;
 
 ``` hbs
 {{! @INSERT :: START @id: <%= filename %>, @tag: <%= customTypeName %>-partial }}
-{{#with <%= filename %>}}<% if (props.bpWrapWith) { %>
+{{#with <%= filename %>}}<% if (props.bpWithWrapWith) { %>
 	{{#wrapWith "<%= filename %>"}}
 		Wrapped with markup from <%= filename %>.
 	{{/wrapWith}}<% } else { %>

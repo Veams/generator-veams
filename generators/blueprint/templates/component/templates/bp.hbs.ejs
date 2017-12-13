@@ -7,7 +7,7 @@ let bpWithJs = props.blueprints.indexOf('/scripts/bp.js.ejs') !== -1;
      data-js-module="<%= filename %>"{{#if settings.<%= bpName %>JsOptions}}
      data-js-options='{{stringify settings.<%= bpName %>JsOptions}}'{{/if}}<% } %>>
      <%= filename %>
-     <% if (props.bpWrapWith) { %>
+     <% if (props.bpWithWrapWith) { %>
      {{{yield}}}
      <% } %>
 </div>
@@ -16,7 +16,7 @@ let bpWithJs = props.blueprints.indexOf('/scripts/bp.js.ejs') !== -1;
     data-js-module="<%= filename %>"{{#if settings.<%= bpName %>JsOptions}}
     data-js-options='{{stringify settings.<%= bpName %>JsOptions}}'{{/if}}<% } %>>
      <%= filename %>
-     <% if (props.bpWrapWith) { %>
+     <% if (props.bpWithWrapWith) { %>
      {{{yield}}}
      <% } %>
 </div>
