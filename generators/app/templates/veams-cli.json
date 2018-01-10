@@ -35,6 +35,7 @@
 		"api": "src/server/api",
 		"app": "app",
 		"assets": "src/app/assets",
+		"env": "environments",
 		"component": "src/app/shared/components",
 		"config": "configs",
 		"mocks": "src/server/mocks",

@@ -34,14 +34,8 @@ describe('Mangony', function () {
 				srcPath + 'core/components/_metadata.hbs',
 				srcPath + 'core/components/_styles.hbs'
 			];
-			const notExpected = [
-				srcPath + 'shared/utilities/template-helpers/alias.js',
-				srcPath + 'shared/utilities/template-helpers/helper-wrapWith.js',
-				srcPath + 'shared/utilities/template-helpers/helper-ifBlock.js'
-			];
-			assert.file(expected);
-			assert.noFile(notExpected);
 
+			assert.file(expected);
 		});
 
 		it('the index.hbs contains extend syntax', function () {
@@ -49,7 +43,7 @@ describe('Mangony', function () {
 		});
 	});
 
-	describe('Grunt installation', function () {
+	describe('Task installation', function () {
 		const answers = require('../test_helpers/prompt-answer-factory')({
 			'templateEngine': 'ssr-mangony-hbs'
 		});
@@ -66,11 +60,12 @@ describe('Mangony', function () {
 		});
 
 		it('adds references to package.json', function () {
-			assert.fileContent('package.json', /grunt-mangony/);
+			assert.fileContent('package.json', /mangony/);
 		});
 
 		it('creates helper files', function () {
-			assert.file(helperPath + '_grunt/mangony.js');
+			assert.file(helperPath + 'mangony/mangony-build.js');
+			assert.file(helperPath + 'mangony/mangony.config.js');
 		});
 
 		it('adds dependencies and functions to server/modules/express.js', function () {
@@ -79,8 +74,8 @@ describe('Mangony', function () {
 			assert.fileContent('src/server/modules/express.js', /mangony.render()/);
 		});
 
-		it('adds and deletes task to Gruntfile.js file', function () {
-			assert.fileContent('Gruntfile.js', /mangony:dist/);
+		it('adds task to package.json file', function () {
+			assert.fileContent('package.json', /html:generate/);
 		});
 	});
 });

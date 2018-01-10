@@ -11,21 +11,21 @@ exports.questions = function () {
 	const qaLibsId = 'testAndQALibs';
 	const qaLibsQuestion = 'Which Testing and QA Tools do you want add?';
 	const choices = [
-		{
-			name: 'JavaScript Code Style (jscs)',
-			value: jscsId,
-			checked: false
-		},
+		// {
+		// 	name: 'JavaScript Code Style (jscs)',
+		// 	value: jscsId,
+		// 	checked: false
+		// },
 		{
 			name: 'Hint your HTML (HTMLHint)',
 			value: htmlHintId,
 			checked: false
 		},
-		{
-			name: 'Hint your JavaScript (JSHint)',
-			value: jsHintId,
-			checked: true
-		},
+		// {
+		// 	name: 'Hint your JavaScript (JSHint)',
+		// 	value: jsHintId,
+		// 	checked: true
+		// },
 		{
 			name: 'Lint your Sass (Stylelint)',
 			value: sasslintId,

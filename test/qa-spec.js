@@ -64,7 +64,7 @@ describe('QA', function () {
 			});
 		});
 
-		describe('when selected', function () {
+		describe('is selected', function () {
 			const answers = require('../test_helpers/prompt-answer-factory')({
 				'taskRunner': 'grunt',
 				'testAndQA': true,
@@ -90,7 +90,7 @@ describe('QA', function () {
 
 			it('creates helper files', function () {
 				assert.file(helperPath + '_grunt/stylelint.js');
-				assert.file(helperPath + 'stylelint.config.js');
+				assert.file(helperPath + 'linting/stylelint.config.js');
 			});
 
 			it('adds task to watch file', function () {

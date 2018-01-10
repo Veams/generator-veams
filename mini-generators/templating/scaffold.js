@@ -7,10 +7,6 @@ module.exports = function scaffold() {
 				this.templatePath('gitkeep'),
 				'src/app/shared/utilities/template-helpers/.gitkeep'
 			);
-			this.fs.copy(
-				this.templatePath('src/app/core/store/core.json'),
-				'src/app/core/store/core.json'
-			);
 			this.fs.copyTpl(
 				this.templatePath('src/app/core/layouts/lyt-default.hbs.ejs'),
 				'src/app/core/layouts/lyt-default.hbs',
@@ -53,21 +49,19 @@ module.exports = function scaffold() {
 			);
 
 			this.fs.copy(
-				this.templatePath(this.generatorHelperPath + 'tasks/mangony.config.js'),
-				this.helperPath + 'tasks/mangony.config.js'
+				this.templatePath(this.generatorHelperPath + 'tasks/mangony/mangony.config.js'),
+				this.helperPath + 'tasks/mangony/mangony.config.js'
 			);
 
-			if (this.taskRunner === 'grunt') {
-				// Add Gruntfile-helper file
-				this.fs.copyTpl(
-					this.templatePath(this.generatorGruntPath + '_mangony.js.ejs'),
-					this.gruntPath + 'mangony.js',
-					this
-				);
+			// Add build file
+			this.fs.copyTpl(
+				this.templatePath(this.generatorHelperPath + 'tasks/mangony/mangony-build.js'),
+				this.helperPath + 'tasks/mangony/mangony-build.js',
+				this
+			);
 
-			} else {
-				delete this.pkgFile['devDependencies']['grunt-mangony'];
-			}
+			// Add npm script
+			this.pkgFile[ 'scripts' ][ 'html:generate' ] = 'node configs/tasks/mangony/mangony-build.js';
 		}
 
 		if (this.templateEngine === 'ssr-react') {
@@ -84,6 +78,5 @@ module.exports = function scaffold() {
 	} else {
 		delete this.pkgFile['devDependencies']['mangony'];
 		delete this.pkgFile['devDependencies']['mangony-hbs-helpers'];
-		delete this.pkgFile['devDependencies']['grunt-mangony'];
 	}
 };

@@ -12,16 +12,16 @@ module.exports = function questions(obj) {
 		message: 'Which task runner do you want to use?',
 		choices: [
 			{
-				name: 'Grunt',
+				name: 'Grunt & NPM Scripts',
 				value: config.gruntId,
 				checked: object.defaults
 			},
-			// {
-			// 	name: 'Webpack',
-			// 	value: config.webpackId,
-			// 	checked: object.defaults
-			// }
+			{
+				name: 'Webpack & NPM Scripts',
+				value: config.webpackId,
+				checked: object.defaults
+			}
 		],
-		default: config.gruntId
+		default: config.webpackId
 	};
 };

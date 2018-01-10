@@ -13,6 +13,12 @@ module.exports = function scaffold() {
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/icons.config.js`),
 			`${config.paths.helperPath}/tasks/icons/icons.config.js`
 		);
+
+		this.fs.copyTpl(
+			this.templatePath('src/app/shared/styles/icons/_icons.scss'),
+			'src/app/shared/styles/icons/_icons.scss',
+			this
+		);
 	}
 	/**
 	 * Sprite Generation

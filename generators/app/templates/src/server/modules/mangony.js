@@ -1,6 +1,6 @@
 const deepExtend = require('deep-extend');
 const Mangony = require('mangony');
-const mangonyOptions = require('../../../configs/tasks/mangony.config');
+const mangonyOptions = require('../../../configs/tasks/mangony/mangony.config');
 
 module.exports = (express) => {
 	const mangonyDevOptions = deepExtend(mangonyOptions.dev.options, {

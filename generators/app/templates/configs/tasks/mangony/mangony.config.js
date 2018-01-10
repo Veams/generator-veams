@@ -1,6 +1,6 @@
 'use strict';
 
-const config = require('../../veams-cli');
+const config = require('../../../veams-cli');
 
 module.exports = {
 	options: {

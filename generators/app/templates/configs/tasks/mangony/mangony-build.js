@@ -9,7 +9,7 @@
  * Dependencies
  */
 const Mangony = require('mangony');
-const mangonyConfig = require('../mangony.config');
+const mangonyConfig = require('./mangony.config');
 
 /**
  * Merge default options with dist options.
