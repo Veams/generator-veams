@@ -35,7 +35,7 @@ const optionDefinitions = [
 const options = commandLineArgs(optionDefinitions);
 options.config = options.config || `${projectConfig.paths.config}/tasks/css-separation/css-separation.config.js`;
 options.input = options.input || `${projectConfig.paths.app}/css/app.bundle.css`;
-options.output = options.output || `${projectConfig.paths.app}/css/data.css`;
+options.output = options.output || `${projectConfig.paths.app}/css/data-uri.css`;
 
 /**
  * Get pattern file

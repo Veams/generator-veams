@@ -17,8 +17,8 @@ module.exports = function questions(obj) {
 				value: 'postCssSeparator'
 			},
 			{
-				name: 'Coding style formatter (CSScomb)',
-				value: 'cssComb'
+				name: 'CSS Next (PostCSS)',
+				value: 'cssNext'
 			}
 		],
 		default: this.config.get('cssPostProcessors')

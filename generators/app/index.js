@@ -50,6 +50,7 @@ const cssFrameworksScaffold = require('../../mini-generators/css-frameworks/scaf
 const iconsScaffold = require('../../mini-generators/icons/scaffold');
 const imagesScaffold = require('../../mini-generators/images/scaffold');
 const jsScaffold = require('../../mini-generators/js/scaffold');
+const cssPostProcessorsScaffold = require('../../mini-generators/css-post-processors/scaffold');
 const serverScaffold = require('../../mini-generators/server/scaffold');
 const taskRunnerScaffold = require('../../mini-generators/taskrunner/scaffold');
 const templatingScaffold = require('../../mini-generators/templating/scaffold');
@@ -215,6 +216,7 @@ module.exports = class extends Generator {
 		veamsGenerator.scaffold.call(this);
 		iconsScaffold.call(this);
 		jsScaffold.call(this);
+		cssPostProcessorsScaffold.call(this);
 		gruntGenerator.scaffold.call(this);
 		imagesScaffold.call(this);
 		serverScaffold.call(this);

@@ -114,18 +114,6 @@ exports.scaffold = function (obj) {
 		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-browser-sync'];
 	}
 
-	if (this.gruntModules.indexOf('grunt-postcss-separator') != -1) {
-		this.fs.copyTpl(
-			this.templatePath(this.generatorGruntPath + '_postcssSeparator.js.ejs'),
-			this.gruntPath + 'postcssSeparator.js',
-			this
-		);
-		if (object.installDeps) {
-			this.npmInstall(['grunt-postcss-separator'], {'saveDev': true});
-		}
-	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-postcss-separator'];
-	}
 	if (this.gruntModules.indexOf('grunt-csscomb') != -1) {
 		this.fs.copy(
 			this.templatePath(this.generatorGruntPath + 'csscomb.js'),

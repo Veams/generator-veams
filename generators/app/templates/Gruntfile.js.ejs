@@ -80,9 +80,12 @@ module.exports = function(grunt) {
 		'postcss:dev'<% } %>,
 		'chokidar'
 	]);
+
+	grunt.registerTask('pre-build', [
+		'clean:dev',
+	]);
 	
-	grunt.registerTask('build', [
-		'clean:dev',<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
+	grunt.registerTask('build', [<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
 		'jsTemplates',<% } %>
 		'browserify:dist',
 		'uglify',
@@ -92,12 +95,10 @@ module.exports = function(grunt) {
 		'sass:dev',
 		'sass:docs',<% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>
 		'stylelint:scss',<% } %>
-		'combine_mq',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-postcss-separator') != -1) { %>
-		'postcssSeparator',<% }} %><% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-autoprefixer') != -1) || (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1)) { %>
+		'combine_mq',<% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-autoprefixer') != -1) || (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1)) { %>
 		'postcss:dist',<% } %>
 		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
-		'bless',<% }} %><% if (templateEngine === 'ssr-mangony-hbs'){ %>
-		'mangony:dist',<% } %>
+		'bless',<% }} %>
 		'concurrent:hintAndDocs'
 	]);
 
@@ -111,7 +112,6 @@ module.exports = function(grunt) {
 	]);
 	
 	grunt.registerTask('dist', [
-		'clean',
 		'build',
 		'copy:dist'
 	]);
