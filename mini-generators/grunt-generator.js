@@ -18,22 +18,22 @@ exports.questions = function (obj) {
 			type: 'checkbox',
 			message: 'Which Grunt-Plugins do you want to use?',
 			choices: [
-				{name: 'grunt-accessibility'},
-				{name: 'grunt-autoprefixer', checked: object.defaults},
-				{name: 'grunt-bless'},
-				{name: 'grunt-combine-mq', checked: object.defaults},
-				{name: 'grunt-contrib-handlebars'},
-				{name: 'grunt-contrib-htmlmin'},
-				{name: 'grunt-csscomb'},
-				{name: 'grunt-dr-svg-sprites'},
-				{name: 'grunt-grunticon'},
-				{name: 'grunt-image-size-export'},
-				{name: 'grunt-phantomas'},
-				{name: 'grunt-photobox'},
-				{name: 'grunt-postcss-separator'},
-				{name: 'grunt-responsive-images'},
-				{name: 'grunt-svgmin'},
-				{name: 'grunt-webfont'}
+				{ name: 'grunt-accessibility' },
+				{ name: 'grunt-autoprefixer', checked: object.defaults },
+				{ name: 'grunt-bless' },
+				{ name: 'grunt-combine-mq', checked: object.defaults },
+				{ name: 'grunt-contrib-handlebars' },
+				{ name: 'grunt-contrib-htmlmin' },
+				{ name: 'grunt-csscomb' },
+				{ name: 'grunt-dr-svg-sprites' },
+				{ name: 'grunt-grunticon' },
+				{ name: 'grunt-image-size-export' },
+				{ name: 'grunt-phantomas' },
+				{ name: 'grunt-photobox' },
+				{ name: 'grunt-postcss-separator' },
+				{ name: 'grunt-responsive-images' },
+				{ name: 'grunt-svgmin' },
+				{ name: 'grunt-webfont' }
 			],
 			default: this.config.get('gruntModules')
 		}
@@ -50,17 +50,21 @@ exports.scaffold = function (obj) {
 	let object = obj || {};
 	object.defaults = object.defaults !== false;
 
-	this.fs.copyTpl(
-		this.templatePath(this.generatorGruntPath + '_browserify.js.ejs'),
-		this.gruntPath + 'browserify.js',
-		this
-	);
+	if (this.taskRunner === 'grunt') {
+		this.fs.copyTpl(
+			this.templatePath(this.generatorGruntPath + '_browserify.js.ejs'),
+			this.gruntPath + 'browserify.js',
+			this
+		);
 
-	this.fs.copyTpl(
-		this.templatePath(this.generatorGruntPath + '_uglify.js.ejs'),
-		this.gruntPath + 'uglify.js',
-		this
-	);
+		this.fs.copyTpl(
+			this.templatePath(this.generatorGruntPath + '_uglify.js.ejs'),
+			this.gruntPath + 'uglify.js',
+			this
+		);
+	} else {
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-contrib-uglify' ];
+	}
 
 	// Grunt modules are splitted up in separate files and modules
 	if (this.gruntModules.indexOf('grunt-accessibility') != -1) {
@@ -70,10 +74,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-accessibility'], {'saveDev': true});
+			this.npmInstall([ 'grunt-accessibility' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-accessibility'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-accessibility' ];
 	}
 
 	if (this.gruntModules.indexOf('grunt-autoprefixer') != -1) {
@@ -84,7 +88,7 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-postcss'], {'saveDev': true});
+			this.npmInstall([ 'grunt-postcss' ], { 'saveDev': true });
 		}
 	}
 
@@ -95,10 +99,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-bless'], {'saveDev': true});
+			this.npmInstall([ 'grunt-bless' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-bless'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-bless' ];
 	}
 	if (this.gruntModules.indexOf('grunt-browser-sync') != -1) {
 		this.fs.copyTpl(
@@ -108,10 +112,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-browser-sync'], {'saveDev': true});
+			this.npmInstall([ 'grunt-browser-sync' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-browser-sync'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-browser-sync' ];
 	}
 
 	if (this.gruntModules.indexOf('grunt-csscomb') != -1) {
@@ -125,10 +129,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-csscomb'], {'saveDev': true});
+			this.npmInstall([ 'grunt-csscomb' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-csscomb'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-csscomb' ];
 	}
 	if (this.gruntModules.indexOf('grunt-contrib-handlebars') != -1 ||
 		this.taskRunner.indexOf('grunt') !== -1 && this.projectType === 'static-page-app') {
@@ -138,7 +142,7 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-contrib-handlebars'], {'saveDev': true});
+			this.npmInstall([ 'grunt-contrib-handlebars' ], { 'saveDev': true });
 
 			this.log(('\n') + chalk.bgRed('Please add the following lines to your Gruntfile.js to your custom tasks: ') + ('\n') +
 				chalk.yellow('\n grunt.registerTask(\'jsTemplates\', [') +
@@ -148,7 +152,7 @@ exports.scaffold = function (obj) {
 			);
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-contrib-handlebars'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-contrib-handlebars' ];
 	}
 	if (this.gruntModules.indexOf('grunt-contrib-htmlmin') != -1) {
 		this.fs.copy(
@@ -157,10 +161,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-contrib-htmlmin'], {'saveDev': true});
+			this.npmInstall([ 'grunt-contrib-htmlmin' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-contrib-htmlmin'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-contrib-htmlmin' ];
 	}
 	if (this.gruntModules.indexOf('grunt-contrib-requirejs') != -1) {
 		this.fs.copy(
@@ -169,10 +173,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-contrib-requirejs'], {'saveDev': true});
+			this.npmInstall([ 'grunt-contrib-requirejs' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-contrib-requirejs'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-contrib-requirejs' ];
 	}
 
 	if (this.gruntModules.indexOf('grunt-combine-mq') != -1) {
@@ -182,10 +186,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-combine-mq'], {'saveDev': true});
+			this.npmInstall([ 'grunt-combine-mq' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-combine-mq'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-combine-mq' ];
 	}
 
 	if (this.gruntModules.indexOf('grunt-dr-svg-sprites') != -1) {
@@ -203,7 +207,7 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-dr-svg-sprites'], {'saveDev': true});
+			this.npmInstall([ 'grunt-dr-svg-sprites' ], { 'saveDev': true });
 
 			this.log(('\n') + chalk.bgRed('Please add the following line to your Gruntfile.js file in line 22 (require())') + ('\n') +
 				chalk.yellow('\n "svg-sprites": "grunt-dr-svg-sprites"') + ('\n') +
@@ -215,7 +219,7 @@ exports.scaffold = function (obj) {
 			);
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-dr-svg-sprites'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-dr-svg-sprites' ];
 	}
 
 	if (this.gruntModules.indexOf('grunt-grunticon') != -1) {
@@ -232,10 +236,10 @@ exports.scaffold = function (obj) {
 			this.gruntPath + 'grunticon.js', this);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-grunticon'], {'saveDev': true});
+			this.npmInstall([ 'grunt-grunticon' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-grunticon'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-grunticon' ];
 	}
 	if (this.gruntModules.indexOf('grunt-image-size-export') != -1) {
 		this.fs.copy(
@@ -244,10 +248,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-image-size-export'], {'saveDev': true});
+			this.npmInstall([ 'grunt-image-size-export' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-image-size-export'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-image-size-export' ];
 	}
 	if (this.gruntModules.indexOf('grunt-includes') != -1) {
 		this.fs.copy(
@@ -256,10 +260,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-includes'], {'saveDev': true});
+			this.npmInstall([ 'grunt-includes' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-includes'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-includes' ];
 	}
 	if (this.gruntModules.indexOf('grunt-modernizr') != -1) {
 		this.fs.copy(
@@ -268,10 +272,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-modernizr'], {'saveDev': true});
+			this.npmInstall([ 'grunt-modernizr' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-modernizr'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-modernizr' ];
 	}
 	if (this.gruntModules.indexOf('grunt-phantomas') != -1) {
 		this.fs.copy(
@@ -280,10 +284,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-phantomas'], {'saveDev': true});
+			this.npmInstall([ 'grunt-phantomas' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-phantomas'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-phantomas' ];
 	}
 	if (this.gruntModules.indexOf('grunt-photobox') != -1) {
 		this.fs.copyTpl(
@@ -293,10 +297,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-photobox'], {'saveDev': true});
+			this.npmInstall([ 'grunt-photobox' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-photobox'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-photobox' ];
 	}
 	if (this.gruntModules.indexOf('grunt-responsive-images') != -1) {
 		this.fs.copy(
@@ -305,10 +309,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-responsive-images'], {'saveDev': true});
+			this.npmInstall([ 'grunt-responsive-images' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-responsive-images'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-responsive-images' ];
 	}
 	if (this.gruntModules.indexOf('grunt-svgmin') != -1) {
 		this.fs.copy(
@@ -317,10 +321,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-svgmin'], {'saveDev': true});
+			this.npmInstall([ 'grunt-svgmin' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-svgmin'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-svgmin' ];
 	}
 
 	if (this.gruntModules.indexOf('grunt-webfont') != -1) {
@@ -338,12 +342,12 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-webfont'], {'saveDev': true});
+			this.npmInstall([ 'grunt-webfont' ], { 'saveDev': true });
 		}
 	} else {
 		if (this.pkgFile) {
-			delete this.pkgFile['devDependencies']['grunt-webfont'];
-			delete this.pkgFile['devDependencies']['fs-extra'];
+			delete this.pkgFile[ 'devDependencies' ][ 'grunt-webfont' ];
+			delete this.pkgFile[ 'devDependencies' ][ 'fs-extra' ];
 		}
 	}
 
@@ -358,10 +362,10 @@ exports.scaffold = function (obj) {
 		);
 
 		if (object.installDeps) {
-			this.npmInstall(['grunt-text-replace'], {'saveDev': true});
+			this.npmInstall([ 'grunt-text-replace' ], { 'saveDev': true });
 		}
 	} else {
-		if (this.pkgFile) delete this.pkgFile['devDependencies']['grunt-text-replace'];
+		if (this.pkgFile) delete this.pkgFile[ 'devDependencies' ][ 'grunt-text-replace' ];
 	}
 
 	if (this.gruntModules.indexOf('grunt-grunticon') != -1 && this.gruntModules.indexOf('grunt-postcss-separator') != -1) {

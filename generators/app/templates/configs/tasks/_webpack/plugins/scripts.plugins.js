@@ -3,7 +3,6 @@
  */
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
@@ -15,7 +14,6 @@ const env = process.env.NODE_ENV;
 module.exports = function scriptPlugins() {
 	const local = env === 'local';
 	let plugins = [
-		// new BundleAnalyzerPlugin(),
 		// Add module names to factory functions so they appear in browser profiler.
 		new webpack.NamedModulesPlugin(),
 		// Makes some environment variables available to the JS code.

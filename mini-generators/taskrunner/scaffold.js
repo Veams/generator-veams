@@ -9,10 +9,10 @@ module.exports = function scaffold() {
 		delete this.pkgFile[ 'devDependencies' ][ 'grunt-chokidar' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'grunt-concurrent' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'grunt-contrib-clean' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'grunt-contrib-copy' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'grunt-contrib-cssmin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'grunt-combine-mq' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'grunt-sync' ];
-		delete this.pkgFile[ 'devDependencies' ][ 'grunt-sass-globber' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'grunt-sass' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'gulp-grunt' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'jit-grunt' ];
@@ -106,11 +106,6 @@ module.exports = function scaffold() {
 			this
 		);
 
-		this.fs.copyTpl(
-			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/rules/styling.js'),
-			this.helperPath + 'tasks/_webpack/rules/styling.js',
-			this
-		);
 		this.fs.copyTpl(
 			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/rules/scripting.js'),
 			this.helperPath + 'tasks/_webpack/rules/scripting.js',

@@ -10,7 +10,7 @@ module.exports = function (configContext) {
 			]
 		}),
 		new ExtractTextPlugin({
-			filename: '/css/[name].css'
+			filename: '/css/[name].bundle.css'
 		})
 	]
 };

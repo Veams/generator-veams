@@ -22,9 +22,9 @@ const nanoOptions = {
  */
 module.exports = function () {
 	const prod = process.env.NODE_ENV === 'production';
-	let defaultPlugins = [
+	let defaultPlugins = [<% if(cssPostProcessors.indexOf('cssNext') !== -1) { %>
 		require('postcss-cssnext')()
-	];
+	<% } %>];
 
 	if (prod) {
 		defaultPlugins.push(require('cssnano')(nanoOptions));

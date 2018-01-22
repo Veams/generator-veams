@@ -42,7 +42,7 @@ exports.questions = function () {
 		},
 		{
 			when: function (answers) {
-				return answers.testAndQA && answers.taskRunner === 'grunt';
+				return answers.testAndQA;
 			},
 			name: qaLibsId,
 			type: 'checkbox',
