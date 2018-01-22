@@ -21,7 +21,7 @@ let bpWithJs = props.blueprints.indexOf('/scripts/bp.js.ejs') !== -1;
 #### Initializing in Veams V5
 ``` js
 // @INSERT :: START @tag: js-init-v5 //
-Veams.modules.add('<%= filename %>', <%= bpJsName %>);
+Veams.modules.add({namespace: '<%= filename %>', module: <%= bpJsName %>});
 // @INSERT :: END
 ```
 

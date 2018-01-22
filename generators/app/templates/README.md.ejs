@@ -112,6 +112,14 @@ The styles folder contains all important global styles like:
 ### Icons (`configs/tasks/icons/`)
 
 Icons have to be saved in your assets folder. The default location for your icons is `assets/icons`.
+
+Every icon task has its own command line interface. You can pass options by calling the task and adding them like so:
+
+``` bash
+npm run ${icon}:generate -- --option1 --option2 --option3
+```
+
+`${icon}` needs to be replaced with the icon workflow you have chosen.
 <% } %><% if(icons.indexOf('webfont') !== -1) { %>
 #### Icons Webfont (`configs/tasks/icons/webfont.js`)
 

@@ -17,7 +17,7 @@ $max-width: calc(1404px + 4%) !default;
 BREAKPOINT SETTINGS
 =================================================== */
 // Breakpoints
-$bp-mobile-s: 0px;
+$bp-mobile-s: 0;
 $bp-mobile-p: 480px;
 $bp-mobile-l: 600px;
 $bp-mobile-xl: 657px;
@@ -25,7 +25,6 @@ $bp-tablet-p: 768px;
 $bp-tablet-l: 1024px;
 $bp-desktop-m: 1230px;
 $bp-desktop-l: 1404px;
-
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('foundation-sites') === -1) { %>
 // Breakpoints Map
 $breakpoints: (
@@ -46,21 +45,19 @@ FOUNDATION SETTINGS
 // ../../../node_modules/foundation-sites/scss/settings/_settings.scss
 // Just copy and paste the things you need
 $breakpoints: (
-	small: 0px,
+	small: 0,
 	medium: 640px,
 	large: 1024px,
 	xlarge: 1200px,
 	xxlarge: 1440px
-);
-<% } %>
+);<% } %>
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('bootstrap-sass') != -1) { %>
 /* ===================================================
 BOOTSTRAP SETTINGS
 =================================================== */
 // The settings can be found here:
 // ../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
-// Just copy and paste the things you need
-<% } %>
+// Just copy and paste the things you need<% } %>
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('lost-grid') != -1) { %>
 /* ===================================================
 LOST SETTINGS

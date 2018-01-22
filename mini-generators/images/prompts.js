@@ -14,6 +14,16 @@ module.exports = function prompts() {
 					name: 'Image Size Data Export',
 					value: 'imgSizeExport',
 					checked: false
+				},
+				{
+					name: 'Lazy Loading Support for Images (Lazysizes.js)',
+					value: 'imgLazyLoad',
+					checked: true
+				},
+				{
+					name: 'Picture Support for older Browsers (Picturefill.js)',
+					value: 'imgPicturefill',
+					checked: false
 				}
 			],
 			default: this.config.get('images')

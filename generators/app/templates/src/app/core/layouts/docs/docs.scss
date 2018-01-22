@@ -1,6 +1,7 @@
 /* ===================================================
 Documentation Styles
 =================================================== */
+
 /* ---------------------------------------------------
 Global Imports
 --------------------------------------------------- */
@@ -115,6 +116,7 @@ General styles
 		margin-top: 2rem;
 		padding: 1rem 0;
 	}
+
 	.docs__section-error {
 		font-style: italic;
 		text-align: left;
@@ -173,13 +175,9 @@ General styles
 			list-style-type: decimal;
 		}
 
-		pre, code {
+		pre,
+		code {
 			font-family: 'Courier', Monospaced, monospace;
-		}
-
-		hr {
-			margin: 3rem 0;
-			border-width: 1px;
 		}
 
 		/*
@@ -202,6 +200,8 @@ General styles
 		}
 
 		hr {
+			margin: 3rem 0;
+			border-width: 1px;
 			background-color: transparent;
 			border-top: 1px solid #f4f4f4;
 			border-bottom: 2px solid #fff;

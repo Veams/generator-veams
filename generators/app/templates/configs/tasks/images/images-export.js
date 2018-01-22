@@ -1,7 +1,6 @@
 const imageExport = require('image-size-export');
 const chalk = require('chalk');
 const veamsConfig = require('../../../veams-cli.json');
-const helpers = require('../../utils/helpers');
 const imageConfig = require('./images.config');
 const imagePaths = `${veamsConfig.paths.assets}/img/**/*.jpg`;
 const destPath = `${veamsConfig.paths.assets}/img/images.json`;

@@ -2,11 +2,10 @@
  * This task is responsible to generate mock data.
  * It uses presets to generate these.
  */
-const fs = require('fs');
+const fs = require('fs-extra');
 const faker = require('faker');
 const chalk = require('chalk');
 const veamsConfig = require('../../../veams-cli.json');
-const helpers = require('../../utils/helpers');
 const args = process.argv.splice(2);
 const writtenFiles = [];
 let generateNum = 10;
@@ -24,7 +23,7 @@ generateNum = args[1] ? args[1] : generateNum;
 
 
 for (let i = 1; i <= generateNum; i++) {
-	writtenFiles.push(helpers.write(`${process.cwd()}/${veamsConfig.paths.mocks}/${args[0]}/${i}.json`, JSON.stringify(contentTemplate(faker, i), null, 4)));
+	writtenFiles.push(fs.outputFile(`${process.cwd()}/${veamsConfig.paths.mocks}/${args[0]}/${i}.json`, JSON.stringify(contentTemplate(faker, i), null, 4)));
 }
 
 /**

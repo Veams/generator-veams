@@ -36,13 +36,7 @@ module.exports = function(grunt) {
 
 	/*
 	 *	SIMPLE TASKS
-	 */
-
-	// SASS Task
-	grunt.registerTask('watchCSS', [
-		'sassGlobber:dev',
-		'sass:dev'
-	]);<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
+	 */<% if (gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>
 
 	// FE Templates Task
 	grunt.registerTask('jsTemplates', [
@@ -75,7 +69,7 @@ module.exports = function(grunt) {
 		'browserify:dev',<% if(testAndQALibs && testAndQALibs.indexOf('jscs') != -1){ %>
 		'jscs',<% } %>
 		'concurrent:syncing',
-		'watchCSS',
+		'sass:dev',
 		'sass:docs'<% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,
 		'postcss:dev'<% } %>,
 		'chokidar'
@@ -91,11 +85,9 @@ module.exports = function(grunt) {
 		'uglify',
 		'concurrent:syncing', <% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-csscomb') != -1) { %>
 		'beauty-scss',<% }} %>
-		'sassGlobber:dist',
 		'sass:dev',
 		'sass:docs',<% if (testAndQALibs && testAndQALibs.indexOf('stylelint') !== -1) { %>
-		'stylelint:scss',<% } %>
-		'combine_mq',<% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-autoprefixer') != -1) || (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1)) { %>
+		'stylelint:scss',<% } %><% if ((gruntModules && gruntModules.length && gruntModules.indexOf('grunt-autoprefixer') != -1) || (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1)) { %>
 		'postcss:dist',<% } %>
 		'cssmin',<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-bless') != -1) { %>
 		'bless',<% }} %>

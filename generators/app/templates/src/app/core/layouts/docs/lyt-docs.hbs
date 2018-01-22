@@ -121,10 +121,10 @@
 								</div>
 								<div class="docs__section-content is-docs-rte">
 									{{#ifExists
-											(buildPath @root.currentPage.dirname (concat (concat 'data/' this.contextData) ".json") goUp=1)}}
+											(buildPath @root.currentPage.dirname (concat 'data/' this.contextData '.json') goUp=1)}}
 										{{#highlight "json"}}
 											{{{embeding
-													(buildPath @root.currentPage.dirname (concat (concat 'data/' this.contextData) ".json") goUp=1) }}}
+													(buildPath @root.currentPage.dirname (concat 'data/' this.contextData '.json') goUp=1) }}}
 										{{/highlight}}
 									{{/ifExists}}
 								</div>
@@ -154,9 +154,14 @@
 								<div class="docs__section-content is-docs-rte">
 									{{#each this.scssFiles}}
 										<h3>{{this}}</h3>
-										{{#highlight "scss"}}
-											{{{embeding (buildPath @root.currentPage.dirname (concat 'styles/' this) goUp=1) }}}
-										{{/highlight}}
+										{{#ifExists
+												(buildPath @root.currentPage.dirname (concat 'styles/' this) goUp=1)}}
+											{{#highlight "scss"}}
+												{{{embeding
+														(buildPath @root.currentPage.dirname (concat 'styles/' this) goUp=1) }}}
+											{{/highlight}}
+										{{/ifExists}}
+
 									{{/each}}
 								</div>
 							</div>

@@ -1,11 +1,14 @@
+const magicImporter = require('node-sass-magic-importer');
+
 module.exports = {
 	options: {
 		outputStyle: 'nested',
-		sourceMap: true
+		sourceMap: true,
+		importer: magicImporter()
 	},
 	dev: {
 		files: {
-			'<%%= paths.app %>/css/app.css': '<%%= paths.src %>/app.tmp.scss'
+			'<%%= paths.app %>/css/app.bundle.css': '<%%= paths.src %>/app.scss'
 		}
 	},
 

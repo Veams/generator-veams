@@ -3,7 +3,7 @@ const path = require('path');
 const globby = require('globby');
 const chalk = require('chalk');
 const veamsConfig = require('../../../veams-cli.json');
-const helpers = require('../../utils/helpers');
+const fs = require('fs-extra');
 const defaultPreset = require('./presets/default-preset');
 const imageConfig = require('./images.config');
 
@@ -27,7 +27,7 @@ const preset = args[ 1 ] ? require(`./presets/${args[ 1 ].split('=').pop()}`) : 
 
 globby(imagePaths)
 	.then((images) => {
-		let removed = images.map(image => image.includes(`${imageConfig.suffix}`) && helpers.remove(image));
+		let removed = images.map(image => image.includes(`${imageConfig.suffix}`) && fs.remove(image));
 
 		console.log(chalk.yellow('Removing previous generated images ...'));
 

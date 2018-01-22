@@ -6,7 +6,7 @@ module.exports = {
 		options: {
 			beautify: false
 		},
-		src: '<%= paths.app %>/css/styles.css',
-		dest: '<%= paths.app %>/css/styles.css'
+		src: '<%= paths.app %>/css/app.bundle.css',
+		dest: '<%= paths.app %>/css/app.bundle.css'
 	}
 };

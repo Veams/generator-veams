@@ -79,11 +79,33 @@ module.exports = [
 		devtool: 'cheap-module-source-map',
 		// Entry point for webpack
 		entry: {
-			'app.bundle': `${context}/app.scss`,
-			'docs': `${context}/core/layouts/docs/docs.scss`
+			'app': `${context}/app.scss`,
 		},
 		output: {
 			filename: 'css/[name].css',
+			path: outputPath
+		},
+		module: {
+			rules: [
+				styleRule()
+			]
+		},
+		plugins: stylePlugins(configContext),
+		// Turn off performance hints during development because we don't do any
+		// splitting or minification in interest of speed. These warnings become
+		// cumbersome.
+		performance: {
+			hints: false
+		}
+	}, {
+		context,
+		devtool: 'cheap-module-source-map',
+		// Entry point for webpack
+		entry: {
+			'docs': `${context}/core/layouts/docs/docs.scss`
+		},
+		output: {
+			filename: 'css/docs.css',
 			path: outputPath
 		},
 		module: {

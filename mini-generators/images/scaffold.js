@@ -1,4 +1,8 @@
 module.exports = function scaffold() {
+
+	/**
+	 * Image Generation
+	 */
 	if (this.images.indexOf('imgResponsive') !== -1 || this.images.indexOf('imgSizeExport') !== -1) {
 		this.fs.copy(
 			this.templatePath('configs/tasks/images/images.config.js'),

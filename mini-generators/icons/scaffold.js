@@ -9,11 +9,6 @@ module.exports = function scaffold() {
 		this.icons.indexOf(iconConfig.webfontId) !== -1 ||
 		this.icons.indexOf(iconConfig.iconGrunticonId) !== -1
 	) {
-		this.fs.copy(
-			this.templatePath(`${config.paths.helperPath}/tasks/icons/icons.config.js`),
-			`${config.paths.helperPath}/tasks/icons/icons.config.js`
-		);
-
 		this.fs.copyTpl(
 			this.templatePath('src/app/shared/styles/icons/_icons.scss'),
 			'src/app/shared/styles/icons/_icons.scss',
@@ -24,6 +19,10 @@ module.exports = function scaffold() {
 	 * Sprite Generation
 	 */
 	if (this.icons.indexOf(iconConfig.spriteId) !== -1) {
+		this.fs.copy(
+			this.templatePath(`${config.paths.helperPath}/tasks/icons/sprite.config.js`),
+			`${config.paths.helperPath}/tasks/icons/sprite.config.js`
+		);
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/sprite.js`),
 			`${config.paths.helperPath}/tasks/icons/sprite.js`
@@ -44,6 +43,10 @@ module.exports = function scaffold() {
 	 */
 	if (this.icons.indexOf(iconConfig.webfontId) !== -1) {
 		this.fs.copy(
+			this.templatePath(`${config.paths.helperPath}/tasks/icons/webfont.config.js`),
+			`${config.paths.helperPath}/tasks/icons/webfont.config.js`
+		);
+		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/webfont.js`),
 			`${config.paths.helperPath}/tasks/icons/webfont.js`
 		);
@@ -62,6 +65,10 @@ module.exports = function scaffold() {
 	 * Grunticon Generation
 	 */
 	if (this.icons.indexOf(iconConfig.iconGrunticonId) !== -1) {
+		this.fs.copy(
+			this.templatePath(`${config.paths.helperPath}/tasks/icons/grunticon.config.js`),
+			`${config.paths.helperPath}/tasks/icons/grunticon.config.js`
+		);
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/grunticon.js`),
 			`${config.paths.helperPath}/tasks/icons/grunticon.js`

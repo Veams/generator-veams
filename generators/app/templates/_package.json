@@ -10,11 +10,10 @@
 		"local:server": "cross-env BABEL_ENV=server nodemon src/server/index.js --config ./configs/tasks/nodemon.config.json",
 		"pre-start": "clear:app",
 		"start": "cross-env NODE_ENV=local npm-run-all --parallel local:*",
-		"pre-build": "clear:app",
-		"build": "cross-env BABEL_ENV=client grunt build",
-		"dev:build": "cross-env NODE_ENV=dev build",
-		"qa:build": "cross-env NODE_ENV=qa build",
-		"prod:build": "cross-env NODE_ENV=production build"
+		"build": "npm run clear:app && cross-env BABEL_ENV=client grunt build",
+		"dev:build": "cross-env NODE_ENV=dev npm run build",
+		"qa:build": "cross-env NODE_ENV=qa npm run build",
+		"prod:build": "cross-env NODE_ENV=production npm run build"
 	},
 	"dependencies": {
 		"handlebars": "^4.0.10",
@@ -79,7 +78,7 @@
 		"extract-text-webpack-plugin": "^3.0.2",
 		"faker": "^4.1.0",
 		"foundation-sites": "^6.0.0",
-		"fs-extra": "^4.0.0",
+		"fs-extra": "^5.0.0",
 		"globby": "^6.1.0",
 		"grunt": "^1.0.0",
 		"grunt-accessibility": "~4.1.0",
@@ -121,7 +120,6 @@
 		"node-sass": "^4.7.2",
 		"node-sass-magic-importer": "^5.0.3",
 		"npm-run-all": "^4.1.1",
-		"path": "^0.12.7",
 		"postcss": "^6.0.16",
 		"postcss-cssnext": "^3.0.2",
 		"postcss-loader": "^2.0.9",
@@ -140,7 +138,6 @@
 		"veams-bp-redux": "^0.0.5",
 		"webfonts-generator": "^0.4.0",
 		"webpack": "^3.10.0",
-		"webpack-bundle-analyzer": "^2.9.1",
 		"winston": "^2.3.1"
 	},
 	"licenses": [

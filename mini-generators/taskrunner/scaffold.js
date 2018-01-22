@@ -44,11 +44,6 @@ module.exports = function scaffold() {
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath(this.generatorGruntPath + '_sassGlobber.js.ejs'),
-			this.gruntPath + 'sassGlobber.js',
-			this
-		);
-		this.fs.copyTpl(
 			this.templatePath(this.generatorGruntPath + '_sass.js.ejs'),
 			this.gruntPath + 'sass.js',
 			this
@@ -66,7 +61,6 @@ module.exports = function scaffold() {
 
 	if (this.taskRunner !== config.webpackId) {
 		delete this.pkgFile[ 'devDependencies' ][ 'webpack' ];
-		delete this.pkgFile[ 'devDependencies' ][ 'webpack-bundle-analyzer' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'stylelint-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'style-loader' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'sass-loader' ];
@@ -74,6 +68,7 @@ module.exports = function scaffold() {
 		delete this.pkgFile[ 'devDependencies' ][ 'postcss' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'postcss-loader' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'node-sass' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'extract-text-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'css-loader' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'copy-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'case-sensitive-paths-webpack-plugin' ];

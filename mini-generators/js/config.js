@@ -4,12 +4,5 @@ module.exports = config = {
 	reactId: 'react',
 	reduxId: 'redux',
 	rxjsId: 'rxjs',
-	handlebarsId: 'handlebars',
-	picturefillId: 'picturefill',
-	lazysizesId: 'lazysizes',
+	handlebarsId: 'handlebars'
 };
-
-module.exports.veamsJSPreset = [
-	config.picturefillId,
-	config.lazysizesId
-];
