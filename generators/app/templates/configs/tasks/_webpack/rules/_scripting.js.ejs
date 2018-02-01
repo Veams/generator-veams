@@ -3,13 +3,15 @@ module.exports = function () {
 		test: /\.js$/,
 		loader: 'babel-loader',
 		exclude: /node_modules/,
+		include: /node_modules\/veams/,
 		options: {
 			// This is a feature of `babel-loader` for webpack (not Babel itself).
 			// It enables caching results in ./node_modules/.cache/babel-loader/
 			// directory for faster rebuilds.
 			cacheDirectory: true,
 			// Let's add babel presets ...
-			presets: [
+			presets: [<% if (projectType === 'single-page-app') { %>
+				'react',<% } %>
 				'stage-0',
 				[ 'env', {
 					targets: {

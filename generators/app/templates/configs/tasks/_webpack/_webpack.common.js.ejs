@@ -82,7 +82,7 @@ module.exports = [
 			'app': `${context}/app.scss`,
 		},
 		output: {
-			filename: 'css/[name].css',
+			filename: 'css/[name].bundle.css',
 			path: outputPath
 		},
 		module: {
@@ -97,7 +97,7 @@ module.exports = [
 		performance: {
 			hints: false
 		}
-	}, {
+	}<% if (projectType === 'static-page-app') { %>, {
 		context,
 		devtool: 'cheap-module-source-map',
 		// Entry point for webpack
@@ -105,7 +105,7 @@ module.exports = [
 			'docs': `${context}/core/layouts/docs/docs.scss`
 		},
 		output: {
-			filename: 'css/docs.css',
+			filename: 'css/[name].bundle.css',
 			path: outputPath
 		},
 		module: {
@@ -120,5 +120,5 @@ module.exports = [
 		performance: {
 			hints: false
 		}
-	}
+	}<% } %>
 ];

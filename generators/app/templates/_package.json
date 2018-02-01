@@ -33,6 +33,7 @@
 		"reselect": "^3.0.1",
 		"rxjs": "^5.5.2",
 		"veams": "^5.0.1",
+		"veams-helpers": "^1.1.0",
 		"veams-query": "^2.2.1",
 		"veams-plugin-dom": "^1.0.0",
 		"veams-plugin-logger": "^1.0.0",

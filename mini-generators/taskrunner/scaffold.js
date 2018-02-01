@@ -77,7 +77,6 @@ module.exports = function scaffold() {
 		delete this.pkgFile[ 'devDependencies' ][ 'grunt-combine-mq' ];
 	} else {
 		// Add NPM script
-		// "local:start": "cross-env BABEL_ENV=client grunt serve",
 		this.pkgFile[ 'scripts' ][ 'local:start' ] = 'webpack --watch --hide-modules';
 
 		/**
@@ -90,7 +89,7 @@ module.exports = function scaffold() {
 		);
 
 		this.fs.copyTpl(
-			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/webpack.common.js'),
+			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/_webpack.common.js.ejs'),
 			this.helperPath + 'tasks/_webpack/webpack.common.js',
 			this
 		);
@@ -101,14 +100,20 @@ module.exports = function scaffold() {
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/plugins/styles.plugins.js'),
+			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/plugins/_styles.plugins.js.ejs'),
 			this.helperPath + 'tasks/_webpack/plugins/styles.plugins.js',
 			this
 		);
 
 		this.fs.copyTpl(
-			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/rules/scripting.js'),
+			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/rules/_scripting.js.ejs'),
 			this.helperPath + 'tasks/_webpack/rules/scripting.js',
+			this
+		);
+
+		this.fs.copyTpl(
+			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/rules/_styling.js.ejs'),
+			this.helperPath + 'tasks/_webpack/rules/styling.js',
 			this
 		);
 
