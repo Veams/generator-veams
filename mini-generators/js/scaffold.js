@@ -5,6 +5,7 @@ const config = require('./config');
 module.exports = function scaffold() {
 	if (this.jsLibs.indexOf(config.reactId) === -1) {
 		delete this.pkgFile['dependencies'][config.reactId];
+		delete this.pkgFile['dependencies']['history'];
 		delete this.pkgFile['dependencies']['react-dom'];
 		delete this.pkgFile['dependencies']['react-router-dom'];
 		delete this.pkgFile['dependencies']['react-router-config'];

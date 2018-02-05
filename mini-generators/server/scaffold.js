@@ -56,6 +56,12 @@ module.exports = function scaffold() {
 	);
 
 	this.fs.copyTpl(
+		this.templatePath('src/server/modules/reload.js'),
+		'src/server/modules/reload.js',
+		this
+	);
+
+	this.fs.copyTpl(
 		this.templatePath('src/server/content/home.js.ejs'),
 		'src/server/content/home.js',
 		this
@@ -95,9 +101,9 @@ module.exports = function scaffold() {
 	 * Server Templating Module
 	 */
 	if (this.templateEngine === 'ssr-mangony-hbs') {
-		this.fs.copy(
-			this.templatePath('src/server/modules/mangony.js'),
-			'src/server/modules/mangony.js'
-		);
+		// this.fs.copy(
+		// 	this.templatePath('src/server/modules/mangony.js'),
+		// 	'src/server/modules/mangony.js'
+		// );
 	}
 };

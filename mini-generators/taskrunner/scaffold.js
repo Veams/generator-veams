@@ -19,6 +19,15 @@ module.exports = function scaffold() {
 		delete this.pkgFile[ 'devDependencies' ][ 'load-grunt-configs' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'time-grunt' ];
 	} else {
+		/**
+		 * NPM Scripts
+		 */
+		this.pkgFile[ 'scripts' ][ 'local:start' ] = 'cross-env BABEL_ENV=client grunt serve';
+		this.pkgFile[ 'scripts' ][ 'build' ] = 'npm run clear:app && cross-env BABEL_ENV=client grunt build';
+
+		/**
+		 * Copy files
+		 */
 		this.fs.copyTpl(
 			this.templatePath('Gruntfile.js.ejs'),
 			'Gruntfile.js',
@@ -53,10 +62,6 @@ module.exports = function scaffold() {
 			this.gruntPath + 'chokidar.js',
 			this
 		);
-
-		// Add NPM script
-		// "local:start": "cross-env BABEL_ENV=client grunt serve",
-		this.pkgFile[ 'scripts' ][ 'local:start' ] = 'cross-env BABEL_ENV=client grunt serve';
 	}
 
 	if (this.taskRunner !== config.webpackId) {
@@ -70,14 +75,18 @@ module.exports = function scaffold() {
 		delete this.pkgFile[ 'devDependencies' ][ 'node-sass' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'extract-text-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'css-loader' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'compression-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'copy-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'case-sensitive-paths-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'babel-loader' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'grunt-contrib-cssmin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'grunt-combine-mq' ];
 	} else {
-		// Add NPM script
+		/**
+		 * NPM Scripts
+		 */
 		this.pkgFile[ 'scripts' ][ 'local:start' ] = 'webpack --watch --hide-modules';
+		this.pkgFile[ 'scripts' ][ 'build' ] = 'npm run clear:app && cross-env BABEL_ENV=client webpack';
 
 		/**
 		 * Copy common webpack files

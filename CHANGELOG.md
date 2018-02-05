@@ -1,3 +1,8 @@
+### v9.0.0
+- Add webpack
+- Add independent image, icons and data tasks
+- 
+
 ### v8.3.1
 - Use darker section headline in docs
 

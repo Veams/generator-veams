@@ -7,7 +7,7 @@ const config = {
 	env: process.env.NODE_ENV || 'development',
 	ip: process.env.IP || '0.0.0.0',
 	mockPath: 'mocks',
-	port: process.env.PORT || veamsConfig.ports.app,
+	port: process.env.PORT || veamsConfig.ports.server,
 	root: path.join(__dirname, '..'),
 	startPath: veamsConfig.startPath
 };

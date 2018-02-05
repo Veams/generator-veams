@@ -8,16 +8,24 @@ const mangonyOptions = require('../../../configs/tasks/mangony/mangony.config');
 const createMangony = (express) => {
 	const mangonyDevOptions = deepExtend(mangonyOptions.dev.options, {
 		devServer: {
-			express: express
+			express: express,
+			bsEnabled: false,
+			usePort: false,
+			useAssetsDir: false
 		}
 	});
 
 	return new Mangony(deepExtend(mangonyOptions.options, mangonyDevOptions));
-};
-<% } %>
+};<% } %>
+const reload = require('./reload');
+
 module.exports = (routes, apiRoutes) => {
 	const app = express();<% if (templateEngine === 'ssr-mangony-hbs') { %>
 	const mangony = createMangony(app);<% } %>
+
+	if (process.env.NODE_ENV === 'local') {
+		app.use(reload());
+	}
 
 	app.use(express.static('app'));
 	app.use(bodyParser.urlencoded({extended: false}));
