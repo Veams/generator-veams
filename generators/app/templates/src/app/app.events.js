@@ -1,7 +1,5 @@
 /**
  * Const for events (pub/sub)
- *
- * @author: Sebastian Fitzner
  */
 
 /**

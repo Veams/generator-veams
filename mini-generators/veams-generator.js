@@ -30,7 +30,7 @@ exports.scaffold = function () {
 
 	this.fs.copy(
 		this.templatePath('src/app/core/styles/_get-media.scss'),
-		'src/app/core/styles/_get-media.scss'
+		'src/app/core/styles/get-media.scss'
 	);
 
 	// Components

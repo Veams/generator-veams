@@ -9,20 +9,20 @@ Main File For Imports
 
 // Frameworks<% if (cssLibs.indexOf('foundation-sites') != -1) { %>
 @import "../../node_modules/foundation-sites/scss/foundation"; // You can choose your specific components // You can choose your specific components
-@include foundation-everything;<% } %>
-<% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
-@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components<% }} %>
-
+@include foundation-everything;<% } %> <% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components
+<% }} %>
 // Icons
 @import "shared/styles/icons/**/*";
 
 // Core
-@import "core/styles/core";
+@import "core/styles/base";
 @import "core/styles/print";
 @import "core/styles/get-media";
 
-<% if (projectType === 'static-page-app') { %>
-// Components
-@import "shared/components/sitemap/styles/_c-sitemap";
-
+// Components<% if (projectType === 'static-page-app') { %>
+@import "shared/components/sitemap/styles/c-sitemap";<% } else { %>
+@import "core/containers/core/core";
+@import "core/layouts/layout";
+@import "core/components/section/section";
 <% } %>

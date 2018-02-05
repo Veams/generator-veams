@@ -1,8 +1,9 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import {combineEpics, createEpicMiddleware} from 'redux-observable';
-import {routerReducer, routerMiddleware} from 'react-router-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 
 /**
  * Global Stuff
@@ -10,6 +11,9 @@ import {routerReducer, routerMiddleware} from 'react-router-redux';
 const composeEnhancers = composeWithDevTools({
 	// Specify here name, actionsBlacklist, actionsCreators and other options if needed
 });
+
+// Enable Browser History (you can also use 'createHashHistory()'
+const history = createHistory();
 
 /**
  * Initial State
@@ -45,9 +49,14 @@ let store = createStore(
 	composeEnhancers(
 		applyMiddleware(
 			reduxImmutableStateInvariant(),
-			createEpicMiddleware(ROOT_EPIC)
+			createEpicMiddleware(ROOT_EPIC),
+			routerMiddleware(history)
 		)
 	)
 );
 
+// Export store as singleton
 export default store;
+
+// Export further objects like history
+export { history };

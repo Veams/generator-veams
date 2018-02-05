@@ -328,8 +328,8 @@ module.exports = class extends Generator {
 			this
 		);
 		this.fs.copyTpl(
-			this.templatePath('src/app/core/styles/_core.scss.ejs'),
-			'src/app/core/styles/_core.scss',
+			this.templatePath('src/app/core/styles/_base.scss.ejs'),
+			'src/app/core/styles/base.scss',
 			this
 		);
 
