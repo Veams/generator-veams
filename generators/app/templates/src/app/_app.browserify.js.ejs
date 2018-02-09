@@ -1,14 +1,13 @@
 /**
 * Main entry file for application.
 */
-<% if (projectType === 'single-page-app') { %>
+import { Veams } from './app.veams';<% if (projectType === 'single-page-app') { %>
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { renderRoutes } from 'react-router-config';<% if (jsLibs.indexOf('redux') !== -1) { %>
 import { Provider } from 'react-redux';
 import { ConnectedRouter as Router } from 'react-router-redux';<% } else { %>
 import { BrowserRouter as Router } from 'react-router-dom';<% } %>
-import { Veams } from './app.veams';
 import routes from './app.routes';<% if (jsLibs.indexOf('redux') !== -1) { %>
 import store, { history } from './app.store';<% } %><% } %>
 <% if (projectType === 'single-page-app') { %>

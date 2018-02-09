@@ -1,7 +1,8 @@
 ### v9.0.0
 - Add webpack
 - Add independent image, icons and data tasks
-- 
+- Add new @veams namespace
+- Add reload feature for single-page-app types
 
 ### v8.3.1
 - Use darker section headline in docs
