@@ -3,24 +3,21 @@
 	"blueprints": {
 		"container": {
 			"skipImports": true,
-			"prompts": "node_modules/veams-bp-react-container/prompts",
-			"templates": "node_modules/veams-bp-react-container/templates"
+			"path": "node_modules/@veams/bp-react-container"
 		},
 		"store": {
 			"skipImports": true,
-			"prompts": "node_modules/veams-bp-redux/prompts",
-			"templates": "node_modules/veams-bp-redux/templates"
+			"path": "node_modules/@veams/bp-redux"
 		},
 		"api": {
 			"skipImports": true,
-			"prompts": "node_modules/veams-bp-mock-api-endpoint/prompts",
-			"templates": "node_modules/veams-bp-mock-api-endpoint/templates"
+			"path": "node_modules/@veams/bp-mock-api"
 		}
 	},
 	"config": {
 		"src": "configs/tasks/_grunt/*.js"
 	},
-	"importFiles": {
+	"entries": {
 		"style": "src/app/app.scss",
 		"script": "src/app/app.js"
 	},

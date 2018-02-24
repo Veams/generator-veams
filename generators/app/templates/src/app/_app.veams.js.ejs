@@ -1,15 +1,16 @@
 // Global dependencies
 import { environment } from 'env';<%if (jsLibs && jsLibs.indexOf('jquery') !== -1) { %>
-import $ from 'jquery';<% } %><%if (jsLibs && jsLibs.indexOf('veams-query') !== -1) { %>
-import { default as $ } from 'veams-query';<% } %>
-import Veams from 'veams';
-import VeamsLogger from 'veams-plugin-logger';
-import VeamsVent from 'veams-plugin-vent';
-import VeamsMediaQueryHandler from 'veams-plugin-media-query-handler';<% if (projectType === 'static-page-app') { %>
-import VeamsDOM from 'veams-plugin-dom';
-import VeamsModules from 'veams-plugin-modules';
-// import VeamsStore from 'veams-plugin-store';
-// import VeamsTemplater from 'veams-plugin-templater';<% } %><% if (jsLibs.indexOf('redux') !== -1) { %>
+import $ from 'jquery';<% } %><%if (jsLibs && jsLibs.indexOf('@veams/query') !== -1) { %>
+import { default as $ } from '@veams/query';<% } %>
+import Veams from '@veams/core';
+import VeamsLogger from '@veams/plugin-logger';
+import VeamsVent from '@veams/plugin-vent';
+import VeamsMediaQueryHandler from '@veams/plugin-media-query-handler';<% if (projectType === 'static-page-app') { %>
+import VeamsDOM from '@veams/plugin-dom';
+import VeamsModules from '@veams/plugin-modules';
+// import VeamsStore from '@veams/plugin-store';
+// import VeamsTemplater from '@veams/plugin-templater';
+import throttle from '@veams/helpers/lib/operator/throttle';<% } %><% if (jsLibs.indexOf('redux') !== -1) { %>
 import store from './app.store';<% } %>
 import EVENTS from './app.events';
 
@@ -49,7 +50,7 @@ Veams.onInitialize(() => {
     });
     <% } %>
     // Trigger global scroll event
-    window.onscroll = Veams.helpers.throttle((e) => {
+    window.onscroll = throttle((e) => {
         Veams.Vent.trigger(Veams.EVENTS.scroll, e);
     }, 200);
 });

@@ -1,7 +1,9 @@
 /* ===================================================
 VEAMS SETTINGS
 =================================================== */
-$min-width: false; // This variable will be used in veams-sass
+// $min-width defines the general behaviour of the bp mixin and
+// handles the project as mobile-first project when set to `true`
+$min-width: true;
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('neat') != -1) { %>
 /* ===================================================
 BOURBON NEAT SETTINGS
@@ -26,7 +28,9 @@ $bp-tablet-l: 1024px;
 $bp-desktop-m: 1230px;
 $bp-desktop-l: 1404px;
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('foundation-sites') === -1) { %>
-// Breakpoints Map
+// BREAKPOINTS MAP
+// If you want to work with the desktop-first approach
+// turn the values upside down and set $min-width to false
 $breakpoints: (
 	'mobile-s': $bp-mobile-s,
 	'mobile-p': $bp-mobile-p,
@@ -42,7 +46,7 @@ $breakpoints: (
 FOUNDATION SETTINGS
 =================================================== */
 // The settings can be found here:
-// ../../../node_modules/foundation-sites/scss/settings/_settings.scss
+// ~foundation-sites/scss/settings/_settings.scss
 // Just copy and paste the things you need
 $breakpoints: (
 	small: 0,
@@ -56,7 +60,7 @@ $breakpoints: (
 BOOTSTRAP SETTINGS
 =================================================== */
 // The settings can be found here:
-// ../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+// ~bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
 // Just copy and paste the things you need<% } %>
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('lost-grid') != -1) { %>
 /* ===================================================

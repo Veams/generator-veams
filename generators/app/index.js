@@ -212,6 +212,7 @@ module.exports = class extends Generator {
 
 	_scaffold() {
 		projectTypeScaffold.call(this);
+		taskRunnerScaffold.call(this);
 		cssFrameworksScaffold.call(this);
 		veamsGenerator.scaffold.call(this);
 		iconsScaffold.call(this);
@@ -224,7 +225,6 @@ module.exports = class extends Generator {
 		testAndQAGenerator.scaffold.call(this);
 		docsGenerator.scaffold.call(this);
 		cleanPackages.scaffold.call(this);
-		taskRunnerScaffold.call(this);
 	}
 
 	_defaults() {
@@ -341,7 +341,7 @@ module.exports = class extends Generator {
 		);
 
 		this.fs.copyTpl(
-			this.templatePath('src/app/_app.browserify.js.ejs'),
+			this.templatePath('src/app/_app.js.ejs'),
 			'src/app/app.js',
 			this
 		);

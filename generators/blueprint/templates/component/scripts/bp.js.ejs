@@ -8,15 +8,9 @@
  */
 
 // Imports
-import { Veams } from 'app.veams';
-import VeamsComponent from 'veams/src/js/common/component'; // Only use that in combination with browserify
-// import VeamsComponent from 'veams/lib/common/component'; // Can be used in general
+import Component from '@veams/component';
 
-// Variables
-const $ = Veams.$;
-const Helpers = Veams.helpers;
-
-class <%= bpJsName %> extends VeamsComponent {
+class <%= bpJsName %> extends Component {
 	/**
 	 * Constructor for our class
 	 *

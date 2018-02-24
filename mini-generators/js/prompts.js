@@ -12,7 +12,7 @@ module.exports = function prompts() {
 			message: message,
 			choices: [
 				{
-					name: 'Veams-Query',
+					name: '@veams/query',
 					value: config.veamsQueryId,
 					checked: false
 				},

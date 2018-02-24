@@ -1,5 +1,5 @@
 module.exports = config = {
-	veamsQueryId: 'veams-query',
+	veamsQueryId: '@veams/query',
 	jqueryId: 'jquery',
 	reactId: 'react',
 	reduxId: 'redux',

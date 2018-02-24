@@ -2,23 +2,25 @@
 Main File For Imports
 =================================================== */
 // Reset (veams-reset or veams-normalize)
-@import "../../node_modules/veams/src/scss/veams-reset";
+@import "~@veams/core/scss/veams-reset";
 
 // Global Variables and Settings
 @import "shared/styles/shared";<% if (cssLibs && cssLibs.length) { %>
 
 // Frameworks<% if (cssLibs.indexOf('foundation-sites') != -1) { %>
-@import "../../node_modules/foundation-sites/scss/foundation"; // You can choose your specific components // You can choose your specific components
+@import "~foundation-sites/scss/foundation"; // You can choose your specific components // You can choose your specific components
 @include foundation-everything;<% } %> <% if (cssLibs.indexOf('bootstrap-sass') != -1) { %>
-@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components
+@import "~bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components
 <% }} %>
+// Media Queries in JS
+@import "~@veams/plugin-media-query-handler/scss/media-query-handler";
+
 // Icons
 @import "shared/styles/icons/**/*";
 
 // Core
 @import "core/styles/base";
 @import "core/styles/print";
-@import "core/styles/get-media";
 
 // Components<% if (projectType === 'static-page-app') { %>
 @import "shared/components/sitemap/styles/c-sitemap";<% } else { %>

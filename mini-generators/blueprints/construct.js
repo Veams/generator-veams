@@ -28,28 +28,27 @@ module.exports = function construct() {
 	this.bpFiles = [];
 	this.customTypeConfig = {};
 	let tplPath = `${this.templatePath()}/component`;
+	let currentBpPath = `${tplPath}`;
 
-	if (configFile.blueprints && configFile.blueprints[this.options.type]) {
-		this.customTypeConfig = configFile.blueprints[this.options.type];
+	if (configFile.blueprints && configFile.blueprints[ this.options.type ]) {
+		this.customTypeConfig = configFile.blueprints[ this.options.type ];
 		this.skipByConfig = this.customTypeConfig.skipImports;
 
-		if (this.customTypeConfig.prompts) {
-			this.customPromptMixins = require(`${process.cwd()}/${this.customTypeConfig.prompts}`);
-		}
-
-		if (this.customTypeConfig.templates) {
-			let currentBpPath = `${process.cwd()}/${this.customTypeConfig.templates}`;
-			this.bpFiles = bpHelpers.prepareFiles(globby.sync([
-				`${currentBpPath}/**`
-			]), `${currentBpPath}`);
+		if (this.customTypeConfig.path) {
+			this.customPromptMixins = require(`${process.cwd()}/${this.customTypeConfig.path}/prompts`);
+			currentBpPath = `${process.cwd()}/${this.customTypeConfig.path}/templates`;
 		} else {
-			this.bpFiles = bpHelpers.prepareFiles(globby.sync([
-				`${tplPath}/**`
-			]), `${tplPath}`);
+			if (this.customTypeConfig.prompts) {
+				this.customPromptMixins = require(`${process.cwd()}/${this.customTypeConfig.prompts}`);
+			}
+
+			if (this.customTypeConfig.templates) {
+				currentBpPath = `${process.cwd()}/${this.customTypeConfig.templates}`;
+			}
 		}
-	} else {
-		this.bpFiles = bpHelpers.prepareFiles(globby.sync([
-			`${tplPath}/**`
-		]), `${tplPath}`);
 	}
+
+	this.bpFiles = bpHelpers.prepareFiles(globby.sync([
+		`${currentBpPath}/**`
+	]), `${currentBpPath}`);
 };

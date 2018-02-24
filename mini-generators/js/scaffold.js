@@ -10,7 +10,7 @@ module.exports = function scaffold() {
 		delete this.pkgFile['dependencies']['react-router-dom'];
 		delete this.pkgFile['dependencies']['react-router-config'];
 		delete this.pkgFile['devDependencies']['babel-preset-react'];
-		delete this.pkgFile['devDependencies']['veams-bp-react-container'];
+		delete this.pkgFile['devDependencies']['@veams/bp-react-container'];
 
 		/**
 		 * Blueprints
@@ -40,7 +40,7 @@ module.exports = function scaffold() {
 		delete this.pkgFile['dependencies']['redux-immutable-state-invariant'];
 		delete this.pkgFile['dependencies']['redux-observable'];
 		delete this.pkgFile['dependencies']['reselect'];
-		delete this.pkgFile['devDependencies']['veams-bp-redux'];
+		delete this.pkgFile['devDependencies']['@veams/bp-redux'];
 
 		/**
 		 * Blueprints

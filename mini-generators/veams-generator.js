@@ -28,11 +28,6 @@ exports.scaffold = function () {
 		'src/app/app.events.js'
 	);
 
-	this.fs.copy(
-		this.templatePath('src/app/core/styles/_get-media.scss'),
-		'src/app/core/styles/get-media.scss'
-	);
-
 	// Components
 	this.fs.copy(
 		this.templatePath('src/app/shared/components/README.md'),
@@ -47,10 +42,11 @@ exports.scaffold = function () {
 
 
 	if (this.projectType === 'single-page-app') {
-		delete this.pkgFile['dependencies']['veams-plugin-dom'];
-		delete this.pkgFile['dependencies']['veams-plugin-modules'];
-		delete this.pkgFile['dependencies']['veams-plugin-store'];
-		delete this.pkgFile['dependencies']['veams-plugin-templater'];
-		delete this.pkgFile['dependencies']['veams-plugin-mixins'];
+		delete this.pkgFile['dependencies']['@veams/component'];
+		delete this.pkgFile['dependencies']['@veams/plugin-dom'];
+		delete this.pkgFile['dependencies']['@veams/plugin-modules'];
+		delete this.pkgFile['dependencies']['@veams/plugin-store'];
+		delete this.pkgFile['dependencies']['@veams/plugin-templater'];
+		delete this.pkgFile['dependencies']['@veams/plugin-mixins'];
 	}
 };

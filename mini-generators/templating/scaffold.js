@@ -62,6 +62,7 @@ module.exports = function scaffold() {
 
 			// Add npm script
 			this.pkgFile[ 'scripts' ][ 'html:generate' ] = 'node configs/tasks/mangony/mangony-build.js';
+			this.pkgFile[ 'scripts' ][ 'build' ] = `${this.pkgFile[ 'scripts' ][ 'build' ]} && npm run html:generate`
 		}
 
 		if (this.templateEngine === 'ssr-react') {
@@ -76,7 +77,7 @@ module.exports = function scaffold() {
 			);
 		}
 	} else {
-		delete this.pkgFile['devDependencies']['mangony'];
-		delete this.pkgFile['devDependencies']['mangony-hbs-helpers'];
+		delete this.pkgFile[ 'devDependencies' ][ 'mangony' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'mangony-hbs-helpers' ];
 	}
 };

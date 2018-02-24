@@ -79,8 +79,6 @@ module.exports = function scaffold() {
 		delete this.pkgFile[ 'devDependencies' ][ 'copy-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'case-sensitive-paths-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'babel-loader' ];
-		delete this.pkgFile[ 'devDependencies' ][ 'grunt-contrib-cssmin' ];
-		delete this.pkgFile[ 'devDependencies' ][ 'grunt-combine-mq' ];
 	} else {
 		/**
 		 * NPM Scripts
