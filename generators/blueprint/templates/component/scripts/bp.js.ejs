@@ -1,5 +1,6 @@
 /**
  * Description of <%= bpJsName %>.
+ * Class properties and decorators are supported.
  *
  * @module <%= bpJsName %>
  * @version v0.0.0
@@ -7,10 +8,43 @@
  * @author your_name
  */
 
-// Imports
+// Imports<% if (props.bpDOM) { %>
+import $ from '<%= props.bpDOM %>';<% } %>
 import Component from '@veams/component';
 
 class <%= bpJsName %> extends Component {
+	/**
+	* Class Properties
+	*/<% if (props.bpDOM) { %>
+	$el = $(this.el);<% } %><% if (props.bpMethods.indexOf('events') !== -1 || props.bpMethods.indexOf('subscribe') !== -1) { %>
+
+    /**
+     * Event & subscribe handling
+     */<% if (props.bpMethods.indexOf('events') !== -1) { %>
+
+	// Local Handlers
+    get events() {
+        return {
+            'click': 'handleClick'
+        };
+    }
+
+	handleClick = (evt, target) => {
+        console.log(`You clicked on: `, target);
+        console.log('You got the following event: ', evt);
+	};<% } %><% if (props.bpMethods.indexOf('subscribe') !== -1) { %>
+
+	// Global Handlers
+    get subscribe() {
+        return {
+            '{{context.EVENTS.resize}}': 'handleResize'
+        };
+    }
+
+	handleResize = () => {
+		console.log(`Browser was resized and catched by <%= bpJsName %>!`);
+	};<% } %><% } %>
+
 	/**
 	 * Constructor for our class
 	 *
@@ -27,42 +61,18 @@ class <%= bpJsName %> extends Component {
 		};
 
 		super(obj, options);
-	}
+	}<% if (props.bpMethods.indexOf('willMount') !== -1) { %>
 
 	/**
-	 * Get module information
-	 */
-	static get info() {
-		return {
-			version: '0.0.0'
-		};
-	}
-
-	/**
-	* Event handling
+	* Lifecycle Hooks
 	*/
-	get events() {
-		return {
-			// 'click': 'render'
-		};
-	}
+	willMount() {
+		console.log('Component <%= bpJsName %> will mount!');
+	}<% } %><% if (props.bpMethods.indexOf('didMount') !== -1) { %>
 
-	/**
-	* Subscribe handling
-	*/
-	get subscribe() {
-		return {
-			// '{{Veams.EVENTS.resize}}': 'render'
-		};
-	}
-
-	/**
-	 * Initialize the view
-	 *
-	 */
-	initialize() {
-		console.log('init <%= bpJsName %>');
-	}
+	didMount() {
+		console.log('Component <%= bpJsName %> mounted!');
+	}<% } %>
 
 	/**
 	 * Render class

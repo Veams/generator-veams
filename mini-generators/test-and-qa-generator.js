@@ -16,11 +16,11 @@ exports.questions = function () {
 		// 	value: jscsId,
 		// 	checked: false
 		// },
-		{
-			name: 'Hint your HTML (HTMLHint)',
-			value: htmlHintId,
-			checked: false
-		},
+		// {
+		// 	name: 'Hint your HTML (HTMLHint)',
+		// 	value: htmlHintId,
+		// 	checked: false
+		// },
 		// {
 		// 	name: 'Hint your JavaScript (JSHint)',
 		// 	value: jsHintId,
@@ -94,6 +94,8 @@ exports.scaffold = function () {
 				this.templatePath(this.generatorGruntPath + 'htmlhint.js'),
 				this.gruntPath + 'htmlhint.js'
 			);
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-htmlhint'];
 		}
 	} else {
 		delete this.pkgFile['devDependencies']['grunt-htmlhint'];
@@ -132,6 +134,8 @@ exports.scaffold = function () {
 				this.templatePath(this.generatorGruntPath + 'stylelint.js'),
 				this.gruntPath + 'stylelint.js'
 			);
+		} else {
+			delete this.pkgFile['devDependencies']['grunt-stylelint'];
 		}
 
 	} else {
