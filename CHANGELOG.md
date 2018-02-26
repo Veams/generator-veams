@@ -1,12 +1,23 @@
-### v9.0.0
+## Namespace Version
+
+### v1.0.0-rc1
+
 - Add webpack
 - Add independent image, icons and data tasks
 - Add new @veams namespace
 - Add reload feature for single-page-app types
 - Refactor blueprint generator to simplify custom templates and prompts
 
+
+----------------------------------------------
+
+## Old Versions
+
 ### v8.3.1
 - Use darker section headline in docs
+
+### v8.3.1
+- Trigger global resize event from app.js
 
 ### v8.3.0
 - Add veams v5.0.1
