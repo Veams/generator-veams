@@ -1,7 +1,7 @@
 {
 	"name": "@veams/generator-veams",
 	"version": "1.0.0-rc1",
-	"homepage": "http://veams.org/",
+	"homepage": "https://veams.org/",
 	"description": "Scaffold modern frontend web apps or web pages with/out a static site generator, Grunt and/or Webpack. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with ES Harmony support.",
 	"keywords": [
 		"yeoman-generator",
@@ -37,7 +37,7 @@
 	"main": "generators/app/index.js",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/Sebastian-Fitzner/generator-veams"
+		"url": "git://github.com/Veams/generator-veams"
 	},
 	"scripts": {
 		"test": "mocha --reporter spec"
