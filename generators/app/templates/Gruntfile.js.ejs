@@ -104,8 +104,7 @@ module.exports = function(grunt) {
 	]);
 	
 	grunt.registerTask('dist', [
-		'build',
-		'copy:dist'
+		'build'
 	]);
 	<% if(testAndQALibs && (testAndQALibs.indexOf('webdriver') != -1 || testAndQALibs.indexOf('karma') != -1)){ %>
 	grunt.registerTask('e2e', [

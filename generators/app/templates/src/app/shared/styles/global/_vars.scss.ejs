@@ -27,20 +27,6 @@ $bp-tablet-p: 768px;
 $bp-tablet-l: 1024px;
 $bp-desktop-m: 1230px;
 $bp-desktop-l: 1404px;
-<% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('foundation-sites') === -1) { %>
-// BREAKPOINTS MAP
-// If you want to work with the desktop-first approach
-// turn the values upside down and set $min-width to false
-$breakpoints: (
-	'mobile-s': $bp-mobile-s,
-	'mobile-p': $bp-mobile-p,
-	'mobile-l': $bp-mobile-l,
-	'mobile-xl': $bp-mobile-xl,
-	'tablet-p': $bp-tablet-p,
-	'tablet-l': $bp-tablet-l,
-	'desktop-m': $bp-desktop-m,
-	'desktop-l': $bp-desktop-l
-);<% } %>
 <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('foundation-sites') != -1) { %>
 /* ===================================================
 FOUNDATION SETTINGS
@@ -54,8 +40,20 @@ $breakpoints: (
 	large: 1024px,
 	xlarge: 1200px,
 	xxlarge: 1440px
-);<% } %>
-<% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('bootstrap-sass') != -1) { %>
+);<% } else { %>
+// BREAKPOINTS MAP
+// If you want to work with the desktop-first approach
+// turn the values upside down and set $min-width to false
+$breakpoints: (
+	'mobile-s': $bp-mobile-s,
+	'mobile-p': $bp-mobile-p,
+	'mobile-l': $bp-mobile-l,
+	'mobile-xl': $bp-mobile-xl,
+	'tablet-p': $bp-tablet-p,
+	'tablet-l': $bp-tablet-l,
+	'desktop-m': $bp-desktop-m,
+	'desktop-l': $bp-desktop-l
+);<% } %> <% if (cssLibs && cssLibs.length > 0 && cssLibs.indexOf('bootstrap-sass') != -1) { %>
 /* ===================================================
 BOOTSTRAP SETTINGS
 =================================================== */
