@@ -38,6 +38,7 @@ module.exports = [
 		context,
 		devtool: 'cheap-module-source-map',
 		resolve: {
+			symlinks: false,
 			alias: {
 				'app.veams$': `${context}/app.veams.js`,
 				'env': envFile
