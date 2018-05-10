@@ -5,6 +5,7 @@ module.exports = {
 			format: 'scss'
 		},
 		src: [
+			'<%= paths.docs %>/**/*.scss',
 			'<%= paths.app %>/shared/styles/**/*.scss',
 			'<%= paths.app %>/shared/components/**/*.scss',
 			'<%= paths.app %>/shared/utilities/**/*.scss',

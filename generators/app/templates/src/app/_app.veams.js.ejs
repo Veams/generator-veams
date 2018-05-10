@@ -1,10 +1,10 @@
-// Global dependencies
-import { environment } from 'env';<%if (images && images.indexOf('imgLazyLoad') !== -1) { %>
+// Global Packages <%if (images && images.indexOf('imgLazyLoad') !== -1) { %>
 import 'lazysizes';<% } %><%if (images && images.indexOf('imgPicturefill') !== -1) { %>
 import 'picturefill';<% } %>
-import Veams from '@veams/core';
+import { environment } from 'env';
 
-// Veams Plugins
+// Veams & Veams Plugins
+import Veams from '@veams/core';
 import VeamsLogger from '@veams/plugin-logger';
 import VeamsVent from '@veams/plugin-vent';
 import VeamsMediaQueryHandler from '@veams/plugin-media-query-handler';<% if (projectType === 'static-page-app') { %>
@@ -18,8 +18,8 @@ import $ from 'jquery';<% } else { %>
 import $ from '@veams/query';<% } %><% } %>
 
 // Veams Helpers
-import throttle from '@veams/helpers/lib/operator/throttle';
-<% if (jsLibs.indexOf('redux') !== -1) { %>
+import throttle from '@veams/helpers/lib/operator/throttle';<% if (jsLibs.indexOf('redux') !== -1) { %>
+
 // Internal Store
 import store from './app.store';<% } %>
 
