@@ -12,7 +12,7 @@ module.exports = function prompts() {
 			message: message,
 			choices: [
 				{
-					name: 'jQuery (latest Version)',
+					name: 'jQuery (@veams/query is used as standard)',
 					value: config.jqueryId,
 					checked: false
 				},
