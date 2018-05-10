@@ -12,51 +12,52 @@ module.exports = {
 			'sitemap',
 			'type'
 		],
-		cwd: config.paths.src + '/',
-		dest: config.paths.app,
+		cwd: config.paths.src,
+		dest: config.paths.dest,
 		exportData: false,
 		flatten: true,
 		types: {
 			data: {
 				dir: '',
 				files: [
-					'core/**/*.hjson',
-					'core/**/*.json',
-					// 'features/**/*.hjson',
-					// 'features/**/*.json',
-					'shared/components/**/*.hjson',
-					'shared/components/**/*.json',
-					'shared/utilities/**/*.hjson',
-					'shared/utilities/**/*.json'
+					'app/core/**/*.hjson',
+					'app/core/**/*.json',
+					// 'app/features/**/*.hjson',
+					// 'app/features/**/*.json',
+					'app/shared/components/**/*.hjson',
+					'app/shared/components/**/*.json',
+					'app/shared/utilities/**/*.hjson',
+					'app/shared/utilities/**/*.json'
 				]
 			},
 			partials: {
 				dir: '',
 				files: [
-					'shared/components/**/*.hbs',
-					'core/components/**/*.hbs',
-					// 'features/**/*.hbs',
-					'shared/utilities/**/*.hbs'
+					'app/shared/components/**/*.hbs',
+					'app/core/components/**/*.hbs',
+					// 'app/features/**/*.hbs',
+					'app/shared/utilities/**/*.hbs'
 				]
 			},
 			pages: {
 				dir: '',
 				files: [
-					'pages/**/*.hbs',
-					'shared/components/**/*.hbs',
-					// 'features/**/*.hbs',
-					'shared/utilities/**/*.hbs'
+					'app/pages/**/*.hbs',
+					'app/shared/components/**/*.hbs',
+					// 'app/features/**/*.hbs',
+					'app/shared/utilities/**/*.hbs'
 				]
 			},
 			layouts: {
-				dir: 'core/layouts',
+				dir: '',
 				files: [
-					'**/*.hbs'
+					'app/core/layouts/**/*.hbs',
+					'docs/layouts/**/*.hbs'
 				]
 			}
 		},
 		helpers: [
-			'shared/utilities/template-helpers/*.js'
+			'app/shared/utilities/template-helpers/*.js'
 		]
 	},
 	dev: {
@@ -71,9 +72,9 @@ module.exports = {
 					proxy: 'localhost:' + config.ports.server,
 					port: config.ports.app,
 					files: [
-						config.paths.app + '/**/*.html',
-						config.paths.app + '/css/**/*.css',
-						config.paths.app + '/scripts/**/*.js'
+						config.paths.dest + '/**/*.html',
+						config.paths.dest + '/css/**/*.css',
+						config.paths.dest + '/scripts/**/*.js'
 					]
 				}
 			},

@@ -4,9 +4,9 @@ module.exports = {
 	},
 	dist: {
 		src: [
-			'<%= paths.src %>/shared/styles/**/*.scss',
-			'<%= paths.src %>/shared/components/**/*.scss',
-			'<%= paths.src %>/shared/utilities/**/*.scss'
+			'<%= paths.app %>/shared/styles/**/*.scss',
+			'<%= paths.app %>/shared/components/**/*.scss',
+			'<%= paths.app %>/shared/utilities/**/*.scss'
 		]
 	}
 };

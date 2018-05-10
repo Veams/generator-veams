@@ -1,6 +1,6 @@
 const config = require('../configs/config');<% if (projectType === 'single-page-app') { %>
 const fs = require('fs');
-const indexPage = fs.readFileSync(`${config.veams.paths.src}/static/index.html`, 'utf-8');
+const indexPage = fs.readFileSync(`${config.veams.paths.app}/static/index.html`, 'utf-8');
 <% } %>
 export default (req, res) => {<% if (projectType === 'static-page-app') { %>
 	res.redirect(config.startPath);<% } else { %>

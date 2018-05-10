@@ -13,9 +13,9 @@ module.exports = {
 			commonjs: true
 		},
 		files: {
-			"<%= paths.src %>/shared/scripts/templates.js": [
-				"<%= paths.src %>/shared/components/**/templates/**/*.hbs",
-				"<%= paths.src %>/shared/utilities/**/templates/**/*.hbs"
+			"<%= paths.app %>/shared/scripts/templates.js": [
+				"<%= paths.app %>/shared/components/**/templates/**/*.hbs",
+				"<%= paths.app %>/shared/utilities/**/templates/**/*.hbs"
 			]
 		}
 	}

@@ -5,13 +5,13 @@ module.exports = {
 	},
 	assets: {
 		files: [
-			'<%%= paths.src %>/assets/**/*'
+			'<%%= paths.app %>/assets/**/*'
 		],
 		tasks: 'sync:assets'
 	}<% if (projectType === 'static-page-app') { %>,
 	scssDocs: {
 		files: [
-			'<%%= paths.src %>/core/layouts/docs/**/*.scss'
+			'<%%= paths.app %>/docs/layouts/**/*.scss'
 		],
 		tasks: [
 			'sass:docs'
@@ -19,13 +19,13 @@ module.exports = {
 	}<% } %>,
 	scss: {
 		files: [
-			'<%%= paths.src %>/app.scss',
-			'<%%= paths.src %>/core/components/**/*.scss',
-			'<%%= paths.src %>/core/styles/**/*.scss',
-			'<%%= paths.src %>/core/layouts/**/styles/**/*.scss',
-			'<%%= paths.src %>/shared/styles/**/*.scss',
-			'<%%= paths.src %>/shared/components/**/styles/**/*.scss',
-			'<%%= paths.src %>/shared/utilities/**/styles/**/*.scss'
+			'<%%= paths.app %>/app.scss',
+			'<%%= paths.app %>/core/components/**/*.scss',
+			'<%%= paths.app %>/core/styles/**/*.scss',
+			'<%%= paths.app %>/core/layouts/**/*.scss',
+			'<%%= paths.app %>/shared/styles/**/*.scss',
+			'<%%= paths.app %>/shared/components/**/styles/**/*.scss',
+			'<%%= paths.app %>/shared/utilities/**/styles/**/*.scss'
 		],
 		tasks: [
 			'sass:dev'<% if (cssLibs && cssLibs.length && cssLibs.indexOf('lost-grid') !== -1) { %>,

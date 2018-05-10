@@ -1,7 +1,7 @@
 module.exports = {
 	local: {
 		options: {
-			indexPath: '<%%= paths.app %>/photobox/',
+			indexPath: '<%%= paths.dest %>/photobox/',
 			screenSizes: [ '320', '568', '768', '1024', '1280' ],
 			urls: [
 				'http://0.0.0.0:<%%= ports.app %>/index.html'
@@ -10,7 +10,7 @@ module.exports = {
 	},
 	dev: {
 		options: {
-			indexPath: '<%%= paths.app %>/photobox/',
+			indexPath: '<%%= paths.dest %>/photobox/',
 			screenSizes: [ '320', '568', '768', '1024', '1280' ],
 			urls: [
 				''
@@ -19,7 +19,7 @@ module.exports = {
 	},
 	prod: {
 		options: {
-			indexPath: '<%%= paths.app %>/photobox/',
+			indexPath: '<%%= paths.dest %>/photobox/',
 			screenSizes: [ '320', '568', '768', '1024', '1280' ],
 			urls: [
 			]

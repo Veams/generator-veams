@@ -2,7 +2,7 @@ const veamsConfig = require('../../../veams-cli.json');
 
 module.exports = {
 	input: `${veamsConfig.paths.assets}/icons/svg/**/*.svg`,
-	dest: `${veamsConfig.paths.src}/shared/styles/icons`,
+	dest: `${veamsConfig.paths.app}/shared/styles/icons`,
 	pluginOptions: {
 		// optional grunticon paths properties
 		// SVGO compression, false is the default, true will make it so

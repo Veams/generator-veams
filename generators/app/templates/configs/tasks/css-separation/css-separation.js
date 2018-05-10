@@ -34,8 +34,8 @@ const optionDefinitions = [
 // Parsing options
 const options = commandLineArgs(optionDefinitions);
 options.config = options.config || `${projectConfig.paths.config}/tasks/css-separation/css-separation.config.js`;
-options.input = options.input || `${projectConfig.paths.app}/css/app.bundle.css`;
-options.output = options.output || `${projectConfig.paths.app}/css/data-uri.css`;
+options.input = options.input || `${projectConfig.paths.dest}/css/app.bundle.css`;
+options.output = options.output || `${projectConfig.paths.dest}/css/data-uri.css`;
 
 /**
  * Get pattern file
@@ -120,4 +120,4 @@ console.log(chalk.yellow('PostCSS Separator :: Start to write files to your file
 fs.writeFileSync(`${options.output}`, icons);
 fs.writeFileSync(`${options.input}`, cleanUp);
 
-console.log(chalk.green(`PostCSS Separator :: Files successfully created in ${chalk.cyan(projectConfig.paths.app + '/css')}.`));
+console.log(chalk.green(`PostCSS Separator :: Files successfully created in ${chalk.cyan(projectConfig.paths.dest + '/css')}.`));

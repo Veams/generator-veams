@@ -8,13 +8,13 @@ module.exports = {
 	},
 	dev: {
 		files: {
-			'<%%= paths.app %>/css/app.bundle.css': '<%%= paths.src %>/app.scss'
+			'<%%= paths.dest %>/css/app.bundle.css': '<%%= paths.app %>/app.scss'
 		}
 	},
 
 	docs: {
 		files: {
-			'<%%= paths.app %>/css/docs.bundle.css': '<%%= paths.src %>/core/layouts/docs/docs.scss'
+			'<%%= paths.dest %>/css/docs.bundle.css': '<%%= paths.app %>/docs/layouts/lyt-docs.scss'
 		}
 	}
 };

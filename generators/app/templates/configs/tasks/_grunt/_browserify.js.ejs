@@ -3,8 +3,8 @@
 const config = require('../../../veams-cli');
 
 const internalLibs = [
-	`./${config.paths.src}/app.veams.js:app.veams`,
-	// `./${config.paths.src}/app.store.js:store`,
+	`./${config.paths.app}/app.veams.js:app.veams`,
+	// `./${config.paths.app}/app.store.js:store`,
 	`./environments/environment.${process.env.NODE_ENV}.js:env`,
 ];
 
@@ -15,7 +15,7 @@ module.exports = {
 				{
 					compact: true,
 					// ignore: [
-					// 	'<%%= paths.app %>/scripts/vendor/'
+					// 	'<%%= paths.dest %>/scripts/vendor/'
 					// ],
 					presets: [<% if(projectType === 'single-page-app') { %>
 						'react',<% } %>
@@ -46,7 +46,7 @@ module.exports = {
 			watch: true
 		},
 		files: {
-			'<%%= paths.app %>/scripts/app.bundle.js': '<%%= paths.src %>/app.js'
+			'<%%= paths.dest %>/scripts/app.bundle.js': '<%%= paths.app %>/app.js'
 		}
 	},
 	dist: {
@@ -54,7 +54,7 @@ module.exports = {
 			alias: internalLibs
 		},
 		files: {
-			'<%%= paths.app %>/scripts/app.bundle.js': '<%%= paths.src %>/app.js'
+			'<%%= paths.dest %>/scripts/app.bundle.js': '<%%= paths.app %>/app.js'
 		}
 	}
 };

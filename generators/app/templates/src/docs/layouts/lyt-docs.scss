@@ -7,27 +7,30 @@ Global Imports
 --------------------------------------------------- */
 @import "highlight";
 @import "monokai";
-@import "../../../shared/styles/global/vars";
-@import "../../../shared/styles/helpers/helpers";
+@import "../../app/shared/styles/global/vars";
+@import "../../app/shared/styles/helpers/helpers";
 
 /* ---------------------------------------------------
 General styles
 --------------------------------------------------- */
+
 .docs {
+	width: 100%;
+	position: relative;
 	box-sizing: border-box;
 
 	/*
 	Sidebar
 	----------------------- */
 	.docs__sidebar {
-		width: 300px;
+		width: 250px;
 		float: left;
 		background-color: #23241f;
 		height: 100%;
 		box-sizing: border-box;
 		color: #fff;
 		position: fixed;
-		padding: 2rem;
+		z-index: 1;
 
 		h3 {
 			margin: 2rem 0 1rem;
@@ -43,13 +46,19 @@ General styles
 		}
 	}
 
+	.docs__sidebar-header {
+		padding: 2.2rem 2rem;
+		background-color: darken(#23241f, 5);
+	}
+
 	/*
 	Main
 	----------------------- */
 	.docs__main {
 		box-sizing: border-box;
 		float: right;
-		width: calc(100% - 300px);
+		width: calc(100% - 250px);
+		overflow-x: hidden;
 	}
 
 	.docs__header {
@@ -62,12 +71,12 @@ General styles
 
 		span {
 			font-size: 2rem;
-			color: lighten(#4a9ea3, 10);
+			color: lighten(#4a9ea3, 1);
 		}
 	}
 
 	.docs__subline {
-		color: lighten(#444, 35);
+		color: darken(#ddd, 35);
 		margin-top: 0;
 		margin-left: .5rem;
 		font-size: 1.6rem;
@@ -85,15 +94,15 @@ General styles
 		padding: 2rem;
 		border-bottom: 1px solid rgba(#4a9ea3, .7);
 		border-top: 2px solid #fff;
-		background-color: darken(#fff, 2);
+		background-color: darken(#fff, 4);
 
 		&.is-bg-invert {
 			background-color: rgba(#4a9ea3, .3);
 			border-top: 1px solid #fff;
-			border-bottom: 1px solid darken(#fff, 10);
+			border-bottom: 1px solid darken(#fff, 20);
 
 			.docs__section-headline {
-				color: #fff;
+				color: #000;
 			}
 		}
 	}
@@ -101,20 +110,44 @@ General styles
 	.docs__section-headline {
 		clear: both;
 		font-size: 2.4rem;
-		font-weight: 700;
 		z-index: 1;
 		min-width: 150px;
 		opacity: 1;
 		background-color: transparent;
-		color: darken(#ddd, 20);
+		color: darken(#ddd, 35);
 		text-align: left;
 		text-transform: uppercase;
-		margin-bottom: 1rem;
+		margin-bottom: 4rem;
 	}
 
 	.docs__section-content {
-		margin-top: 2rem;
-		padding: 1rem 0;
+		padding: 0 0 2rem;
+
+		hr {
+			margin: 3rem 0 5rem;
+			border-width: 1px;
+			background-color: transparent;
+			border-top: 1px solid darken(#ddd, 20);
+			border-bottom: 2px solid darken(#ddd, 2);
+			border-right: none 0;
+			border-left: none 0;
+		}
+
+		hr:last-child {
+			margin-bottom: 0;
+			border-bottom: 0;
+			border-top: 0;
+		}
+	}
+
+	.docs__section-content__headline {
+		font-size: 2rem;
+		margin: .5em 0;
+	}
+
+	.docs__section-content__description {
+		font-size: 1.6rem;
+		margin: .5em 0;
 	}
 
 	.docs__section-error {
@@ -127,10 +160,9 @@ General styles
 	.docs__section-description {
 		font-size: 1.8rem;
 		text-align: left;
-		margin-bottom: 2rem;
+		margin-bottom: 3rem;
 		font-style: italic;
-		color: #b4b4b4;
-		border-bottom: 1px solid lighten(#b4b4b4, 15);
+		color: darken(#ddd, 35);
 		padding-bottom: .5rem;
 
 	}
@@ -148,12 +180,12 @@ General styles
 		}
 
 		h2 {
-			font-size: 1.9rem;
+			font-size: 2.4rem;
 			margin: 2rem 0;
 		}
 
 		h3 {
-			font-size: 1.6rem;
+			font-size: 2rem;
 			margin: 1rem 0;
 		}
 
@@ -166,7 +198,11 @@ General styles
 		ul {
 			margin-top: 1rem;
 			margin-left: 3rem;
-			list-style: circle;
+			list-style: square;
+
+			li {
+				line-height: 1.5;
+			}
 		}
 
 		ol {
@@ -175,20 +211,62 @@ General styles
 			list-style-type: decimal;
 		}
 
-		pre,
-		code {
-			font-family: 'Courier', Monospaced, monospace;
+		blockquote {
+			padding: .5rem 1rem;
+			margin: 2rem 0;
+			color: #3e4348;
+			background-color: #fff;
+			border-left: .5rem solid #4a9ea3;
+
+			code {
+				background-color: #4a9ea3;
+			}
 		}
 
 		/*
 		Standard elements for markdown
 		----------------------- */
+		code[class="language-bash"],
+		code[class="language-js"] {
+			display: block;
+			background: #242420;
+			font-size: 100%;
+			word-wrap: normal;
+			color: lighten(#e7db74, 15);
+			overflow-x: auto;
+		}
+
+		pre {
+			margin-bottom: 4rem;
+			background: rgb(35, 36, 31);
+			padding: .8rem;
+			color: #e7db74;
+
+			code {
+				max-height: 350px;
+				padding: .9rem 1rem;
+			}
+		}
+
+		pre,
+		code {
+			font-family: 'Courier', Monospaced, monospace;
+		}
+
+		code {
+			font-weight: 600;
+		}
+
+		em {
+			font-style: italic;
+		}
+
 		img {
 			max-width: 100%;
 		}
 
-		code {
-			// font-family: "Courier New", sans-serif;
+		p {
+			margin-bottom: 1rem;
 		}
 
 		a {
@@ -203,10 +281,54 @@ General styles
 			margin: 3rem 0;
 			border-width: 1px;
 			background-color: transparent;
-			border-top: 1px solid #f4f4f4;
+			border-top: 1px solid darken(#fff, 20);
 			border-bottom: 2px solid #fff;
 			border-right: none 0;
 			border-left: none 0;
+		}
+
+		table {
+			width: 100%;
+			overflow: auto;
+			border-spacing: 0;
+			border-collapse: collapse;
+			margin: .5rem 0 4rem;
+			font-size: 100%;
+		}
+
+		thead,
+		tbody {
+			box-sizing: border-box;
+		}
+
+		tr {
+			background-color: rgb(35, 36, 31);
+			border-top: 1px solid #3a3a3a;
+			color: #f8f8f2;
+
+			&:nth-child(2n) {
+				background-color: rgba(35, 36, 31, .9);
+			}
+
+			th,
+			td {
+				padding: .7rem 1rem;
+				border: 1px solid #4e4e4e;
+			}
+
+			th {
+				background-color: #000;
+			}
+		}
+
+		th {
+			font-weight: 600;
+		}
+
+		td {
+			code {
+				color: #e7db74;
+			}
 		}
 	}
 
@@ -214,11 +336,15 @@ General styles
 	Modifiers
 	----------------------- */
 	.is-docs-inner {
-		max-width: 950px;
-		margin: 0 auto;
+		max-width: 950px !important;
+		margin: 0 auto !important;
 	}
 
 	.is-docs-icon {
-		margin-right: .5rem;
+		margin-right: .5rem !important;
+	}
+
+	.is-demo-headline {
+		margin-bottom: 1rem !important;
 	}
 }

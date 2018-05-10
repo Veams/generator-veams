@@ -8,7 +8,7 @@ const bs = browserSync.create().init({
 	logSnippet: false,
 	open: false,
 	files: [
-		veamsConfig.paths.app + '/**/*.*'
+		veamsConfig.paths.dest + '/**/*.*'
 	]
 });
 

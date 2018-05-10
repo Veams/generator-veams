@@ -5,12 +5,12 @@ module.exports = {
 			format: 'scss'
 		},
 		src: [
-			'<%= paths.src %>/shared/styles/**/*.scss',
-			'<%= paths.src %>/shared/components/**/*.scss',
-			'<%= paths.src %>/shared/utilities/**/*.scss',
-			'<%= paths.src %>/core/**/*.scss',
-			'<%= paths.src %>/features/**/*.scss',
-			'!<%= paths.src %>/app.scss'
+			'<%= paths.app %>/shared/styles/**/*.scss',
+			'<%= paths.app %>/shared/components/**/*.scss',
+			'<%= paths.app %>/shared/utilities/**/*.scss',
+			'<%= paths.app %>/core/**/*.scss',
+			'<%= paths.app %>/features/**/*.scss',
+			'!<%= paths.app %>/app.scss'
 		]
 	}
 };

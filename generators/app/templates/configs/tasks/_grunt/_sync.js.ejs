@@ -3,9 +3,9 @@ module.exports = {
 		files: [
 			// includes files within path and its sub-directories
 			{
-				cwd: '<%%= paths.src %>/server/mocks',
+				cwd: '<%%= paths.app %>/server/mocks',
 				src: '**/*.{json,html}',
-				dest: '<%%= paths.app %>/mocks'
+				dest: '<%%= paths.dest %>/mocks'
 			}
 		]
 	},
@@ -13,13 +13,13 @@ module.exports = {
 		files: [
 			// includes files within path and its sub-directories
 			{
-				cwd: '<%%= paths.src %>/assets',
+				cwd: '<%%= paths.app %>/assets',
 				src: [
 					'**/{,*/}*'<% if (gruntModules && gruntModules.length > 0) { if (gruntModules.indexOf('grunt-svgmin') != -1) { %>,
 					'!img/svg/**/{,*/}*'<% if (gruntModules && gruntModules.length > 0) { if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>,
 					'!img/svgmin/**/{,*/}*'<% }} %><% }} %>
 				],
-				dest: '<%%= paths.app %>'
+				dest: '<%%= paths.dest %>'
 			}
 		]
 	}

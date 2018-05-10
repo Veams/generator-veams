@@ -1,8 +1,8 @@
 module.exports = {
 	folder: {
 		options: {
-			path: '<%= paths.src %>/assets/img/temp/pictures/**/*.jpg',
-			output: '<%= paths.src %>/assets/img/pictures.json',
+			path: '<%= paths.app %>/assets/img/temp/pictures/**/*.jpg',
+			output: '<%= paths.app %>/assets/img/pictures.json',
 			categorizeBy: 'folders',
 			breakpointDelimiter: '--'
 		}

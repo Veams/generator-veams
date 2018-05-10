@@ -4,7 +4,7 @@ module.exports = {
 	template: `${__dirname}/templates/sprite.hbs`,
 	spriteElementPath: `${veamsConfig.paths.assets}/icons/svg`,
 	spritePath: `${veamsConfig.paths.assets}/icons/sprites`,
-	cssPath: `${veamsConfig.paths.src}/shared/styles/icons`,
+	cssPath: `${veamsConfig.paths.app}/shared/styles/icons`,
 	layout: 'packed',
 	// cssSvgPrefix: 'svg',
 	cssPngPrefix: 'no-svg',

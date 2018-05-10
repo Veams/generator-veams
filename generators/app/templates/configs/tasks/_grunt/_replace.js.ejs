@@ -1,7 +1,7 @@
 module.exports = {<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-grunticon') != -1) { %>
 	fallbackData: {
-		src: ['<%%= paths.src %>/shared/styles/icons/_icons-data-fallback.scss'],             // source files array (supports minimatch)
-		dest: '<%%= paths.src %>/shared/styles/icons/_icons-data-fallback.scss',               // destination directory or file
+		src: ['<%%= paths.app %>/shared/styles/icons/_icons-data-fallback.scss'],             // source files array (supports minimatch)
+		dest: '<%%= paths.app %>/shared/styles/icons/_icons-data-fallback.scss',               // destination directory or file
 		replacements: [
 			{
 				from: '../../assets/img/',                                      // string replacement
@@ -10,8 +10,8 @@ module.exports = {<% if (gruntModules && gruntModules.length) { if (gruntModules
 		]
 	},
 	fallback: {
-		src: ['<%%= paths.src %>/shared/styles/icons/_icons-fallback.scss'],             // source files array (supports minimatch)
-		dest: '<%%= paths.src %>/shared/styles/icons/_icons-fallback.scss',               // destination directory or file
+		src: ['<%%= paths.app %>/shared/styles/icons/_icons-fallback.scss'],             // source files array (supports minimatch)
+		dest: '<%%= paths.app %>/shared/styles/icons/_icons-fallback.scss',               // destination directory or file
 		replacements: [
 			{
 				from: '../../assets/img/',                                      // string replacement
@@ -20,8 +20,8 @@ module.exports = {<% if (gruntModules && gruntModules.length) { if (gruntModules
 		]
 	}<% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1 || gruntModules.indexOf('grunt-contrib-handlebars') != -1) { %>,<% }} %><% }} %><% if (gruntModules && gruntModules.length) { if (gruntModules.indexOf('grunt-dr-svg-sprites') != -1) { %>
 	spriteUrl: {
-		src: ['<%%= paths.src %>/shared/styles/icons/_sprites-icons-sprite.scss'],             // source files array (supports minimatch)
-		dest: '<%%= paths.src %>/shared/styles/icons/_sprites-icons-sprite.scss',               // destination directory or file
+		src: ['<%%= paths.app %>/shared/styles/icons/_sprites-icons-sprite.scss'],             // source files array (supports minimatch)
+		dest: '<%%= paths.app %>/shared/styles/icons/_sprites-icons-sprite.scss',               // destination directory or file
 		replacements: [
 			{
 				from: '../../assets/img/',                                      // string replacement
@@ -30,8 +30,8 @@ module.exports = {<% if (gruntModules && gruntModules.length) { if (gruntModules
 		]
 	}<% if(gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') !== -1) {%>,<%}%><% }} %><% if(gruntModules && gruntModules.length && gruntModules.indexOf('grunt-contrib-handlebars') !== -1) {%>
 	jsTemplates: {
-		src: ['<%%= paths.src %>/shared/scripts/templates.js'],             // source files array (supports minimatch)
-		dest: '<%%= paths.src %>/shared/scripts/templates.js',               // destination directory or file
+		src: ['<%%= paths.app %>/shared/scripts/templates.js'],             // source files array (supports minimatch)
+		dest: '<%%= paths.app %>/shared/scripts/templates.js',               // destination directory or file
 		replacements: [
 			{
 				from: 'this[\"App\"]',                                      // string replacement

@@ -8,8 +8,12 @@
 		<div class="docs">
 
 			<div class="docs__sidebar">
-				<img src="https://www.veams.org/img/svg/icons/veams-std-invert.svg">
-				{{> c-sitemap }}
+				<div class="docs__sidebar-header">
+					<img src="https://www.veams.org/img/svg/icons/veams-std-invert.svg">
+				</div>
+				<div class="docs__sidebar-list">
+					{{> sitemap }}
+				</div>
 			</div>
 
 			<div class="docs__main">
@@ -29,7 +33,7 @@
 					<div class="docs__section is-bg-default">
 						<div class="is-docs-inner">
 							<div class="docs__section-header">
-								<h2 class="docs__section-headline">
+								<h2 class="docs__section-headline is-demo-headline">
 									<i class="fa fa-desktop" aria-hidden="true"></i>
 									Demo Section
 								</h2>
@@ -40,17 +44,17 @@
 							<div class="docs__section-content">
 								{{#if variations}}
 									{{#each variations}}
-										<h3>{{this.docs.variationName}}</h3>
+										<h3 class="docs__section-content__headline">{{this.docs.variationName}}</h3>
+										<p class="docs__section-content__description">{{this.docs.variationDescription}}</p>
 										{{{yield}}}
+										<hr>
 									{{/each}}
 								{{else}}
 									{{{yield}}}
 								{{/if}}
 							</div>
 						</div>
-
 					</div>
-
 
 					{{#ifExists (buildPath @root.currentPage.dirname "README.md" goUp=1)}}
 						<div class="docs__section is-bg-invert">
@@ -89,14 +93,22 @@
 								</h2>
 							</div>
 
-							<h3 class="docs__section-hl-small">{{@root.currentPage.filename}}</h3>
+							<h3 class="docs__section-hl-small">{{@root.currentPage.basename}}</h3>
 
 							<div class="docs__section-content is-docs-rte">
-								{{#getData from=@root.currentPage.filename typeof="partial"}}
-									{{#highlight "hbs"}}
-										{{{this.parsed.content}}}
-									{{/highlight}}
-								{{/getData}}
+
+								{{! WrapWith START:  }}
+								{{!#wrapWith "content-editor"}}
+								{{! WrapWith START: Display }}
+									{{#getData from=@root.currentPage.filename typeof="partial"}}
+										{{#highlight "hbs"}}
+											{{{this.parsed.content}}}
+										{{/highlight}}
+									{{/getData}}
+								{{! WrapWith END: Editable }}
+								{{!/wrapWith}}
+								{{! WrapWith END:  }}
+
 
 								{{#if this.subTemplates}}
 									{{#each this.subTemplates}}
@@ -120,11 +132,19 @@
 									</h2>
 								</div>
 								<div class="docs__section-content is-docs-rte">
+									<h3>{{this.contextData}}.hjson</h3>
 									{{#ifExists
 											(buildPath @root.currentPage.dirname (concat 'data/' this.contextData '.json') goUp=1)}}
 										{{#highlight "json"}}
 											{{{embeding
 													(buildPath @root.currentPage.dirname (concat 'data/' this.contextData '.json') goUp=1) }}}
+										{{/highlight}}
+									{{/ifExists}}
+									{{#ifExists
+											(buildPath @root.currentPage.dirname (concat 'data/' this.contextData '.hjson') goUp=1)}}
+										{{#highlight "js"}}
+											{{{embeding
+													(buildPath @root.currentPage.dirname (concat 'data/' this.contextData '.hjson') goUp=1) }}}
 										{{/highlight}}
 									{{/ifExists}}
 								</div>
@@ -168,6 +188,31 @@
 						</div>
 
 					{{/if}}
+					{{#if this.jsFiles}}
+						<div class="docs__section is-bg-invert">
+							<div class="is-docs-inner">
+								<div class="docs__section-header">
+									<h2 class="docs__section-headline"><i class="is-docs-icon fa fa-file-text-o"></i>
+										Scripts
+									</h2>
+								</div>
+								<div class="docs__section-content is-docs-rte">
+									{{#each this.jsFiles}}
+										<h3>{{this}}</h3>
+										{{#ifExists
+												(buildPath @root.currentPage.dirname (concat 'scripts/' this) goUp=1)}}
+											{{#highlight "js"}}
+												{{{embeding
+														(buildPath @root.currentPage.dirname (concat 'scripts/' this) goUp=1) }}}
+											{{/highlight}}
+										{{/ifExists}}
+
+									{{/each}}
+								</div>
+							</div>
+						</div>
+
+					{{/if}}
 					<div class="docs__section">
 						<div class="is-docs-inner">
 							<div class="docs__section-header">
@@ -179,6 +224,7 @@
 							<div class="docs__section-content is-docs-rte">
 								{{#if variations}}
 									{{#each variations}}
+										<h3>{{this.docs.variationName}}</h3>
 										{{#highlight "html"}}
 											{{#beautifyHTML}}
 												{{{yield}}}

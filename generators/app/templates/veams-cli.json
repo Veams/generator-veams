@@ -30,14 +30,16 @@
 	],
 	"paths": {
 		"api": "src/server/api",
-		"app": "app",
+		"app": "src/app",
+		"dest": "app",
 		"assets": "src/app/assets",
 		"env": "environments",
 		"component": "src/app/shared/components",
 		"config": "configs",
+		"docs": "src/docs",
 		"mocks": "src/server/mocks",
 		"server": "src/server",
-		"src": "src/app",
+		"src": "src",
 		"utility": "src/app/shared/utilities"
 	},
 	"ports": {

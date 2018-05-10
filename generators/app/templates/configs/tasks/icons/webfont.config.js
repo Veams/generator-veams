@@ -9,10 +9,10 @@ module.exports = {
 	input: `${veamsConfig.paths.assets}/icons/svg/**/*.svg`,
 	destFile: `webfont.scss`,
 	pluginOptions: {
-		cssDest: `${veamsConfig.paths.src}/shared/styles/icons/`,
+		cssDest: `${veamsConfig.paths.app}/shared/styles/icons/`,
 		cssTemplate: `${__dirname}/templates/webfont-scss.hbs`,
 		cssFontsUrl: `../fonts/`,
-		dest: `${veamsConfig.paths.src}/shared/styles/icons/`,
+		dest: `${veamsConfig.paths.app}/shared/styles/icons/`,
 		writeFiles: false
 	}
 };

@@ -4,8 +4,8 @@ module.exports = {
 			config: '<%= paths.helpers %>/tasks/csscomb.config.json'
 		},
 		expand: true,
-		cwd: '<%= paths.src %>/scss/',
+		cwd: '<%= paths.app %>/scss/',
 		src: ['**/*.scss', '!utils/**/*.scss', '!icons/**/*.scss'],
-		dest: '<%= paths.src %>/scss/'
+		dest: '<%= paths.app %>/scss/'
 	}
 };

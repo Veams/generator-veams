@@ -16,7 +16,10 @@ If you do not want to use collections, just delete this `sitemap` partial
 							<li class="sitemap__list-item">
 								<a href="/{{destFile}}"
 								   class="sitemap__list-item-link">
-									{{this.filename}}
+									{{#if parsed.data.displayName}}
+										{{parsed.data.displayName}}
+									{{else}}{{this.filename}}
+									{{/if}}
 								</a>
 							</li>
 						{{/isnt}}

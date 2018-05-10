@@ -6,9 +6,9 @@ module.exports = {<% if(features && features.length && features.indexOf('createD
 		'<%%= paths.dist %>/**/*'
 	],<% } %>
 	dev: [
-		'<%%= paths.app %>/**/*'
+		'<%%= paths.dest %>/**/*'
 	] <% if(gruntModules && gruntModules.length){ %><% if(typeof gruntModules === 'object'){ _.each(gruntModules, function(name, i) { if(name == 'grunt-grunticon') { %>,
 	grunticon: [
-		'<%%= paths.src %>/shared/styles/icons/*.{html,js,txt,css}'
+		'<%%= paths.app %>/shared/styles/icons/*.{html,js,txt,css}'
 	]<% } %><%}); %><%} %><%} %>
 };

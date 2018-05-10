@@ -13,9 +13,10 @@ const resolveAppPath = relativePath => path.resolve(appDirectory, relativePath);
 /**
  * Generic Webpack Options
  */
-const context = resolveAppPath(veamsConfig.paths.src);
+const context = resolveAppPath(veamsConfig.paths.app);
+const docsContext = resolveAppPath(veamsConfig.paths.docs);
 const configContext = resolveAppPath(veamsConfig.paths.config);
-const outputPath = resolveAppPath(veamsConfig.paths.app);
+const outputPath = resolveAppPath(veamsConfig.paths.dest);
 const envFile = resolveAppPath(veamsConfig.paths.env) + `/environment.${env}.js`;
 
 /**
@@ -81,7 +82,7 @@ module.exports = [
 		// Entry point for webpack
 		entry: {
 			'app': `${context}/app.scss`,<% if (projectType === 'static-page-app') { %>
-			'docs': `${context}/core/layouts/docs/docs.scss`,<% } %>
+			'docs': `${docsContext}/layouts/lyt-docs.scss`,<% } %>
 		},
 		output: {
 			filename: 'css/[name].bundle.css',
