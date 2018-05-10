@@ -81,7 +81,7 @@ module.exports = class extends Generator {
 
 		let welcome = helpers.welcome;
 
-		if (!this.options['skip-welcome-message']) {
+		if (!this.options[ 'skip-welcome-message' ]) {
 			this.log(welcome);
 		}
 
@@ -237,7 +237,7 @@ module.exports = class extends Generator {
 			this.templatePath('environments'),
 			this.destinationPath('environments')
 		);
-		this.pkgFile['name'] = helpers.hyphenate(this.config.get('projectName')) || 'veams-project';
+		this.pkgFile[ 'name' ] = helpers.hyphenate(this.config.get('projectName')) || 'veams-project';
 
 		// add specific resources to make it possible to split up some directories
 
@@ -353,24 +353,22 @@ module.exports = class extends Generator {
 	}
 
 	install() {
-		this.installDependencies({
-			yarn: true,
-			bower: false,
-			npm: false,
-			skipInstall: this.options['skip-install'] || this.options['s'],
-			skipMessage: this.options['skip-welcome-message'] || this.options['w'],
-			// minInstall: this.options['minimal'] || this.options['min'],
-			callback: function (error) {
-				if (error) {
-					this.log(`… or alternatively run ${chalk.yellow('npm install')} instead.`);
-				} else {
-					this.log(`That’s it. Start your project with ${chalk.green('npm run start')} or ${chalk.green(
-						'yarn start')}!`);
-				}
-				// Emit an event that all dependencies are installed
+
+		this
+			.installDependencies({
+				yarn: true,
+				npm: false,
+				bower: false
+			})
+			.then(() => {
 				this.emit(configFile.events.depsIntalled);
-			}.bind(this)
-		});
+				return this.log(`That’s it. Start your project with ${chalk.green('npm start')} or ${chalk.green(
+					'yarn start')}!`);
+			})
+			.catch(() => {
+				this.emit(configFile.events.depsIntalled);
+				return this.log(`… or alternatively run ${chalk.yellow('npm install')} instead.`);
+			});
 	}
 
 	bindEvents() {
