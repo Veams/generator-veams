@@ -23,9 +23,10 @@ module.exports = function scaffold() {
 	if (this.jsLibs.indexOf(config.rxjsId) === -1) delete this.pkgFile['dependencies'][config.rxjsId];
 
 	if (this.jsLibs.indexOf(config.reduxId) !== -1) {
-		this.fs.copy(
-			this.templatePath('src/app/app.store.js'),
-			'src/app/app.store.js'
+		this.fs.copyTpl(
+			this.templatePath('src/app/_app.store.js.ejs'),
+			'src/app/app.store.js',
+			this
 		);
 
 		if (this.projectType === 'static-page-app') {

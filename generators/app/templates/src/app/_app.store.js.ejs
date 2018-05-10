@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import { composeWithDevTools } from 'redux-devtools-extension';<% if (jsLibs.indexOf('rxjs') !== -1) { %>
+import { combineEpics, createEpicMiddleware } from 'redux-observable';<% } %>
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
@@ -22,14 +22,14 @@ const INITIAL_STATE = {
 	// i18n: I18N_INITIAL_STATE,
 	// ui: UI_INITIAL_STATE,
 	router: '/'
-};
+};<% if (jsLibs.indexOf('rxjs') !== -1) { %>
 
 /**
  * Epics (Async)
  */
 export const ROOT_EPIC = combineEpics(
 	// i18nFetchEpic
-);
+);<% } %>
 
 /**
  * Reducer
@@ -48,8 +48,8 @@ let store = createStore(
 	INITIAL_STATE,
 	composeEnhancers(
 		applyMiddleware(
-			reduxImmutableStateInvariant(),
-			createEpicMiddleware(ROOT_EPIC),
+			reduxImmutableStateInvariant(),<% if (jsLibs.indexOf('rxjs') !== -1) { %>
+			createEpicMiddleware(ROOT_EPIC),<% } %>
 			routerMiddleware(history)
 		)
 	)
