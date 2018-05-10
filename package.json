@@ -1,6 +1,6 @@
 {
 	"name": "@veams/generator-veams",
-	"version": "1.0.0-rc7",
+	"version": "1.0.0-rc8",
 	"homepage": "https://veams.org/",
 	"description": "Scaffold modern frontend web apps or web pages with/out a static site generator, Grunt and/or Webpack. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with ES Harmony support.",
 	"keywords": [

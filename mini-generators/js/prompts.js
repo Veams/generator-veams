@@ -12,11 +12,6 @@ module.exports = function prompts() {
 			message: message,
 			choices: [
 				{
-					name: '@veams/query',
-					value: config.veamsQueryId,
-					checked: false
-				},
-				{
 					name: 'jQuery (latest Version)',
 					value: config.jqueryId,
 					checked: false
@@ -37,16 +32,6 @@ module.exports = function prompts() {
 					checked: false
 				}
 			],
-			validate: function (answer) {
-				let done = this.async();
-
-				if (answer.indexOf(config.jqueryId) != -1 && answer.indexOf(config.veamsQueryId) != -1) {
-
-					done("Please choose only one of the two DOM handler libraries.", false);
-				}
-
-				done(null, true);
-			},
 			default: this.config.get(id)
 		},
 		{

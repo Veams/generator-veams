@@ -26,6 +26,9 @@ module.exports = function scaffold() {
 		delete this.pkgFile[ 'devDependencies' ][ 'responsive-images-generator' ];
 	}
 
+	if (this.images.indexOf('imgLazyLoad') === -1) delete this.pkgFile[ 'dependencies' ][ 'lazysizes' ];
+	if (this.images.indexOf('imgPicturefill') === -1) delete this.pkgFile[ 'dependencies' ][ 'picturefill' ];
+
 	if (this.images.indexOf('imgSizeExport') !== -1) {
 		this.fs.copy(
 			this.templatePath('configs/tasks/images/images-export.js'),
