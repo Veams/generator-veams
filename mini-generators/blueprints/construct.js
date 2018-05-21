@@ -47,7 +47,7 @@ module.exports = function construct() {
 			}
 		}
 	}
-
+	
 	this.bpFiles = bpHelpers.prepareFiles(globby.sync([
 		`${currentBpPath}/**`
 	]), `${currentBpPath}`);

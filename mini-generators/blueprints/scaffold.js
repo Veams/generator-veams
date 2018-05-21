@@ -16,16 +16,17 @@ module.exports = function scaffold() {
 			if (this.blueprints.indexOf(file.absolutePath) !== -1) {
 				let cleanedFile = helpers.deleteFileExtension(file.absolutePath);
 				let tplFileExtension = path.extname(cleanedFile);
-
+				let context = Object.assign({}, this, {
+					namespace: pkgFile.name || 'my-project',
+					tplFileExtension
+				});
 				cleanedFile = cleanedFile.replace(path.basename('bp'), `${this.filename}`);
+				cleanedFile = cleanedFile.replace(currentDefaultsPath);
 
 				this.fs.copyTpl(
-					`${file.relativePath}`,
-					`${this.rootFolderPath}${cleanedFile}`,
-					Object.assign({}, this, {
-						namespace: pkgFile.name || 'my-project',
-						tplFileExtension
-					})
+					`${file.absolutePath}`,
+					`${this.rootFolderPath}/${this.filename}${tplFileExtension}`,
+					context
 				);
 			}
 		}
@@ -35,7 +36,7 @@ module.exports = function scaffold() {
 		configFile.blueprints[this.bpTypeName] &&
 		configFile.blueprints[this.bpTypeName].defaults
 	) {
-		currentDefaultsPath = `${cwd}/${configFile.blueprints[this.bpTypeName].defaults}`;
+		currentDefaultsPath = path.normalize(`${cwd}/${configFile.blueprints[this.bpTypeName].defaults}`);
 	}
 
 	if (!this.options.skipDefaults && !this.skipByConfig) {
@@ -57,4 +58,4 @@ module.exports = function scaffold() {
 			this
 		);
 	}
-};
+}

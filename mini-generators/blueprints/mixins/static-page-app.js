@@ -1,3 +1,4 @@
+const path = require('path');
 const bpConfig = require('../config');
 
 module.exports = (context) => {
@@ -9,7 +10,16 @@ module.exports = (context) => {
 			default: false
 		},
 		{
-			when: (answers) => answers.blueprints.indexOf('/scripts/bp.js.ejs') !== -1,
+			when: (answers) => {
+				let isThere = false;
+				answers.blueprints.forEach((answer) => {
+					if (answer.includes('/scripts/bp.js.ejs')) {
+						isThere = true;
+					}
+				});
+
+				return isThere;
+			},
 			type: 'list',
 			name: 'bpDOM',
 			message: 'Which DOM library do you use in your component?',
@@ -30,7 +40,17 @@ module.exports = (context) => {
 			default: false
 		},
 		{
-			when: (answers) => answers.blueprints.indexOf('/scripts/bp.js.ejs') !== -1,
+			when: (answers) => {
+				let isThere = false;
+
+				answers.blueprints.forEach((answer) => {
+					if (answer.includes('/scripts/bp.js.ejs')) {
+						isThere = true;
+					}
+				});
+
+				return isThere;
+			},
 			type: 'checkbox',
 			name: 'bpMethods',
 			message: 'Which JavaScript methods should be added?',
