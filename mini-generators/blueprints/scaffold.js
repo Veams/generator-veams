@@ -14,18 +14,18 @@ module.exports = function scaffold() {
 			let file = this.bpFiles[objName];
 
 			if (this.blueprints.indexOf(file.absolutePath) !== -1) {
-				let cleanedFile = helpers.deleteFileExtension(file.absolutePath);
+				let cleanedFile = path.normalize(helpers.deleteFileExtension(file.absolutePath));
 				let tplFileExtension = path.extname(cleanedFile);
 				let context = Object.assign({}, this, {
 					namespace: pkgFile.name || 'my-project',
 					tplFileExtension
 				});
 				cleanedFile = cleanedFile.replace(path.basename('bp'), `${this.filename}`);
-				cleanedFile = cleanedFile.replace(currentDefaultsPath);
-
+				cleanedFile = cleanedFile.replace(this.currentBpPath, '');
+				
 				this.fs.copyTpl(
 					`${file.absolutePath}`,
-					`${this.rootFolderPath}/${this.filename}${tplFileExtension}`,
+					`${this.rootFolderPath}/${cleanedFile}`,
 					context
 				);
 			}

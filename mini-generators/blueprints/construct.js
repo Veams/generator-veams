@@ -1,4 +1,5 @@
 const globby = require('globby');
+const path = require('path');
 const helpers = require('../../lib/helpers');
 const bpHelpers = require('./helpers/bp-helpers');
 const configFile = helpers.getProjectConfig();
@@ -47,6 +48,8 @@ module.exports = function construct() {
 			}
 		}
 	}
+
+	this.currentBpPath = path.normalize(currentBpPath);
 	
 	this.bpFiles = bpHelpers.prepareFiles(globby.sync([
 		`${currentBpPath}/**`
