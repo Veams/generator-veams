@@ -13,7 +13,7 @@ module.exports = (context) => {
 			when: (answers) => {
 				let isThere = false;
 				answers.blueprints.forEach((answer) => {
-					if (answer.includes('/scripts/bp.js.ejs')) {
+					if (answer.includes(path.normalize('/scripts/bp.js.ejs'))) {
 						isThere = true;
 					}
 				});
@@ -44,7 +44,7 @@ module.exports = (context) => {
 				let isThere = false;
 
 				answers.blueprints.forEach((answer) => {
-					if (answer.includes('/scripts/bp.js.ejs')) {
+					if (answer.includes(path.normalize('/scripts/bp.js.ejs'))) {
 						isThere = true;
 					}
 				});

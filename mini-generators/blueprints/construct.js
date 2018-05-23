@@ -49,7 +49,7 @@ module.exports = function construct() {
 		}
 	}
 
-	this.currentBpPath = path.normalize(currentBpPath);
+	this.currentBpPath = currentBpPath;
 	
 	this.bpFiles = bpHelpers.prepareFiles(globby.sync([
 		`${currentBpPath}/**`

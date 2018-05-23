@@ -21,15 +21,17 @@ module.exports = {
 
 		return collection;
 	},
-	prepareFilesForPrompt: function prepareFilesForPrompt(collection, bpName) {
+	prepareFilesForPrompt: function prepareFilesForPrompt(currentBpPath, collection, bpName) {
 		let files = Object.keys(collection);
 		let choices = [];
 
 		for (let i = 0; i < files.length; i++) {
-			let name = path.basename(helpers.deleteFileExtension(files[i]).replace('bp', bpName));
+			let name = path.normalize(helpers.deleteFileExtension(files[i]))
+				.replace('bp', bpName)
+				.replace(path.normalize(currentBpPath), '');
 			let choice = {
 				name: `${name} file`,
-				value: files[i]
+				value: path.normalize(files[i]).replace(path.normalize(currentBpPath), '')
 			};
 
 			choices.push(choice);

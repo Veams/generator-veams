@@ -6,7 +6,7 @@ const bpHelpers = require('./helpers/bp-helpers');
 let prompts = [];
 
 module.exports = function questions() {
-	let fileChoices = bpHelpers.prepareFilesForPrompt(this.bpFiles, this.options.name);
+	let fileChoices = bpHelpers.prepareFilesForPrompt(this.currentBpPath, this.bpFiles, this.options.name);
 	let defaultFileChoices = fileChoices.map(item => item.value);
 
 	if (!this.options.name) {
