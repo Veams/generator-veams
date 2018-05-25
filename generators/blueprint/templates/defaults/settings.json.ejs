@@ -1,5 +1,5 @@
 <%
-    let bpWithJs = props.blueprints.indexOf('/scripts/bp.js.ejs') !== -1;
+    let bpWithJs = props.blueprints.indexOf('/scripts/bp.js.ejs') !== -1 || props.blueprints.indexOf('\\scripts\\bp.js.ejs') !== -1;
  %>
 {
     "paths": {<% if(bpWithJs) {%>

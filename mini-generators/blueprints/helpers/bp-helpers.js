@@ -11,10 +11,10 @@ module.exports = {
 			let fileOrFolder = fsx.statSync(files[i]);
 
 			if (fileOrFolder.isFile()) {
-				let cleanedPath = files[i].replace(filepath, '');
+				let cleanedPath = path.normalize(files[i]).replace(path.normalize(filepath), '');
 				collection[cleanedPath] = {
-					absolutePath: cleanedPath,
-					relativePath: path.join(`${filepath}`)
+					absolutePath: path.join(`${filepath}`, cleanedPath),
+					relativePath: cleanedPath
 				};
 			}
 		}

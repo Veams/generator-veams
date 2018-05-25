@@ -13,7 +13,7 @@ module.exports = function save(props) {
 
 	this.props = props;
 	this.blueprints = props.blueprints;
-	this.path = this.options.path;
+	this.path = this.options.path.replace(/\\/g, '/');
 	this.name = this.options.name ? this.options.name : props.bpName;
 	this.bpTypeName = props.bpTypeName === 'global' ? '' : props.bpTypeName;
 	this.bpTypePrefix = this.bpTypeName ? prefixer(cutter(this.bpTypeName)) : '';
