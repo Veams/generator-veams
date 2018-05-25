@@ -6,6 +6,12 @@
         "scripts": "<%= path %>/<%= filename %>/scripts/<%= filename %>",<% } %>
         "styles": "<%= path %>/<%= filename %>/styles/<%= filename %>"
     },
+    "scssFiles": [
+        "<%= filename %>.scss"
+    ],<% if(bpWithJs) {%>
+    "jsFiles": [
+        "<%= filename %>.js"
+    ],<% } %>
     "type": "<%= customTypeName %>",
     "contextData": "<%= filename %>",
     "layout": "lyt-docs",
