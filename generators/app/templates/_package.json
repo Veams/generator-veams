@@ -48,7 +48,7 @@
 		"@veams/query": "^2.2.19"
 	},
 	"devDependencies": {
-		"@veams/bp-mock-api": "^0.0.1",
+		"@veams/bp-mock-api": "^1.0.3",
 		"@veams/bp-react-container": "^0.0.4",
 		"@veams/bp-redux": "^0.0.8",
 		"aliasify": "^2.1.0",
