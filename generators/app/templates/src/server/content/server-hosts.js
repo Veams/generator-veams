@@ -11,12 +11,12 @@ const router = express.Router();
  * @type {Object}
  */
 const serverHosts = {
-	'veams': 'https://github.com/Veams'
+	veams: 'https://github.com/Veams'
 };
 
 const serverHostRoutes = [];
 
-Object.keys(serverHosts).forEach(function (route) {
+Object.keys(serverHosts).forEach(function(route) {
 	serverHostRoutes.push('/' + route);
 	serverHostRoutes.push('/' + route + '.json');
 });

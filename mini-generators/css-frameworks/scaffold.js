@@ -4,7 +4,7 @@ module.exports = function scaffold() {
 	// Delete CSS packages
 	if (this.cssLibs.indexOf(config.foundationId) === -1) delete this.pkgFile['devDependencies']['foundation-sites'];
 	if (this.cssLibs.indexOf(config.includeMediaId) === -1) delete this.pkgFile['devDependencies']['include-media'];
-	if (this.cssLibs.indexOf(config.bootstrapId) === -1) delete this.pkgFile['dependencies']['bootstrap-sass'];
+	if (this.cssLibs.indexOf(config.bootstrapId) === -1) delete this.pkgFile['devDependencies']['bootstrap-sass'];
 	if (this.cssLibs.indexOf(config.neatId) === -1) {
 		delete this.pkgFile['devDependencies']['bourbon-neat'];
 		delete this.pkgFile['devDependencies']['neat'];

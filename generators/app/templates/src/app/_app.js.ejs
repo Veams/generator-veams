@@ -1,6 +1,12 @@
+<% if (taskRunner === 'webpack') { %>
 /**
-* Main entry file for application.
-*/
+ * Main entry file for styles.
+ */
+import './app.scss';
+<% } %>
+/**
+ * Main entry file for application.
+ */
 import { Veams } from './app.veams';<% if (projectType === 'single-page-app') { %>
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,11 +18,11 @@ import routes from './app.routes';<% if (jsLibs.indexOf('redux') !== -1) { %>
 import store, { history } from './app.store';<% } %><% } %>
 <% if (projectType === 'single-page-app') { %>
 /**
-* Render application
-*/
+ * Render application
+ */
 ReactDOM.render(<% if (jsLibs.indexOf('redux') !== -1) { %>
     <Provider store={store}><% } %>
-        <Router<% if (jsLibs.indexOf('redux') !== -1) { %> history={history}<% } %>>
+        <Router<% if (jsLibs.indexOf('yarn start redux') !== -1) { %> history={history}<% } %>>
             <div className="app">{renderRoutes(routes)}</div>
         </Router><% if (jsLibs.indexOf('redux') !== -1) { %>
     </Provider><% } %>,

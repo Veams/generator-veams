@@ -66,14 +66,15 @@ module.exports = function scaffold() {
 
 	if (this.taskRunner !== config.webpackId) {
 		delete this.pkgFile[ 'devDependencies' ][ 'webpack' ];
-		delete this.pkgFile[ 'devDependencies' ][ 'stylelint-webpack-plugin' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'webpack-cli' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'style-loader' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'sass-loader' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'react-dev-utils' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'postcss' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'postcss-loader' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'node-sass' ];
-		delete this.pkgFile[ 'devDependencies' ][ 'extract-text-webpack-plugin' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'optimize-css-assets-webpack-plugin' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'mini-css-extract-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'css-loader' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'compression-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'copy-webpack-plugin' ];
@@ -83,8 +84,8 @@ module.exports = function scaffold() {
 		/**
 		 * NPM Scripts
 		 */
-		this.pkgFile[ 'scripts' ][ 'local:start' ] = 'webpack --watch --hide-modules';
-		this.pkgFile[ 'scripts' ][ 'build' ] = 'npm run clear:app && cross-env BABEL_ENV=client webpack';
+		this.pkgFile[ 'scripts' ][ 'local:start' ] = 'webpack --mode=development --watch --hide-modules';
+		this.pkgFile[ 'scripts' ][ 'build' ] = 'npm run clear:app && cross-env BABEL_ENV=client webpack --mode=production';
 
 		/**
 		 * Copy common webpack files

@@ -5,30 +5,27 @@ const jscsId = 'jscs';
 const htmlHintId = 'hintingHTML';
 const jsHintId = 'hintingJS';
 const sasslintId = 'stylelint';
+const esLintId = 'eslint';
+const huskyId = 'husky';
 const karmaId = 'karma';
 
 exports.questions = function () {
 	const qaLibsId = 'testAndQALibs';
 	const qaLibsQuestion = 'Which Testing and QA Tools do you want add?';
 	const choices = [
-		// {
-		// 	name: 'JavaScript Code Style (jscs)',
-		// 	value: jscsId,
-		// 	checked: false
-		// },
-		// {
-		// 	name: 'Hint your HTML (HTMLHint)',
-		// 	value: htmlHintId,
-		// 	checked: false
-		// },
-		// {
-		// 	name: 'Hint your JavaScript (JSHint)',
-		// 	value: jsHintId,
-		// 	checked: true
-		// },
+		{
+			name: 'Add Git hooks with Husky',
+			value: huskyId,
+			checked: true
+		},
 		{
 			name: 'Lint your Sass (Stylelint)',
 			value: sasslintId,
+			checked: true
+		},
+		{
+			name: 'Lint your JS (ESLint, Prettier)',
+			value: esLintId,
 			checked: true
 		}
 	];
@@ -60,26 +57,6 @@ exports.setup = function () {
 };
 
 exports.scaffold = function () {
-
-	/**
-	 * JSCS Lint
-	 */
-	if (this.testAndQALibs.indexOf(jscsId) !== -1) {
-		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'tasks/linting/jscs.config.json'),
-			this.helperPath + 'tasks/linting/jscs.config.json'
-		);
-
-		if (this.taskRunner.indexOf('grunt') !== -1) {
-			this.fs.copy(
-				this.templatePath(this.generatorGruntPath + 'jscs.js'),
-				this.gruntPath + 'jscs.js'
-			);
-		}
-	} else {
-		delete this.pkgFile['devDependencies']['grunt-jscs'];
-	}
-
 	/**
 	 * HTML Hint
 	 */
@@ -95,29 +72,10 @@ exports.scaffold = function () {
 				this.gruntPath + 'htmlhint.js'
 			);
 		} else {
-			delete this.pkgFile['devDependencies']['grunt-htmlhint'];
+			delete this.pkgFile[ 'devDependencies' ][ 'grunt-htmlhint' ];
 		}
 	} else {
-		delete this.pkgFile['devDependencies']['grunt-htmlhint'];
-	}
-
-	/**
-	 * JS Hint
-	 */
-	if (this.testAndQALibs.indexOf(jsHintId) != -1) {
-		this.fs.copy(
-			this.templatePath(this.generatorHelperPath + 'tasks/linting/.jshintrc'),
-			this.helperPath + 'tasks/linting/.jshintrc'
-		);
-
-		if (this.taskRunner.indexOf('grunt') !== -1) {
-			this.fs.copy(
-				this.templatePath(this.generatorGruntPath + 'jshint.js'),
-				this.gruntPath + 'jshint.js'
-			);
-		}
-	} else {
-		delete this.pkgFile['devDependencies']['grunt-contrib-jshint'];
+		delete this.pkgFile[ 'devDependencies' ][ 'grunt-htmlhint' ];
 	}
 
 	/**
@@ -129,17 +87,54 @@ exports.scaffold = function () {
 			this.helperPath + 'tasks/linting/stylelint.config.js'
 		);
 
-		if (this.taskRunner.indexOf('grunt') !== -1) {
-			this.fs.copy(
-				this.templatePath(this.generatorGruntPath + 'stylelint.js'),
-				this.gruntPath + 'stylelint.js'
-			);
-		} else {
-			delete this.pkgFile['devDependencies']['grunt-stylelint'];
-		}
+		this.pkgFile[ 'scripts' ][ 'lint:styles' ] = 'stylelint src/app/**/*.scss --config configs/tasks/linting/stylelint.config.js';
 
 	} else {
-		delete this.pkgFile['devDependencies']['grunt-stylelint'];
+		delete this.pkgFile[ 'devDependencies' ][ 'stylelint' ];
+	}
+
+	/**
+	 * ESLint
+	 */
+	if (this.testAndQALibs.indexOf(esLintId) !== -1) {
+		this.fs.copy(
+			this.templatePath(this.generatorHelperPath + 'tasks/linting/eslint.config.js'),
+			this.helperPath + 'tasks/linting/eslint.config.js'
+		);
+
+		this.pkgFile[ 'scripts' ][ 'lint:scripts' ] = 'eslint \"src/**/*.js\" --config configs/tasks/linting/eslint.config.js';
+
+	} else {
+		delete this.pkgFile[ 'devDependencies' ][ 'babel-eslint' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'eslint' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'eslint-config-prettier' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'eslint-plugin-prettier' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'prettier' ];
+	}
+
+	/**
+	 * Huksy
+	 */
+	if (this.testAndQALibs.indexOf(huskyId) !== -1) {
+		let command = '';
+
+		if (this.testAndQALibs.indexOf(sasslintId) !== -1) {
+			command += 'npm run lint:styles -- --fix && npm run lint:styles';
+		}
+
+		if (this.testAndQALibs.indexOf(esLintId) !== -1) {
+			if (command.length > 0) {
+				command += ' && '
+			}
+
+			command += 'npm run lint:scripts -- --fix && npm run lint:scripts';
+		}
+		this.pkgFile[ 'husky' ][ 'hooks' ][ 'pre-commit' ] = command;
+
+
+	} else {
+		delete this.pkgFile[ 'devDependencies' ][ 'husky' ];
+		delete this.pkgFile[ 'husky' ];
 	}
 
 	/**

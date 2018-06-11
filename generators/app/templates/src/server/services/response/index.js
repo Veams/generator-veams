@@ -1,24 +1,21 @@
-
-
-export const success = (res, status) => (entity) => {
+export const success = (res, status) => entity => {
 	if (entity) {
 		res.status(status || 200).json(entity);
 	}
 	return null;
 };
 
-export const validationError = (res) => (err) => {
-
-	if(err instanceof Error) {
+export const validationError = res => err => {
+	if (err instanceof Error) {
 		res.status(422).send(err.message);
 	} else {
-		res.status(500).json(err)
+		res.status(500).json(err);
 	}
 
 	return null;
 };
 
-export const notFound = (res) => (entity) => {
+export const notFound = res => entity => {
 	if (entity) {
 		return entity;
 	}
@@ -26,7 +23,7 @@ export const notFound = (res) => (entity) => {
 	return null;
 };
 
-export const authorOrAdmin = (res, user, userField) => (entity) => {
+export const authorOrAdmin = (res, user, userField) => entity => {
 	if (entity) {
 		const isAdmin = user.role === 'admin';
 		const isAuthor = entity[userField] && entity[userField].equals(user.id);
@@ -37,5 +34,5 @@ export const authorOrAdmin = (res, user, userField) => (entity) => {
 
 		res.status(401).end();
 	}
-	return null
+	return null;
 };

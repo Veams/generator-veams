@@ -4,7 +4,6 @@ import helpers from '../../utils/helpers';
 import ApiModel from '../../models/api-model';
 
 class Example extends ApiModel {
-
 	constructor(obj) {
 		super(obj);
 		this.modelDir = `${this.mockPath}/example`;
@@ -26,8 +25,8 @@ class Example extends ApiModel {
 	async create(params) {
 		super.create(params);
 
-		if(await helpers.fileExists(this.exampleFile)) {
-			throw new Error('Example '+ this.data.id + ' already exists');
+		if (await helpers.fileExists(this.exampleFile)) {
+			throw new Error('Example ' + this.data.id + ' already exists');
 		}
 
 		await helpers.write(this.exampleFile, JSON.stringify(this.data));
@@ -43,8 +42,7 @@ class Example extends ApiModel {
 		let dirs = fs.readdirSync(`${this.modelDir}`);
 		let promises = [];
 
-
-		for(let i = 0; i < dirs.length; i++ ) {
+		for (let i = 0; i < dirs.length; i++) {
 			let example = new Example();
 			let id = pathFs.basename(dirs[i], '.json');
 
@@ -62,8 +60,8 @@ class Example extends ApiModel {
 	async findById(id) {
 		this.data.id = id;
 
-		if (!await helpers.fileExists(this.exampleFile)) {
-			return null
+		if (!(await helpers.fileExists(this.exampleFile))) {
+			return null;
 		}
 
 		this.data = await helpers.readJSON(this.exampleFile);
@@ -77,7 +75,7 @@ class Example extends ApiModel {
 	 * @returns {Example}
 	 */
 	async save(data) {
-		if(data.id !== this.data.id) {
+		if (data.id !== this.data.id) {
 			throw new Error(`Can\'t rename example id ${this.data.id} to ${data.id}!`);
 		}
 
@@ -91,6 +89,5 @@ class Example extends ApiModel {
 		return helpers.remove(this.exampleFile);
 	}
 }
-
 
 export default Example;
