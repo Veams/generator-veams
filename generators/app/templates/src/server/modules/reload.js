@@ -7,11 +7,14 @@ const bs = browserSync.create().init({
 	notify: false,
 	logSnippet: false,
 	open: false,
-	files: [
-		veamsConfig.paths.dest + '/**/*.*'
-	]
+	ghostMode: {
+		click: false,
+		form: false,
+		scroll: false
+	},
+	files: [veamsConfig.paths.dest + '/**/*.*']
 });
 
-module.exports = function () {
+module.exports = function() {
 	return require('connect-browser-sync')(bs);
 };

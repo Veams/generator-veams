@@ -1,6 +1,6 @@
-import { Router } from 'express'
-import { create, index, show, update, destroy } from './controller'
-export Example, { schema } from './model'
+import { Router } from 'express';
+import { create, index, show, update, destroy } from './controller';
+export Example, { schema } from './model';
 
 const router = new Router();
 

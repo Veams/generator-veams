@@ -24,7 +24,7 @@ function readDir(dir) {
 
 function writeFile(filepath, data) {
 	return new Promise((resolve, reject) => {
-		fs.writeFile(filepath, data, 'utf8', (err) => {
+		fs.writeFile(filepath, data, 'utf8', err => {
 			if (err) {
 				reject(err);
 			} else {
@@ -60,9 +60,9 @@ function readJSON(filepath) {
 
 function write(filepath, data) {
 	return new Promise((resolve, reject) => {
-		mkdirp(path.dirname(filepath), function (err) {
+		mkdirp(path.dirname(filepath), function(err) {
 			if (err) reject(err);
-			else resolve(writeFile(filepath, data))
+			else resolve(writeFile(filepath, data));
 		});
 	});
 }
@@ -101,14 +101,14 @@ function folderExists(filepath) {
 
 function remove(path) {
 	return new Promise((resolve, reject) => {
-		fs.remove(path, (err) => {
+		fs.remove(path, err => {
 			if (err) {
 				reject(err);
 			} else {
 				resolve(path);
 			}
-		})
-	})
+		});
+	});
 }
 
 export default {

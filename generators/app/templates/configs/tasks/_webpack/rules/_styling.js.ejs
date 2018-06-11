@@ -1,5 +1,10 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const magicImporter = require('node-sass-magic-importer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const miniCssExtractPlugin = new MiniCssExtractPlugin({
+	// Options similar to the same options in webpackOptions.output
+	// both options are optional
+	filename: '/css/[name].bundle.css'
+});
 
 /**
  * Options
@@ -32,32 +37,30 @@ module.exports = function () {
 
 	return {
 		test: /\.(s*)css$/,
-		use: ExtractTextPlugin.extract({
-			fallback: 'style-loader',
-			use: [
-				{
-					loader: 'css-loader',
-					options: {
-					    url: false,
-						sourceMap: !prod
-					}
-				},
-				{
-					loader: 'postcss-loader',
-					options: {
-						sourceMap: !prod,
-						ident: 'postcss',
-						plugins: (loader) => defaultPlugins
-					}
-				},
-				{
-					loader: 'sass-loader',
-					options: {
-						importer: magicImporter(),
-						sourceMap: !prod
-					}
-				}
-			],
-		})
+        use: [
+            MiniCssExtractPlugin.loader,
+            {
+                loader: 'css-loader',
+                options: {
+                    url: false,
+                    sourceMap: !prod
+                }
+            },
+            {
+                loader: 'postcss-loader',
+                options: {
+                    sourceMap: !prod,
+                    ident: 'postcss',
+                    plugins: (loader) => defaultPlugins
+                }
+            },
+            {
+                loader: 'sass-loader',
+                options: {
+                    importer: magicImporter(),
+                    sourceMap: !prod
+                }
+            }
+        ]
 	}
 };

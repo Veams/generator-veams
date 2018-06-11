@@ -1,16 +1,11 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');<% if(testAndQALibs.indexOf('stylelint') !== -1 ) { %>
-const StyleLintPlugin = require('stylelint-webpack-plugin');<% } %>
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = function (configContext) {
-	return [<% if(testAndQALibs.indexOf('stylelint') !== -1 ) { %>
-		new StyleLintPlugin({
-			configFile: `${configContext}/tasks/linting/stylelint.config.js`,
-			files: [
-				'**/*.s?(a|c)ss'
-			]
-		}),<% } %>
-		new ExtractTextPlugin({
-			filename: '/css/[name].bundle.css'
-		})
+	return [
+		new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: '/css/[name].bundle.css'
+        })
 	]
 };
