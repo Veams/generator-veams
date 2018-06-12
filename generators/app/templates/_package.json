@@ -52,8 +52,8 @@
 	},
 	"devDependencies": {
 		"@veams/bp-mock-api": "^1.0.3",
-		"@veams/bp-react-container": "^0.0.4",
-		"@veams/bp-redux": "^0.0.8",
+		"@veams/bp-react-container": "^0.0.5",
+		"@veams/bp-redux": "^0.0.10",
 		"aliasify": "^2.1.0",
 		"autoprefixer": "^6.7.3",
 		"bootstrap-sass": "^3.3.7",

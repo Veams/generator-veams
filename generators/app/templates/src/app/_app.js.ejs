@@ -22,7 +22,7 @@ import store, { history } from './app.store';<% } %><% } %>
  */
 ReactDOM.render(<% if (jsLibs.indexOf('redux') !== -1) { %>
     <Provider store={store}><% } %>
-        <Router<% if (jsLibs.indexOf('yarn start redux') !== -1) { %> history={history}<% } %>>
+        <Router<% if (jsLibs.indexOf('redux') !== -1) { %> history={history}<% } %>>
             <div className="app">{renderRoutes(routes)}</div>
         </Router><% if (jsLibs.indexOf('redux') !== -1) { %>
     </Provider><% } %>,
