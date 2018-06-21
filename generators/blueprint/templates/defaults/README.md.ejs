@@ -11,8 +11,9 @@ This blueprint is based on the blueprint of Veams.
 
 -----------
 
-## Requirements
-- `Veams#5.0.0` - Replace this requirement with the libs you need for this type.
+## Requirements<% if(bpWithJs) { %>
+- [@veams/core](https://github.com/Veams/core) - Veams Core Framework.
+- [@veams/component](https://github.com/Veams/component) - Veams Component Base Class.<% } %>
 
 -----------
 
@@ -20,13 +21,17 @@ This blueprint is based on the blueprint of Veams.
 
 ### Installation with Veams from local machine
 
-`veams install bp absolute/filepath/to/<%= filename %>`
+``` cmd
+veams install bp absolute/filepath/to/<%= filename %>
+```
 
 ### Installation with npm or Veams
 
 When published on npm you can install the <%= bpTypeName %> by executing:
 
-1. `veams install veams-<%= bpTypeName %> <%= filename %>`
+``` cmd
+veams install c veams-<%= bpTypeName %> <%= filename %>
+```
 
 -----------
 
@@ -37,13 +42,17 @@ When published on npm you can install the <%= bpTypeName %> by executing:
 The partial is a `wrapWith` partial. This means that you can access all properties and hashes via `props`.
 See [Mangony Handlebars Helper - wrapWith](https://www.npmjs.com/package/mangony-hbs-helper-wrap-with) for detailed instructions.
 <% } %>
-#### Settings
-- settings.<%= bpName %>Classes {`String`} - _Modifier classes for <%= bpTypeName %>._<% if (bpTypeName === 'component') { %>
-- settings.<%= bpName %>ContextClass {`String`} [default] - _Context class of component._<% } %> <% if(bpWithJs) {%>
-- settings.<%= bpName %>JsOptions {`Object`} - _JavaScript options which gets stringified._<% } %>
+
+| Parameter | Type | Value | Description |
+|:--- | :---: |:---: | :--- |
+| settings.<%= bpName %>Classes | String | | _Modifier classes for <%= bpTypeName %>._ | <% if (bpTypeName === 'component') { %>
+| settings.<%= bpName %>ContextClass | String | `default` |  - _Context class of component._ | <% } %> <% if(bpWithJs) {%>
+| settings.<%= bpName %>JsOptions | Object | | _JavaScript options which gets stringified._ | <% } %>
 
 #### Content
-- content.<%= bpName %>Field {`String`} - _Please add a description!_
+| Parameter | Type | Value | Description |
+|:--- | :---: |:---: | :--- |
+| content.<%= bpName %>Field | String | |  _Please add a description!_ |
 <% if(bpWithJs) { %>
 -------------
 
@@ -51,17 +60,14 @@ See [Mangony Handlebars Helper - wrapWith](https://www.npmjs.com/package/mangony
 
 The module gives you the possibility to override default JS options:
 
-- optionOne {`String`} ['is-option'] - _Please add a description!_
+| Option | Type | Default | Description |
+|:--- |:---:|:---:|:--- |
+| optionOne | String | `is-option` | _Please add a description!_ |
 <% } %>
 ------------
 
-## SASS
+## Sass Options
 
-### Variables
-
-- $<%= filename %>-my-custom-var {`String`} [] - _Please add a description!_
-
-### Modifier Classes
-
-You can add the following modifiers to `<%= filename %>`:
-- is-modifier - _Please add a description!_
+| Variable | Value | Description |
+|:--- | :---: |:--- |
+| $<%= filename %>-my-custom-var | | _Please add a description!_ |
