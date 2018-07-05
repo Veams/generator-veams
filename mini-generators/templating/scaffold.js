@@ -18,7 +18,8 @@ module.exports = function scaffold() {
 			);
 			this.fs.copyTpl(
 				this.templatePath('src/docs/scripts/_docs.js.ejs'),
-				'src/docs/scripts/docs.js'
+				'src/docs/scripts/docs.js',
+				this
 			);
 			this.fs.copyTpl(
 				this.templatePath('src/app/pages/index/index.hbs.ejs'),
