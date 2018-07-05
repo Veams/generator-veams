@@ -13,9 +13,12 @@ module.exports = function scaffold() {
 				this
 			);
 			this.fs.copy(
-				this.templatePath('src/docs'),
-				'src/docs',
-				this
+				this.templatePath('src/docs/layouts'),
+				'src/docs/layouts'
+			);
+			this.fs.copyTpl(
+				this.templatePath('src/docs/scripts/_docs.js.ejs'),
+				'src/docs/scripts/docs.js'
 			);
 			this.fs.copyTpl(
 				this.templatePath('src/app/pages/index/index.hbs.ejs'),
