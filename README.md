@@ -1,38 +1,69 @@
-<p align="center"><img src="http://veams.org/img/svg/icons/veams-generator.svg"></p>
+[//]: # ({{#wrapWith "content-section"}})
 
-<p align="center">
-	<strong>One of the most flexible and efficient <a href="http://yeoman.io">Yeoman</a> generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.</strong>
-	<br><br>
-	<a href="http://veams.org">Visit the Veams website.</a><br><br>
-	<a href="https://travis-ci.org/Sebastian-Fitzner/generator-veams"><img src="https://travis-ci.org/Sebastian-Fitzner/generator-veams.svg" alt="Build Status" /></a>
-	<a href="https://gitter.im/Sebastian-Fitzner/Veams?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img src="https://badges.gitter.im/Sebastian-Fitzner/Veams.svg" alt="Gitter Chat" /></a>
-</p>
+[//]: # ({{#wrapWith "grid-row"}})
+[//]: #     ({{#wrapWith "grid-col" colClasses="is-col-mobile-l-8"}})
 
-## Documentation
 
-<p align="center">Head to the <a href="http://veams.org/">site</a> for a detailed overview and further instructions.</p>
-
-**Here just a short overview:**
+**One of the most flexible and efficient <a href="http://yeoman.io">Yeoman</a> generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.**
 
 1. You can use Grunt or Webpack as task runner/bundler/loader.
-1. You can use a static site generator with Mangony.
-1. You can add Bootstrap, Foundation, Bourbon and Lost to your project
-1. You can enable hinting and linting
-1. You can add the complete Veams stack to your project
-1. You can build a technical HTML documentation
-1. You can create a React App with Redux, Redux-Observables and more.
-1. You have a mock API in place.
+1. You can create a static site with Mangony.
+1. You can create a React App with Redux, Redux-Observables, Router and more.
+1. You can build a technical HTML documentation.
+1. You can add Bootstrap, Foundation, Bourbon and Lost to your project.
+1. You can add the complete Veams stack to your project.
+1. You can enable hinting and linting.
+1. You have a mock API written in NodeJS in place.
+
+## Usage with CLI
+
+To generate a new project just open your console, go to a specific project folder and type the following:
+
+``` bash
+veams new project
+```
+
+That's it.
+
+**Just answer the questions and generate your individual project.**
+
+All dependencies and task files will be automagically downloaded and configured. You can start your project in your console via 
+
+``` bash
+npm start
+```
+[//]: #     ({{/wrapWith}})
+[//]: # ({{/wrapWith}})
+
+[//]: # ({{/wrapWith}})
+[//]: # ({{#wrapWith "content-section"}})
+
+[//]: # ({{#wrapWith "grid-row"}})
+[//]: #     ({{#wrapWith "grid-col" colClasses="is-col-mobile-l-8"}})
+
+> When you have `@veams/cli` installed you can skip this section!
+
+[//]: #     ({{/wrapWith}})
+[//]: # ({{/wrapWith}})
+
+[//]: # ({{#wrapWith "grid-row"}})
+[//]: #     ({{#wrapWith "grid-col" colClasses="is-col-mobile-l-6"}})
+
+## Installation without CLI
 
 
-## Installation
+It is recommended to install [`@veams/cli`](https://github.com/Veams/cli).
 
-I recommend to install [`@veams/cli`](https://github.com/Veams/cli).
+If you only want to install the generator, just install it via:
+ 
+``` bash
+npm install -g @veams/generator-veams
+```
 
-If you only want to install the generator, just install it via: `npm install -g @veams/generator-veams`.
+[//]: #     ({{/wrapWith}})
+[//]: #     ({{#wrapWith "grid-col" colClasses="is-col-mobile-l-6"}})
 
-## Usage 
-
-I recommend to use `@veams/cli` to scaffold projects, blueprints or something else.
+## Usage without CLI (not recommended)
 
 If you want to start the generator without `@veams/cli` you can do the following:
 
@@ -40,5 +71,7 @@ If you want to start the generator without `@veams/cli` you can do the following
 yo veams
 ```
 
-## Release History
-see: [Changelog.md](CHANGELOG.md)
+[//]: #     ({{/wrapWith}})
+[//]: # ({{/wrapWith}})
+
+[//]: # ({{/wrapWith}})
