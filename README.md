@@ -1,7 +1,7 @@
 [//]: # ({{#wrapWith "content-section"}})
 
 [//]: # ({{#wrapWith "grid-row"}})
-[//]: #     ({{#wrapWith "grid-col" colClasses="is-col-mobile-l-8"}})
+[//]: #     ({{#wrapWith "grid-col" colClasses="is-col-tablet-l-8"}})
 
 
 **One of the most flexible and efficient <a href="http://yeoman.io">Yeoman</a> generator to build Frontend Web Apps, HTML5 web interfaces and Prototypes.**
@@ -39,7 +39,7 @@ npm start
 [//]: # ({{#wrapWith "content-section"}})
 
 [//]: # ({{#wrapWith "grid-row"}})
-[//]: #     ({{#wrapWith "grid-col" colClasses="is-col-mobile-l-8"}})
+[//]: #     ({{#wrapWith "grid-col" colClasses="is-col-tablet-l-8"}})
 
 > When you have `@veams/cli` installed you can skip this section!
 
