@@ -2,7 +2,8 @@
 Main File For Imports
 =================================================== */
 // Reset (veams-reset or veams-normalize)
-@import "~@veams/core/scss/veams-reset";
+// Windows path workaround for https://github.com/maoberlehner/node-sass-magic-importer/issues/182
+@import "../../node_modules/@veams/core/scss/veams-reset";
 
 // Global Variables and Settings
 @import "shared/styles/shared";<% if (cssLibs && cssLibs.length) { %>
@@ -13,7 +14,8 @@ Main File For Imports
 @import "~bootstrap-sass/assets/stylesheets/bootstrap"; // You can choose your specific components
 <% }} %>
 // Media Queries in JS
-@import "~@veams/plugin-media-query-handler/scss/media-query-handler";
+// Windows path workaround for https://github.com/maoberlehner/node-sass-magic-importer/issues/182
+@import "../../node_modules/@veams/plugin-media-query-handler/scss/media-query-handler";
 
 // Icons
 @import "shared/styles/icons/**/*";
