@@ -38,6 +38,7 @@
 		"config": "configs",
 		"docs": "src/docs",
 		"mocks": "src/server/mocks",
+		"package": "src/app/shared/components",
 		"server": "src/server",
 		"src": "src",
 		"utility": "src/app/shared/utilities"
