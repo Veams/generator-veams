@@ -9,7 +9,7 @@ const path = require('path');
  */
 const webpack = require('webpack');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require('terser-webpack-plugin');
 
 /**
  * Env & Veams
@@ -77,7 +77,11 @@ module.exports = [
 			alias: {
 				'app.veams$': `${context}/app.veams.js`,
 				'env': envFile
-			}
+			},
+			extensions: [
+				'.js'<% if (projectType === 'single-page-app') { %>,
+				'.jsx'<% } %>
+			]
 		},
 		// Entry point for webpack
 		entry: {

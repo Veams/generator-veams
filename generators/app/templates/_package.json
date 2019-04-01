@@ -53,6 +53,7 @@
 	"devDependencies": {
 		"@veams/bp-mock-api": "^1.0.3",
 		"@veams/bp-react-container": "^0.0.5",
+		"@veams/bp-react-component": "^0.0.2",
 		"@veams/bp-redux": "^0.0.10",
 		"aliasify": "^2.1.0",
 		"autoprefixer": "^6.7.3",
@@ -143,6 +144,7 @@
 		"sass-loader": "^7.0.2",
 		"style-loader": "^0.21.0",
 		"stylelint": "^9.2.0",
+		"terser-webpack-plugin": "^1.2.2",
 		"time-grunt": "~1.4.0",
 		"webfonts-generator": "^0.4.0",
 		"webpack": "^4.10.2",

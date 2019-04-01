@@ -22,5 +22,15 @@ module.exports = {
 				dest: '<%%= paths.dest %>'
 			}
 		]
-	}
+	}<% if (projectType === 'single-page-app') { %>,
+	static: {
+		files: [
+		// includes files within path and its sub-directories
+			{
+				cwd: '<%%= paths.app %>/static',
+				src: '**/*.{html}',
+				dest: '<%%= paths.dest %>'
+			}
+		]
+	}<% } %>
 };

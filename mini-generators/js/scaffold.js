@@ -11,11 +11,13 @@ module.exports = function scaffold() {
 		delete this.pkgFile[ 'dependencies' ][ 'react-router-config' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'babel-preset-react' ];
 		delete this.pkgFile[ 'devDependencies' ][ '@veams/bp-react-container' ];
+		delete this.pkgFile[ 'devDependencies' ][ '@veams/bp-react-component' ];
 
 		/**
 		 * Blueprints
 		 */
 		delete this.veamsFile[ 'blueprints' ][ 'container' ];
+		delete this.veamsFile[ 'blueprints' ][ 'component' ];
 	}
 	if (this.jsLibs.indexOf(config.jqueryId) === -1) delete this.pkgFile[ 'dependencies' ][ config.jqueryId ];
 	if (this.jsLibs.indexOf(config.handlebarsId) === -1) delete this.pkgFile[ 'dependencies' ][ config.handlebarsId ];

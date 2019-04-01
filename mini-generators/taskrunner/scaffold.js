@@ -78,6 +78,7 @@ module.exports = function scaffold() {
 		delete this.pkgFile[ 'devDependencies' ][ 'css-loader' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'compression-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'copy-webpack-plugin' ];
+		delete this.pkgFile[ 'devDependencies' ][ 'terser-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'case-sensitive-paths-webpack-plugin' ];
 		delete this.pkgFile[ 'devDependencies' ][ 'babel-loader' ];
 	} else {
@@ -103,7 +104,7 @@ module.exports = function scaffold() {
 		);
 
 		this.fs.copyTpl(
-			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/plugins/scripts.plugins.js'),
+			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/plugins/scripts.plugins.js.ejs'),
 			this.helperPath + 'tasks/_webpack/plugins/scripts.plugins.js',
 			this
 		);

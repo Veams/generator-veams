@@ -1,6 +1,10 @@
 {
 	"projectType": "static-page-app",
 	"blueprints": {
+		"component": {
+			"skipImports": true,
+			"path": "node_modules/@veams/bp-react-component"
+		},
 		"container": {
 			"skipImports": true,
 			"path": "node_modules/@veams/bp-react-container"

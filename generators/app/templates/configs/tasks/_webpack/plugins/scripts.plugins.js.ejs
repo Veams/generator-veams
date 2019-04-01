@@ -34,5 +34,12 @@ module.exports = function scriptPlugins() {
 			ignore: [ '.gitkeep' ]
 		} ])
 	];
+<% if (projectType === 'single-page-app') { %>
+	if (!local) {
+		plugins.push(new CopyWebpackPlugin([ {
+			from: `static`
+		} ]))
+	}<% } %>
+
 	return plugins;
 };
