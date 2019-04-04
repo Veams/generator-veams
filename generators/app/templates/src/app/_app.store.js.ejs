@@ -1,9 +1,11 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import { composeWithDevTools } from 'redux-devtools-extension';<% if (jsLibs.indexOf('rxjs') !== -1) { %>
+import { routerMiddleware, connectRouter } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
+import Immutable from 'immutable';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { combineReducers } from 'redux-immutable';<% if (jsLibs.indexOf('rxjs') !== -1) { %>
 import { combineEpics, createEpicMiddleware } from 'redux-observable';<% } %>
-import { routerReducer, routerMiddleware } from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 /**
  * Global Stuff
@@ -13,19 +15,20 @@ const composeEnhancers = composeWithDevTools({
 });
 
 // Enable Browser History (you can also use 'createHashHistory()'
-const history = createHistory();
+const history = createBrowserHistory();
 
+/**
+ * Declare the epic middleware
+ * @type {EpicMiddleware}
+ */
+const epicMiddleware = createEpicMiddleware();
 /**
  * Initial State
  */
-const INITIAL_STATE = {
-	// i18n: I18N_INITIAL_STATE,
-	// ui: UI_INITIAL_STATE,
-	router: '/'
-};<% if (jsLibs.indexOf('rxjs') !== -1) { %>
+const INITIAL_STATE = Immutable.Map();<% if (jsLibs.indexOf('rxjs') !== -1) { %>
 
 /**
- * Epics (Async)
+ * Epics (Async handling with redux-observables and RxJS)
  */
 export const ROOT_EPIC = combineEpics(
 	// i18nFetchEpic
@@ -37,7 +40,7 @@ export const ROOT_EPIC = combineEpics(
 const ROOT_REDUCER = combineReducers({
 	// i18n: i18nReducer,
 	// ui: uiReducer,
-	router: routerReducer
+	router: connectRouter(history)
 });
 
 /**
@@ -47,13 +50,17 @@ let store = createStore(
 	ROOT_REDUCER,
 	INITIAL_STATE,
 	composeEnhancers(
-		applyMiddleware(
-			reduxImmutableStateInvariant(),<% if (jsLibs.indexOf('rxjs') !== -1) { %>
-			createEpicMiddleware(ROOT_EPIC),<% } %>
+		applyMiddleware(<% if (jsLibs.indexOf('rxjs') !== -1) { %>
+			epicMiddleware,<% } %>
 			routerMiddleware(history)
 		)
 	)
 );
+
+/**
+ * Inject the middleware epics
+ */
+epicMiddleware.run(ROOT_EPIC);
 
 // Export store as singleton
 export default store;

@@ -36,7 +36,7 @@ describe('Veams Framework', function () {
 
 		it('contains veams and plugins in package.json', function () {
 			assert.fileContent('package.json', /veams/);
-			assert.fileContent('package.json', /veams-plugin/);
+			assert.fileContent('package.json', /@veams\/plugin/);
 		});
 
 		it('adds event endpoint to veams-cli file', function () {

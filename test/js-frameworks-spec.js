@@ -32,11 +32,11 @@ describe('JavaScript Frameworks', function () {
 		});
 
 		it('adds the package to package.json', function () {
-			assert.fileContent('package.json', /veams-query/);
+			assert.fileContent('package.json', /@veams\/query/);
 		});
 
 		it('adds import state to app.veams.js', function () {
-			assert.fileContent(srcPath + 'app.veams.js', /veams-query/);
+			assert.fileContent(srcPath + 'app.veams.js', /@veams\/query/);
 		});
 	});
 
@@ -93,7 +93,7 @@ describe('JavaScript Frameworks', function () {
 
 		it('adds the package to package.json', function () {
 			assert.fileContent('package.json', /redux/);
-			assert.fileContent('package.json', /veams-bp-redux/);
+			assert.fileContent('package.json', /@veams\/bp-redux/);
 		});
 
 		it('adds app.store.js', function () {
@@ -125,7 +125,7 @@ describe('JavaScript Frameworks', function () {
 
 		it('adds the package to package.json', function () {
 			assert.fileContent('package.json', /react/);
-			assert.fileContent('package.json', /veams-bp-react-container/);
+			assert.fileContent('package.json', /@veams\/bp-react-container/);
 		});
 
 		it('adds references in app.js', function () {
@@ -173,7 +173,7 @@ describe('JavaScript Frameworks', function () {
 		});
 
 		it('removes all packages from package.json', function () {
-			assert.noFileContent('package.json', /redux|redux|react|jquery|veams-query/);
+			assert.noFileContent('package.json', /redux|react|jquery|@veams\/query/);
 		});
 		it('removes blueprints from veams-cli.json', function () {
 			assert.noFileContent('veams-cli.json', /store|container/);

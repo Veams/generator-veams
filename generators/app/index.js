@@ -229,7 +229,7 @@ module.exports = class extends Generator {
 
 	_defaults() {
 		// Standard files
-		this.fs.copy(this.templatePath('babelrc'), '.babelrc');
+		this.fs.copyTpl(this.templatePath('babelrc.ejs'), '.babelrc', this);
 		this.fs.copyTpl(this.templatePath('gitignore'), '.gitignore');
 		this.fs.copyTpl(this.templatePath('editorconfig'), '.editorconfig');
 		this.fs.copyTpl(this.templatePath('README.md.ejs'), 'README.md', this);

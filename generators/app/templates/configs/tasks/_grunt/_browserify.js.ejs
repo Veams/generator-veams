@@ -1,6 +1,8 @@
 'use strict';
 
+const fs = require('fs-extra');
 const config = require('../../../veams-cli');
+const babelrc = JSON.parse(fs.readFileSync(`${process.cwd()}/.babelrc`, 'utf-8'));
 
 const internalLibs = [
 	`./${config.paths.app}/app.veams.js:app.veams`,
@@ -17,21 +19,10 @@ module.exports = {
 					// ignore: [
 					// 	'<%%= paths.dest %>/scripts/vendor/'
 					// ],
-					presets: [<% if(projectType === 'single-page-app') { %>
-						'react',<% } %>
-						'stage-0',
-						'stage-1',
-						['env', {
-							targets: {
-								browsers: ['last 2 versions', 'ie >= 11', 'iOS >= 10', 'Android >= 6']
-							},
-							useBuiltIns: false
-						}]
-					],
-					plugins: [
-						'transform-decorators-legacy',
-						'transform-class-properties'
-					]
+					// Let's add babel presets ...
+					presets: babelrc.env.client.presets,
+					// ... and plugins.
+					plugins: babelrc.env.client.plugins
 				}
 			]
 		],

@@ -1,4 +1,4 @@
-require('babel-register');
+require('@babel/register');
 const express = require('./modules/express');
 const router = require('./content/index');
 const apiRouter = require('./api/index');

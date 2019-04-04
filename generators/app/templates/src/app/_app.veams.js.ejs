@@ -62,7 +62,7 @@ Veams.onInitialize(() => {
     <% } %>
     // Trigger global scroll event
     window.onscroll = throttle((e) => {
-        Veams.Vent.trigger(Veams.EVENTS.scroll, e);
+        Veams.Vent.publish(Veams.EVENTS.scroll, e);
     }, 200);
 });
 

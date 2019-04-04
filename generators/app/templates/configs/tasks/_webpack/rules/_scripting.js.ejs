@@ -1,3 +1,6 @@
+const fs = require('fs-extra');
+const babelrc = JSON.parse(fs.readFileSync(`${process.cwd()}/.babelrc`, 'utf-8'));
+
 module.exports = function () {
 	return {
 		test: /\.jsx?$/,
@@ -9,21 +12,9 @@ module.exports = function () {
 			// directory for faster rebuilds.
 			cacheDirectory: true,
 			// Let's add babel presets ...
-			presets: [<% if (projectType === 'single-page-app') { %>
-				'react',<% } %>
-				'stage-0',
-				'stage-1',
-				[ 'env', {
-					targets: {
-						'browsers': [ 'last 2 versions', 'ie >= 11' ]
-					}
-				} ]
-			],
+			presets: babelrc.env.client.presets,
 			// ... and plugins.
-			plugins: [
-				'transform-class-properties',
-				'transform-decorators-legacy'
-			]
+			plugins: babelrc.env.client.plugins
 		}
 	}
 };

@@ -7,9 +7,9 @@
  */
 
 import React from 'react';
-import AppCore from './core';
 import { renderRoutes } from 'react-router-config';
 import { Link } from 'react-router-dom';
+import AppCore from './core';
 
 /**
  * A simple home page route.
@@ -34,7 +34,7 @@ const TestRoutes = [
 					<h3>My Test Page</h3>
 					<ul>
 						<li>
-							<Link to="/test/subpage">One sub page</Link>
+							<Link to="/test/subpage">Sub Page</Link>
 						</li>
 					</ul>
 					<div className="sub-routes">{renderRoutes(route.routes)}</div>
@@ -48,7 +48,7 @@ const TestRoutes = [
 				component: () => {
 					return (
 						<div className="sub-page">
-							<h4>My sub page</h4>
+							<h4>My Sub Page</h4>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 						</div>
 					);
