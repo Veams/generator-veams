@@ -27,7 +27,7 @@ module.exports = function scaffold() {
 	if (this.jsLibs.indexOf(config.reduxId) !== -1) {
 		this.fs.copyTpl(
 			this.templatePath('src/app/_app.store.js.ejs'),
-			'src/app/app.store.js',
+			this.destinationPath('src/app/app.store.js'),
 			this
 		);
 

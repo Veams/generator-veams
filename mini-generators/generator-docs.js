@@ -36,12 +36,12 @@ exports.scaffold = function () {
 	if (this.docs.indexOf(htmlDocsId) !== -1) {
 		this.fs.copy(
 			this.templatePath(this.generatorSrcPath + 'scss/docs.scss'),
-			this.srcPath + 'scss/docs.scss'
+			this.destinationPath(this.srcPath + 'scss/docs.scss')
 		);
 		if (this.templateEngine !== '') {
 			this.fs.copyTpl(
 				this.templatePath(this.generatorSrcPath + 'templating/docs/index.hbs.ejs'),
-				this.srcPath + 'templating/docs/index.hbs',
+				this.destinationPath(this.srcPath + 'templating/docs/index.hbs'),
 				this
 			);
 		}
@@ -50,17 +50,17 @@ exports.scaffold = function () {
 	if (this.docs && this.docs.indexOf(jsDocsId) !== -1) {
 		this.fs.copy(
 			this.templatePath(this.generatorHelperPath + 'tasks/jsdoc.config.json'),
-			this.helperPath + 'tasks/jsdoc.config.json'
+			this.destinationPath(this.helperPath + 'tasks/jsdoc.config.json')
 		);
 		this.fs.copy(
 			this.templatePath(this.generatorSrcPath + 'js/README.md'),
-			this.srcPath + 'js/README.md'
+			this.destinationPath(this.srcPath + 'js/README.md')
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {
 			this.fs.copy(
 				this.templatePath(this.generatorGruntPath + 'jsdoc.js'),
-				this.gruntPath + 'jsdoc.js'
+				this.destinationPath(this.gruntPath + 'jsdoc.js')
 			);
 		} else {
 			delete this.pkgFile['devDependencies']['grunt-jsdoc'];
@@ -72,25 +72,16 @@ exports.scaffold = function () {
 	if (this.docs && this.docs.indexOf(sassDocsId) !== -1) {
 		this.fs.copy(
 			this.templatePath(this.generatorHelperPath + 'tasks/sassdoc.config.json'),
-			this.helperPath + 'tasks/sassdoc.config.json'
+			this.destinationPath(this.helperPath + 'tasks/sassdoc.config.json')
 		);
 
 		if (this.taskRunner.indexOf('grunt') !== -1) {
 			this.fs.copy(
 				this.templatePath(this.generatorGruntPath + 'sassdoc.js'),
-				this.gruntPath + 'sassdoc.js'
+				this.destinationPath(this.gruntPath + 'sassdoc.js')
 			);
 		}
 	} else {
 		delete this.pkgFile['devDependencies']['grunt-sassdoc'];
-	}
-
-	if (this.taskRunner.indexOf('gulp') !== -1 && this.docs && (this.docs.indexOf(sassDocsId) !== -1 || this.docs.indexOf(jsDocsId) !== -1)) {
-
-		this.fs.copyTpl(
-			this.templatePath(this.generatorGulpPath + '_docs.js.ejs'),
-			this.gulpPath + 'docs.js',
-			this
-		);
 	}
 };

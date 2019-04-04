@@ -8,7 +8,7 @@ module.exports = function scaffold() {
 	 */
 	this.fs.copy(
 		this.templatePath(this.generatorHelperPath + 'tasks/nodemon.config.json'),
-		this.helperPath + 'tasks/nodemon.config.json'
+		this.destinationPath(this.helperPath + 'tasks/nodemon.config.json')
 	);
 
 	/**
@@ -16,66 +16,66 @@ module.exports = function scaffold() {
 	 */
 	this.fs.copy(
 		this.templatePath('src/server/api'),
-		'src/server/api'
+		this.destinationPath('src/server/api')
 	);
 
 	this.fs.copy(
 		this.templatePath('gitkeep'),
-		'src/server/mocks/.gitkeep'
+		this.destinationPath('src/server/mocks/.gitkeep')
 	);
 
 	this.fs.copy(
 		this.templatePath('src/server/configs'),
-		'src/server/configs'
+		this.destinationPath('src/server/configs')
 	);
 
 	this.fs.copy(
 		this.templatePath('src/server/models'),
-		'src/server/models'
+		this.destinationPath('src/server/models')
 	);
 
 	this.fs.copy(
 		this.templatePath('src/server/services'),
-		'src/server/services'
+		this.destinationPath('src/server/services')
 	);
 
 	this.fs.copy(
 		this.templatePath('src/server/utils'),
-		'src/server/utils'
+		this.destinationPath('src/server/utils')
 	);
 
 	this.fs.copy(
 		this.templatePath('src/server/index.js'),
-		'src/server/index.js'
+		this.destinationPath('src/server/index.js')
 	);
 
 	this.fs.copyTpl(
 		this.templatePath('src/server/modules/express.js.ejs'),
-		'src/server/modules/express.js',
+		this.destinationPath('src/server/modules/express.js'),
 		this
 	);
 
 	this.fs.copyTpl(
 		this.templatePath('src/server/modules/reload.js'),
-		'src/server/modules/reload.js',
+		this.destinationPath('src/server/modules/reload.js'),
 		this
 	);
 
 	this.fs.copyTpl(
 		this.templatePath('src/server/content/home.js.ejs'),
-		'src/server/content/home.js',
+		this.destinationPath('src/server/content/home.js'),
 		this
 	);
 
 	this.fs.copyTpl(
 		this.templatePath('src/server/content/index.js.ejs'),
-		'src/server/content/index.js',
+		this.destinationPath('src/server/content/index.js'),
 		this
 	);
 
 	this.fs.copy(
 		this.templatePath('src/server/content/server-hosts.js'),
-		'src/server/content/server-hosts.js'
+		this.destinationPath('src/server/content/server-hosts.js')
 	);
 
 	/**
@@ -84,12 +84,12 @@ module.exports = function scaffold() {
 	if (this.server.indexOf(serverConfig.serverFakeId) !== -1) {
 		this.fs.copy(
 			this.templatePath(`${this.generatorHelperPath}tasks/faker/faker.js`),
-			this.helperPath + 'tasks/faker/faker.js'
+			this.destinationPath(this.helperPath + 'tasks/faker/faker.js')
 		);
 
 		this.fs.copy(
 			this.templatePath(`${this.generatorHelperPath}tasks/faker/presets/example.preset.js`),
-			this.helperPath + 'tasks/faker/presets/example.preset.js'
+			this.destinationPath(this.helperPath + 'tasks/faker/presets/example.preset.js')
 		);
 
 		this.pkgFile[ 'scripts' ][ 'faker' ] = 'node configs/tasks/faker/faker.js';

@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
+const mkdirp = require('mkdirp');
 const _ = require('lodash');
 const Generator = require('yeoman-generator');
 const helpers = require('../../lib/helpers');
@@ -61,6 +62,7 @@ module.exports = class extends Generator {
 	// Initialize general settings and store some files
 	initializing() {
 		this._ = _;
+		this.originalPath = this.destinationPath();
 		this.pkg = require('../../package.json');
 		this.pkgFile = this.fs.readJSON(this.templatePath('_package.json'));
 		this.veamsFile = this.fs.readJSON(this.templatePath('veams-cli.json'));
@@ -228,69 +230,80 @@ module.exports = class extends Generator {
 	}
 
 	_defaults() {
+		const projectName = helpers.hyphenate(this.config.get('projectName')) || 'veams-project';
+
+		// Create project folder
+		if (path.basename(this.destinationPath()) !== projectName) {
+			this.log(
+				`Creating project folder ...`
+			);
+			mkdirp(projectName);
+			this.destinationRoot(this.destinationPath(projectName));
+		}
+
 		// Standard files
-		this.fs.copyTpl(this.templatePath('babelrc.ejs'), '.babelrc', this);
-		this.fs.copyTpl(this.templatePath('gitignore'), '.gitignore');
-		this.fs.copyTpl(this.templatePath('editorconfig'), '.editorconfig');
-		this.fs.copyTpl(this.templatePath('README.md.ejs'), 'README.md', this);
+		this.fs.copyTpl(this.templatePath('babelrc.ejs'), this.destinationPath('.babelrc'), this);
+		this.fs.copyTpl(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
+		this.fs.copyTpl(this.templatePath('editorconfig'), this.destinationPath('.editorconfig'));
+		this.fs.copyTpl(this.templatePath('README.md.ejs'), this.destinationPath('README.md'), this);
 		this.fs.copy(
 			this.templatePath('environments'),
 			this.destinationPath('environments')
 		);
-		this.pkgFile[ 'name' ] = helpers.hyphenate(this.config.get('projectName')) || 'veams-project';
+		this.pkgFile[ 'name' ] = projectName;
 
 		// add specific resources to make it possible to split up some directories
 
 		// General structure
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/app/shared/components/.gitkeep'
+			this.destinationPath('src/app/shared/components/.gitkeep')
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/app/shared/utilities/.gitkeep'
+			this.destinationPath('src/app/shared/utilities/.gitkeep')
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/app/core/layouts/.gitkeep'
+			this.destinationPath('src/app/core/layouts/.gitkeep')
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/app/core/.gitkeep'
+			this.destinationPath('src/app/core/.gitkeep')
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/app/core/store/.gitkeep'
+			this.destinationPath('src/app/core/store/.gitkeep')
 		);
 
 		// Assets area
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/app/assets/media/.gitkeep'
+			this.destinationPath('src/app/assets/media/.gitkeep')
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/app/assets/fonts/.gitkeep'
+			this.destinationPath('src/app/assets/fonts/.gitkeep')
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/app/assets/icons/.gitkeep'
+			this.destinationPath('src/app/assets/icons/.gitkeep')
 		);
 		this.fs.copy(
 			this.templatePath('src/app/assets/img/favicon.ico'),
-			'src/app/assets/img/favicon.ico'
+			this.destinationPath('src/app/assets/img/favicon.ico')
 		);
 
 		// JS area
 		this.fs.copy(
 			this.templatePath('src/app/shared/scripts/README.md'),
-			'src/app/shared/scripts/README.md'
+			this.destinationPath('src/app/shared/scripts/README.md')
 		);
 
 		/**
@@ -300,13 +313,13 @@ module.exports = class extends Generator {
 		// Shared
 		this.fs.copyTpl(
 			this.templatePath('src/app/shared/styles/helpers/_helpers.scss.ejs'),
-			'src/app/shared/styles/helpers/_helpers.scss',
+			this.destinationPath('src/app/shared/styles/helpers/_helpers.scss'),
 			this
 		);
 
 		this.fs.copy(
 			this.templatePath('gitkeep'),
-			'src/app/shared/styles/helpers/functions/.gitkeep'
+			this.destinationPath('src/app/shared/styles/helpers/functions/.gitkeep')
 		);
 
 		this.fs.copyTpl(
@@ -317,37 +330,38 @@ module.exports = class extends Generator {
 
 		this.fs.copyTpl(
 			this.templatePath('src/app/shared/styles/_shared.scss'),
-			'src/app/shared/styles/_shared.scss',
+			this.destinationPath('src/app/shared/styles/_shared.scss'),
 			this
 		);
 
 		// Core
 		this.fs.copyTpl(
 			this.templatePath('src/app/core/styles/_print.scss'),
-			'src/app/core/styles/_print.scss',
+			this.destinationPath('src/app/core/styles/_print.scss'),
 			this
 		);
 		this.fs.copyTpl(
 			this.templatePath('src/app/core/styles/_base.scss.ejs'),
-			'src/app/core/styles/base.scss',
+			this.destinationPath('src/app/core/styles/base.scss'),
 			this
 		);
 
 		//  App
 		this.fs.copyTpl(
 			this.templatePath('src/app/_app.scss.ejs'),
-			'src/app/app.scss',
+			this.destinationPath('src/app/app.scss'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath('src/app/_app.js.ejs'),
-			'src/app/app.js',
+			this.destinationPath('src/app/app.js'),
 			this
 		);
 	}
 
 	_pkg() {
+		console.log('this.veamsFile: ', this.veamsFile);
 		this.fs.write(this.destinationPath('package.json'), JSON.stringify(this.pkgFile, null, 4));
 		this.fs.write(this.destinationPath('veams-cli.json'), JSON.stringify(this.veamsFile, null, 4));
 	}
@@ -363,7 +377,7 @@ module.exports = class extends Generator {
 			.then(() => {
 				this.emit(configFile.events.depsIntalled);
 				return this.log(`That’s it. Start your project with ${chalk.green('npm start')} or ${chalk.green(
-					'yarn start')}!`);
+					'yarn start')}! Be sure to work in your project folder.`);
 			})
 			.catch(() => {
 				this.emit(configFile.events.depsIntalled);
@@ -375,7 +389,7 @@ module.exports = class extends Generator {
 		let _this = this;
 
 		this.on(configFile.events.end, () => {
-			fs.rename(path.join(this.destinationRoot(), '.yo-rc.json'), path.join(this.destinationRoot(), 'setup.json'),
+			fs.rename(path.join(this.originalPath, '.yo-rc.json'), path.join(this.originalPath, 'setup.json'),
 				function (err) {
 					if (err) {
 						_this.log('ERROR: ' + err);

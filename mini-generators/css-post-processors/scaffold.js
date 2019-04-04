@@ -8,11 +8,11 @@ module.exports = function scaffold() {
 		this.pkgFile[ 'scripts' ][ 'css:separate' ] = 'node configs/tasks/css-separation/css-separation.js';
 		this.fs.copy(
 			this.templatePath('configs/tasks/css-separation/css-separation.js'),
-			'configs/tasks/css-separation/css-separation.js'
+			this.destinationPath('configs/tasks/css-separation/css-separation.js')
 		);
 		this.fs.copy(
 			this.templatePath('configs/tasks/css-separation/css-separation.config.js'),
-			'configs/tasks/css-separation/css-separation.config.js'
+			this.destinationPath('configs/tasks/css-separation/css-separation.config.js')
 		);
 	} else {
 		delete this.pkgFile[ 'devDependencies' ][ 'postcss-separator' ];

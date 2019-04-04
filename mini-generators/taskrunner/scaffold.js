@@ -30,36 +30,36 @@ module.exports = function scaffold() {
 		 */
 		this.fs.copyTpl(
 			this.templatePath('Gruntfile.js.ejs'),
-			'Gruntfile.js',
+			this.destinationPath('Gruntfile.js'),
 			this
 		);
 		this.fs.copyTpl(
 			this.templatePath(this.generatorGruntPath + '_clean.js.ejs'),
-			this.gruntPath + 'clean.js',
+			this.destinationPath(this.gruntPath + 'clean.js'),
 			this
 		);
 		this.fs.copyTpl(
 			this.templatePath(this.generatorGruntPath + '_concurrent.js.ejs'),
-			this.gruntPath + 'concurrent.js',
+			this.destinationPath(this.gruntPath + 'concurrent.js'),
 			this
 		);
 		this.fs.copy(
 			this.templatePath(this.generatorGruntPath + 'cssmin.js'),
-			this.gruntPath + 'cssmin.js'
+			this.destinationPath(this.gruntPath + 'cssmin.js')
 		);
 		this.fs.copyTpl(
 			this.templatePath(this.generatorGruntPath + '_sync.js.ejs'),
-			this.gruntPath + 'sync.js',
+			this.destinationPath(this.gruntPath + 'sync.js'),
 			this
 		);
 		this.fs.copyTpl(
 			this.templatePath(this.generatorGruntPath + '_sass.js.ejs'),
-			this.gruntPath + 'sass.js',
+			this.destinationPath(this.gruntPath + 'sass.js'),
 			this
 		);
 		this.fs.copyTpl(
 			this.templatePath(this.generatorGruntPath + '_watch.js.ejs'),
-			this.gruntPath + 'chokidar.js',
+			this.destinationPath(this.gruntPath + 'chokidar.js'),
 			this
 		);
 	}
@@ -93,36 +93,36 @@ module.exports = function scaffold() {
 		 */
 		this.fs.copyTpl(
 			this.templatePath('webpack.config.js'),
-			'webpack.config.js',
+			this.destinationPath('webpack.config.js'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/_webpack.common.js.ejs'),
-			this.helperPath + 'tasks/_webpack/webpack.common.js',
+			this.destinationPath(this.helperPath + 'tasks/_webpack/webpack.common.js'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/plugins/scripts.plugins.js.ejs'),
-			this.helperPath + 'tasks/_webpack/plugins/scripts.plugins.js',
+			this.destinationPath(this.helperPath + 'tasks/_webpack/plugins/scripts.plugins.js'),
 			this
 		);
 		this.fs.copyTpl(
 			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/plugins/_styles.plugins.js.ejs'),
-			this.helperPath + 'tasks/_webpack/plugins/styles.plugins.js',
+			this.destinationPath(this.helperPath + 'tasks/_webpack/plugins/styles.plugins.js'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/rules/_scripting.js.ejs'),
-			this.helperPath + 'tasks/_webpack/rules/scripting.js',
+			this.destinationPath(this.helperPath + 'tasks/_webpack/rules/scripting.js'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath(this.generatorHelperPath + 'tasks/_webpack/rules/_styling.js.ejs'),
-			this.helperPath + 'tasks/_webpack/rules/styling.js',
+			this.destinationPath(this.helperPath + 'tasks/_webpack/rules/styling.js'),
 			this
 		);
 

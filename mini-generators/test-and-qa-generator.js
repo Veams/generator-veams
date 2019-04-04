@@ -69,7 +69,7 @@ exports.scaffold = function () {
 		if (this.taskRunner.indexOf('grunt') !== -1) {
 			this.fs.copy(
 				this.templatePath(this.generatorGruntPath + 'htmlhint.js'),
-				this.gruntPath + 'htmlhint.js'
+				this.destinationPath(this.gruntPath + 'htmlhint.js')
 			);
 		} else {
 			delete this.pkgFile[ 'devDependencies' ][ 'grunt-htmlhint' ];
@@ -84,7 +84,7 @@ exports.scaffold = function () {
 	if (this.testAndQALibs.indexOf(sasslintId) !== -1) {
 		this.fs.copy(
 			this.templatePath(this.generatorHelperPath + 'tasks/linting/stylelint.config.js'),
-			this.helperPath + 'tasks/linting/stylelint.config.js'
+			this.destinationPath(this.helperPath + 'tasks/linting/stylelint.config.js')
 		);
 
 		this.pkgFile[ 'scripts' ][ 'lint:styles' ] = 'stylelint src/app/**/*.scss --config configs/tasks/linting/stylelint.config.js';
@@ -99,7 +99,7 @@ exports.scaffold = function () {
 	if (this.testAndQALibs.indexOf(esLintId) !== -1) {
 		this.fs.copy(
 			this.templatePath(this.generatorHelperPath + 'tasks/linting/eslint.config.js'),
-			this.helperPath + 'tasks/linting/eslint.config.js'
+			this.destinationPath(this.helperPath + 'tasks/linting/eslint.config.js')
 		);
 
 		this.pkgFile[ 'scripts' ][ 'lint:scripts' ] = 'eslint \"src/**/*.js\" --config configs/tasks/linting/eslint.config.js';

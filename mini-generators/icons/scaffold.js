@@ -11,7 +11,7 @@ module.exports = function scaffold() {
 	) {
 		this.fs.copyTpl(
 			this.templatePath('src/app/shared/styles/icons/_icons.scss'),
-			'src/app/shared/styles/icons/_icons.scss',
+			this.destinationPath('src/app/shared/styles/icons/_icons.scss'),
 			this
 		);
 	}
@@ -21,15 +21,15 @@ module.exports = function scaffold() {
 	if (this.icons.indexOf(iconConfig.spriteId) !== -1) {
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/sprite.config.js`),
-			`${config.paths.helperPath}/tasks/icons/sprite.config.js`
+			this.destinationPath(`${config.paths.helperPath}/tasks/icons/sprite.config.js`)
 		);
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/sprite.js`),
-			`${config.paths.helperPath}/tasks/icons/sprite.js`
+			this.destinationPath(`${config.paths.helperPath}/tasks/icons/sprite.js`)
 		);
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/templates/sprite.hbs`),
-			`${config.paths.helperPath}/tasks/icons/templates/sprite.hbs`
+			this.destinationPath(`${config.paths.helperPath}/tasks/icons/templates/sprite.hbs`)
 		);
 
 		this.pkgFile[ 'scripts' ][ 'sprite:generate' ] = 'node configs/tasks/icons/sprite.js';
@@ -44,15 +44,15 @@ module.exports = function scaffold() {
 	if (this.icons.indexOf(iconConfig.webfontId) !== -1) {
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/webfont.config.js`),
-			`${config.paths.helperPath}/tasks/icons/webfont.config.js`
+			this.destinationPath(`${config.paths.helperPath}/tasks/icons/webfont.config.js`)
 		);
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/webfont.js`),
-			`${config.paths.helperPath}/tasks/icons/webfont.js`
+			this.destinationPath(`${config.paths.helperPath}/tasks/icons/webfont.js`)
 		);
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/templates/webfont-scss.hbs`),
-			`${config.paths.helperPath}/tasks/icons/templates/webfont-scss.hbs`
+			this.destinationPath(`${config.paths.helperPath}/tasks/icons/templates/webfont-scss.hbs`)
 		);
 
 		this.pkgFile[ 'scripts' ][ 'webfont:generate' ] = 'node configs/tasks/icons/webfont.js';
@@ -67,11 +67,11 @@ module.exports = function scaffold() {
 	if (this.icons.indexOf(iconConfig.iconGrunticonId) !== -1) {
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/grunticon.config.js`),
-			`${config.paths.helperPath}/tasks/icons/grunticon.config.js`
+			this.destinationPath(`${config.paths.helperPath}/tasks/icons/grunticon.config.js`)
 		);
 		this.fs.copy(
 			this.templatePath(`${config.paths.helperPath}/tasks/icons/grunticon.js`),
-			`${config.paths.helperPath}/tasks/icons/grunticon.js`
+			this.destinationPath(`${config.paths.helperPath}/tasks/icons/grunticon.js`)
 		);
 		this.pkgFile[ 'scripts' ][ 'grunticon:generate' ] = 'node configs/tasks/icons/grunticon.js';
 

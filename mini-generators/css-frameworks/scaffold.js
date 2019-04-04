@@ -15,7 +15,7 @@ module.exports = function scaffold() {
 		if (this.taskRunner.indexOf('grunt') !== -1) {
 			this.fs.copyTpl(
 				this.templatePath(this.generatorGruntPath + 'postcss.js.ejs'),
-				this.gruntPath + 'postcss.js',
+				this.destinationPath(this.gruntPath + 'postcss.js'),
 				this
 			);
 		} else {

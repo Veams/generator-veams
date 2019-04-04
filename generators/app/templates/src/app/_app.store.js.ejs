@@ -1,11 +1,10 @@
-import { routerMiddleware, connectRouter } from 'connected-react-router';
-import { createBrowserHistory } from 'history';
+<% if (projectType === 'single-page-app') { %>import { routerMiddleware, connectRouter } from 'connected-react-router';
+import { createBrowserHistory } from 'history';<% } %>
 import Immutable from 'immutable';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { combineReducers } from 'redux-immutable';<% if (jsLibs.indexOf('rxjs') !== -1) { %>
 import { combineEpics, createEpicMiddleware } from 'redux-observable';<% } %>
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 /**
  * Global Stuff
@@ -13,10 +12,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const composeEnhancers = composeWithDevTools({
 	// Specify here name, actionsBlacklist, actionsCreators and other options if needed
 });
-
+<% if (projectType === 'single-page-app') { %>
 // Enable Browser History (you can also use 'createHashHistory()'
 const history = createBrowserHistory();
-
+<% } %>
 /**
  * Declare the epic middleware
  * @type {EpicMiddleware}
@@ -39,8 +38,8 @@ export const ROOT_EPIC = combineEpics(
  */
 const ROOT_REDUCER = combineReducers({
 	// i18n: i18nReducer,
-	// ui: uiReducer,
-	router: connectRouter(history)
+	// ui: uiReducer<% if (projectType === 'single-page-app') { %>,
+	router: connectRouter(history)<% } %>
 });
 
 /**
@@ -51,8 +50,8 @@ let store = createStore(
 	INITIAL_STATE,
 	composeEnhancers(
 		applyMiddleware(<% if (jsLibs.indexOf('rxjs') !== -1) { %>
-			epicMiddleware,<% } %>
-			routerMiddleware(history)
+			epicMiddleware,<% } %><% if (projectType === 'single-page-app') { %>
+			routerMiddleware(history)<% } %>
 		)
 	)
 );
@@ -64,6 +63,6 @@ epicMiddleware.run(ROOT_EPIC);
 
 // Export store as singleton
 export default store;
-
+<% if (projectType === 'single-page-app') { %>
 // Export further objects like history
-export { history };
+export { history };<% } %>
