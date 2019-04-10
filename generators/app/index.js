@@ -361,28 +361,24 @@ module.exports = class extends Generator {
 	}
 
 	_pkg() {
-		console.log('this.veamsFile: ', this.veamsFile);
 		this.fs.write(this.destinationPath('package.json'), JSON.stringify(this.pkgFile, null, 4));
 		this.fs.write(this.destinationPath('veams-cli.json'), JSON.stringify(this.veamsFile, null, 4));
 	}
 
 	install() {
-
-		this
-			.installDependencies({
+		if (this.options[ 'skip-install' ] || this.options[ 'si' ]) {
+			this.emit(configFile.events.depsIntalled);
+		} else {
+			this.installDependencies({
 				yarn: true,
 				npm: false,
 				bower: false
-			})
-			.then(() => {
-				this.emit(configFile.events.depsIntalled);
-				return this.log(`That’s it. Start your project with ${chalk.green('npm start')} or ${chalk.green(
-					'yarn start')}! Be sure to work in your project folder.`);
-			})
-			.catch(() => {
-				this.emit(configFile.events.depsIntalled);
-				return this.log(`… or alternatively run ${chalk.yellow('npm install')} instead.`);
 			});
+
+			this.emit(configFile.events.depsIntalled);
+			return this.log(`That’s it. After packages are installed, start your project with ${chalk.green('npm start')} or ${chalk.green(
+				'yarn start')}! Be sure to work in your project folder.`);
+		}
 	}
 
 	bindEvents() {

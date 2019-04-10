@@ -148,9 +148,14 @@ function replacePath(content) {
  * @param {Object} options - Complete options object with filepath.
  * @param {Function} - Callback function which updates the paths in final content.
  */
-spritesGenerator(spriteOptions, () => {
-	fs.readFile(`${config.cssPath}/sprite.${config.cssSuffix}`, 'utf-8')
-		.then(data => fs.outputFile(`${config.cssPath}/sprite.${config.cssSuffix}`, replacePath(data)))
-		.then(() => console.log(chalk.green('Sprite and SCSS file successfully generated!')))
-		.catch(err => console.error(chalk.red('Sprites Generation Error :: Error in reading file.\n', err)));
+spritesGenerator(spriteOptions, (err) => {
+	const data = fs.readFileSync(`${config.cssPath}/sprite.${config.cssSuffix}`, 'utf-8');
+
+	fs.outputFile(`${config.cssPath}/sprite.${config.cssSuffix}`, replacePath(data), (err) => {
+		if (err) {
+			console.error(chalk.red('Sprites Generation Error :: Error in reading file.\n', err));
+			return;
+		}
+		console.log(chalk.green('Sprite and SCSS file successfully generated!'));
+	});
 });

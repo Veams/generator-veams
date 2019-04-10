@@ -1,6 +1,6 @@
 {
 	"name": "@veams/generator-veams",
-	"version": "1.0.0-rc25",
+	"version": "1.0.0",
 	"homepage": "https://veams.org/",
 	"description": "Scaffold modern frontend web apps or web pages with/out a static site generator, Grunt and/or Webpack. Use modern frameworks like Bourbon, Bootstrap or Foundation and structure your JavaScript with ES Harmony support.",
 	"keywords": [
@@ -43,19 +43,19 @@
 		"test": "mocha --reporter spec"
 	},
 	"dependencies": {
-		"chalk": "~2.4.1",
-		"fs-extra": "^6.0.1",
-		"inquirer-autocomplete-prompt": "^0.12.2",
-		"lodash": "^4.17.10",
+		"chalk": "~2.4.2",
+		"fs-extra": "^7.0.1",
+		"inquirer-autocomplete-prompt": "^1.0.1",
+		"lodash": "^4.17.11",
 		"mkdirp": "^0.5.1",
-		"yeoman-generator": "~2.0.5",
-		"yo": "~2.0.2"
+		"yeoman-generator": "~3.2.0",
+		"yo": "~2.0.5"
 	},
 	"devDependencies": {
-		"globby": "^8.0.1",
-		"mocha": "^5.1.1",
+		"globby": "^9.2.0",
+		"mocha": "^6.1.2",
 		"yeoman-assert": "^3.1.1",
-		"yeoman-test": "^1.7.1"
+		"yeoman-test": "^1.9.1"
 	},
 	"engines": {
 		"node": ">=4.4.5"

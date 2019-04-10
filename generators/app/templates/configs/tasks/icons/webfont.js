@@ -129,7 +129,7 @@ const config = {
 	fontsPath: cmdOptions.fontsPath || `${defaultConfig.fontsPath}`,
 	fontsName: cmdOptions.fontsName || `${defaultConfig.fontsName}`,
 	input: cmdOptions.input || `${defaultConfig.input}`,
-	types: cmdOptions.types || `${defaultConfig.types}`,
+	types: cmdOptions.types || defaultConfig.types,
 	options: {
 		...defaultConfig.pluginOptions,
 		dest: cmdOptions.dest || `${defaultConfig.pluginOptions.dest}`
